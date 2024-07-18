@@ -25,34 +25,23 @@ public partial class @TouchControls: IInputActionCollection2, IDisposable
     ""maps"": [
         {
             ""name"": ""Touch"",
-            ""id"": ""e387da80-4f50-479b-af6c-2e3c9e4db499"",
+            ""id"": ""efd5e837-92b5-4c67-ae4d-911dceb21ca1"",
             ""actions"": [
                 {
                     ""name"": ""TouchPosition"",
-                    ""type"": ""Value"",
-                    ""id"": ""99e94e77-5edb-4f50-8ed7-e14301d9539f"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""type"": ""Button"",
+                    ""id"": ""efc1af79-054c-487e-90ea-e2f8ac1adb90"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": true
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""d9d01ceb-231f-48aa-8ca6-3517eb6d1ea1"",
-                    ""path"": ""<Touchscreen>/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TouchPosition"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""01a4c755-65ed-40be-8027-7fae00f1e8e2"",
-                    ""path"": ""<Mouse>/position"",
+                    ""id"": ""28bdd81b-d77a-4adf-a5af-b9a63356cb28"",
+                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

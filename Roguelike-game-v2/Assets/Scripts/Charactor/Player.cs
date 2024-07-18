@@ -6,10 +6,15 @@ public class Player : MonoBehaviour
     private GameObject obj;
 
     private TouchControls touchControls;
+
     private void Awake()
     {
         touchControls = new();
 
+        touchControls.Touch.Enable();
+    }
+    private void Start()
+    {
         touchControls.Touch.TouchPosition.started += ctx => Move();
         touchControls.Touch.TouchPosition.performed += ctx => Move();
         touchControls.Touch.TouchPosition.canceled += ctx => Move();
