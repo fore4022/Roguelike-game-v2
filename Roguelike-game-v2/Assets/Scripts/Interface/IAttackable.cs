@@ -1,5 +1,5 @@
 public interface IAttackable
 {
-    public float Amount { get; }
+    public float Damage { get; }
     public abstract void Attack();
 }

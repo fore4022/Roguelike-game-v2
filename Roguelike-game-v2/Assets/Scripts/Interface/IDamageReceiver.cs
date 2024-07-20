@@ -1,4 +1,4 @@
 public interface IDamageReceiver
 {
-    public void GetDamage(IDamage damage);
+    public void GetDamage(IAttackable attackable);
 }
