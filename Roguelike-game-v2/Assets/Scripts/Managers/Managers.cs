@@ -3,13 +3,22 @@ public class Managers : MonoBehaviour
 {
     public static Managers managers;
 
-    public static Managers Instatnce
+    public GameManager game;
+
+    public static Managers Instance
     {
         get 
         { 
             Init(); 
 
             return managers;
+        }
+    }
+    public static GameManager Game
+    {
+        get
+        {
+            return Instance.game;
         }
     }
     public static void Init()

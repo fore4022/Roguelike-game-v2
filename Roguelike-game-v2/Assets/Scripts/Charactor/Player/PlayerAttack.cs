@@ -1,9 +1,11 @@
 public class PlayerAttack : IAttackable
 {
-    public float Damage { get { return } }
+    private float damage;
+
+    public float Damage { get { return damage; } }
 
     public void Attack()
     {
-
+        //Instance
     }
 }
