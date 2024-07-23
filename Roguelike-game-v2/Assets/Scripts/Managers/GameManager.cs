@@ -5,7 +5,7 @@ public class GameManager
 
     public void GameStart()
     {
-        player = GameObject.Instantiate("");
+        //player = GameObject.Instantiate("");
     }
     public void GameEnd()
     {

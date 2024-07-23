@@ -21,19 +21,20 @@ public class Player : MonoBehaviour, IDamageReceiver
     {
         touchControls.Touch.TouchPosition.started += ctx => Move();
 
-        stat = playerStat.stat;
+        //stat = playerStat.stat;
+        InvokeRepeating("playerAttack.Attack", 0, stat.attackSpeed);
     }
     private void Update()
     {
-        // playerAttack.Attack(); -> InvokeRepeating
+
     }
     public void Die()
     {
         Managers.Game.GameEnd();
     }
-    public void GetDamage(IAttackable attackable)
+    public void GetDamage(IDamage damage)
     {
-        stat.health -= attackable.Damage;
+        stat.health -= damage.Damage;
 
         if(stat.health < 0) { Die(); }
     }

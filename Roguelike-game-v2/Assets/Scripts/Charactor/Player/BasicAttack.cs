@@ -1,5 +1,7 @@
 using UnityEngine;
-public class BasicAttack : MonoBehaviour
+public abstract class BasicAttack : MonoBehaviour, IDamage
 {
-    
+    public float Damage => throw new System.NotImplementedException();
+    protected abstract void OnEnable();
+    protected abstract void Init();
 }

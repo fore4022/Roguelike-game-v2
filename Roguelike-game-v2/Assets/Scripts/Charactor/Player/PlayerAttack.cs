@@ -1,9 +1,5 @@
-public class PlayerAttack : IAttackable
+public class PlayerAttack
 {
-    private float damage;
-
-    public float Damage { get { return damage; } }
-
     public void Attack()
     {
         //Instance
