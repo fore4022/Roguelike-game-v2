@@ -1,7 +1,15 @@
 using UnityEngine;
-public abstract class BasicAttack : MonoBehaviour, IDamage
+public class BasicAttack : MonoBehaviour, IDamage
 {
-    public float Damage => throw new System.NotImplementedException();
-    protected abstract void OnEnable();
-    protected abstract void Init();
+    private float damage;
+
+    public float Damage => damage;
+    private void Start()
+    {
+        damageCalculate();
+    }
+    private void damageCalculate()
+    {
+        damage = Managers.Game.player.Stat.damage;// attack type calculate;
+    }
 }

@@ -9,6 +9,7 @@ public class Player : MonoBehaviour, IDamageReceiver
     private Stat_SO playerStat;
     private Stat stat;
 
+    public Stat Stat { get { return stat; } }
     private void Awake()
     {
         touchControls = new();
@@ -21,8 +22,7 @@ public class Player : MonoBehaviour, IDamageReceiver
     {
         touchControls.Touch.TouchPosition.started += ctx => Move();
 
-        //stat = playerStat.stat;
-        InvokeRepeating("playerAttack.Attack", 0, stat.attackSpeed);
+        stat = playerStat.stat;
     }
     private void Update()
     {

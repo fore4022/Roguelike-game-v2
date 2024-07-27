@@ -1,7 +1,7 @@
 using UnityEngine;
 public class GameManager
 {
-    public GameObject player;
+    public Player player;
 
     public void GameStart()
     {
