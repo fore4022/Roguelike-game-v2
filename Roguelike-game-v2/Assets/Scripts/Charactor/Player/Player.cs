@@ -3,8 +3,8 @@ public class Player : MonoBehaviour, IDamageReceiver
 {
     private TouchControls touchControls;
 
-    private PlayerAttack playerAttack;
-    private PlayerMove playerMove;
+    private PlayerBasicAttack basicAttack;
+    private PlayerMove move;
 
     private Stat_SO playerStat;
     private Stat stat;
@@ -13,8 +13,7 @@ public class Player : MonoBehaviour, IDamageReceiver
     private void Awake()
     {
         touchControls = new();
-        playerAttack = new();
-        playerMove = new();
+        basicAttack = new();
 
         touchControls.Touch.TouchPosition.Enable();
     }
@@ -37,9 +36,5 @@ public class Player : MonoBehaviour, IDamageReceiver
         stat.health -= damage.Damage;
 
         if(stat.health < 0) { Die(); }
-    }
-    public void Move()
-    {
-        //player move
     }
 }
