@@ -1,13 +1,20 @@
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-public class Test : MonoBehaviour
+public class Test : Util
 {
+    private GameObject obj;
     private void Start()
     {
-        Addressables.InitializeAsync();
+        Init();
+    }
+    private async void Init()
+    {
+        await Addressables.InitializeAsync().Task;
 
-        GameObject obj = Util.LoadToPath<GameObject>("test").Result;
-
+        obj = LoadToPath<GameObject>("test").Result;
+    }
+    private void Update()
+    {
         Debug.Log(obj);
     }
 }

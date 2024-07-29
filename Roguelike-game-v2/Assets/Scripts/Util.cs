@@ -2,12 +2,12 @@ using System.Threading.Tasks;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using Object = UnityEngine.Object;
-using Debug = UnityEngine.Debug;
-
-public class Util
+using UnityEngine;
+public class Util : MonoBehaviour
 {
     public static async Task<T> LoadToPath<T>(string path) where T : Object
     {
+        Debug.Log("zxcv");
         T handle = await AsyncLoading<T>(path);
 
         return handle;
@@ -16,11 +16,20 @@ public class Util
     {
         AsyncOperationHandle<T> handle = Addressables.LoadAssetAsync<T>(path);
 
-        await handle.Task;
-
-        if (handle.Result == null)
+        try
         {
             Debug.Log("asdf");
+            await handle.Task;
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError($"Exception during asset loading: {ex.Message}");
+            return handle.Result;
+        }
+
+        if (handle.Status != AsyncOperationStatus.Succeeded)
+        {
+            Debug.LogError($"Failed to load asset at path: {path}. Status: {handle.Status}");
             return handle.Result;
         }
 
