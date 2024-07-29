@@ -7,31 +7,32 @@ public class Player : MonoBehaviour, IDamageReceiver
     private PlayerMove move;
 
     private Stat_SO playerStat;
+    private BasicAttack_SO basicAttackType;
     private Stat stat;
 
     public Stat Stat { get { return stat; } }
     private void Awake()
     {
-        touchControls = new();
-        basicAttack = new();
-
         touchControls.Touch.TouchPosition.Enable();
     }
     private void Start()
     {
-        touchControls.Touch.TouchPosition.started += ctx => Move();
-
-        stat = playerStat.stat;
+        Init();
     }
-    private void Update()
+    private void Init()
     {
+        stat = playerStat.stat;
 
+        touchControls = new();
+        basicAttack = new();
+
+        touchControls.Touch.TouchPosition.started += ctx => move.Move();
     }
-    public void Die()
+    public void Die()//
     {
         Managers.Game.GameEnd();
     }
-    public void GetDamage(IDamage damage)
+    public void GetDamage(IDamage damage)//
     {
         stat.health -= damage.Damage;
 

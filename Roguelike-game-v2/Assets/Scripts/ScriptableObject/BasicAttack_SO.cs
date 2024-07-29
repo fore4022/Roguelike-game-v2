@@ -1,5 +1,5 @@
 using UnityEngine;
-public class Attack_SO : ScriptableObject
+public class BasicAttack_SO : ScriptableObject
 {
     public GameObject attackType;
     public float damageCoefficient;
