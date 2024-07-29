@@ -1,33 +1,29 @@
-using System;
-using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using Object = UnityEngine.Object;
+using Debug = UnityEngine.Debug;
+
 public class Util
 {
-    public static T LoadAddressableAsset<T>(string path) where T : Object
+    public static async Task<T> LoadToPath<T>(string path) where T : Object
+    {
+        T handle = await AsyncLoading<T>(path);
+
+        return handle;
+    }
+    public static async Task<T> AsyncLoading<T>(string path)
     {
         AsyncOperationHandle<T> handle = Addressables.LoadAssetAsync<T>(path);
 
-        Task.Run(() => AsynchronousLoading(handle));
+        await handle.Task;
+
+        if (handle.Result == null)
+        {
+            Debug.Log("asdf");
+            return handle.Result;
+        }
 
         return handle.Result;
-    }
-    public static T LoadAddressableAssets<T>(string path) where T : Object
-    {
-
-
-        return null;
-    }
-    [Obsolete]
-    public static async Task AsynchronousLoading<T>(AsyncOperationHandle<T> handle)
-    {
-        while(handle.PercentComplete < 1)
-        {
-            if(handle.Status == AsyncOperationStatus.Failed) { CancellationToken; }
-
-            await Task.Delay(1);
-        }
     }
 }
