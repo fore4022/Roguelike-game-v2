@@ -38,4 +38,8 @@ public class Player : MonoBehaviour, IDamageReceiver
 
         if(stat.health < 0) { Die(); }
     }
+    private void Update()
+    {
+        Debug.Log("asdf");
+    }
 }
