@@ -1,17 +1,19 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 public class Test : MonoBehaviour
 {
-    private GameObject obj;
+    private List<GameObject> obj;
 
     private async void Start()
     {
         await Addressables.InitializeAsync().Task;
 
-        obj = await Util.LoadToPath<GameObject>("test");
+        obj = await Util.LoadToLable<GameObject>("testLable");
     }
     private void Update()
     {
-        Debug.Log(obj);
+        Debug.Log(obj[0].name);
+        Debug.Log(obj[1].name);
     }
 }

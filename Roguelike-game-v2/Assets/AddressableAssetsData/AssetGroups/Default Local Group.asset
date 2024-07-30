@@ -22,6 +22,14 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - default
+    - testLable
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0dc2f2b9872c4864ab87c605233f7066
+    m_Address: Assets/Circle.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - testLable
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0f7f5db49b402a5429fbbf1726f4c6fd, type: 2}
