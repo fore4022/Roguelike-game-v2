@@ -11,8 +11,6 @@ public class Util
 
         await handle.Task;
 
-        T result = handle.Result;
-
         Addressables.Release(handle);
 
         return result;
