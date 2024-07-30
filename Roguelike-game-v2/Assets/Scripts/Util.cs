@@ -5,7 +5,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using Object = UnityEngine.Object;
 public class Util
 {
-    public static async Task<T> LoadToPath<T>(string path)
+    public static async Task<T> LoadToPath<T>(string path) where T : Object
     {
         AsyncOperationHandle<T> handle = Addressables.LoadAssetAsync<T>(path);
 
@@ -21,7 +21,12 @@ public class Util
 
         await handle.Task;
 
-        IList<T> resultList = handle.Result;
+        List<T> resultList = new List<T>();
+
+        foreach(T result in handle.Result)
+        {
+            resultList.Add(result);
+        }
 
         Addressables.Release(handle);
 
