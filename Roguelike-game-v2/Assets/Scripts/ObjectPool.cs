@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
-[Obsolete]
 public static class ObjectPool
 {
     public static Dictionary<string, Queue<GameObject>> poolingObjects = new();
@@ -35,11 +34,7 @@ public static class ObjectPool
                 {
                     queue = poolingObjects[prefab.name];
 
-                    //foreach(GameObject instance in Instantiate(prefab, count).Result)
-                    //{
-                    //    queue.Enqueue(instance);
-                    //}
-                    foreach (GameObject instance in Instantiate(prefab, count).Result)
+                    foreach (GameObject instance in Instantiate(prefab, count))
                     {
                         queue.Enqueue(instance);
                     }
@@ -48,7 +43,7 @@ public static class ObjectPool
                 }
                 else
                 {
-                    queue = Instantiate(prefab, count).Result;
+                    queue = Instantiate(prefab, count);
 
                     poolingObjects.Add(prefab.name, queue);
                 }
@@ -62,7 +57,7 @@ public static class ObjectPool
             {
                 queue = poolingObjects[prefab.name];
 
-                foreach(GameObject instance in Instantiate(prefab, count).Result)
+                foreach(GameObject instance in Instantiate(prefab, count))
                 {
                     queue.Enqueue(instance);
                 }
@@ -71,7 +66,7 @@ public static class ObjectPool
             }
             else
             {
-                queue = Instantiate(prefab, count).Result;
+                queue = Instantiate(prefab, count);
 
                 poolingObjects.Add(prefab.name, queue);
             }
@@ -97,39 +92,19 @@ public static class ObjectPool
 
         poolingObjects[prefabName].Enqueue(prefab);
     }
-    public static async Task<Queue<GameObject>> Instantiate(GameObject prefab, int count)//
+    public static Queue<GameObject> Instantiate(GameObject prefab, int count)
     {
         Queue<GameObject> queue = new();
 
-        await Task.Run(() =>
-            {
-                for (int i = 0; i < count; i++)
-                {
-                    GameObject instance = GameObject.Instantiate(prefab, root);
+        for (int i = 0; i < count; i++)
+        {
+            GameObject instance = GameObject.Instantiate(prefab, root);
 
-                    instance.SetActive(false);
+            instance.SetActive(false);
 
-                    queue.Enqueue(instance);
-                }
-
-                return;
-            });
+            queue.Enqueue(instance);
+        }
 
         return queue;
     }
-    //public static IEnumerator<Queue<GameObject>> Instantiate(GameObject prefab, int count)
-    //{
-    //    Queue<GameObject> queue = new();
-
-    //    for(int i = 0; i < count; i++)
-    //    {
-    //        GameObject instance = GameObject.Instantiate(prefab, root);
-
-    //        instance.SetActive(false);
-
-    //        queue.Enqueue(instance);
-    //    }
-
-    //    yield return queue;
-    //}
 }
