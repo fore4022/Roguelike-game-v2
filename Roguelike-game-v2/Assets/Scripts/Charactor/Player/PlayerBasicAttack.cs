@@ -1,24 +1,27 @@
 using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
-public class PlayerBasicAttack : MonoBehaviour
+public class PlayerBasicAttack
 {
     private Coroutine basicAttack = null;
 
-    private void Start()
-    {
-        basicAttack = StartCoroutine(basicAttacking());
-    }
     private IEnumerator basicAttacking()
     {
-        while(true)
-        {
-            Attack();
+        GameObject attack = AddressableAssetLoad().Result;
 
-            yield return new WaitForSeconds(Managers.Game.player.Stat.attackSpeed);
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+
+            Attack();
         }
+    }
+    private async Task<GameObject> AddressableAssetLoad()
+    {
+        return await Util.LoadToPath<GameObject>("test");
     }
     private void Attack()
     {
-        //Instantiate();
+        Debug.Log("Attack");
     }
 }

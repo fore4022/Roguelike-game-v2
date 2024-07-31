@@ -13,7 +13,7 @@ public class Util
 
         T result = handle.Result;
 
-        Addressables.Release(result);
+        Addressables.Release(handle);
 
         return result;
     }
