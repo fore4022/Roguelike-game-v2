@@ -1,8 +1,6 @@
 using UnityEngine;
 public class Player : MonoBehaviour, IDamageReceiver
 {
-    public string basicAttackPrefabName = "S0191";
-
     private TouchControls touchControls;
 
     private PlayerBasicAttack basicAttack;
@@ -12,16 +10,11 @@ public class Player : MonoBehaviour, IDamageReceiver
     private BasicAttack_SO basicAttackType;
     private Stat stat;
 
-    private Coroutine basicAttackStart = null;
+    private Coroutine basicAttackCoroutine = null;
 
     public Stat Stat { get { return stat; } }
     private void Awake()
     {
-        touchControls = new();
-        basicAttack = new();
-        basicAttack = new();
-        move = new();
-
         touchControls.Touch.TouchPosition.Enable();
 
         basicAttack = new();
@@ -29,19 +22,18 @@ public class Player : MonoBehaviour, IDamageReceiver
     }
     private void Start()
     {
-        ObjectPool.CreateToPath("basicAttack", 20);
-
-        Managers.Game.player = this;
-
         Init();
     }
     private void Init()
     {
-        //stat = playerStat.stat;
+        stat = playerStat.stat;
+
+        touchControls = new();
+        basicAttack = new();
 
         touchControls.Touch.TouchPosition.started += ctx => move.Move();
 
-        basicAttackStart = StartCoroutine(basicAttack.basicAttacking());
+        basicAttackCoroutine =  StartCoroutine(basicAttack.basicAttacking());
     }
     public void Die()//
     {
