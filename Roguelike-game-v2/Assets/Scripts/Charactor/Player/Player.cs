@@ -23,6 +23,9 @@ public class Player : MonoBehaviour, IDamageReceiver
         move = new();
 
         touchControls.Touch.TouchPosition.Enable();
+
+        basicAttack = new();
+        move = new();
     }
     private void Start()
     {
@@ -49,9 +52,5 @@ public class Player : MonoBehaviour, IDamageReceiver
         stat.health -= damage.Damage;
 
         if(stat.health < 0) { Die(); }
-    }
-    private void Update()
-    {
-        Debug.Log("asdf");
     }
 }

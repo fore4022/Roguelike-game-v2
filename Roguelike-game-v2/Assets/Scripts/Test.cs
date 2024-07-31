@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 public class Test : MonoBehaviour
 {
-    private GameObject obj;
     private void Start()
     {
-
+        
     }
 }

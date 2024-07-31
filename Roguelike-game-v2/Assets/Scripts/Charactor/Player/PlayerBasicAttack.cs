@@ -1,47 +1,27 @@
 using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 public class PlayerBasicAttack
 {
-    private GameObject prefab = null;
+    private Coroutine basicAttack = null;
 
-    public IEnumerator basicAttacking()
+    private IEnumerator basicAttacking()
     {
+        GameObject attack = AddressableAssetLoad().Result;
 
         while (true)
         {
-            prefab = ObjectPool.GetOrActiveObject(Managers.Game.player.basicAttackPrefabName);
+            yield return new WaitForSeconds(1);
 
-            if (prefab == null)
-            {
-                yield return null;
-            }
-            else
-            {
-                Attack();
-
-                yield return new WaitForSeconds(1);//Managers.Game.player.Stat.attackSpeed
-            }
+            Attack();
         }
+    }
+    private async Task<GameObject> AddressableAssetLoad()
+    {
+        return await Util.LoadToPath<GameObject>("test");
     }
     private void Attack()
     {
-        Vector3 targetPosition = EnemyDetection.findNearestEnemy().transform.position;
-        Vector3 direction = Direction(targetPosition);
-        Quaternion quaternion = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
-
-        prefab.transform.position = AttackPoint(targetPosition, direction);
-        prefab.transform.rotation = quaternion;
-    }
-    private Vector3 AttackPoint(Vector3 targetPosition, Vector3 direction)
-    {
-        Vector2 attackPoint = targetPosition + direction * 2;
-
-        return attackPoint;
-    }
-    private Vector3 Direction(Vector3 targetPosition)
-    {
-        Vector3 direction = (targetPosition - Managers.Game.player.gameObject.transform.position).normalized;
-
-        return direction;
+        Debug.Log("Attack");
     }
 }
