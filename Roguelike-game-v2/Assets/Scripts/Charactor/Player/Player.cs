@@ -33,7 +33,7 @@ public class Player : MonoBehaviour, IDamageReceiver
 
         touchControls.Touch.TouchPosition.started += ctx => move.Move();
 
-        basicAttackCoroutine =  StartCoroutine(basicAttack.basicAttacking());
+        basicAttackCoroutine =  StartCoroutine(basicAttack.basicAttacking());//load completed
     }
     public void Die()//
     {
