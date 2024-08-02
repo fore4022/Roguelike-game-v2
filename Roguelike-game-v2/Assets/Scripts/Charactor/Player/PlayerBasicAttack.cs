@@ -6,9 +6,11 @@ public class PlayerBasicAttack
     [SerializeField]
     private string prefabName = "";
 
+    private GameObject prefab;
+
     public IEnumerator basicAttacking()
     {
-        GameObject prefab = AddressableAssetLoad(prefabName).Result;
+        prefab = AddressableAssetLoad(prefabName).Result;
 
         while (true)
         {
@@ -23,6 +25,6 @@ public class PlayerBasicAttack
     }
     private void Attack()
     {
-        Debug.Log("Attack");
+        
     }
 }
