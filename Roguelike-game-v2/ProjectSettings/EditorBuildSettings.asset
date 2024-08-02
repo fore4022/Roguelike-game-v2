@@ -9,5 +9,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Test.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects:
-    com.unity.addressableassets: {fileID: 11400000, guid: 7c1254d6c43181a47ad3604389e27613, type: 2}
+    com.unity.addressableassets: {fileID: 11400000, guid: b3eb6ffd43dc9c044b0d492677d79ad2, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 466755ee8a15f7a4f9c630e2ff58a196, type: 2}
