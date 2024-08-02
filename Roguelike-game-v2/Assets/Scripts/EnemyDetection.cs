@@ -1,91 +1,68 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
+
 public static class EnemyDetection
 {
-    public static float largeastRange = 3.5f;
-    public static int maximumEnemyCount = 15;
-
     public static GameObject findNearestEnemy()
     {
-        List<GameObject> gameObjectList = findEnemiesOnScreen();
+        List<GameObject> gameObjectArray = findEnemiesOnScreen();
 
         GameObject targetObject = null;
 
         float minDistance = 0;
 
-        foreach(GameObject go in gameObjectList)
+        foreach(GameObject go in gameObjectArray)
         {
             if(targetObject == null)
             {
-                GetDistance(go, out minDistance);
-
+                minDistance = GetDistance(go);
                 targetObject = go;
             }
             else if(minDistance > GetDistance(go, out float distance))
             {
-                minDistance = distance;
-                targetObject = go;
-            }
-        }
 
-        if(minDistance == 0)
-        {
-            return null;
+            }
         }
 
         return targetObject;
     }
     public static GameObject findLargestEnemyGroup()
     {
-        List<GameObject> gameObjectList = findEnemiesOnScreen();
-        Collider2D[] colliderArray = new Collider2D[maximumEnemyCount];
+        List<GameObject> gameObjectArray = findEnemiesOnScreen();
 
         GameObject targetObject = null;
 
-        int maxIntCount = 0;
-
-        foreach (GameObject go in gameObjectList)
+        foreach (GameObject go in gameObjectArray)
         {
-            int count = Physics2D.OverlapCircleNonAlloc(go.transform.position, largeastRange, colliderArray);
 
-            if(maxIntCount < count)
-            {
-                maxIntCount = count;
-                targetObject = go;
-            }
-        }
-
-        if(maxIntCount == 0)
-        {
-            return null;
         }
 
         return targetObject;
     }
     public static List<GameObject> findEnemiesOnScreen()
     {
-        List<GameObject> resultList = new List<GameObject>();
-        Collider2D[] colliderArray;
+        List<GameObject> resultArray = new List<GameObject>();
+        Collider2D[] colliderArray = null;
 
         float y = Camera.main.orthographicSize * 2;
         float x = y * Camera.main.aspect;
 
         Vector2 cameraSize = new Vector2(x, y);
 
-        Vector2 cameraPosition = Camera.main.transform.position;
-
-        colliderArray = Physics2D.OverlapBoxAll(cameraPosition, cameraSize, 0, LayerMask.GetMask("Monster"));
+        int count = Physics2D.OverlapBoxNonAlloc(Vector2.zero, cameraSize, 0, colliderArray, 0);
 
         foreach(Collider2D col in colliderArray)
         {
-            resultList.Add(col.gameObject);
+            resultArray.Add(col.gameObject);
         }
 
-        return resultList;
+        return resultArray;
     }
     public static float GetDistance(GameObject go, out float result)
     {
-        float distance = (go.transform.position - Managers.Game.player.gameObject.transform.position).magnitude;
+        float distance = 0;
 
         return result = distance;
     }
