@@ -1,8 +1,5 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
-
 public static class EnemyDetection
 {
     public static GameObject findNearestEnemy()
@@ -17,12 +14,14 @@ public static class EnemyDetection
         {
             if(targetObject == null)
             {
-                minDistance = GetDistance(go);
+                GetDistance(go, out minDistance);
+
                 targetObject = go;
             }
             else if(minDistance > GetDistance(go, out float distance))
             {
-
+                minDistance = distance;
+                targetObject = go;
             }
         }
 
@@ -46,12 +45,14 @@ public static class EnemyDetection
         List<GameObject> resultArray = new List<GameObject>();
         Collider2D[] colliderArray = null;
 
+        Vector2 cameraPosition = Camera.main.transform.position;
+
         float y = Camera.main.orthographicSize * 2;
         float x = y * Camera.main.aspect;
 
         Vector2 cameraSize = new Vector2(x, y);
 
-        int count = Physics2D.OverlapBoxNonAlloc(Vector2.zero, cameraSize, 0, colliderArray, 0);
+        int count = Physics2D.OverlapBoxNonAlloc(cameraPosition, cameraSize, 0, colliderArray, 0);
 
         foreach(Collider2D col in colliderArray)
         {
