@@ -2,15 +2,17 @@ using System.Collections.Generic;
 using UnityEngine;
 public static class EnemyDetection
 {
+    public static float findLargeastRadius = 1.5f;
+
     public static GameObject findNearestEnemy()
     {
-        List<GameObject> gameObjectArray = findEnemiesOnScreen();
+        List<GameObject> gameObjectList = findEnemiesOnScreen();
 
         GameObject targetObject = null;
 
         float minDistance = 0;
 
-        foreach(GameObject go in gameObjectArray)
+        foreach(GameObject go in gameObjectList)
         {
             if(targetObject == null)
             {
@@ -25,24 +27,42 @@ public static class EnemyDetection
             }
         }
 
+        if(minDistance == 0)
+        {
+            return null;
+        }
+
         return targetObject;
     }
     public static GameObject findLargestEnemyGroup()
     {
-        List<GameObject> gameObjectArray = findEnemiesOnScreen();
+        List<GameObject> gameObjectList = findEnemiesOnScreen();
+        Collider2D[] colliderArray = null;
 
         GameObject targetObject = null;
 
-        foreach (GameObject go in gameObjectArray)
-        {
+        int maxIntCount = 0;
 
+        foreach (GameObject go in gameObjectList)
+        {
+            int count = Physics2D.OverlapCircleNonAlloc(go.transform.position, findLargeastRadius, colliderArray);
+
+            if(maxIntCount < count)
+            {
+                maxIntCount = count;
+            }
+        }
+
+        if(maxIntCount == 0)
+        {
+            return null;
         }
 
         return targetObject;
     }
     public static List<GameObject> findEnemiesOnScreen()
     {
-        List<GameObject> resultArray = new List<GameObject>();
+        List<GameObject> resultList = new List<GameObject>();
         Collider2D[] colliderArray = null;
 
         Vector2 cameraPosition = Camera.main.transform.position;
@@ -52,18 +72,18 @@ public static class EnemyDetection
 
         Vector2 cameraSize = new Vector2(x, y);
 
-        int count = Physics2D.OverlapBoxNonAlloc(cameraPosition, cameraSize, 0, colliderArray, 0);
+        int count = Physics2D.OverlapBoxNonAlloc(cameraPosition, cameraSize, 0, colliderArray, 0);//monster layer
 
         foreach(Collider2D col in colliderArray)
         {
-            resultArray.Add(col.gameObject);
+            resultList.Add(col.gameObject);
         }
 
-        return resultArray;
+        return resultList;
     }
     public static float GetDistance(GameObject go, out float result)
     {
-        float distance = 0;
+        float distance = (go.transform.position - Managers.Game.player.gameObject.transform.position).magnitude;
 
         return result = distance;
     }

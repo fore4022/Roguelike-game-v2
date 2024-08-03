@@ -14,7 +14,7 @@ public class PlayerBasicAttack
 
         while (true)
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1);//Managers.Game.player.Stat.attackSpeed
 
             Attack();
         }
@@ -27,4 +27,7 @@ public class PlayerBasicAttack
     {
         
     }
-}
+}/*
+    NullReferenceException: Object reference not set to an instance of an object
+    Player.Awake () (at Assets/Scripts/Charactor/Player/Player.cs:18)
+  */

@@ -15,10 +15,12 @@ public class Player : MonoBehaviour, IDamageReceiver
     public Stat Stat { get { return stat; } }
     private void Awake()
     {
-        touchControls.Touch.TouchPosition.Enable();
-
+        touchControls = new();
+        basicAttack = new();
         basicAttack = new();
         move = new();
+
+        touchControls.Touch.TouchPosition.Enable();
     }
     private void Start()
     {
@@ -28,15 +30,14 @@ public class Player : MonoBehaviour, IDamageReceiver
     {
         stat = playerStat.stat;
 
-        touchControls = new();
-        basicAttack = new();
-
         touchControls.Touch.TouchPosition.started += ctx => move.Move();
 
         basicAttackCoroutine =  StartCoroutine(basicAttack.basicAttacking());//load completed
     }
     public void Die()//
     {
+        StopCoroutine(basicAttackCoroutine);
+
         Managers.Game.GameEnd();
     }
     public void GetDamage(IDamage damage)//
