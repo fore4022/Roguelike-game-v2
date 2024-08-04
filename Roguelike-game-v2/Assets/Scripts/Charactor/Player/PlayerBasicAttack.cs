@@ -8,10 +8,16 @@ public class PlayerBasicAttack
 
     private GameObject prefab;
 
-    public IEnumerator basicAttacking()
+    private async void Start()//1
     {
         prefab = AddressableAssetLoad(prefabName).Result;
-
+    }
+    public void basicAttackStart()//3
+    {
+        
+    }
+    private IEnumerator basicAttacking()//4
+    {
         while (true)
         {
             yield return new WaitForSeconds(1);//Managers.Game.player.Stat.attackSpeed
@@ -19,15 +25,12 @@ public class PlayerBasicAttack
             Attack();
         }
     }
-    private async Task<GameObject> AddressableAssetLoad(string prefabName)
+    private async Task<GameObject> AddressableAssetLoad(string prefabName)//2
     {
         return await Util.LoadToPath<GameObject>(prefabName);
     }
-    private void Attack()
+    private void Attack()//5
     {
         
     }
-}/*
-    NullReferenceException: Object reference not set to an instance of an object
-    Player.Awake () (at Assets/Scripts/Charactor/Player/Player.cs:18)
-  */
+}

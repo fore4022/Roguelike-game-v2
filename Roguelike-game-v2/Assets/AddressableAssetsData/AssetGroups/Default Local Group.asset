@@ -24,6 +24,13 @@ MonoBehaviour:
     - Player
     - default
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7b4f5e0ab782c10429eeb04bf9fa9d30
+    m_Address: Assets/SO/player.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Player
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: da9f89d4e46f01545920fb3bf1691b73, type: 2}
   m_SchemaSet:

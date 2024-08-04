@@ -10,8 +10,6 @@ public class Player : MonoBehaviour, IDamageReceiver
     private BasicAttack_SO basicAttackType;
     private Stat stat;
 
-    private Coroutine basicAttackCoroutine = null;
-
     public Stat Stat { get { return stat; } }
     private void Awake()
     {
@@ -28,16 +26,15 @@ public class Player : MonoBehaviour, IDamageReceiver
     }
     private void Init()
     {
-        stat = playerStat.stat;
+        //stat = playerStat.stat;
 
         touchControls.Touch.TouchPosition.started += ctx => move.Move();
 
-        basicAttackCoroutine =  StartCoroutine(basicAttack.basicAttacking());//load completed
+        //basicAttackCoroutine =  StartCoroutine(basicAttack.basicAttacking());
+        basicAttack.basicAttackStart();
     }
     public void Die()//
     {
-        StopCoroutine(basicAttackCoroutine);
-
         Managers.Game.GameEnd();
     }
     public void GetDamage(IDamage damage)//
