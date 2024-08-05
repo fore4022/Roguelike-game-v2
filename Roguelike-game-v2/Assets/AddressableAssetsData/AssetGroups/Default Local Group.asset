@@ -31,6 +31,13 @@ MonoBehaviour:
     - Player
     - default
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: edb0be481a2f6004ea27ebdc1e61b480
+    m_Address: basicAttack
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Player
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: da9f89d4e46f01545920fb3bf1691b73, type: 2}
   m_SchemaSet:
