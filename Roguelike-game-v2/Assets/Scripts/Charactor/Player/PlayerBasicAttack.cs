@@ -4,33 +4,35 @@ using UnityEngine;
 public class PlayerBasicAttack
 {
     [SerializeField]
-    private string prefabName = "";
+    private string prefabName = "basicAttack";
 
     private GameObject prefab;
 
-    private async void Start()//1
+    private async void Start()
     {
-        prefab = AddressableAssetLoad(prefabName).Result;
+        prefab = await AddressableAssetLoad(prefabName);
     }
-    public void basicAttackStart()//3
-    {
-        
-    }
-    private IEnumerator basicAttacking()//4
+    public IEnumerator basicAttacking()
     {
         while (true)
         {
+            if(prefab == null)
+            {
+                yield return null;
+            }
+
             yield return new WaitForSeconds(1);//Managers.Game.player.Stat.attackSpeed
 
             Attack();
         }
     }
-    private async Task<GameObject> AddressableAssetLoad(string prefabName)//2
+    private async Task<GameObject> AddressableAssetLoad(string prefabName)
     {
         return await Util.LoadToPath<GameObject>(prefabName);
     }
-    private void Attack()//5
+    private void Attack()
     {
-        
+        Debug.Log(EnemyDetection.findNearestEnemy());
+        Debug.Log("attack");
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 public static class EnemyDetection
 {
@@ -63,16 +64,16 @@ public static class EnemyDetection
     public static List<GameObject> findEnemiesOnScreen()
     {
         List<GameObject> resultList = new List<GameObject>();
-        Collider2D[] colliderArray = null;
-
-        Vector2 cameraPosition = Camera.main.transform.position;
+        Collider2D[] colliderArray;
 
         float y = Camera.main.orthographicSize * 2;
         float x = y * Camera.main.aspect;
 
         Vector2 cameraSize = new Vector2(x, y);
 
-        int count = Physics2D.OverlapBoxNonAlloc(cameraPosition, cameraSize, 0, colliderArray, 0);//monster layer
+        Vector2 cameraPosition = Camera.main.transform.position - new Vector3(x / 2, y / 2);
+
+        colliderArray = Physics2D.OverlapBoxAll(cameraPosition, cameraSize, 0, LayerMask.GetMask("Monster"));
 
         foreach(Collider2D col in colliderArray)
         {

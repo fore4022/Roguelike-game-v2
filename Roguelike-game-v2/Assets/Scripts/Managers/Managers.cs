@@ -3,7 +3,7 @@ public class Managers : MonoBehaviour
 {
     public static Managers managers;
 
-    public GameManager game;
+    public GameManager game = new();
 
     public static Managers Instance
     {
