@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 public static class EnemyDetection
 {
-    public static float findLargeastRadius = 1.5f;
+    public static float largeastRange = 3.5f;
+    public static int maximumEnemyCount = 15;
 
     public static GameObject findNearestEnemy()
     {
@@ -38,7 +38,7 @@ public static class EnemyDetection
     public static GameObject findLargestEnemyGroup()
     {
         List<GameObject> gameObjectList = findEnemiesOnScreen();
-        Collider2D[] colliderArray = null;
+        Collider2D[] colliderArray = new Collider2D[maximumEnemyCount];
 
         GameObject targetObject = null;
 
@@ -46,11 +46,12 @@ public static class EnemyDetection
 
         foreach (GameObject go in gameObjectList)
         {
-            int count = Physics2D.OverlapCircleNonAlloc(go.transform.position, findLargeastRadius, colliderArray);
+            int count = Physics2D.OverlapCircleNonAlloc(go.transform.position, largeastRange, colliderArray);
 
             if(maxIntCount < count)
             {
                 maxIntCount = count;
+                targetObject = go;
             }
         }
 
@@ -71,7 +72,7 @@ public static class EnemyDetection
 
         Vector2 cameraSize = new Vector2(x, y);
 
-        Vector2 cameraPosition = Camera.main.transform.position - new Vector3(x / 2, y / 2);
+        Vector2 cameraPosition = Camera.main.transform.position;
 
         colliderArray = Physics2D.OverlapBoxAll(cameraPosition, cameraSize, 0, LayerMask.GetMask("Monster"));
 
