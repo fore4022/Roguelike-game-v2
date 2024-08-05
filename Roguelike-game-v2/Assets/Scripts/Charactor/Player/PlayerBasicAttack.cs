@@ -32,7 +32,6 @@ public class PlayerBasicAttack
     }
     private void Attack()
     {
-        Debug.Log(EnemyDetection.findNearestEnemy());
         Debug.Log("attack");
     }
 }
