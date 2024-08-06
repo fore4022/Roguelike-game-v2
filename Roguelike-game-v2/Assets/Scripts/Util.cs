@@ -34,4 +34,8 @@ public class Util
 
         return resultList;
     }
+    public static async void LoadAddressableAsset()
+    {
+        await Addressables.InitializeAsync().Task;
+    }
 }
