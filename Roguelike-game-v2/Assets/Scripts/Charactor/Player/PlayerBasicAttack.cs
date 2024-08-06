@@ -8,19 +8,17 @@ public class PlayerBasicAttack
 
     private GameObject prefab = null;
 
-    private void basicAttackStart()
-    {
-        Task.Run(async () => prefab = await AddressableAssetLoad(prefabName));
-    }
     public IEnumerator basicAttacking()
     {
-        basicAttackStart();
+        Task prefabLoad = Task.Run(async() => prefab = await Util.LoadToPath<GameObject>(prefabName));
+
+        yield return new WaitUntil(() => prefabLoad.IsCompleted);
 
         while (true)
         {
-            if(prefab == null)
+            if (prefab == null)
             {
-                Debug.Log(prefab);
+                Debug.Log(prefabLoad.Status);
                 yield return null;
             }
             else
@@ -31,11 +29,6 @@ public class PlayerBasicAttack
                 Attack();
             }
         }
-    }
-    private async Task<GameObject> AddressableAssetLoad(string prefabName)
-    {
-        Debug.Log("test");
-        return await Util.LoadToPath<GameObject>(prefabName);
     }
     private void Attack()
     {

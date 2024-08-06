@@ -10,32 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Default Local Group
+  m_Name: Player
   m_EditorClassIdentifier: 
   m_GroupName: Default Local Group
   m_Data:
     m_SerializedData: []
-  m_GUID: 52d96bd02337aa6449b750198b832ac2
+  m_GUID: 7da0fd1b638aeff4fb573680d4c6c5f5
   m_SerializeEntries:
-  - m_GUID: acf510f3f3cf5bb47a8e606b1b1b877b
-    m_Address: Player
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Player
-    - default
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7b4f5e0ab782c10429eeb04bf9fa9d30
-    m_Address: Assets/SO/player.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Player
-    - default
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: edb0be481a2f6004ea27ebdc1e61b480
-    m_Address: basicAttack
+    m_Address: Assets/S0191.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
-    - Player
+    - player
     - default
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
