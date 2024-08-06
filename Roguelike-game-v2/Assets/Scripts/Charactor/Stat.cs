@@ -4,4 +4,5 @@ public class Stat
     public float damage;
     public float attackSpeed;
     public float moveSpeed;
+    public float size;
 }
