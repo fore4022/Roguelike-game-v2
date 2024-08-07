@@ -1,6 +1,8 @@
 using UnityEngine;
 public class Player : MonoBehaviour, IDamageReceiver
 {
+    public string basicAttackPrefabName = "S0191";
+
     private TouchControls touchControls;
 
     private PlayerBasicAttack basicAttack;
