@@ -1,44 +1,27 @@
 using System.Collections;
-using System.Threading.Tasks;
 using UnityEngine;
 public class PlayerBasicAttack
 {
-    private string prefabName = "basicAttack";
-
     private GameObject prefab = null;
 
-    public PlayerBasicAttack()
-    {
-        Task waitForLoad = Task.Run(async () => prefab = await Util.LoadToPath<GameObject>(prefabName));
-
-        waitForLoad.Wait();
-
-        Debug.Log(prefab);
-    }
     public IEnumerator basicAttacking()
     {
-        while (true)
+        while(true)
         {
-            if (prefab == null)
-            {
-                Debug.Log("asdf");
+            yield return new WaitForSeconds(1);//Managers.Game.player.Stat.attackSpeed
 
-                yield return null;
-            }
-            else
-            {
-                yield return new WaitForSeconds(1);//Managers.Game.player.Stat.attackSpeed
-
-                Attack();
-            }
+            Attack();
         }
     }
     private void Attack()
     {
+        GameObject basicAttack = ObjectPool.GetOrActiveObject(Managers.Game.player.basicAttackPrefabName);
+        
         Vector3 targetPosition = EnemyDetection.findNearestEnemy().transform.position;
         Vector3 direction = Direction(targetPosition);
 
-        GameObject.Instantiate(prefab, AttackPoint(targetPosition, direction), Quaternion.Euler(direction));
+        basicAttack.transform.position = AttackPoint(targetPosition, direction);
+        basicAttack.transform.rotation = Quaternion.Euler(direction);
     }
     private Vector3 AttackPoint(Vector3 targetPosition, Vector3 direction)
     {

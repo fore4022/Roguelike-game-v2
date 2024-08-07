@@ -10,7 +10,7 @@ public static class ObjectPool
     {
         GameObject go = GameObject.Find("@ObjectPool");
 
-        if(go == null)
+        if (go == null)
         {
             go = new GameObject { name = "@ObjectPool" };
 
@@ -19,17 +19,17 @@ public static class ObjectPool
     }
     public static async Task CreateObjects(int count, string lable = null, string path = null)
     {
-        if(lable == path) { return; }
+        if (lable == path) { return; }
 
         Queue<GameObject> queue;
 
         Init();
 
-        if(path == null)
+        if (path == null)
         {
-            foreach(GameObject prefab in await Util.LoadToLable<GameObject>(lable))
+            foreach (GameObject prefab in await Util.LoadToLable<GameObject>(lable))
             {
-                if(poolingObjects.ContainsKey(prefab.name))
+                if (poolingObjects.ContainsKey(prefab.name))
                 {
                     queue = poolingObjects[prefab.name];
 
@@ -56,7 +56,7 @@ public static class ObjectPool
             {
                 queue = poolingObjects[prefab.name];
 
-                foreach(GameObject instance in Instantiate(prefab, count))
+                foreach (GameObject instance in Instantiate(prefab, count))
                 {
                     queue.Enqueue(instance);
                 }
