@@ -5,7 +5,20 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using Object = UnityEngine.Object;
 public class Util
 {
-    public static async Task<T> LoadToPath<T>(string path) where T : Object
+    //public static T LoadToPath<T>(string path) where T : Object
+    //{
+    //    T result = null;
+
+    //    Task waitForLoad = Task.Run(async() =>
+    //    {
+    //        result = await LoadingToPath<T>(path);
+    //    });
+
+    //    waitForLoad.Wait();
+
+    //    return result;
+    //}
+    public static async Task<T> LoadToPath<T>(string path)
     {
         AsyncOperationHandle<T> handle = Addressables.LoadAssetAsync<T>(path);
 
@@ -23,7 +36,7 @@ public class Util
 
         await handle.Task;
 
-        List<T> resultList = new List<T>();
+        List<T> resultList = new List<T>();                                                                                 
 
         foreach(T result in handle.Result)
         {
@@ -34,7 +47,7 @@ public class Util
 
         return resultList;
     }
-    public static async void LoadAddressableAsset()
+    public static async void InitAddressableAsset()
     {
         await Addressables.InitializeAsync().Task;
     }

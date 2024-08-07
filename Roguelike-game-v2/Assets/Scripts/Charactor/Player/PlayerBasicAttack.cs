@@ -3,27 +3,30 @@ using System.Threading.Tasks;
 using UnityEngine;
 public class PlayerBasicAttack
 {
-    [SerializeField]
     private string prefabName = "basicAttack";
 
     private GameObject prefab = null;
 
+    public PlayerBasicAttack()
+    {
+        Task waitForLoad = Task.Run(async () => prefab = await Util.LoadToPath<GameObject>(prefabName));
+
+        waitForLoad.Wait();
+
+        Debug.Log(prefab);
+    }
     public IEnumerator basicAttacking()
     {
-        Task prefabLoad = Task.Run(async() => prefab = await Util.LoadToPath<GameObject>(prefabName));
-
-        yield return new WaitUntil(() => prefabLoad.IsCompleted);
-
         while (true)
         {
             if (prefab == null)
             {
-                Debug.Log(prefabLoad.Status);
+                Debug.Log("asdf");
+
                 yield return null;
             }
             else
             {
-                Debug.Log(prefab);
                 yield return new WaitForSeconds(1);//Managers.Game.player.Stat.attackSpeed
 
                 Attack();
