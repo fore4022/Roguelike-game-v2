@@ -17,17 +17,23 @@ public static class ObjectPool
             root = go.transform;
         }
     }
-    public static async Task CreateObjects(int count, string lable = null, string path = null)
+    public static async void CreateToLable(string lable, int count)
     {
-        if (lable == path) { return; }
-
+        await CreateObjects(count, true, null);
+    }
+    public static async void CreateToPath(string path, int count)
+    {
+        await CreateObjects(count, false, path);
+    }
+    public static async Task CreateObjects(int count, bool loadType, string information)
+    {
         Queue<GameObject> queue;
 
         Init();
 
-        if (path == null)
+        if (loadType)//Load To Lable
         {
-            foreach (GameObject prefab in await Util.LoadToLable<GameObject>(lable))
+            foreach (GameObject prefab in await Util.LoadToLable<GameObject>(information))
             {
                 if (poolingObjects.ContainsKey(prefab.name))
                 {
@@ -48,9 +54,9 @@ public static class ObjectPool
                 }
             }
         }
-        else
+        else//Load To Path
         {
-            GameObject prefab = await Util.LoadToPath<GameObject>(path);
+            GameObject prefab = await Util.LoadToPath<GameObject>(information);
 
             if (poolingObjects.ContainsKey(prefab.name))
             {
@@ -73,6 +79,11 @@ public static class ObjectPool
     }
     public static GameObject GetOrActiveObject(string prefabName)
     {
+        if(!poolingObjects.ContainsKey(prefabName))
+        {
+            return null;
+        }
+
         GameObject prefab = poolingObjects[prefabName].Dequeue();
 
         prefab.SetActive(true);
