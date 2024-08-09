@@ -3,6 +3,10 @@ public class GameManager
 {
     public Player player;
 
+    public void ObjectPooling()
+    {
+
+    }
     public void GameStart()
     {
 

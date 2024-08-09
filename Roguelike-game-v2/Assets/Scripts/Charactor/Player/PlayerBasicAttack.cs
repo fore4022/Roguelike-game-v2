@@ -6,22 +6,31 @@ public class PlayerBasicAttack
 
     public IEnumerator basicAttacking()
     {
-        while(true)
-        {
-            yield return new WaitForSeconds(1);//Managers.Game.player.Stat.attackSpeed
 
-            Attack();
+        while (true)
+        {
+            prefab = ObjectPool.GetOrActiveObject(Managers.Game.player.basicAttackPrefabName);
+
+            if (prefab == null)
+            {
+                yield return null;
+            }
+            else
+            {
+                Attack();
+
+                yield return new WaitForSeconds(1);//Managers.Game.player.Stat.attackSpeed
+            }
         }
     }
     private void Attack()
     {
-        GameObject basicAttack = ObjectPool.GetOrActiveObject(Managers.Game.player.basicAttackPrefabName);
-        
         Vector3 targetPosition = EnemyDetection.findNearestEnemy().transform.position;
         Vector3 direction = Direction(targetPosition);
+        Quaternion quaternion = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
 
-        basicAttack.transform.position = AttackPoint(targetPosition, direction);
-        basicAttack.transform.rotation = Quaternion.Euler(direction);
+        prefab.transform.position = AttackPoint(targetPosition, direction);
+        prefab.transform.rotation = quaternion;
     }
     private Vector3 AttackPoint(Vector3 targetPosition, Vector3 direction)
     {
