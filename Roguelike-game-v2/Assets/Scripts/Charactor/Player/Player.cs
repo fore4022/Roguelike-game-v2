@@ -5,8 +5,8 @@ public class Player : MonoBehaviour, IDamageReceiver
 
     private TouchControls touchControls;
 
-    private PlayerBasicAttack basicAttack;
-    private PlayerMove move;
+    public PlayerBasicAttack basicAttack;
+    public PlayerMove move;
 
     private Stat_SO playerStat;
     private BasicAttack_SO basicAttackType;

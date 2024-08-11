@@ -6,6 +6,10 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using Object = UnityEngine.Object;
 public class Util : MonoBehaviour
 {
+    public static async void LoadToPath(string path, )
+    {
+        
+    }
     public static async Task<T> LoadToPath<T>(string path)
     {
         AsyncOperationHandle<T> handle = Addressables.LoadAssetAsync<T>(path);

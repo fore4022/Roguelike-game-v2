@@ -2,11 +2,16 @@ using System.Collections;
 using UnityEngine;
 public class PlayerBasicAttack
 {
+    public float Damage { get { return Managers.Game.player.Stat.damage * basicAttackSO.damageCoefficient; } }
+
+    private BasicAttack_SO basicAttackSO = null;
+
     private GameObject prefab = null;
+
+    private float attackSpeed;
 
     public IEnumerator basicAttacking()
     {
-
         while (true)
         {
             prefab = ObjectPool.GetOrActiveObject(Managers.Game.player.basicAttackPrefabName);

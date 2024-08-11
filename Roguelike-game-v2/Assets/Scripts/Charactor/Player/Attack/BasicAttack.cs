@@ -1,7 +1,9 @@
 using UnityEngine;
-public class BasicAttack : MonoBehaviour
+public class BasicAttack : MonoBehaviour, IDamage
 {
-    Collider2D col;
+    public float Damage { get { return Managers.Game.player.basicAttack.Damage; } }
+
+    private Collider2D col;
 
     private void Start()
     {
@@ -15,7 +17,7 @@ public class BasicAttack : MonoBehaviour
     {
         if(collision.TryGetComponent<IDamageReceiver>(out IDamageReceiver damageReceiver))
         {
-
+            damageReceiver.GetDamage(this);
         }
     }
 }
