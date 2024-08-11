@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using Object = UnityEngine.Object;
-public class Util
+public class Util : MonoBehaviour
 {
     public static async Task<T> LoadToPath<T>(string path)
     {
@@ -32,5 +33,13 @@ public class Util
     public static async void InitAddressableAsset()
     {
         await Addressables.InitializeAsync().Task;
+    }
+    public static void IsInvisible(Collider2D targetCollider)
+    {
+        Collider2D target = targetCollider;
+
+        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
+
+        if (!GeometryUtility.TestPlanesAABB(planes, target.bounds)) { Destroy(targetCollider.gameObject); }
     }
 }
