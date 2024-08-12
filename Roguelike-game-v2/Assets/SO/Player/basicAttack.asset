@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackType: {fileID: 6122015278753866852, guid: edb0be481a2f6004ea27ebdc1e61b480, type: 3}
   attackTypePath: basicAttack
-  damageCoefficient: 0
+  damageCoefficient: 1
   attackSpeedCoefficient: 1
-  attackSize: 0
+  attackRange: 2
+  attackSize: 0.5
   duration: 0.5
