@@ -6,9 +6,17 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using Object = UnityEngine.Object;
 public class Util : MonoBehaviour
 {
-    public static async void LoadToPath(string path, )
+    public static ScriptableObject scriptableObject;
+
+    public static ScriptableObject GetScriptableOBject(string path)
     {
-        
+        BringToPath(path);
+
+        return scriptableObject;
+    }
+    public static async void BringToPath(string path)
+    {
+        scriptableObject = await LoadToPath<ScriptableObject>(path);
     }
     public static async Task<T> LoadToPath<T>(string path)
     {

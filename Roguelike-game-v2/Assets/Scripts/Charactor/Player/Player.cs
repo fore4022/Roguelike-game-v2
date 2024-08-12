@@ -1,20 +1,19 @@
 using UnityEngine;
 public class Player : MonoBehaviour, IDamageReceiver
 {
-    public string basicAttackPrefabName = "S0191";
-
-    private TouchControls touchControls;
-
     public PlayerBasicAttack basicAttack;
     public PlayerMove move;
 
+    public string basicAttackTypeName = "basicAttack";
+
+    private TouchControls touchControls;
+
     private Stat_SO playerStat;
     private BasicAttack_SO basicAttackType;
-    private Stat stat;
 
     private Coroutine basicAttackStart = null;
 
-    public Stat Stat { get { return stat; } }
+    public Stat_SO Stat { get { return playerStat; } }
     private void Awake()
     {
         touchControls = new();
@@ -46,8 +45,8 @@ public class Player : MonoBehaviour, IDamageReceiver
     }
     public void GetDamage(IDamage damage)//
     {
-        stat.health -= damage.Damage;
+        Stat.health -= damage.Damage;
 
-        if(stat.health < 0) { Die(); }
+        if(Stat.health < 0) { Die(); }
     }
 }

@@ -14,17 +14,17 @@ public class PlayerBasicAttack
     {
         while (true)
         {
-            prefab = ObjectPool.GetOrActiveObject(Managers.Game.player.basicAttackPrefabName);
-
-            if (prefab == null)
+            if (prefab == null || basicAttackSO == null)
             {
+                attackSpeed = 0;
+
                 yield return null;
             }
             else
             {
                 Attack();
 
-                yield return new WaitForSeconds(1);//Managers.Game.player.Stat.attackSpeed
+                yield return new WaitForSeconds(attackSpeed);
             }
         }
     }
