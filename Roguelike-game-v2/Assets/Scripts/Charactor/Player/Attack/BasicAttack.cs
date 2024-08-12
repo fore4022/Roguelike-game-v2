@@ -22,10 +22,6 @@ public class BasicAttack : MonoBehaviour, IDamage
             StopCoroutine(coroutine);
         }
     }
-    private void Update()
-    {
-        Util.IsInvisible(col);
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.TryGetComponent<IDamageReceiver>(out IDamageReceiver damageReceiver))

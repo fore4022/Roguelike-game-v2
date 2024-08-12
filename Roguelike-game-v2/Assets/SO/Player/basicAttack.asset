@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: basicAttack
   m_EditorClassIdentifier: 
   attackType: {fileID: 6122015278753866852, guid: edb0be481a2f6004ea27ebdc1e61b480, type: 3}
+  attackTypePath: basicAttack
   damageCoefficient: 0
   attackSpeedCoefficient: 1
   attackSize: 0

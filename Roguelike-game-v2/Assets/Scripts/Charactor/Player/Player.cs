@@ -24,8 +24,6 @@ public class Player : MonoBehaviour, IDamageReceiver
     }
     private void Start()
     {
-        ObjectPool.CreateToPath("basicAttack", 20);
-
         Managers.Game.player = this;
 
         Init();

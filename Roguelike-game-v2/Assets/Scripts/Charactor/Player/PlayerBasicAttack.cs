@@ -26,6 +26,8 @@ public class PlayerBasicAttack
             yield return null;
         }
 
+        ObjectPool.CreateToPath(basicAttackSO.attackTypePath, 40);
+
         while (true)
         {
             prefab = ObjectPool.GetOrActiveObject(basicAttackSO.attackType.name);
@@ -46,14 +48,16 @@ public class PlayerBasicAttack
     {
         Vector3 targetPosition = EnemyDetection.findNearestEnemy().transform.position;
         Vector3 direction = Direction(targetPosition);
+        Vector3 localSize = new Vector2(basicAttackSO.attackSize, basicAttackSO.attackSize);
         Quaternion quaternion = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
 
         prefab.transform.position = AttackPoint(targetPosition, direction);
         prefab.transform.rotation = quaternion;
+        prefab.transform.localScale = localSize;
     }
     private Vector3 AttackPoint(Vector3 targetPosition, Vector3 direction)
     {
-        Vector2 attackPoint = targetPosition + direction * 2;
+        Vector2 attackPoint = direction * basicAttackSO.attackRange;
 
         return attackPoint;
     }
