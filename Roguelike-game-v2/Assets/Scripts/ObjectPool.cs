@@ -19,7 +19,7 @@ public static class ObjectPool
     }
     public static async void CreateToLable(string lable, int count)
     {
-        await CreateObjects(count, true, null);
+        await CreateObjects(count, true, lable);
     }
     public static async void CreateToPath(string path, int count)
     {

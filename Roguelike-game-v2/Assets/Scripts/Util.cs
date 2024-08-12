@@ -8,15 +8,11 @@ public class Util : MonoBehaviour
 {
     public static ScriptableObject scriptableObject;
 
-    public static ScriptableObject GetScriptableOBject(string path)
+    public static async void GetScriptableObject<T>(string path) where T :ScriptableObject
     {
-        BringToPath(path);
+        scriptableObject = null;
 
-        return scriptableObject;
-    }
-    public static async void BringToPath(string path)
-    {
-        scriptableObject = await LoadToPath<ScriptableObject>(path);
+        scriptableObject = await LoadToPath<T>(path);
     }
     public static async Task<T> LoadToPath<T>(string path)
     {
@@ -48,6 +44,11 @@ public class Util : MonoBehaviour
     }
     public static void IsInvisible(Collider2D targetCollider)
     {
+        if(!targetCollider.gameObject.activeSelf)
+        {
+            return;
+        }
+
         Collider2D target = targetCollider;
 
         Plane[] planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);

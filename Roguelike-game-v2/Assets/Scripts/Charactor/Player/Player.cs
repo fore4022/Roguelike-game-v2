@@ -1,15 +1,15 @@
 using UnityEngine;
 public class Player : MonoBehaviour, IDamageReceiver
 {
+    [HideInInspector]
+    public string basicAttackTypeName = "basicAttackSO";
+
     public PlayerBasicAttack basicAttack;
     public PlayerMove move;
-
-    public string basicAttackTypeName = "basicAttack";
 
     private TouchControls touchControls;
 
     private Stat_SO playerStat;
-    private BasicAttack_SO basicAttackType;
 
     private Coroutine basicAttackStart = null;
 
@@ -17,7 +17,6 @@ public class Player : MonoBehaviour, IDamageReceiver
     private void Awake()
     {
         touchControls = new();
-        basicAttack = new();
         basicAttack = new();
         move = new();
 
@@ -33,8 +32,6 @@ public class Player : MonoBehaviour, IDamageReceiver
     }
     private void Init()
     {
-        //stat = playerStat.stat;
-
         touchControls.Touch.TouchPosition.started += ctx => move.Move();
 
         basicAttackStart = StartCoroutine(basicAttack.basicAttacking());

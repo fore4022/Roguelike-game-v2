@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbad4040f90a6c543b7da75cd5a0bedb, type: 3}
   m_Name: basicAttack
   m_EditorClassIdentifier: 
-  attackType: {fileID: 0}
+  attackType: {fileID: 6122015278753866852, guid: edb0be481a2f6004ea27ebdc1e61b480, type: 3}
   damageCoefficient: 0
-  attackSpeedCoefficient: 0
-  intersection: 0
+  attackSpeedCoefficient: 1
+  attackSize: 0
+  duration: 0.5

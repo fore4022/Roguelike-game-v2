@@ -4,27 +4,41 @@ public class PlayerBasicAttack
 {
     public float Damage { get { return Managers.Game.player.Stat.damage * basicAttackSO.damageCoefficient; } }
 
-    private BasicAttack_SO basicAttackSO = null;
+    public BasicAttack_SO basicAttackSO;
 
-    private GameObject prefab = null;
+    private GameObject prefab;
 
-    private float attackSpeed;
+    private float attackSpeed = 1;
 
     public IEnumerator basicAttacking()
     {
+        Util.GetScriptableObject<BasicAttack_SO>(Managers.Game.player.basicAttackTypeName);
+
         while (true)
         {
-            if (prefab == null || basicAttackSO == null)
+            if (Util.scriptableObject != null)
             {
-                attackSpeed = 0;
+                basicAttackSO = (BasicAttack_SO)Util.scriptableObject;
 
-                yield return null;
+                break;
             }
-            else
+
+            yield return null;
+        }
+
+        while (true)
+        {
+            prefab = ObjectPool.GetOrActiveObject(basicAttackSO.attackType.name);
+
+            if (prefab != null)
             {
                 Attack();
 
                 yield return new WaitForSeconds(attackSpeed);
+            }
+            else
+            {
+                yield return null;
             }
         }
     }
