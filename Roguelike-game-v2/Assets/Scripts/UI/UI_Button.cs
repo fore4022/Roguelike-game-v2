@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.Layouts;
 using UnityEngine.InputSystem.OnScreen;
-public abstract class UI_Button : OnScreenControl, IPointerEnterHandler, IPointerDownHandler, IPointerClickHandler, IPointerUpHandler, IPointerExitHandler
+public abstract class UI_Button : OnScreenControl, IPointerDownHandler, IPointerClickHandler, IPointerUpHandler
 {
     [InputControl(layout = "Button")]
     [SerializeField]
@@ -19,9 +19,7 @@ public abstract class UI_Button : OnScreenControl, IPointerEnterHandler, IPointe
             path = value;
         }
     }
-    public abstract void OnPointerEnter(PointerEventData eventData);
     public abstract  void OnPointerDown(PointerEventData eventData);
     public abstract void OnPointerClick(PointerEventData eventData);
     public abstract void OnPointerUp(PointerEventData eventData);
-    public abstract void OnPointerExit(PointerEventData eventData);
 }

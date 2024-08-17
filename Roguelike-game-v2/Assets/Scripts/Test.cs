@@ -1,25 +1,10 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
-public class Test : UI_Button
+public class Test : MonoBehaviour
 {
-    public override void OnPointerClick(PointerEventData eventData)
+    private void Start()
     {
+        Debug.Log(gameObject as Object);
 
-    }
-    public override void OnPointerDown(PointerEventData eventData)
-    {
-
-    }
-    public override void OnPointerEnter(PointerEventData eventData)
-    {
-        SendValueToControl(true);
-    }
-    public override void OnPointerExit(PointerEventData eventData)
-    {
-
-    }
-    public override void OnPointerUp(PointerEventData eventData)
-    {
-
+        Debug.Log(gameObject is object);
     }
 }
