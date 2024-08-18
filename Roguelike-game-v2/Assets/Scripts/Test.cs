@@ -3,8 +3,12 @@ public class Test : MonoBehaviour
 {
     private void Start()
     {
-        Debug.Log(gameObject as Object);
+        Object obj = new GameObject();
 
-        Debug.Log(gameObject is object);
+        var Type = obj as Object;
+
+        Debug.Log((obj as Object).GetType());
+
+        Debug.Log(obj is object);
     }
 }
