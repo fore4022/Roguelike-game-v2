@@ -1,14 +1,19 @@
 using UnityEngine;
-public class Test : MonoBehaviour
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+public class Test : UI_Click
 {
-    private void Start()
+    public override void OnPointerEnter(PointerEventData eventData)
     {
-        Object obj = new GameObject();
-
-        var Type = obj as Object;
-
-        Debug.Log((obj as Object).GetType());
-
-        Debug.Log(obj is object);
+        SendValueToControl<bool>(false);
+        Debug.Log("DownPointer");
+    }
+    public override void OnPointerClick(PointerEventData eventData)
+    {
+        Debug.Log("Click");
+    }
+    public override void OnPointerExit(PointerEventData eventData)
+    {
+        Debug.Log("UpPointer");
     }
 }
