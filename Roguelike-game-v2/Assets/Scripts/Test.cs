@@ -1,19 +1,9 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.Layouts;
+using UnityEngine.InputSystem.OnScreen;
 using UnityEngine.UI;
-public class Test : UI_Click
+public class Test : MonoBehaviour
 {
-    public override void OnPointerEnter(PointerEventData eventData)
-    {
-        SendValueToControl<bool>(false);
-        Debug.Log("DownPointer");
-    }
-    public override void OnPointerClick(PointerEventData eventData)
-    {
-        Debug.Log("Click");
-    }
-    public override void OnPointerExit(PointerEventData eventData)
-    {
-        Debug.Log("UpPointer");
-    }
+
 }
