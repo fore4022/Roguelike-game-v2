@@ -1,13 +1,15 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public static class InputActions
 {
-    public static IInputActionCollection inputAction;
+    public static List<IInputActionCollection> inputActionList = new List<IInputActionCollection>();
 
-    public static T GetinputAction<T>()
+    public static T GetinputAction<T>(T inputActionType) where T : IInputActionCollection
     {
 
-        return null;
+        //inputActionList
+
+        return;
     }
-}
