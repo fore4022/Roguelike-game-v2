@@ -16,11 +16,11 @@ public class Player : MonoBehaviour, IDamageReceiver
     public Stat_SO Stat { get { return playerStat; } }
     private void Awake()
     {
-        touchControls = new();
+        touchControls = new();//
         basicAttack = new();
         move = new();
 
-        touchControls.Touch.TouchPosition.Enable();
+        touchControls.Touch.TouchPosition.Enable();//
     }
     private void Start()
     {
@@ -33,7 +33,7 @@ public class Player : MonoBehaviour, IDamageReceiver
         touchControls.Touch.TouchPosition.started += ctx => move.StartMove(ctx);
         touchControls.Touch.TouchPosition.performed += ctx => move.OnMove(ctx);
         touchControls.Touch.TouchPosition.canceled += ctx => move.CancelMove(ctx);
-
+        //
         basicAttackStart = StartCoroutine(basicAttack.basicAttacking());
     }
     public void Die()//
