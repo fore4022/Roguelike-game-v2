@@ -4,26 +4,30 @@ public static class InputActions
 {
     public static List<IInputActionCollection> inputActionList = new List<IInputActionCollection>();
 
-    public static void GetinputAction<T>(ref T inputAction) where T : IInputActionCollection
+    public static T GetInputAction<T>() where T : IInputActionCollection, new()
     {
         IInputActionCollection instance = inputActionList.Find(input => input.GetType() == typeof(T));
         bool isInclude = instance != null;
 
         if (isInclude)
         {
-            inputAction = (T)instance;
+            return (T)instance;
         }
         else
         {
-            T newInputAction;
+            T newInputAction = new();
+
+            inputActionList.Add(newInputAction);
+
+            return newInputAction;
         }
     }
-    public static void EnableInputAction()
+    public static void EnableInputAction<T>() where T : IInputActionCollection, new()
     {
-
+        GetInputAction<T>().Enable();
     }
-    public static void DisableInputAction()
+    public static void DisableInputAction<T>() where T : IInputActionCollection, new()
     {
-
+        GetInputAction<T>().Disable();
     }
 }

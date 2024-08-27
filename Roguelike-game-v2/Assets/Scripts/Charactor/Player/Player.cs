@@ -16,9 +16,10 @@ public class Player : MonoBehaviour, IDamageReceiver
     public Stat_SO Stat { get { return playerStat; } }
     private void Awake()
     {
-        touchControls = new();//
         basicAttack = new();
         move = new();
+
+        touchControls = InputActions.GetInputAction<TouchControls>();
 
         touchControls.Touch.TouchPosition.Enable();//
     }
