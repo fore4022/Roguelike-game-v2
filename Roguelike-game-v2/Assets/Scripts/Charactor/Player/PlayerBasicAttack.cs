@@ -12,7 +12,7 @@ public class PlayerBasicAttack
 
     public IEnumerator basicAttacking()
     {
-        Util.GetScriptableObject<BasicAttack_SO>(Managers.Game.player.basicAttackTypeName);
+        Util.Get<BasicAttack_SO>(Managers.Game.player.basicAttackTypeName);
 
         while (true)
         {

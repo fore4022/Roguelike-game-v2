@@ -6,15 +6,17 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using Object = UnityEngine.Object;
 public class Util : MonoBehaviour
 {
-    public static ScriptableObject scriptableObject;
+    public static Object scriptableObject;//
 
-    public static async void GetScriptableObject<T>(string path) where T :ScriptableObject
+    public static T Get<T>(string path) where T : Object
     {
-        scriptableObject = null;
+        T value = null;
 
-        scriptableObject = await LoadToPath<T>(path);
+        Task.Run(() => value = LoadToPath<T>(path).GetAwaiter().GetResult());
+
+        return value;
     }
-    public static async Task<T> LoadToPath<T>(string path)
+    public static async Task<T> LoadToPath<T>(string path) where T : Object
     {
         AsyncOperationHandle<T> handle = Addressables.LoadAssetAsync<T>(path);
 
