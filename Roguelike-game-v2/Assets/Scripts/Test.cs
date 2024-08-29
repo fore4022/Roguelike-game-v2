@@ -14,18 +14,7 @@ public class Test : MonoBehaviour
 
     private void Start()
     {
-        BasicAttack_SO value = null;
 
-        Task a = new Task(() => value = Util.LoadToPath<BasicAttack_SO>(Managers.Game.player.basicAttackTypeName).GetAwaiter().GetResult());
-
-        a.Start();
-        a.Wait();
-
-        Debug.Log(value);
-
-        //StartCoroutine(testCoroutine());
-
-        //basicAttack = Util.Get<BasicAttack_SO>(Managers.Game.player.basicAttackTypeName);
     }
     private IEnumerator testCoroutine()
     {

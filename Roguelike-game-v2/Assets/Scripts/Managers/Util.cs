@@ -8,14 +8,6 @@ public class Util : MonoBehaviour
 {
     public static Object scriptableObject;//
 
-    public static T Get<T>(string path) where T : Object
-    {
-        T value = null;
-
-        Task.Run(() => value = LoadToPath<T>(path).GetAwaiter().GetResult());
-
-        return value;
-    }
     public static async Task<T> LoadToPath<T>(string path) where T : Object
     {
         AsyncOperationHandle<T> handle = Addressables.LoadAssetAsync<T>(path);
