@@ -77,6 +77,17 @@ public static class ObjectPool
             }
         }
     }
+    public static GameObject GetObject(string prefabName)
+    {
+        if(!poolingObjects.ContainsKey(prefabName))
+        {
+            return null;
+        }
+
+        GameObject prefab = poolingObjects[prefabName].Peek();
+
+        return prefab;
+    }
     public static GameObject GetOrActiveObject(string prefabName)
     {
         if(!poolingObjects.ContainsKey(prefabName))

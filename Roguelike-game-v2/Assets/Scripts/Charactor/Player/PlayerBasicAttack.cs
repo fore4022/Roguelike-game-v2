@@ -1,31 +1,41 @@
 using System.Collections;
-using System.Threading.Tasks;
 using UnityEngine;
 public class PlayerBasicAttack
 {
-    public float Damage { get { return Managers.Game.player.Stat.damage * basicAttackSO.damageCoefficient; } }
-
     public BasicAttack_SO basicAttackSO;
 
     private GameObject prefab;
 
     private float attackSpeed = 1;
+    private int createCount = 40;
 
-    private IEnumerator WaitForLoad()
-    {
-        Task<BasicAttack_SO> load = new Task<BasicAttack_SO>(() =>
-        {
-            return Util.LoadToPath<BasicAttack_SO>(Managers.Game.player.basicAttackTypeName).Result;
-        });
-
-        basicAttackSO = load.Start();
-
-        yield return new WaitUntil(() => load.IsCompleted);
-
-    }
+    public float Damage { get { return Managers.Game.player.Stat.damage * basicAttackSO.damageCoefficient; } }
     public IEnumerator basicAttacking()
     {
-        yield return WaitForLoad();
+        LoadBasicAttackSO(Managers.Game.player.basicAttackTypeName);
+
+        yield return new WaitUntil(() => basicAttackSO != null);
+
+        ObjectPool.CreateToPath(basicAttackSO.attackTypePath, createCount);
+
+        yield return new WaitUntil(() => ObjectPool.GetObject(basicAttackSO.attackType.name) != null);
+
+        while (true)
+        {
+            prefab = ObjectPool.GetOrActiveObject(basicAttackSO.attackType.name);
+
+            Attack();
+
+            yield return new WaitForSeconds(attackSpeed);
+        }
+    }
+    public IEnumerator ChangeBasicAttack(string attackType)
+    {
+        LoadBasicAttackSO(attackType);
+
+        yield return new WaitUntil(() => basicAttackSO);
+
+        yield return null;
     }
     private void Attack()
     {
@@ -49,5 +59,9 @@ public class PlayerBasicAttack
         Vector3 direction = (targetPosition - Managers.Game.player.gameObject.transform.position).normalized;
 
         return direction;
+    }
+    private async void LoadBasicAttackSO(string attackType)
+    {
+        basicAttackSO = await Util.LoadToPath<BasicAttack_SO>(attackType);
     }
 }

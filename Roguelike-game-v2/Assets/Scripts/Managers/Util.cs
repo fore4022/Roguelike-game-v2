@@ -6,8 +6,6 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 using Object = UnityEngine.Object;
 public class Util : MonoBehaviour
 {
-    public static Object scriptableObject;//
-
     public static async Task<T> LoadToPath<T>(string path) where T : Object
     {
         AsyncOperationHandle<T> handle = Addressables.LoadAssetAsync<T>(path);
