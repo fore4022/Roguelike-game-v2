@@ -8,10 +8,7 @@ public class Player : MonoBehaviour, IDamageReceiver
     public PlayerMove move;
 
     private TouchControls touchControls;
-
     private Stat_SO playerStat;
-
-    private Coroutine basicAttackStart;
 
     public Stat_SO Stat { get { return playerStat; } }
     private void Awake()
@@ -28,14 +25,15 @@ public class Player : MonoBehaviour, IDamageReceiver
         Managers.Game.player = this;
 
         Init();
+
+        basicAttack.basicAttackCoroutine = StartCoroutine(basicAttack.basicAttacking());
     }
     private void Init()
     {
         touchControls.Touch.TouchPosition.started += ctx => move.StartMove(ctx);
         touchControls.Touch.TouchPosition.performed += ctx => move.OnMove(ctx);
         touchControls.Touch.TouchPosition.canceled += ctx => move.CancelMove(ctx);
-        //
-        basicAttackStart = StartCoroutine(basicAttack.basicAttacking());
+
     }
     public void Die()//
     {

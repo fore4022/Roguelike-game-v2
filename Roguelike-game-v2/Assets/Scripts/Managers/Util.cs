@@ -47,4 +47,17 @@ public class Util : MonoBehaviour
 
         if (!GeometryUtility.TestPlanesAABB(planes, target.bounds)) { Destroy(targetCollider.gameObject); }
     }
+    public static MonoBehaviour GetMonoBehaviour()
+    {
+        GameObject go = GameObject.Find("@MonoScript");
+
+        if(go == null)
+        {
+            go = new GameObject("@MonoScript");
+
+            go.AddComponent<MonoScript>();
+        }
+
+        return go.GetComponent<MonoScript>();
+    }
 }

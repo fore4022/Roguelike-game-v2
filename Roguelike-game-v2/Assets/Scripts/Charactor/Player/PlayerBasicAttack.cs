@@ -2,17 +2,17 @@ using System.Collections;
 using UnityEngine;
 public class PlayerBasicAttack
 {
-    public BasicAttack_SO basicAttackSO;
+    public Coroutine basicAttackCoroutine;
 
+    private BasicAttack_SO basicAttackSO;
     private GameObject prefab;
 
     private float attackSpeed = 1;
     private int createCount = 40;
 
-    public float Damage { get { return Managers.Game.player.Stat.damage * basicAttackSO.damageCoefficient; } }
     public IEnumerator basicAttacking()
     {
-        LoadBasicAttackSO(Managers.Game.player.basicAttackTypeName);
+        LoadBasicAttackSO();
 
         yield return new WaitUntil(() => basicAttackSO != null);
 
@@ -29,13 +29,16 @@ public class PlayerBasicAttack
             yield return new WaitForSeconds(attackSpeed);
         }
     }
-    public IEnumerator ChangeBasicAttack(string attackType)
+    public void ChangeBasicAttack(string attackType)
     {
-        LoadBasicAttackSO(attackType);
+        MonoBehaviour mono = Util.GetMonoBehaviour();
 
-        yield return new WaitUntil(() => basicAttackSO);
+        if(basicAttackCoroutine != null)
+        {
+            mono.StopCoroutine(basicAttackCoroutine);
+        }
 
-        yield return null;
+        mono.StartCoroutine(basicAttacking());
     }
     private void Attack()
     {
@@ -47,6 +50,8 @@ public class PlayerBasicAttack
         prefab.transform.position = AttackPoint(targetPosition, direction);
         prefab.transform.rotation = quaternion;
         prefab.transform.localScale = localSize;
+
+        prefab.GetComponent<BasicAttack>().basicAttackSO = basicAttackSO;
     }
     private Vector3 AttackPoint(Vector3 targetPosition, Vector3 direction)
     {
@@ -60,8 +65,8 @@ public class PlayerBasicAttack
 
         return direction;
     }
-    private async void LoadBasicAttackSO(string attackType)
+    private async void LoadBasicAttackSO()
     {
-        basicAttackSO = await Util.LoadToPath<BasicAttack_SO>(attackType);
+        basicAttackSO = await Util.LoadToPath<BasicAttack_SO>(Managers.Game.player.basicAttackTypeName);
     }
 }
