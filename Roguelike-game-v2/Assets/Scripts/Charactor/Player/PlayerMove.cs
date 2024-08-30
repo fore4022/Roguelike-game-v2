@@ -2,16 +2,50 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerMove : IMovable
 {
-    public void StartMove(InputAction.CallbackContext inputAction)
+    private TouchControls touchControl;
+
+    private InputAction.CallbackContext context;
+    private Vector2 touchPosition;
+
+    public void StartMove()
     {
-        Vector2 position = inputAction.ReadValue<Vector2>();
+        touchPosition = GetVector2();
     }
-    public void OnMove(InputAction.CallbackContext inputAction)
+    public void OnMove()
     {
-        Vector2 position = inputAction.ReadValue<Vector2>();
+
     }
-    public void CancelMove(InputAction.CallbackContext inputAction)
+    public void CancelMove()
     {
-        Vector2 position = inputAction.ReadValue<Vector2>();
+
+    }
+    public void Init()
+    {
+        touchControl = InputActions.GetInputAction<TouchControls>();
+
+        touchControl.Enable();
+
+        touchControl.Touch.TouchPosition.started += (ctx =>
+        {
+            context = ctx;
+
+            StartMove();
+        });
+        touchControl.Touch.TouchPosition.performed += (ctx =>
+        {
+            context = ctx;
+
+            OnMove();
+        });
+        touchControl.Touch.TouchPosition.canceled += (ctx =>
+        {
+            context = ctx;
+
+            CancelMove();
+        });
+    }
+    private Vector2 GetVector2()
+    {
+        return context.ReadValue<Vector2>();
     }
 }

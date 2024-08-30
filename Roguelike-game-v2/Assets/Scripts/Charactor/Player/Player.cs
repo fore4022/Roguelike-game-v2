@@ -7,7 +7,6 @@ public class Player : MonoBehaviour, IDamageReceiver
     public PlayerBasicAttack basicAttack;
     public PlayerMove move;
 
-    private TouchControls touchControls;
     private Stat_SO playerStat;
 
     public Stat_SO Stat { get { return playerStat; } }
@@ -15,10 +14,6 @@ public class Player : MonoBehaviour, IDamageReceiver
     {
         basicAttack = new();
         move = new();
-
-        touchControls = InputActions.GetInputAction<TouchControls>();
-
-        touchControls.Touch.TouchPosition.Enable();//
     }
     private void Start()
     {
@@ -30,10 +25,7 @@ public class Player : MonoBehaviour, IDamageReceiver
     }
     private void Init()
     {
-        touchControls.Touch.TouchPosition.started += ctx => move.StartMove(ctx);
-        touchControls.Touch.TouchPosition.performed += ctx => move.OnMove(ctx);
-        touchControls.Touch.TouchPosition.canceled += ctx => move.CancelMove(ctx);
-
+        move.Init();
     }
     public void Die()//
     {
