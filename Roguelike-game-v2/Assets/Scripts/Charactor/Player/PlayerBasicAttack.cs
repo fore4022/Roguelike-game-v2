@@ -43,7 +43,7 @@ public class PlayerBasicAttack
     private void Attack()
     {
         Vector3 targetPosition = EnemyDetection.findNearestEnemy().transform.position;
-        Vector3 direction = Direction(targetPosition);
+        Vector3 direction = Calculate.GetDirection(targetPosition);
         Vector3 localSize = new Vector2(basicAttackSO.attackSize, basicAttackSO.attackSize);
         Quaternion quaternion = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
 
@@ -58,12 +58,6 @@ public class PlayerBasicAttack
         Vector2 attackPoint = direction * basicAttackSO.attackRange;
 
         return attackPoint;
-    }
-    private Vector3 Direction(Vector3 targetPosition)
-    {
-        Vector3 direction = (targetPosition - Managers.Game.player.gameObject.transform.position).normalized;
-
-        return direction;
     }
     private async void LoadBasicAttackSO()
     {

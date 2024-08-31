@@ -10,14 +10,15 @@ public class PlayerMove : IMovable
     public void StartMove()
     {
         touchPosition = GetVector2();
+        //controller enable
     }
     public void OnMove()
     {
-
+        Vector2 
     }
     public void CancelMove()
     {
-
+        //controller disable
     }
     public void Init()
     {
