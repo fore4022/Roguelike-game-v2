@@ -5,16 +5,20 @@ public class PlayerMove : IMovable
     private TouchControls touchControl;
 
     private InputAction.CallbackContext context;
-    private Vector2 touchPosition;
+    private Vector3 touchPosition;
+    private Vector3 direction;
 
+    public Vector3 Direction { get { return direction; } }
     public void StartMove()
     {
-        touchPosition = GetVector2();
+        touchPosition = GetVector();
         //controller enable
     }
     public void OnMove()
     {
-        Vector2 
+        direction = Calculate.GetDirection(touchPosition, GetVector());
+
+        Managers.Game.player.gameObject.transform.position += direction * Managers.Game.player.Stat.moveSpeed * Time.deltaTime;
     }
     public void CancelMove()
     {
@@ -45,8 +49,8 @@ public class PlayerMove : IMovable
             CancelMove();
         });
     }
-    private Vector2 GetVector2()
+    private Vector3 GetVector()
     {
-        return context.ReadValue<Vector2>();
+        return context.ReadValue<Vector3>();
     }
 }
