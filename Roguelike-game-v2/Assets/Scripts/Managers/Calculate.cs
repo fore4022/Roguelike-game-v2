@@ -1,16 +1,38 @@
 using UnityEngine;
 public class Calculate
 {
+    public static Vector3 GetAttackPosition(Vector3 direction, float attackRange)
+    {
+        return direction * attackRange;
+    }
     public static Vector3 GetDirection(Vector3 targetPosition)
     {
-        Vector3 direction = (targetPosition = Managers.Game.player.gameObject.transform.position).normalized;
+        if (targetPosition == null)
+        {
+            return new Vector3(Random.Range(0, 360), Random.Range(0, 360), 0);
+        }
 
-        return direction;
+        return (targetPosition - Managers.Game.player.gameObject.transform.position).normalized;
     }
     public static Vector3 GetDirection(Vector3 targetPosition, Vector3 position)
     {
-        Vector3 direction = (targetPosition - position).normalized;
+        if (targetPosition == null)
+        {
+            return new Vector3(Random.Range(0, 360), Random.Range(0, 360), 0);
+        }
 
-        return direction;
+        return (targetPosition - position).normalized;
+    }
+    public static Quaternion GetQuaternion(Vector3 direction)
+    {
+        return Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
+    }
+    public static Vector3 GetSize(float vec)
+    {
+        return new Vector3(vec, vec, 0);
+    }
+    public static Vector3 GetSize(float vecX, float vecY)
+    {
+        return new Vector3(vecX, vecY, 0);
     }
 }

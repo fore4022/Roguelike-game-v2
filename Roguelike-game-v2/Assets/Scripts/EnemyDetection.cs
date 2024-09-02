@@ -5,9 +5,9 @@ public static class EnemyDetection
     public static float largeastRange = 3.5f;
     public static int maximumEnemyCount = 15;
 
-    public static GameObject findNearestEnemy()
+    public static GameObject FindNearestEnemy()
     {
-        List<GameObject> gameObjectList = findEnemiesOnScreen();
+        List<GameObject> gameObjectList = FindEnemiesOnScreen();
 
         GameObject targetObject = null;
 
@@ -35,9 +35,9 @@ public static class EnemyDetection
 
         return targetObject;
     }
-    public static GameObject findLargestEnemyGroup()
+    public static GameObject FindLargestEnemyGroup()
     {
-        List<GameObject> gameObjectList = findEnemiesOnScreen();
+        List<GameObject> gameObjectList = FindEnemiesOnScreen();
         Collider2D[] colliderArray = new Collider2D[maximumEnemyCount];
 
         GameObject targetObject = null;
@@ -62,7 +62,7 @@ public static class EnemyDetection
 
         return targetObject;
     }
-    public static List<GameObject> findEnemiesOnScreen()
+    public static List<GameObject> FindEnemiesOnScreen()
     {
         List<GameObject> resultList = new List<GameObject>();
         Collider2D[] colliderArray;
