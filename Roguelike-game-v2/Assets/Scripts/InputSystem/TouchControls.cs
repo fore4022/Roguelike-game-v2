@@ -31,7 +31,7 @@ public partial class @TouchControls: IInputActionCollection2, IDisposable
                     ""name"": ""TouchPosition"",
                     ""type"": ""Value"",
                     ""id"": ""efc1af79-054c-487e-90ea-e2f8ac1adb90"",
-                    ""expectedControlType"": ""Vector3"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true

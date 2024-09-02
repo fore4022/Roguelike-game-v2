@@ -16,9 +16,9 @@ public class PlayerMove : IMovable
     }
     public void OnMove()
     {
-        direction = Calculate.GetDirection(touchPosition, GetVector());
+        direction = Calculate.GetDirection(GetVector(), touchPosition);
 
-        Managers.Game.player.gameObject.transform.position += direction * Managers.Game.player.Stat.moveSpeed * Time.deltaTime;
+        Managers.Game.player.gameObject.transform.position += direction *2 * Time.deltaTime;
     }
     public void CancelMove()
     {
@@ -51,6 +51,6 @@ public class PlayerMove : IMovable
     }
     private Vector3 GetVector()
     {
-        return context.ReadValue<Vector3>();
+        return context.ReadValue<Vector2>();
     }
 }

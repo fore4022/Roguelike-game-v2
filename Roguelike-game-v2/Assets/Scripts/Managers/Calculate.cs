@@ -3,7 +3,7 @@ public class Calculate
 {
     public static Vector3 GetAttackPosition(Vector3 direction, float attackRange)
     {
-        return direction * attackRange;
+        return direction * attackRange + Managers.Game.player.transform.position;
     }
     public static Vector3 GetDirection(Vector3 targetPosition)
     {
