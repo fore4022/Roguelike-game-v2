@@ -1,13 +1,14 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 public static class EnemyDetection
 {
-    public static float largeastRange = 3.5f;
+    public static float largeastRange = 2.5f;
     public static int maximumEnemyCount = 15;
 
-    public static GameObject FindNearestEnemy()
+    public static GameObject FindNearestEnemy(GameObject center = null, float? range = null)
     {
-        List<GameObject> gameObjectList = FindEnemiesOnScreen();
+        List<GameObject> gameObjectList = FindEnemiesOnScreen(center, range);
 
         GameObject targetObject = null;
 
@@ -62,19 +63,61 @@ public static class EnemyDetection
 
         return targetObject;
     }
-    public static List<GameObject> FindEnemiesOnScreen()
+    public static List<GameObject> FindLargestEnemyGroup(int count)
+    {
+        List<GameObject> gameObjectList = FindEnemiesOnScreen();
+        List<(GameObject obj, int enemyCount) > targetObjectList = new List<(GameObject obj, int enemyCount)>();
+        Collider2D[] colliderArray = new Collider2D[maximumEnemyCount];
+
+        int enemyCount;
+
+        foreach(GameObject go in gameObjectList)
+        {
+            enemyCount = Physics2D.OverlapCircleNonAlloc(go.transform.position, largeastRange, colliderArray);
+
+            targetObjectList.Add((go, enemyCount));
+        }
+
+        targetObjectList.OrderByDescending(tuple => tuple.enemyCount).ToList();
+
+        gameObjectList = new List<GameObject>();
+
+        foreach((GameObject obj, int enemyCount) value in targetObjectList)
+        {
+            gameObjectList.Add(value.obj);
+        }
+
+        return gameObjectList.Take(count).ToList();
+    }
+    public static List<GameObject> FindEnemiesOnScreen(GameObject center = null, float? range = null)
     {
         List<GameObject> resultList = new List<GameObject>();
         Collider2D[] colliderArray;
+        
+        Vector2 radiusPosition;
 
-        float y = Camera.main.orthographicSize * 2;
-        float x = y * Camera.main.aspect;
+        if(center == null)
+        {
+            radiusPosition = Camera.main.transform.position;
+        }
+        else
+        {
+            radiusPosition = center.transform.position;
+        }
 
-        Vector2 cameraSize = new Vector2(x, y);
+        if(range == null)
+        {
+            float y = Camera.main.orthographicSize * 2;
+            float x = y * Camera.main.aspect;
 
-        Vector2 cameraPosition = Camera.main.transform.position;
+            Vector2 radius = Calculate.GetVector(x, y);
 
-        colliderArray = Physics2D.OverlapBoxAll(cameraPosition, cameraSize, 0, LayerMask.GetMask("Monster"));
+            colliderArray = Physics2D.OverlapBoxAll(radiusPosition, radius, 0, LayerMask.GetMask("Monster"));
+        }
+        else
+        {
+            colliderArray = Physics2D.OverlapCircleAll(radiusPosition, (float)range, 0, LayerMask.GetMask("Monster"));
+        }
 
         foreach(Collider2D col in colliderArray)
         {

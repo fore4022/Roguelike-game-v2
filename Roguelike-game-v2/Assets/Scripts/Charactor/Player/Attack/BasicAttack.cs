@@ -14,15 +14,6 @@ public class BasicAttack : MonoBehaviour, IDamage
     }
     private void OnEnable()
     {
-        Vector3 targetPosition = EnemyDetection.FindNearestEnemy().transform.position;
-        Vector3 direction = Calculate.GetDirection(targetPosition);
-        Vector3 localSize = Calculate.GetSize(basicAttackSO.attackSize);
-        Quaternion quaternion = Calculate.GetQuaternion(direction);
-
-        gameObject.transform.position = Calculate.GetAttackPosition(direction, basicAttackSO.attackRange);
-        gameObject.transform.rotation = quaternion;
-        gameObject.transform.localScale = localSize;
-
         coroutine = StartCoroutine(Disable());
     }
     private void OnDisable()
@@ -31,10 +22,6 @@ public class BasicAttack : MonoBehaviour, IDamage
         {
             StopCoroutine(coroutine);
         }
-    }
-    private void Update()
-    {
-        Util.IsInvisible(col);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -46,6 +33,15 @@ public class BasicAttack : MonoBehaviour, IDamage
     private IEnumerator Disable()
     {
         yield return new WaitUntil(() => basicAttackSO != null);
+
+        Vector3 targetPosition = EnemyDetection.FindNearestEnemy().transform.position;
+        Vector3 direction = Calculate.GetDirection(targetPosition);
+        Vector3 localSize = Calculate.GetVector(basicAttackSO.attackSize);
+        Quaternion quaternion = Calculate.GetQuaternion(direction);
+
+        gameObject.transform.position = Calculate.GetAttackPosition(direction, basicAttackSO.attackRange);
+        gameObject.transform.rotation = quaternion;
+        gameObject.transform.localScale = localSize;
 
         yield return new WaitForSeconds(basicAttackSO.duration);
 

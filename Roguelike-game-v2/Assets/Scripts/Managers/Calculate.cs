@@ -23,16 +23,16 @@ public class Calculate
 
         return (targetPosition - position).normalized;
     }
-    public static Quaternion GetQuaternion(Vector3 direction)
-    {
-        return Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
-    }
-    public static Vector3 GetSize(float vec)
+    public static Vector3 GetVector(float vec)
     {
         return new Vector3(vec, vec, 0);
     }
-    public static Vector3 GetSize(float vecX, float vecY)
+    public static Vector3 GetVector(float vecX, float vecY)
     {
         return new Vector3(vecX, vecY, 0);
+    }
+    public static Quaternion GetQuaternion(Vector3 direction)
+    {
+        return Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
     }
 }
