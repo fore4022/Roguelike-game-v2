@@ -39,7 +39,7 @@ public class BasicAttack : MonoBehaviour, IDamage
         Vector3 localSize = Calculate.GetVector(basicAttackSO.attackSize);
         Quaternion quaternion = Calculate.GetQuaternion(direction);
 
-        gameObject.transform.position = Calculate.GetAttackPosition(direction, basicAttackSO.attackRange) + Managers.Game.player.transform.position;
+        gameObject.transform.position = Calculate.GetAttackPosition(direction, basicAttackSO.attackRange);
         gameObject.transform.rotation = quaternion;
         gameObject.transform.localScale = localSize;
 
