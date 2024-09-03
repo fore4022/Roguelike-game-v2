@@ -1,32 +1,80 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 public class UIManager
 {
-    private void Init()
-    {
-        GameObject go = GameObject.Find("UI");
+    private Dictionary<string, GameObject> uiDictionary = new Dictionary<string, GameObject>();
 
-        if(go == null)
+    private Transform Transform
+    {
+        get 
         {
-            go = new GameObject { name = "UI" };
+            GameObject go = GameObject.Find("UI");
+
+            if(go == null)
+            {
+                go = new GameObject { name = "UI" };
+            }
+            Debug.Log(go);
+            return go.transform;
         }
     }
-    public static async void ShowUI()
+    public void ShowUI(string uiName)
     {
-        Util.GetMonoBehaviour().StartCoroutine(CreateUI());
+        if(uiDictionary.TryGetValue(uiName, out GameObject go))
+        {
+            go.SetActive(true);
+        }
+        else
+        {
+            Util.GetMonoBehaviour().StartCoroutine(CreatingUI(uiName, true));
+        }
     }
-    public static void CloseUI()
+    public void HideUI(string uiName)
     {
-
+        if(uiDictionary.TryGetValue(uiName, out GameObject go))
+        {
+            go.SetActive(false);
+        }
     }
-    public static async void LoadUI()
+    public void CreateUI(string uiName)
     {
-        
+        if(!uiDictionary.ContainsKey(uiName))
+        {
+            Util.GetMonoBehaviour().StartCoroutine(CreatingUI(uiName));
+        }
     }
-    public static async IEnumerator CreateUI()
+    public void DestroyUI(string uiName)
     {
+        if(uiDictionary.ContainsKey(uiName))
+        {
+            Object.Destroy(uiDictionary[uiName]);
 
+            uiDictionary.Remove(uiName);
+        }
+    }
+    public async void LoadUI(string path)
+    {
+        uiDictionary.Add(path, await Util.LoadToPath<GameObject>(path));
+    }
+    public IEnumerator CreatingUI(string uiName, bool isActive = false)
+    {
+        LoadUI(uiName);
 
-        yield return new WaitUntil(() => );
+        yield return new WaitUntil(() => uiDictionary.ContainsKey(uiName));
+
+        GameObject go = uiDictionary[uiName];
+
+        if (go == null)
+        {
+            uiDictionary.Remove(uiName);
+        }
+        else
+        {
+            uiDictionary[uiName] = GameObject.Instantiate(uiDictionary[uiName], Transform);
+
+            go.SetActive(isActive);
+        }
     }
 }
