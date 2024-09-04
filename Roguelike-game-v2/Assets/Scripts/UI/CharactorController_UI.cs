@@ -25,7 +25,7 @@ public class CharactorController_UI : MonoBehaviour
     private void SetJoyStick(InputAction.CallbackContext context)
     {
         Vector2 touchPosition = Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>());
-        Vector2 position = enterTouchPosition + Vector2.ClampMagnitude(touchPosition - enterTouchPosition, 100);
+        Vector2 position = enterTouchPosition + Vector2.ClampMagnitude(touchPosition - enterTouchPosition, Mathf.Sqrt(0.5f));
 
         stick.transform.position = Camera.main.WorldToScreenPoint(position);
     }
