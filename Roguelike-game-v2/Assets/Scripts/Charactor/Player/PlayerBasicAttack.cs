@@ -7,6 +7,7 @@ public class PlayerBasicAttack
     private BasicAttack_SO basicAttackSO;
     private GameObject prefab;
 
+    private string basicAttackType = "basicAttackSO";
     private float attackSpeed = 1;
     private int createCount = 40;
 
@@ -33,6 +34,8 @@ public class PlayerBasicAttack
     {
         MonoBehaviour mono = Util.GetMonoBehaviour();
 
+        basicAttackType = attackType;
+
         if(basicAttackCoroutine != null)
         {
             mono.StopCoroutine(basicAttackCoroutine);
@@ -46,6 +49,6 @@ public class PlayerBasicAttack
     }
     private async void LoadBasicAttackSO()
     {
-        basicAttackSO = await Util.LoadToPath<BasicAttack_SO>(Managers.Game.player.basicAttackTypeName);
+        basicAttackSO = await Util.LoadToPath<BasicAttack_SO>(basicAttackType);
     }
 }

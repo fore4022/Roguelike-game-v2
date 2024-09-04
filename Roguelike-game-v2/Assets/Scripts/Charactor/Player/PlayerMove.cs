@@ -8,11 +8,11 @@ public class PlayerMove : IMovable
     private Vector3 touchPosition;
     private Vector3 direction;
 
-    public Vector3 Direction { get { return direction; } }
     public void StartMove()
     {
         touchPosition = GetVector();
-        //controller enable
+
+        Managers.UI.ShowUI("CharactorController");
     }
     public void OnMove()
     {
@@ -22,7 +22,7 @@ public class PlayerMove : IMovable
     }
     public void CancelMove()
     {
-        //controller disable
+        Managers.UI.HideUI("CharactorController");
     }
     public void Init()
     {

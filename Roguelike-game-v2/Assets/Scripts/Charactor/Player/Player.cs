@@ -1,12 +1,10 @@
+using System;
 using UnityEngine;
 public class Player : MonoBehaviour, IDamageReceiver
 {
-    [HideInInspector]
-    public string basicAttackTypeName = "basicAttackSO";
-
+    public PlayerBasicAttack basicAttack;
     public PlayerMove move;
 
-    private PlayerBasicAttack basicAttack;
     private Stat_SO playerStat;
 
     public Stat_SO Stat { get { return playerStat; } }

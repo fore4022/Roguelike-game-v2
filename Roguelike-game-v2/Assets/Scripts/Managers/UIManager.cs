@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 public class UIManager
 {
     private Dictionary<string, GameObject> uiDictionary = new Dictionary<string, GameObject>();
@@ -16,7 +15,7 @@ public class UIManager
             {
                 go = new GameObject { name = "UI" };
             }
-            Debug.Log(go);
+
             return go.transform;
         }
     }

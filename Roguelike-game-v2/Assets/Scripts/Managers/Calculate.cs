@@ -35,4 +35,17 @@ public class Calculate
     {
         return Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
     }
+    public static void IsInvisible(Collider2D targetCollider)
+    {
+        if (!targetCollider.gameObject.activeSelf)
+        {
+            return;
+        }
+
+        Collider2D target = targetCollider;
+
+        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
+
+        if (!GeometryUtility.TestPlanesAABB(planes, target.bounds)) { Object.Destroy(targetCollider.gameObject); }
+    }
 }
