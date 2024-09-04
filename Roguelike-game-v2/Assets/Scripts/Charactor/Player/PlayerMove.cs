@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerMove : IMovable
@@ -5,24 +6,40 @@ public class PlayerMove : IMovable
     private TouchControls touchControl;
 
     private InputAction.CallbackContext context;
-    private Vector3 touchPosition;
-    private Vector3 direction;
+    private Coroutine moving;
+    private Vector2 enterTouchPosition;
+    private Vector2 direction;
+
+    private string controller = "CharactorController";
 
     public void StartMove()
     {
-        touchPosition = GetVector();
+        enterTouchPosition = context.ReadValue<Vector2>();
+        enterTouchPosition = Camera.main.ScreenToWorldPoint(enterTouchPosition);
 
-        Managers.UI.ShowUI("CharactorController");
+        Managers.UI.ShowUI(controller);
     }
     public void OnMove()
     {
-        direction = Calculate.GetDirection(GetVector(), touchPosition);
+        Vector2 touchPosition = context.ReadValue<Vector2>();
+        touchPosition = Camera.main.ScreenToWorldPoint(touchPosition);
 
-        Managers.Game.player.gameObject.transform.position += direction *2 * Time.deltaTime;
+        direction = Calculate.GetDirection(touchPosition, enterTouchPosition);
+
+        if(moving == null)
+        {
+            moving = Util.GetMonoBehaviour().StartCoroutine(Moving());
+        }
     }
     public void CancelMove()
     {
-        Managers.UI.HideUI("CharactorController");
+        direction = Vector2.zero;
+
+        Util.GetMonoBehaviour().StopCoroutine(moving);
+
+        moving = null;
+
+        Managers.UI.HideUI(controller);
     }
     public void Init()
     {
@@ -30,11 +47,18 @@ public class PlayerMove : IMovable
 
         touchControl.Enable();
 
+        touchControl.Touch.TouchPress.started += (ctx =>
+        {
+            StartMove();
+        });
+        touchControl.Touch.TouchPress.canceled += (ctx =>
+        {
+            CancelMove();
+        });
+
         touchControl.Touch.TouchPosition.started += (ctx =>
         {
             context = ctx;
-
-            StartMove();
         });
         touchControl.Touch.TouchPosition.performed += (ctx =>
         {
@@ -42,15 +66,14 @@ public class PlayerMove : IMovable
 
             OnMove();
         });
-        touchControl.Touch.TouchPosition.canceled += (ctx =>
-        {
-            context = ctx;
-
-            CancelMove();
-        });
     }
-    private Vector3 GetVector()
+    private IEnumerator Moving()
     {
-        return context.ReadValue<Vector2>();
+        while(true)
+        {
+            Managers.Game.player.gameObject.transform.position += new Vector3(direction.x, direction.y, 0) * 2 * Time.deltaTime;
+
+            yield return null;
+        }
     }
 }
