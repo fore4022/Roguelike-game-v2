@@ -44,8 +44,6 @@ public class PlayerBasicAttack
     private void Attack()
     {
         prefab = ObjectPool.GetOrActiveObject(basicAttackSO.attackType.name);
-
-        prefab.GetComponent<BasicAttack>().basicAttackSO = basicAttackSO;
     }
     private async void LoadBasicAttack()
     {
