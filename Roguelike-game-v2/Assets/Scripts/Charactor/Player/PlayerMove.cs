@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-public class PlayerMove : IMovable
+public class PlayerMove : IMoveable
 {
     private TouchControls touchControl;
 
@@ -16,6 +16,7 @@ public class PlayerMove : IMovable
     {
         enterTouchPosition = context.ReadValue<Vector2>();
         enterTouchPosition = Camera.main.ScreenToWorldPoint(enterTouchPosition);
+        moving = Util.GetMonoBehaviour().StartCoroutine(Moving());
 
         Managers.UI.ShowUI(controller);
     }
@@ -25,21 +26,16 @@ public class PlayerMove : IMovable
         touchPosition = Camera.main.ScreenToWorldPoint(touchPosition);
 
         direction = Calculate.GetDirection(touchPosition, enterTouchPosition);
-
-        if(moving == null)
-        {
-            moving = Util.GetMonoBehaviour().StartCoroutine(Moving());
-        }
     }
     public void CancelMove()
     {
-        direction = Vector2.zero;
+        Managers.UI.HideUI(controller);
 
         Util.GetMonoBehaviour().StopCoroutine(moving);
 
-        moving = null;
+        direction = Vector2.zero;
 
-        Managers.UI.HideUI(controller);
+        moving = null;
     }
     public void Init()
     {
@@ -56,10 +52,6 @@ public class PlayerMove : IMovable
             CancelMove();
         });
 
-        touchControl.Touch.TouchPosition.started += (ctx =>
-        {
-            context = ctx;
-        });
         touchControl.Touch.TouchPosition.performed += (ctx =>
         {
             context = ctx;
@@ -71,7 +63,7 @@ public class PlayerMove : IMovable
     {
         while(true)
         {
-            Managers.Game.player.gameObject.transform.position += new Vector3(direction.x, direction.y, 0) * 2 * Time.deltaTime;
+            Managers.Game.player.gameObject.transform.position += new Vector3(direction.x, direction.y, 0) * Managers.Game.player.Stat.moveSpeed * Time.deltaTime;
 
             yield return null;
         }

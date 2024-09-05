@@ -4,7 +4,7 @@ public class PlayerBasicAttack
 {
     public Coroutine basicAttackCoroutine;
 
-    private BasicAttack_SO basicAttackSO;
+    private Attack_SO basicAttackSO;
     private GameObject prefab;
 
     private string basicAttackType = "basicAttackSO";
@@ -13,19 +13,17 @@ public class PlayerBasicAttack
 
     public IEnumerator basicAttacking()
     {
-        LoadBasicAttackSO();
+        LoadBasicAttack();
 
         yield return new WaitUntil(() => basicAttackSO != null);
 
         ObjectPool.CreateToPath(basicAttackSO.attackTypePath, createCount);
 
-        yield return new WaitUntil(() => ObjectPool.GetObject(basicAttackSO.attackType.name) != null);
+        yield return new WaitUntil(() => ObjectPool.FindObject(basicAttackSO.attackType.name) != null);
 
         while (true)
         {
-            prefab = ObjectPool.GetOrActiveObject(basicAttackSO.attackType.name);
-
-            Set();
+            Attack();
 
             yield return new WaitForSeconds(attackSpeed);
         }
@@ -43,12 +41,14 @@ public class PlayerBasicAttack
 
         mono.StartCoroutine(basicAttacking());
     }
-    private void Set()
+    private void Attack()
     {
+        prefab = ObjectPool.GetOrActiveObject(basicAttackSO.attackType.name);
+
         prefab.GetComponent<BasicAttack>().basicAttackSO = basicAttackSO;
     }
-    private async void LoadBasicAttackSO()
+    private async void LoadBasicAttack()
     {
-        basicAttackSO = await Util.LoadToPath<BasicAttack_SO>(basicAttackType);
+        basicAttackSO = await Util.LoadToPath<Attack_SO>(basicAttackType);
     }
 }

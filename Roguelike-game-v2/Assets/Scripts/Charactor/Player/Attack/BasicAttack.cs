@@ -2,16 +2,11 @@ using System.Collections;
 using UnityEngine;
 public class BasicAttack : MonoBehaviour, IDamage
 {
-    public BasicAttack_SO basicAttackSO;
+    public Attack_SO basicAttackSO;
 
     private Coroutine coroutine;
-    private Collider2D col;
 
     public float Damage { get { return Managers.Game.player.Stat.damage * basicAttackSO.damageCoefficient; } }
-    private void Start()
-    {
-        col = GetComponent<Collider2D>();
-    }
     private void OnEnable()
     {
         coroutine = StartCoroutine(Disable());
@@ -32,6 +27,10 @@ public class BasicAttack : MonoBehaviour, IDamage
     }
     private IEnumerator Disable()
     {
+        SpriteRenderer render = GetComponent<SpriteRenderer>();
+
+        render.enabled = false;
+
         yield return new WaitUntil(() => basicAttackSO != null);
 
         Vector3 targetPosition = EnemyDetection.FindNearestEnemy().transform.position;
@@ -42,6 +41,8 @@ public class BasicAttack : MonoBehaviour, IDamage
         gameObject.transform.position = Calculate.GetAttackPosition(direction, basicAttackSO.attackRange);
         gameObject.transform.rotation = quaternion;
         gameObject.transform.localScale = localSize;
+
+        render.enabled = true;
 
         yield return new WaitForSeconds(basicAttackSO.duration);
 

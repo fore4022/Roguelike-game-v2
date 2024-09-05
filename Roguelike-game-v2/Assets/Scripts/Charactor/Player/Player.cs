@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 public class Player : MonoBehaviour, IDamageReceiver
 {
@@ -5,6 +6,8 @@ public class Player : MonoBehaviour, IDamageReceiver
     public PlayerMove move;
 
     private Stat_SO playerStat;
+
+    private string statPath = "playerStat";
 
     public Stat_SO Stat { get { return playerStat; } }
     private void Awake()
@@ -16,13 +19,7 @@ public class Player : MonoBehaviour, IDamageReceiver
     {
         Managers.Game.player = this;
 
-        Init();
-
-        basicAttack.basicAttackCoroutine = StartCoroutine(basicAttack.basicAttacking());
-    }
-    private void Init()
-    {
-        move.Init();
+        StartCoroutine(Init());
     }
     public void Die()//
     {
@@ -33,5 +30,18 @@ public class Player : MonoBehaviour, IDamageReceiver
         Stat.health -= damage.Damage;
 
         if(Stat.health < 0) { Die(); }
+    }
+    private IEnumerator Init()
+    {
+        LoadStat();
+
+        yield return new WaitUntil(() => playerStat != null);
+
+        move.Init();
+        basicAttack.basicAttackCoroutine = StartCoroutine(basicAttack.basicAttacking());
+    }
+    private async void LoadStat()
+    {
+        playerStat = await Util.LoadToPath<Stat_SO>(statPath);
     }
 }

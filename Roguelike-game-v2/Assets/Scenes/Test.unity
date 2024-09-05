@@ -573,6 +573,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 144163637875223923, guid: 764cafdf5df1d3f48b7a8904a75a5301, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 455450378523801277, guid: 764cafdf5df1d3f48b7a8904a75a5301, type: 3}
       propertyPath: m_Name
       value: TestMonster

@@ -5,27 +5,34 @@ public class CharactorController_UI : MonoBehaviour
     [SerializeField]
     private GameObject stick;
 
-    private Vector2 enterTouchPosition;
+    private InputAction.CallbackContext? touchStart;
+    private Vector2 enterPosition;
 
     private void Start()
     {
         TouchControls touchControl = InputActions.GetInputAction<TouchControls>();
 
-        touchControl.Touch.TouchPosition.started += (ctx => SetPosition(ctx));
         touchControl.Touch.TouchPosition.performed += (ctx => SetJoyStick(ctx));
-    }
-    private void SetPosition(InputAction.CallbackContext context)
-    {
-        enterTouchPosition = context.ReadValue<Vector2>();
 
-        transform.position = enterTouchPosition;
-
-        enterTouchPosition = Camera.main.ScreenToWorldPoint(enterTouchPosition);
+        touchControl.Touch.TouchPress.canceled += (ctx =>
+        {
+            touchStart = null;
+        });
     }
     private void SetJoyStick(InputAction.CallbackContext context)
     {
         Vector2 touchPosition = Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>());
-        Vector2 position = enterTouchPosition + Vector2.ClampMagnitude(touchPosition - enterTouchPosition, Mathf.Sqrt(0.5f));
+
+        if(touchStart == null)
+        {
+            touchStart = context;
+
+            enterPosition = Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>());
+
+            transform.position = Camera.main.WorldToScreenPoint(enterPosition);
+        }
+
+        Vector2 position = enterPosition + Vector2.ClampMagnitude(touchPosition - enterPosition, Mathf.Sqrt(0.5f));
 
         stick.transform.position = Camera.main.WorldToScreenPoint(position);
     }

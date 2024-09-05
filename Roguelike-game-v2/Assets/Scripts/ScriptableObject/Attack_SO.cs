@@ -1,6 +1,6 @@
 using UnityEngine;
-[CreateAssetMenu(fileName = "BasicAttack_SO", menuName = "Create New BasicAttack_SO")]
-public class BasicAttack_SO : ScriptableObject
+[CreateAssetMenu(fileName = "Attack_SO", menuName = "Create New Attack_SO")]
+public class Attack_SO : ScriptableObject
 {
     public GameObject attackType;
 

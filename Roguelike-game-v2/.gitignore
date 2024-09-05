@@ -14,6 +14,9 @@
 /Assets/FX Pack/
 /Assets/Magic Thunder/
 /Assets/CleanFlatIcon/
+/Assets/Prefabs/
+/Assets/Scenes/
+/Assets/TextMesh Pro/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
@@ -58,6 +61,7 @@ ExportedObj/
 *.pidb.meta
 *.pdb.meta
 *.mdb.meta
+*.cs.meta
 
 # Unity3D generated file on crash reports
 sysinfo.txt
