@@ -12,14 +12,6 @@ public class PlayerMove : IMoveable
 
     private string controller = "CharactorController";
 
-    public void StartMove()
-    {
-        enterTouchPosition = context.ReadValue<Vector2>();
-        enterTouchPosition = Camera.main.ScreenToWorldPoint(enterTouchPosition);
-        moving = Util.GetMonoBehaviour().StartCoroutine(Moving());
-
-        Managers.UI.ShowUI(controller);
-    }
     public void OnMove()
     {
         Vector2 touchPosition = context.ReadValue<Vector2>();
@@ -27,7 +19,15 @@ public class PlayerMove : IMoveable
 
         direction = Calculate.GetDirection(touchPosition, enterTouchPosition);
     }
-    public void CancelMove()
+    private void StartMove()
+    {
+        enterTouchPosition = context.ReadValue<Vector2>();
+        enterTouchPosition = Camera.main.ScreenToWorldPoint(enterTouchPosition);
+        moving = Util.GetMonoBehaviour().StartCoroutine(Moving());
+
+        Managers.UI.ShowUI(controller);
+    }
+    private void CancelMove()
     {
         Managers.UI.HideUI(controller);
 

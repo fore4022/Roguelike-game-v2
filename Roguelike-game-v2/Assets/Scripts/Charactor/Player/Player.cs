@@ -21,15 +21,18 @@ public class Player : MonoBehaviour, IDamageReceiver
 
         StartCoroutine(Init());
     }
-    public void Die()//
+    public void Die()
     {
         Managers.Game.GameEnd();
     }
-    public void GetDamage(IDamage damage)//
+    public void GetDamage(IDamage damage)
     {
         Stat.health -= damage.Damage;
 
-        if(Stat.health < 0) { Die(); }
+        if(Stat.health <= 0)
+        {
+            Die();
+        }
     }
     private IEnumerator Init()
     {
