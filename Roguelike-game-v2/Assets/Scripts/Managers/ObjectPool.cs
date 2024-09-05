@@ -8,6 +8,7 @@ public static class ObjectPool
     public static Dictionary<string, Queue<GameObject>> poolingObjects = new();
 
     public static Transform root;
+    public static string so = "SO";
 
     public static void Init()
     {
@@ -104,11 +105,22 @@ public static class ObjectPool
 
         return queue;
     }
-    public static ScriptableObject GetScriptableObject(string soName)
+    public static async void CreateScriptableObjectToLable(string information)
     {
-        scriptableObjects.TryGetValue(soName, out ScriptableObject so);
+        await CreateInstanceScriptableObject(true, information);
+    }
+    public static async void CreateScriptableObjectToPath(string information)
+    {
+        await CreateInstanceScriptableObject(false, information);
+    }
+    public static T GetScriptableObject<T>(string soName) where T : ScriptableObject
+    {
+        if(scriptableObjects[soName] == null)
+        {
+            return null;
+        }
 
-        return so;
+        return (T)scriptableObjects[soName];
     }
     public static async Task CreateObjects(int count, bool loadType, string information)
     {
@@ -162,12 +174,10 @@ public static class ObjectPool
             }
         }
 
-        await CreateInstanceScriptableObject(loadType, information);
+        await CreateInstanceScriptableObject(loadType, information + so);
     }
     public static async Task CreateInstanceScriptableObject(bool loadType, string information)
     {
-        string so = "SO";
-
         if(loadType)//Load To Lable
         {
             foreach (ScriptableObject sobj in await Util.LoadToLable<ScriptableObject>("so"))
@@ -180,11 +190,11 @@ public static class ObjectPool
         }
         else//Load TO Path
         {
-            if(!scriptableObjects.ContainsKey(information + so))
+            if(!scriptableObjects.ContainsKey(information))
             {
-                ScriptableObject sobj = await Util.LoadToPath<ScriptableObject>(information + so);
+                ScriptableObject sobj = await Util.LoadToPath<ScriptableObject>(information);
 
-                scriptableObjects.Add(information + so, sobj);
+                scriptableObjects.Add(information, sobj);
             }
         }
     }

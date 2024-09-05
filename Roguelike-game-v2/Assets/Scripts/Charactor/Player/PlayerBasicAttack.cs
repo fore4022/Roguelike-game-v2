@@ -13,9 +13,11 @@ public class PlayerBasicAttack
 
     public IEnumerator basicAttacking()
     {
-        LoadBasicAttack();
+        ObjectPool.CreateScriptableObjectToPath(basicAttackType);
 
-        yield return new WaitUntil(() => basicAttackSO != null);
+        yield return new WaitUntil(() => ObjectPool.scriptableObjects.ContainsKey(basicAttackType));
+
+        basicAttackSO = ObjectPool.GetScriptableObject<Attack_SO>(basicAttackType);
 
         ObjectPool.CreateToPath(basicAttackSO.attackTypePath, createCount);
 
@@ -44,9 +46,7 @@ public class PlayerBasicAttack
     private void Attack()
     {
         prefab = ObjectPool.GetOrActiveObject(basicAttackSO.attackType.name);
-    }
-    private async void LoadBasicAttack()
-    {
-        basicAttackSO = await Util.LoadToPath<Attack_SO>(basicAttackType);
+
+        prefab.GetComponent<BasicAttack>().basicAttackSO = basicAttackSO;
     }
 }
