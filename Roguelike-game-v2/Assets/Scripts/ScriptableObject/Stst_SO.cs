@@ -7,5 +7,4 @@ public class Stat_SO : ScriptableObject
     public float attackSpeed;
     public float moveSpeed;
     public float size;
-    public float attackRange;
 }

@@ -12,12 +12,14 @@ public static class ObjectPool
 
     public static void Init()
     {
-        SceneManager.sceneLoaded += ClearPool;
 
         GameObject go = GameObject.Find("@ObjectPool");
 
         if (go == null)
         {
+            SceneManager.sceneLoaded -= ClearPool;
+            SceneManager.sceneLoaded += ClearPool;
+
             go = new GameObject { name = "@ObjectPool" };
 
             root = go.transform;

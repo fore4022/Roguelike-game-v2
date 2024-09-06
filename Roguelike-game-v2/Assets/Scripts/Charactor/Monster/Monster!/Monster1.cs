@@ -11,7 +11,7 @@ public class Monster1 : MonoBehaviour, Monster
     }
     public void OnMove()
     {
-        Vector2 direction = (Managers.Game.player.gameObject.transform.position - transform.position).normalized;
+        Vector2 direction = Calculate.GetDirection(Managers.Game.player.gameObject.transform.position - transform.position);
 
         transform.position += (Vector3)direction * stat.moveSpeed * Time.deltaTime;
     }
