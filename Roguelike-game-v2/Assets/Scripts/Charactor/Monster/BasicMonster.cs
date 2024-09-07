@@ -5,11 +5,11 @@ public class BasicMonster : MonoBehaviour, IDamage, IDamageReceiver, IMoveable
 
     public Stat_SO Stat { get { return stat; } }
     public float Damage { get; }
-    protected virtual void Start()
+    protected void Start()
     {
         //stat load
     }
-    protected virtual void Update()
+    protected void Update()
     {
         OnMove();
     }
@@ -30,7 +30,7 @@ public class BasicMonster : MonoBehaviour, IDamage, IDamageReceiver, IMoveable
             Die();
         }
     }
-    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    protected void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Player"))
         {
