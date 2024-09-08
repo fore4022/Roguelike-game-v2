@@ -1,17 +1,14 @@
+using System.Collections;
 using UnityEngine;
 public class BasicMonster : MonoBehaviour, IDamage, IDamageReceiver, IMoveable
 {
-    protected Stat_SO stat;
+    private Stat_SO stat;
 
     public Stat_SO Stat { get { return stat; } }
     public float Damage { get; }
-    protected void Start()
+    private void Start()
     {
-        //stat load
-    }
-    protected void Update()
-    {
-        OnMove();
+        StartCoroutine(AwaitLoadStat());
     }
     public void OnMove()
     {
@@ -30,11 +27,22 @@ public class BasicMonster : MonoBehaviour, IDamage, IDamageReceiver, IMoveable
             Die();
         }
     }
-    protected void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Player"))
         {
             Managers.Game.player.GetDamage(this);
+        }
+    }
+    private IEnumerator AwaitLoadStat()
+    {
+        yield return new WaitUntil(() => stat != null);
+
+        while(true)
+        {
+            OnMove();
+
+            yield return null;
         }
     }
 }
