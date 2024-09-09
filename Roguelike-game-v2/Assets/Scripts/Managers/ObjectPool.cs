@@ -37,13 +37,17 @@ public static class ObjectPool
             poolingObjects = new();
         }
     }
-    public static async void CreateToLable(string lable, int count)
+    public static async void CreateToLable(string lable, int count = 150)
     {
         await CreateObjects(count, true, lable);
     }
-    public static async void CreateToPath(string path, int count)
+    public static async void CreateToPath(string path, int count = 150)
     {
         await CreateObjects(count, false, path);
+    }
+    public static async void CreateInstance(List<GameObject> prefabs, int count = 150)
+    {
+        await CreateObjects(count, prefabs);
     }
     public static GameObject FindObject(string prefabName)
     {
@@ -120,6 +124,39 @@ public static class ObjectPool
 
         return (T)scriptableObjects[soName];
     }
+    public static async Task CreateObjects(int count, List<GameObject> prefabs)
+    {
+        Queue<GameObject> queue;
+
+        string soName;
+
+        Init();
+
+        foreach(GameObject prefab in prefabs)
+        {
+            soName = prefab.name + so;
+
+            if(poolingObjects.ContainsKey(prefab.name))
+            {
+                queue = poolingObjects[prefab.name];
+
+                foreach (GameObject instance in Instantiate(prefab, count))
+                {
+                    queue.Enqueue(instance);
+                }
+
+                poolingObjects[prefab.name] = queue;
+            }
+            else
+            {
+                queue = Instantiate(prefab, count);
+
+                poolingObjects.Add(prefab.name, queue);
+            }
+
+            await CreateInstanceScriptableObject(soName);
+        }
+    }
     public static async Task CreateObjects(int count, bool loadType, string information)//
     {
         Queue<GameObject> queue;
@@ -150,7 +187,7 @@ public static class ObjectPool
                     poolingObjects.Add(prefab.name, queue);
                 }
 
-                soName = prefab.name + "SO";
+                soName = prefab.name + so;
 
                 await CreateInstanceScriptableObject(soName);
             }
@@ -159,7 +196,7 @@ public static class ObjectPool
         {
             GameObject prefab = await Util.LoadToPath<GameObject>(information);
 
-            soName = prefab.name + "SO";
+            soName = prefab.name + so;
 
             if (poolingObjects.ContainsKey(prefab.name))
             {

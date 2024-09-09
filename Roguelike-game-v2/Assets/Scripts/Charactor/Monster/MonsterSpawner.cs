@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 public class MonsterSpawner : MonoBehaviour
 {
@@ -7,13 +8,13 @@ public class MonsterSpawner : MonoBehaviour
 
     private void Start()
     {
-        
+        StartCoroutine(MonsterSpawning());
     }
     private IEnumerator MonsterSpawning()
     {
+        //load stats
 
-
-        //yield return new WaitUntil();
+        yield return new WaitUntil(() => Managers.Game.StageInformation.monsterList.Count() == monsterStats.Count());
 
         while(true)
         {

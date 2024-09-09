@@ -9,7 +9,6 @@ public class PlayerBasicAttack
 
     private string basicAttackType = "basicAttackSO";
     private float attackSpeed = 1;
-    private int createCount = 40;
 
     public IEnumerator basicAttacking()
     {
@@ -19,7 +18,7 @@ public class PlayerBasicAttack
 
         basicAttackSO = ObjectPool.GetScriptableObject<Attack_SO>(basicAttackType);
 
-        ObjectPool.CreateToPath(basicAttackSO.attackTypePath, createCount);
+        ObjectPool.CreateToPath(basicAttackSO.attackTypePath);
 
         yield return new WaitUntil(() => ObjectPool.FindObject(basicAttackSO.attackType.name) != null);
 
