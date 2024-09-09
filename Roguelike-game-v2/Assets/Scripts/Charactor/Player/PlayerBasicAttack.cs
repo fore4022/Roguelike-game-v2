@@ -13,7 +13,7 @@ public class PlayerBasicAttack
 
     public IEnumerator basicAttacking()
     {
-        ObjectPool.CreateScriptableObjectToPath(basicAttackType);
+        ObjectPool.CreateScriptableObject(basicAttackType);
 
         yield return new WaitUntil(() => ObjectPool.scriptableObjects.ContainsKey(basicAttackType));
 

@@ -107,13 +107,9 @@ public static class ObjectPool
 
         return queue;
     }
-    public static async void CreateScriptableObjectToLable(string information)
+    public static async void CreateScriptableObject(string information)
     {
-        await CreateInstanceScriptableObject(true, information);
-    }
-    public static async void CreateScriptableObjectToPath(string information)
-    {
-        await CreateInstanceScriptableObject(false, information);
+        await CreateInstanceScriptableObject(information);
     }
     public static T GetScriptableObject<T>(string soName) where T : ScriptableObject
     {
@@ -124,9 +120,11 @@ public static class ObjectPool
 
         return (T)scriptableObjects[soName];
     }
-    public static async Task CreateObjects(int count, bool loadType, string information)
+    public static async Task CreateObjects(int count, bool loadType, string information)//
     {
         Queue<GameObject> queue;
+
+        string soName;
 
         Init();
 
@@ -151,11 +149,17 @@ public static class ObjectPool
 
                     poolingObjects.Add(prefab.name, queue);
                 }
+
+                soName = prefab.name + "SO";
+
+                await CreateInstanceScriptableObject(soName);
             }
         }
         else//Load To Path
         {
             GameObject prefab = await Util.LoadToPath<GameObject>(information);
+
+            soName = prefab.name + "SO";
 
             if (poolingObjects.ContainsKey(prefab.name))
             {
@@ -174,30 +178,17 @@ public static class ObjectPool
 
                 poolingObjects.Add(prefab.name, queue);
             }
-        }
 
-        await CreateInstanceScriptableObject(loadType, information + so);
+            await CreateInstanceScriptableObject(soName);
+        }
     }
-    public static async Task CreateInstanceScriptableObject(bool loadType, string information)
+    public static async Task CreateInstanceScriptableObject(string information)
     {
-        if(loadType)//Load To Lable
+        if (!scriptableObjects.ContainsKey(information))
         {
-            foreach (ScriptableObject sobj in await Util.LoadToLable<ScriptableObject>("so"))
-            {
-                if(!scriptableObjects.ContainsKey(sobj.name + so))
-                {
-                    scriptableObjects.Add(sobj.name + so, sobj);
-                }
-            }
-        }
-        else//Load TO Path
-        {
-            if(!scriptableObjects.ContainsKey(information))
-            {
-                ScriptableObject sobj = await Util.LoadToPath<ScriptableObject>(information);
+            ScriptableObject so = await Util.LoadToPath<ScriptableObject>(information);
 
-                scriptableObjects.Add(information, sobj);
-            }
+            scriptableObjects.Add(information, so);
         }
     }
 }
