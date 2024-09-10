@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89584b487538c5b49bba02d51c981659, type: 3}
   m_Name: Stage1
   m_EditorClassIdentifier: 
-  monsterList: []
+  monsterList:
+  - {fileID: 455450378523801277, guid: 764cafdf5df1d3f48b7a8904a75a5301, type: 3}
   background: {fileID: 0}
   spawnDelay: 3
+  difficulty: 0

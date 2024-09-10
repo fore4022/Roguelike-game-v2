@@ -89,6 +89,64 @@ public static class EnemyDetection
 
         return gameObjectList.Take(count).ToList();
     }
+    public static Vector2 GetNearestEnemyPosition(GameObject center = null, float? range = null)
+    {
+        GameObject target = FindNearestEnemy(center, range);
+
+        if (target == null)
+        {
+            return GetRandomVector();
+        }
+        else
+        {
+            return target.transform.position;
+        }
+    }
+    public static Vector2 GetLargestEnemyGroup()
+    {
+        GameObject target = FindLargestEnemyGroup();
+
+        if(target == null)
+        {
+            return GetRandomVector();
+        }
+        else
+        {
+            return target.transform.position;
+        }
+    }
+    public static List<Vector2> GetLargestEnemyGroup(int count)
+    {
+        List<GameObject> targetList = FindLargestEnemyGroup(count);
+        List<Vector2> targetPositionList = new List<Vector2>();
+
+        if(targetList.Count == 0)
+        {
+            for(int i = 0; i < count; i++)
+            {
+                targetPositionList.Add(GetRandomVector());
+            }
+        }
+        else
+        {
+            if(targetList.Count > count)
+            {
+                count -= targetList.Count;
+
+                for(int i = 0; i < count; i++)
+                {
+                    targetPositionList.Add(GetRandomVector());
+                }
+            }
+
+            foreach (GameObject target in targetList)
+            {
+                targetPositionList.Add(target.transform.position);
+            }
+        }
+
+        return targetPositionList;
+    }
     public static List<GameObject> FindEnemiesOnScreen(GameObject center = null, float? range = null)
     {
         List<GameObject> resultList = new List<GameObject>();
@@ -131,5 +189,12 @@ public static class EnemyDetection
         float distance = (go.transform.position - Managers.Game.player.gameObject.transform.position).magnitude;
 
         return result = distance;
+    }
+    public static Vector2 GetRandomVector()
+    {
+        float x = Random.Range(-180, 361);
+        float y = Random.Range(-180, 361);
+
+        return new Vector3(x, y) + Managers.Game.player.gameObject.transform.position;
     }
 }

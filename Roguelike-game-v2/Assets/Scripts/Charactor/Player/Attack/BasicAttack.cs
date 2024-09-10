@@ -33,7 +33,7 @@ public class BasicAttack : MonoBehaviour, IDamage
 
         yield return new WaitUntil(() => basicAttackSO != null);
 
-        Vector3 targetPosition = EnemyDetection.FindNearestEnemy().transform.position;
+        Vector3 targetPosition = EnemyDetection.GetNearestEnemyPosition();
         Vector3 direction = Calculate.GetDirection(targetPosition);
         Vector3 localSize = Calculate.GetVector(basicAttackSO.attackSize);
         Quaternion quaternion = Calculate.GetQuaternion(direction);

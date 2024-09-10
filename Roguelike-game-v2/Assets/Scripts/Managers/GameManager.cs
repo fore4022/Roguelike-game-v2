@@ -15,17 +15,23 @@ public class GameManager
     private string userLevelInfoPath = "userLevelInfoSO";
 
     public StageInformation_SO StageInformation { get { return stageInformation; } }
-    public void DataLoad(StageInformation_SO stageInformation)
+    private void Init()
     {
         GameObject GameSystem = GameObject.Find("GameSystem");
 
-        if(GameSystem == null)
+        if (GameSystem == null)
         {
             GameSystem = new GameObject { name = "GameSystem" };
 
             difficultyScaler = GameSystem.AddComponent<DifficultyScaler>();
             monsterSpawner = GameSystem.AddComponent<MonsterSpawner>();
         }
+
+        skillList = null;
+    }
+    public void DataLoad(StageInformation_SO stageInformation)
+    {
+        Init();
 
         this.stageInformation = stageInformation;
 
@@ -43,19 +49,35 @@ public class GameManager
     }
     private async void LoadSkillList()
     {
+        List<GameObject> skillList = new List<GameObject>();
 
+        UserLevelInfo_SO userLevelInfo = await Util.LoadToPath<UserLevelInfo_SO>(userLevelInfoPath);
+
+        for(int i = 0; i < Managers.UserData.GetUserData.userLevel; i++)
+        {
+            UserLevel_SO userLevel = userLevelInfo.LevelInfo[i];
+
+            foreach (GameObject prefab in userLevel.skillList)
+            {
+                skillList.Add(prefab);
+            }
+        }
+
+        this.skillList = skillList;
     }
     private IEnumerator DataLoading()
     {
         Time.timeScale = 0;
 
-        ObjectPool.CreateInstance(stageInformation.monsterList);
-
         LoadSkillList();
 
-        yield return new WaitUntil(() => skillList != null);
+        ObjectPool.CreateInstance(stageInformation.monsterList);
 
-        int typeCount = StageInformation.monsterList.Count;
+        yield return new WaitUntil(() => skillList != null);
+        
+        ObjectPool.CreateInstance(skillList);
+
+        int typeCount = StageInformation.monsterList.Count + skillList.Count;
 
         yield return new WaitUntil(() => typeCount == ObjectPool.poolingObjects.Count);
 
@@ -64,9 +86,3 @@ public class GameManager
         GameStart();
     }
 }
-/*
-        foreach(UserLevel_SO userLevel in await Util.LoadToPath<UserLevelInfo_SO>(userLevelInfoPath).Result)
-        {
-            
-        } 
- */
