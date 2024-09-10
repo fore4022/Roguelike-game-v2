@@ -2,9 +2,9 @@ using System.Collections;
 using UnityEngine;
 public class BasicMonster : MonoBehaviour, IDamage, IDamageReceiver, IMoveable
 {
-    private Stat_SO stat;
+    private BasicMonsterStat_SO monsterStat;
 
-    public Stat_SO Stat { get { return stat; } }
+    public Define.Stat DefaultStat { get { return monsterStat.stat; } }
     public float Damage { get; }
     private void Start()
     {
@@ -20,9 +20,9 @@ public class BasicMonster : MonoBehaviour, IDamage, IDamageReceiver, IMoveable
     }
     public void GetDamage(IDamage damage)
     {
-        stat.health -= damage.Damage;
+        monsterStat.stat.health -= damage.Damage;
 
-        if(stat.health <= 0)
+        if (monsterStat.stat.health <= 0)
         {
             Die();
         }
@@ -36,7 +36,7 @@ public class BasicMonster : MonoBehaviour, IDamage, IDamageReceiver, IMoveable
     }
     private IEnumerator AwaitLoadStat()
     {
-        yield return new WaitUntil(() => stat != null);
+        yield return new WaitUntil(() => monsterStat != null);
 
         while(true)
         {

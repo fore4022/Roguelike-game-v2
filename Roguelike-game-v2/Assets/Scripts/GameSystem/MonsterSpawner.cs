@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 public class MonsterSpawner : MonoBehaviour
 {
-    private Dictionary<string, Stat_SO> monsterStats = new();
+    private Dictionary<string, PlayerStat_SO> monsterStats = new();
 
     private void Start()
     {

@@ -1,10 +1,6 @@
 using UnityEngine;
-[CreateAssetMenu(fileName = "Stat_SO", menuName ="Create New Stat_SO")]
-public class Stat_SO : ScriptableObject
+[CreateAssetMenu(fileName = "PlayerStat_SO", menuName = "Create New SO/Create New PlayerStat_SO")]
+public class PlayerStat_SO : ScriptableObject
 {
-    public float health;
-    public float damage;
-    public float attackSpeed;
-    public float moveSpeed;
-    public float size;
+    public Define.Stat stat;
 }

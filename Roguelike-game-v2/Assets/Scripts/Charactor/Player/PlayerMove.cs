@@ -65,7 +65,7 @@ public class PlayerMove : IMoveable
     {
         while(true)
         {
-            Managers.Game.player.gameObject.transform.position += new Vector3(direction.x, direction.y, 0) * Managers.Game.player.Stat.moveSpeed * Time.deltaTime;
+            Managers.Game.player.gameObject.transform.position += new Vector3(direction.x, direction.y, 0) * Managers.Game.player.DefaultStat.moveSpeed * Time.deltaTime;
 
             yield return null;
         }

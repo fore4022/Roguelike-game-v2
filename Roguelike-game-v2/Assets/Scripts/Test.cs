@@ -3,7 +3,6 @@ using UnityEngine;
 public class Test : MonoBehaviour
 {
     public StageInformation_SO stageInfromation;
-    public UserLevelInfo_SO userLevelInfo;//
 
     private void Start()
     {

@@ -7,7 +7,7 @@ public class PlayerBasicAttack
     private Attack_SO basicAttackSO;
     private GameObject prefab;
 
-    private string basicAttackType = "basicAttackSO";
+    private string basicAttackType = "BasicAttackSO";
     private float attackSpeed = 1;
 
     public IEnumerator basicAttacking()

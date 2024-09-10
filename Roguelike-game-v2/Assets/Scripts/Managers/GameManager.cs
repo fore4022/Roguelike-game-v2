@@ -12,7 +12,7 @@ public class GameManager
 
     private StageInformation_SO stageInformation;
 
-    private string userLevelInfoPath = "userLevelInfoSO";
+    private string userLevelInfoPath = "UserLevelInfoSO";
 
     public StageInformation_SO StageInformation { get { return stageInformation; } }
     private void Init()
