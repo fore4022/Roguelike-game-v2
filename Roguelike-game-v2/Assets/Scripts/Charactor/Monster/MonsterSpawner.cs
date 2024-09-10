@@ -19,6 +19,7 @@ public class MonsterSpawner : MonoBehaviour
         while(true)
         {
             yield return null;
+
             //yield return new WaitForSeconds();
         }
     }
