@@ -12,11 +12,13 @@ public class BasicMonster : MonoBehaviour, IDamage, IDamageReceiver, IMoveable
     }
     public void OnMove()
     {
+        Vector3 direction = Calculate.GetDirection(Managers.Game.player.gameObject.transform.position, transform.position);
 
+        transform.position += direction * monsterStat.stat.moveSpeed * Time.deltaTime;
     }
     public void Die()
     {
-
+        StartCoroutine(Dieing());
     }
     public void GetDamage(IDamage damage)
     {
@@ -44,5 +46,13 @@ public class BasicMonster : MonoBehaviour, IDamage, IDamageReceiver, IMoveable
 
             yield return null;
         }
+    }
+    private IEnumerator Dieing()
+    {
+        //animation play
+
+        yield return new WaitForSeconds(monsterStat.stat.dieing_AnimationDuration);
+    
+        //
     }
 }

@@ -46,6 +46,6 @@ public class BasicAttack : MonoBehaviour, IDamage
 
         yield return new WaitForSeconds(basicAttackSO.duration);
 
-        ObjectPool.DisableObject(this.gameObject, basicAttackSO.attackType.name);
+        ObjectPool.DisableObject(this.gameObject, );
     }
 }

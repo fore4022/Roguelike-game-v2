@@ -7,5 +7,6 @@ public class Define
         public float attackSpeed;
         public float moveSpeed;
         public float size;
+        public float dieing_AnimationDuration;
     }
 }
