@@ -4,6 +4,7 @@ public class Managers : MonoBehaviour
     public static Managers managers;
 
     public GameManager game = new();
+    public UserDataManager userData = new();
     public UIManager ui = new();
 
     public static Managers Instance
@@ -20,6 +21,13 @@ public class Managers : MonoBehaviour
         get
         {
             return Instance.game;
+        }
+    }
+    public static UserDataManager UserData
+    {
+        get
+        {
+            return Instance.userData;
         }
     }
     public static UIManager UI

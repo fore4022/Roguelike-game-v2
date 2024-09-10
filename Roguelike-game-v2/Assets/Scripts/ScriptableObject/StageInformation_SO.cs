@@ -8,5 +8,6 @@ public class StageInformation_SO : ScriptableObject
     public Sprite background;
 
     public float spawnDelay;
+    public float difficulty;
     //spawn pattern
 }

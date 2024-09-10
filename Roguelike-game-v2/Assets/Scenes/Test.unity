@@ -359,6 +359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageInfromation: {fileID: 11400000, guid: 837eca9bbdd2c224db59c36b52c34b9d, type: 2}
+  userLevelInfo: {fileID: 11400000, guid: 2cbcc3d513208c74790cfecaacae3b69, type: 2}
 --- !u!4 &674916440
 Transform:
   m_ObjectHideFlags: 0
