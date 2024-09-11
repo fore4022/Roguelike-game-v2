@@ -7,7 +7,7 @@ public class PlayerBasicAttack
     private Attack_SO basicAttackSO;
     private GameObject prefab;
 
-    private string basicAttackType = "BasicAttackSO";
+    private string basicAttackType = "BasicAttack";
     private float attackSpeed = 1;
 
     private void Attack()
@@ -31,11 +31,7 @@ public class PlayerBasicAttack
     }
     public IEnumerator basicAttacking()
     {
-        yield return new WaitUntil(() => ObjectPool.scriptableObjects.ContainsKey(basicAttackType));
-
         basicAttackSO = ObjectPool.GetScriptableObject<Attack_SO>(basicAttackType);
-
-        yield return new WaitUntil(() => ObjectPool.FindObject(basicAttackSO.attackType.name) != null);
 
         while (true)
         {

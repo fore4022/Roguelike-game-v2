@@ -10,15 +10,12 @@ public class Player : MonoBehaviour, IDamageReceiver
     private string statPath = "PlayerSO";
 
     public Define.Stat DefaultStat { get { return playerStat.stat; } }
-    private void Awake()
-    {
-        basicAttack = new();
-        move = new();
-    }
     private void Start()
     {
         Managers.Game.player = this;
-
+    }
+    public void Set()
+    {
         StartCoroutine(Init());
     }
     public void Die()
@@ -39,6 +36,9 @@ public class Player : MonoBehaviour, IDamageReceiver
         LoadStat();
 
         yield return new WaitUntil(() => playerStat != null);
+
+        basicAttack = new();
+        move = new();
 
         move.Init();
         basicAttack.basicAttackCoroutine = StartCoroutine(basicAttack.basicAttacking());

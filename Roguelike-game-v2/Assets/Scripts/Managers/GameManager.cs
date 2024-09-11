@@ -83,6 +83,10 @@ public class GameManager
 
         yield return new WaitUntil(() => StageInformation.monsterList.Count == ObjectPool.scriptableObjects.Count);
 
+        yield return new WaitUntil(() => player != null);
+
+        player.Set();
+
         GameStart();
     }
 }

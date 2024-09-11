@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Text;
 public static class ObjectPool
 {
     public static Dictionary<string, ScriptableObject> scriptableObjects = new();
@@ -9,7 +10,7 @@ public static class ObjectPool
 
     public static Transform root;
 
-    public static string so = "SO";
+    public const string so = "SO";
     public const int CreateCount = 50;
 
     public static void Init()
@@ -140,14 +141,10 @@ public static class ObjectPool
     {
         List<GameObject> queue;
 
-        string soName;
-
         Init();
 
         foreach(GameObject prefab in prefabs)
         {
-            soName = prefab.name + so;
-
             if(poolingObjects.ContainsKey(prefab.name))
             {
                 queue = poolingObjects[prefab.name];
@@ -166,14 +163,12 @@ public static class ObjectPool
                 poolingObjects.Add(prefab.name, queue);
             }
 
-            await CreateInstanceScriptableObject(soName);
+            await CreateInstanceScriptableObject(prefab.name);
         }
     }
     public static async Task CreateObjects(int count, bool loadType, string information)//
     {
         List<GameObject> queue;
-
-        string soName;
 
         Init();
 
@@ -199,16 +194,12 @@ public static class ObjectPool
                     poolingObjects.Add(prefab.name, queue);
                 }
 
-                soName = prefab.name + so;
-
-                await CreateInstanceScriptableObject(soName);
+                await CreateInstanceScriptableObject(prefab.name);
             }
         }
         else//Load To Path
         {
             GameObject prefab = await Util.LoadToPath<GameObject>(information);
-
-            soName = prefab.name + so;
 
             if (poolingObjects.ContainsKey(prefab.name))
             {
@@ -228,16 +219,21 @@ public static class ObjectPool
                 poolingObjects.Add(prefab.name, queue);
             }
 
-            await CreateInstanceScriptableObject(soName);
+            await CreateInstanceScriptableObject(prefab.name);
         }
     }
     public static async Task CreateInstanceScriptableObject(string information)
     {
         if (!scriptableObjects.ContainsKey(information))
         {
-            ScriptableObject so = await Util.LoadToPath<ScriptableObject>(information);
+            StringBuilder path = new StringBuilder(information);
+            ScriptableObject scriptableObject;
 
-            scriptableObjects.Add(information, so);
+            path.Append(so);
+
+            scriptableObject = await Util.LoadToPath<ScriptableObject>(path.ToString());
+
+            scriptableObjects.Add(information, scriptableObject);
         }
     }
 }
