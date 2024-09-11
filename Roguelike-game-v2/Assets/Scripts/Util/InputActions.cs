@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 public static class InputActions
 {
     public static List<IInputActionCollection> inputActionList = new List<IInputActionCollection>();
@@ -12,8 +11,8 @@ public static class InputActions
 
         if(inputActionList.Count == 0)
         {
-            SceneManager.sceneLoaded -= ClearActions;
-            SceneManager.sceneLoaded += ClearActions;
+            Managers.Scene.loadScene -= ClearActions;
+            Managers.Scene.loadScene += ClearActions;
         }
 
         if (isInclude)
@@ -37,7 +36,7 @@ public static class InputActions
     {
         GetInputAction<T>().Disable();
     }
-    public static void ClearActions(Scene scene, LoadSceneMode mode)
+    public static void ClearActions()
     {
         inputActionList = new List<IInputActionCollection>();
     }

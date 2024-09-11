@@ -3,9 +3,10 @@ public class Managers : MonoBehaviour
 {
     public static Managers managers;
 
-    public GameManager game = new();
-    public UserDataManager userData = new();
-    public UIManager ui = new();
+    public Game_Manager game = new();
+    public UI_Manager ui = new();
+    public UserData_Manager userData = new();
+    public Scene_Manager scene = new();
 
     public static Managers Instance
     {
@@ -16,25 +17,32 @@ public class Managers : MonoBehaviour
             return managers;
         }
     }
-    public static GameManager Game
+    public static Game_Manager Game
     {
         get
         {
             return Instance.game;
         }
     }
-    public static UserDataManager UserData
+    public static UI_Manager UI
+    {
+        get
+        {
+            return Instance.ui;
+        }
+    }
+    public static UserData_Manager UserData
     {
         get
         {
             return Instance.userData;
         }
     }
-    public static UIManager UI
+    public static Scene_Manager Scene
     {
         get
         {
-            return Instance.ui;
+            return Instance.scene;
         }
     }
     public static void Init()

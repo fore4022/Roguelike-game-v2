@@ -4,7 +4,7 @@ public class UserData
 {
     public int userLevel = 1;
 }
-public class UserDataManager
+public class UserData_Manager
 {
     private UserData userData;
 

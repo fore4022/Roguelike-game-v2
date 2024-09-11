@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class GameManager
+public class Game_Manager
 {
     public List<GameObject> skillList;
 
-    public DifficultyScaler difficultyScaler;
-    public MonsterSpawner monsterSpawner;
+    public DifficultyScaler difficultyScaler;//
+    public MonsterSpawner monsterSpawner;//
 
     public Player player;
 
@@ -51,7 +51,7 @@ public class GameManager
     {
         List<GameObject> skillList = new List<GameObject>();
 
-        UserLevelInfo_SO userLevelInfo = await Util.LoadToPath<UserLevelInfo_SO>(userLevelInfoPath);
+        UserLevelInfo_SO userLevelInfo = await Util.LoadingToPath<UserLevelInfo_SO>(userLevelInfoPath);
 
         for(int i = 0; i < Managers.UserData.GetUserData.userLevel; i++)
         {
@@ -67,6 +67,8 @@ public class GameManager
     }
     private IEnumerator DataLoading()
     {
+        Coroutine coroutine = Util.GetMonoBehaviour().StartCoroutine(Loading());
+
         Time.timeScale = 0;
 
         LoadSkillList();
@@ -85,8 +87,20 @@ public class GameManager
 
         yield return new WaitUntil(() => player != null);
 
+        Util.GetMonoBehaviour().StopCoroutine(coroutine);
+        Debug.Log("Data Load Complete");
+
         player.Set();
 
         GameStart();
+    }
+    private IEnumerator Loading()
+    {
+        while(true)
+        {
+            Debug.Log("Data Loading");
+
+            yield return null;
+        }
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class UIManager
+public class UI_Manager
 {
     private Dictionary<string, GameObject> uiDictionary = new Dictionary<string, GameObject>();
 
@@ -55,7 +55,7 @@ public class UIManager
     }
     public async void LoadUI(string path)
     {
-        uiDictionary.Add(path, await Util.LoadToPath<GameObject>(path));
+        uiDictionary.Add(path, await Util.LoadingToPath<GameObject>(path));
     }
     public IEnumerator CreatingUI(string uiName, bool isActive = false)
     {

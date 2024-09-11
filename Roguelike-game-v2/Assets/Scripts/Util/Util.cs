@@ -3,10 +3,19 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceProviders;
 using Object = UnityEngine.Object;
 public class Util
 {
-    public static async Task<T> LoadToPath<T>(string path) where T : Object
+    public static async Task<AsyncOperationHandle<SceneInstance>> LoadingScene(string path)
+    {
+        AsyncOperationHandle<SceneInstance> handle = Addressables.LoadSceneAsync(path);
+
+        await handle.Task;
+
+        return handle;
+    }
+    public static async Task<T> LoadingToPath<T>(string path) where T : Object
     {
         AsyncOperationHandle<T> handle = Addressables.LoadAssetAsync<T>(path);
 
@@ -18,7 +27,7 @@ public class Util
 
         return result;
     }
-    public static async Task<IList<T>> LoadToLable<T>(string lable) where T : Object
+    public static async Task<IList<T>> LoadingToLable<T>(string lable) where T : Object
     {
         AsyncOperationHandle<IList<T>> handle = Addressables.LoadAssetsAsync<T>(lable, null);
 

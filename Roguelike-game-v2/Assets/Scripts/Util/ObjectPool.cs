@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Text;
 public static class ObjectPool
 {
@@ -20,15 +19,15 @@ public static class ObjectPool
 
         if (go == null)
         {
-            SceneManager.sceneLoaded -= ClearPool;
-            SceneManager.sceneLoaded += ClearPool;
+            Managers.Scene.loadScene -= ClearPool;
+            Managers.Scene.loadScene += ClearPool;
 
             go = new GameObject { name = "@ObjectPool" };
 
             root = go.transform;
         }
     }
-    public static void ClearPool(Scene scene, LoadSceneMode mode)
+    public static void ClearPool()
     {
         if(scriptableObjects != null)
         {
@@ -174,7 +173,7 @@ public static class ObjectPool
 
         if (loadType)//Load To Lable
         {
-            foreach (GameObject prefab in await Util.LoadToLable<GameObject>(information))
+            foreach (GameObject prefab in await Util.LoadingToLable<GameObject>(information))
             {
                 if (poolingObjects.ContainsKey(prefab.name))
                 {
@@ -199,7 +198,7 @@ public static class ObjectPool
         }
         else//Load To Path
         {
-            GameObject prefab = await Util.LoadToPath<GameObject>(information);
+            GameObject prefab = await Util.LoadingToPath<GameObject>(information);
 
             if (poolingObjects.ContainsKey(prefab.name))
             {
@@ -231,7 +230,7 @@ public static class ObjectPool
 
             path.Append(so);
 
-            scriptableObject = await Util.LoadToPath<ScriptableObject>(path.ToString());
+            scriptableObject = await Util.LoadingToPath<ScriptableObject>(path.ToString());
 
             scriptableObjects.Add(information, scriptableObject);
         }

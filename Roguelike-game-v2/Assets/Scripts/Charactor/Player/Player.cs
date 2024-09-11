@@ -45,6 +45,6 @@ public class Player : MonoBehaviour, IDamageReceiver
     }
     private async void LoadStat()
     {
-        playerStat = await Util.LoadToPath<PlayerStat_SO>(statPath);
+        playerStat = await Util.LoadingToPath<PlayerStat_SO>(statPath);
     }
 }
