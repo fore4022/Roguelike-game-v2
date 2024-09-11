@@ -52,7 +52,7 @@ public class BasicMonster : MonoBehaviour, IDamage, IDamageReceiver, IMoveable
         //animation play
 
         yield return new WaitForSeconds(monsterStat.stat.dieing_AnimationDuration);
-    
-        //
+
+        //ObjectPool.DisableObject(this.gameObject);
     }
 }

@@ -10,6 +10,25 @@ public class PlayerBasicAttack
     private string basicAttackType = "BasicAttackSO";
     private float attackSpeed = 1;
 
+    private void Attack()
+    {
+        prefab = ObjectPool.GetOrActiveObject(basicAttackSO.attackType.name);
+
+        prefab.GetComponent<BasicAttack>().basicAttackSO = basicAttackSO;
+    }
+    public void ChangeBasicAttack(string attackType)
+    {
+        MonoBehaviour mono = Util.GetMonoBehaviour();
+
+        basicAttackType = attackType;
+
+        if (basicAttackCoroutine != null)
+        {
+            mono.StopCoroutine(basicAttackCoroutine);
+        }
+
+        mono.StartCoroutine(basicAttacking());
+    }
     public IEnumerator basicAttacking()
     {
         yield return new WaitUntil(() => ObjectPool.scriptableObjects.ContainsKey(basicAttackType));
@@ -24,24 +43,5 @@ public class PlayerBasicAttack
 
             yield return new WaitForSeconds(attackSpeed);
         }
-    }
-    public void ChangeBasicAttack(string attackType)
-    {
-        MonoBehaviour mono = Util.GetMonoBehaviour();
-
-        basicAttackType = attackType;
-
-        if(basicAttackCoroutine != null)
-        {
-            mono.StopCoroutine(basicAttackCoroutine);
-        }
-
-        mono.StartCoroutine(basicAttacking());
-    }
-    private void Attack()
-    {
-        prefab = ObjectPool.GetOrActiveObject(basicAttackSO.attackType.name);
-
-        prefab.GetComponent<BasicAttack>().basicAttackSO = basicAttackSO;
     }
 }

@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 public static class ObjectPool
 {
     public static Dictionary<string, ScriptableObject> scriptableObjects = new();
-    public static Dictionary<string, Queue<GameObject>> poolingObjects = new();
+    public static Dictionary<string, List<GameObject>> poolingObjects = new();
 
     public static Transform root;
+
     public static string so = "SO";
+    public const int CreateCount = 50;
 
     public static void Init()
     {
@@ -37,15 +39,15 @@ public static class ObjectPool
             poolingObjects = new();
         }
     }
-    public static async void CreateToLable(string lable, int count = 150)
+    public static async void CreateToLable(string lable, int count = CreateCount)
     {
         await CreateObjects(count, true, lable);
     }
-    public static async void CreateToPath(string path, int count = 150)
+    public static async void CreateToPath(string path, int count = CreateCount)
     {
         await CreateObjects(count, false, path);
     }
-    public static async void CreateInstance(List<GameObject> prefabs, int count = 150)
+    public static async void CreateInstance(List<GameObject> prefabs, int count = CreateCount)
     {
         await CreateObjects(count, prefabs);
     }
@@ -56,7 +58,7 @@ public static class ObjectPool
             return null;
         }
 
-        GameObject prefab = poolingObjects[prefabName].Peek();
+        GameObject prefab = GetActiveGameObject(prefabName);
 
         return prefab;
     }
@@ -67,7 +69,7 @@ public static class ObjectPool
             return null;
         }
 
-        GameObject prefab = poolingObjects[prefabName].Dequeue();
+        GameObject prefab = GetActiveGameObject(prefabName);
 
         return prefab;
     }
@@ -78,7 +80,7 @@ public static class ObjectPool
             return null;
         }
 
-        GameObject prefab = poolingObjects[prefabName].Dequeue();
+        GameObject prefab = GetActiveGameObject(prefabName);
 
         prefab.SetActive(true);
 
@@ -86,19 +88,17 @@ public static class ObjectPool
     }
     public static void ActiveObject(string prefabName)
     {
-        GameObject prefab = poolingObjects[prefabName].Dequeue();
+        GameObject prefab = GetActiveGameObject(prefabName);
 
         prefab.SetActive(true);
     }
-    public static void DisableObject(GameObject prefab, string prefabName)
+    public static void DisableObject(GameObject prefab)
     {
         prefab.SetActive(false);
-
-        poolingObjects[prefabName].Enqueue(prefab);
     }
-    public static Queue<GameObject> Instantiate(GameObject prefab, int count)
+    public static List<GameObject> Instantiate(GameObject prefab, int count)
     {
-        Queue<GameObject> queue = new();
+        List<GameObject> queue = new();
 
         for (int i = 0; i < count; i++)
         {
@@ -106,10 +106,22 @@ public static class ObjectPool
 
             instance.SetActive(false);
 
-            queue.Enqueue(instance);
+            queue.Add(instance);
         }
 
         return queue;
+    }
+    public static GameObject GetActiveGameObject(string prefabName)
+    {
+        foreach(GameObject instance in poolingObjects[prefabName])
+        {
+            if(!instance.activeSelf)
+            {
+                return instance;
+            }
+        }
+
+        return null;
     }
     public static async void CreateScriptableObject(string information)
     {
@@ -126,7 +138,7 @@ public static class ObjectPool
     }
     public static async Task CreateObjects(int count, List<GameObject> prefabs)
     {
-        Queue<GameObject> queue;
+        List<GameObject> queue;
 
         string soName;
 
@@ -142,7 +154,7 @@ public static class ObjectPool
 
                 foreach (GameObject instance in Instantiate(prefab, count))
                 {
-                    queue.Enqueue(instance);
+                    queue.Add(instance);
                 }
 
                 poolingObjects[prefab.name] = queue;
@@ -159,7 +171,7 @@ public static class ObjectPool
     }
     public static async Task CreateObjects(int count, bool loadType, string information)//
     {
-        Queue<GameObject> queue;
+        List<GameObject> queue;
 
         string soName;
 
@@ -175,7 +187,7 @@ public static class ObjectPool
 
                     foreach (GameObject instance in Instantiate(prefab, count))
                     {
-                        queue.Enqueue(instance);
+                        queue.Add(instance);
                     }
 
                     poolingObjects[prefab.name] = queue;
@@ -204,7 +216,7 @@ public static class ObjectPool
 
                 foreach (GameObject instance in Instantiate(prefab, count))
                 {
-                    queue.Enqueue(instance);
+                    queue.Add(instance);
                 }
 
                 poolingObjects[prefab.name] = queue;
