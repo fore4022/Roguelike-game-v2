@@ -39,5 +39,7 @@ public static class InputActions
     public static void ClearActions()
     {
         inputActionList = new List<IInputActionCollection>();
+
+        Managers.Scene.loadScene -= ClearActions;
     }
 }

@@ -38,6 +38,8 @@ public static class ObjectPool
         {
             poolingObjects = new();
         }
+
+        Managers.Scene.loadScene -= ClearPool;
     }
     public static async void CreateToLable(string lable, int count = CreateCount)
     {

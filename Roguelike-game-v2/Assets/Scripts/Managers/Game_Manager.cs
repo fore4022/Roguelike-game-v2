@@ -13,29 +13,14 @@ public class Game_Manager
     private StageInformation_SO stageInformation;
 
     private string userLevelInfoPath = "UserLevelInfoSO";
+    private string inGameScene = "InGame";
 
     public StageInformation_SO StageInformation { get { return stageInformation; } }
-    private void Init()
-    {
-        GameObject GameSystem = GameObject.Find("GameSystem");
-
-        if (GameSystem == null)
-        {
-            GameSystem = new GameObject { name = "GameSystem" };
-
-            difficultyScaler = GameSystem.AddComponent<DifficultyScaler>();
-            monsterSpawner = GameSystem.AddComponent<MonsterSpawner>();
-        }
-
-        skillList = null;
-    }
     public void DataLoad(StageInformation_SO stageInformation)
     {
-        Init();
+        Util.GetMonoBehaviour().StartCoroutine(Init());
 
         this.stageInformation = stageInformation;
-
-        Util.GetMonoBehaviour().StartCoroutine(DataLoading());
     }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
     public void GameStart()
     {
@@ -65,9 +50,29 @@ public class Game_Manager
 
         this.skillList = skillList;
     }
+    private IEnumerator Init()
+    {
+        Managers.Scene.LoadScene(inGameScene);
+
+        yield return new WaitUntil(() => inGameScene == Managers.Scene.scenePath);
+
+        GameObject GameSystem = GameObject.Find("GameSystem");
+
+        if (GameSystem == null)
+        {
+            GameSystem = new GameObject { name = "GameSystem" };
+
+            difficultyScaler = GameSystem.AddComponent<DifficultyScaler>();
+            monsterSpawner = GameSystem.AddComponent<MonsterSpawner>();
+        }
+
+        skillList = null;
+
+        Util.GetMonoBehaviour().StartCoroutine(DataLoading());
+    }
     private IEnumerator DataLoading()
     {
-        Coroutine coroutine = Util.GetMonoBehaviour().StartCoroutine(Loading());
+        Coroutine coroutine = Util.GetMonoBehaviour().StartCoroutine(Loading());//
 
         Time.timeScale = 0;
 
@@ -87,14 +92,14 @@ public class Game_Manager
 
         yield return new WaitUntil(() => player != null);
 
-        Util.GetMonoBehaviour().StopCoroutine(coroutine);
-        Debug.Log("Data Load Complete");
+        Util.GetMonoBehaviour().StopCoroutine(coroutine);//
+        Debug.Log("Data Load Complete");//
 
         player.Set();
 
         GameStart();
     }
-    private IEnumerator Loading()
+    private IEnumerator Loading()//
     {
         while(true)
         {

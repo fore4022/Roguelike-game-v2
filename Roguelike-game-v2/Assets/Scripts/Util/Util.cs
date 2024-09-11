@@ -52,6 +52,8 @@ public class Util
             go = new GameObject("@MonoScript");
 
             go.AddComponent<MonoScript>();
+
+            Object.DontDestroyOnLoad(go);
         }
 
         return go.GetComponent<MonoScript>();

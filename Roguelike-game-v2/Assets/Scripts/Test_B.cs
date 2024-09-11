@@ -1,18 +1,26 @@
 using System.Collections;
-using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
-
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceProviders;
 public class Test_B : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public StageInformation_SO stageInfromation;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        StartCoroutine(DataLoadTest());
+
+        Managers.UserData.UserDataLoad();
+    }
+    private IEnumerator DataLoadTest()
+    {
+        while (Managers.UserData.GetUserData == null)
+        {
+            yield return null;
+        }
+
+        Managers.Game.DataLoad(stageInfromation);
     }
 }

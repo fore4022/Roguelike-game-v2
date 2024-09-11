@@ -8,6 +8,8 @@ public class Scene_Manager
 
     public Action loadScene = null;
 
+    public string scenePath;
+
     public async void LoadScene(string path)
     {
         if(sceneHandle != null)
@@ -18,5 +20,7 @@ public class Scene_Manager
         }
 
         sceneHandle = await Util.LoadingScene(path);
+
+        scenePath = path;
     }
 }
