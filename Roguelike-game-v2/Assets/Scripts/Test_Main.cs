@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
-public class Test_B : MonoBehaviour
+public class Test_Main : MonoBehaviour
 {
     public StageInformation_SO stageInfromation;
 

@@ -1,25 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 public class MonsterSpawner : MonoBehaviour
 {
-    private Dictionary<string, PlayerStat_SO> monsterStats = new();
+    private Dictionary<string, ScriptableObject> monsterStats = new();
 
     private void Start()
+    {
+        Managers.Game.monsterSpawner = this;
+    }
+    public void Set()
     {
         StartCoroutine(MonsterSpawning());
     }
     private IEnumerator MonsterSpawning()
     {
-        //load stats
+        foreach (GameObject monster in Managers.Game.StageInformation.monsterList)
+        {
+            string soName = monster.name;
 
-        yield return new WaitUntil(() => Managers.Game.StageInformation.monsterList.Count() == monsterStats.Count());
+            monsterStats.Add(soName, ObjectPool.GetScriptableObject<ScriptableObject>(soName));
+        }
 
         while(true)
         {
-            yield return null;
-
             //yield return new WaitForSeconds();
         }
     }
