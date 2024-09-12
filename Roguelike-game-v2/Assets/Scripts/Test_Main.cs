@@ -1,12 +1,8 @@
 using System.Collections;
-using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.ResourceManagement.ResourceProviders;
 public class Test_Main : MonoBehaviour
 {
-    public StageInformation_SO stageInfromation;
+    public StageInformation_SO stageInfromation;//
 
     private void Start()
     {

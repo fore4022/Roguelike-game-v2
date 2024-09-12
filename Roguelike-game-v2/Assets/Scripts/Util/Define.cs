@@ -9,4 +9,9 @@ public class Define
         public float size;
         public float dieing_AnimationDuration;
     }
+    public class StageDifficultyInfo
+    {
+        public float spawnDelay;
+        public float difficulty;
+    }
 }

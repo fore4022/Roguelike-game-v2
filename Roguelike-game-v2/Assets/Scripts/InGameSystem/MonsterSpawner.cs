@@ -24,7 +24,7 @@ public class MonsterSpawner : MonoBehaviour
 
         while(true)
         {
-            //yield return new WaitForSeconds();
+            yield return new WaitForSeconds(Managers.Game.difficultyScaler.SpawnDelay);
         }
     }
 }

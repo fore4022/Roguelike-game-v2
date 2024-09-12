@@ -5,8 +5,10 @@ public class Game_Manager
 {
     public List<GameObject> skillList;
 
-    public DifficultyScaler difficultyScaler;
+    public DifficultyScaler difficultyScaler = new();
+
     public MonsterSpawner monsterSpawner;
+    public InGameTimer inGameTimer;
     public Player player;
 
     private StageInformation_SO stageInformation;
@@ -23,9 +25,9 @@ public class Game_Manager
     }
     private void Set()
     {
-        player.Set();
-        difficultyScaler.Set();
         monsterSpawner.Set();
+        inGameTimer.Set();
+        player.Set();
     }
     public void GameStart()
     {
@@ -67,8 +69,8 @@ public class Game_Manager
         {
             GameSystem = new GameObject { name = "GameSystem" };
 
-            difficultyScaler = GameSystem.AddComponent<DifficultyScaler>();
             monsterSpawner = GameSystem.AddComponent<MonsterSpawner>();
+            inGameTimer = GameSystem.AddComponent<InGameTimer>();
         }
 
         skillList = null;

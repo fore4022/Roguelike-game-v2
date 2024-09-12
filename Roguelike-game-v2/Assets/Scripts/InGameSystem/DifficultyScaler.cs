@@ -1,12 +1,6 @@
-using UnityEngine;
-public class DifficultyScaler : MonoBehaviour
+public class DifficultyScaler
 {
-    private void Start()
-    {
-        Managers.Game.difficultyScaler = this;
-    }
-    public void Set()
-    {
-
-    }
+    public float SpawnDelay { get { return 0; } }
+    public float SpawnPatternDelay { get { return 0; } }
+    public float IncreaseStat { get { return 0; } }
 }
