@@ -7,6 +7,7 @@ public class StageInformation_SO : ScriptableObject
 
     public Sprite background;
 
-    public Define.StageDifficultyInfo difficultyInfo;
-    //spawn pattern
+    public string stageName;
+    public float difficulty;
+    public float spawnDelay;
 }

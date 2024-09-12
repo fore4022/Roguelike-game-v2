@@ -6,7 +6,7 @@ public class BasicAttack : MonoBehaviour, IDamage
 
     private Coroutine coroutine;
 
-    public float Damage { get { return Managers.Game.player.DefaultStat.damage * basicAttackSO.damageCoefficient; } }
+    public float Damage { get { return Managers.Game.player.PlayerStat.damage * basicAttackSO.damageCoefficient; } }
     private void OnEnable()
     {
         coroutine = StartCoroutine(Disable());

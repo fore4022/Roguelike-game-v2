@@ -4,7 +4,7 @@ public class BasicMonster : MonoBehaviour, IDamage, IDamageReceiver, IMoveable
 {
     private BasicMonsterStat_SO monsterStat;
 
-    public Define.Stat DefaultStat { get { return monsterStat.stat; } }
+    public BasicMonsterStat_SO MonsterStat { get { return monsterStat; } }
     public float Damage { get; }
     private void Start()
     {
@@ -14,7 +14,7 @@ public class BasicMonster : MonoBehaviour, IDamage, IDamageReceiver, IMoveable
     {
         Vector3 direction = Calculate.GetDirection(Managers.Game.player.gameObject.transform.position, transform.position);
 
-        transform.position += direction * monsterStat.stat.moveSpeed * Time.deltaTime;
+        transform.position += direction * monsterStat.moveSpeed * Time.deltaTime;
     }
     public void Die()
     {
@@ -22,9 +22,9 @@ public class BasicMonster : MonoBehaviour, IDamage, IDamageReceiver, IMoveable
     }
     public void GetDamage(IDamage damage)
     {
-        monsterStat.stat.health -= damage.Damage;
+        monsterStat.health -= damage.Damage;
 
-        if (monsterStat.stat.health <= 0)
+        if (monsterStat.health <= 0)
         {
             Die();
         }
@@ -51,7 +51,7 @@ public class BasicMonster : MonoBehaviour, IDamage, IDamageReceiver, IMoveable
     {
         //animation play
 
-        yield return new WaitForSeconds(monsterStat.stat.dieing_AnimationDuration);
+        yield return new WaitForSeconds(monsterStat.dieing_AnimationDuration);
 
         //ObjectPool.DisableObject(this.gameObject);
     }

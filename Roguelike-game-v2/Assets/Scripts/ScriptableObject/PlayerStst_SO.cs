@@ -1,6 +1,6 @@
 using UnityEngine;
-[CreateAssetMenu(fileName = "BasicMonsterStat", menuName = "Create New SO/Create New BasicMonsterStat_SO")]
-public class BasicMonsterStat_SO : ScriptableObject
+[CreateAssetMenu(fileName = "PlayerStat_SO", menuName = "Create New SO/Create New PlayerStat_SO")]
+public class PlayerStat_SO : ScriptableObject
 {
     public float health;
     public float damage;

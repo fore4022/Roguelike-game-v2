@@ -9,7 +9,7 @@ public class Player : MonoBehaviour, IDamageReceiver
 
     private string statPath = "PlayerSO";
 
-    public Define.Stat DefaultStat { get { return playerStat.stat; } }
+    public PlayerStat_SO PlayerStat { get { return playerStat; } }
     private void Start()
     {
         Managers.Game.player = this;
@@ -24,9 +24,9 @@ public class Player : MonoBehaviour, IDamageReceiver
     }
     public void GetDamage(IDamage damage)
     {
-        DefaultStat.health -= damage.Damage;
+        PlayerStat.health -= damage.Damage;
 
-        if(DefaultStat.health <= 0)
+        if(PlayerStat.health <= 0)
         {
             Die();
         }
