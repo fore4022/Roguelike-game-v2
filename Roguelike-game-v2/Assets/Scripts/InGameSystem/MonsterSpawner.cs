@@ -5,6 +5,8 @@ public class MonsterSpawner : MonoBehaviour
 {
     private Dictionary<string, ScriptableObject> monsterStats = new();
 
+    private const float minimumSpawnDelay = 0.075f;
+
     private void Start()
     {
         Managers.Game.monsterSpawner = this;
@@ -22,9 +24,13 @@ public class MonsterSpawner : MonoBehaviour
             monsterStats.Add(soName, ObjectPool.GetScriptableObject<ScriptableObject>(soName));
         }
 
+        float spawnDelay;
+
         while(true)
         {
-            yield return new WaitForSeconds(Managers.Game.difficultyScaler.SpawnDelay);
+            spawnDelay = Mathf.Max(Managers.Game.difficultyScaler.SpawnDelay, minimumSpawnDelay);
+
+            yield return new WaitForSeconds(spawnDelay);
         }
     }
 }

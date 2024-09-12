@@ -4,17 +4,13 @@ public class PlayerBasicAttack
 {
     public Coroutine basicAttackCoroutine;
 
-    private Attack_SO basicAttackSO;
-    private GameObject prefab;
-
     private string basicAttackType = "BasicAttack";
+
     private float attackSpeed = 1;
 
     private void Attack()
     {
-        prefab = ObjectPool.GetOrActiveObject(basicAttackSO.attackType.name);
-
-        prefab.GetComponent<BasicAttack>().basicAttackSO = basicAttackSO;
+        GameObject prefab = ObjectPool.GetOrActiveObject(basicAttackType);
     }
     public void ChangeBasicAttack(string attackType)
     {
@@ -31,8 +27,6 @@ public class PlayerBasicAttack
     }
     public IEnumerator basicAttacking()
     {
-        basicAttackSO = ObjectPool.GetScriptableObject<Attack_SO>(basicAttackType);
-
         while (true)
         {
             Attack();

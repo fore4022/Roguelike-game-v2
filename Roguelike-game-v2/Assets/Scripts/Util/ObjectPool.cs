@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using System.Text;
+using System.Linq;
+
 public static class ObjectPool
 {
     public static Dictionary<string, ScriptableObject> scriptableObjects = new();
@@ -10,6 +12,7 @@ public static class ObjectPool
     public static Transform root;
 
     public const string so = "SO";
+    public const string clone = "(Clone)";
     public const int CreateCount = 50;
 
     public static void Init()
@@ -125,22 +128,22 @@ public static class ObjectPool
 
         return null;
     }
+    public static T GetScriptableObject<T>(string type) where T : ScriptableObject
+    {
+        if(scriptableObjects.ContainsKey(type))
+        {
+            return (T)scriptableObjects[type];
+        }
+
+        return null;
+    }
     public static async void CreateScriptableObject(string information)
     {
         await CreateInstanceScriptableObject(information);
     }
-    public static T GetScriptableObject<T>(string soName) where T : ScriptableObject
-    {
-        if(scriptableObjects[soName] == null)
-        {
-            return null;
-        }
-
-        return (T)scriptableObjects[soName];
-    }
     public static async Task CreateObjects(int count, List<GameObject> prefabs)
     {
-        List<GameObject> queue;
+        List<GameObject> list;
 
         Init();
 
@@ -148,20 +151,20 @@ public static class ObjectPool
         {
             if(poolingObjects.ContainsKey(prefab.name))
             {
-                queue = poolingObjects[prefab.name];
+                list = poolingObjects[prefab.name];
 
                 foreach (GameObject instance in Instantiate(prefab, count))
                 {
-                    queue.Add(instance);
+                    list.Add(instance);
                 }
 
-                poolingObjects[prefab.name] = queue;
+                poolingObjects[prefab.name] = list;
             }
             else
             {
-                queue = Instantiate(prefab, count);
+                list = Instantiate(prefab, count);
 
-                poolingObjects.Add(prefab.name, queue);
+                poolingObjects.Add(prefab.name, list);
             }
 
             await CreateInstanceScriptableObject(prefab.name);
@@ -169,7 +172,7 @@ public static class ObjectPool
     }
     public static async Task CreateObjects(int count, bool loadType, string information)//
     {
-        List<GameObject> queue;
+        List<GameObject> list;
 
         Init();
 
@@ -179,20 +182,20 @@ public static class ObjectPool
             {
                 if (poolingObjects.ContainsKey(prefab.name))
                 {
-                    queue = poolingObjects[prefab.name];
+                    list = poolingObjects[prefab.name];
 
                     foreach (GameObject instance in Instantiate(prefab, count))
                     {
-                        queue.Add(instance);
+                        list.Add(instance);
                     }
 
-                    poolingObjects[prefab.name] = queue;
+                    poolingObjects[prefab.name] = list;
                 }
                 else
                 {
-                    queue = Instantiate(prefab, count);
+                    list = Instantiate(prefab, count);
 
-                    poolingObjects.Add(prefab.name, queue);
+                    poolingObjects.Add(prefab.name, list);
                 }
 
                 await CreateInstanceScriptableObject(prefab.name);
@@ -204,20 +207,20 @@ public static class ObjectPool
 
             if (poolingObjects.ContainsKey(prefab.name))
             {
-                queue = poolingObjects[prefab.name];
+                list = poolingObjects[prefab.name];
 
                 foreach (GameObject instance in Instantiate(prefab, count))
                 {
-                    queue.Add(instance);
+                    list.Add(instance);
                 }
 
-                poolingObjects[prefab.name] = queue;
+                poolingObjects[prefab.name] = list;
             }
             else
             {
-                queue = Instantiate(prefab, count);
+                list = Instantiate(prefab, count);
 
-                poolingObjects.Add(prefab.name, queue);
+                poolingObjects.Add(prefab.name, list);
             }
 
             await CreateInstanceScriptableObject(prefab.name);
@@ -228,13 +231,14 @@ public static class ObjectPool
         if (!scriptableObjects.ContainsKey(information))
         {
             StringBuilder path = new StringBuilder(information);
-            ScriptableObject scriptableObject;
+            StringBuilder key = new StringBuilder(information);
 
             path.Append(so);
+            key.Append(clone);
 
-            scriptableObject = await Util.LoadingToPath<ScriptableObject>(path.ToString());
+            ScriptableObject scriptableObject = await Util.LoadingToPath<ScriptableObject>(path.ToString());
 
-            scriptableObjects.Add(information, scriptableObject);
+            scriptableObjects.Add(key.ToString(), scriptableObject);
         }
     }
 }

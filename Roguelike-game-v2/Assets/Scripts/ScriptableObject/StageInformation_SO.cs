@@ -10,4 +10,5 @@ public class StageInformation_SO : ScriptableObject
     public string stageName;
     public float difficulty;
     public float spawnDelay;
+    public float statScale;
 }

@@ -15,5 +15,7 @@ MonoBehaviour:
   monsterList:
   - {fileID: 455450378523801277, guid: 764cafdf5df1d3f48b7a8904a75a5301, type: 3}
   background: {fileID: 0}
-  spawnDelay: 3
+  stageName: 
   difficulty: 0
+  spawnDelay: 3
+  statScale: 1

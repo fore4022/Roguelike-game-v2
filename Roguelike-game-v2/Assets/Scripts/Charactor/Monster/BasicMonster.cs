@@ -4,11 +4,10 @@ public class BasicMonster : MonoBehaviour, IDamage, IDamageReceiver, IMoveable
 {
     private BasicMonsterStat_SO monsterStat;
 
-    public BasicMonsterStat_SO MonsterStat { get { return monsterStat; } }
-    public float Damage { get; }
+    public float Damage { get { return monsterStat.damage; } }
     private void Start()
     {
-        StartCoroutine(AwaitLoadStat());
+        StartCoroutine(Moving());
     }
     public void OnMove()
     {
@@ -36,7 +35,7 @@ public class BasicMonster : MonoBehaviour, IDamage, IDamageReceiver, IMoveable
             Managers.Game.player.GetDamage(this);
         }
     }
-    private IEnumerator AwaitLoadStat()
+    private IEnumerator Moving()
     {
         yield return new WaitUntil(() => monsterStat != null);
 
@@ -53,6 +52,6 @@ public class BasicMonster : MonoBehaviour, IDamage, IDamageReceiver, IMoveable
 
         yield return new WaitForSeconds(monsterStat.dieing_AnimationDuration);
 
-        //ObjectPool.DisableObject(this.gameObject);
+        ObjectPool.DisableObject(this.gameObject);
     }
 }
