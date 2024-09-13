@@ -4,6 +4,7 @@ using UnityEngine;
 public class MonsterSpawner : MonoBehaviour
 {
     private Dictionary<string, ScriptableObject> monsterStats = new();
+    private List<GameObject> monsterList;
 
     private const float minimumSpawnDelay = 0.075f;
 
@@ -15,26 +16,38 @@ public class MonsterSpawner : MonoBehaviour
     {
         StartCoroutine(MonsterSpawning());
     }
+    private void LoadInformation()
+    {
+        Managers.Game.GetMonsterList(ref monsterList);
+
+        foreach (GameObject monster in monsterList)
+        {
+            string soName = monster.name;
+
+            monsterStats.Add(soName, ObjectPool.GetScriptableObject<ScriptableObject>(soName));
+        }
+    }
+    private void SpawnMonster()
+    {
+        //ObjectPool.GetObject();
+    }
+    private Vector2 GetSpawnPoint()
+    {
+        return new();
+    }
     private IEnumerator MonsterSpawning()
     {
-        //foreach (SpawnInformation_SO info in Managers.Game.StageInformation.spawnInformationList)
-        //{
-        //    string soName = info.monster.name;
+        LoadInformation();
 
-        //    monsterStats.Add(soName, ObjectPool.GetScriptableObject<ScriptableObject>(soName));
-        //}
+        float spawnDelay;
 
-        //float spawnDelay;
+        while (true)
+        {
+            spawnDelay = Mathf.Max(Managers.Game.difficultyScaler.SpawnDelay, minimumSpawnDelay);
 
-        //while(true)
-        //{
-        //    spawnDelay = Mathf.Max(Managers.Game.difficultyScaler.SpawnDelay, minimumSpawnDelay);
+            SpawnMonster();
 
-        //    //ObjectPool.GetOrActiveObject();
-
-        //    yield return new WaitForSeconds(spawnDelay);
-        //}
-
-        yield return null;
+            yield return new WaitForSeconds(spawnDelay);
+        }
     }
 }

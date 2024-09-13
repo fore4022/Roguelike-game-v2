@@ -5,8 +5,7 @@ public class Game_Manager
 {
     public List<GameObject> skillList;
 
-    public DifficultyScaler difficultyScaler = new();
-
+    public DifficultyScaler difficultyScaler;
     public MonsterSpawner monsterSpawner;
     public InGameTimer inGameTimer;
     public Player player;
@@ -25,6 +24,8 @@ public class Game_Manager
     }
     private void Set()
     {
+        difficultyScaler = new();
+
         monsterSpawner.Set();
         inGameTimer.Set();
         player.Set();
@@ -57,6 +58,20 @@ public class Game_Manager
 
         this.skillList = skillList;
     }
+    public void GetMonsterList(ref List<GameObject> monsterList)
+    {
+        List<GameObject> list = new();
+
+        foreach (SpawnInformation_SO so in stageInformation.spawnInformationList)
+        {
+            foreach (SpawnInformation info in so.spawnInformation)
+            {
+                list.Add(info.monster);
+            }
+        }
+
+        monsterList = list;
+    }
     private IEnumerator Init()
     {
         Managers.Scene.LoadScene(inGameScene);
@@ -81,24 +96,17 @@ public class Game_Manager
     {
         List<GameObject> monsterList = new();
 
-        Coroutine coroutine = Util.GetMonoBehaviour().StartCoroutine(Loading());//
+        Coroutine coroutine = Util.GetMonoBehaviour().StartCoroutine(Loading());
 
         Time.timeScale = 0;
 
         LoadSkillList();
+        GetMonsterList(ref monsterList);
 
-        foreach (SpawnInformation_SO info in stageInformation.spawnInformationList)
-        {
-            //monsterList.Add(info.monster);
-        }
-
-        yield return null;
-
-        ObjectPool.CreateInstance(monsterList);
-
-        yield return new WaitUntil(() => skillList != null);
+        yield return new WaitUntil(() => (skillList != null) && (monsterList != null));
 
         ObjectPool.CreateInstance(skillList);
+        ObjectPool.CreateInstance(monsterList);
 
         int typeCount = monsterList.Count + skillList.Count;
 
@@ -108,7 +116,7 @@ public class Game_Manager
 
         yield return new WaitUntil(() => player != null);
 
-        Util.GetMonoBehaviour().StopCoroutine(coroutine);//
+        Util.GetMonoBehaviour().StopCoroutine(coroutine);
         Debug.Log("Data Load Complete");//
 
         Set();
