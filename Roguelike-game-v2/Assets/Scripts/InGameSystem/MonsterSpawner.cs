@@ -17,20 +17,24 @@ public class MonsterSpawner : MonoBehaviour
     }
     private IEnumerator MonsterSpawning()
     {
-        foreach (GameObject monster in Managers.Game.StageInformation.monsterList)
-        {
-            string soName = monster.name;
+        //foreach (SpawnInformation_SO info in Managers.Game.StageInformation.spawnInformationList)
+        //{
+        //    string soName = info.monster.name;
 
-            monsterStats.Add(soName, ObjectPool.GetScriptableObject<ScriptableObject>(soName));
-        }
+        //    monsterStats.Add(soName, ObjectPool.GetScriptableObject<ScriptableObject>(soName));
+        //}
 
-        float spawnDelay;
+        //float spawnDelay;
 
-        while(true)
-        {
-            spawnDelay = Mathf.Max(Managers.Game.difficultyScaler.SpawnDelay, minimumSpawnDelay);
+        //while(true)
+        //{
+        //    spawnDelay = Mathf.Max(Managers.Game.difficultyScaler.SpawnDelay, minimumSpawnDelay);
 
-            yield return new WaitForSeconds(spawnDelay);
-        }
+        //    //ObjectPool.GetOrActiveObject();
+
+        //    yield return new WaitForSeconds(spawnDelay);
+        //}
+
+        yield return null;
     }
 }

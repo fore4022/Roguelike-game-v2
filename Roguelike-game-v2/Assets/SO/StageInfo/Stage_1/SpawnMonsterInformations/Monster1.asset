@@ -9,13 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89584b487538c5b49bba02d51c981659, type: 3}
-  m_Name: Stage1
+  m_Script: {fileID: 11500000, guid: c43d9ab8d436d3a45adf42fb3b0961a8, type: 3}
+  m_Name: Monster1
   m_EditorClassIdentifier: 
-  monsterList:
-  - {fileID: 455450378523801277, guid: 764cafdf5df1d3f48b7a8904a75a5301, type: 3}
-  background: {fileID: 0}
-  stageName: 
-  difficulty: 0
-  spawnDelay: 3
-  statScale: 1
+  monster: {fileID: 0}
+  spawnProbability: 0
+  duration: 1

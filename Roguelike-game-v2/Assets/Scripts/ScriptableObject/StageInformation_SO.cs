@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "StageInformation", menuName = "Create New SO/Create New StageInformation_SO")]
 public class StageInformation_SO : ScriptableObject
 {
-    public List<GameObject> monsterList;
+    public List<SpawnInformation_SO> spawnInformationList;
 
     public Sprite background;
 

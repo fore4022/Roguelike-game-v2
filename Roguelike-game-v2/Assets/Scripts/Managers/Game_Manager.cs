@@ -79,19 +79,28 @@ public class Game_Manager
     }
     private IEnumerator DataLoading()
     {
+        List<GameObject> monsterList = new();
+
         Coroutine coroutine = Util.GetMonoBehaviour().StartCoroutine(Loading());//
 
         Time.timeScale = 0;
 
         LoadSkillList();
 
-        ObjectPool.CreateInstance(stageInformation.monsterList);
+        foreach (SpawnInformation_SO info in stageInformation.spawnInformationList)
+        {
+            //monsterList.Add(info.monster);
+        }
+
+        yield return null;
+
+        ObjectPool.CreateInstance(monsterList);
 
         yield return new WaitUntil(() => skillList != null);
-        
+
         ObjectPool.CreateInstance(skillList);
 
-        int typeCount = StageInformation.monsterList.Count + skillList.Count;
+        int typeCount = monsterList.Count + skillList.Count;
 
         yield return new WaitUntil(() => typeCount == ObjectPool.poolingObjects.Count);
 
