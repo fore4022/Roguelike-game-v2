@@ -6,25 +6,32 @@ public class InGameTimer : MonoBehaviour
 
     private float elapsedTime;
 
-    public float GetSeconds
+    public int GetSeconds
     {
         get 
         {
-            return elapsedTime % 60;
+            return (int)elapsedTime % 60;
         }
     }
-    public float GetMinutes 
+    public int GetMinutes 
     {
         get
         {
             return GetSeconds % 60;
         }
     }
-    public float GetHours
+    public int GetHours
     {
         get
         {
             return GetMinutes / 60;
+        }
+    }
+    public int GetTotalMinutes
+    {
+        get
+        {
+            return GetMinutes + GetHours * 60;
         }
     }
     private void Start()

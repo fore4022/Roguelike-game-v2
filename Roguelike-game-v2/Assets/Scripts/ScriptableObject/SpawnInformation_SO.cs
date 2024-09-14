@@ -12,5 +12,5 @@ public class SpawnInformation_SO : ScriptableObject
 {
     public List<SpawnInformation> spawnInformation;
 
-    public int duration;
+    public int duration;//minute
 }

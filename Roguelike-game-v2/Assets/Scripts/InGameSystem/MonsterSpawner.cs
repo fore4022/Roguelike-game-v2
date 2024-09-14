@@ -4,7 +4,6 @@ using UnityEngine;
 public class MonsterSpawner : MonoBehaviour
 {
     private Dictionary<string, ScriptableObject> monsterStats = new();
-    private List<GameObject> monsterList;
 
     private const float minimumSpawnDelay = 0.075f;
 
@@ -18,6 +17,8 @@ public class MonsterSpawner : MonoBehaviour
     }
     private void LoadInformation()
     {
+        List<GameObject> monsterList = new();
+
         Managers.Game.GetMonsterList(ref monsterList);
 
         foreach (GameObject monster in monsterList)
@@ -29,6 +30,8 @@ public class MonsterSpawner : MonoBehaviour
     }
     private void SpawnMonster()
     {
+        //Instantiate()
+
         //ObjectPool.GetObject();
     }
     private Vector2 GetSpawnPoint()
@@ -39,15 +42,37 @@ public class MonsterSpawner : MonoBehaviour
     {
         LoadInformation();
 
-        float spawnDelay;
+        float spawnDelay = 0;
+        int totalMinutes;
 
-        while (true)
+        while(true)
+        {
+            totalMinutes = Managers.Game.inGameTimer.GetTotalMinutes;
+
+            foreach (SpawnInformation_SO spawnInformation in Managers.Game.StageInformation.spawnInformationList)
+            {
+                while(totalMinutes + spawnInformation.duration == Managers.Game.inGameTimer.GetTotalMinutes)
+                {
+                    if(spawnDelay != minimumSpawnDelay)
+                    {
+                        spawnDelay = Mathf.Max(Managers.Game.difficultyScaler.SpawnDelay, minimumSpawnDelay);
+                    }
+
+                    yield return new WaitForSeconds(spawnDelay);
+                }
+            }
+        }
+    }
+}
+/*
+
+while (true)
         {
             spawnDelay = Mathf.Max(Managers.Game.difficultyScaler.SpawnDelay, minimumSpawnDelay);
 
             SpawnMonster();
 
             yield return new WaitForSeconds(spawnDelay);
-        }
-    }
-}
+        } 
+
+*/
