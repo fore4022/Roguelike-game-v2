@@ -5,7 +5,12 @@ public class MonsterSpawner : MonoBehaviour
 {
     private Dictionary<string, ScriptableObject> monsterStats = new();
 
+    private Coroutine monsterSpawn = null;
+
     private const float minimumSpawnDelay = 0.075f;
+
+    private float spawnDelay = 0;
+    private int totalMinutes;
 
     private void Start()
     {
@@ -13,7 +18,7 @@ public class MonsterSpawner : MonoBehaviour
     }
     public void Set()
     {
-        StartCoroutine(MonsterSpawning());
+        StartCoroutine(SpawningSystem());
     }
     private void LoadInformation()
     {
@@ -28,22 +33,18 @@ public class MonsterSpawner : MonoBehaviour
             monsterStats.Add(soName, ObjectPool.GetScriptableObject<ScriptableObject>(soName));
         }
     }
-    private void SpawnMonster()
+    private void MonsterSpawn()
     {
-        //Instantiate()
-
-        //ObjectPool.GetObject();
+        Instantiate();
     }
     private Vector2 GetSpawnPoint()
     {
         return new();
     }
-    private IEnumerator MonsterSpawning()
+    private IEnumerator SpawningSystem()
     {
         LoadInformation();
 
-        float spawnDelay = 0;
-        int totalMinutes;
 
         while(true)
         {
@@ -51,28 +52,26 @@ public class MonsterSpawner : MonoBehaviour
 
             foreach (SpawnInformation_SO spawnInformation in Managers.Game.StageInformation.spawnInformationList)
             {
-                while(totalMinutes + spawnInformation.duration == Managers.Game.inGameTimer.GetTotalMinutes)
-                {
-                    if(spawnDelay != minimumSpawnDelay)
-                    {
-                        spawnDelay = Mathf.Max(Managers.Game.difficultyScaler.SpawnDelay, minimumSpawnDelay);
-                    }
+                monsterSpawn = StartCoroutine(MonsterSpawning(spawnInformation));
 
-                    yield return new WaitForSeconds(spawnDelay);
-                }
+                yield return new WaitUntil(() => monsterSpawn == null);
             }
         }
     }
-}
-/*
-
-while (true)
+    private IEnumerator MonsterSpawning(SpawnInformation_SO spawnInformation)
+    {
+        while (totalMinutes + spawnInformation.duration == Managers.Game.inGameTimer.GetTotalMinutes)
         {
-            spawnDelay = Mathf.Max(Managers.Game.difficultyScaler.SpawnDelay, minimumSpawnDelay);
+            if (spawnDelay != minimumSpawnDelay)
+            {
+                spawnDelay = Mathf.Max(Managers.Game.difficultyScaler.SpawnDelay, minimumSpawnDelay);
+            }
 
-            SpawnMonster();
+            MonsterSpawn();
 
             yield return new WaitForSeconds(spawnDelay);
-        } 
+        }
 
-*/
+        monsterSpawn = null;
+    }
+}
