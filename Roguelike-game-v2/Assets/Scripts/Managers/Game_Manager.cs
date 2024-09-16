@@ -64,7 +64,7 @@ public class Game_Manager
 
         foreach (SpawnInformation_SO so in stageInformation.spawnInformationList)
         {
-            foreach (SpawnInformation info in so.spawnInformation)
+            foreach (SpawnInformation info in so.monsterInformation)
             {
                 list.Add(info.monster);
             }

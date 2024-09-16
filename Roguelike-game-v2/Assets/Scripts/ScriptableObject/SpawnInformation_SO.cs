@@ -10,7 +10,7 @@ public class SpawnInformation
 [CreateAssetMenu(fileName = "SpawnInformation", menuName = "Create New SO/Create New SpawnInformation_SO")]
 public class SpawnInformation_SO : ScriptableObject
 {
-    public List<SpawnInformation> spawnInformation;
+    public List<SpawnInformation> monsterInformation;
 
     public int duration;//minute
 }

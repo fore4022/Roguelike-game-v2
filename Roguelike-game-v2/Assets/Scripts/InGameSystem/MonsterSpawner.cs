@@ -9,6 +9,8 @@ public class MonsterSpawner : MonoBehaviour
 
     private const float minimumSpawnDelay = 0.075f;
 
+    private int[] monsterSpawnProbabilityArray = new int[100];
+
     private float spawnDelay = 0;
     private int totalMinutes;
 
@@ -33,9 +35,12 @@ public class MonsterSpawner : MonoBehaviour
             monsterStats.Add(soName, ObjectPool.GetScriptableObject<ScriptableObject>(soName));
         }
     }
-    private void MonsterSpawn()
+    private void MonsterSpawn(SpawnInformation_SO spawnInformation)
     {
-        Instantiate();
+        int randomValue = Random.Range(0, 100);
+        int arrayIndexValue = monsterSpawnProbabilityArray[randomValue];
+
+        Instantiate(spawnInformation.monsterInformation[arrayIndexValue].monster);
     }
     private Vector2 GetSpawnPoint()
     {
@@ -60,6 +65,23 @@ public class MonsterSpawner : MonoBehaviour
     }
     private IEnumerator MonsterSpawning(SpawnInformation_SO spawnInformation)
     {
+        int monsterTypeCount = spawnInformation.monsterInformation.Count;
+
+        if (spawnInformation.monsterInformation.Count != 1)
+        {
+            int index = 0;
+
+            foreach(SpawnInformation spawnInfo in spawnInformation.monsterInformation)
+            {
+                for(int i = 0; i < spawnInfo.spawnProbability; i++)
+                {
+                    monsterSpawnProbabilityArray[i] = index;
+                }
+
+                index++;
+            }
+        }
+
         while (totalMinutes + spawnInformation.duration == Managers.Game.inGameTimer.GetTotalMinutes)
         {
             if (spawnDelay != minimumSpawnDelay)
@@ -67,7 +89,7 @@ public class MonsterSpawner : MonoBehaviour
                 spawnDelay = Mathf.Max(Managers.Game.difficultyScaler.SpawnDelay, minimumSpawnDelay);
             }
 
-            MonsterSpawn();
+            MonsterSpawn(spawnInformation);
 
             yield return new WaitForSeconds(spawnDelay);
         }
