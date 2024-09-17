@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-public class BasicMonster : MonoBehaviour, IDamage, IDamageReceiver, IMoveable
+public class BasicMonster : Monster//MonoBehaviour, IDamage, IDamageReceiver, IMoveable
 {
     private BasicMonsterStat_SO monsterStat;
 

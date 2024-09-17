@@ -12,7 +12,6 @@ public class MonsterSpawner : MonoBehaviour
     private int[] monsterSpawnProbabilityArray = new int[100];
 
     private float spawnDelay = 0;
-    private int totalMinutes;
 
     private void Start()
     {
@@ -40,21 +39,16 @@ public class MonsterSpawner : MonoBehaviour
         int randomValue = Random.Range(0, 100);
         int arrayIndexValue = monsterSpawnProbabilityArray[randomValue];
 
-        Instantiate(spawnInformation.monsterInformation[arrayIndexValue].monster);
-    }
-    private Vector2 GetSpawnPoint()
-    {
-        return new();
+        Debug.Log("asdf");
+
+        ObjectPool.ActiveObject(spawnInformation.monsterInformation[arrayIndexValue].monster.name);
     }
     private IEnumerator SpawningSystem()
     {
         LoadInformation();
 
-
         while(true)
         {
-            totalMinutes = Managers.Game.inGameTimer.GetTotalMinutes;
-
             foreach (SpawnInformation_SO spawnInformation in Managers.Game.StageInformation.spawnInformationList)
             {
                 monsterSpawn = StartCoroutine(MonsterSpawning(spawnInformation));
@@ -66,6 +60,7 @@ public class MonsterSpawner : MonoBehaviour
     private IEnumerator MonsterSpawning(SpawnInformation_SO spawnInformation)
     {
         int monsterTypeCount = spawnInformation.monsterInformation.Count;
+        int totalMinutes = Managers.Game.inGameTimer.GetTotalMinutes;
 
         if (spawnInformation.monsterInformation.Count != 1)
         {
@@ -82,7 +77,7 @@ public class MonsterSpawner : MonoBehaviour
             }
         }
 
-        while (totalMinutes + spawnInformation.duration == Managers.Game.inGameTimer.GetTotalMinutes)
+        while (totalMinutes + spawnInformation.duration <= Managers.Game.inGameTimer.GetTotalMinutes)
         {
             if (spawnDelay != minimumSpawnDelay)
             {
@@ -93,6 +88,8 @@ public class MonsterSpawner : MonoBehaviour
 
             yield return new WaitForSeconds(spawnDelay);
         }
+
+        Debug.Log(totalMinutes + spawnInformation.duration == Managers.Game.inGameTimer.GetTotalMinutes);
 
         monsterSpawn = null;
     }
