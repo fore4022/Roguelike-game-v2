@@ -1,10 +1,14 @@
 using System.Collections;
 using UnityEngine;
-public class BasicMonster : Monster//MonoBehaviour, IDamage, IDamageReceiver, IMoveable
+public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 {
     private BasicMonsterStat_SO monsterStat;
 
     public float Damage { get { return monsterStat.damage; } }
+    protected override void SetPosition()
+    {
+
+    }
     private void Start()
     {
         StartCoroutine(Moving());

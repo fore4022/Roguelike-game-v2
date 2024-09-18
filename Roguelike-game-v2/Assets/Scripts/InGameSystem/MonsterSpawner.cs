@@ -39,7 +39,7 @@ public class MonsterSpawner : MonoBehaviour
         int randomValue = Random.Range(0, 100);
         int arrayIndexValue = monsterSpawnProbabilityArray[randomValue];
 
-        Debug.Log("asdf");
+        Debug.Log(spawnInformation.monsterInformation[arrayIndexValue].monster.name);
 
         ObjectPool.ActiveObject(spawnInformation.monsterInformation[arrayIndexValue].monster.name);
     }
@@ -77,19 +77,27 @@ public class MonsterSpawner : MonoBehaviour
             }
         }
 
-        while (totalMinutes + spawnInformation.duration <= Managers.Game.inGameTimer.GetTotalMinutes)
+        Debug.Log("spawn start");
+
+        while (Managers.Game.inGameTimer.GetTotalMinutes < totalMinutes + spawnInformation.duration)
         {
             if (spawnDelay != minimumSpawnDelay)
             {
                 spawnDelay = Mathf.Max(Managers.Game.difficultyScaler.SpawnDelay, minimumSpawnDelay);
+
+                Debug.Log(spawnDelay);
             }
 
             MonsterSpawn(spawnInformation);
 
+            Debug.Log("a");
+
             yield return new WaitForSeconds(spawnDelay);
+
+            Debug.Log("b");
         }
 
-        Debug.Log(totalMinutes + spawnInformation.duration == Managers.Game.inGameTimer.GetTotalMinutes);
+        Debug.Log("spawn end");
 
         monsterSpawn = null;
     }
