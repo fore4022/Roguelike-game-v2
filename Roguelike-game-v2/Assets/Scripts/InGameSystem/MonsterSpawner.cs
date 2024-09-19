@@ -25,7 +25,7 @@ public class MonsterSpawner : MonoBehaviour
     {
         List<GameObject> monsterList = new();
 
-        Managers.Game.GetMonsterList(ref monsterList);
+        InGameDataLoad.GetMonsterList(ref monsterList);
 
         foreach (GameObject monster in monsterList)
         {
