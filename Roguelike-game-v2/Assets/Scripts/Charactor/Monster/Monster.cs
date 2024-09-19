@@ -1,5 +1,23 @@
 using UnityEngine;
-public abstract class Monster : MonoBehaviour
+public class Monster : MonoBehaviour
 {
-    protected abstract void SetPosition();
+    protected virtual void OnEnable()
+    {
+        SetPosition();
+    }
+    protected virtual void SetPosition()
+    {
+        //
+    }
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!collision.gameObject.CompareTag("Player"))
+        {
+            return;
+        }
+    }
+    protected virtual void Die()
+    {
+
+    }
 }

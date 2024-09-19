@@ -2,15 +2,13 @@ using System.Collections;
 using UnityEngine;
 public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 {
-    private BasicMonsterStat_SO monsterStat;
+    private BasicMonsterStat_SO monsterStat;//
 
     public float Damage { get { return monsterStat.damage; } }
-    protected override void SetPosition()
+    protected override void OnEnable()
     {
+        base.OnEnable();
 
-    }
-    private void Start()
-    {
         StartCoroutine(Moving());
     }
     public void OnMove()
@@ -19,9 +17,17 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 
         transform.position += direction * monsterStat.moveSpeed * Time.deltaTime;
     }
-    public void Die()
+    protected override void Die()
     {
+        base.Die();
+
         StartCoroutine(Dieing());
+    }
+    protected override void OnCollisionEnter2D(Collision2D collision)
+    {
+        base.OnCollisionEnter2D(collision);
+
+        Managers.Game.player.GetDamage(this);
     }
     public void GetDamage(IDamage damage)
     {
@@ -30,13 +36,6 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
         if (monsterStat.health <= 0)
         {
             Die();
-        }
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.gameObject.CompareTag("Player"))
-        {
-            Managers.Game.player.GetDamage(this);
         }
     }
     private IEnumerator Moving()

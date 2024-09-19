@@ -20,7 +20,7 @@ public abstract class BasicAttack : MonoBehaviour, IDamage
     }
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent<IDamageReceiver>(out IDamageReceiver damageReceiver))
+        if(collision.TryGetComponent(out IDamageReceiver damageReceiver))
         {
             damageReceiver.GetDamage(this);
         }
@@ -40,6 +40,9 @@ public abstract class BasicAttack : MonoBehaviour, IDamage
         render.enabled = true;
 
         yield return new WaitForSeconds(basicAttackSO.duration);
+
+        basicAttackSO = null;
+        coroutine = null;
 
         ObjectPool.DisableObject(this.gameObject);
     }
