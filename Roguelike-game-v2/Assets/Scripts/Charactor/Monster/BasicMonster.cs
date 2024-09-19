@@ -2,24 +2,30 @@ using System.Collections;
 using UnityEngine;
 public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 {
-    private BasicMonsterStat_SO Stat { get { return (BasicMonsterStat_SO)stat; } }
-    public float Damage { get { return Stat.damage; } }
+    private Coroutine moveCoroutine = null;
+
+    private BasicMonsterStat_SO stat;
+    public float DamageAmount { get { return stat.damage; } }
     protected override void OnEnable()
     {
         base.OnEnable();
 
-        StartCoroutine(Moving());
+        moveCoroutine = StartCoroutine(Moving());
     }
     public void OnMove()
     {
         Vector3 direction = Calculate.GetDirection(Managers.Game.player.gameObject.transform.position, transform.position);
 
-        transform.position += direction * Stat.moveSpeed * Time.deltaTime;
+        transform.position += direction * stat.moveSpeed * Time.deltaTime;
     }
     private void Die()
     {
-        stat = null;
+        rigid.simulated = false;
+
+        rigid = null;
         render = null;
+
+        StopCoroutine(moveCoroutine);
 
         StartCoroutine(Dieing());
     }
@@ -31,9 +37,9 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     }
     public void GetDamage(IDamage damage)
     {
-        Stat.health -= damage.Damage;
+        stat.health -= damage.DamageAmount;
 
-        if(Stat.health <= 0)
+        if(stat.health <= 0)
         {
             Die();
         }
@@ -42,7 +48,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     {
         stat = ObjectPool.GetScriptableObject<BasicMonsterStat_SO>(name);
 
-        yield return new WaitUntil(() => Stat != null);
+        yield return new WaitUntil(() => stat != null);
 
         while(true)
         {
@@ -55,7 +61,9 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     {
         //animation play
 
-        yield return new WaitForSeconds(Stat.dieing_AnimationDuration);
+        yield return new WaitForSeconds(stat.dieing_AnimationDuration);
+
+        stat = null;
 
         ObjectPool.DisableObject(this.gameObject);
     }

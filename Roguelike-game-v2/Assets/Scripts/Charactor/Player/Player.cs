@@ -24,7 +24,7 @@ public class Player : MonoBehaviour, IDamageReceiver
     }
     public void GetDamage(IDamage damage)
     {
-        PlayerStat.health -= damage.Damage;
+        PlayerStat.health -= damage.DamageAmount;
 
         if(PlayerStat.health <= 0)
         {

@@ -1,4 +1,4 @@
 public interface IDamage
 {
-    public float Damage { get; }
+    public float DamageAmount { get; }
 }

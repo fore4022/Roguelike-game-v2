@@ -1,16 +1,20 @@
 using UnityEngine;
 public class Monster : MonoBehaviour
 {
-    protected ScriptableObject stat;
+    protected Rigidbody2D rigid;
     protected SpriteRenderer render;
 
     protected const float spawnRadius = 5;
 
     protected virtual void OnEnable()
     {
+        rigid = GetComponent<Rigidbody2D>();
         render = GetComponent<SpriteRenderer>();
 
+        rigid.simulated = true;
         render.enabled = false;
+
+        Debug.Log(render);
 
         SetPosition();
     }
