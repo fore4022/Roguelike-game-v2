@@ -7,6 +7,8 @@ using UnityEngine.ResourceManagement.ResourceProviders;
 using Object = UnityEngine.Object;
 public class Util
 {
+    public static float CameraHeight { get { return Camera.main.orthographicSize * 2; } }
+    public static float CameraWidth { get { return CameraHeight * Camera.main.aspect; } }
     public static async Task<AsyncOperationHandle<SceneInstance>> LoadingScene(string path)
     {
         AsyncOperationHandle<SceneInstance> handle = Addressables.LoadSceneAsync(path);

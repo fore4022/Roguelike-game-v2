@@ -16,6 +16,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 04705a2b39a905a4cacb8888734c5703, type: 2}
   background: {fileID: 0}
   stageName: 
-  difficulty: 0
-  spawnDelay: 0
+  difficulty: 1
+  spawnDelay: 2
   statScale: 0

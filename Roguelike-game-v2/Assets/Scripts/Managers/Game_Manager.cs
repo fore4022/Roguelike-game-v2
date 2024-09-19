@@ -32,7 +32,7 @@ public class Game_Manager
     }
     public void GameStart()
     {
-        Time.timeScale = 1;
+        Time.timeScale = 4;
     }
     public void GameEnd()
     {

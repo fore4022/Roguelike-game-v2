@@ -2,9 +2,8 @@ using System.Collections;
 using UnityEngine;
 public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 {
-    private BasicMonsterStat_SO monsterStat;//
-
-    public float Damage { get { return monsterStat.damage; } }
+    private BasicMonsterStat_SO Stat { get { return (BasicMonsterStat_SO)stat; } }
+    public float Damage { get { return Stat.damage; } }
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -15,11 +14,12 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     {
         Vector3 direction = Calculate.GetDirection(Managers.Game.player.gameObject.transform.position, transform.position);
 
-        transform.position += direction * monsterStat.moveSpeed * Time.deltaTime;
+        transform.position += direction * Stat.moveSpeed * Time.deltaTime;
     }
-    protected override void Die()
+    private void Die()
     {
-        base.Die();
+        stat = null;
+        render = null;
 
         StartCoroutine(Dieing());
     }
@@ -31,16 +31,16 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     }
     public void GetDamage(IDamage damage)
     {
-        monsterStat.health -= damage.Damage;
+        Stat.health -= damage.Damage;
 
-        if (monsterStat.health <= 0)
+        if(Stat.health <= 0)
         {
             Die();
         }
     }
     private IEnumerator Moving()
     {
-        yield return new WaitUntil(() => monsterStat != null);
+        yield return new WaitUntil(() => Stat != null);
 
         while(true)
         {
@@ -53,7 +53,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     {
         //animation play
 
-        yield return new WaitForSeconds(monsterStat.dieing_AnimationDuration);
+        yield return new WaitForSeconds(Stat.dieing_AnimationDuration);
 
         ObjectPool.DisableObject(this.gameObject);
     }
