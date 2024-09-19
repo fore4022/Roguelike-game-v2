@@ -23,7 +23,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 
         StartCoroutine(Dieing());
     }
-    protected override void OnCollisionEnter2D(Collision2D collision)
+    protected override void OnCollisionEnter2D(Collision2D collision)//
     {
         base.OnCollisionEnter2D(collision);
 
@@ -40,6 +40,8 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     }
     private IEnumerator Moving()
     {
+        stat = ObjectPool.GetScriptableObject<BasicMonsterStat_SO>(name);
+
         yield return new WaitUntil(() => Stat != null);
 
         while(true)

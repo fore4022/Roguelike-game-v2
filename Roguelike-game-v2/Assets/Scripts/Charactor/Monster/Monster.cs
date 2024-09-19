@@ -12,8 +12,6 @@ public class Monster : MonoBehaviour
 
         render.enabled = false;
 
-        Debug.Log("transform position");
-
         SetPosition();
     }
     protected virtual void SetPosition()
@@ -26,16 +24,8 @@ public class Monster : MonoBehaviour
         float x = Mathf.Cos(randomValue) * cameraWidth;
         float y = Mathf.Sin(randomValue) * cameraHeight;
 
-        Debug.Log($"x : {Mathf.Abs(x)}");
-        Debug.Log($"camera x : {Util.CameraWidth}");
-
-        Debug.Log($"y : {Mathf.Abs(y)}");
-        Debug.Log($"camera y : {Util.CameraHeight}");
-
         transform.position = new Vector2(x, y) + (Vector2)Managers.Game.player.gameObject.transform.position;
-
-        Debug.Log("-");
-
+        
         render.enabled = true;
     }
     protected virtual void OnCollisionEnter2D(Collision2D collision)

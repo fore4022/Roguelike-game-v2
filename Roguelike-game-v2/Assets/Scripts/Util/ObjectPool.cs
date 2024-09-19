@@ -99,13 +99,22 @@ public static class ObjectPool
     {
         prefab.SetActive(false);
     }
-    public static List<GameObject> Instantiate(GameObject prefab, int count)
+    public static List<GameObject> Instantiate(GameObject prefab, int count)//
     {
         List<GameObject> queue = new();
 
+        GameObject parent = GameObject.Find(prefab.name);
+
+        if(parent == null)
+        {
+            parent = new GameObject { name = prefab.name };
+
+            parent.transform.parent = root;
+        }
+
         for (int i = 0; i < count; i++)
         {
-            GameObject instance = GameObject.Instantiate(prefab, root);
+            GameObject instance = GameObject.Instantiate(prefab, parent.transform);
 
             instance.SetActive(false);
 
