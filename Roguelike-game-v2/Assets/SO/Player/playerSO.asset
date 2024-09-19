@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e819e8157e9f5454d8256a54d6b8eeb6, type: 3}
   m_Name: PlayerSO
   m_EditorClassIdentifier: 
-  health: 1
+  health: -3
   damage: 1
-  attackSpeed: 1
+  attackSpeed: 0.5
   moveSpeed: 1
   size: 1
   dieing_AnimationDuration: 1

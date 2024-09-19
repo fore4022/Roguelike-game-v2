@@ -22,8 +22,8 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     {
         rigid.simulated = false;
 
-        rigid = null;
         render = null;
+        rigid = null;
 
         StopCoroutine(moveCoroutine);
 

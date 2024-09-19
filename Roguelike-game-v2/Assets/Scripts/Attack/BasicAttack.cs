@@ -5,33 +5,28 @@ public abstract class BasicAttack : MonoBehaviour, IDamage
     protected Attack_SO basicAttackSO;
 
     protected SpriteRenderer render;
-    protected Coroutine coroutine;
+    protected Coroutine attackCoroutine;
 
     public float DamageAmount { get { return Managers.Game.player.PlayerStat.damage * basicAttackSO.damageCoefficient; } }
     protected virtual void OnEnable()
     {
-        coroutine = StartCoroutine(Disable());
+        attackCoroutine = StartCoroutine(Attacking());
     }
     protected void OnDisable()
     {
-        if(coroutine != null)
+        if(attackCoroutine != null)
         {
-            StopCoroutine(coroutine);
+            StopCoroutine(attackCoroutine);
         }
     }
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if(!render.enabled)
-        {
-            return;
-        }
-
         if(collision.TryGetComponent(out IDamageReceiver damageReceiver))
         {
             damageReceiver.GetDamage(this);
         }
     }
-    private IEnumerator Disable()
+    private IEnumerator Attacking()
     {
         render = GetComponent<SpriteRenderer>();
 
@@ -48,7 +43,8 @@ public abstract class BasicAttack : MonoBehaviour, IDamage
         yield return new WaitForSeconds(basicAttackSO.duration);
 
         basicAttackSO = null;
-        coroutine = null;
+        render = null;
+        attackCoroutine = null;
 
         ObjectPool.DisableObject(this.gameObject);
     }

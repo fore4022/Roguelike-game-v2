@@ -8,13 +8,11 @@ public class Monster : MonoBehaviour
 
     protected virtual void OnEnable()
     {
-        rigid = GetComponent<Rigidbody2D>();
         render = GetComponent<SpriteRenderer>();
+        rigid = GetComponent<Rigidbody2D>();
 
-        rigid.simulated = true;
         render.enabled = false;
-
-        Debug.Log(render);
+        rigid.simulated = false;
 
         SetPosition();
     }
@@ -31,6 +29,7 @@ public class Monster : MonoBehaviour
         transform.position = new Vector2(x, y) + (Vector2)Managers.Game.player.gameObject.transform.position;
         
         render.enabled = true;
+        rigid.simulated = true;
     }
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
