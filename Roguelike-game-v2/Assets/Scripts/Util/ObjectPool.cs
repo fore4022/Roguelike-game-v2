@@ -114,7 +114,7 @@ public static class ObjectPool
 
         for (int i = 0; i < count; i++)
         {
-            GameObject instance = GameObject.Instantiate(prefab, parent.transform);
+            GameObject instance = Object.Instantiate(prefab, parent.transform);
 
             instance.SetActive(false);
 

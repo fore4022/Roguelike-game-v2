@@ -4,10 +4,15 @@ public abstract class BasicAttack : MonoBehaviour, IDamage
 {
     protected Attack_SO basicAttackSO;
 
+    protected Animator animator;
     protected SpriteRenderer render;
     protected Coroutine attackCoroutine;
 
     public float DamageAmount { get { return Managers.Game.player.PlayerStat.damage * basicAttackSO.damageCoefficient; } }
+    protected void Awake()
+    {
+        gameObject.SetActive(false);
+    }
     protected virtual void OnEnable()
     {
         attackCoroutine = StartCoroutine(Attacking());
@@ -46,7 +51,7 @@ public abstract class BasicAttack : MonoBehaviour, IDamage
         render = null;
         attackCoroutine = null;
 
-        ObjectPool.DisableObject(this.gameObject);
+        ObjectPool.DisableObject(gameObject);
     }
     protected abstract void Set();
 }

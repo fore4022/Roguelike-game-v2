@@ -6,6 +6,10 @@ public class Monster : MonoBehaviour
 
     protected const float spawnRadius = 5;
 
+    protected void Awake()
+    {
+        gameObject.SetActive(false);
+    }
     protected virtual void OnEnable()
     {
         render = GetComponent<SpriteRenderer>();
@@ -27,7 +31,7 @@ public class Monster : MonoBehaviour
         float y = Mathf.Sin(randomValue) * cameraHeight;
 
         transform.position = new Vector2(x, y) + (Vector2)Managers.Game.player.gameObject.transform.position;
-        
+
         render.enabled = true;
         rigid.simulated = true;
     }

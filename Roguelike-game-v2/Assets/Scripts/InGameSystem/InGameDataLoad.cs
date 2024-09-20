@@ -6,10 +6,12 @@ public class InGameDataLoad
     public static UserLevelInfo_SO userLevelInfo;
 
     public static string userLevelInfoPath = "UserLevelInfoSO";
+    public static string inGameScene = "InGame";
+    public static bool LoadComplete = false;
 
-    public static void GetInGameData(string inGameScene)
+    public static void GetInGameData()
     {
-        Util.GetMonoBehaviour().StartCoroutine(Init(inGameScene));
+        Util.GetMonoBehaviour().StartCoroutine(Init());
     }
     public static void GetMonsterList(ref List<GameObject> monsterList)
     {
@@ -41,7 +43,7 @@ public class InGameDataLoad
 
         skillList = list;
     }
-    public static IEnumerator Init(string inGameScene)
+    public static IEnumerator Init()
     {
         Managers.Scene.LoadScene(inGameScene);
 
@@ -89,6 +91,8 @@ public class InGameDataLoad
         yield return new WaitUntil(() => typeCount == ObjectPool.scriptableObjects.Count);
 
         yield return new WaitUntil(() => Managers.Game.player != null);
+
+        LoadComplete = true;
 
         Managers.Game.Set();
 
