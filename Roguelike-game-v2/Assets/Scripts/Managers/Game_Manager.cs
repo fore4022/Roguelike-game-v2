@@ -3,6 +3,7 @@ public class Game_Manager
 {
     public PlayerInformationManage playerInfo;
     public StageInformation_SO stageInformation;
+
     public DifficultyScaler difficultyScaler;
     public InGameTimer inGameTimer;
     public MonsterSpawner monsterSpawner;

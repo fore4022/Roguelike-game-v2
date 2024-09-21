@@ -2,9 +2,9 @@ using System.Collections;
 using UnityEngine;
 public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 {
+    private BasicMonsterStat_SO stat;
     private Coroutine moveCoroutine = null;
 
-    private BasicMonsterStat_SO stat;
     public float DamageAmount { get { return stat.damage; } }
     protected override void OnEnable()
     {

@@ -1,8 +1,7 @@
 using UnityEngine;
-public class Monster : MonoBehaviour
+public class Monster : RenderableObject
 {
     protected Rigidbody2D rigid;
-    protected SpriteRenderer render;
 
     protected const float spawnRadius = 5;
 

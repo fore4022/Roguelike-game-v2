@@ -1,11 +1,10 @@
 using System.Collections;
 using UnityEngine;
-public abstract class BasicAttack : MonoBehaviour, IDamage
+public abstract class BasicAttack : RenderableObject, IDamage
 {
     protected Attack_SO basicAttackSO;
 
     protected Animator animator;
-    protected SpriteRenderer render;
     protected Coroutine attackCoroutine;
 
     public float DamageAmount { get { return Managers.Game.player.PlayerStat.damage * basicAttackSO.damageCoefficient; } }
@@ -33,6 +32,7 @@ public abstract class BasicAttack : MonoBehaviour, IDamage
     }
     private IEnumerator Attacking()
     {
+        animator = GetComponent<Animator>();
         render = GetComponent<SpriteRenderer>();
 
         render.enabled = false;
@@ -42,12 +42,15 @@ public abstract class BasicAttack : MonoBehaviour, IDamage
         yield return new WaitUntil(() => basicAttackSO != null);
 
         Set();
-        
+
         render.enabled = true;
 
-        yield return new WaitForSeconds(basicAttackSO.duration);
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
+
+        render.enabled = false;
 
         basicAttackSO = null;
+        animator = null;
         render = null;
         attackCoroutine = null;
 
