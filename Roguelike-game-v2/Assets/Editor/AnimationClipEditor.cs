@@ -1,18 +1,39 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-public class AnimationClipEditor : MonoBehaviour
+using UnityEditor;
+[CustomEditor(typeof(Test_EditorCustomize))]
+[CanEditMultipleObjects]
+public class AnimationClipEditor : Editor
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private SerializedProperty animationClip;
 
-    // Update is called once per frame
-    void Update()
+    private const string propertyName = "animationClip";
+
+    private void OnEnable()
     {
-        
+        animationClip = serializedObject.FindProperty(propertyName);
+
+        AnimationClip clip = target as AnimationClip;
+
+        clip.name = "a";
+
+        serializedObject.ApplyModifiedProperties();
+    }
+    public override void OnInspectorGUI()
+    {
+        serializedObject.Update();
+
+        GUIStyle style = EditorStyles.helpBox;
+
+        GUILayout.BeginVertical(style);
+        EditorGUILayout.PropertyField(animationClip, true);
+
+        if(GUILayout.Button("Set Animation Clip"))
+        {
+            Debug.Log("test");
+        }
+
+        GUILayout.EndVertical();
+
+        serializedObject.ApplyModifiedProperties();
     }
 }
