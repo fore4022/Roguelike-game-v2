@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEditor;
-[CustomEditor(typeof(Test_EditorCustomize))]
+[CustomEditor(typeof(SetAnimationClip))]
 [CanEditMultipleObjects]
 public class AnimationClipEditor : Editor
 {
@@ -13,8 +13,6 @@ public class AnimationClipEditor : Editor
         animationClip = serializedObject.FindProperty(propertyName);
 
         AnimationClip clip = target as AnimationClip;
-
-        clip.name = "a";
 
         serializedObject.ApplyModifiedProperties();
     }
@@ -29,7 +27,7 @@ public class AnimationClipEditor : Editor
 
         if(GUILayout.Button("Set Animation Clip"))
         {
-            Debug.Log("test");
+            Debug.Log(animationClip);
         }
 
         GUILayout.EndVertical();
