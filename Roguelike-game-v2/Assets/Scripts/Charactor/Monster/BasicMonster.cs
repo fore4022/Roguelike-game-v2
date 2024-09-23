@@ -2,7 +2,8 @@ using System.Collections;
 using UnityEngine;
 public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 {
-    private BasicMonsterStat_SO stat;
+    private DefaultStat stat;
+    private CharactorInformation info;
     private Coroutine moveCoroutine = null;
 
     public float DamageAmount { get { return stat.damage; } }
@@ -47,7 +48,10 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     }
     private IEnumerator Moving()
     {
-        stat = ObjectPool.GetScriptableObject<BasicMonsterStat_SO>(name);
+        BasicMonsterStat_SO basicMonsterSO = ObjectPool.GetScriptableObject<BasicMonsterStat_SO>(name);
+
+        stat = basicMonsterSO.stat;
+        info = basicMonsterSO.info;
 
         yield return new WaitUntil(() => stat != null);
 
@@ -62,7 +66,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     {
         //animation play
 
-        yield return new WaitForSeconds(stat.dieing_AnimationDuration);
+        yield return new WaitForSeconds(info.dieing_AnimationDuration);
 
         stat = null;
 

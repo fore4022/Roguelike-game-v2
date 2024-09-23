@@ -9,7 +9,7 @@ public abstract class BaseAttack : RenderableObject, IDamage
 
     private Coroutine attackCoroutine = null;
 
-    public float DamageAmount { get { return Managers.Game.player.PlayerStat.damage * basicAttackSO.damageCoefficient; } }
+    public float DamageAmount { get { return Managers.Game.player.Stat.damage * basicAttackSO.damageCoefficient; } }
     protected void Awake()
     {
         gameObject.SetActive(false);

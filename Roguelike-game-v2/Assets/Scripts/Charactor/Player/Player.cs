@@ -5,11 +5,11 @@ public class Player : MonoBehaviour, IDamageReceiver
     public PlayerBasicAttack basicAttack;
     public PlayerMove move;
 
-    private PlayerStat_SO playerStat;
+    private DefaultStat stat;
 
     private string statPath = "PlayerSO";
 
-    public PlayerStat_SO PlayerStat { get { return playerStat; } }
+    public DefaultStat Stat { get { return stat; } }
     private void Start()
     {
         Managers.Game.player = this;
@@ -24,9 +24,9 @@ public class Player : MonoBehaviour, IDamageReceiver
     }
     public void GetDamage(IDamage damage)
     {
-        PlayerStat.health -= damage.DamageAmount;
+        stat.health -= damage.DamageAmount;
 
-        if(PlayerStat.health <= 0)
+        if(stat.health <= 0)
         {
             Die();
         }
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour, IDamageReceiver
     {
         LoadStat();
 
-        yield return new WaitUntil(() => playerStat != null);
+        yield return new WaitUntil(() => stat != null);//player information
 
         basicAttack = new();
         move = new();
@@ -45,6 +45,8 @@ public class Player : MonoBehaviour, IDamageReceiver
     }
     private async void LoadStat()
     {
-        playerStat = await Util.LoadingToPath<PlayerStat_SO>(statPath);
+        PlayerStat_SO playerStat = await Util.LoadingToPath<PlayerStat_SO>(statPath);
+
+        stat = playerStat.stat;
     }
 }
