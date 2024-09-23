@@ -9,5 +9,5 @@ public class Attack_SO : ScriptableObject
     public float attackSpeedCoefficient;
     public float attackRange;
     public float attackSize;
-    public float duration;
+    public float kinematicDuration = 0.8f;
 }

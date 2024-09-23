@@ -34,11 +34,4 @@ public class Monster : RenderableObject
         render.enabled = true;
         rigid.simulated = true;
     }
-    protected virtual void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (!collision.gameObject.CompareTag("Player"))
-        {
-            return;
-        }
-    }
 }

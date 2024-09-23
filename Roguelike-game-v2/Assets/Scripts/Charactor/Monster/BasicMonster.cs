@@ -29,11 +29,12 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 
         StartCoroutine(Dieing());
     }
-    protected override void OnCollisionEnter2D(Collision2D collision)//
+    protected void OnCollisionEnter2D(Collision2D collision)
     {
-        base.OnCollisionEnter2D(collision);
-
-        Managers.Game.player.GetDamage(this);
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Managers.Game.player.GetDamage(this);
+        }
     }
     public void GetDamage(IDamage damage)
     {

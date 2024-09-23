@@ -1,7 +1,7 @@
 using UnityEngine;
-public class BasicAttack1 : BasicAttack
+public class BasicAttack1 : BaseAttack
 {
-    protected override void Set()
+    protected override void SetAttack()
     {
         Vector3 targetPosition = EnemyDetection.GetNearestEnemyPosition();
         Vector3 direction = Calculate.GetDirection(targetPosition);
