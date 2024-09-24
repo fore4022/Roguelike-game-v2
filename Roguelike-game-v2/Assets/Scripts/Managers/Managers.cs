@@ -17,34 +17,10 @@ public class Managers : MonoBehaviour
             return managers;
         }
     }
-    public static Game_Manager Game
-    {
-        get
-        {
-            return Instance.game;
-        }
-    }
-    public static UI_Manager UI
-    {
-        get
-        {
-            return Instance.ui;
-        }
-    }
-    public static UserData_Manager UserData
-    {
-        get
-        {
-            return Instance.userData;
-        }
-    }
-    public static Scene_Manager Scene
-    {
-        get
-        {
-            return Instance.scene;
-        }
-    }
+    public static Game_Manager Game { get { return Instance.game; } }
+    public static UI_Manager UI { get { return Instance.ui; } }
+    public static UserData_Manager UserData { get { return Instance.userData; } }
+    public static Scene_Manager Scene { get { return Instance.scene; } }
     public static void Init()
     {
         if(managers == null)

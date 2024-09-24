@@ -1,14 +1,16 @@
 public class PlayerInformationManage
 {
-    public PlayerInformation Info { get { return Managers.Game.player.Information; } }
+    public PlayerInformation Info => Managers.Game.player.Information;
     public void AddExperience(float expAmount)
     {
-        Info.experience += expAmount;
+        Info.Experience += Info.RequiredExperience;
 
-        if(Info.experience >= Info.basicRequiredExperience)
+        if (Info.Experience >= Info.RequiredExperience)
         {
-            Info.experience -= Info.basicRequiredExperience;
-            Info.level++;
+            Info.Experience -= Info.RequiredExperience;
+            Info.Level++;
+
+            Info.SetRequiredExperience();
         }
     }
 }
