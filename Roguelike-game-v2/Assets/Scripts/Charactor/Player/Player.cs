@@ -49,4 +49,4 @@ public class Player : MonoBehaviour, IDamageReceiver
 
         stat = playerStat.stat;
     }
-}
+}//information
