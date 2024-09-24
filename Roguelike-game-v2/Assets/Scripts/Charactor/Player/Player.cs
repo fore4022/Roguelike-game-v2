@@ -2,11 +2,10 @@ using System.Collections;
 using UnityEngine;
 public class Player : MonoBehaviour, IDamageReceiver
 {
-    [SerializeField]
-    private PlayerInformation information = new();
-
     public PlayerBasicAttack basicAttack;
     public PlayerMove move;
+
+    private PlayerInformation information = new();
 
     private string statPath = "PlayerSO";
 
