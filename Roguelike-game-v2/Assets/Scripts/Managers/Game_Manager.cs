@@ -2,9 +2,10 @@ using UnityEngine;
 public class Game_Manager
 {
     public PlayerInformationManage playerInfo;
+    public DifficultyScaler difficultyScaler;
+
     public StageInformation_SO stageInformation;
 
-    public DifficultyScaler difficultyScaler;
     public InGameTimer inGameTimer;
     public MonsterSpawner monsterSpawner;
     public Player player;
@@ -31,7 +32,9 @@ public class Game_Manager
     }
     public void GameEnd()
     {
-        playerInfo.info = null;
+        playerInfo = null;
+        difficultyScaler = null;
+
         stageInformation = null;
 
         player = null;

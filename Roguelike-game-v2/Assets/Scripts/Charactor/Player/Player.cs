@@ -15,10 +15,6 @@ public class Player : MonoBehaviour, IDamageReceiver
     {
         Managers.Game.player = this;
     }
-    private void Update()
-    {
-        Debug.Log(information);
-    }
     public void Set()
     {
         StartCoroutine(Init());

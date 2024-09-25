@@ -1,21 +1,9 @@
 public class PlayerInformationManage
 {
-    public PlayerInformation info = null;
+    public PlayerInformation info => Managers.Game.player.Information;
 
-    private void Init()
-    {
-        if(info == null)
-        {
-            UnityEngine.Debug.Log(Managers.Game.player.Information);
-            UnityEngine.Debug.Log(info);
-
-            info = Managers.Game.player.Information;
-        }
-    }
     public void AddExperience(float expAmount)
     {
-        Init();
-
         info.Experience += expAmount;
 
         if (info.Experience >= info.RequiredExperience)
@@ -25,5 +13,5 @@ public class PlayerInformationManage
 
             info.SetRequiredExperience();
         }
-    }
+    
 }

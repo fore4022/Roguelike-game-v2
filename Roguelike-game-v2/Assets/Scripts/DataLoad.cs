@@ -1,5 +1,5 @@
 using UnityEngine;
-public class Test_DataLoad : MonoBehaviour
+public class DataLoad : MonoBehaviour
 {
     private void Start()
     {

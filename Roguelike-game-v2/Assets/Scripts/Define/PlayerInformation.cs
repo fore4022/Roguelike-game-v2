@@ -12,6 +12,7 @@ public class PlayerInformation
     private float experience = 0;
     private int level = 1;
 
+    public Dictionary<string, int> AcquireSkills { get { return acquiredSkills; } }
     public DefaultStat Stat { get { return stat; } set { stat = value; } }
     public float RequiredExperience { get { return experienceForLevelUp; } }
     public float Experience { get { return experience; } set { experience = value; } }

@@ -13,7 +13,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     {
         base.OnEnable();
 
-        moveCoroutine = StartCoroutine(LoadStat());
+        StartCoroutine(LoadStat());
     }
     public void OnMove()
     {
@@ -62,7 +62,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
         charactor = basicMonsterSO.charactor;
         experience = basicMonsterSO.experience;
 
-        StartCoroutine(Moving());
+        moveCoroutine = StartCoroutine(Moving());
     }
     private IEnumerator Moving()
     {
