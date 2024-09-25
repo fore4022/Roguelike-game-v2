@@ -1,16 +1,29 @@
 public class PlayerInformationManage
 {
-    public PlayerInformation Info => Managers.Game.player.Information;
+    public PlayerInformation info = null;
+
+    private void Init()
+    {
+        if(info == null)
+        {
+            UnityEngine.Debug.Log(Managers.Game.player.Information);
+            UnityEngine.Debug.Log(info);
+
+            info = Managers.Game.player.Information;
+        }
+    }
     public void AddExperience(float expAmount)
     {
-        Info.Experience += Info.RequiredExperience;
+        Init();
 
-        if (Info.Experience >= Info.RequiredExperience)
+        info.Experience += expAmount;
+
+        if (info.Experience >= info.RequiredExperience)
         {
-            Info.Experience -= Info.RequiredExperience;
-            Info.Level++;
+            info.Experience -= info.RequiredExperience;
+            info.Level++;
 
-            Info.SetRequiredExperience();
+            info.SetRequiredExperience();
         }
     }
 }

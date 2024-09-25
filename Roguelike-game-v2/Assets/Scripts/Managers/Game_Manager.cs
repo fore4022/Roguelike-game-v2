@@ -18,6 +18,7 @@ public class Game_Manager
     }
     public void Set()
     {
+        playerInfo = new();
         difficultyScaler = new();
 
         inGameTimer.Set();
@@ -30,6 +31,11 @@ public class Game_Manager
     }
     public void GameEnd()
     {
+        playerInfo.info = null;
+        stageInformation = null;
+
+        player = null;
+
         Time.timeScale = 0;
     }
 }

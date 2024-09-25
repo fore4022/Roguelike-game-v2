@@ -6,12 +6,14 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     private CharactorInformation charactor;
     private Coroutine moveCoroutine = null;
 
+    private float experience;
+
     public float DamageAmount { get { return stat.damage; } }
     protected override void OnEnable()
     {
         base.OnEnable();
 
-        moveCoroutine = StartCoroutine(Moving());
+        moveCoroutine = StartCoroutine(LoadStat());
     }
     public void OnMove()
     {
@@ -21,6 +23,8 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     }
     private void Die()
     {
+        Managers.Game.playerInfo.AddExperience(experience);
+
         rigid.simulated = false;
 
         render = null;
@@ -46,16 +50,23 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
             Die();
         }
     }
-    private IEnumerator Moving()
+    private IEnumerator LoadStat()
     {
-        BasicMonsterStat_SO basicMonsterSO = ObjectPool.GetScriptableObject<BasicMonsterStat_SO>(name);
+        BasicMonsterStat_SO basicMonsterSO = null;
+            
+        basicMonsterSO = ObjectPool.GetScriptableObject<BasicMonsterStat_SO>(name);
+
+        yield return new WaitUntil(() => basicMonsterSO != null);
 
         stat = basicMonsterSO.stat;
         charactor = basicMonsterSO.charactor;
+        experience = basicMonsterSO.experience;
 
-        yield return new WaitUntil(() => stat != null);
-
-        while(true)
+        StartCoroutine(Moving());
+    }
+    private IEnumerator Moving()
+    {
+        while (true)
         {
             OnMove();
 
