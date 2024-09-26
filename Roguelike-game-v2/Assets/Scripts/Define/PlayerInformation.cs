@@ -5,12 +5,9 @@ public class PlayerInformation
 
     public DefaultStat stat = null;
 
-    public const float baseExperience = 5;
-    public const float experienceMultiplier = 0.35f;
-
-    public float experienceForLevelUp = baseExperience;
-    public float experience = 0;
-    public int level = 1;
+    public float experienceForLevelUp;
+    public float experience;
+    public int level;
 }
 /*
     public Dictionary<string, int> AcquiredSkills { get { return acquiredSkills; } }

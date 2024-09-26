@@ -49,6 +49,6 @@ public class Player : MonoBehaviour, IDamageReceiver
     {
         PlayerStat_SO playerStat = await Util.LoadingToPath<PlayerStat_SO>(statPath);
 
-        information.Stat = playerStat.stat;
+        information.stat = playerStat.stat;
     }
 }
