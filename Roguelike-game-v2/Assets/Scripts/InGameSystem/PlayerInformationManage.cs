@@ -1,17 +1,18 @@
+using System;
 public class PlayerInformationManage
 {
-    public PlayerInformation info => Managers.Game.player.Information;
+    public Action<float> experienceUpdate = null;
+    public Action<int> levelUpdate = null;
 
-    public void AddExperience(float expAmount)
-    {
-        info.Experience += expAmount;
-
-        if (info.Experience >= info.RequiredExperience)
-        {
-            info.Experience -= info.RequiredExperience;
-            info.Level++;
-
-            info.SetRequiredExperience();
-        }
+    private PlayerInformation info = null;
     
+    public PlayerInformation Info { set { info = value; } }
 }
+/*
+if (info.Experience >= info.RequiredExperience)
+{
+    info.Experience -= info.RequiredExperience;
+    info.Level++;
+
+    info.SetRequiredExperience();
+}*/
