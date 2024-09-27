@@ -19,40 +19,32 @@ public class PlayerInformationManage
             Set();
         }
     }
-
     public int Level
     {
-        get
-        {
-            return info.level;
-        }
+        get { return info.level; }
         set
         {
+            info.level = value;
 
+            levelUpdate.Invoke((Level, value));
         }
     }
     public float Health
     {
-        get
-        {
-            return info.stat.health;
-        }
+        get { return info.stat.health; }
         set
         {
-            info.stat.health += value;
+            info.stat.health = value;
 
             healthUpdate?.Invoke(Health);
         }
     }
     public float Experience
     {
-        get
-        {
-            return info.experience;
-        }
+        get { return info.experience; }
         set
         {
-            info.experience += value;
+            info.experience = value;
 
             if(Experience >= info.experienceForLevelUp)
             {
@@ -80,7 +72,7 @@ public class PlayerInformationManage
         info.experience = 0;
         info.level = 1;
     }
-    private void SetRequiredExperience()
+    private void SetRequiredExperience()//
     {
         info.experienceForLevelUp += Experience * experienceMultiplier;
     }

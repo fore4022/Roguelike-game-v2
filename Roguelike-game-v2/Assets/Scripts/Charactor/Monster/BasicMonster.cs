@@ -23,7 +23,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     }
     private void Die()
     {
-        Managers.Game.playerInfo.AddExperience(experience);
+        Managers.Game.playerInfo.Experience += experience;
 
         rigid.simulated = false;
 
