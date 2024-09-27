@@ -177,13 +177,13 @@ public static class ObjectPool
             await CreateInstanceScriptableObject(prefab.name);
         }
     }
-    public static async Task CreateObjects(int count, bool loadType, string information)//
+    public static async Task CreateObjects(int count, bool loadType, string information)
     {
         List<GameObject> list;
 
         Init();
 
-        if (loadType)//Load To Lable
+        if (loadType)
         {
             foreach (GameObject prefab in await Util.LoadingToLable<GameObject>(information))
             {
@@ -208,7 +208,7 @@ public static class ObjectPool
                 await CreateInstanceScriptableObject(prefab.name);
             }
         }
-        else//Load To Path
+        else
         {
             GameObject prefab = await Util.LoadingToPath<GameObject>(information);
 

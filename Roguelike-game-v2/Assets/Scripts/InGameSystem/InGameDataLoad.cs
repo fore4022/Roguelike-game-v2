@@ -38,6 +38,8 @@ public class InGameDataLoad
             foreach (GameObject prefab in userLevel.skillList)
             {
                 list.Add(prefab);
+
+                //
             }
         }
 

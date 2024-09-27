@@ -61,6 +61,8 @@ public class PlayerInformationManage
                 {
                     SetRequiredExperience();
                 }
+
+                Level += count;
             }
 
             experienceUpdate?.Invoke(Experience);
@@ -77,11 +79,3 @@ public class PlayerInformationManage
         info.experienceForLevelUp += Experience * experienceMultiplier;
     }
 }
-/*
-if (info.Experience >= info.RequiredExperience)
-{
-    info.Experience -= info.RequiredExperience;
-    info.Level++;
-
-    info.SetRequiredExperience();
-}*/
