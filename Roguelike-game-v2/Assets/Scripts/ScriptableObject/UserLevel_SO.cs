@@ -4,4 +4,5 @@ using UnityEngine;
 public class UserLevel_SO : ScriptableObject
 {
     public List<GameObject> skillList;
+    public List<AttackInformation_SO> attackInformationList;
 }

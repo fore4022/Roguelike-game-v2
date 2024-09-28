@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 public class PlayerInformationManage
 {
     public Action<(int, int)> levelUpdate = null;
@@ -6,6 +7,8 @@ public class PlayerInformationManage
     public Action<float> experienceUpdate = null;
 
     private PlayerInformation info = null;
+
+    private Dictionary<string, (Action<int> update, int level)> acquiredAttackTypes = new();
 
     private const float baseExperience = 5;
     private const float experienceMultiplier = 0.35f;
@@ -66,6 +69,17 @@ public class PlayerInformationManage
             }
 
             experienceUpdate?.Invoke(Experience);
+        }
+    }
+    public void UpgradeOrAddAttackType(string attackName)
+    {
+        if (acquiredAttackTypes.TryGetValue(attackName, out (Action<int>, int) information))
+        {
+            information.Item1.Invoke(information.Item2);
+        }
+        else
+        {
+            acquiredAttackTypes.Add(attackName, 0);
         }
     }
     private void Set()
