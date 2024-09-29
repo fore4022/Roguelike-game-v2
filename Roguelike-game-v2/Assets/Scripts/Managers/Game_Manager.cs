@@ -1,7 +1,8 @@
 using UnityEngine;
 public class Game_Manager
 {
-    public PlayerInformationManage playerInfo;
+    public PlayerDataManage playerData;
+    public SkillDataManage skillData;
     public DifficultyScaler difficultyScaler;
 
     public StageInformation_SO stageInformation;
@@ -19,7 +20,8 @@ public class Game_Manager
     }
     public void Set()
     {
-        playerInfo = new();
+        playerData = new();
+        skillData = new();
         difficultyScaler = new();
 
         inGameTimer.Set();
@@ -32,7 +34,8 @@ public class Game_Manager
     }
     public void GameEnd()
     {
-        playerInfo = null;
+        playerData = null;
+        skillData = null;
         difficultyScaler = null;
 
         stageInformation = null;

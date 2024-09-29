@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-public class PlayerInformationManage
+public class PlayerDataManage
 {
     public Action<(int, int)> levelUpdate = null;
     public Action<float> healthUpdate = null;
@@ -8,7 +8,7 @@ public class PlayerInformationManage
 
     private PlayerInformation info = null;
 
-    private Dictionary<string, (Action<int> update, int level)> acquiredAttackTypes = new();
+    private Dictionary<string, (int index, int level)> acquiredAttackTypes = new();
 
     private const float baseExperience = 5;
     private const float experienceMultiplier = 0.35f;
@@ -73,13 +73,13 @@ public class PlayerInformationManage
     }
     public void UpgradeOrAddAttackType(string attackName)
     {
-        if (acquiredAttackTypes.TryGetValue(attackName, out (Action<int>, int) information))
+        if (acquiredAttackTypes.TryGetValue(attackName, out (int, int) data))
         {
-            information.Item1.Invoke(information.Item2);
+            data.Item2++;
         }
         else
         {
-            acquiredAttackTypes.Add(attackName, 0);
+            acquiredAttackTypes.Add(attackName, (acquiredAttackTypes.Count + 1 , 1));
         }
     }
     private void Set()
