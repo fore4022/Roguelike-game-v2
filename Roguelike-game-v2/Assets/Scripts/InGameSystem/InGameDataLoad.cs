@@ -35,14 +35,9 @@ public class InGameDataLoad
         {
             UserLevel_SO userLevel = userLevelInfo.LevelInfo[i];
 
-            foreach (GameObject prefab in userLevel.skillList)
-            {
-                list.Add(prefab);
-            }
-
             foreach(AttackInformation_SO so in userLevel.attackInformationList)
             {
-
+                list.Add(so.skillObject);
             }
         }
 

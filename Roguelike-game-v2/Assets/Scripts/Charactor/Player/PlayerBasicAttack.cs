@@ -6,8 +6,6 @@ public class PlayerBasicAttack
 
     private string basicAttackType = "BasicAttack";
 
-    private float attackSpeed = 1;
-
     private void Attack()
     {
         GameObject prefab = ObjectPool.GetOrActiveObject(basicAttackType);
@@ -31,7 +29,7 @@ public class PlayerBasicAttack
         {
             Attack();
 
-            yield return new WaitForSeconds(attackSpeed);
+            yield return new WaitForSeconds(Managers.Game.player.Stat.attackSpeed);
         }
     }
 }
