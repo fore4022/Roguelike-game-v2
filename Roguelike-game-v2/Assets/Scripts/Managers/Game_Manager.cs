@@ -2,7 +2,7 @@ using UnityEngine;
 public class Game_Manager
 {
     public PlayerDataManage playerData;
-    public SkillDataManage skillData;
+    public AttackDataManage attackData;
     public DifficultyScaler difficultyScaler;
 
     public StageInformation_SO stageInformation;
@@ -21,7 +21,7 @@ public class Game_Manager
     public void Set()
     {
         playerData = new();
-        skillData = new();
+        attackData = new();
         difficultyScaler = new();
 
         inGameTimer.Set();
@@ -35,7 +35,7 @@ public class Game_Manager
     public void GameEnd()
     {
         playerData = null;
-        skillData = null;
+        attackData = null;
         difficultyScaler = null;
 
         stageInformation = null;
