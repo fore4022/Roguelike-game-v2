@@ -73,7 +73,7 @@ public class InGameDataLoad
         List<GameObject> skillList = new();
 
         Time.timeScale = 0;
-
+        
         LoadUserLevelInfo();
 
         yield return new WaitUntil(() => userLevelInfo != null);
@@ -95,8 +95,6 @@ public class InGameDataLoad
         yield return new WaitUntil(() => Managers.Game.player != null);
 
         LoadComplete = true;
-
-        Managers.Game.Set();
 
         Managers.Game.GameStart();
     }

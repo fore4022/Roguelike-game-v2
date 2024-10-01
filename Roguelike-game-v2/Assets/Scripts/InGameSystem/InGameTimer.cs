@@ -40,10 +40,6 @@ public class InGameTimer : MonoBehaviour
 
         Managers.Game.inGameTimer = this;
     }
-    public void Set()
-    {
-        StartTimer();
-    }
     public void StartTimer()
     {
         inGameTimer = StartCoroutine(Timer());

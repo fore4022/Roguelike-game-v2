@@ -17,7 +17,7 @@ public class MonsterSpawner : MonoBehaviour
     {
         Managers.Game.monsterSpawner = this;
     }
-    public void Set()
+    public void StartSpawn()
     {
         StartCoroutine(SpawningSystem());
     }

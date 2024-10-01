@@ -31,7 +31,7 @@ public class Player : MonoBehaviour, IDamageReceiver
     {
         Managers.Game.GameEnd();
     }
-    private IEnumerator Init()
+    private IEnumerator Init()//
     {
         LoadPlayerStat();
 
@@ -45,7 +45,7 @@ public class Player : MonoBehaviour, IDamageReceiver
         move.Init();
         basicAttack.basicAttackCoroutine = StartCoroutine(basicAttack.basicAttacking());
     }
-    private async void LoadPlayerStat()
+    private async void LoadPlayerStat()//
     {
         PlayerStat_SO playerStat = await Util.LoadingToPath<PlayerStat_SO>(statPath);
 

@@ -1,9 +1,9 @@
 using UnityEngine;
 public class Game_Manager
 {
-    public PlayerDataManage playerData;
-    public AttackDataManage attackData;
-    public DifficultyScaler difficultyScaler;
+    public PlayerDataManage playerData = null;
+    public AttackDataManage attackData = null;
+    public DifficultyScaler difficultyScaler = null;
 
     public StageInformation_SO stageInformation;
 
@@ -14,6 +14,8 @@ public class Game_Manager
     public StageInformation_SO StageInformation { get { return stageInformation; } }
     public void DataLoad(StageInformation_SO stageInformation)
     {
+        Set();
+
         this.stageInformation = stageInformation;
 
         InGameDataLoad.GetInGameData();
@@ -23,14 +25,13 @@ public class Game_Manager
         playerData = new();
         attackData = new();
         difficultyScaler = new();
-
-        inGameTimer.Set();
-        monsterSpawner.Set();
-        player.Set();
     }
     public void GameStart()
     {
         Time.timeScale = 1;
+
+        inGameTimer.StartTimer();
+        monsterSpawner.StartSpawn();
     }
     public void GameEnd()
     {
@@ -45,3 +46,4 @@ public class Game_Manager
         Time.timeScale = 0;
     }
 }
+//player.Set();

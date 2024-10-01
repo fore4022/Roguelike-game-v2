@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-
 public class AttackDataManage
 {
-    private Dictionary<string, (AttackInformation_SO, Action<int>, int)> attackData = null;
+    private Dictionary<string, (AttackInformation_SO, Action<int>, int)> attackData = new();
 
     public void SetDictionaryItem(AttackInformation_SO so)
     {
@@ -12,8 +10,6 @@ public class AttackDataManage
         {
             attackData.Add(so.attackName, (so, null, 0));
         }
-
-        UnityEngine.Debug.Log(attackData.Count);
     }
     public void SetValue(string key, int levelDelta = 1)
     {
