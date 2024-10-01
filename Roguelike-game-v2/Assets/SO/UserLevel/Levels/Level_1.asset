@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21d498e24a7895446a0aeed7161bcecc, type: 3}
   m_Name: Level_1
   m_EditorClassIdentifier: 
-  skillList:
-  - {fileID: 6122015278753866852, guid: edb0be481a2f6004ea27ebdc1e61b480, type: 3}
+  attackInformationList:
+  - {fileID: 11400000, guid: 4b8209970a7ac5f439a38943f40f2d05, type: 2}

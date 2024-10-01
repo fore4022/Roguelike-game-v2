@@ -38,6 +38,8 @@ public class InGameDataLoad
             foreach(AttackInformation_SO so in userLevel.attackInformationList)
             {
                 list.Add(so.skillObject);
+
+                Managers.Game.skillData.SetDictionaryItem(so);
             }
         }
 
