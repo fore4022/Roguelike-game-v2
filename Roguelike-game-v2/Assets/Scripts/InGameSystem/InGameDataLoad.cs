@@ -96,6 +96,8 @@ public class InGameDataLoad
 
         LoadComplete = true;
 
+        Managers.Game.player.Set();//
+
         Managers.Game.GameStart();
     }
 }
