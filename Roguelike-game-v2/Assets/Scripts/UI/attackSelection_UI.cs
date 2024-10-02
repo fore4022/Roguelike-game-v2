@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class attackSelection_UI : MonoBehaviour
 {
     [SerializeField]
-    private List<(int paddingTop, int spacingY)> gridLayoutValues = new() { (150, 65), (0,0), (0,0)};
+    private List<(int paddingTop, int spacingY)> gridLayoutValues = new() { (365, 140), (250,225), (150,65)};
 
     private List<GameObject> attackOptions = new();
 
@@ -51,8 +51,18 @@ public class attackSelection_UI : MonoBehaviour
         gridLayoutGroup.padding.top = gridLayoutValues[index].paddingTop;
         gridLayoutGroup.spacing = new Vector2(0, gridLayoutValues[index].spacingY);
     }
-    public void PressButton()//
+    private void OnDisable()
     {
-        this.gameObject.SetActive(false);
+        foreach(GameObject go in attackOptions)
+        {
+            if(go.activeSelf)
+            {
+                go.SetActive(false);
+            }
+            else
+            {
+                break;
+            }
+        }
     }
 }
