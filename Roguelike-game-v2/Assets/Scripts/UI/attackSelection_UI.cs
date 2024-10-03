@@ -6,7 +6,7 @@ public class attackSelection_UI : MonoBehaviour
     [SerializeField]
     private List<(int paddingTop, int spacingY)> gridLayoutValues = new() { (365, 140), (250,225), (150,65)};
 
-    private List<GameObject> attackOptions = new();
+    private List<AttackOption_UI> attackOptionList = new();
 
     private GridLayoutGroup gridLayoutGroup = null;
 
@@ -24,7 +24,10 @@ public class attackSelection_UI : MonoBehaviour
         {
             if(transform != this.transform)
             {
-                attackOptions.Add(transform.gameObject);
+                if(transform.gameObject.TryGetComponent<AttackOption_UI>(out AttackOption_UI attackOption_UI))
+                {
+                    attackOptionList.Add(attackOption_UI);
+                }
 
                 transform.gameObject.SetActive(false);
             }
@@ -43,7 +46,7 @@ public class attackSelection_UI : MonoBehaviour
 
         for(int i = 0; i < Managers.Game.inGameData.OptionCount; i++)
         {
-            attackOptions[i].SetActive(true);
+            //attackOptions[i].SetOption();
         }
     }
     private void AdjustGridLayout(int index)
@@ -53,8 +56,10 @@ public class attackSelection_UI : MonoBehaviour
     }
     private void OnDisable()
     {
-        foreach(GameObject go in attackOptions)
+        foreach(AttackOption_UI attackOption in attackOptionList)
         {
+            GameObject go = attackOption.gameObject;
+
             if(go.activeSelf)
             {
                 go.SetActive(false);

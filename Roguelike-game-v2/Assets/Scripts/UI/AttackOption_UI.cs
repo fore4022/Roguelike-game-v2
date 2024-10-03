@@ -5,18 +5,16 @@ public class AttackOption_UI : MonoBehaviour
 
     private void Start()
     {
-        
-    }
-    private void OnEnable()
-    {
-        
+        gameObject.SetActive(false);
     }
     public void SetOption(AttackInformation_SO info)
     {
         this.info = info;
+
+        gameObject.SetActive(true);
     }
     private void OnDisable()
     {
-        
+        info = null;
     }
-}
+}//IPointerEnterHandler
