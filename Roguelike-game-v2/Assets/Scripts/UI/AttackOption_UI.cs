@@ -6,14 +6,15 @@ public class AttackOption_UI : MonoBehaviour, IPointerEnterHandler, IPointerExit
 {
     private AttackInformation_SO info;
 
+    private RectTransform rectTransform;
     private Image image;
     private Animator animator;
 
     private Coroutine adjustmentScale = null;
 
-    private const float scaleUpdateSpeed = 2;
-    private const float minScale = 200;
-    private const float maxScale = 325;
+    //private const float scaleUpdateSpeed = 2;
+    private const float minScale = 1f;
+    private const float maxScale = 1.625f;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -28,23 +29,24 @@ public class AttackOption_UI : MonoBehaviour, IPointerEnterHandler, IPointerExit
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        SetAnimator(false);
+        //SetAnimator(false);
 
-        if (adjustmentScale != null)
-        {
-            StopCoroutine(adjustmentScale);
-        }
+        //if (adjustmentScale != null)
+        //{
+        //    StopCoroutine(adjustmentScale);
+        //}
 
-        StartCoroutine(SetImageScale(minScale));
+        //StartCoroutine(SetImageScale(minScale));
     } 
     private void Start()
     {
+        rectTransform = GetComponent<RectTransform>();
         image = GetComponent<Image>();
         animator = GetComponent<Animator>();
 
         SetAnimator(false);
 
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
     public void InitOption(AttackInformation_SO info)
     {
@@ -71,18 +73,38 @@ public class AttackOption_UI : MonoBehaviour, IPointerEnterHandler, IPointerExit
     }
     private IEnumerator SetImageScale(float targetScale)
     {
-        RectTransform rectTransform = GetComponent<RectTransform>();
-        float scale = (targetScale - rectTransform.rect.width) * scaleUpdateSpeed;
+        Vector3 scale;
 
-        while ((int)rectTransform.rect.width != targetScale)
+        float totalTime = 0;
+
+        Debug.Log("start");
+
+        while (rectTransform.localScale.x != targetScale)
         {
-            rectTransform.sizeDelta += new Vector2(scale, scale)* Time.deltaTime;
+            Debug.Log(totalTime);
 
-            Debug.Log(rectTransform.rect);
+            totalTime += Time.deltaTime;
+
+            if(totalTime > 1)
+            {
+                totalTime = 1;
+            }
+
+            scale = new Vector3(targetScale, targetScale) * totalTime;
+
+            Debug.Log(totalTime);
+
+            Debug.Log(scale);
+
+            rectTransform.localScale = scale;
+
+            Debug.Log(rectTransform.localScale);
+
+            Debug.Log(rectTransform.localScale.x);
+
+            Debug.Log("-");
 
             yield return null;
         }
-
-        Debug.Log("asdf");
     }
 }
