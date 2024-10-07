@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -44,7 +45,7 @@ public class attackSelection_UI : MonoBehaviour
 
         AdjustGridLayout(index);
 
-        //Get Information
+        List<(AttackInformation_SO, Action<int>, int)> attackDataList = Managers.Game.inGameData.attackData.GetRandomAttackInformation();
 
         for(int i = 0; i < Managers.Game.inGameData.OptionCount; i++)
         {

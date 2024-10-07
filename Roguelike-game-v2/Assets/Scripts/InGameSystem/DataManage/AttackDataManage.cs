@@ -4,6 +4,7 @@ public class AttackDataManage
 {
     private Dictionary<string, (AttackInformation_SO, Action<int>, int)> attackData = new();
 
+    public Dictionary<string, (AttackInformation_SO, Action<int>, int)> AttackData { get { return attackData; } set { attackData = value; } }
     public void SetDictionaryItem(AttackInformation_SO so)
     {
         if(!attackData.ContainsKey(so.attackName))
@@ -46,6 +47,14 @@ public class AttackDataManage
         }
 
         return 0;
+    }
+    public List<(AttackInformation_SO, Action<int>, int)> GetRandomAttackInformation()//Managers.Game.inGameData.OptionCount
+    {
+        List<(AttackInformation_SO, Action<int>, int)> attackDataList = new();
+
+
+
+        return attackDataList;
     }
     private bool TryGetAttackData(string key, out (AttackInformation_SO, Action<int>, int) data)
     {

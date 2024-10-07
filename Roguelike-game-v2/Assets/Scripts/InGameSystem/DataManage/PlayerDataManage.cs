@@ -82,7 +82,7 @@ public class PlayerDataManage
             acquiredAttackTypes.Add(attackName, (acquiredAttackTypes.Count + 1 , 1));
         }
     }
-    private void Set()
+    private void Set()//
     {
         info.experienceForLevelUp = baseExperience;
         info.experience = 0;

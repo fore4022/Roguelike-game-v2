@@ -1,6 +1,8 @@
 using UnityEngine;
 public class InGameDataManage
 {
+    public AttackDataManage attackData = new();
+
     private const int maxOptionCount = 5;
 
     private int defaultOptionCount = 3;

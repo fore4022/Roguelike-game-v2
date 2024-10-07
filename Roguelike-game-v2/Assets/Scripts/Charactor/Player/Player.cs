@@ -7,7 +7,7 @@ public class Player : MonoBehaviour, IDamageReceiver
 
     private PlayerInformation information = new();
 
-    private string statPath = "PlayerSO";
+    private string statPath = "PlayerSO";//
 
     public DefaultStat Stat { get { return information.stat; } }
     private void Start()

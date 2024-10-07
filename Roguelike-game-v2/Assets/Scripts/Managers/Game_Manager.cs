@@ -2,7 +2,6 @@ using UnityEngine;
 public class Game_Manager
 {
     public PlayerDataManage playerData = null;
-    public AttackDataManage attackData = null;//
     public InGameDataManage inGameData = null;
     public DifficultyScaler difficultyScaler = null;
 
@@ -24,7 +23,6 @@ public class Game_Manager
     public void Set()
     {
         playerData = new();
-        attackData = new();
         inGameData = new();
         difficultyScaler = new();
     }
@@ -38,7 +36,6 @@ public class Game_Manager
     public void GameEnd()
     {
         playerData = null;
-        attackData = null;
         inGameData = null;
         difficultyScaler = null;
 
