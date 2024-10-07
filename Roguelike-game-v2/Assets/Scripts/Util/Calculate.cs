@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 public static class Calculate
 {
@@ -47,5 +48,21 @@ public static class Calculate
         Plane[] planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
 
         if (!GeometryUtility.TestPlanesAABB(planes, target.bounds)) { Object.Destroy(targetCollider.gameObject); }
+    }
+    public static List<int> GetRandomValues(int size, int count)
+    {
+        List<int> valueList = new();
+
+        for(int i = 0; i < size; i++)
+        {
+            valueList.Add(i);
+        }
+
+        for(int i = 0; i < count; i++)
+        {
+
+        }
+
+        return 
     }
 }

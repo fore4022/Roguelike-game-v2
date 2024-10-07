@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 public class AttackDataManage
 {
-    private Dictionary<string, (AttackInformation_SO, Action<int>, int)> attackData = new();
+    private Dictionary<string, (AttackInformation_SO, Action<int>, int)> attackData = new();//List?
 
-    public Dictionary<string, (AttackInformation_SO, Action<int>, int)> AttackData { get { return attackData; } set { attackData = value; } }
+    public Dictionary<string, (AttackInformation_SO, Action<int>, int)> AttackData { get { return attackData; } set { attackData = value; } }//Dictionary?
     public void SetDictionaryItem(AttackInformation_SO so)
     {
         if(!attackData.ContainsKey(so.attackName))
@@ -52,7 +52,12 @@ public class AttackDataManage
     {
         List<(AttackInformation_SO, Action<int>, int)> attackDataList = new();
 
+        foreach(int index in Calculate.GetRandomValues())
+        {
+            attackDataList.Add(attackData);
 
+            attackDataList.Remove(attackData[index]);
+        }
 
         return attackDataList;
     }
