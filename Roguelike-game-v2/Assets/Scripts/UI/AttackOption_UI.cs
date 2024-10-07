@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-public class AttackOption_UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class AttackOption_UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     private AttackInformation_SO info;
 
@@ -12,9 +12,8 @@ public class AttackOption_UI : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     private Coroutine adjustmentScale = null;
 
-    //private const float scaleUpdateSpeed = 2;
     private const float minScale = 1f;
-    private const float maxScale = 1.625f;
+    private const float maxScale = 1.1f;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -29,24 +28,28 @@ public class AttackOption_UI : MonoBehaviour, IPointerEnterHandler, IPointerExit
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        //SetAnimator(false);
+        SetAnimator(false);
 
-        //if (adjustmentScale != null)
-        //{
-        //    StopCoroutine(adjustmentScale);
-        //}
+        if (adjustmentScale != null)
+        {
+            StopCoroutine(adjustmentScale);
+        }
 
-        //StartCoroutine(SetImageScale(minScale));
-    } 
+        StartCoroutine(SetImageScale(minScale));
+    }
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        //
+    }
     private void Start()
     {
         rectTransform = GetComponent<RectTransform>();
-        image = GetComponent<Image>();
-        animator = GetComponent<Animator>();
+        image = GetComponentInChildren<Image>();
+        animator = GetComponentInChildren<Animator>();
 
         SetAnimator(false);
 
-        //gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
     public void InitOption(AttackInformation_SO info)
     {
@@ -63,8 +66,8 @@ public class AttackOption_UI : MonoBehaviour, IPointerEnterHandler, IPointerExit
     }
     private void OnDisable()
     {
-        //image.sprite = null;
-        //animator.runtimeAnimatorController = null;
+        image.sprite = null;
+        animator.runtimeAnimatorController = null;
         info = null;
     }
     private void SetAnimator(bool isEnabled)
@@ -76,13 +79,10 @@ public class AttackOption_UI : MonoBehaviour, IPointerEnterHandler, IPointerExit
         Vector3 scale;
 
         float totalTime = 0;
-
-        Debug.Log("start");
+        float scaleValue;
 
         while (rectTransform.localScale.x != targetScale)
         {
-            Debug.Log(totalTime);
-
             totalTime += Time.deltaTime;
 
             if(totalTime > 1)
@@ -90,19 +90,11 @@ public class AttackOption_UI : MonoBehaviour, IPointerEnterHandler, IPointerExit
                 totalTime = 1;
             }
 
-            scale = new Vector3(targetScale, targetScale) * totalTime;
+            scaleValue = Mathf.Lerp(rectTransform.localScale.x, targetScale, totalTime);
 
-            Debug.Log(totalTime);
-
-            Debug.Log(scale);
+            scale = new Vector3(scaleValue, scaleValue);
 
             rectTransform.localScale = scale;
-
-            Debug.Log(rectTransform.localScale);
-
-            Debug.Log(rectTransform.localScale.x);
-
-            Debug.Log("-");
 
             yield return null;
         }

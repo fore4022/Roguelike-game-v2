@@ -2,7 +2,7 @@ using UnityEngine;
 public class Game_Manager
 {
     public PlayerDataManage playerData = null;
-    public AttackDataManage attackData = null;
+    public AttackDataManage attackData = null;//
     public InGameDataManage inGameData = null;
     public DifficultyScaler difficultyScaler = null;
 

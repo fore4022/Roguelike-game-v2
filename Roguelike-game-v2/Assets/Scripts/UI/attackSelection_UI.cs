@@ -48,7 +48,9 @@ public class attackSelection_UI : MonoBehaviour
 
         for(int i = 0; i < Managers.Game.inGameData.OptionCount; i++)
         {
-            //attackOptionList[i].InitOption();
+            attackOptionList[i].gameObject.SetActive(true);
+
+            attackOptionList[i].InitOption();
         }
     }
     private void AdjustGridLayout(int index)
