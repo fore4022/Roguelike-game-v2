@@ -47,7 +47,9 @@ public class attackSelection_UI : MonoBehaviour
 
         List<(AttackInformation_SO, Action<int>, int)> attackDataList = Managers.Game.inGameData.attackData.GetRandomAttackInformation();
 
-        for (int i = 0; i < Managers.Game.inGameData.OptionCount; i++)
+        Debug.Log(attackDataList.Count);
+
+        for (int i = 0; i < Mathf.Min(attackDataList.Count, Managers.Game.inGameData.OptionCount); i++)
         {
             attackOptionList[i].gameObject.SetActive(true);
 

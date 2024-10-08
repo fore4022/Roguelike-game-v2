@@ -63,6 +63,11 @@ public static class Calculate
             valueList.Remove(Random.Range(0, size - i));
         }
 
+        foreach(int randomIndex in valueList)
+        {
+            Debug.Log(randomIndex);
+        }
+
         return valueList;
     }
 }

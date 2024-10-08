@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Debug = UnityEngine.Debug;
 public class AttackDataManage
 {
     private Dictionary<string, int> attackIndexMap = new();
@@ -9,6 +10,8 @@ public class AttackDataManage
 
     public void SetDictionaryItem(AttackInformation_SO so)
     {
+        Debug.Log(!attackIndexMap.ContainsKey(so.attackName));
+
         if(!attackIndexMap.ContainsKey(so.attackName))
         {
             attackIndexMap.Add(so.attackName, totalIndex);
@@ -59,8 +62,6 @@ public class AttackDataManage
         foreach (int index in Calculate.GetRandomValues(attackData.Count, Managers.Game.inGameData.OptionCount))
         {
             attackDataList.Add(attackData[index]);
-
-            attackDataList.Remove(attackData[index]);
         }
 
         return attackDataList;

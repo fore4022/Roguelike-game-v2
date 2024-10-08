@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: BasicAttack
   m_EditorClassIdentifier: 
   skillObject: {fileID: 6122015278753866852, guid: edb0be481a2f6004ea27ebdc1e61b480, type: 3}
+  sprite: {fileID: 21300000, guid: 27ebe54f9a27524419f2fc693729c457, type: 3}
+  controller: {fileID: 0}
   attackName: BasicAttack
   explanation: BasicAttack
+  coolTime: 0

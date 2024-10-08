@@ -39,6 +39,8 @@ public class InGameDataLoad
             {
                 list.Add(so.skillObject);
 
+                Debug.Log("test");
+
                 Managers.Game.inGameData.attackData.SetDictionaryItem(so);
             }
         }
