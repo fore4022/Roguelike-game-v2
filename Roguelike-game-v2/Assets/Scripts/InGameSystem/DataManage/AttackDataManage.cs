@@ -2,14 +2,18 @@ using System;
 using System.Collections.Generic;
 public class AttackDataManage
 {
-    private Dictionary<string, (AttackInformation_SO, Action<int>, int)> attackData = new();//List?
+    private Dictionary<string, int> attackIndexMap = new();
+    private List<(AttackInformation_SO, Action<int>, int)> attackData = new();
 
-    public Dictionary<string, (AttackInformation_SO, Action<int>, int)> AttackData { get { return attackData; } set { attackData = value; } }//Dictionary?
+    private int totalIndex = 0;
+
     public void SetDictionaryItem(AttackInformation_SO so)
     {
-        if(!attackData.ContainsKey(so.attackName))
+        if(!attackIndexMap.ContainsKey(so.attackName))
         {
-            attackData.Add(so.attackName, (so, null, 0));
+            attackIndexMap.Add(so.attackName, totalIndex);
+
+            totalIndex++;
         }
     }
     public void SetValue(string key, int levelDelta = 1)
@@ -52,9 +56,9 @@ public class AttackDataManage
     {
         List<(AttackInformation_SO, Action<int>, int)> attackDataList = new();
 
-        foreach(int index in Calculate.GetRandomValues())
+        foreach (int index in Calculate.GetRandomValues(attackData.Count, Managers.Game.inGameData.OptionCount))
         {
-            attackDataList.Add(attackData);
+            attackDataList.Add(attackData[index]);
 
             attackDataList.Remove(attackData[index]);
         }
@@ -63,9 +67,9 @@ public class AttackDataManage
     }
     private bool TryGetAttackData(string key, out (AttackInformation_SO, Action<int>, int) data)
     {
-        if (attackData.ContainsKey(key))
+        if (attackIndexMap.TryGetValue(key, out int index))
         {
-            data = attackData[key];
+            data = attackData[index];
 
             return true;
         }

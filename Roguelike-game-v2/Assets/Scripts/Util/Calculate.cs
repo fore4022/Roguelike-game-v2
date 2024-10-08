@@ -53,16 +53,16 @@ public static class Calculate
     {
         List<int> valueList = new();
 
-        for(int i = 0; i < size; i++)
+        for (int i = 0; i < size; i++)
         {
             valueList.Add(i);
         }
 
-        for(int i = 0; i < count; i++)
+        for (int i = 0; i < count; i++)
         {
-
+            valueList.Remove(Random.Range(0, size - i));
         }
 
-        return 
+        return valueList;
     }
 }

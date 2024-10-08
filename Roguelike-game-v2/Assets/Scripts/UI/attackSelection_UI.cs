@@ -47,11 +47,11 @@ public class attackSelection_UI : MonoBehaviour
 
         List<(AttackInformation_SO, Action<int>, int)> attackDataList = Managers.Game.inGameData.attackData.GetRandomAttackInformation();
 
-        for(int i = 0; i < Managers.Game.inGameData.OptionCount; i++)
+        for (int i = 0; i < Managers.Game.inGameData.OptionCount; i++)
         {
             attackOptionList[i].gameObject.SetActive(true);
 
-            attackOptionList[i].InitOption(attackDataList[i].Item1);
+            attackOptionList[i].InitOption(attackDataList[i]);
         }
     }
     private void AdjustGridLayout(int index)
