@@ -58,14 +58,9 @@ public static class Calculate
             valueList.Add(i);
         }
 
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < size - count; i++)
         {
             valueList.Remove(Random.Range(0, size - i));
-        }
-
-        foreach(int randomIndex in valueList)
-        {
-            Debug.Log(randomIndex);
         }
 
         return valueList;

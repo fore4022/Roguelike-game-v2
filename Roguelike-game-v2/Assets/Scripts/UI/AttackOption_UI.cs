@@ -54,8 +54,6 @@ public class AttackOption_UI : MonoBehaviour, IPointerEnterHandler, IPointerExit
     private void Start()
     {
         SetAnimator(false);
-
-        gameObject.SetActive(false);
     }
     public void InitOption((AttackInformation_SO, Action<int>, int) data)
     {

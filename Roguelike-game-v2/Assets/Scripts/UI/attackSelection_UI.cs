@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class attackSelection_UI : MonoBehaviour
 {
     [SerializeField]
-    private List<(int paddingTop, int spacingY)> gridLayoutValues = new() { (365, 140), (250,225), (150,65)};
+    private List<(int spacingX, int spacingY)> gridLayoutValues = new() { (365, 140), (250,225), (150,65)};
 
     private List<AttackOption_UI> attackOptionList = new();
 
@@ -14,8 +14,6 @@ public class attackSelection_UI : MonoBehaviour
     private void Start()
     {
         Init();
-
-        gameObject.SetActive(false);
     }
     private void Init()
     {
@@ -34,7 +32,7 @@ public class attackSelection_UI : MonoBehaviour
             }
         }
     }
-    private void OnEnable()
+    public void Set()
     {
         if(gridLayoutGroup == null)
         {
@@ -47,19 +45,15 @@ public class attackSelection_UI : MonoBehaviour
 
         List<(AttackInformation_SO, Action<int>, int)> attackDataList = Managers.Game.inGameData.attackData.GetRandomAttackInformation();
 
-        Debug.Log(attackDataList.Count);
-
         for (int i = 0; i < Mathf.Min(attackDataList.Count, Managers.Game.inGameData.OptionCount); i++)
         {
             attackOptionList[i].gameObject.SetActive(true);
-
             attackOptionList[i].InitOption(attackDataList[i]);
         }
     }
     private void AdjustGridLayout(int index)
     {
-        gridLayoutGroup.padding.top = gridLayoutValues[index].paddingTop;
-        gridLayoutGroup.spacing = new Vector2(0, gridLayoutValues[index].spacingY);
+        gridLayoutGroup.spacing = new Vector2(gridLayoutValues[index].spacingX, gridLayoutValues[index].spacingY);
     }
     private void OnDisable()
     {

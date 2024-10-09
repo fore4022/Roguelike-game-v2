@@ -7,7 +7,7 @@ public class InGameDataLoad
 
     public static string userLevelInfoPath = "UserLevelInfoSO";
     public static string inGameScene = "InGame";
-    public static bool LoadComplete = false;
+    public static bool loadComplete = false;
 
     public static void GetInGameData()
     {
@@ -38,8 +38,6 @@ public class InGameDataLoad
             foreach(AttackInformation_SO so in userLevel.attackInformationList)
             {
                 list.Add(so.skillObject);
-
-                Debug.Log("test");
 
                 Managers.Game.inGameData.attackData.SetDictionaryItem(so);
             }
@@ -96,7 +94,7 @@ public class InGameDataLoad
 
         yield return new WaitUntil(() => Managers.Game.player != null);
 
-        LoadComplete = true;
+        loadComplete = true;
 
         Managers.Game.player.Set();//
 
