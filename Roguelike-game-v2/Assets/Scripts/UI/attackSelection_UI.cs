@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -39,16 +38,16 @@ public class attackSelection_UI : MonoBehaviour
             return;
         }
 
-        int index = Managers.Game.inGameData.OptionCount - 3;
+        int optionCount = Managers.Game.inGameData.OptionCount - 3;
 
-        AdjustGridLayout(index);
+        AdjustGridLayout(optionCount);
 
-        List<(AttackInformation_SO, Action<int>, int)> attackDataList = Managers.Game.inGameData.attackData.GetRandomAttackInformation();
+        List<int> attackDataIndexList = Calculate.GetRandomValues(Managers.Game.inGameData.attackData.attackInfo.Count, Managers.Game.inGameData.OptionCount);
 
-        for (int i = 0; i < Mathf.Min(attackDataList.Count, Managers.Game.inGameData.OptionCount); i++)
+        for(int i = 0; i < attackDataIndexList.Count; i++)
         {
             attackOptionList[i].gameObject.SetActive(true);
-            attackOptionList[i].InitOption(attackDataList[i]);
+            attackOptionList[i].InitOption(attackDataIndexList[i]);
         }
     }
     private void AdjustGridLayout(int index)

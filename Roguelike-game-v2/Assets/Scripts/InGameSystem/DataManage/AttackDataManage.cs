@@ -1,9 +1,21 @@
 using System;
 using System.Collections.Generic;
+public class AttackInformation
+{
+    public AttackInformation_SO data;
+    public Action<int> levelUpdate;
+    
+    public int level;
+
+    public AttackInformation(AttackInformation_SO info)
+    {
+        data = info;
+    }
+}
 public class AttackDataManage
 {
-    private Dictionary<string, int> attackIndexMap = new();
-    private List<(AttackInformation_SO, Action<int>, int)> attackData = new();
+    public Dictionary<string, int> attackIndexMap = new();
+    public List<AttackInformation> attackInfo = new();
 
     private int totalIndex = 0;
 
@@ -12,69 +24,58 @@ public class AttackDataManage
         if(!attackIndexMap.ContainsKey(so.attackName))
         {
             attackIndexMap.Add(so.attackName, totalIndex);
-            attackData.Add((so, null, 0));
+            attackInfo.Add(new AttackInformation(so));
 
             totalIndex++;
         }
     }
     public void SetValue(string key, int levelDelta = 1)
     {
-        if(TryGetAttackData(key, out (AttackInformation_SO, Action<int>, int) data))
+        if(TryGetAttackData(key, out AttackInformation info))
         {
-            data.Item3 += levelDelta;
+            info.level += levelDelta;
 
-            data.Item2.Invoke(data.Item3);
+            info.levelUpdate.Invoke(info.level);
         }
     }
     public (AttackInformation_SO, int) GetAttackData(string key)
     {
-        if(TryGetAttackData(key, out (AttackInformation_SO, Action<int>, int) data))
+        if(TryGetAttackData(key, out AttackInformation info))
         {
-            return (data.Item1, data.Item3);
+            return (info.data, info.level);
         }
 
         return (null, 0);
     }
     public AttackInformation_SO GetAttackInformation(string key)
     {
-        if(TryGetAttackData(key, out (AttackInformation_SO, Action<int>, int) data))
+        if(TryGetAttackData(key, out AttackInformation info))
         {
-            return data.Item1;
+            return info.data;
         }
 
         return null;
     }
     public int GetAttackLevel(string key)
     {
-        if(TryGetAttackData(key, out (AttackInformation_SO, Action<int>, int) data))
+        if(TryGetAttackData(key, out AttackInformation info))
         {
-            return data.Item3;
+            return info.level;
         }
 
         return 0;
     }
-    public List<(AttackInformation_SO, Action<int>, int)> GetRandomAttackInformation()//Managers.Game.inGameData.OptionCount
-    {
-        List<(AttackInformation_SO, Action<int>, int)> attackDataList = new();
-
-        foreach (int index in Calculate.GetRandomValues(attackData.Count, Managers.Game.inGameData.OptionCount))
-        {
-            attackDataList.Add(attackData[index]);
-        }
-
-        return attackDataList;
-    }
-    private bool TryGetAttackData(string key, out (AttackInformation_SO, Action<int>, int) data)
+    private bool TryGetAttackData(string key, out AttackInformation info)
     {
         if (attackIndexMap.TryGetValue(key, out int index))
         {
-            data = attackData[index];
+            info = attackInfo[index];
 
             return true;
         }
         else
         {
-            data = (null, null, 0);
+            info = null;
 
             return false;
         }

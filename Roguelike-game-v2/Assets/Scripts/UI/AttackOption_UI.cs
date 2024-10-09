@@ -5,19 +5,19 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class AttackOption_UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    private AttackInformation_SO info;
+    private AttackInformation_SO info;//
 
     private RectTransform rectTransform;
     private Image image;
     private Animator animator;
 
     private Coroutine adjustmentScale = null;
-    private Action<int> levelUpdate;
+    private Action<int> levelUpdate;//
 
     private const float minScale = 1f;
     private const float maxScale = 1.1f;
 
-    private int level;
+    private int index;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -43,7 +43,7 @@ public class AttackOption_UI : MonoBehaviour, IPointerEnterHandler, IPointerExit
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        //
+        levelUpdate.Invoke(++Managers.Game.inGameData.attackData.attackInfo[index].level);
     }
     private void Awake()
     {
@@ -55,15 +55,9 @@ public class AttackOption_UI : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         SetAnimator(false);
     }
-    public void InitOption((AttackInformation_SO, Action<int>, int) data)
+    public void InitOption(int index)
     {
-        info = data.Item1;
-        levelUpdate = data.Item2;
-        level = data.Item3;
-
-        SetOption();
-
-        gameObject.SetActive(true);
+        this.index = index;
     }
     private void SetOption()
     {
