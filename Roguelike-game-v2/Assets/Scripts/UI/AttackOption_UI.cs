@@ -1,18 +1,16 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class AttackOption_UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    private AttackInformation_SO info;//
+    public AttackInformation info;
 
     private RectTransform rectTransform;
     private Image image;
     private Animator animator;
 
     private Coroutine adjustmentScale = null;
-    private Action<int> levelUpdate;//
 
     private const float minScale = 1f;
     private const float maxScale = 1.1f;
@@ -43,13 +41,14 @@ public class AttackOption_UI : MonoBehaviour, IPointerEnterHandler, IPointerExit
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        levelUpdate.Invoke(++Managers.Game.inGameData.attackData.attackInfo[index].level);
+        info.levelUpdate.Invoke(++Managers.Game.inGameData.attackData.attackInfo[index].level);
     }
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
         image = GetComponentInChildren<Image>();
         animator = GetComponentInChildren<Animator>();
+        //GetComponentsInChildren
     }
     private void Start()
     {
@@ -58,11 +57,15 @@ public class AttackOption_UI : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public void InitOption(int index)
     {
         this.index = index;
+
+        info = Managers.Game.inGameData.attackData.attackInfo[index];
+
+        SetOption();
     }
     private void SetOption()
     {
-        image.sprite = info.sprite;
-        animator.runtimeAnimatorController = info.controller;
+        image.sprite = info.data.sprite;
+        animator.runtimeAnimatorController = info.data.controller;
     }
     private void OnDisable()
     {

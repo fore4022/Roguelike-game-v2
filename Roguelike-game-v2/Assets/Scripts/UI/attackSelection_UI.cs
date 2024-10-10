@@ -10,9 +10,20 @@ public class attackSelection_UI : MonoBehaviour
 
     private GridLayoutGroup gridLayoutGroup = null;
 
+    private void OnEnable()
+    {
+        if(attackOptionList == null)
+        {
+            return;
+        }
+
+        Set();
+    }
     private void Start()
     {
         Init();
+
+        gameObject.SetActive(false);
     }
     private void Init()
     {
@@ -31,7 +42,7 @@ public class attackSelection_UI : MonoBehaviour
             }
         }
     }
-    public void Set()
+    private void Set()
     {
         if(gridLayoutGroup == null)
         {

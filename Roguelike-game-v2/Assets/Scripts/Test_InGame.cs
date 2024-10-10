@@ -8,7 +8,7 @@ public class Test_InGame : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            attackSelectionUI.Set();
+            attackSelectionUI.gameObject.SetActive(true);
         }
     }
 }

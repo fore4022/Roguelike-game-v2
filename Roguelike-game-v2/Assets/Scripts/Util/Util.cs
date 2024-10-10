@@ -60,4 +60,8 @@ public class Util
 
         return go.GetComponent<MonoScript>();
     }
+    public static T[] GetComponentsInChildren<T>()
+    {
+        return null;
+    }
 }
