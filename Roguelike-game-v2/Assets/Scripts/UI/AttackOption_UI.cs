@@ -1,10 +1,14 @@
 using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class AttackOption_UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     public AttackInformation info;
+
+    private List<TextMeshProUGUI> textList = new();
 
     private RectTransform rectTransform;
     private Image image;
@@ -39,16 +43,17 @@ public class AttackOption_UI : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
         StartCoroutine(SetImageScale(minScale));
     }
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData eventData)//
     {
         info.levelUpdate.Invoke(++Managers.Game.inGameData.attackData.attackInfo[index].level);
     }
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
-        image = GetComponentInChildren<Image>();
+        image = GetComponentInChildren<Image>();//
         animator = GetComponentInChildren<Animator>();
-        //GetComponentsInChildren
+
+        textList = Util.GetComponentsInChildren<TextMeshProUGUI>(transform);
     }
     private void Start()
     {
@@ -66,6 +71,10 @@ public class AttackOption_UI : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         image.sprite = info.data.sprite;
         animator.runtimeAnimatorController = info.data.controller;
+
+        textList[0].text = $"Lv.{info.level}";
+        textList[1].text = $"{info.data.attackName}";
+        textList[2].text = $"{info.data.explanation}";
     }
     private void OnDisable()
     {
