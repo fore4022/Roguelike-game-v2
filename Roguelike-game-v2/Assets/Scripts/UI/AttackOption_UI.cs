@@ -43,15 +43,17 @@ public class AttackOption_UI : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
         StartCoroutine(SetImageScale(minScale));
     }
-    public void OnPointerClick(PointerEventData eventData)//
+    public void OnPointerClick(PointerEventData eventData)
     {
-        info.levelUpdate.Invoke(++Managers.Game.inGameData.attackData.attackInfo[index].level);
+        //info.levelUpdate.Invoke(++Managers.Game.inGameData.attackData.attackInfo[index].level);
+
+
     }
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
-        image = GetComponentInChildren<Image>();//
-        animator = GetComponentInChildren<Animator>();
+        image = Util.GetComponentInChildren<Image>(transform);
+        animator = Util.GetComponentInChildren<Animator>(transform);
 
         textList = Util.GetComponentsInChildren<TextMeshProUGUI>(transform);
     }
@@ -64,14 +66,13 @@ public class AttackOption_UI : MonoBehaviour, IPointerEnterHandler, IPointerExit
         this.index = index;
 
         info = Managers.Game.inGameData.attackData.attackInfo[index];
-
+        
         SetOption();
     }
     private void SetOption()
     {
         image.sprite = info.data.sprite;
         animator.runtimeAnimatorController = info.data.controller;
-
         textList[0].text = $"Lv.{info.level}";
         textList[1].text = $"{info.data.attackName}";
         textList[2].text = $"{info.data.explanation}";
@@ -104,7 +105,7 @@ public class AttackOption_UI : MonoBehaviour, IPointerEnterHandler, IPointerExit
             scaleValue = Mathf.Lerp(rectTransform.localScale.x, targetScale, totalTime);
 
             scale = new Vector3(scaleValue, scaleValue);
-
+            
             rectTransform.localScale = scale;
 
             yield return null;

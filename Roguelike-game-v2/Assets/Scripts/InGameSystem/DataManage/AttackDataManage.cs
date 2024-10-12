@@ -3,13 +3,15 @@ using System.Collections.Generic;
 public class AttackInformation
 {
     public AttackInformation_SO data;
-    public Action<int> levelUpdate;
+
+    [Obsolete]
+    public Action<int> levelUpdate;//Class
     
     public int level;
 
-    public AttackInformation(AttackInformation_SO info)
+    public AttackInformation(AttackInformation_SO dataSO)
     {
-        data = info;
+        data = dataSO;
     }
 }
 public class AttackDataManage

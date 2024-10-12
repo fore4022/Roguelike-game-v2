@@ -60,7 +60,7 @@ public class Util
 
         return go.GetComponent<MonoScript>();
     }
-    public static List<T> GetComponentsInChildren<T>(Transform transform) where T : new()
+    public static List<T> GetComponentsInChildren<T>(Transform transform) where T : Component
     {
         List<T> components = new();
 
@@ -74,7 +74,7 @@ public class Util
 
         return components;
     }
-    public static T GetComponentInChildren<T>(Transform transform) where T : new()
+    public static T GetComponentInChildren<T>(Transform transform) where T : Component
     {
         for(int index = 0; index < transform.childCount; index++)
         {
@@ -84,6 +84,6 @@ public class Util
             }
         }
 
-        return default(T);//
+        return default(T);
     }
 }
