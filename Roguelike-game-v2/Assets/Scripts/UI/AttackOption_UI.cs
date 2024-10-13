@@ -46,8 +46,6 @@ public class AttackOption_UI : MonoBehaviour, IPointerEnterHandler, IPointerExit
     public void OnPointerClick(PointerEventData eventData)
     {
         //info.levelUpdate.Invoke(++Managers.Game.inGameData.attackData.attackInfo[index].level);
-
-
     }
     private void Awake()
     {

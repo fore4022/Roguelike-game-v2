@@ -1,12 +1,15 @@
 using System.Collections;
 using UnityEngine;
-public class PlayerBasicAttack
+public class AttackCaster
 {
     public Coroutine basicAttackCoroutine;
 
-    private string basicAttackType = "BasicAttack";
+    private string basicAttackType = "BasicAttack";//
 
-    private void Attack()
+    private int level;
+
+    public int Level { get { return level; } }
+    private void StartAttack()
     {
         GameObject prefab = ObjectPool.GetOrActiveObject(basicAttackType);
     }
@@ -27,7 +30,7 @@ public class PlayerBasicAttack
     {
         while (true)
         {
-            Attack();
+            StartAttack();
 
             yield return new WaitForSeconds(Managers.Game.player.Stat.attackSpeed);
         }

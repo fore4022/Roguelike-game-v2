@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 public class Player : MonoBehaviour, IDamageReceiver
 {
-    public PlayerBasicAttack basicAttack;
+    public AttackCaster basicAttack;
     public PlayerMove move;
 
     private PlayerInformation information = new();
