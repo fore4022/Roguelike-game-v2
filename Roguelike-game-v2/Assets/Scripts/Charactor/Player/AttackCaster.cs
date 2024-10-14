@@ -2,31 +2,21 @@ using System.Collections;
 using UnityEngine;
 public class AttackCaster
 {
-    public Coroutine basicAttackCoroutine;
+    public Coroutine attackCoroutine;
 
-    private string basicAttackType = "BasicAttack";//
+    private string attackType;
 
-    private int level;
+    public void SetAttackType(string attackType)
+    {
+        this.attackType = attackType;
 
-    public int Level { get { return level; } }
+        Util.GetMonoBehaviour().StartCoroutine(Attacking());
+    }
     private void StartAttack()
     {
-        GameObject prefab = ObjectPool.GetOrActiveObject(basicAttackType);
+        ObjectPool.GetOrActiveObject(attackType);
     }
-    public void ChangeBasicAttack(string attackType)
-    {
-        MonoBehaviour mono = Util.GetMonoBehaviour();
-
-        basicAttackType = attackType;
-
-        if (basicAttackCoroutine != null)
-        {
-            mono.StopCoroutine(basicAttackCoroutine);
-        }
-
-        mono.StartCoroutine(basicAttacking());
-    }
-    public IEnumerator basicAttacking()
+    public IEnumerator Attacking()
     {
         while (true)
         {

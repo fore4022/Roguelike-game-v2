@@ -3,9 +3,7 @@ using System.Collections.Generic;
 public class AttackInformation
 {
     public AttackInformation_SO data;
-
-    [Obsolete]
-    public Action<int> levelUpdate;//Class
+    public AttackCaster caster;
     
     public int level;
 
@@ -36,8 +34,13 @@ public class AttackDataManage
         if(TryGetAttackData(key, out AttackInformation info))
         {
             info.level += levelDelta;
+            
+            if(info.level == 1)
+            {
+                info.caster = new();
 
-            info.levelUpdate.Invoke(info.level);
+                info.caster.SetAttackType(info.data.attackName);
+            }
         }
     }
     public (AttackInformation_SO, int) GetAttackData(string key)

@@ -2,12 +2,11 @@ using System.Collections;
 using UnityEngine;
 public class Player : MonoBehaviour, IDamageReceiver
 {
-    public AttackCaster basicAttack;
     public PlayerMove move;
 
     private PlayerInformation information = new();
 
-    private string statPath = "PlayerSO";//
+    private string statPath = "PlayerInformationSO";
 
     public DefaultStat Stat { get { return information.stat; } }
     private void Start()
@@ -39,16 +38,16 @@ public class Player : MonoBehaviour, IDamageReceiver
 
         yield return new WaitUntil(() => information.stat != null);
 
-        basicAttack = new();
         move = new();
 
         move.Init();
-        basicAttack.basicAttackCoroutine = StartCoroutine(basicAttack.basicAttacking());
-    }
-    private async void LoadPlayerStat()//
-    {
-        PlayerStat_SO playerStat = await Util.LoadingToPath<PlayerStat_SO>(statPath);
 
-        information.stat = playerStat.stat;
+        Managers.Game.playerData.Level++;
+    }
+    private async void LoadPlayerStat()
+    {
+        PlayerInforamtion_SO info = await Util.LoadingToPath<PlayerInforamtion_SO>(statPath);
+
+        information.stat = info.stat;
     }
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
-[CreateAssetMenu(fileName = "PlayerStat_SO", menuName = "Create New SO/Create New PlayerStat_SO")]
-public class PlayerStat_SO : ScriptableObject
+[CreateAssetMenu(fileName = "PlayerInformation", menuName = "Create New SO/Create New PlayerInformation_SO")]
+public class PlayerInforamtion_SO : ScriptableObject
 {
     public DefaultStat stat = new();
     public CharactorInformation charactor = new();
