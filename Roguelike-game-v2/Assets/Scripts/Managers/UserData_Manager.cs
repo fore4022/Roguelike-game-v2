@@ -1,9 +1,5 @@
 using System.IO;
 using UnityEngine;
-public class UserData
-{
-    public int userLevel = 1;
-}
 public class UserData_Manager
 {
     private UserData userData;

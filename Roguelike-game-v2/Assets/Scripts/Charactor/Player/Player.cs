@@ -30,7 +30,7 @@ public class Player : MonoBehaviour, IDamageReceiver
     {
         Managers.Game.GameEnd();
     }
-    private IEnumerator Init()//
+    private IEnumerator Init()
     {
         LoadPlayerStat();
 
@@ -42,7 +42,7 @@ public class Player : MonoBehaviour, IDamageReceiver
 
         move.Init();
 
-        Managers.Game.playerData.Level++;
+        Managers.Game.playerData.Level++;//
     }
     private async void LoadPlayerStat()
     {

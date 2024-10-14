@@ -92,4 +92,8 @@ public class PlayerDataManage
     {
         info.experienceForLevelUp += Experience * experienceMultiplier;
     }
+    public void SetLevel()
+    {
+
+    }
 }
