@@ -5,7 +5,7 @@ public class TechnologyList
     public enum Type
     {
         Level,
-        Currency
+        Goods
     }
 
     public List<TechnologyNode_SO> nodes = new();
