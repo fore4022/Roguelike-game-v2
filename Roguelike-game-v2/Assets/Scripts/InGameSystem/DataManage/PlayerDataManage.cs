@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 public class PlayerDataManage
 {
-    public Action<(int, int)> levelUpdate = null;
+    public Action<(int, int)> levelUpdate = null;//
     public Action<float> healthUpdate = null;
     public Action<float> experienceUpdate = null;
 
@@ -29,7 +29,7 @@ public class PlayerDataManage
         {
             info.level = value;
 
-            levelUpdate.Invoke((Level, value));
+            //levelUpdate.Invoke((Level, value));
         }
     }
     public float Health
@@ -94,6 +94,6 @@ public class PlayerDataManage
     }
     public void SetLevel()
     {
-
+        Level = 1;
     }
 }

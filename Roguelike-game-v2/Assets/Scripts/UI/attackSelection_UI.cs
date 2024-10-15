@@ -3,13 +3,16 @@ using UnityEngine;
 using UnityEngine.UI;
 public class attackSelection_UI : MonoBehaviour
 {
-    [SerializeField]
     private List<(int spacingX, int spacingY)> gridLayoutValues = new() { (365, 140), (250,225), (150,65)};
 
     private List<AttackOption_UI> attackOptionList = new();
 
     private GridLayoutGroup gridLayoutGroup = null;
 
+    private void Awake()
+    {
+
+    }
     private void OnEnable()
     {
         if(attackOptionList == null)

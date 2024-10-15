@@ -49,7 +49,7 @@ public class PlayerMove : IMoveable
             CancelMove();
         });
 
-        touchControl.Touch.TouchPosition.performed += (ctx =>//
+        touchControl.Touch.TouchPosition.performed += (ctx =>
         {
             context = ctx;
             

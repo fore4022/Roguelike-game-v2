@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 public static class InputActions
 {
-    public static List<IInputActionCollection> inputActionList = new List<IInputActionCollection>();
+    public static List<IInputActionCollection> inputActionList = new();
 
     public static T GetInputAction<T>() where T : IInputActionCollection, new()
     {
@@ -38,7 +38,7 @@ public static class InputActions
     }
     public static void ClearActions()
     {
-        inputActionList = new List<IInputActionCollection>();
+        inputActionList = new();
 
         Managers.Scene.loadScene -= ClearActions;
     }

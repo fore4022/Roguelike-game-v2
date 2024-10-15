@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class UI_Manager
 {
-    private Dictionary<string, GameObject> uiDictionary = new Dictionary<string, GameObject>();
+    private Dictionary<string, GameObject> uiDictionary = new();
 
     private Transform Transform
     {
@@ -13,6 +13,9 @@ public class UI_Manager
 
             if(go == null)
             {
+                Managers.Scene.loadScene -= ClearDictionary;
+                Managers.Scene.loadScene += ClearDictionary;
+
                 go = new GameObject { name = "UI" };
             }
 
@@ -53,6 +56,14 @@ public class UI_Manager
             uiDictionary.Remove(uiName);
         }
     }
+    public void AddUI()
+    {
+
+    }
+    public void RemoveUI()
+    {
+
+    }
     public async void LoadUI(string path)
     {
         uiDictionary.Add(path, await Util.LoadingToPath<GameObject>(path));
@@ -75,5 +86,11 @@ public class UI_Manager
 
             go.SetActive(isActive);
         }
+    }
+    public void ClearDictionary()
+    {
+        uiDictionary = new();
+
+        Managers.Scene.loadScene -= ClearDictionary;
     }
 }
