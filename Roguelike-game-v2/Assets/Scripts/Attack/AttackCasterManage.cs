@@ -1,18 +1,18 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-
-public class AttackCasterManage : MonoBehaviour
+public class AttackCasterManage
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private Dictionary<string, AttackCaster> Casters = new();
 
-    // Update is called once per frame
-    void Update()
+    public void GetCaster()
     {
-        
+
+    }
+    public void CreateCaster()
+    {
+
+    }
+    public void DestroyCaster()
+    {
+
     }
 }
