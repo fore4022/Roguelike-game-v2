@@ -61,13 +61,26 @@ public class UI_Manager
             Util.GetMonoBehaviour().StartCoroutine(CreatingUI(name));
         }
     }
-    public void DestroyUI(string uiName)
+    public GameObject GetUI<T>() where T : UserInterface
     {
-        if(uiDictionary.ContainsKey(uiName))
-        {
-            Object.Destroy(uiDictionary[uiName]);
+        string name = GetName<T>();
 
-            uiDictionary.Remove(uiName);
+        if(uiDictionary.ContainsKey(name))
+        {
+            return uiDictionary[name];
+        }
+
+        return null;
+    }
+    public void DestroyUI<T>() where T : UserInterface
+    {
+        string name = GetName<T>();
+
+        if(uiDictionary.ContainsKey(name))
+        {
+            Object.Destroy(uiDictionary[name]);
+
+            uiDictionary.Remove(name);
         }
     }
     public void AddUI(UserInterface ui)

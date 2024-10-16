@@ -10,8 +10,6 @@ public class PlayerMove : IMoveable
     private Vector2? enterTouchPosition;
     private Vector2 direction;
 
-    private string controller = "CharactorController";
-
     public void OnMove()
     {
         Vector2 touchPosition = context.ReadValue<Vector2>();
