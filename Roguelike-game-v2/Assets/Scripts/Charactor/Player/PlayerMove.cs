@@ -25,11 +25,11 @@ public class PlayerMove : IMoveable
         enterTouchPosition = Camera.main.ScreenToWorldPoint((Vector2)enterTouchPosition);
         moving = Util.GetMonoBehaviour().StartCoroutine(Moving());
 
-        Managers.UI.ShowUI(controller);
+        Managers.UI.ShowUI<CharactorController_UI>();
     }
     private void CancelMove()
     {
-        Managers.UI.HideUI(controller);
+        Managers.UI.HideUI<CharactorController_UI>();
 
         Util.GetMonoBehaviour().StopCoroutine(moving);
 

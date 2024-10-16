@@ -1,5 +1,8 @@
 using UnityEngine;
-public abstract class UserInterface : MonoBehaviour
+public class UserInterface : MonoBehaviour
 {
-    public abstract string GetName();
+    protected virtual void Start()
+    {
+        Managers.UI.AddUI(this);
+    }
 }

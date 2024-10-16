@@ -8,12 +8,10 @@ public class CharactorController_UI : UserInterface
     private InputAction.CallbackContext? touchStart;
     private Vector2 enterPosition;
 
-    public override string GetName()
+    protected override void Start()
     {
-        return "CharactorController";
-    }
-    private void Start()
-    {
+        base.Start();
+
         TouchControls touchControl = InputActions.GetInputAction<TouchControls>();
 
         touchControl.Touch.TouchPosition.performed += (ctx => SetJoyStick(ctx));

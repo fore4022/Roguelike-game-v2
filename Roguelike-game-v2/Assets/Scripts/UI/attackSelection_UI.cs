@@ -9,10 +9,6 @@ public class AttackSelection_UI : UserInterface
 
     private GridLayoutGroup gridLayoutGroup = null;
 
-    public override string GetName()
-    {
-        return "AttackSelection";
-    }
     private void OnEnable()
     {
         if(attackOptionList == null)
@@ -22,8 +18,10 @@ public class AttackSelection_UI : UserInterface
 
         Set();
     }
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
+
         Init();
 
         gameObject.SetActive(false);

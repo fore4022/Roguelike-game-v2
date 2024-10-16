@@ -22,29 +22,43 @@ public class UI_Manager
             return go.transform;
         }
     }
-    public void ShowUI(string uiName)
+    private string GetName<T>() where T : UserInterface
     {
-        if(uiDictionary.TryGetValue(uiName, out GameObject go))
+        string name = typeof(T).ToString();
+
+        name = name.Replace("_UI", "");
+
+        return name;
+    }
+    public void ShowUI<T>() where T : UserInterface
+    {
+        string name = GetName<T>();
+
+        if(uiDictionary.TryGetValue(name, out GameObject go))
         {
             go.SetActive(true);
         }
         else
         {
-            Util.GetMonoBehaviour().StartCoroutine(CreatingUI(uiName, true));
+            Util.GetMonoBehaviour().StartCoroutine(CreatingUI(name, true));
         }
     }
-    public void HideUI(string uiName)
+    public void HideUI<T>() where T : UserInterface
     {
-        if(uiDictionary.TryGetValue(uiName, out GameObject go))
+        string name = GetName<T>();
+
+        if (uiDictionary.TryGetValue(name, out GameObject go))
         {
             go.SetActive(false);
         }
     }
-    public void CreateUI(string uiName)
+    public void CreateUI<T>() where T : UserInterface
     {
-        if(!uiDictionary.ContainsKey(uiName))
+        string name = GetName<T>();
+
+        if (!uiDictionary.ContainsKey(name))
         {
-            Util.GetMonoBehaviour().StartCoroutine(CreatingUI(uiName));
+            Util.GetMonoBehaviour().StartCoroutine(CreatingUI(name));
         }
     }
     public void DestroyUI(string uiName)
@@ -56,13 +70,16 @@ public class UI_Manager
             uiDictionary.Remove(uiName);
         }
     }
-    public void AddUI()
+    public void AddUI(UserInterface ui)
     {
+        string name = ui.GetType().ToString();
 
-    }
-    public void RemoveUI()
-    {
+        name = name.Replace("_UI", "");
 
+        if(!uiDictionary.ContainsKey(name))
+        {
+            uiDictionary.Add(name, ui.gameObject);
+        }
     }
     public async void LoadUI(string path)
     {

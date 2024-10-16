@@ -21,10 +21,6 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
 
     private int index;
 
-    public override string GetName()
-    {
-        return "AttackOption";
-    }
     public void OnPointerEnter(PointerEventData eventData)
     {
         SetAnimator(true);
@@ -59,8 +55,10 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
 
         textList = Util.GetComponentsInChildren<TextMeshProUGUI>(transform);
     }
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
+
         SetAnimator(false);
     }
     public void InitOption(int index)
