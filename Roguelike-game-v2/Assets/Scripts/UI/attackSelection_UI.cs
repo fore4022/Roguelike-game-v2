@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class attackSelection_UI : MonoBehaviour
+public class AttackSelection_UI : UserInterface
 {
     private List<(int spacingX, int spacingY)> gridLayoutValues = new() { (365, 140), (250,225), (150,65)};
 
@@ -9,9 +9,9 @@ public class attackSelection_UI : MonoBehaviour
 
     private GridLayoutGroup gridLayoutGroup = null;
 
-    private void Awake()
+    public override string GetName()
     {
-
+        return "AttackSelection";
     }
     private void OnEnable()
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-public class CharactorController_UI : MonoBehaviour
+public class CharactorController_UI : UserInterface
 {
     [SerializeField]
     private GameObject stick;
@@ -8,6 +8,10 @@ public class CharactorController_UI : MonoBehaviour
     private InputAction.CallbackContext? touchStart;
     private Vector2 enterPosition;
 
+    public override string GetName()
+    {
+        return "CharactorController";
+    }
     private void Start()
     {
         TouchControls touchControl = InputActions.GetInputAction<TouchControls>();

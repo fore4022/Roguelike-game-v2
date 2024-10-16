@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-public class AttackOption_UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     public AttackInformation info;
 
@@ -21,6 +21,10 @@ public class AttackOption_UI : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     private int index;
 
+    public override string GetName()
+    {
+        return "AttackOption";
+    }
     public void OnPointerEnter(PointerEventData eventData)
     {
         SetAnimator(true);
