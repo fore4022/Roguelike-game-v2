@@ -21,9 +21,9 @@ public class AttackDataManage
 
     public void SetDictionaryItem(AttackInformation_SO so)
     {
-        if(!attackIndexMap.ContainsKey(so.attackName))
+        if(!attackIndexMap.ContainsKey(so.attackType))
         {
-            attackIndexMap.Add(so.attackName, totalIndex);
+            attackIndexMap.Add(so.attackType, totalIndex);
             attackInfo.Add(new AttackInformation(so));
 
             totalIndex++;
@@ -39,7 +39,7 @@ public class AttackDataManage
             {
                 info.caster = new();
 
-                info.caster.SetAttackType(info.data.attackName);
+                info.caster.SetAttackType(info.data.attackType);
             }
         }
     }

@@ -7,7 +7,7 @@ public class AttackInformation_SO : ScriptableObject
     public Sprite sprite;
     public AnimatorController controller;
 
-    public string attackName;
+    public string attackType;
     public string explanation;
     public float coolTime;
 }

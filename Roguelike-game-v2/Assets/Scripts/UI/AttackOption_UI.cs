@@ -45,7 +45,7 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        //info.levelUpdate.Invoke(++Managers.Game.inGameData.attackData.attackInfo[index].level);
+        info.caster = Managers.Game.attackCasterManage.CreateAndGetCaster(info.data.attackType);
     }
     private void Awake()
     {
@@ -73,8 +73,17 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
     {
         image.sprite = info.data.sprite;
         animator.runtimeAnimatorController = info.data.controller;
-        textList[0].text = $"Lv.{info.level}";
-        textList[1].text = $"{info.data.attackName}";
+
+        if(info.level == 0)
+        {
+            textList[0].text = $"Lv.{info.level}";
+        }
+        else
+        {
+            textList[0].text = $"New";
+        }
+        
+        textList[1].text = $"{info.data.attackType}";
         textList[2].text = $"{info.data.explanation}";
     }
     private void OnDisable()
