@@ -6,9 +6,9 @@ public class Test_InGame : MonoBehaviour
 
     private void Update()
     {
-        //if(Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    attackSelectionUI.gameObject.SetActive(true);
-        //}
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            attackSelectionUI.gameObject.SetActive(true);
+        }
     }
 }

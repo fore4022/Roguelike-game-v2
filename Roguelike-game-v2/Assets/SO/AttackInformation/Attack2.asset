@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b32f468c89f423245814ef0335fae600, type: 3}
-  m_Name: BasicAttack
+  m_Name: Attack2
   m_EditorClassIdentifier: 
-  skillObject: {fileID: 6122015278753866852, guid: edb0be481a2f6004ea27ebdc1e61b480, type: 3}
-  sprite: {fileID: 21300000, guid: 27ebe54f9a27524419f2fc693729c457, type: 3}
-  controller: {fileID: 0}
-  attackName: BasicAttack
-  explanation: BasicAttack
+  skillObject: {fileID: 3775212744557312065, guid: 2d9bcc69775f2fd44be57c183c831f1f, type: 3}
+  sprite: {fileID: 21300000, guid: 07495772bbfbca44da0c5b9d4d9e4387, type: 3}
+  controller: {fileID: 9100000, guid: b8a68861c5a2b31459ccf712a1f047c2, type: 2}
+  attackType: Attack2
+  explanation: Attack2
   coolTime: 0
