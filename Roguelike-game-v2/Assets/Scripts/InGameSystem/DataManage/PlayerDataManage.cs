@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 public class PlayerDataManage
 {
-    public Action<(int, int)> levelUpdate = null;//
+    public Action<int> levelUpdate = null;
     public Action<float> healthUpdate = null;
     public Action<float> experienceUpdate = null;
 
@@ -13,6 +13,9 @@ public class PlayerDataManage
     private const float baseExperience = 5;
     private const float experienceMultiplier = 0.35f;
 
+    private int increaseValue;
+
+    public int IncreaseValue { get { return increaseValue; } }
     public PlayerInformation Info
     {
         set
@@ -28,8 +31,12 @@ public class PlayerDataManage
         set
         {
             info.level = value;
+            increaseValue = value;
 
-            //levelUpdate.Invoke((Level, value));
+            if(levelUpdate != null)
+            {
+                levelUpdate.Invoke(Level);
+            }
         }
     }
     public float Health
