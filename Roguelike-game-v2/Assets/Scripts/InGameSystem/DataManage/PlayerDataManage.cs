@@ -33,10 +33,7 @@ public class PlayerDataManage
             info.level = value;
             increaseValue = value;
 
-            if(levelUpdate != null)
-            {
-                levelUpdate.Invoke(Level);
-            }
+            levelUpdate?.Invoke(Level);
         }
     }
     public float Health
@@ -86,7 +83,7 @@ public class PlayerDataManage
         }
         else
         {
-            acquiredAttackTypes.Add(attackName, (acquiredAttackTypes.Count + 1 , 1));
+            acquiredAttackTypes.Add(attackName, (acquiredAttackTypes.Count + 1, 1));
         }
     }
     private void Set()

@@ -41,8 +41,6 @@ public class Player : MonoBehaviour, IDamageReceiver
         move = new();
 
         move.Init();
-
-        Managers.Game.playerData.Level++;//
     }
     private async void LoadPlayerStat()
     {

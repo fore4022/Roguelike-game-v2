@@ -49,20 +49,25 @@ public static class Calculate
 
         if (!GeometryUtility.TestPlanesAABB(planes, target.bounds)) { Object.Destroy(targetCollider.gameObject); }
     }
-    public static List<int> GetRandomValues(int size, int count)
+    public static int[] GetRandomValues(int maxValue, int count)
     {
         List<int> valueList = new();
+        int[] result = new int[count];
 
-        for (int i = 0; i < size; i++)
+        for(int i = 0; i < maxValue; i++)
         {
             valueList.Add(i);
         }
 
-        for (int i = 0; i < size - count; i++)
+        for(int i = 0; i < count; i++)
         {
-            valueList.Remove(Random.Range(0, size - i));
+            int index = Random.Range(0, valueList.Count);
+
+            result[i] = valueList[index];
+
+            valueList.Remove(index);
         }
 
-        return valueList;
+        return result;
     }
 }

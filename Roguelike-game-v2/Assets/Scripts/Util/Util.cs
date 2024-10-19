@@ -74,13 +74,20 @@ public class Util
 
         return components;
     }
-    public static T GetComponentInChildren<T>(Transform transform) where T : Component
+    public static T GetComponentInChildren<T>(Transform transform, bool recursive = false) where T : Component
     {
-        for(int index = 0; index < transform.childCount; index++)
+        if(recursive)
         {
-            if(transform.GetChild(index).TryGetComponent<T>(out T component))
+            return transform.GetComponentInChildren<T>();
+        }
+        else
+        {
+            for (int index = 0; index < transform.childCount; index++)
             {
-                return component;
+                if (transform.GetChild(index).TryGetComponent<T>(out T component))
+                {
+                    return component;
+                }
             }
         }
 

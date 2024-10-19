@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 public class AttackSelection_UI : UserInterface
@@ -54,12 +55,12 @@ public class AttackSelection_UI : UserInterface
 
         AdjustGridLayout(optionCount);
 
-        List<int> attackDataIndexList = Calculate.GetRandomValues(Managers.Game.inGameData.attackData.attackInfo.Count, Managers.Game.inGameData.OptionCount);
+        int[] DataIndexArray = Calculate.GetRandomValues(Managers.Game.inGameData.attackData.attackInfo.Count, Managers.Game.inGameData.OptionCount);
 
-        for(int i = 0; i < attackDataIndexList.Count; i++)
+        for(int i = 0; i < DataIndexArray.Count(); i++)
         {
             attackOptionList[i].gameObject.SetActive(true);
-            attackOptionList[i].InitOption(attackDataIndexList[i]);
+            attackOptionList[i].InitOption(DataIndexArray[i]);
         }
     }
     private void AdjustGridLayout(int index)
