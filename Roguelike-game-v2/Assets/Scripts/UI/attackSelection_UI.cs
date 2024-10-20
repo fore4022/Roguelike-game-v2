@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -27,23 +28,6 @@ public class AttackSelection_UI : UserInterface
 
         gameObject.SetActive(false);
     }
-    private void Init()
-    {
-        gridLayoutGroup = GetComponent<GridLayoutGroup>();
-
-        foreach(Transform transform in GetComponentInChildren<Transform>())
-        {
-            if(transform != this.transform)
-            {
-                if(transform.gameObject.TryGetComponent<AttackOption_UI>(out AttackOption_UI attackOption_UI))
-                {
-                    attackOptionList.Add(attackOption_UI);
-                }
-
-                transform.gameObject.SetActive(false);
-            }
-        }
-    }
     private void Set()
     {
         if(gridLayoutGroup == null)
@@ -66,6 +50,27 @@ public class AttackSelection_UI : UserInterface
     private void AdjustGridLayout(int index)
     {
         gridLayoutGroup.spacing = new Vector2(gridLayoutValues[index].spacingX, gridLayoutValues[index].spacingY);
+    }
+    private IEnumerator Init()
+    {
+        gridLayoutGroup = GetComponent<GridLayoutGroup>();
+
+        yield return new WaitUntil(() => Managers.Game.inGameData != null);
+
+        //Managers.UI.CreateUI<AttackOption_UI>();
+
+        foreach (Transform transform in GetComponentInChildren<Transform>())//
+        {
+            if (transform != this.transform)
+            {
+                if (transform.gameObject.TryGetComponent<AttackOption_UI>(out AttackOption_UI attackOption_UI))
+                {
+                    attackOptionList.Add(attackOption_UI);
+                }
+
+                transform.gameObject.SetActive(false);
+            }
+        }
     }
     private void OnDisable()
     {
