@@ -34,8 +34,10 @@ public class AttackSelection_UI : UserInterface
         {
             return;
         }
-
+        
         int optionCount = Managers.Game.inGameData.OptionCount - 3;
+
+        Debug.Log(optionCount);
 
         AdjustGridLayout(optionCount);
 
@@ -58,6 +60,11 @@ public class AttackSelection_UI : UserInterface
         yield return new WaitUntil(() => Managers.Game.inGameData != null);
 
         //Managers.UI.CreateUI<AttackOption_UI>();
+
+        for (int i = 0; i < Managers.Game.inGameData.OptionCount; i++)
+        {
+            
+        }
 
         foreach (Transform transform in GetComponentInChildren<Transform>())//
         {

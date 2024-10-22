@@ -7,5 +7,5 @@ public class InGameDataManage
 
     private int defaultOptionCount = 3;
     
-    public int OptionCount { get { return Mathf.Min(defaultOptionCount, maxOptionCount); } }//
+    public int OptionCount { get { return Mathf.Min(defaultOptionCount, maxOptionCount); } }
 }

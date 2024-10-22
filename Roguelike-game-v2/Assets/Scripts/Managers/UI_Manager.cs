@@ -72,9 +72,20 @@ public class UI_Manager
 
         return null;
     }
+    public GameObject CreateAndGetUI<T>() where T : UserInterface
+    {
+        string name = GetName<T>();
+
+        if(uiDictionary.ContainsKey(name))
+        {
+            return uiDictionary[name];
+        }
+    }
     public void DestroyUI<T>() where T : UserInterface
     {
         string name = GetName<T>();
+
+        //Create
 
         if(uiDictionary.ContainsKey(name))
         {
