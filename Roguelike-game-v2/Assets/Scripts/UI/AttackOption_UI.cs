@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
-    public AttackInformation info;
+    public AttackInformation info = null;
 
     private List<TextMeshProUGUI> textList = new();
 
@@ -55,6 +55,10 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
 
         textList = Util.GetComponentsInChildren<TextMeshProUGUI>(transform);
     }
+    private void OnEnable()
+    {
+        SetAnimator(false);
+    }
     protected override void Start()
     {
         base.Start();
@@ -72,15 +76,16 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
     private void SetOption()
     {
         image.sprite = info.data.sprite;
+
         animator.runtimeAnimatorController = info.data.controller;
 
-        if(info.level == 0)
+        if (info.level == 0)
         {
-            textList[0].text = $"Lv.{info.level}";
+            textList[0].text = "New";
         }
         else
         {
-            textList[0].text = $"New";
+            textList[0].text = $"Lv.{info.level}";
         }
         
         textList[1].text = $"{info.data.attackType}";
@@ -94,6 +99,18 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
     private void SetAnimator(bool isEnabled)
     {
         animator.enabled = isEnabled;
+
+        if(!isEnabled)
+        {
+            if(info != null)
+            {
+                image.sprite = info.data.sprite;
+            }
+        }
+        else
+        {
+            //animator.
+        }
     }
     private IEnumerator SetImageScale(float targetScale)
     {
