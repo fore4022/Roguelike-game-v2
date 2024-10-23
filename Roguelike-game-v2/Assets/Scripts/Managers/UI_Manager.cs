@@ -22,7 +22,7 @@ public class UI_Manager
             return go.transform;
         }
     }
-    private string GetName<T>() where T : UserInterface
+    public string GetName<T>() where T : UserInterface
     {
         string name = typeof(T).ToString();
 
@@ -72,15 +72,6 @@ public class UI_Manager
 
         return null;
     }
-    public GameObject CreateAndGetUI<T>() where T : UserInterface
-    {
-        string name = GetName<T>();
-
-        if(uiDictionary.ContainsKey(name))
-        {
-            return uiDictionary[name];
-        }
-    }
     public void DestroyUI<T>() where T : UserInterface
     {
         string name = GetName<T>();
@@ -105,6 +96,12 @@ public class UI_Manager
             uiDictionary.Add(name, ui.gameObject);
         }
     }
+    public void ClearDictionary()
+    {
+        uiDictionary = new();
+
+        Managers.Scene.loadScene -= ClearDictionary;
+    }
     public async void LoadUI(string path)
     {
         uiDictionary.Add(path, await Util.LoadingToPath<GameObject>(path));
@@ -123,15 +120,9 @@ public class UI_Manager
         }
         else
         {
-            uiDictionary[uiName] = GameObject.Instantiate(uiDictionary[uiName], Transform);
+            uiDictionary[uiName] = Object.Instantiate(uiDictionary[uiName], Transform);
 
             go.SetActive(isActive);
         }
-    }
-    public void ClearDictionary()
-    {
-        uiDictionary = new();
-
-        Managers.Scene.loadScene -= ClearDictionary;
     }
 }

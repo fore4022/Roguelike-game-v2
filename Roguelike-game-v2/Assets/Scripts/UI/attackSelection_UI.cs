@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+[RequireComponent(typeof(GridLayoutGroup))]
 public class AttackSelection_UI : UserInterface
 {
     private List<(int spacingX, int spacingY)> gridLayoutValues = new() { (365, 140), (250,225), (150,65)};
@@ -10,10 +11,11 @@ public class AttackSelection_UI : UserInterface
     private List<AttackOption_UI> attackOptionList = new();
 
     private GridLayoutGroup gridLayoutGroup = null;
+    private GameObject attackOption = null;
 
     private void OnEnable()
     {
-        if(attackOptionList == null)
+        if(attackOptionList.Count == 0)
         {
             return;
         }
@@ -24,20 +26,11 @@ public class AttackSelection_UI : UserInterface
     {
         base.Start();
 
-        Init();
-
-        gameObject.SetActive(false);
+        StartCoroutine(Init());
     }
     private void Set()
     {
-        if(gridLayoutGroup == null)
-        {
-            return;
-        }
-        
         int optionCount = Managers.Game.inGameData.OptionCount - 3;
-
-        Debug.Log(optionCount);
 
         AdjustGridLayout(optionCount);
 
@@ -53,39 +46,13 @@ public class AttackSelection_UI : UserInterface
     {
         gridLayoutGroup.spacing = new Vector2(gridLayoutValues[index].spacingX, gridLayoutValues[index].spacingY);
     }
-    private IEnumerator Init()
-    {
-        gridLayoutGroup = GetComponent<GridLayoutGroup>();
-
-        yield return new WaitUntil(() => Managers.Game.inGameData != null);
-
-        //Managers.UI.CreateUI<AttackOption_UI>();
-
-        for (int i = 0; i < Managers.Game.inGameData.OptionCount; i++)
-        {
-            
-        }
-
-        foreach (Transform transform in GetComponentInChildren<Transform>())//
-        {
-            if (transform != this.transform)
-            {
-                if (transform.gameObject.TryGetComponent<AttackOption_UI>(out AttackOption_UI attackOption_UI))
-                {
-                    attackOptionList.Add(attackOption_UI);
-                }
-
-                transform.gameObject.SetActive(false);
-            }
-        }
-    }
     private void OnDisable()
     {
-        foreach(AttackOption_UI attackOption in attackOptionList)
+        foreach (AttackOption_UI attackOption in attackOptionList)
         {
             GameObject go = attackOption.gameObject;
 
-            if(go.activeSelf)
+            if (go.activeSelf)
             {
                 go.SetActive(false);
             }
@@ -94,5 +61,34 @@ public class AttackSelection_UI : UserInterface
                 break;
             }
         }
+    }
+    private async void LoadAttackOption()
+    {
+        string path = Managers.UI.GetName<AttackOption_UI>();
+
+        attackOption = await Util.LoadingToPath<GameObject>(path);
+    }
+    private IEnumerator Init()
+    {
+        LoadAttackOption();
+
+        gridLayoutGroup = GetComponent<GridLayoutGroup>();
+
+        yield return new WaitUntil(() => attackOption != null);
+        
+        yield return new WaitUntil(() => Managers.Game.inGameData != null);
+
+        for (int i = 0; i < Managers.Game.inGameData.OptionCount; i++)
+        {
+            GameObject go = Instantiate(attackOption, transform);
+
+            AttackOption_UI component = go.GetComponent<AttackOption_UI>();
+
+            attackOptionList.Add(component);
+
+            go.SetActive(false);
+        }
+
+        gameObject.SetActive(false);
     }
 }
