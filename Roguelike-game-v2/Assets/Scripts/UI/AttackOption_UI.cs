@@ -15,10 +15,12 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
     private Animator animator;
 
     private Coroutine adjustmentScale = null;
+    private Coroutine playAnimation = null;
 
     private const float minScale = 1f;
     private const float maxScale = 1.1f;
 
+    private string clipName;
     private int index;
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -54,11 +56,7 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
         animator = Util.GetComponentInChildren<Animator>(transform);
 
         textList = Util.GetComponentsInChildren<TextMeshProUGUI>(transform);
-    }
-    private void OnEnable()
-    {
-        SetAnimator(false);
-    }
+    } 
     protected override void Start()
     {
         base.Start();
@@ -98,18 +96,30 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
     }
     private void SetAnimator(bool isEnabled)
     {
+        if(animator.enabled == isEnabled)
+        {
+            return;
+        }
+
         animator.enabled = isEnabled;
 
-        if(!isEnabled)
+        if (isEnabled)
         {
-            if(info != null)
-            {
-                image.sprite = info.data.sprite;
-            }
+            playAnimation = StartCoroutine(PlayAnimation());
         }
         else
         {
-            //animator.
+            if (playAnimation != null)
+            {
+                StopCoroutine(playAnimation);
+
+                playAnimation = null;
+            }
+
+            if (info != null)
+            {
+                image.sprite = info.data.sprite;
+            }
         }
     }
     private IEnumerator SetImageScale(float targetScale)
@@ -136,5 +146,17 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
 
             yield return null;
         }
+    }
+    private IEnumerator PlayAnimation()
+    {
+        animator.Play(clipName, 0, 0);
+
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
+
+        animator.Play(clipName, 0, 0);
+
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime == 0);
+
+        SetAnimator(false);
     }
 }

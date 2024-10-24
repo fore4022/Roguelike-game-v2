@@ -15,7 +15,6 @@ public static class ObjectPool
 
     public static void Init()
     {
-
         GameObject go = GameObject.Find("@ObjectPool");
 
         if (go == null)
