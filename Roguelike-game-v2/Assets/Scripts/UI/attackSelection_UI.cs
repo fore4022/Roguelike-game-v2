@@ -63,6 +63,8 @@ public class AttackSelection_UI : UserInterface
         }
 
         backGroundImage.enabled = false;
+
+        Time.timeScale = 1;
     }
     private async void LoadAttackOption()
     {

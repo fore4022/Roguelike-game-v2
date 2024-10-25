@@ -21,7 +21,6 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
     private const float maxScale = 1.1f;
 
     private string clipName;
-    private int index;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -43,7 +42,7 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
             StopCoroutine(adjustmentScale);
         }
 
-        StartCoroutine(SetImageScale(minScale));
+        adjustmentScale = StartCoroutine(SetImageScale(minScale));
     }
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -69,8 +68,6 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
     }
     public void InitOption(int index)
     {
-        this.index = index;
-
         info = Managers.Game.inGameData.attackData.attackInfo[index];
         
         SetOption();
@@ -135,7 +132,7 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
 
         while (rectTransform.localScale.x != targetScale)
         {
-            totalTime += Time.deltaTime;
+            totalTime += Time.unscaledDeltaTime;
 
             if(totalTime > 1)
             {

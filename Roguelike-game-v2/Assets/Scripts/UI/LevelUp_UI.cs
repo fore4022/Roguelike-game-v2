@@ -38,6 +38,8 @@ public class LevelUp_UI : UserInterface
 
         yield return new WaitForSeconds(delay);
 
+        Time.timeScale = 0;
+
         Managers.UI.ShowUI<AttackSelection_UI>();
 
         ui.SetActive(false);
