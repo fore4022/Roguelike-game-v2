@@ -47,7 +47,11 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
     }
     public void OnPointerClick(PointerEventData eventData)
     {
+        Managers.Game.playerData.UpgradeOrAddAttackType(info.data.attackType);
+
         info.caster = Managers.Game.attackCasterManage.CreateAndGetCaster(info.data.attackType);
+
+        Managers.UI.HideUI<AttackSelection_UI>();
     }
     private void Awake()
     {

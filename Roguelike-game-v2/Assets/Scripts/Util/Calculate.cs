@@ -61,11 +61,11 @@ public static class Calculate
 
         for(int i = 0; i < count; i++)
         {
-            int index = Random.Range(0, valueList.Count);
+            int index = Random.Range(0, maxValue - i);
 
             result[i] = valueList[index];
 
-            valueList.Remove(index);
+            valueList.RemoveAt(index);
         }
 
         return result;

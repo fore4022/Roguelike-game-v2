@@ -19,7 +19,7 @@ public class AttackCaster
     public IEnumerator Attacking()
     {
         while (true)
-        {
+        {       
             StartAttack();
 
             yield return new WaitForSeconds(Managers.Game.player.Stat.attackSpeed);

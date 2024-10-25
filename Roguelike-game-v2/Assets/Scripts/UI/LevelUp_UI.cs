@@ -8,7 +8,7 @@ public class LevelUp_UI : UserInterface
     private TextMeshProUGUI level;
     private Animator animator;
 
-    private const float delay = 0.5f;
+    private const float delay = 0.35f;
 
     private void Awake()
     {
