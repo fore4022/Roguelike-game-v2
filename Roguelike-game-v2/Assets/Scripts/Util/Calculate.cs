@@ -15,14 +15,21 @@ public static class Calculate
 
         return (targetPosition - Managers.Game.player.gameObject.transform.position).normalized;
     }
-    public static Vector3 GetDirection(Vector3 targetPosition, Vector3 position)
+    public static Vector3 GetDirection(Vector3 targetPosition, Vector3 position, bool isNormalized = true)
     {
         if (targetPosition == null)
         {
             return new Vector3(Random.Range(0, 360), Random.Range(0, 360), 0);
         }
 
-        return (targetPosition - position).normalized;
+        if(isNormalized)
+        {
+            return (targetPosition - position).normalized;
+        }
+        else
+        {
+            return (targetPosition - position);
+        }
     }
     public static Vector3 GetVector(float vec)
     {

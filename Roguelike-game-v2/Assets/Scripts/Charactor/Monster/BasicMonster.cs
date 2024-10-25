@@ -2,9 +2,12 @@ using System.Collections;
 using UnityEngine;
 public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 {
+    private Collider2D[] colliders = new Collider2D[maxCount];
     private DefaultStat stat;
     private CharactorInformation charactor;
     private Coroutine moveCoroutine = null;
+
+    private const int maxCount = 10;
 
     private float experience;
 
@@ -19,7 +22,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     {
         Vector3 direction = Calculate.GetDirection(Managers.Game.player.gameObject.transform.position, transform.position);
 
-        transform.position += direction * stat.moveSpeed * Time.deltaTime;
+        rigid.velocity = direction * stat.moveSpeed;
     }
     private void Die()
     {
@@ -36,7 +39,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     }
     protected void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if(collision.gameObject.CompareTag("Player"))
         {
             Managers.Game.player.GetDamage(this);
         }
@@ -66,7 +69,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     }
     private IEnumerator Moving()
     {
-        while (true)
+        while(true)
         {
             OnMove();
 
