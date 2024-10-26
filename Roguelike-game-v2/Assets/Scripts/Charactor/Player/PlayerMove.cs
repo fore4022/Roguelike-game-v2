@@ -38,7 +38,7 @@ public class PlayerMove : IMoveable
     }
     public void Init()
     {
-        touchControl = InputActions.GetInputAction<TouchControls>();
+        touchControl = InputActions.CreateAndGetInputAction<TouchControls>();
 
         touchControl.Enable();
 

@@ -23,6 +23,8 @@ public class AttackSelection_UI : UserInterface
             return;
         }
 
+        InputActions.DisableInputAction<TouchControls>();
+
         Set();
     }
     protected override void Start()

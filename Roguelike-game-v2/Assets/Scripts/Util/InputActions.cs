@@ -4,6 +4,21 @@ public static class InputActions
 {
     public static List<IInputActionCollection> inputActionList = new();
 
+    public static T CreateAndGetInputAction<T>() where T : IInputActionCollection, new ()
+    {
+        if(GetInputAction<T>(out T inputAction) != null)
+        {
+            return inputAction;
+        }
+        else
+        {
+            T newInputAction = new();
+
+            inputActionList.Add(newInputAction);
+
+            return newInputAction;
+        }
+    }
     public static T GetInputAction<T>() where T : IInputActionCollection, new()
     {
         IInputActionCollection instance = inputActionList.Find(input => input.GetType() == typeof(T));
@@ -19,22 +34,28 @@ public static class InputActions
         {
             return (T)instance;
         }
-        else
-        {
-            T newInputAction = new();
 
-            inputActionList.Add(newInputAction);
+        return default;
+    }
+    public static T GetInputAction<T>(out T inputAction) where T : IInputActionCollection, new()
+    {
+        inputAction = GetInputAction<T>();
 
-            return newInputAction;
-        }
+        return inputAction;
     }
     public static void EnableInputAction<T>() where T : IInputActionCollection, new()
     {
-        GetInputAction<T>().Enable();
+        if(GetInputAction<T>(out T inputAction) != null)
+        {
+            inputAction.Enable();
+        }
     }
     public static void DisableInputAction<T>() where T : IInputActionCollection, new()
     {
-        GetInputAction<T>().Disable();
+        if(GetInputAction<T>(out T inputAction) != null)
+        {
+            inputAction.Disable();
+        }
     }
     public static void ClearActions()
     {

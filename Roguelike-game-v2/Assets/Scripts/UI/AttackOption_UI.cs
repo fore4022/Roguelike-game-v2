@@ -94,6 +94,8 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
     {
         animator.runtimeAnimatorController = null;
         info = null;
+
+        InputActions.EnableInputAction<TouchControls>();
     }
     private void SetAnimator(bool isEnabled)
     {
