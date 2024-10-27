@@ -31,7 +31,7 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
             StopCoroutine(adjustmentScale);
         }
 
-        adjustmentScale = StartCoroutine(SetImageScale(maxScale));
+        adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, maxScale));
     }
     public void OnPointerExit(PointerEventData eventData)
     {
@@ -42,7 +42,7 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
             StopCoroutine(adjustmentScale);
         }
 
-        adjustmentScale = StartCoroutine(SetImageScale(minScale));
+        adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, minScale));
     }
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -123,31 +123,6 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
             {
                 image.sprite = info.data.sprite;
             }
-        }
-    }
-    private IEnumerator SetImageScale(float targetScale)
-    {
-        Vector3 scale;
-
-        float totalTime = 0;
-        float scaleValue;
-
-        while (rectTransform.localScale.x != targetScale)
-        {
-            totalTime += Time.unscaledDeltaTime;
-
-            if(totalTime > 1)
-            {
-                totalTime = 1;
-            }
-
-            scaleValue = Mathf.Lerp(rectTransform.localScale.x, targetScale, totalTime);
-
-            scale = new Vector3(scaleValue, scaleValue);
-            
-            rectTransform.localScale = scale;
-
-            yield return null;
         }
     }
     private IEnumerator PlayAnimation()

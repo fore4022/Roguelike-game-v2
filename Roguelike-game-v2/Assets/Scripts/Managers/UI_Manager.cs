@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 public class UI_Manager
 {
+    public UIElementUtility uiElementUtility = new();
+
     private Dictionary<string, GameObject> uiDictionary = new();
 
     private Transform Transform
