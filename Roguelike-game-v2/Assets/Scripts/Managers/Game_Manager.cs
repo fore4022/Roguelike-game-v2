@@ -35,7 +35,7 @@ public class Game_Manager
         inGameTimer.StartTimer();
         monsterSpawner.StartSpawn();
 
-        playerData.SetLevel();
+        //playerData.SetLevel();
     }
     public void GameEnd()
     {
