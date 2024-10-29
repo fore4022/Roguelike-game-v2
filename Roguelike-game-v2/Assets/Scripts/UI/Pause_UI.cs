@@ -24,7 +24,7 @@ public class Pause_UI : UserInterface, IPointerEnterHandler, IPointerExitHandler
         }
 
         adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, maxScale, duration));
-        adjustmentColor = StartCoroutine(Managers.UI.uiElementUtility.SetImageColor(image, maxAlpha, duration));
+        adjustmentColor = StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(image, maxAlpha, duration));
     }
     public void OnPointerExit(PointerEventData eventData)
     {
@@ -35,7 +35,7 @@ public class Pause_UI : UserInterface, IPointerEnterHandler, IPointerExitHandler
         }
 
         adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, minScale, duration));
-        adjustmentColor = StartCoroutine(Managers.UI.uiElementUtility.SetImageColor(image, minAlpha, duration));
+        adjustmentColor = StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(image, minAlpha, duration));
     }
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -54,14 +54,6 @@ public class Pause_UI : UserInterface, IPointerEnterHandler, IPointerExitHandler
     }
     private void Set()
     {
-        Color color = image.color;
-
-        Debug.Log(color.a);
-
-        color.a = minAlpha / 255;
-        
-        Debug.Log(color.a);
-
-        image.color = color;
+        StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(image, minAlpha, duration));
     }
 }

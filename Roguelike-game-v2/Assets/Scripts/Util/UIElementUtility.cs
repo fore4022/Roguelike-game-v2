@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class UIElementUtility
@@ -38,19 +39,35 @@ public class UIElementUtility
             }
         }
     }
-    public IEnumerator SetImageColor(Image image, float targetAlphaValue, float duration = 1)
+    public IEnumerator SetImageAlpha(Image image, float targetAlphaValue, float duration = 1, bool recursive = true)
     {
+        List<Image> imageList = null;
+
         Color color = image.color;
 
         float totalTime = 0;
 
         targetAlphaValue /= 255;
 
-        if(duration == 0)
+        if (recursive)
+        {
+            imageList = Util.GetComponentsInChildren<Image>(image.transform);
+        }
+
+        if (duration == 0)
         {
             color.a = targetAlphaValue;
 
             image.color = color;
+
+            foreach (Image img in imageList)
+            {
+                Color childrenColor = img.color;
+
+                childrenColor.a = targetAlphaValue;
+
+                img.color = childrenColor;
+            }
         }
         else
         {
@@ -66,6 +83,15 @@ public class UIElementUtility
                 }
 
                 color.a = Mathf.Lerp(alphaValue, targetAlphaValue, totalTime / duration);
+
+                foreach(Image img in imageList)
+                {
+                    Color childrenColor = img.color;
+
+                    childrenColor.a = color.a;
+
+                    img.color = childrenColor;
+                }
 
                 image.color = color;
 
