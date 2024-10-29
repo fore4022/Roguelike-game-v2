@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.Android;
 using UnityEngine.UI;
-public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExitHandler
 {
     public AttackInformation info = null;
 
     private List<TextMeshProUGUI> textList = new();
 
     private RectTransform rectTransform;
+    private Button button;
     private Image image;
     private Animator animator;
 
@@ -44,7 +46,7 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
 
         adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, minScale));
     }
-    public void OnPointerClick(PointerEventData eventData)
+    public void PointerClick()
     {
         Managers.Game.playerData.UpgradeOrAddAttackType(info.data.attackType);
 
@@ -55,6 +57,7 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
+        button = GetComponent<Button>();
         image = Util.GetComponentInChildren<Image>(transform);
         animator = Util.GetComponentInChildren<Animator>(transform);
 
@@ -63,6 +66,8 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
     protected override void Start()
     {
         base.Start();
+
+        button.onClick.AddListener(PointerClick);
 
         SetAnimator(false);
     }
