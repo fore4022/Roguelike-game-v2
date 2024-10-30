@@ -1,18 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-public class UIElementUtility : Selectable
+public class UIElementUtility
 {
-    public void SetButtonState(Button button, int stateInt)
+    public void SetButtonColor(Transform transform, bool isPressed)
     {
-        if (stateInt > 4) { return; }
+        List<Image> imageList = transform.GetComponentsInChildren<Image>().ToList();
 
-        SelectionState state = (SelectionState)stateInt;
+        float value = (isPressed == true ? 2 : 0.5f);//const
 
-        //button = DoStateTransition(state, true);
+        foreach(Image image in imageList)
+        {
+            Color color = image.color;
+
+            color.r /= value;
+            color.g /= value;
+            color.b /= value;
+
+            image.color = color;
+        }
     }
-    public IEnumerator SetImageScale(RectTransform rectTransform, float targetScale, float duration = 1)
+    public IEnumerator SetImageScale(RectTransform rectTransform, float targetScale, float duration = 0)
     {
         Vector3 scale;
 
@@ -47,7 +57,7 @@ public class UIElementUtility : Selectable
             }
         }
     }
-    public IEnumerator SetImageAlpha(Image image, float targetAlphaValue, float duration = 1, bool recursive = true)
+    public IEnumerator SetImageAlpha(Image image, float targetAlphaValue, float duration = 0, bool recursive = true)
     {
         List<Image> imageList = null;
 

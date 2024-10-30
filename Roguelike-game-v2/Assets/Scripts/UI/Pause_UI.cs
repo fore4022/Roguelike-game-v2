@@ -1,11 +1,9 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-public class Pause_UI : UserInterface, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
+public class Pause_UI : UserInterface, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
 {
-    private Icon icon;
     private RectTransform rectTransform;
-    private Button button;
     private Image image;
 
     private Coroutine adjustmentScale = null;
@@ -16,6 +14,8 @@ public class Pause_UI : UserInterface, IPointerEnterHandler, IPointerExitHandler
     private const float minAlpha = 155;
     private const float maxAlpha = 235;
     private const float duration = 0.1f;
+
+    private bool isPointerDown = false;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -30,23 +30,34 @@ public class Pause_UI : UserInterface, IPointerEnterHandler, IPointerExitHandler
     }
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (isPointerDown) { return; }
+
         if (adjustmentScale != null)
         {
             StopCoroutine(adjustmentScale);
             StopCoroutine(adjustmentColor);
         }
 
-        Managers.UI.uiElementUtility.SetButtonState(button, 0);
-        icon.UpdateColor();
-
-        adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, minScale, duration));
-        adjustmentColor = StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(image, minAlpha, duration));
+        adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, minScale));
+        adjustmentColor = StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(image, minAlpha));
     }
     public void OnPointerDown(PointerEventData eventData)
     {
-        icon.UpdateColor(button);
+        isPointerDown = true;
+
+        Managers.UI.uiElementUtility.SetButtonColor(transform, true);
     }
-    private void PointerClick()
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, minScale));
+        adjustmentColor = StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(image, minAlpha));
+
+        Managers.UI.uiElementUtility.SetButtonColor(transform, false);
+
+        isPointerDown = false;
+
+    }
+    public void OnPointerClick(PointerEventData eventData)
     {
         Time.timeScale = 0;
 
@@ -54,30 +65,17 @@ public class Pause_UI : UserInterface, IPointerEnterHandler, IPointerExitHandler
 
         Managers.UI.HideUI<Pause_UI>();
     }
-    private void OnEnable()
-    {
-        if(icon == null)
-        {
-            return;
-        }
-
-        icon.UpdateColor();
-    }
     protected override void Start()
     {
         base.Start();
 
-        icon = Util.GetComponentInChildren<Icon>(transform);
         rectTransform = GetComponent<RectTransform>();
-        button = GetComponent<Button>();
         image = GetComponent<Image>();
 
         Set();
     }
     private void Set()
     {
-        button.onClick.AddListener(PointerClick);
-
         StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(image, minAlpha, duration));
     }
 }
