@@ -20,6 +20,7 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
 
     private const float minScale = 1f;
     private const float maxScale = 1.1f;
+    private const float duration = 1;
 
     private string clipName;
 
@@ -32,7 +33,7 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
             StopCoroutine(adjustmentScale);
         }
 
-        adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, maxScale));
+        adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, maxScale, duration));
     }
     public void OnPointerExit(PointerEventData eventData)
     {
@@ -43,7 +44,7 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
             StopCoroutine(adjustmentScale);
         }
 
-        adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, minScale));
+        adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, minScale, duration));
     }
     private void PointerClick()
     {

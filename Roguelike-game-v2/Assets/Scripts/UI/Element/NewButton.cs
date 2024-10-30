@@ -5,17 +5,17 @@ public abstract class NewButton : UserInterface, IPointerEnterHandler, IPointerE
 {
     protected NewButton childClass;
 
-    protected RectTransform rectTransform;
-    protected Image image;
-
-    private Coroutine adjustmentScale = null;
-    private Coroutine adjustmentColor = null;
-
     protected float minScale;
     protected float maxScale;
     protected float minAlpha;
     protected float maxAlpha;
     protected float duration;
+
+    private RectTransform rectTransform;
+    private Image image;
+
+    private Coroutine adjustmentScale = null;
+    private Coroutine adjustmentColor = null;
 
     private bool isPointerDown = false;
 
