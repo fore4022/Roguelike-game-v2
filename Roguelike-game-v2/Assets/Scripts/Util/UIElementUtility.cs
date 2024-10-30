@@ -5,11 +5,14 @@ using UnityEngine;
 using UnityEngine.UI;
 public class UIElementUtility
 {
+    private const float pressedColor = 1.25f;
+    private const float normalizedColor = 0.8f;
+
     public void SetButtonColor(Transform transform, bool isPressed)
     {
         List<Image> imageList = transform.GetComponentsInChildren<Image>().ToList();
 
-        float value = (isPressed == true ? 2 : 0.5f);//const
+        float value = (isPressed ? pressedColor : normalizedColor);
 
         foreach(Image image in imageList)
         {

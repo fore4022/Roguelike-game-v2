@@ -1,25 +1,51 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-public class Pause_UI : UserInterface, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
+public abstract class NewButton : UserInterface, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
 {
-    private RectTransform rectTransform;
-    private Image image;
+    protected NewButton childClass;
+
+    protected RectTransform rectTransform;
+    protected Image image;
 
     private Coroutine adjustmentScale = null;
     private Coroutine adjustmentColor = null;
 
-    private const float minScale = 1f;
-    private const float maxScale = 1.035f;
-    private const float minAlpha = 155;
-    private const float maxAlpha = 235;
-    private const float duration = 0.1f;
+    protected float minScale;
+    protected float maxScale;
+    protected float minAlpha;
+    protected float maxAlpha;
+    protected float duration;
 
     private bool isPointerDown = false;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(adjustmentScale !=  null)
+        childClass.PointerEnter();
+        PointerEnter();
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        childClass.PointerExit();
+        PointerExit();
+    }
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        childClass.PointerDown();
+        PointerDown();
+    }
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        childClass.PointerUp();
+        PointerUp();
+    }
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        PointerClick();
+    }
+    protected virtual void PointerEnter()
+    {
+        if (adjustmentScale != null)
         {
             StopCoroutine(adjustmentScale);
             StopCoroutine(adjustmentColor);
@@ -28,7 +54,7 @@ public class Pause_UI : UserInterface, IPointerEnterHandler, IPointerExitHandler
         adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, maxScale, duration));
         adjustmentColor = StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(image, maxAlpha, duration));
     }
-    public void OnPointerExit(PointerEventData eventData)
+    protected virtual void PointerExit()
     {
         if (isPointerDown) { return; }
 
@@ -41,13 +67,13 @@ public class Pause_UI : UserInterface, IPointerEnterHandler, IPointerExitHandler
         adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, minScale));
         adjustmentColor = StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(image, minAlpha));
     }
-    public void OnPointerDown(PointerEventData eventData)
+    protected virtual void PointerDown()
     {
         isPointerDown = true;
 
         Managers.UI.uiElementUtility.SetButtonColor(transform, true);
     }
-    public void OnPointerUp(PointerEventData eventData)
+    protected virtual void PointerUp()
     {
         adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, minScale));
         adjustmentColor = StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(image, minAlpha));
@@ -56,14 +82,6 @@ public class Pause_UI : UserInterface, IPointerEnterHandler, IPointerExitHandler
 
         isPointerDown = false;
     }
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        Time.timeScale = 0;
-
-        //show UI
-
-        Managers.UI.HideUI<Pause_UI>();
-    }
     protected override void Start()
     {
         base.Start();
@@ -71,10 +89,14 @@ public class Pause_UI : UserInterface, IPointerEnterHandler, IPointerExitHandler
         rectTransform = GetComponent<RectTransform>();
         image = GetComponent<Image>();
 
+        Init();
+
         Set();
     }
     private void Set()
     {
-        StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(image, minAlpha, duration));
+        StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(image, childClass.minAlpha, childClass.duration));
     }
+    protected abstract void PointerClick();
+    protected abstract void Init();
 }
