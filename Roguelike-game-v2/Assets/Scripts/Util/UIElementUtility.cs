@@ -2,8 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class UIElementUtility
+public class UIElementUtility : Selectable
 {
+    public void SetButtonState(Button button, int stateInt)
+    {
+        if (stateInt > 4) { return; }
+
+        SelectionState state = (SelectionState)stateInt;
+
+        //button = DoStateTransition(state, true);
+    }
     public IEnumerator SetImageScale(RectTransform rectTransform, float targetScale, float duration = 1)
     {
         Vector3 scale;

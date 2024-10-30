@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem.Android;
 using UnityEngine.UI;
 public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExitHandler
 {
@@ -46,7 +45,7 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
 
         adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, minScale));
     }
-    public void PointerClick()
+    private void PointerClick()
     {
         Managers.Game.playerData.UpgradeOrAddAttackType(info.data.attackType);
 

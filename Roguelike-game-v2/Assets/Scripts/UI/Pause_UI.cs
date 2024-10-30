@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-public class Pause_UI : UserInterface, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class Pause_UI : UserInterface, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
+    private Icon icon;
     private RectTransform rectTransform;
+    private Button button;
     private Image image;
 
     private Coroutine adjustmentScale = null;
@@ -34,26 +36,48 @@ public class Pause_UI : UserInterface, IPointerEnterHandler, IPointerExitHandler
             StopCoroutine(adjustmentColor);
         }
 
+        Managers.UI.uiElementUtility.SetButtonState(button, 0);
+        icon.UpdateColor();
+
         adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, minScale, duration));
         adjustmentColor = StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(image, minAlpha, duration));
     }
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        icon.UpdateColor(button);
+    }
+    private void PointerClick()
     {
         Time.timeScale = 0;
 
         //show UI
+
+        Managers.UI.HideUI<Pause_UI>();
+    }
+    private void OnEnable()
+    {
+        if(icon == null)
+        {
+            return;
+        }
+
+        icon.UpdateColor();
     }
     protected override void Start()
     {
         base.Start();
 
-        rectTransform = Util.GetComponentInChildren<RectTransform>(transform);
-        image = Util.GetComponentInChildren<Image>(transform);
+        icon = Util.GetComponentInChildren<Icon>(transform);
+        rectTransform = GetComponent<RectTransform>();
+        button = GetComponent<Button>();
+        image = GetComponent<Image>();
 
         Set();
     }
     private void Set()
     {
+        button.onClick.AddListener(PointerClick);
+
         StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(image, minAlpha, duration));
     }
 }
