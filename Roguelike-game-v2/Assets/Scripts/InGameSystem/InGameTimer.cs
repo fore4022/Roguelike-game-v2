@@ -17,7 +17,7 @@ public class InGameTimer : MonoBehaviour
     {
         get
         {
-            return GetSeconds % 60;
+            return GetSeconds / 60;
         }
     }
     public int GetHours

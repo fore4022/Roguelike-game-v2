@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e819e8157e9f5454d8256a54d6b8eeb6, type: 3}
-  m_Name: PlayerSO
+  m_Name: playerSO
   m_EditorClassIdentifier: 
-  health: -3
-  damage: 1
-  attackSpeed: 0.5
-  moveSpeed: 1
-  size: 1
-  dieing_AnimationDuration: 1
+  stat:
+    health: 1
+    damage: 1
+    attackSpeed: 1
+    moveSpeed: 1
+    size: 1
+  charactor:
+    dieing_AnimationDuration: 0.5
