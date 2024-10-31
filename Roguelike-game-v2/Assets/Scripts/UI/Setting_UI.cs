@@ -1,26 +1,21 @@
-using UnityEngine;
-public class Pause_UI : NewButton
+public class Setting_UI : NewButton
 {
     protected override void PointerClick()
     {
-        Time.timeScale = 0;
-
         //show UI
-
-        Managers.UI.HideUI<HUD_UI>();
     }
     protected override void Start()
     {
-        childClass = this;
-
         base.Start();
+
+        childClass = this;
     }
     protected override void Init()
     {
         minScale = 1f;
-        maxScale = 1.035f;
-        minAlpha = 155;
-        maxAlpha = 235;
+        maxScale = 1.075f;
+        minAlpha = 205;
+        maxAlpha = 255;
         duration = 0.1f;
     }
 }
