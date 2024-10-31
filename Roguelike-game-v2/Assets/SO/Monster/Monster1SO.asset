@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0596d4e2f4aa12242b2f768a5b44b207, type: 3}
   m_Name: Monster1SO
   m_EditorClassIdentifier: 
-  health: 1
-  damage: 1
-  attackSpeed: 1
-  moveSpeed: 1.25
-  size: 1
-  dieing_AnimationDuration: 1
+  stat:
+    health: -1
+    damage: 1
+    attackSpeed: 1
+    moveSpeed: 1
+    size: 1
+  charactor:
+    dieing_AnimationDuration: 0.5
+  experience: 1

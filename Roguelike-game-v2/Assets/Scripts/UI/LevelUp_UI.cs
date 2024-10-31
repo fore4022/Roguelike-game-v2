@@ -24,15 +24,15 @@ public class LevelUp_UI : UserInterface
 
         ui.SetActive(false);
     }
-    public void AnimationPlay(int level)
+    public void AnimationPlay()
     {
         ui.SetActive(true);
 
-        StartCoroutine(AnimationPlaying(level));
+        StartCoroutine(AnimationPlaying());
     }
-    private IEnumerator AnimationPlaying(int value)
+    private IEnumerator AnimationPlaying()
     {
-        level.text = $"Lv.{value}";
+        level.text = $"Lv.{Managers.Game.playerData.Level}";
 
         yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
 

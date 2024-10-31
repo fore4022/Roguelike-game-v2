@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 public class PlayerDataManage
 {
-    public Action<int> levelUpdate = null;
     public Action<float> healthUpdate = null;
-    public Action<float> experienceUpdate = null;
+    public Action experienceUpdate = null;
+    public Action levelUpdate = null;
 
     private PlayerInformation info = null;
 
@@ -14,6 +14,7 @@ public class PlayerDataManage
     private const float experienceMultiplier = 0.35f;
 
     private int increaseValue;
+    private bool isSet = false;
 
     public int IncreaseValue { get { return increaseValue; } }
     public PlayerInformation Info
@@ -23,6 +24,8 @@ public class PlayerDataManage
             info = value;
 
             Set();
+
+            isSet = true;
         }
     }
     public int Level
@@ -33,7 +36,7 @@ public class PlayerDataManage
             info.level = value;
             increaseValue = value;
 
-            levelUpdate?.Invoke(Level);
+            levelUpdate?.Invoke();
         }
     }
     public float Health
@@ -72,8 +75,16 @@ public class PlayerDataManage
                 Level += count;
             }
 
-            experienceUpdate?.Invoke(Experience);
+            experienceUpdate?.Invoke();
         }
+    }
+    public float ExperienceForLevelUp
+    {
+        get { return info.experienceForLevelUp; }
+    }
+    public bool IsSet
+    {
+        get { return isSet; }
     }
     public void UpgradeOrAddAttackType(string attackName)
     {
