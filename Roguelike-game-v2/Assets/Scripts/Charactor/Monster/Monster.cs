@@ -5,17 +5,25 @@ public class Monster : RenderableObject
 
     protected const float spawnRadius = 5;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         gameObject.SetActive(false);
     }
     protected virtual void OnEnable()
     {
-        render = GetComponent<SpriteRenderer>();
-        rigid = GetComponent<Rigidbody2D>();
+        if(render == null)
+        {
+            render = GetComponent<SpriteRenderer>();
 
-        render.enabled = false;
-        rigid.simulated = false;
+            render.enabled = false;
+        }
+        
+        if(rigid == null)
+        {
+            rigid = GetComponent<Rigidbody2D>();
+
+            rigid.simulated = false;
+        }
 
         SetPosition();
     }

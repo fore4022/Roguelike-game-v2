@@ -37,7 +37,7 @@ public class AttackSelection_UI : UserInterface
     {
         int optionCount = Managers.Game.inGameData.OptionCount - 3;
 
-        int[] DataIndexArray = Calculate.GetRandomValues(Managers.Game.inGameData.attackData.attackInfo.Count, Managers.Game.inGameData.OptionCount);
+        int[] DataIndexArray = Calculate.GetRandomValues(Managers.Game.attackData.attackInfo.Count, Managers.Game.inGameData.OptionCount);
 
         for(int i = 0; i < DataIndexArray.Count(); i++)
         {

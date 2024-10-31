@@ -48,7 +48,7 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
     }
     private void PointerClick()
     {
-        Managers.Game.playerData.UpgradeOrAddAttackType(info.data.attackType);
+        Managers.Game.attackData.SetValue(info.data.attackType);
 
         info.caster = Managers.Game.attackCasterManage.CreateAndGetCaster(info.data.attackType);
 
@@ -73,7 +73,7 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
     }
     public void InitOption(int index)
     {
-        info = Managers.Game.inGameData.attackData.attackInfo[index];
+        info = Managers.Game.attackData.attackInfo[index];
         
         SetOption();
     }

@@ -8,8 +8,6 @@ public class PlayerDataManage
 
     private PlayerInformation info = null;
 
-    private Dictionary<string, (int index, int level)> acquiredAttackTypes = new();
-
     private const float baseExperience = 5;
     private const float experienceMultiplier = 0.35f;
 
@@ -86,17 +84,6 @@ public class PlayerDataManage
     {
         get { return isSet; }
     }
-    public void UpgradeOrAddAttackType(string attackName)
-    {
-        if (acquiredAttackTypes.TryGetValue(attackName, out (int, int) data))
-        {
-            data.Item2++;
-        }
-        else
-        {
-            acquiredAttackTypes.Add(attackName, (acquiredAttackTypes.Count + 1, 1));
-        }
-    }
     private void Set()
     {
         info.experienceForLevelUp = baseExperience;
@@ -105,7 +92,7 @@ public class PlayerDataManage
     }
     private void SetRequiredExperience()
     {
-        info.experienceForLevelUp += Experience * experienceMultiplier;
+        info.experienceForLevelUp += ExperienceForLevelUp * experienceMultiplier;
     }
     public void SetLevel()
     {

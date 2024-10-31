@@ -2,12 +2,9 @@ using System.Collections;
 using UnityEngine;
 public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 {
-    private Collider2D[] colliders = new Collider2D[maxCount];
     private DefaultStat stat;
     private CharactorInformation charactor;
     private Coroutine moveCoroutine = null;
-
-    private const int maxCount = 10;
 
     private float experience;
 
@@ -28,12 +25,9 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     {
         Managers.Game.playerData.Experience += experience;
 
-        rigid.simulated = false;
-
-        render = null;
-        rigid = null;
-
         StopCoroutine(moveCoroutine);
+
+        rigid.simulated = false;
 
         StartCoroutine(Dieing());
     }
@@ -46,6 +40,8 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     }
     public void GetDamage(IDamage damage)
     {
+        if (!rigid.simulated) { return; }
+
         stat.health -= damage.DamageAmount;
 
         if(stat.health <= 0)
@@ -84,6 +80,6 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 
         stat = null;
 
-        ObjectPool.DisableObject(this.gameObject);
+        ObjectPool.DisableObject(gameObject);
     }
 }
