@@ -40,10 +40,6 @@ public class UI_Manager
         {
             go.SetActive(true);
         }
-        else
-        {
-            Util.GetMonoBehaviour().StartCoroutine(CreatingUI(name, true));
-        }
     }
     public void HideUI<T>() where T : UserInterface
     {
@@ -77,8 +73,6 @@ public class UI_Manager
     public void DestroyUI<T>() where T : UserInterface
     {
         string name = GetName<T>();
-
-        //Create
 
         if(uiDictionary.ContainsKey(name))
         {

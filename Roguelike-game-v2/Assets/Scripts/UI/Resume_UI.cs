@@ -1,8 +1,12 @@
-public class Setting_UI : NewButton
+using UnityEngine;
+public class Resume_UI : NewButton
 {
     protected override void PointerClick()
     {
-        //show UI
+        Time.timeScale = 1f;
+
+        Managers.UI.ShowUI<HUD_UI>();
+        Managers.UI.HideUI<PauseMenu_UI>();
     }
     protected override void Init()
     {

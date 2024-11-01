@@ -1,8 +1,8 @@
-public class Setting_UI : NewButton
+public class Quit_UI : NewButton
 {
     protected override void PointerClick()
     {
-        //show UI
+
     }
     protected override void Init()
     {

@@ -3,8 +3,6 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public abstract class NewButton : UserInterface, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
 {
-    protected NewButton childClass;
-
     protected float minScale;
     protected float maxScale;
     protected float minAlpha;
@@ -21,22 +19,18 @@ public abstract class NewButton : UserInterface, IPointerEnterHandler, IPointerE
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        childClass.PointerEnter();
         PointerEnter();
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        childClass.PointerExit();
         PointerExit();
     }
     public void OnPointerDown(PointerEventData eventData)
     {
-        childClass.PointerDown();
         PointerDown();
     }
     public void OnPointerUp(PointerEventData eventData)
     {
-        childClass.PointerUp();
         PointerUp();
     }
     public void OnPointerClick(PointerEventData eventData)
@@ -95,7 +89,12 @@ public abstract class NewButton : UserInterface, IPointerEnterHandler, IPointerE
     }
     private void Set()
     {
-        StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(image, childClass.minAlpha, childClass.duration));
+        if(minScale != 1)
+        {
+            StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, minScale));
+        }
+
+        StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(image, minAlpha, duration));
     }
     protected abstract void PointerClick();
     protected abstract void Init();

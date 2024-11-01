@@ -5,15 +5,8 @@ public class Pause_UI : NewButton
     {
         Time.timeScale = 0;
 
-        //show UI
-
+        Managers.UI.ShowUI<PauseMenu_UI>();
         Managers.UI.HideUI<HUD_UI>();
-    }
-    protected override void Start()
-    {
-        childClass = this;
-
-        base.Start();
     }
     protected override void Init()
     {
