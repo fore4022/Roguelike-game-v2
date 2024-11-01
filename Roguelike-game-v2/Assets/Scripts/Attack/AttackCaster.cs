@@ -3,7 +3,7 @@ using UnityEngine;
 public class AttackCaster
 {
     public Coroutine attackCoroutine;
-
+    
     private string attackType;
 
     public void SetAttackType(string attackType)
@@ -12,15 +12,15 @@ public class AttackCaster
 
         Util.GetMonoBehaviour().StartCoroutine(Attacking());
     }
-    private void StartAttack()
+    private void Attack()
     {
-        ObjectPool.GetOrActiveObject(attackType);
+        ObjectPool.ActiveObject(attackType);
     }
     public IEnumerator Attacking()
     {
         while (true)
         {       
-            StartAttack();
+            Attack();
 
             yield return new WaitForSeconds(Managers.Game.player.Stat.attackSpeed);
         }

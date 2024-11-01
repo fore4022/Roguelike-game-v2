@@ -50,8 +50,6 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
     {
         Managers.Game.attackData.SetValue(info.data.attackType);
 
-        info.caster = Managers.Game.attackCasterManage.CreateAndGetCaster(info.data.attackType);
-
         Managers.UI.ShowUI<Pause_UI>();
         Managers.UI.HideUI<AttackSelection_UI>();
     }

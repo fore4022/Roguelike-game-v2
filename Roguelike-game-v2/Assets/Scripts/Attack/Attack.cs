@@ -1,11 +1,15 @@
 using System.Collections;
 using UnityEngine;
-public abstract class Attack : RenderableObject, IDamage
+[RequireComponent(typeof(Animator), typeof(SpriteRenderer))]
+public abstract class Attack : MonoBehaviour, IDamage
 {
     protected Attack_SO attackSO;
 
     protected Animator animator;
+    protected SpriteRenderer render;
     protected Collider2D col;
+
+    private AttackCaster caster;
 
     private Coroutine attackCoroutine = null;
 
@@ -14,13 +18,17 @@ public abstract class Attack : RenderableObject, IDamage
     {
         gameObject.SetActive(false);
     }
+    protected void Start()
+    {
+        Init();
+
+        attackSO = ObjectPool.GetScriptableObject<Attack_SO>(name);
+    }
     private void Init()
     {
         animator = GetComponent<Animator>();
         render = GetComponent<SpriteRenderer>();
         col = GetComponent<Collider2D>();
-
-        attackSO = ObjectPool.GetScriptableObject<Attack_SO>(name);
     }
     protected virtual void OnEnable()
     {
@@ -40,7 +48,7 @@ public abstract class Attack : RenderableObject, IDamage
     }
     private IEnumerator StartAttack()
     {
-        Init();
+        yield return new WaitUntil(() => (animator != null) && (render != null) && (col != null));
 
         render.enabled = false;
 
@@ -55,8 +63,6 @@ public abstract class Attack : RenderableObject, IDamage
 
         yield return new WaitUntil(() => attackCoroutine == null);
 
-        render.enabled = false;
-
         ObjectPool.DisableObject(gameObject);
     }
     protected virtual IEnumerator Attacking()
@@ -67,7 +73,9 @@ public abstract class Attack : RenderableObject, IDamage
 
         yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
 
+        render.enabled = false;
+
         attackCoroutine = null;
     }
-    protected abstract void SetAttack();
+    protected abstract void SetAttack(int level);//
 }

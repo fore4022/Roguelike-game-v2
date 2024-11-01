@@ -10,7 +10,7 @@ public class AttackCasterManage
             return Casters[type];
         }
 
-        return default(AttackCaster);
+        return default;
     }
     public void CreateCaster(string type)
     {
@@ -36,7 +36,7 @@ public class AttackCasterManage
             return Casters[type];
         }
 
-        return default(AttackCaster);
+        return default;
     }
     public void DestroyCaster(string type)
     {
