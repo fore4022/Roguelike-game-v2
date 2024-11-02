@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 public class AttackCaster
 {
-    public Coroutine attackCoroutine;
+    private Coroutine attackCoroutine;
     
     private string attackType;
 
@@ -10,7 +10,10 @@ public class AttackCaster
     {
         this.attackType = attackType;
 
-        Util.GetMonoBehaviour().StartCoroutine(Attacking());
+        if(attackCoroutine == null)
+        {
+            attackCoroutine = Util.GetMonoBehaviour().StartCoroutine(Attacking());
+        }
     }
     private void Attack()
     {

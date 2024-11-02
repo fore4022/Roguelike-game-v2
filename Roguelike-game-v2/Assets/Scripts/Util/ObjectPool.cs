@@ -98,7 +98,7 @@ public static class ObjectPool
     {
         prefab.SetActive(false);
     }
-    public static List<GameObject> Instantiate(GameObject prefab, int count)//
+    public static List<GameObject> Instantiate(GameObject prefab, int count)
     {
         List<GameObject> queue = new();
 

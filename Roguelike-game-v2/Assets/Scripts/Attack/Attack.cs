@@ -9,14 +9,20 @@ public abstract class Attack : MonoBehaviour, IDamage
     protected SpriteRenderer render;
     protected Collider2D col;
 
-    private AttackCaster caster;
-
-    private Coroutine attackCoroutine = null;
+    private Coroutine startAttack = null;
+    private Coroutine attacking = null;
 
     public float DamageAmount { get { return Managers.Game.player.Stat.damage * attackSO.damageCoefficient; } }
     protected void Awake()
     {
         gameObject.SetActive(false);
+    }
+    protected void OnEnable()
+    {
+        if (startAttack == null)
+        {
+            startAttack = StartCoroutine(StartAttack());
+        }
     }
     protected void Start()
     {
@@ -29,10 +35,6 @@ public abstract class Attack : MonoBehaviour, IDamage
         animator = GetComponent<Animator>();
         render = GetComponent<SpriteRenderer>();
         col = GetComponent<Collider2D>();
-    }
-    protected virtual void OnEnable()
-    {
-        StartCoroutine(StartAttack());
     }
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
@@ -54,14 +56,22 @@ public abstract class Attack : MonoBehaviour, IDamage
 
         yield return new WaitUntil(() => attackSO != null);
 
-        SetAttack();
+        int level = Managers.Game.attackData.GetAttackLevel(GetType().ToString());
+
+        SetAttack(level);
+
+        Debug.Log(level);
 
         render.enabled = true;
         col.enabled = true;
 
-        attackCoroutine = StartCoroutine(Attacking());
+        attacking = StartCoroutine(Attacking());
 
-        yield return new WaitUntil(() => attackCoroutine == null);
+        yield return new WaitUntil(() => attacking == null);
+
+        yield return new WaitForSeconds(5f);
+
+        startAttack = null;
 
         ObjectPool.DisableObject(gameObject);
     }
@@ -75,7 +85,7 @@ public abstract class Attack : MonoBehaviour, IDamage
 
         render.enabled = false;
 
-        attackCoroutine = null;
+        attacking = null;
     }
-    protected abstract void SetAttack(int level);//
+    protected abstract void SetAttack(int level);
 }
