@@ -37,8 +37,6 @@ public class AttackDataManage
             if(info.level == 1)
             {
                 info.caster = Managers.Game.attackCasterManage.CreateAndGetCaster(key);
-
-                info.caster.SetAttackType(info.data.attackType);
             }
         }
     }

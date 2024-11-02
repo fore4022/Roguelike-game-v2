@@ -12,6 +12,8 @@ public abstract class Attack : MonoBehaviour, IDamage
     private Coroutine startAttack = null;
     private Coroutine attacking = null;
 
+    private string attackType;
+
     public float DamageAmount { get { return Managers.Game.player.Stat.damage * attackSO.damageCoefficient; } }
     protected void Awake()
     {
@@ -28,7 +30,9 @@ public abstract class Attack : MonoBehaviour, IDamage
     {
         Init();
 
-        attackSO = ObjectPool.GetScriptableObject<Attack_SO>(name);
+        attackType = GetType().ToString();
+
+        attackSO = ObjectPool.GetScriptableObject<Attack_SO>(attackType);
     }
     private void Init()
     {
@@ -56,11 +60,9 @@ public abstract class Attack : MonoBehaviour, IDamage
 
         yield return new WaitUntil(() => attackSO != null);
 
-        int level = Managers.Game.attackData.GetAttackLevel(GetType().ToString());
+        int level = Managers.Game.attackData.GetAttackLevel(attackType);
 
         SetAttack(level);
-
-        Debug.Log(level);
 
         render.enabled = true;
         col.enabled = true;
