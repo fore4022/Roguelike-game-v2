@@ -53,6 +53,10 @@ public static class ObjectPool
     {
         await CreateObjects(count, prefabs);
     }
+    public static async void CreateInstance(List<(string, GameObject)> prefabs, int count = CreateCount)
+    {
+        await CreateObjects(count, prefabs);
+    }
     public static GameObject FindObject(string prefabName)
     {
         if (!poolingObjects.ContainsKey(prefabName))
@@ -91,7 +95,7 @@ public static class ObjectPool
     public static void ActiveObject(string prefabName)
     {
         GameObject prefab = GetActiveGameObject(prefabName);
-
+        
         prefab.SetActive(true);
     }
     public static void DisableObject(GameObject prefab)
@@ -176,6 +180,33 @@ public static class ObjectPool
             await CreateInstanceScriptableObject(prefab.name);
         }
     }
+    public static async Task CreateObjects(int count, List<(string key, GameObject prefab)> infoList)
+    {
+        List<GameObject> list;
+
+        Init();
+
+        foreach((string key, GameObject prefab) info in infoList)
+        {
+            if(poolingObjects.ContainsKey(info.key))
+            {
+                list = poolingObjects[info.key];
+
+                foreach(GameObject instance in Instantiate(info.prefab, count))
+                {
+                    list.Add(instance);
+                }
+            }
+            else
+            {
+                list = Instantiate(info.prefab, count);
+
+                poolingObjects.Add(info.key, list);
+            }
+
+            await CreateInstanceScriptableObject(info.key);
+        }
+    }
     public static async Task CreateObjects(int count, bool loadType, string information)
     {
         List<GameObject> list;
@@ -237,14 +268,12 @@ public static class ObjectPool
         if (!scriptableObjects.ContainsKey(information))
         {
             StringBuilder path = new StringBuilder(information);
-            StringBuilder key = new StringBuilder(information);
 
             path.Append(so);
-            key.Append(clone);
 
             ScriptableObject scriptableObject = await Util.LoadingToPath<ScriptableObject>(path.ToString());
 
-            scriptableObjects.Add(key.ToString(), scriptableObject);
+            scriptableObjects.Add(information, scriptableObject);
         }
     }
 }

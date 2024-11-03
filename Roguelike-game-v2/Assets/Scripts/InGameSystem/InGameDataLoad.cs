@@ -27,17 +27,17 @@ public class InGameDataLoad
 
         monsterList = list;
     }
-    public static void LoadSkillList(ref List<GameObject> skillList)
+    public static void LoadSkillList(ref List<(string, GameObject)> skillList)
     {
-        List<GameObject> list = new List<GameObject>();
+        List<(string, GameObject)> list = new();
 
-        for (int i = 0; i < Managers.UserData.GetUserData.userLevel; i++)
+        for(int i = 0; i < Managers.UserData.GetUserData.userLevel; i++)
         {
             UserLevel_SO userLevel = userLevelInfo.LevelInfo[i];
 
             foreach(AttackInformation_SO so in userLevel.attackInformationList)
             {
-                list.Add(so.skillObject);
+                list.Add((so.attackType, so.skillObject));
 
                 Managers.Game.attackData.SetDictionaryItem(so);
             }
@@ -69,8 +69,8 @@ public class InGameDataLoad
     }
     public static IEnumerator DataLoading()
     {
+        List<(string, GameObject)> skillList = new();
         List<GameObject> monsterList = new();
-        List<GameObject> skillList = new();
 
         Time.timeScale = 0;
         

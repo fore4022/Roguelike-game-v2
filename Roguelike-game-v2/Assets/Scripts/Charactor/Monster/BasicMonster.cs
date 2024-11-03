@@ -53,7 +53,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     {
         BasicMonsterStat_SO basicMonsterSO = null;
             
-        basicMonsterSO = ObjectPool.GetScriptableObject<BasicMonsterStat_SO>(name);
+        basicMonsterSO = ObjectPool.GetScriptableObject<BasicMonsterStat_SO>(name);//
 
         yield return new WaitUntil(() => basicMonsterSO != null);
 

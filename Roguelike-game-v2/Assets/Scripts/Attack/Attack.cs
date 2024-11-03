@@ -31,7 +31,7 @@ public abstract class Attack : MonoBehaviour, IDamage
         Init();
 
         attackType = GetType().ToString();
-
+        
         attackSO = ObjectPool.GetScriptableObject<Attack_SO>(attackType);
     }
     private void Init()

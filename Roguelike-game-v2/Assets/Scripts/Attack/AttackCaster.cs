@@ -9,8 +9,6 @@ public class AttackCaster
     {
         this.attackType = attackType;
 
-        //duration = 
-
         Util.GetMonoBehaviour().StartCoroutine(Attacking());
     }
     private void Attack()
@@ -23,7 +21,7 @@ public class AttackCaster
         {       
             Attack();
 
-            yield return new WaitForSeconds(0);//Managers.Game.player.Stat.attackSpeed
+            yield return new WaitForSeconds(1);//
         }
     }
 }
