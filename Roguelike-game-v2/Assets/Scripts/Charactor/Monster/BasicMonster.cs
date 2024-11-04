@@ -52,8 +52,10 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     private IEnumerator LoadStat()
     {
         BasicMonsterStat_SO basicMonsterSO = null;
-            
-        basicMonsterSO = ObjectPool.GetScriptableObject<BasicMonsterStat_SO>(name);//
+
+        Debug.Log(GetType().ToString());
+
+        basicMonsterSO = ObjectPool.GetScriptableObject<BasicMonsterStat_SO>(GetType().ToString());
 
         yield return new WaitUntil(() => basicMonsterSO != null);
 

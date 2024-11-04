@@ -39,6 +39,8 @@ public abstract class Attack : MonoBehaviour, IDamage
         animator = GetComponent<Animator>();
         render = GetComponent<SpriteRenderer>();
         col = GetComponent<Collider2D>();
+
+        render.enabled = false;
     }
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
@@ -55,8 +57,6 @@ public abstract class Attack : MonoBehaviour, IDamage
     private IEnumerator StartAttack()
     {
         yield return new WaitUntil(() => (animator != null) && (render != null) && (col != null));
-
-        render.enabled = false;
 
         yield return new WaitUntil(() => attackSO != null);
 

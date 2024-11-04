@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using System.Text;
-public static class ObjectPool
+public class ObjectPool
 {
     public static Dictionary<string, ScriptableObject> scriptableObjects = new();
     public static Dictionary<string, List<GameObject>> poolingObjects = new();
@@ -41,14 +41,6 @@ public static class ObjectPool
 
         Managers.Scene.loadScene -= ClearPool;
     }
-    public static async void CreateToLable(string lable, int count = CreateCount)
-    {
-        await CreateObjects(count, true, lable);
-    }
-    public static async void CreateToPath(string path, int count = CreateCount)
-    {
-        await CreateObjects(count, false, path);
-    }
     public static async void CreateInstance(List<GameObject> prefabs, int count = CreateCount)
     {
         await CreateObjects(count, prefabs);
@@ -56,41 +48,6 @@ public static class ObjectPool
     public static async void CreateInstance(List<(string, GameObject)> prefabs, int count = CreateCount)
     {
         await CreateObjects(count, prefabs);
-    }
-    public static GameObject FindObject(string prefabName)
-    {
-        if (!poolingObjects.ContainsKey(prefabName))
-        {
-            return null;
-        }
-
-        GameObject prefab = GetActiveGameObject(prefabName);
-
-        return prefab;
-    }
-    public static GameObject GetObject(string prefabName)
-    {
-        if(!poolingObjects.ContainsKey(prefabName))
-        {
-            return null;
-        }
-
-        GameObject prefab = GetActiveGameObject(prefabName);
-
-        return prefab;
-    }
-    public static GameObject GetOrActiveObject(string prefabName)
-    {
-        if(!poolingObjects.ContainsKey(prefabName))
-        {
-            return null;
-        }
-
-        GameObject prefab = GetActiveGameObject(prefabName);
-
-        prefab.SetActive(true);
-
-        return prefab;
     }
     public static void ActiveObject(string prefabName)
     {
@@ -147,10 +104,6 @@ public static class ObjectPool
 
         return null;
     }
-    public static async void CreateScriptableObject(string information)
-    {
-        await CreateInstanceScriptableObject(information);
-    }
     public static async Task CreateObjects(int count, List<GameObject> prefabs)
     {
         List<GameObject> list;
@@ -176,6 +129,8 @@ public static class ObjectPool
 
                 poolingObjects.Add(prefab.name, list);
             }
+
+            Debug.Log(prefab.name);
 
             await CreateInstanceScriptableObject(prefab.name);
         }
