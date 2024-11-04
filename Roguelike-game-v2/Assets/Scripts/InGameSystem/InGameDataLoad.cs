@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 public class InGameDataLoad
 {
-    public static UserLevelInfo_SO userLevelInfo;
+    public UserLevelInfo_SO userLevelInfo;
 
-    public static string userLevelInfoPath = "UserLevelInfoSO";
-    public static string inGameScene = "InGame";
-    public static bool loadComplete = false;
+    public string userLevelInfoPath = "UserLevelInfoSO";
+    public string inGameScene = "InGame";
 
-    public static void GetInGameData()
+    private const int defaultMonsterCount = 75;
+    private const int defaultSkillCount = 25;
+
+    public void GetInGameData()
     {
         Util.GetMonoBehaviour().StartCoroutine(Init());
     }
-    public static void GetMonsterList(ref List<GameObject> monsterList)
+    public void GetMonsterList(ref List<GameObject> monsterList)
     {
         List<GameObject> list = new();
 
@@ -27,7 +29,7 @@ public class InGameDataLoad
 
         monsterList = list;
     }
-    public static void LoadSkillList(ref List<(string, GameObject)> skillList)
+    public void LoadSkillList(ref List<(string, GameObject)> skillList)
     {
         List<(string, GameObject)> list = new();
 
@@ -45,7 +47,7 @@ public class InGameDataLoad
 
         skillList = list;
     }
-    public static IEnumerator Init()
+    public IEnumerator Init()
     {
         Managers.Scene.LoadScene(inGameScene);
 
@@ -63,11 +65,11 @@ public class InGameDataLoad
 
         Util.GetMonoBehaviour().StartCoroutine(DataLoading());
     }
-    public static async void LoadUserLevelInfo()
+    public async void LoadUserLevelInfo()
     {
         userLevelInfo = await Util.LoadingToPath<UserLevelInfo_SO>(userLevelInfoPath);
     }
-    public static IEnumerator DataLoading()
+    public IEnumerator DataLoading()
     {
         List<(string, GameObject)> skillList = new();
         List<GameObject> monsterList = new();
@@ -83,18 +85,16 @@ public class InGameDataLoad
 
         yield return new WaitUntil(() => (skillList != null) && (monsterList != null));
 
-        ObjectPool.CreateInstance(monsterList);
-        ObjectPool.CreateInstance(skillList);
+        Managers.Game.objectPool.CreateInstance(monsterList, defaultMonsterCount);
+        Managers.Game.objectPool.CreateInstance(skillList, defaultSkillCount);
 
         int typeCount = monsterList.Count + skillList.Count;
 
-        yield return new WaitUntil(() => typeCount == ObjectPool.poolingObjects.Count);
+        yield return new WaitUntil(() => typeCount == Managers.Game.objectPool.poolingObjects.Count);
 
-        yield return new WaitUntil(() => typeCount == ObjectPool.scriptableObjects.Count);
+        yield return new WaitUntil(() => typeCount == Managers.Game.objectPool.scriptableObjects.Count);
 
         yield return new WaitUntil(() => Managers.Game.player != null);
-
-        loadComplete = true;
 
         Managers.Game.player.Set();
 

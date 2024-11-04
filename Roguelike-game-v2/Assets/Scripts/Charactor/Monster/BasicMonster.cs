@@ -53,9 +53,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     {
         BasicMonsterStat_SO basicMonsterSO = null;
 
-        Debug.Log(GetType().ToString());
-
-        basicMonsterSO = ObjectPool.GetScriptableObject<BasicMonsterStat_SO>(GetType().ToString());
+        basicMonsterSO = Managers.Game.objectPool.GetScriptableObject<BasicMonsterStat_SO>("Monster1");//
 
         yield return new WaitUntil(() => basicMonsterSO != null);
 
@@ -82,6 +80,6 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 
         stat = null;
 
-        ObjectPool.DisableObject(gameObject);
+        Managers.Game.objectPool.DisableObject(gameObject);
     }
 }

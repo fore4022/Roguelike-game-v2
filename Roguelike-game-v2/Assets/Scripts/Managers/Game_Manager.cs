@@ -1,11 +1,13 @@
 using UnityEngine;
 public class Game_Manager
 {
+    public ObjectPool objectPool = null;
     public PlayerDataManage playerData = null;
     public InGameDataManage inGameData = null;
     public AttackCasterManage attackCasterManage = null;
     public DifficultyScaler difficultyScaler = null;
     public AttackDataManage attackData = null;
+    public InGameDataLoad inGameDataLoad = null;
 
     public StageInformation_SO stageInformation;
 
@@ -16,11 +18,13 @@ public class Game_Manager
     public StageInformation_SO StageInformation { get { return stageInformation; } }
     private void Set()
     {
+        objectPool = new();
         playerData = new();
         inGameData = new();
         attackCasterManage = new();
         difficultyScaler = new();
         attackData = new();
+        inGameDataLoad = new();
     }
     public void DataLoad(StageInformation_SO stageInformation)
     {
@@ -28,7 +32,7 @@ public class Game_Manager
 
         this.stageInformation = stageInformation;
 
-        InGameDataLoad.GetInGameData();
+        inGameDataLoad.GetInGameData();
     }
     public void GameStart()
     {
@@ -41,11 +45,13 @@ public class Game_Manager
     }
     public void GameEnd()
     {
+        objectPool = null;
         playerData = null;
         inGameData = null;
         attackCasterManage = null;
         difficultyScaler = null;
         attackData = null;
+        inGameDataLoad = null;
 
         stageInformation = null;
 

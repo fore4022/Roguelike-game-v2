@@ -4,16 +4,14 @@ using UnityEngine;
 using System.Text;
 public class ObjectPool
 {
-    public static Dictionary<string, ScriptableObject> scriptableObjects = new();
-    public static Dictionary<string, List<GameObject>> poolingObjects = new();
+    public Dictionary<string, ScriptableObject> scriptableObjects = new();
+    public Dictionary<string, List<GameObject>> poolingObjects = new();
 
-    public static Transform root;
+    public Transform root;
 
-    public const string so = "SO";
-    public const string clone = "(Clone)";
-    public const int CreateCount = 50;
+    public const string so = "SO";//
 
-    public static void Init()
+    public void Init()
     {
         GameObject go = GameObject.Find("@ObjectPool");
 
@@ -27,7 +25,7 @@ public class ObjectPool
             root = go.transform;
         }
     }
-    public static void ClearPool()
+    public void ClearPool()
     {
         if(scriptableObjects != null)
         {
@@ -41,25 +39,25 @@ public class ObjectPool
 
         Managers.Scene.loadScene -= ClearPool;
     }
-    public static async void CreateInstance(List<GameObject> prefabs, int count = CreateCount)
+    public async void CreateInstance(List<GameObject> prefabs, int count)
     {
         await CreateObjects(count, prefabs);
     }
-    public static async void CreateInstance(List<(string, GameObject)> prefabs, int count = CreateCount)
+    public async void CreateInstance(List<(string, GameObject)> prefabs, int count)
     {
         await CreateObjects(count, prefabs);
     }
-    public static void ActiveObject(string prefabName)
+    public void ActiveObject(string prefabName)
     {
         GameObject prefab = GetActiveGameObject(prefabName);
         
         prefab.SetActive(true);
     }
-    public static void DisableObject(GameObject prefab)
+    public void DisableObject(GameObject prefab)
     {
         prefab.SetActive(false);
     }
-    public static List<GameObject> Instantiate(GameObject prefab, int count)
+    public List<GameObject> Instantiate(GameObject prefab, int count)
     {
         List<GameObject> queue = new();
 
@@ -83,7 +81,7 @@ public class ObjectPool
 
         return queue;
     }
-    public static GameObject GetActiveGameObject(string prefabName)
+    public GameObject GetActiveGameObject(string prefabName)
     {
         foreach(GameObject instance in poolingObjects[prefabName])
         {
@@ -95,7 +93,7 @@ public class ObjectPool
 
         return null;
     }
-    public static T GetScriptableObject<T>(string type) where T : ScriptableObject
+    public T GetScriptableObject<T>(string type) where T : ScriptableObject
     {
         if(scriptableObjects.ContainsKey(type))
         {
@@ -104,7 +102,7 @@ public class ObjectPool
 
         return null;
     }
-    public static async Task CreateObjects(int count, List<GameObject> prefabs)
+    public async Task CreateObjects(int count, List<GameObject> prefabs)
     {
         List<GameObject> list;
 
@@ -130,12 +128,10 @@ public class ObjectPool
                 poolingObjects.Add(prefab.name, list);
             }
 
-            Debug.Log(prefab.name);
-
             await CreateInstanceScriptableObject(prefab.name);
         }
     }
-    public static async Task CreateObjects(int count, List<(string key, GameObject prefab)> infoList)
+    public async Task CreateObjects(int count, List<(string key, GameObject prefab)> infoList)
     {
         List<GameObject> list;
 
@@ -162,7 +158,7 @@ public class ObjectPool
             await CreateInstanceScriptableObject(info.key);
         }
     }
-    public static async Task CreateObjects(int count, bool loadType, string information)
+    public async Task CreateObjects(int count, bool loadType, string information)
     {
         List<GameObject> list;
 
@@ -218,7 +214,7 @@ public class ObjectPool
             await CreateInstanceScriptableObject(prefab.name);
         }
     }
-    public static async Task CreateInstanceScriptableObject(string information)
+    public async Task CreateInstanceScriptableObject(string information)
     {
         if (!scriptableObjects.ContainsKey(information))
         {

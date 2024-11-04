@@ -25,13 +25,13 @@ public class MonsterSpawner : MonoBehaviour
     {
         List<GameObject> monsterList = new();
 
-        InGameDataLoad.GetMonsterList(ref monsterList);
+        Managers.Game.inGameDataLoad.GetMonsterList(ref monsterList);
 
         foreach (GameObject monster in monsterList)
         {
             string soName = monster.name;
 
-            monsterStats.Add(soName, ObjectPool.GetScriptableObject<ScriptableObject>(soName));
+            monsterStats.Add(soName, Managers.Game.objectPool.GetScriptableObject<ScriptableObject>(soName));
         }
     }
     private void MonsterSpawn(SpawnInformation_SO spawnInformation)
@@ -39,7 +39,7 @@ public class MonsterSpawner : MonoBehaviour
         int randomValue = Random.Range(0, 100);
         int arrayIndexValue = monsterSpawnProbabilityArray[randomValue];
 
-        ObjectPool.ActiveObject(spawnInformation.monsterInformation[arrayIndexValue].monster.name);
+        Managers.Game.objectPool.ActiveObject(spawnInformation.monsterInformation[arrayIndexValue].monster.name);
     }
     private IEnumerator SpawningSystem()
     {

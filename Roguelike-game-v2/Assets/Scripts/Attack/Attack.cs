@@ -32,7 +32,7 @@ public abstract class Attack : MonoBehaviour, IDamage
 
         attackType = GetType().ToString();
         
-        attackSO = ObjectPool.GetScriptableObject<Attack_SO>(attackType);
+        attackSO = Managers.Game.objectPool.GetScriptableObject<Attack_SO>(attackType);
     }
     private void Init()
     {
@@ -75,7 +75,7 @@ public abstract class Attack : MonoBehaviour, IDamage
 
         startAttack = null;
 
-        ObjectPool.DisableObject(gameObject);
+        Managers.Game.objectPool.DisableObject(gameObject);
     }
     protected virtual IEnumerator Attacking()
     {
