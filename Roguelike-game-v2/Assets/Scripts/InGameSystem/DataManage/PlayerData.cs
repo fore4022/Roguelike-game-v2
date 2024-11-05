@@ -11,7 +11,6 @@ public class PlayerData
     private const float experienceMultiplier = 0.35f;
 
     private int increaseValue;
-    private bool isSet = false;
 
     public int IncreaseValue { get { return increaseValue; } }
     public PlayerInformation Info
@@ -21,8 +20,6 @@ public class PlayerData
             info = value;
 
             Set();
-
-            isSet = true;
         }
     }
     public int Level
@@ -78,10 +75,6 @@ public class PlayerData
     public float ExperienceForLevelUp
     {
         get { return info.experienceForLevelUp; }
-    }
-    public bool IsSet
-    {
-        get { return isSet; }
     }
     private void Set()
     {

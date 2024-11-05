@@ -2,18 +2,14 @@ using System.Collections;
 using UnityEngine;
 public class Player : MonoBehaviour, IDamageReceiver
 {
-    public PlayerMove move;
+    public PlayerMove move = new();
 
     private PlayerInformation information = new();
 
-    private string statPath = "PlayerInformationSO";
+    private const string statPath = "PlayerInformationSO";
 
     public DefaultStat Stat { get { return information.stat; } }
     private void Start()
-    {
-        Managers.Game.player = this;
-    }
-    public void Set()
     {
         StartCoroutine(Init());
     }
@@ -38,7 +34,7 @@ public class Player : MonoBehaviour, IDamageReceiver
 
         yield return new WaitUntil(() => information.stat != null);
 
-        move = new();
+        Managers.Game.player = this;
 
         move.Init();
     }

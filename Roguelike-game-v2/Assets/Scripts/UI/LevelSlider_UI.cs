@@ -1,5 +1,3 @@
-using System.Collections;
-using UnityEngine;
 using UnityEngine.UI;
 public class LevelSlider_UI : UserInterface
 {
@@ -8,12 +6,14 @@ public class LevelSlider_UI : UserInterface
     private void Awake()
     {
         expSlider = GetComponent<Slider>();
+
+        base.Start();
+
+        gameObject.SetActive(false);
     }
     protected override void Start()
     {
-        base.Start();
-
-        StartCoroutine(Init());
+        Init();
     }
     private void Set()
     {
@@ -28,10 +28,8 @@ public class LevelSlider_UI : UserInterface
     {
         expSlider.value = Managers.Game.inGameData.playerData.Experience;
     }
-    private IEnumerator Init()
+    private void Init()
     {
-        yield return new WaitUntil(() => Managers.Game.inGameData.playerData.IsSet);
-
         Managers.Game.inGameData.playerData.experienceUpdate += ValueUpdate;
         Managers.Game.inGameData.playerData.levelUpdate += MaxValueUpdate;
 

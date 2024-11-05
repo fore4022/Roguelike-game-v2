@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class InGameDataInit
+public class DataInit
 {
     public UserLevelInfo_SO userLevelInfo;
 
@@ -96,8 +96,6 @@ public class InGameDataInit
         yield return new WaitUntil(() => typeCount == Managers.Game.objectPool.ScriptableObjectsCount);
 
         yield return new WaitUntil(() => Managers.Game.player != null);
-
-        Managers.Game.player.Set();
 
         Managers.Game.GameStart();
     }

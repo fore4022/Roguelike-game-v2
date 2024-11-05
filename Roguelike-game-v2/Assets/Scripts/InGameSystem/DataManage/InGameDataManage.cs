@@ -1,8 +1,9 @@
 using UnityEngine;
-public class InGameDataManage//
+public class InGameDataManage
 {
     public PlayerData playerData = new();
     public AttackData attackData = new();
+    public DataInit dataInit = new();
 
     private const int maxOptionCount = 5;
 

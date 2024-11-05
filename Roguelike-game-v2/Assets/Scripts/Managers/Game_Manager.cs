@@ -2,10 +2,9 @@ using UnityEngine;
 public class Game_Manager
 {
     public ObjectPool objectPool = null;
-    public InGameDataManage inGameData = null;//
+    public InGameDataManage inGameData = null;
     public AttackCasterManage attackCasterManage = null;
     public DifficultyScaler difficultyScaler = null;
-    public InGameDataInit inGameDataInit = null;
 
     public StageInformation_SO stageInformation;
 
@@ -19,7 +18,6 @@ public class Game_Manager
         inGameData = new();
         attackCasterManage = new();
         difficultyScaler = new();
-        inGameDataInit = new();
     }
     public void DataLoad(StageInformation_SO stageInformation)
     {
@@ -27,7 +25,7 @@ public class Game_Manager
 
         this.stageInformation = stageInformation;
 
-        inGameDataInit.GetInGameData();
+        inGameData.dataInit.GetInGameData();
     }
     public void GameStart()
     {
@@ -37,6 +35,9 @@ public class Game_Manager
         monsterSpawner.StartSpawn();
 
         inGameData.playerData.SetLevel();
+
+        Managers.UI.ShowUI<LevelSlider_UI>();
+        Managers.UI.ShowUI<Timer_UI>();
     }
     public void GameEnd()
     {
@@ -44,7 +45,6 @@ public class Game_Manager
         inGameData = null;
         attackCasterManage = null;
         difficultyScaler = null;
-        inGameDataInit = null;
 
         stageInformation = null;
 

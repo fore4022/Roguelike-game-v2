@@ -10,13 +10,15 @@ public class Timer_UI : UserInterface
 
     protected override void Start()
     {
-        base.Start();
-
         timerCoroutine = StartCoroutine(TimerUpdate());
     }
     private void Awake()
     {
         timer = GetComponent<TextMeshProUGUI>();
+
+        base.Start();
+
+        gameObject.SetActive(false);
     }
     private IEnumerator TimerUpdate()
     {
