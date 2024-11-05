@@ -3,11 +3,11 @@ public class Game_Manager
 {
     public ObjectPool objectPool = null;
     public PlayerDataManage playerData = null;
-    public InGameDataManage inGameData = null;
+    public InGameDataManage inGameData = null;//
     public AttackCasterManage attackCasterManage = null;
     public DifficultyScaler difficultyScaler = null;
     public AttackDataManage attackData = null;
-    public InGameDataLoad inGameDataLoad = null;
+    public InGameDataInit inGameDataInit = null;
 
     public StageInformation_SO stageInformation;
 
@@ -24,7 +24,7 @@ public class Game_Manager
         attackCasterManage = new();
         difficultyScaler = new();
         attackData = new();
-        inGameDataLoad = new();
+        inGameDataInit = new();
     }
     public void DataLoad(StageInformation_SO stageInformation)
     {
@@ -32,7 +32,7 @@ public class Game_Manager
 
         this.stageInformation = stageInformation;
 
-        inGameDataLoad.GetInGameData();
+        inGameDataInit.GetInGameData();
     }
     public void GameStart()
     {
@@ -51,7 +51,7 @@ public class Game_Manager
         attackCasterManage = null;
         difficultyScaler = null;
         attackData = null;
-        inGameDataLoad = null;
+        inGameDataInit = null;
 
         stageInformation = null;
 

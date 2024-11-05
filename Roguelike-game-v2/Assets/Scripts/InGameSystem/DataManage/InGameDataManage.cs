@@ -1,5 +1,5 @@
 using UnityEngine;
-public class InGameDataManage
+public class InGameDataManage//
 {
     private const int maxOptionCount = 5;
 

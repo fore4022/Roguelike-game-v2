@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 public class MonsterSpawner : MonoBehaviour
 {
+    public List<GameObject> monsterList = new();
+
     private Dictionary<string, ScriptableObject> monsterStats = new();
 
     private Coroutine monsterSpawn = null;
@@ -23,10 +25,6 @@ public class MonsterSpawner : MonoBehaviour
     }
     private void LoadInformation()
     {
-        List<GameObject> monsterList = new();
-
-        Managers.Game.inGameDataLoad.GetMonsterList(ref monsterList);
-
         foreach (GameObject monster in monsterList)
         {
             string soName = monster.name;

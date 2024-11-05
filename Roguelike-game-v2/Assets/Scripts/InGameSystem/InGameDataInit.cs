@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class InGameDataLoad
+public class InGameDataInit
 {
     public UserLevelInfo_SO userLevelInfo;
 
@@ -85,16 +85,20 @@ public class InGameDataLoad
 
         yield return new WaitUntil(() => (skillList != null) && (monsterList != null));
 
+        Managers.Game.monsterSpawner.monsterList = monsterList;
+
         Managers.Game.objectPool.CreateInstance(monsterList, defaultMonsterCount);
         Managers.Game.objectPool.CreateInstance(skillList, defaultSkillCount);
 
         int typeCount = monsterList.Count + skillList.Count;
 
-        yield return new WaitUntil(() => typeCount == Managers.Game.objectPool.poolingObjects.Count);
+        yield return new WaitUntil(() => typeCount == Managers.Game.objectPool.PoolingObjectsCount);
 
-        yield return new WaitUntil(() => typeCount == Managers.Game.objectPool.scriptableObjects.Count);
+        yield return new WaitUntil(() => typeCount == Managers.Game.objectPool.ScriptableObjectsCount);
 
         yield return new WaitUntil(() => Managers.Game.player != null);
+
+        //Object Set
 
         Managers.Game.player.Set();
 
