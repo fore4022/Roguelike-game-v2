@@ -31,8 +31,6 @@ public abstract class Attack : MonoBehaviour, IDamage
         Init();
 
         attackType = GetType().ToString();
-        
-        attackSO = Managers.Game.objectPool.GetScriptableObject<Attack_SO>(attackType);
     }
     private void Init()
     {
@@ -58,7 +56,7 @@ public abstract class Attack : MonoBehaviour, IDamage
     {
         yield return new WaitUntil(() => (animator != null) && (render != null) && (col != null));
 
-        yield return new WaitUntil(() => attackSO != null);
+        //Set
 
         int level = Managers.Game.attackData.GetAttackLevel(attackType);
 

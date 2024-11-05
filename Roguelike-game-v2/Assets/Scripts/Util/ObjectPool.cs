@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using System.Text;
+using System.Collections;
 public class ObjectPool
 {
     private Dictionary<string, ScriptableObject> scriptableObjects = new();
@@ -11,9 +12,7 @@ public class ObjectPool
 
     private const string so = "SO";
 
-    public int ScriptableObjectsCount { get { return scriptableObjects.Count; } }
-    public int PoolingObjectsCount { get { return poolingObjects.Count; } }
-    private void Init()
+    public ObjectPool()
     {
         GameObject go = GameObject.Find("@ObjectPool");
 
@@ -27,6 +26,8 @@ public class ObjectPool
             root = go.transform;
         }
     }
+    public int ScriptableObjectsCount { get { return scriptableObjects.Count; } }
+    public int PoolingObjectsCount { get { return poolingObjects.Count; } }
     public void ClearPool()
     {
         if(scriptableObjects != null)
@@ -41,13 +42,9 @@ public class ObjectPool
 
         Managers.Scene.loadScene -= ClearPool;
     }
-    public async void CreateInstance(List<GameObject> prefabs, int count)
+    public void CreateInstance(List<GameObject> prefabs, int count, bool isSet = false)
     {
-        await CreateObjects(count, prefabs);
-    }
-    public async void CreateInstance(List<(string, GameObject)> prefabs, int count)
-    {
-        await CreateObjects(count, prefabs);
+        Util.GetMonoBehaviour().StartCoroutine(CreateObjects(prefabs, count, isSet));
     }
     public void ActiveObject(string prefabName)
     {
@@ -58,30 +55,6 @@ public class ObjectPool
     public void DisableObject(GameObject prefab)
     {
         prefab.SetActive(false);
-    }
-    private List<GameObject> Instantiate(GameObject prefab, int count)
-    {
-        List<GameObject> queue = new();
-
-        GameObject parent = GameObject.Find(prefab.name);
-
-        if(parent == null)
-        {
-            parent = new GameObject { name = prefab.name };
-
-            parent.transform.parent = root;
-        }
-
-        for (int i = 0; i < count; i++)
-        {
-            GameObject instance = Object.Instantiate(prefab, parent.transform);
-
-            instance.SetActive(false);
-
-            queue.Add(instance);
-        }
-
-        return queue;
     }
     public GameObject GetActiveGameObject(string prefabName)
     {
@@ -104,11 +77,38 @@ public class ObjectPool
 
         return null;
     }
-    private async Task CreateObjects(int count, List<GameObject> prefabs)
+    private List<GameObject> Instantiate(GameObject prefab, int count)
+    {
+        List<GameObject> queue = new();
+
+        GameObject parent = GameObject.Find(prefab.name);
+
+        if (parent == null)
+        {
+            parent = new GameObject { name = prefab.name };
+
+            parent.transform.parent = root;
+        }
+
+        for (int i = 0; i < count; i++)
+        {
+            GameObject instance = Object.Instantiate(prefab, parent.transform);
+
+            instance.SetActive(false);
+
+            queue.Add(instance);
+        }
+
+        return queue;
+    }
+    private IEnumerator CreateObjects(List<GameObject> prefabs, int count, bool isSet)
     {
         List<GameObject> list;
 
-        Init();
+        foreach(GameObject prefab in prefabs)
+        {
+            CreateScriptableObject(prefab.name);
+        }
 
         foreach(GameObject prefab in prefabs)
         {
@@ -129,35 +129,18 @@ public class ObjectPool
 
                 poolingObjects.Add(prefab.name, list);
             }
-
-            await CreateScriptableObject(prefab.name);
         }
-    }
-    private async Task CreateObjects(int count, List<(string key, GameObject prefab)> infoList)
-    {
-        List<GameObject> list;
 
-        Init();
-
-        foreach((string key, GameObject prefab) info in infoList)
+        if(!isSet)
         {
-            if(poolingObjects.ContainsKey(info.key))
-            {
-                list = poolingObjects[info.key];
+            yield break;
+        }
 
-                foreach(GameObject instance in Instantiate(info.prefab, count))
-                {
-                    list.Add(instance);
-                }
-            }
-            else
-            {
-                list = Instantiate(info.prefab, count);
+        yield return new WaitUntil(() => scriptableObjects.Count == prefabs.Count);
 
-                poolingObjects.Add(info.key, list);
-            }
-
-            await CreateScriptableObject(info.key);
+        foreach(GameObject prefab in prefabs)
+        {
+            
         }
     }
     private async Task CreateScriptableObject(string information)

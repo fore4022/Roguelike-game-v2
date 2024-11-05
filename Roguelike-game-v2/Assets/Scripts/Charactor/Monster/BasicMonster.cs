@@ -2,6 +2,8 @@ using System.Collections;
 using UnityEngine;
 public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 {
+    public BasicMonsterStat_SO basicMonsterSO = null;
+
     private DefaultStat stat;
     private CharactorInformation charactor;
     private Coroutine moveCoroutine = null;
@@ -13,7 +15,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     {
         base.OnEnable();
 
-        StartCoroutine(LoadStat());
+        LoadStat();
     }
     public void OnMove()
     {
@@ -49,14 +51,8 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
             Die();
         }
     }
-    private IEnumerator LoadStat()
+    private void LoadStat()
     {
-        BasicMonsterStat_SO basicMonsterSO = null;
-
-        basicMonsterSO = Managers.Game.objectPool.GetScriptableObject<BasicMonsterStat_SO>("Monster1");//
-
-        yield return new WaitUntil(() => basicMonsterSO != null);
-
         stat = basicMonsterSO.stat;
         charactor = basicMonsterSO.charactor;
         experience = basicMonsterSO.experience;

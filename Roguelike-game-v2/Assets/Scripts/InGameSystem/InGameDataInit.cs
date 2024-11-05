@@ -29,9 +29,9 @@ public class InGameDataInit
 
         monsterList = list;
     }
-    public void LoadSkillList(ref List<(string, GameObject)> skillList)
+    public void LoadSkillList(ref List<GameObject> skillList)
     {
-        List<(string, GameObject)> list = new();
+        List<GameObject> list = new();
 
         for(int i = 0; i < Managers.UserData.GetUserData.userLevel; i++)
         {
@@ -39,7 +39,7 @@ public class InGameDataInit
 
             foreach(AttackInformation_SO so in userLevel.attackInformationList)
             {
-                list.Add((so.attackType, so.skillObject));
+                list.Add(so.skillObject);
 
                 Managers.Game.attackData.SetDictionaryItem(so);
             }
@@ -71,8 +71,8 @@ public class InGameDataInit
     }
     public IEnumerator DataLoading()
     {
-        List<(string, GameObject)> skillList = new();
         List<GameObject> monsterList = new();
+        List<GameObject> skillList = new();
 
         Time.timeScale = 0;
         
@@ -87,8 +87,8 @@ public class InGameDataInit
 
         Managers.Game.monsterSpawner.monsterList = monsterList;
 
-        Managers.Game.objectPool.CreateInstance(monsterList, defaultMonsterCount);
-        Managers.Game.objectPool.CreateInstance(skillList, defaultSkillCount);
+        Managers.Game.objectPool.CreateInstance(monsterList, defaultMonsterCount, true);
+        Managers.Game.objectPool.CreateInstance(skillList, defaultSkillCount, true);
 
         int typeCount = monsterList.Count + skillList.Count;
 
@@ -97,8 +97,6 @@ public class InGameDataInit
         yield return new WaitUntil(() => typeCount == Managers.Game.objectPool.ScriptableObjectsCount);
 
         yield return new WaitUntil(() => Managers.Game.player != null);
-
-        //Object Set
 
         Managers.Game.player.Set();
 
