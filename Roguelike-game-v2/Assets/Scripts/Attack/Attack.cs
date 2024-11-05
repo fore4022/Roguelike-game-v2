@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 [RequireComponent(typeof(Animator), typeof(SpriteRenderer))]
-public abstract class Attack : MonoBehaviour, IDamage
+public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
 {
     protected Attack_SO attackSO;
 
@@ -14,6 +14,7 @@ public abstract class Attack : MonoBehaviour, IDamage
 
     private string attackType;
 
+    public ScriptableObject SetScriptableObject { set { attackSO = value as Attack_SO; } }
     public float DamageAmount { get { return Managers.Game.player.Stat.damage * attackSO.damageCoefficient; } }
     protected void Awake()
     {
@@ -55,8 +56,6 @@ public abstract class Attack : MonoBehaviour, IDamage
     private IEnumerator StartAttack()
     {
         yield return new WaitUntil(() => (animator != null) && (render != null) && (col != null));
-
-        //Set
 
         int level = Managers.Game.attackData.GetAttackLevel(attackType);
 

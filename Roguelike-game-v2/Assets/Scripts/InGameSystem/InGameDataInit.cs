@@ -5,9 +5,8 @@ public class InGameDataInit
 {
     public UserLevelInfo_SO userLevelInfo;
 
-    public string userLevelInfoPath = "UserLevelInfoSO";
-    public string inGameScene = "InGame";
-
+    private const string userLevelInfoPath = "UserLevelInfoSO";
+    private const string inGameScene = "InGame";
     private const int defaultMonsterCount = 75;
     private const int defaultSkillCount = 25;
 
@@ -47,7 +46,7 @@ public class InGameDataInit
 
         skillList = list;
     }
-    public IEnumerator Init()
+    private IEnumerator Init()
     {
         Managers.Scene.LoadScene(inGameScene);
 
@@ -65,11 +64,11 @@ public class InGameDataInit
 
         Util.GetMonoBehaviour().StartCoroutine(DataLoading());
     }
-    public async void LoadUserLevelInfo()
+    private async void LoadUserLevelInfo()
     {
         userLevelInfo = await Util.LoadingToPath<UserLevelInfo_SO>(userLevelInfoPath);
     }
-    public IEnumerator DataLoading()
+    private IEnumerator DataLoading()
     {
         List<GameObject> monsterList = new();
         List<GameObject> skillList = new();
@@ -87,8 +86,8 @@ public class InGameDataInit
 
         Managers.Game.monsterSpawner.monsterList = monsterList;
 
-        Managers.Game.objectPool.CreateInstance(monsterList, defaultMonsterCount, true);
-        Managers.Game.objectPool.CreateInstance(skillList, defaultSkillCount, true);
+        Managers.Game.objectPool.CreateObjects(monsterList, defaultMonsterCount);
+        Managers.Game.objectPool.CreateObjects(skillList, defaultSkillCount);
 
         int typeCount = monsterList.Count + skillList.Count;
 

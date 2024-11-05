@@ -29,18 +29,6 @@ public class Util
 
         return result;
     }
-    public static async Task<IList<T>> LoadingToLable<T>(string lable) where T : Object
-    {
-        AsyncOperationHandle<IList<T>> handle = Addressables.LoadAssetsAsync<T>(lable, null);
-
-        await handle.Task;
-
-        IList<T> resultList = handle.Result;
-
-        Addressables.Release(handle);
-
-        return resultList;
-    }
     public static async void InitAddressableAsset()
     {
         await Addressables.InitializeAsync().Task;
@@ -66,7 +54,7 @@ public class Util
 
         for(int index = 0; index < transform.childCount; index++)
         {
-            if(transform.GetChild(index).TryGetComponent<T>(out T component))
+            if(transform.GetChild(index).TryGetComponent(out T component))
             {
                 components.Add(component);
             }
@@ -84,13 +72,13 @@ public class Util
         {
             for (int index = 0; index < transform.childCount; index++)
             {
-                if (transform.GetChild(index).TryGetComponent<T>(out T component))
+                if (transform.GetChild(index).TryGetComponent(out T component))
                 {
                     return component;
                 }
             }
         }
 
-        return default(T);
+        return default;
     }
 }

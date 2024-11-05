@@ -1,10 +1,12 @@
 using UnityEngine;
-public class Monster : RenderableObject
+public class Monster : RenderableObject, IScriptableData
 {
+    protected MonsterStat_SO monsterSO = null;
     protected Rigidbody2D rigid;
 
     protected const float spawnRadius = 5;
 
+    public ScriptableObject SetScriptableObject { set { monsterSO = value as MonsterStat_SO; } }
     protected virtual void Awake()
     {
         gameObject.SetActive(false);

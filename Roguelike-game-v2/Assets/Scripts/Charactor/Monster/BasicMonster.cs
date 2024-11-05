@@ -2,8 +2,6 @@ using System.Collections;
 using UnityEngine;
 public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 {
-    public BasicMonsterStat_SO basicMonsterSO = null;
-
     private DefaultStat stat;
     private CharactorInformation charactor;
     private Coroutine moveCoroutine = null;
@@ -53,9 +51,9 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     }
     private void LoadStat()
     {
-        stat = basicMonsterSO.stat;
-        charactor = basicMonsterSO.charactor;
-        experience = basicMonsterSO.experience;
+        stat = monsterSO.stat;
+        charactor = monsterSO.charactor;
+        experience = monsterSO.experience;
 
         moveCoroutine = StartCoroutine(Moving());
     }

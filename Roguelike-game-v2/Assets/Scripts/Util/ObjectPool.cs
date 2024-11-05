@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using System.Text;
-using System.Collections;
 public class ObjectPool
 {
     private Dictionary<string, ScriptableObject> scriptableObjects = new();
@@ -42,10 +41,6 @@ public class ObjectPool
 
         Managers.Scene.loadScene -= ClearPool;
     }
-    public void CreateInstance(List<GameObject> prefabs, int count, bool isSet = false)
-    {
-        Util.GetMonoBehaviour().StartCoroutine(CreateObjects(prefabs, count, isSet));
-    }
     public void ActiveObject(string prefabName)
     {
         GameObject prefab = GetActiveGameObject(prefabName);
@@ -77,6 +72,34 @@ public class ObjectPool
 
         return null;
     }
+    public void CreateObjects(List<GameObject> prefabs, int count)
+    {
+        string key;
+
+        foreach (GameObject prefab in prefabs)
+        {
+            key = prefab.name;
+
+            SetInstance(Instantiate(prefab, count), key);
+        }
+    }
+    private async Task<ScriptableObject> CreateScriptableObject(string key)
+    {
+        if (!scriptableObjects.ContainsKey(key))
+        {
+            StringBuilder path = new StringBuilder(key);
+
+            path.Append(so);
+
+            ScriptableObject scriptableObject = await Util.LoadingToPath<ScriptableObject>(path.ToString());
+
+            scriptableObjects.Add(key, scriptableObject);
+
+            return scriptableObject;
+        }
+
+        return scriptableObjects[key];
+    }
     private List<GameObject> Instantiate(GameObject prefab, int count)
     {
         List<GameObject> queue = new();
@@ -101,59 +124,24 @@ public class ObjectPool
 
         return queue;
     }
-    private IEnumerator CreateObjects(List<GameObject> prefabs, int count, bool isSet)
+    private async Task SetInstance(List<GameObject> prefabs, string key)
     {
-        List<GameObject> list;
+        ScriptableObject so = await CreateScriptableObject(key);
 
-        foreach(GameObject prefab in prefabs)
+        foreach (GameObject instance in prefabs)
         {
-            CreateScriptableObject(prefab.name);
+            IScriptableData scriptableData = instance.GetComponent<IScriptableData>();
+
+            scriptableData.SetScriptableObject = so;
         }
 
-        foreach(GameObject prefab in prefabs)
+        if (poolingObjects.ContainsKey(key))
         {
-            if(poolingObjects.ContainsKey(prefab.name))
-            {
-                list = poolingObjects[prefab.name];
-
-                foreach (GameObject instance in Instantiate(prefab, count))
-                {
-                    list.Add(instance);
-                }
-
-                poolingObjects[prefab.name] = list;
-            }
-            else
-            {
-                list = Instantiate(prefab, count);
-
-                poolingObjects.Add(prefab.name, list);
-            }
+            poolingObjects[key].AddRange(prefabs);
         }
-
-        if(!isSet)
+        else
         {
-            yield break;
-        }
-
-        yield return new WaitUntil(() => scriptableObjects.Count == prefabs.Count);
-
-        foreach(GameObject prefab in prefabs)
-        {
-            
-        }
-    }
-    private async Task CreateScriptableObject(string information)
-    {
-        if (!scriptableObjects.ContainsKey(information))
-        {
-            StringBuilder path = new StringBuilder(information);
-
-            path.Append(so);
-
-            ScriptableObject scriptableObject = await Util.LoadingToPath<ScriptableObject>(path.ToString());
-
-            scriptableObjects.Add(information, scriptableObject);
+            poolingObjects.Add(key, prefabs);
         }
     }
 }
