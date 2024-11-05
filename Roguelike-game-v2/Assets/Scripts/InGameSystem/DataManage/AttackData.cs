@@ -11,7 +11,7 @@ public class AttackInformation
         data = dataSO;
     }
 }
-public class AttackDataManage
+public class AttackData
 {
     public Dictionary<string, int> attackIndexMap = new();
     public List<AttackInformation> attackInfo = new();

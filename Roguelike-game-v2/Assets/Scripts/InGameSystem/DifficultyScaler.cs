@@ -4,8 +4,8 @@ public class DifficultyScaler
 
     private float userLevelScale = 0;
 
-    public float SpawnDelay { get { return Managers.Game.StageInformation.spawnDelay / GetDifficultyScale(); } }
-    public float IncreaseStat { get { return Managers.Game.StageInformation.statScale * GetDifficultyScale(); } }
+    public float SpawnDelay { get { return Managers.Game.stageInformation.spawnDelay / GetDifficultyScale(); } }
+    public float IncreaseStat { get { return Managers.Game.stageInformation.statScale * GetDifficultyScale(); } }
     private float GetDifficultyScale()
     {
         if(userLevelScale == 0)
@@ -13,7 +13,7 @@ public class DifficultyScaler
             userLevelScale = Managers.UserData.GetUserData.userLevel / divideValue;
         }
 
-        float difficultyScale = Managers.Game.StageInformation.difficulty;
+        float difficultyScale = Managers.Game.stageInformation.difficulty;
 
         difficultyScale += userLevelScale + GetTimeScale();
 

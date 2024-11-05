@@ -17,9 +17,6 @@ public class ObjectPool
 
         if (go == null)
         {
-            Managers.Scene.loadScene -= ClearPool;
-            Managers.Scene.loadScene += ClearPool;
-
             go = new GameObject { name = "@ObjectPool" };
 
             root = go.transform;
@@ -27,20 +24,6 @@ public class ObjectPool
     }
     public int ScriptableObjectsCount { get { return scriptableObjects.Count; } }
     public int PoolingObjectsCount { get { return poolingObjects.Count; } }
-    public void ClearPool()
-    {
-        if(scriptableObjects != null)
-        {
-            scriptableObjects = new();
-        }
-
-        if(poolingObjects != null)
-        {
-            poolingObjects = new();
-        }
-
-        Managers.Scene.loadScene -= ClearPool;
-    }
     public void ActiveObject(string prefabName)
     {
         GameObject prefab = GetActiveGameObject(prefabName);

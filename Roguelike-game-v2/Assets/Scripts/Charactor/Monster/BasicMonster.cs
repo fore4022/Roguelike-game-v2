@@ -23,7 +23,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     }
     private void Die()
     {
-        Managers.Game.playerData.Experience += experience;
+        Managers.Game.inGameData.playerData.Experience += experience;
 
         StopCoroutine(moveCoroutine);
 

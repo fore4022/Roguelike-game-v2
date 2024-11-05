@@ -40,7 +40,7 @@ public class InGameDataInit
             {
                 list.Add(so.skillObject);
 
-                Managers.Game.attackData.SetDictionaryItem(so);
+                Managers.Game.inGameData.attackData.SetDictionaryItem(so);
             }
         }
 

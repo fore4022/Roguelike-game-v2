@@ -45,7 +45,7 @@ public class MonsterSpawner : MonoBehaviour
 
         while(true)
         {
-            foreach (SpawnInformation_SO spawnInformation in Managers.Game.StageInformation.spawnInformationList)
+            foreach (SpawnInformation_SO spawnInformation in Managers.Game.stageInformation.spawnInformationList)
             {
                 monsterSpawn = StartCoroutine(MonsterSpawning(spawnInformation));
 

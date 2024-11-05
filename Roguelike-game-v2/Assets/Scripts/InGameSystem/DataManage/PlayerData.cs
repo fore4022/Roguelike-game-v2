@@ -1,6 +1,5 @@
 using System;
-using System.Collections.Generic;
-public class PlayerDataManage
+public class PlayerData
 {
     public Action<float> healthUpdate = null;
     public Action experienceUpdate = null;

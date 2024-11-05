@@ -20,7 +20,7 @@ public class LevelUp_UI : UserInterface
     {
         base.Start();
 
-        Managers.Game.playerData.levelUpdate += AnimationPlay;
+        Managers.Game.inGameData.playerData.levelUpdate += AnimationPlay;
 
         ui.SetActive(false);
     }
@@ -34,7 +34,7 @@ public class LevelUp_UI : UserInterface
     {
         Managers.UI.HideUI<Pause_UI>();
 
-        level.text = $"Lv.{Managers.Game.playerData.Level}";
+        level.text = $"Lv.{Managers.Game.inGameData.playerData.Level}";
 
         yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
 

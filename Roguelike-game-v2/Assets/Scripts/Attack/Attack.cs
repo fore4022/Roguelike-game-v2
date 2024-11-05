@@ -57,7 +57,7 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
     {
         yield return new WaitUntil(() => (animator != null) && (render != null) && (col != null));
 
-        int level = Managers.Game.attackData.GetAttackLevel(attackType);
+        int level = Managers.Game.inGameData.attackData.GetAttackLevel(attackType);
 
         SetAttack(level);
 

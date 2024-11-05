@@ -17,23 +17,23 @@ public class LevelSlider_UI : UserInterface
     }
     private void Set()
     {
-        expSlider.maxValue = Managers.Game.playerData.ExperienceForLevelUp;
-        expSlider.value = Managers.Game.playerData.Experience;
+        expSlider.maxValue = Managers.Game.inGameData.playerData.ExperienceForLevelUp;
+        expSlider.value = Managers.Game.inGameData.playerData.Experience;
     }
     private void MaxValueUpdate()
     {
-        expSlider.maxValue = Managers.Game.playerData.ExperienceForLevelUp;
+        expSlider.maxValue = Managers.Game.inGameData.playerData.ExperienceForLevelUp;
     }
     private void ValueUpdate()
     {
-        expSlider.value = Managers.Game.playerData.Experience;
+        expSlider.value = Managers.Game.inGameData.playerData.Experience;
     }
     private IEnumerator Init()
     {
-        yield return new WaitUntil(() => Managers.Game.playerData.IsSet);
+        yield return new WaitUntil(() => Managers.Game.inGameData.playerData.IsSet);
 
-        Managers.Game.playerData.experienceUpdate += ValueUpdate;
-        Managers.Game.playerData.levelUpdate += MaxValueUpdate;
+        Managers.Game.inGameData.playerData.experienceUpdate += ValueUpdate;
+        Managers.Game.inGameData.playerData.levelUpdate += MaxValueUpdate;
 
         Set();
     }
