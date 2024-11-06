@@ -16,9 +16,16 @@ public class AttackSelection_UI : UserInterface
 
     private (int x, int y) cellSize = (700, 255);
 
+    protected override void Awake()
+    {
+        base.Awake();
+
+        gridLayoutGroup = GetComponent<GridLayoutGroup>();
+        backGroundImage = GetComponent<Image>();
+    }
     private void OnEnable()
     {
-        if(attackOptionList.Count == 0)
+        if (attackOptionList.Count == 0)
         {
             return;
         }
@@ -26,13 +33,6 @@ public class AttackSelection_UI : UserInterface
         InputActions.DisableInputAction<TouchControls>();
 
         Set();
-    }
-    protected override void Awake()
-    {
-        base.Awake();
-
-        gridLayoutGroup = GetComponent<GridLayoutGroup>();
-        backGroundImage = GetComponent<Image>();
     }
     private void Start()
     {

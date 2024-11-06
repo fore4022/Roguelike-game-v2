@@ -15,9 +15,6 @@ public class UI_Manager
 
             if(go == null)
             {
-                Managers.Scene.loadScene -= ClearDictionary;
-                Managers.Scene.loadScene += ClearDictionary;
-
                 go = new GameObject { name = "UI" };
             }
 
@@ -40,6 +37,10 @@ public class UI_Manager
         {
             go.SetActive(true);
         }
+        else
+        {
+            Util.GetMonoBehaviour().StartCoroutine(CreatingUI(name, true));
+        }
     }
     public void HideUI<T>() where T : UserInterface
     {
@@ -59,13 +60,13 @@ public class UI_Manager
             Util.GetMonoBehaviour().StartCoroutine(CreatingUI(name, isActive));
         }
     }
-    public GameObject GetUI<T>() where T : UserInterface
+    public T GetUI<T>() where T : UserInterface
     {
         string name = GetName<T>();
 
         if(uiDictionary.ContainsKey(name))
         {
-            return uiDictionary[name];
+            return uiDictionary[name].GetComponentInChildren<T>();
         }
 
         return null;
@@ -95,8 +96,6 @@ public class UI_Manager
     public void ClearDictionary()
     {
         uiDictionary = new();
-
-        Managers.Scene.loadScene -= ClearDictionary;
     }
     private async void LoadUI(string path)
     {

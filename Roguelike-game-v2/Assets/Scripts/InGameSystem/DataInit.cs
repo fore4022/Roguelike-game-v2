@@ -50,7 +50,7 @@ public class DataInit
     {
         Managers.Scene.LoadScene(inGameScene);
 
-        yield return new WaitUntil(() => inGameScene == Managers.Scene.scenePath);
+        yield return new WaitUntil(() => inGameScene == Managers.Scene.CurrentScene);
 
         GameObject GameSystem = GameObject.Find("GameSystem");
 
@@ -96,6 +96,8 @@ public class DataInit
         yield return new WaitUntil(() => typeCount == Managers.Game.objectPool.ScriptableObjectsCount);
 
         yield return new WaitUntil(() => Managers.Game.player != null);
+
+        Managers.UI.GetUI<SceneLoading_UI>().isLoading = false;
 
         Managers.Game.GameStart();
     }

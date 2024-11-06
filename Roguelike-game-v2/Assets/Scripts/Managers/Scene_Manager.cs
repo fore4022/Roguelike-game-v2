@@ -8,21 +8,24 @@ public class Scene_Manager
 
     public Action loadScene = null;
 
-    public string scenePath;
+    private string currentScene;
 
+    public string CurrentScene { get { return currentScene; } }
     public async void LoadScene(string path)
     {
+        Managers.UI.ClearDictionary();
+
+        Managers.UI.ShowUI<SceneLoading_UI>();
+
         if(sceneHandle != null)
         {
             loadScene.Invoke();
-
-            Managers.UI.ClearDictionary();
 
             Addressables.Release(sceneHandle);
         }
 
         sceneHandle = await Util.LoadingScene(path);
 
-        scenePath = path;
+        currentScene = path;
     }
 }
