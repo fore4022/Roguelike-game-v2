@@ -17,7 +17,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     }
     public void OnMove()
     {
-        Vector3 direction = Calculate.GetDirection(Managers.Game.player.gameObject.transform.position, transform.position);
+        Vector3 direction = Managers.Game.calculate.GetDirection(Managers.Game.player.gameObject.transform.position, transform.position);
 
         rigid.velocity = direction * stat.moveSpeed;
     }

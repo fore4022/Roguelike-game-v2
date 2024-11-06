@@ -6,6 +6,7 @@ public class Game_Manager
     public AttackCasterManage attackCasterManage = null;
     public DifficultyScaler difficultyScaler = null;
     public EnemyDetection enemyDetection = null;
+    public Calculate calculate = null;
 
     public StageInformation_SO stageInformation;
 
@@ -20,6 +21,7 @@ public class Game_Manager
         attackCasterManage = new();
         difficultyScaler = new();
         enemyDetection = new();
+        calculate = new();
     }
     public void DataLoad(StageInformation_SO stageInformation)
     {
@@ -48,6 +50,7 @@ public class Game_Manager
         attackCasterManage = null;
         difficultyScaler = null;
         enemyDetection = null;
+        calculate = null;
 
         stageInformation = null;
 

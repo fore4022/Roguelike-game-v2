@@ -15,7 +15,7 @@ public class PlayerMove : IMoveable
         Vector2 touchPosition = context.ReadValue<Vector2>();
         touchPosition = Camera.main.ScreenToWorldPoint(touchPosition);
 
-        direction = Calculate.GetDirection(touchPosition, (Vector2)enterTouchPosition);
+        direction = Managers.Game.calculate.GetDirection(touchPosition, (Vector2)enterTouchPosition);
     }
     private void StartMove()
     {

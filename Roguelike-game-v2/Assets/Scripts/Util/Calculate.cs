@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
-public static class Calculate//
+public class Calculate
 {
-    public static Vector3 GetAttackPosition(Vector3 direction, float attackRange)
+    public Vector3 GetAttackPosition(Vector3 direction, float attackRange)
     {
         return direction * attackRange + Managers.Game.player.transform.position;
     }
-    public static Vector3 GetDirection(Vector3 targetPosition)
+    public Vector3 GetDirection(Vector3 targetPosition)
     {
         if (targetPosition == null)
         {
@@ -15,7 +15,7 @@ public static class Calculate//
 
         return (targetPosition - Managers.Game.player.gameObject.transform.position).normalized;
     }
-    public static Vector3 GetDirection(Vector3 targetPosition, Vector3 position, bool isNormalized = true)
+    public Vector3 GetDirection(Vector3 targetPosition, Vector3 position, bool isNormalized = true)
     {
         if (targetPosition == null)
         {
@@ -31,19 +31,19 @@ public static class Calculate//
             return (targetPosition - position);
         }
     }
-    public static Vector3 GetVector(float vec)
+    public Vector3 GetVector(float vec)
     {
         return new Vector3(vec, vec, 0);
     }
-    public static Vector3 GetVector(float vecX, float vecY)
+    public Vector3 GetVector(float vecX, float vecY)
     {
         return new Vector3(vecX, vecY, 0);
     }
-    public static Quaternion GetQuaternion(Vector3 direction)
+    public Quaternion GetQuaternion(Vector3 direction)
     {
         return Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
     }
-    public static void IsInvisible(Collider2D targetCollider)
+    public void IsInvisible(Collider2D targetCollider)
     {
         if (!targetCollider.gameObject.activeSelf)
         {
@@ -56,7 +56,7 @@ public static class Calculate//
 
         if (!GeometryUtility.TestPlanesAABB(planes, target.bounds)) { Object.Destroy(targetCollider.gameObject); }
     }
-    public static int[] GetRandomValues(int maxValue, int count)
+    public int[] GetRandomValues(int maxValue, int count)
     {
         List<int> valueList = new();
         int[] result = new int[count];
