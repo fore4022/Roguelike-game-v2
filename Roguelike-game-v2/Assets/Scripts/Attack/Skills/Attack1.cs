@@ -3,7 +3,7 @@ public class Attack1 : Attack
 {
     protected override void SetAttack(int level)
     {
-        Vector3 targetPosition = EnemyDetection.GetNearestEnemyPosition();
+        Vector3 targetPosition = Managers.Game.enemyDetection.GetNearestEnemyPosition();
         Vector3 direction = Calculate.GetDirection(targetPosition);
         Vector3 localSize = Calculate.GetVector(attackSO.attackSize);
         Quaternion quaternion = Calculate.GetQuaternion(direction);

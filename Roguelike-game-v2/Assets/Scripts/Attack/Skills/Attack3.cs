@@ -3,7 +3,7 @@ public class Attack3 : Attack
 {
     protected override void SetAttack(int level)
     {
-        Vector3 targetPosition = EnemyDetection.GetNearestEnemyPosition();
+        Vector3 targetPosition = Managers.Game.enemyDetection.GetNearestEnemyPosition();
 
         transform.position = targetPosition;
     }

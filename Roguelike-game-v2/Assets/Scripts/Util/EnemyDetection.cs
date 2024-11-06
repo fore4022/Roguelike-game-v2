@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-public static class EnemyDetection
+public class EnemyDetection
 {
-    public static float largeastRange = 2.5f;
-    public static int maximumEnemyCount = 15;
+    public float largeastRange = 2.5f;
+    public int maximumEnemyCount = 15;
 
-    public static GameObject FindNearestEnemy(GameObject center = null, float? range = null)
+    public GameObject FindNearestEnemy(GameObject center = null, float? range = null)
     {
         List<GameObject> gameObjectList = FindEnemiesOnScreen(center, range);
 
@@ -36,7 +36,7 @@ public static class EnemyDetection
 
         return targetObject;
     }
-    public static GameObject FindLargestEnemyGroup()
+    public GameObject FindLargestEnemyGroup()
     {
         List<GameObject> gameObjectList = FindEnemiesOnScreen();
         Collider2D[] colliderArray = new Collider2D[maximumEnemyCount];
@@ -63,7 +63,7 @@ public static class EnemyDetection
 
         return targetObject;
     }
-    public static List<GameObject> FindLargestEnemyGroup(int count)
+    public List<GameObject> FindLargestEnemyGroup(int count)
     {
         List<GameObject> gameObjectList = FindEnemiesOnScreen();
         List<(GameObject obj, int enemyCount) > targetObjectList = new List<(GameObject obj, int enemyCount)>();
@@ -89,7 +89,7 @@ public static class EnemyDetection
 
         return gameObjectList.Take(count).ToList();
     }
-    public static Vector2 GetNearestEnemyPosition(GameObject center = null, float? range = null)
+    public Vector2 GetNearestEnemyPosition(GameObject center = null, float? range = null)
     {
         GameObject target = FindNearestEnemy(center, range);
 
@@ -102,7 +102,7 @@ public static class EnemyDetection
             return target.transform.position;
         }
     }
-    public static Vector2 GetLargestEnemyGroup()
+    public Vector2 GetLargestEnemyGroup()
     {
         GameObject target = FindLargestEnemyGroup();
 
@@ -115,7 +115,7 @@ public static class EnemyDetection
             return target.transform.position;
         }
     }
-    public static List<Vector2> GetLargestEnemyGroup(int count)
+    public List<Vector2> GetLargestEnemyGroup(int count)
     {
         List<GameObject> targetList = FindLargestEnemyGroup(count);
         List<Vector2> targetPositionList = new List<Vector2>();
@@ -147,7 +147,7 @@ public static class EnemyDetection
 
         return targetPositionList;
     }
-    public static List<GameObject> FindEnemiesOnScreen(GameObject center = null, float? range = null)
+    public List<GameObject> FindEnemiesOnScreen(GameObject center = null, float? range = null)
     {
         List<GameObject> resultList = new List<GameObject>();
         Collider2D[] colliderArray;
@@ -184,13 +184,13 @@ public static class EnemyDetection
 
         return resultList;
     }
-    public static float GetDistance(GameObject go, out float result)
+    public float GetDistance(GameObject go, out float result)
     {
         float distance = (go.transform.position - Managers.Game.player.gameObject.transform.position).magnitude;
 
         return result = distance;
     }
-    public static Vector2 GetRandomVector()
+    public Vector2 GetRandomVector()
     {
         float x = Random.Range(-180, 361);
         float y = Random.Range(-180, 361);

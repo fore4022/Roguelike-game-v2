@@ -1,9 +1,10 @@
 using System.Collections;
 using UnityEngine;
 public class AttackCaster
-{    
+{
+    private Attack_SO attackSO = null;
+
     private string attackType;
-    private float duration;
 
     public void SetAttackType(string attackType)
     {
@@ -11,17 +12,17 @@ public class AttackCaster
 
         Util.GetMonoBehaviour().StartCoroutine(Attacking());
     }
-    private void Attack()
-    {
-        Managers.Game.objectPool.ActiveObject(attackType);
-    }
     public IEnumerator Attacking()
     {
-        while (true)
-        {       
-            Attack();
+        attackSO = Managers.Game.objectPool.GetScriptableObject<Attack_SO>(attackType);
 
-            yield return new WaitForSeconds(1);//
+        yield return new WaitUntil(() => attackSO != null);
+
+        while (true)
+        {
+            Managers.Game.objectPool.ActiveObject(attackType);
+
+            yield return new WaitForSeconds(attackSO.coolTime);
         }
     }
 }

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-public static class Calculate
+public static class Calculate//
 {
     public static Vector3 GetAttackPosition(Vector3 direction, float attackRange)
     {

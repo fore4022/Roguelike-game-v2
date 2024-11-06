@@ -1,10 +1,11 @@
 using UnityEngine;
 public class Game_Manager
 {
-    public ObjectPool objectPool = null;
     public InGameDataManage inGameData = null;
+    public ObjectPool objectPool = null;
     public AttackCasterManage attackCasterManage = null;
     public DifficultyScaler difficultyScaler = null;
+    public EnemyDetection enemyDetection = null;
 
     public StageInformation_SO stageInformation;
 
@@ -14,10 +15,11 @@ public class Game_Manager
 
     private void Set()
     {
-        objectPool = new();
         inGameData = new();
+        objectPool = new();
         attackCasterManage = new();
         difficultyScaler = new();
+        enemyDetection = new();
     }
     public void DataLoad(StageInformation_SO stageInformation)
     {
@@ -41,10 +43,11 @@ public class Game_Manager
     }
     public void GameEnd()
     {
-        objectPool = null;
         inGameData = null;
+        objectPool = null;
         attackCasterManage = null;
         difficultyScaler = null;
+        enemyDetection = null;
 
         stageInformation = null;
 
