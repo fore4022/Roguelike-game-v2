@@ -76,13 +76,15 @@ public abstract class NewButton : UserInterface, IPointerEnterHandler, IPointerE
 
         isPointerDown = false;
     }
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
 
         rectTransform = GetComponent<RectTransform>();
         image = GetComponent<Image>();
-
+    }
+    private void Start()
+    {
         Init();
 
         Set();

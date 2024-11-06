@@ -16,6 +16,8 @@ public class Scene_Manager
         {
             loadScene.Invoke();
 
+            Managers.UI.ClearDictionary();
+
             Addressables.Release(sceneHandle);
         }
 

@@ -27,10 +27,15 @@ public class AttackSelection_UI : UserInterface
 
         Set();
     }
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
 
+        gridLayoutGroup = GetComponent<GridLayoutGroup>();
+        backGroundImage = GetComponent<Image>();
+    }
+    private void Start()
+    {
         StartCoroutine(Init());
     }
     private void Set()
@@ -77,9 +82,6 @@ public class AttackSelection_UI : UserInterface
     private IEnumerator Init()
     {
         LoadAttackOption();
-
-        gridLayoutGroup = GetComponent<GridLayoutGroup>();
-        backGroundImage = GetComponent<Image>();
 
         AdjustGridLayout();
 

@@ -53,19 +53,19 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
         Managers.UI.ShowUI<Pause_UI>();
         Managers.UI.HideUI<AttackSelection_UI>();
     }
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         rectTransform = GetComponent<RectTransform>();
         button = GetComponent<Button>();
         image = Util.GetComponentInChildren<Image>(transform);
         animator = Util.GetComponentInChildren<Animator>(transform);
 
-        textList = Util.GetComponentsInChildren<TextMeshProUGUI>(transform);
-    } 
-    protected override void Start()
+        textList = Util.GetComponentsInChildren<TextMeshProUGUI>(transform);        
+    }
+    private void Start()
     {
-        base.Start();
-
         button.onClick.AddListener(PointerClick);
 
         SetAnimator(false);

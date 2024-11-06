@@ -3,15 +3,15 @@ public class LevelSlider_UI : UserInterface
 {
     private Slider expSlider;
 
-    private void Awake()
+    protected override void Awake()
     {
         expSlider = GetComponent<Slider>();
 
-        base.Start();
+        base.Awake();
 
         gameObject.SetActive(false);
     }
-    protected override void Start()
+    private void Start()
     {
         Init();
     }

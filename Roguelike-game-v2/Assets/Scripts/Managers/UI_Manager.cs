@@ -50,13 +50,13 @@ public class UI_Manager
             go.SetActive(false);
         }
     }
-    public void CreateUI<T>() where T : UserInterface
+    public void CreateUI<T>(bool isActive = false) where T : UserInterface
     {
         string name = GetName<T>();
 
         if (!uiDictionary.ContainsKey(name))
         {
-            Util.GetMonoBehaviour().StartCoroutine(CreatingUI(name));
+            Util.GetMonoBehaviour().StartCoroutine(CreatingUI(name, isActive));
         }
     }
     public GameObject GetUI<T>() where T : UserInterface
@@ -98,11 +98,11 @@ public class UI_Manager
 
         Managers.Scene.loadScene -= ClearDictionary;
     }
-    public async void LoadUI(string path)
+    private async void LoadUI(string path)
     {
         uiDictionary.Add(path, await Util.LoadingToPath<GameObject>(path));
     }
-    public IEnumerator CreatingUI(string uiName, bool isActive = false)
+    public IEnumerator CreatingUI(string uiName, bool isActive)
     {
         LoadUI(uiName);
 
