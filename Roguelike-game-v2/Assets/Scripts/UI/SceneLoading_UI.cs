@@ -1,13 +1,17 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class SceneLoading_UI : UserInterface
 {
+    private List<AnimationClip> animationClips = new();
+
     public bool isLoading = true;
 
+    private Animator animator;
     private Image image;
 
-    private const float limitTime = 0.2f;
+    private const float limitTime = 0.5f;
     private const float minAlpha = 0;
     private const float maxAlpha = 255;
 
@@ -19,6 +23,7 @@ public class SceneLoading_UI : UserInterface
 
         base.Awake();
 
+        animator = GetComponentInChildren<Animator>();
         image = GetComponentInChildren<Image>();
     }
     private void Start()
@@ -35,7 +40,12 @@ public class SceneLoading_UI : UserInterface
         {
             //animation play
 
-            yield return null;
+            foreach(AnimationClip clip in animationClips)
+            {
+
+            }
+
+            yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
         }
 
         StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(image, minAlpha, limitTime));
