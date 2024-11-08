@@ -22,8 +22,6 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
     private const float maxScale = 1.1f;
     private const float duration = 1;
 
-    private string clipName;
-
     public void OnPointerEnter(PointerEventData eventData)
     {
         SetAnimator(true);
@@ -131,11 +129,11 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
     }
     private IEnumerator PlayAnimation()
     {
-        animator.Play(clipName, 0, 0);
+        animator.Play(0, 0);
 
         yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
 
-        animator.Play(clipName, 0, 0);
+        animator.Play(0, 0);
 
         yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime == 0);
 

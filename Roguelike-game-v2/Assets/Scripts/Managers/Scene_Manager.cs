@@ -24,6 +24,8 @@ public class Scene_Manager
             Addressables.Release(sceneHandle);
         }
 
+        //await Task.Delay(() => Managers.UI.GetUI<SceneLoading_UI>().PlayerAnimation != null ? 0 :1);
+
         sceneHandle = await Util.LoadingScene(path);
 
         currentScene = path;

@@ -48,6 +48,8 @@ public class DataInit
     }
     private IEnumerator Init()
     {
+        Time.timeScale = 0;
+
         Managers.Scene.LoadScene(inGameScene);
 
         yield return new WaitUntil(() => inGameScene == Managers.Scene.CurrentScene);
@@ -95,9 +97,11 @@ public class DataInit
 
         yield return new WaitUntil(() => typeCount == Managers.Game.objectPool.ScriptableObjectsCount);
 
-        yield return new WaitUntil(() => Managers.Game.player != null);
+        yield return new WaitUntil(() => Managers.Game.inGameData.playerData.levelUpdate != null);
 
-        Managers.UI.GetUI<SceneLoading_UI>().isLoading = false;
+        Time.timeScale = 1;
+
+        yield return new WaitUntil(() => Managers.UI.GetUI<SceneLoading_UI>() == null);
 
         Managers.Game.GameStart();
     }
