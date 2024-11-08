@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
@@ -9,10 +10,13 @@ public class Scene_Manager
     public Action loadScene = null;
 
     private string currentScene;
+    private string path = null;
 
     public string CurrentScene { get { return currentScene; } }
-    public async void LoadScene(string path)
+    public void LoadScene(string path)
     {
+        this.path = path;
+
         Managers.UI.ClearDictionary();
 
         Managers.UI.ShowUI<SceneLoading_UI>();
@@ -23,11 +27,18 @@ public class Scene_Manager
 
             Addressables.Release(sceneHandle);
         }
-
-        //await Task.Delay(() => Managers.UI.GetUI<SceneLoading_UI>().PlayerAnimation != null ? 0 :1);
+    }
+    public async void SetScene()
+    {
+        if(path == null)
+        {
+            return;
+        }
 
         sceneHandle = await Util.LoadingScene(path);
 
         currentScene = path;
+
+        path = null;
     }
 }

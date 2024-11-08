@@ -6,10 +6,8 @@ using UnityEngine.UI;
 public class SceneLoading_UI : UserInterface
 {    
     [SerializeField]
-    private List<AnimatorController> animatorController = new();
+    private List<AnimatorController> animatorController = new();//
 
-    private Coroutine loading;
-    private Coroutine playAnimation;
     private Animator animator;
     private Image image;
 
@@ -17,8 +15,6 @@ public class SceneLoading_UI : UserInterface
     private const float minAlpha = 0;
     private const float maxAlpha = 255;
 
-    public Coroutine LoadingCoroutine { get { return loading; } }
-    public Coroutine PlayerAnimation { get { return playAnimation; } }
     protected override void Awake()
     {
         transform.SetParent(null, false);
@@ -28,11 +24,12 @@ public class SceneLoading_UI : UserInterface
         base.Awake();
 
         animator = GetComponentInChildren<Animator>();
-        image = GetComponentInChildren<Image>();
+        image = Util.GetComponentInChildren<Image>(transform);
     }
     private void Start()
     {
-        loading = StartCoroutine(Loading());
+        StartCoroutine(Loading());
+        StartCoroutine(PlayAnimation());
     }
     private IEnumerator Loading()
     {
@@ -40,13 +37,13 @@ public class SceneLoading_UI : UserInterface
 
         StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(image, maxAlpha, limitTime));
 
-        yield return new WaitForSeconds(limitTime);
-
-        playAnimation = StartCoroutine(PlayAnimation());
+        yield return new WaitForSecondsRealtime(limitTime);
+        
+        Managers.Scene.SetScene();
 
         yield return new WaitUntil(() => Time.timeScale == 1);
 
-        StopCoroutine(playAnimation);
+        yield return new WaitForSeconds(0.5f);
 
         animator.gameObject.SetActive(false);
 
@@ -54,13 +51,11 @@ public class SceneLoading_UI : UserInterface
 
         yield return new WaitForSeconds(limitTime);
 
-        loading = null;
-
         Managers.UI.DestroyUI<SceneLoading_UI>();
     }
     private IEnumerator PlayAnimation()
     {
-        animator.gameObject.SetActive(true);
+        yield return new WaitForSecondsRealtime(limitTime * 2);
 
         foreach (AnimatorController controller in animatorController)
         {

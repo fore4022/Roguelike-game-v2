@@ -96,7 +96,7 @@ public class UIElementUtility
 
             while (totalTime != 1)
             {
-                totalTime += Time.deltaTime;
+                totalTime += Time.unscaledDeltaTime;
 
                 if (totalTime > duration)
                 {
