@@ -62,7 +62,7 @@ public class UIElementUtility
     }
     public IEnumerator SetImageAlpha(Image image, float targetAlphaValue, float duration = 0, bool recursive = true)
     {
-        List<Image> imageList = null;
+        List<Image> imageList = new();
 
         Color color = image.color;
 
@@ -100,7 +100,7 @@ public class UIElementUtility
 
                 if (totalTime > duration)
                 {
-                    totalTime = 1;
+                    totalTime = duration;
                 }
 
                 color.a = Mathf.Lerp(alphaValue, targetAlphaValue, totalTime / duration);

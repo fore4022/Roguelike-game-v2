@@ -9,7 +9,8 @@ public class SceneLoading_UI : UserInterface
     private List<AnimatorController> animatorController = new();//
 
     private Animator animator;
-    private Image image;
+    private Image background;
+    private Image skill;
 
     private const float limitTime = 1.5f;
     private const float minAlpha = 0;
@@ -24,30 +25,32 @@ public class SceneLoading_UI : UserInterface
         base.Awake();
 
         animator = GetComponentInChildren<Animator>();
-        image = Util.GetComponentInChildren<Image>(transform);
+        background = Util.GetComponentInChildren<Image>(transform);
+        skill = animator.gameObject.GetComponent<Image>();
     }
     private void Start()
     {
         StartCoroutine(Loading());
-        StartCoroutine(PlayAnimation());
     }
     private IEnumerator Loading()
     {
-        animator.gameObject.SetActive(false);
+        StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(skill, minAlpha));
+        StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(background, maxAlpha, limitTime, false));
 
-        StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(image, maxAlpha, limitTime));
+        Debug.Log(background.color.a);
 
         yield return new WaitForSecondsRealtime(limitTime);
-        
+
+        Coroutine playAnimation = StartCoroutine(PlayAnimation());
+
         Managers.Scene.SetScene();
 
         yield return new WaitUntil(() => Time.timeScale == 1);
 
-        yield return new WaitForSeconds(0.5f);
+        Debug.Log(background.color.a);
 
-        animator.gameObject.SetActive(false);
-
-        StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(image, minAlpha, limitTime));
+        StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(skill, minAlpha, limitTime));
+        StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(background, minAlpha, limitTime, false));
 
         yield return new WaitForSeconds(limitTime);
 
@@ -55,7 +58,9 @@ public class SceneLoading_UI : UserInterface
     }
     private IEnumerator PlayAnimation()
     {
-        yield return new WaitForSecondsRealtime(limitTime * 2);
+        yield return new WaitForSecondsRealtime(limitTime);
+
+        StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(skill, maxAlpha, limitTime));
 
         foreach (AnimatorController controller in animatorController)
         {

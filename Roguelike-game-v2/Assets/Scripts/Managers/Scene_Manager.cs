@@ -1,12 +1,6 @@
 using System;
-using System.Diagnostics;
-using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.ResourceManagement.ResourceProviders;
 public class Scene_Manager
 {
-    public AsyncOperationHandle<SceneInstance>? sceneHandle;
-
     public Action loadScene = null;
 
     private string currentScene;
@@ -21,12 +15,7 @@ public class Scene_Manager
 
         Managers.UI.ShowUI<SceneLoading_UI>();
 
-        if(sceneHandle != null)
-        {
-            loadScene.Invoke();
-
-            Addressables.Release(sceneHandle);
-        }
+        loadScene?.Invoke();
     }
     public async void SetScene()
     {
@@ -34,8 +23,8 @@ public class Scene_Manager
         {
             return;
         }
-
-        sceneHandle = await Util.LoadingScene(path);
+        
+        await Util.LoadingScene(path);
 
         currentScene = path;
 
