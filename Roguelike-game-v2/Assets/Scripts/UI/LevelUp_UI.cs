@@ -23,8 +23,6 @@ public class LevelUp_UI : UserInterface
     }
     private IEnumerator AnimationPlaying()
     {
-        Managers.UI.HideUI<Pause_UI>();
-
         level.text = $"Lv.{Managers.Game.inGameData.playerData.Level}";
 
         yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);

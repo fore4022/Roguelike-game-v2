@@ -5,11 +5,11 @@ public class LevelSlider_UI : UserInterface
 
     protected override void Awake()
     {
-        expSlider = GetComponent<Slider>();
-
         base.Awake();
 
-        gameObject.SetActive(false);
+        expSlider = GetComponent<Slider>();
+
+        Managers.UI.HideUI<LevelSlider_UI>();
     }
     private void Start()
     {

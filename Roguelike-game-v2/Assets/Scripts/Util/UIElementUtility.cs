@@ -94,7 +94,7 @@ public class UIElementUtility
         {
             float alphaValue = color.a;
 
-            while (totalTime != 1)
+            while (totalTime != duration)
             {
                 totalTime += Time.unscaledDeltaTime;
 

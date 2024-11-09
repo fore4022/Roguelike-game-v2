@@ -12,7 +12,7 @@ public class SceneLoading_UI : UserInterface
     private Image background;
     private Image skill;
 
-    private const float limitTime = 1.5f;
+    private const float limitTime = 0.75f;
     private const float minAlpha = 0;
     private const float maxAlpha = 255;
 
@@ -37,8 +37,6 @@ public class SceneLoading_UI : UserInterface
         StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(skill, minAlpha));
         StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(background, maxAlpha, limitTime, false));
 
-        Debug.Log(background.color.a);
-
         yield return new WaitForSecondsRealtime(limitTime);
 
         Coroutine playAnimation = StartCoroutine(PlayAnimation());
@@ -47,7 +45,7 @@ public class SceneLoading_UI : UserInterface
 
         yield return new WaitUntil(() => Time.timeScale == 1);
 
-        Debug.Log(background.color.a);
+        StopCoroutine(playAnimation);
 
         StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(skill, minAlpha, limitTime));
         StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(background, minAlpha, limitTime, false));
