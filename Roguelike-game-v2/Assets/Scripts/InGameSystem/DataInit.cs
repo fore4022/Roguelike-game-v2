@@ -7,8 +7,8 @@ public class DataInit
 
     private const string userLevelInfoPath = "UserLevelInfoSO";
     private const string inGameScene = "InGame";
-    private const int defaultMonsterCount = 75;
-    private const int defaultSkillCount = 25;
+    private const int defaultMonsterCount = 7500;
+    private const int defaultSkillCount = 2500;
 
     public void GetInGameData()
     {
@@ -96,7 +96,7 @@ public class DataInit
         yield return new WaitUntil(() => typeCount == Managers.Game.objectPool.PoolingObjectsCount);
 
         yield return new WaitUntil(() => typeCount == Managers.Game.objectPool.ScriptableObjectsCount);
-
+        
         yield return new WaitUntil(() => Managers.Game.inGameData.playerData.levelUpdate != null);
 
         Time.timeScale = 1;

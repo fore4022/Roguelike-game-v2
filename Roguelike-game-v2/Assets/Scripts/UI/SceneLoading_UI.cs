@@ -31,24 +31,23 @@ public class SceneLoading_UI : UserInterface
     private void Start()
     {
         StartCoroutine(Loading());
+        StartCoroutine(PlayAnimation());
     }
     private IEnumerator Loading()
     {
-        StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(skill, minAlpha));
-        StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(background, maxAlpha, limitTime, false));
+        StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(background, maxAlpha, limitTime));
 
         yield return new WaitForSecondsRealtime(limitTime);
 
-        Coroutine playAnimation = StartCoroutine(PlayAnimation());
-
         Managers.Scene.SetScene();
+
+        Debug.Log(Time.timeScale);
 
         yield return new WaitUntil(() => Time.timeScale == 1);
 
-        StopCoroutine(playAnimation);
+        Debug.Log(Time.timeScale);
 
-        StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(skill, minAlpha, limitTime));
-        StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(background, minAlpha, limitTime, false));
+        StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(background, minAlpha, limitTime));
 
         yield return new WaitForSeconds(limitTime);
 
@@ -56,10 +55,6 @@ public class SceneLoading_UI : UserInterface
     }
     private IEnumerator PlayAnimation()
     {
-        yield return new WaitForSecondsRealtime(limitTime);
-
-        StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(skill, maxAlpha, limitTime));
-
         foreach (AnimatorController controller in animatorController)
         {
             animator.runtimeAnimatorController = controller;

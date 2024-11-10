@@ -48,6 +48,8 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
     {
         Managers.Game.inGameData.attackData.SetValue(info.data.attackType);
 
+        Time.timeScale = 1;
+
         Managers.UI.HideUI<AttackSelection_UI>();
     }
     protected override void Awake()

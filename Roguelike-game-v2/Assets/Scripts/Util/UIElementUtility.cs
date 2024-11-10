@@ -72,7 +72,7 @@ public class UIElementUtility
 
         if (recursive)
         {
-            imageList = Util.GetComponentsInChildren<Image>(image.transform);
+            imageList = image.gameObject.GetComponentsInChildren<Image>().ToList();
         }
 
         if (duration == 0)
@@ -96,7 +96,7 @@ public class UIElementUtility
 
             while (totalTime != duration)
             {
-                totalTime += Time.unscaledDeltaTime;
+                totalTime += Time.fixedDeltaTime;
 
                 if (totalTime > duration)
                 {

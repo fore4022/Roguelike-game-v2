@@ -93,7 +93,7 @@ public class ObjectPool
         {
             parent = new GameObject { name = prefab.name };
 
-            parent.transform.parent = root;
+            //parent.transform.parent = root;
         }
 
         for (int i = 0; i < count; i++)
