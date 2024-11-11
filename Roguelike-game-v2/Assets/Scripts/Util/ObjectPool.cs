@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using System.Text;
+using System.Collections;
 public class ObjectPool
 {
     private Dictionary<string, ScriptableObject> scriptableObjects = new();
@@ -10,6 +11,9 @@ public class ObjectPool
     private Transform root;
 
     private const string so = "SO";
+    private const int maxCreatePerSec = 100;
+
+    private int coroutineCount = 0;
 
     public ObjectPool()
     {
@@ -24,6 +28,7 @@ public class ObjectPool
     }
     public int ScriptableObjectsCount { get { return scriptableObjects.Count; } }
     public int PoolingObjectsCount { get { return poolingObjects.Count; } }
+    private int CreateCount { get { return maxCreatePerSec / coroutineCount; } }
     public void ActiveObject(string prefabName)
     {
         GameObject prefab = GetActiveGameObject(prefabName);
@@ -57,19 +62,31 @@ public class ObjectPool
     }
     public void CreateObjects(List<GameObject> prefabs, int count)
     {
-        string key;
-
-        foreach (GameObject prefab in prefabs)
-        {
-            CreateInstance(prefab, count);
-        }
-
-        //
-
         foreach(GameObject prefab in prefabs)
         {
-            
+            Util.GetMonoBehaviour().StartCoroutine(CreatingInstance(prefab, count));
         }
+    }
+    private IEnumerator CreatingInstance(GameObject prefab, int count)
+    {
+        string key = prefab.name;
+        int instanceCount = 0;
+        int createCount;
+
+        coroutineCount++;
+
+        while(instanceCount <= count)
+        {
+            createCount = Mathf.Min(CreateCount, count - instanceCount);
+
+            CreateInstance(prefab, createCount);
+
+            yield return null;
+        }
+
+        coroutineCount--;
+
+        SetInstance(poolingObjects[key], key);
     }
     private async Task<ScriptableObject> CreateScriptableObject(string key)
     {
@@ -88,7 +105,7 @@ public class ObjectPool
 
         return scriptableObjects[key];
     }
-    private async void CreateInstance(GameObject prefab, int count)
+    private void CreateInstance(GameObject prefab, int count)
     {
         List<GameObject> list = new();
 
@@ -109,8 +126,6 @@ public class ObjectPool
 
             list.Add(instance);
         }
-
-        SetInstance(list, prefab.name);
     }
     private async Task SetInstance(List<GameObject> prefabs, string key)
     {

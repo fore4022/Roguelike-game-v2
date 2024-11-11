@@ -8,8 +8,8 @@ public class DataInit
 
     private const string userLevelInfoPath = "UserLevelInfoSO";
     private const string inGameScene = "InGame";
-    private const int defaultMonsterCount = 750;
-    private const int defaultSkillCount = 250;
+    private const int defaultMonsterCount = 300;
+    private const int defaultSkillCount = 100;
 
     public void GetInGameData()
     {
