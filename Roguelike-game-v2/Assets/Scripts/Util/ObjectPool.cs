@@ -61,9 +61,14 @@ public class ObjectPool
 
         foreach (GameObject prefab in prefabs)
         {
-            key = prefab.name;
+            CreateInstance(prefab, count);
+        }
 
-            SetInstance(Instantiate(prefab, count), key);
+        //
+
+        foreach(GameObject prefab in prefabs)
+        {
+            
         }
     }
     private async Task<ScriptableObject> CreateScriptableObject(string key)
@@ -83,9 +88,9 @@ public class ObjectPool
 
         return scriptableObjects[key];
     }
-    private List<GameObject> Instantiate(GameObject prefab, int count)
+    private async void CreateInstance(GameObject prefab, int count)
     {
-        List<GameObject> queue = new();
+        List<GameObject> list = new();
 
         GameObject parent = GameObject.Find(prefab.name);
 
@@ -93,7 +98,7 @@ public class ObjectPool
         {
             parent = new GameObject { name = prefab.name };
 
-            //parent.transform.parent = root;
+            parent.transform.parent = root;
         }
 
         for (int i = 0; i < count; i++)
@@ -102,10 +107,10 @@ public class ObjectPool
 
             instance.SetActive(false);
 
-            queue.Add(instance);
+            list.Add(instance);
         }
 
-        return queue;
+        SetInstance(list, prefab.name);
     }
     private async Task SetInstance(List<GameObject> prefabs, string key)
     {

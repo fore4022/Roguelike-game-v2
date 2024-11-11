@@ -41,11 +41,7 @@ public class SceneLoading_UI : UserInterface
 
         Managers.Scene.SetScene();
 
-        Debug.Log(Time.timeScale);
-
         yield return new WaitUntil(() => Time.timeScale == 1);
-
-        Debug.Log(Time.timeScale);
 
         StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(background, minAlpha, limitTime));
 

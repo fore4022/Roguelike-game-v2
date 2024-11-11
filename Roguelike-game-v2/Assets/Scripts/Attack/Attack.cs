@@ -72,7 +72,7 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
 
         startAttack = null;
 
-        Managers.Game.objectPool.DisableObject(gameObject);
+        Managers.Game.inGameData.dataInit.objectPool.DisableObject(gameObject);
     }
     protected virtual IEnumerator Attacking()
     {

@@ -74,6 +74,6 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 
         stat = null;
 
-        Managers.Game.objectPool.DisableObject(gameObject);
+        Managers.Game.inGameData.dataInit.objectPool.DisableObject(gameObject);
     }
 }

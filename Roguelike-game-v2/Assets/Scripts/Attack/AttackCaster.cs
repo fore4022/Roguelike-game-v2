@@ -14,13 +14,13 @@ public class AttackCaster
     }
     public IEnumerator Attacking()
     {
-        attackSO = Managers.Game.objectPool.GetScriptableObject<Attack_SO>(attackType);
+        attackSO = Managers.Game.inGameData.dataInit.objectPool.GetScriptableObject<Attack_SO>(attackType);
 
         yield return new WaitUntil(() => attackSO != null);
 
         while (true)
         {
-            Managers.Game.objectPool.ActiveObject(attackType);
+            Managers.Game.inGameData.dataInit.objectPool.ActiveObject(attackType);
 
             yield return new WaitForSeconds(attackSO.coolTime);
         }
