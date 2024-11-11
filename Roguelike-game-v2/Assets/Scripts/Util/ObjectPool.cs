@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 using System.Text;
 using System.Collections;
@@ -11,7 +10,7 @@ public class ObjectPool
     private Transform root;
 
     private const string so = "SO";
-    private const int maxCreatePerSec = 100;
+    private const int maxWorkPerSec = 20;
 
     private int coroutineCount = 0;
 
@@ -28,7 +27,7 @@ public class ObjectPool
     }
     public int ScriptableObjectsCount { get { return scriptableObjects.Count; } }
     public int PoolingObjectsCount { get { return poolingObjects.Count; } }
-    private int CreateCount { get { return maxCreatePerSec / coroutineCount; } }
+    private int MaxWorkPerSec { get { return Mathf.Max(maxWorkPerSec / coroutineCount, 1); } }
     public void ActiveObject(string prefabName)
     {
         GameObject prefab = GetActiveGameObject(prefabName);
@@ -67,28 +66,18 @@ public class ObjectPool
             Util.GetMonoBehaviour().StartCoroutine(CreatingInstance(prefab, count));
         }
     }
-    private IEnumerator CreatingInstance(GameObject prefab, int count)
+    private void CreateInstance(GameObject parent, GameObject prefab, int count, ref List<GameObject> list)
     {
-        string key = prefab.name;
-        int instanceCount = 0;
-        int createCount;
-
-        coroutineCount++;
-
-        while(instanceCount <= count)
+        for (int i = 0; i < count; i++)
         {
-            createCount = Mathf.Min(CreateCount, count - instanceCount);
+            GameObject instance = Object.Instantiate(prefab, parent.transform);
 
-            CreateInstance(prefab, createCount);
+            instance.SetActive(false);
 
-            yield return null;
+            list.Add(instance);
         }
-
-        coroutineCount--;
-
-        SetInstance(poolingObjects[key], key);
     }
-    private async Task<ScriptableObject> CreateScriptableObject(string key)
+    private async void CreateScriptableObject(string key)
     {
         if (!scriptableObjects.ContainsKey(key))
         {
@@ -99,44 +88,68 @@ public class ObjectPool
             ScriptableObject scriptableObject = await Util.LoadingToPath<ScriptableObject>(path.ToString());
 
             scriptableObjects.Add(key, scriptableObject);
-
-            return scriptableObject;
         }
-
-        return scriptableObjects[key];
     }
-    private void CreateInstance(GameObject prefab, int count)
+    private IEnumerator CreatingInstance(GameObject prefab, int count)
     {
         List<GameObject> list = new();
 
-        GameObject parent = GameObject.Find(prefab.name);
+        GameObject parent = new GameObject { name = prefab.name };
 
-        if (parent == null)
+        string key = prefab.name;
+        int instanceCount = 0;
+        int createCount;
+
+        parent.transform.parent = root;
+
+        coroutineCount++;
+
+
+        while (instanceCount < count)
         {
-            parent = new GameObject { name = prefab.name };
+            createCount = Mathf.Min(MaxWorkPerSec, count - instanceCount);
 
-            parent.transform.parent = root;
+            instanceCount += createCount;
+
+            CreateInstance(parent, prefab, createCount, ref list);
+
+            yield return null;
         }
 
-        for (int i = 0; i < count; i++)
-        {
-            GameObject instance = Object.Instantiate(prefab, parent.transform);
+        coroutineCount--;
 
-            instance.SetActive(false);
-
-            list.Add(instance);
-        }
+        Util.GetMonoBehaviour().StartCoroutine(SetInstance(list, key));
     }
-    private async Task SetInstance(List<GameObject> prefabs, string key)
+    private IEnumerator SetInstance(List<GameObject> prefabs, string key)
     {
-        ScriptableObject so = await CreateScriptableObject(key);
+        ScriptableObject so;
 
-        foreach (GameObject instance in prefabs)
+        int index = 0;
+        int count;
+
+        coroutineCount++;
+
+        CreateScriptableObject(key);
+
+        yield return new WaitUntil(() => scriptableObjects.ContainsKey(key) == true);
+
+        so = scriptableObjects[key];
+
+        while (index < prefabs.Count)
         {
-            IScriptableData scriptableData = instance.GetComponent<IScriptableData>();
+            count = maxWorkPerSec;
 
-            scriptableData.SetScriptableObject = so;
+            for (int i = index; i < count; i++)
+            {
+                prefabs[i].GetComponent<IScriptableData>().SetScriptableObject = so;
+            }
+
+            index += count;
+
+            yield return null;
         }
+
+        coroutineCount--;
 
         if (poolingObjects.ContainsKey(key))
         {
