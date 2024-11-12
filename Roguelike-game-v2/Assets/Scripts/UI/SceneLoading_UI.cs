@@ -10,7 +10,6 @@ public class SceneLoading_UI : UserInterface
 
     private Animator animator;
     private Image background;
-    private Image skill;
 
     private const float limitTime = 0.75f;
     private const float minAlpha = 0;
@@ -26,7 +25,6 @@ public class SceneLoading_UI : UserInterface
 
         animator = GetComponentInChildren<Animator>();
         background = Util.GetComponentInChildren<Image>(transform);
-        skill = animator.gameObject.GetComponent<Image>();
     }
     private void Start()
     {
@@ -45,7 +43,7 @@ public class SceneLoading_UI : UserInterface
 
         StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(background, minAlpha, limitTime));
 
-        yield return new WaitForSeconds(limitTime);
+        yield return new WaitForSecondsRealtime(limitTime);
 
         Managers.UI.DestroyUI<SceneLoading_UI>();
     }

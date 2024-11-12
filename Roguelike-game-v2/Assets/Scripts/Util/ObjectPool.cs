@@ -10,7 +10,7 @@ public class ObjectPool
     private Transform root;
 
     private const string so = "SO";
-    private const int maxWorkPerSec = 20;
+    private const int maxWorkPerSec = 50;
 
     private int coroutineCount = 0;
 
@@ -68,9 +68,11 @@ public class ObjectPool
     }
     private void CreateInstance(GameObject parent, GameObject prefab, int count, ref List<GameObject> list)
     {
+        GameObject instance;
+
         for (int i = 0; i < count; i++)
         {
-            GameObject instance = Object.Instantiate(prefab, parent.transform);
+            instance = Object.Instantiate(prefab, parent.transform);
 
             instance.SetActive(false);
 
@@ -103,7 +105,6 @@ public class ObjectPool
         parent.transform.parent = root;
 
         coroutineCount++;
-
 
         while (instanceCount < count)
         {

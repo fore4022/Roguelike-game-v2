@@ -65,6 +65,7 @@ public class UIElementUtility
         List<Image> imageList = new();
 
         Color color = image.color;
+        Color childrenColor;
 
         float totalTime = 0;
 
@@ -83,7 +84,7 @@ public class UIElementUtility
 
             foreach (Image img in imageList)
             {
-                Color childrenColor = img.color;
+                childrenColor = img.color;
 
                 childrenColor.a = targetAlphaValue;
 
@@ -107,7 +108,7 @@ public class UIElementUtility
 
                 foreach(Image img in imageList)
                 {
-                    Color childrenColor = img.color;
+                    childrenColor = img.color;
 
                     childrenColor.a = color.a;
 

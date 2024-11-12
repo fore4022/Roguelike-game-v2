@@ -99,7 +99,7 @@ public class DataInit
         yield return new WaitUntil(() => typeCount == Managers.Game.inGameData.dataInit.objectPool.PoolingObjectsCount);
 
         yield return new WaitUntil(() => typeCount == Managers.Game.inGameData.dataInit.objectPool.ScriptableObjectsCount);
-        
+
         yield return new WaitUntil(() => Managers.Game.inGameData.playerData.levelUpdate != null);
 
         Time.timeScale = 1;
