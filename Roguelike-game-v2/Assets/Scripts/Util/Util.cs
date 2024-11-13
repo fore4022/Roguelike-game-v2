@@ -7,6 +7,8 @@ using UnityEngine.ResourceManagement.ResourceProviders;
 using Object = UnityEngine.Object;
 public class Util
 {
+    private static MonoScript monoScript = null;
+
     public static float CameraHeight { get { return Camera.main.orthographicSize * 2; } }
     public static float CameraWidth { get { return CameraHeight * Camera.main.aspect; } }
     public static async Task<AsyncOperationHandle<SceneInstance>> LoadingScene(string path)
@@ -35,18 +37,16 @@ public class Util
     }
     public static MonoBehaviour GetMonoBehaviour()
     {
-        GameObject go = GameObject.Find("@MonoScript");
-
-        if(go == null)
+        if(monoScript == null)
         {
-            go = new GameObject("@MonoScript");
+            GameObject go = new GameObject("@MonoScript");
 
-            go.AddComponent<MonoScript>();
+            monoScript = go.AddComponent<MonoScript>();
 
             Object.DontDestroyOnLoad(go);
         }
 
-        return go.GetComponent<MonoScript>();
+        return monoScript;
     }
     public static List<T> GetComponentsInChildren<T>(Transform transform) where T : Component
     {
