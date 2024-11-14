@@ -23,8 +23,10 @@ public class AttackSelection_UI : UserInterface
         gridLayoutGroup = GetComponent<GridLayoutGroup>();
         backGroundImage = GetComponent<Image>();
     }
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
+
         if (attackOptionList.Count == 0)
         {
             return;
