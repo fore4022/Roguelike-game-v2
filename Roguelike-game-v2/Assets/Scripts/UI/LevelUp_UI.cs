@@ -8,15 +8,14 @@ public class LevelUp_UI : UserInterface
 
     private const float delay = 0.35f;
 
-    protected override void OnEnable()
+    protected override void Enable()
     {
-        base.OnEnable();
-
         StartCoroutine(AnimationPlaying());
     }
     public override void SetUI()
     {
         level = Util.GetComponentInChildren<TextMeshProUGUI>(transform, true);
+
         animator = Util.GetComponentInChildren<Animator>(transform, true);
 
         gameObject.SetActive(false);

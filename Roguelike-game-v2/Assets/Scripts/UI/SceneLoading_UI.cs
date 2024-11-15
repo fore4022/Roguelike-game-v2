@@ -15,6 +15,10 @@ public class SceneLoading_UI : UserInterface
     private const float minAlpha = 0;
     private const float maxAlpha = 255;
 
+    public void Awake()
+    {
+        SetUI();
+    }
     public override void SetUI()
     {
         transform.SetParent(null, false);

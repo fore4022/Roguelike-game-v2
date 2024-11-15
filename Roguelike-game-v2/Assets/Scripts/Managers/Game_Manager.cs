@@ -35,10 +35,6 @@ public class Game_Manager
         monsterSpawner.StartSpawn();
 
         inGameData.playerData.SetLevel();
-
-        Managers.UI.ShowUI<LevelSlider_UI>();
-        Managers.UI.ShowUI<Timer_UI>();
-        Managers.UI.ShowUI<Pause_UI>();
     }
     public void GameEnd()
     {

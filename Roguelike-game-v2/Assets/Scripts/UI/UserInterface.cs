@@ -1,9 +1,10 @@
 using UnityEngine;
 public abstract class UserInterface : MonoBehaviour
 {
+    [HideInInspector]
     public bool isInitalized = false;
 
-    protected virtual void OnEnable()
+    protected void OnEnable()
     {
         if(!isInitalized)
         {
@@ -11,6 +12,11 @@ public abstract class UserInterface : MonoBehaviour
 
             return;
         }
+        else
+        {
+            Enable();
+        }
     }
+    protected virtual void Enable() { }
     public abstract void SetUI();
 }

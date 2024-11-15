@@ -12,8 +12,6 @@ public class Timer_UI : UserInterface
     {
         timer = GetComponent<TextMeshProUGUI>();
 
-        gameObject.SetActive(false);
-
         timerCoroutine = StartCoroutine(TimerUpdate());
     }
     private IEnumerator TimerUpdate()

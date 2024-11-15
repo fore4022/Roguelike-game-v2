@@ -80,6 +80,7 @@ public abstract class NewButton : UserInterface, IPointerEnterHandler, IPointerE
     {
         rectTransform = GetComponent<RectTransform>();
         image = GetComponent<Image>();
+
         Init();
 
         Set();

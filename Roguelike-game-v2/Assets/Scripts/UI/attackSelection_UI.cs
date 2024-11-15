@@ -16,10 +16,8 @@ public class AttackSelection_UI : UserInterface
 
     private (int x, int y) cellSize = (700, 255);
 
-    protected override void OnEnable()
+    protected override void Enable()
     {
-        base.OnEnable();
-
         if (attackOptionList.Count == 0)
         {
             return;
@@ -33,9 +31,7 @@ public class AttackSelection_UI : UserInterface
     {
         gridLayoutGroup = GetComponent<GridLayoutGroup>();
         backGroundImage = GetComponent<Image>();
-    }
-    private void Start()
-    {
+
         StartCoroutine(Init());
     }
     private void Set()
