@@ -1,15 +1,18 @@
 using UnityEngine;
 public abstract class UserInterface : MonoBehaviour
 {
-    protected bool isInitalized = false;
+    private bool isInitalized = false;
 
-    protected virtual void Awake()
-    {
-        Managers.UI.AddUI(this);
-    }
-    protected virtual void OnEnable()//
+    protected virtual void OnEnable()
     {
         if(!isInitalized)
+        {
+            Managers.UI.AddUI(this);
+
+            isInitalized = true;
+        }
+
+        if (!isInitalized)
         {
             return;
         }

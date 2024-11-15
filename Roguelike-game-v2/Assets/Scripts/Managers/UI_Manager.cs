@@ -5,7 +5,7 @@ public class UI_Manager
 {
     public UIElementUtility uiElementUtility = new();
 
-    private Dictionary<string, GameObject> uiDictionary = new();
+    private Dictionary<string, UserInterface> uiDictionary = new();
 
     private Transform Transform
     {
@@ -33,9 +33,9 @@ public class UI_Manager
     {
         string name = GetName<T>();
 
-        if(uiDictionary.TryGetValue(name, out GameObject go))
+        if(uiDictionary.TryGetValue(name, out UserInterface ui))
         {
-            go.SetActive(true);
+            ui.gameObject.SetActive(true);
         }
         else
         {
@@ -46,9 +46,9 @@ public class UI_Manager
     {
         string name = GetName<T>();
 
-        if (uiDictionary.TryGetValue(name, out GameObject go))
+        if (uiDictionary.TryGetValue(name, out UserInterface ui))
         {
-            go.SetActive(false);
+            ui.gameObject.SetActive(false);
         }
     }
     public void CreateUI<T>(bool isActive = false) where T : UserInterface
@@ -90,7 +90,7 @@ public class UI_Manager
 
         if(!uiDictionary.ContainsKey(name))
         {
-            uiDictionary.Add(name, ui.gameObject);
+            uiDictionary.Add(name, ui);
         }
     }
     public void ClearDictionary()
@@ -99,7 +99,9 @@ public class UI_Manager
     }
     private async void LoadUI(string path)
     {
-        uiDictionary.Add(path, await Util.LoadingToPath<GameObject>(path));
+        GameObject go = await Util.LoadingToPath<GameObject>(path);
+
+        uiDictionary.Add(path, go.GetComponent<UserInterface>());
     }
     public IEnumerator CreatingUI(string uiName, bool isActive)
     {
@@ -107,9 +109,9 @@ public class UI_Manager
 
         yield return new WaitUntil(() => uiDictionary.ContainsKey(uiName));
 
-        GameObject go = uiDictionary[uiName];
+        UserInterface ui = uiDictionary[uiName];
 
-        if (go == null)
+        if (ui == null)
         {
             uiDictionary.Remove(uiName);
         }
@@ -117,7 +119,18 @@ public class UI_Manager
         {
             uiDictionary[uiName] = Object.Instantiate(uiDictionary[uiName], Transform);
 
-            go.SetActive(isActive);
+            ui.gameObject.SetActive(isActive);
         }
+    }
+    public IEnumerator InitalizingUI()
+    {
+        foreach (UserInterface ui in uiDictionary.Values)
+        {
+            ui.SetUI();
+
+            yield return null;
+        }
+
+        Managers.Scene.SetPath();
     }
 }

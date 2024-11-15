@@ -17,6 +17,12 @@ public class Scene_Manager
 
         loadScene?.Invoke();
     }
+    public void SetPath()
+    {
+        currentScene = path;
+
+        path = null;
+    }
     public async void SetScene()
     {
         if(path == null)
@@ -25,9 +31,5 @@ public class Scene_Manager
         }
         
         await Util.LoadingScene(path);
-
-        currentScene = path;
-
-        path = null;
     }
 }
