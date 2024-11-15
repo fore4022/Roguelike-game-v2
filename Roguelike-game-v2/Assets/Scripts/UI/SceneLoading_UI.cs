@@ -15,19 +15,15 @@ public class SceneLoading_UI : UserInterface
     private const float minAlpha = 0;
     private const float maxAlpha = 255;
 
-    protected override void Awake()
+    public override void SetUI()
     {
         transform.SetParent(null, false);
 
         DontDestroyOnLoad(gameObject);
 
-        base.Awake();
-
         animator = GetComponentInChildren<Animator>();
         background = Util.GetComponentInChildren<Image>(transform);
-    }
-    private void Start()
-    {
+
         StartCoroutine(Loading());
         StartCoroutine(PlayAnimation());
     }

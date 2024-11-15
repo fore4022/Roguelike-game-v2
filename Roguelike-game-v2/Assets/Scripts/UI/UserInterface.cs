@@ -1,7 +1,7 @@
 using UnityEngine;
 public abstract class UserInterface : MonoBehaviour
 {
-    private bool isInitalized = false;
+    public bool isInitalized = false;
 
     protected virtual void OnEnable()
     {
@@ -9,11 +9,6 @@ public abstract class UserInterface : MonoBehaviour
         {
             Managers.UI.AddUI(this);
 
-            isInitalized = true;
-        }
-
-        if (!isInitalized)
-        {
             return;
         }
     }

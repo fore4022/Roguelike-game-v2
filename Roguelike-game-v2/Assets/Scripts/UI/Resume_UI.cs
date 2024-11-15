@@ -5,7 +5,6 @@ public class Resume_UI : NewButton
     {
         Time.timeScale = 1f;
 
-        Managers.UI.ShowUI<HUD_UI>();
         Managers.UI.HideUI<PauseMenu_UI>();
     }
     protected override void Init()

@@ -3,16 +3,12 @@ public class LevelSlider_UI : UserInterface
 {
     private Slider expSlider;
 
-    protected override void Awake()
+    public override void SetUI()
     {
-        base.Awake();
-
         expSlider = GetComponent<Slider>();
 
         Managers.UI.HideUI<LevelSlider_UI>();
-    }
-    private void Start()
-    {
+
         Init();
     }
     private void Set()

@@ -8,11 +8,7 @@ public class CharactorController_UI : UserInterface
     private InputAction.CallbackContext? touchStart;
     private Vector2 enterPosition;
 
-    protected override void Awake()
-    {
-        base.Awake();
-    }
-    private void Start()
+    public override void SetUI()
     {
         TouchControls touchControl = InputActions.GetInputAction<TouchControls>();
 

@@ -93,6 +93,10 @@ public class UI_Manager
             uiDictionary.Add(name, ui);
         }
     }
+    public void InitUI()
+    {
+        
+    }
     public void ClearDictionary()
     {
         uiDictionary = new();
@@ -126,7 +130,12 @@ public class UI_Manager
     {
         foreach (UserInterface ui in uiDictionary.Values)
         {
-            ui.SetUI();
+            if(!ui.isInitalized)
+            {
+                ui.SetUI();
+
+                ui.isInitalized = true;
+            }
 
             yield return null;
         }

@@ -1,10 +1,8 @@
 using UnityEngine;
 public class Pause_UI : NewButton
 {
-    protected override void Awake()
+    public override void SetUI()
     {
-        base.Awake();
-
         Managers.UI.HideUI<Pause_UI>();
     }
     protected override void PointerClick()
@@ -12,7 +10,6 @@ public class Pause_UI : NewButton
         Time.timeScale = 0;
 
         Managers.UI.ShowUI<PauseMenu_UI>();
-        Managers.UI.HideUI<HUD_UI>();
     }
     protected override void Init()
     {

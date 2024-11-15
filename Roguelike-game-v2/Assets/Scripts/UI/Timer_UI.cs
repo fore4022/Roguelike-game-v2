@@ -8,16 +8,12 @@ public class Timer_UI : UserInterface
 
     private int beforeSecond = 0;
 
-    protected override void Awake()
+    public override void SetUI()
     {
-        base.Awake();
-
         timer = GetComponent<TextMeshProUGUI>();
 
         gameObject.SetActive(false);
-    }
-    private void Start()
-    {
+
         timerCoroutine = StartCoroutine(TimerUpdate());
     }
     private IEnumerator TimerUpdate()

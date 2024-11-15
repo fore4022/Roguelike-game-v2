@@ -31,5 +31,7 @@ public class Scene_Manager
         }
         
         await Util.LoadingScene(path);
+
+        Util.GetMonoBehaviour().StartCoroutine(Managers.UI.InitalizingUI());
     }
 }

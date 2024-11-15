@@ -1,9 +1,7 @@
 public class PauseMenu_UI : UserInterface
 {
-    protected override void Awake()
+    public override void SetUI()
     {
-        base.Awake();
-
         Managers.UI.HideUI<PauseMenu_UI>();
     }
 }
