@@ -1,7 +1,7 @@
 public class PauseMenu_UI : UserInterface
 {
-    public override void SetUI()
+    private void Start()
     {
-        Managers.UI.HideUI<PauseMenu_UI>();
+        //Managers.UI.HideUI<PauseMenu_UI>();
     }
 }

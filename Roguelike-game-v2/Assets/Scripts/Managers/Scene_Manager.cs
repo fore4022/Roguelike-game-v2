@@ -17,12 +17,6 @@ public class Scene_Manager
 
         loadScene?.Invoke();
     }
-    public void SetPath()
-    {
-        currentScene = path;
-
-        path = null;
-    }
     public async void SetScene()
     {
         if(path == null)
@@ -32,6 +26,8 @@ public class Scene_Manager
         
         await Util.LoadingScene(path);
 
-        Util.GetMonoBehaviour().StartCoroutine(Managers.UI.InitalizingUI());
+        currentScene = path;
+
+        path = null;
     }
 }

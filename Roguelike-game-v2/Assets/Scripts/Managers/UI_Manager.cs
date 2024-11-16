@@ -132,8 +132,10 @@ public class UI_Manager
             }
 
             yield return null;
+            yield return null;
+            yield return null;
+            yield return null;
+            yield return null;
         }
-
-        Managers.Scene.SetPath();
     }
 }

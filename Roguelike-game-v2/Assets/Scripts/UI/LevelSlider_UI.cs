@@ -7,8 +7,6 @@ public class LevelSlider_UI : UserInterface
     {
         expSlider = GetComponent<Slider>();
 
-        Managers.UI.HideUI<LevelSlider_UI>();
-
         Init();
     }
     private void Set()

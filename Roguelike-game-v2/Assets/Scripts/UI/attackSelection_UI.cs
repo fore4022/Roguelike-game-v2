@@ -93,6 +93,8 @@ public class AttackSelection_UI : UserInterface
 
             attackOptionList.Add(component);
 
+            component.SetUI();
+
             go.SetActive(false);
         }
 

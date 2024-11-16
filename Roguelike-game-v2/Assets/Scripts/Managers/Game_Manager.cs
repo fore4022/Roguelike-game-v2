@@ -35,6 +35,8 @@ public class Game_Manager
         monsterSpawner.StartSpawn();
 
         inGameData.playerData.SetLevel();
+
+        Managers.UI.ShowUI<LevelUp_UI>();
     }
     public void GameEnd()
     {

@@ -16,6 +16,8 @@ public class Timer_UI : UserInterface
     }
     private IEnumerator TimerUpdate()
     {
+        yield return new WaitUntil(() => Managers.Game.player != null);
+
         yield return new WaitUntil(() => Managers.Game.player.Stat != null);
 
         while(Managers.Game.player.Stat.health > 0)

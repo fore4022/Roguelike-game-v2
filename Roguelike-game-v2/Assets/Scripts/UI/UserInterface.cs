@@ -18,5 +18,5 @@ public abstract class UserInterface : MonoBehaviour
         }
     }
     protected virtual void Enable() { }
-    public abstract void SetUI();
+    public virtual void SetUI() { }
 }
