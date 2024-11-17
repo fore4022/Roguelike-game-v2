@@ -81,7 +81,7 @@ public class DataInit
         Time.timeScale = 0;
         
         LoadUserLevelInfo();
-
+            
         yield return new WaitUntil(() => userLevelInfo != null);
 
         GetMonsterList(ref monsterList);
@@ -89,12 +89,12 @@ public class DataInit
 
         yield return new WaitUntil(() => (skillList != null) && (monsterList != null));
 
+        yield return new WaitUntil(() => Managers.UI.IsInitalize == true);
+
         Managers.Game.monsterSpawner.monsterList = monsterList;
 
         Managers.Game.inGameData.dataInit.objectPool.CreateObjects(monsterList, defaultMonsterCount);
         Managers.Game.inGameData.dataInit.objectPool.CreateObjects(skillList, defaultSkillCount);
-
-        Util.GetMonoBehaviour().StartCoroutine(Managers.UI.InitalizingUI());
 
         int typeCount = monsterList.Count + skillList.Count;
 

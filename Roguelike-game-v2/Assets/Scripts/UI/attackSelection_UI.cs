@@ -96,6 +96,8 @@ public class AttackSelection_UI : UserInterface
             component.SetUI();
 
             go.SetActive(false);
+
+            yield return null;
         }
 
         gameObject.SetActive(false);

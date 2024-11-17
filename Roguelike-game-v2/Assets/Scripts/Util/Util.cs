@@ -13,11 +13,11 @@ public class Util
     public static float CameraWidth { get { return CameraHeight * Camera.main.aspect; } }
     public static async Task<AsyncOperationHandle<SceneInstance>> LoadingScene(string path)
     {
-        AsyncOperationHandle<SceneInstance> handle = Addressables.LoadSceneAsync(path);
+        AsyncOperationHandle<SceneInstance> load = Addressables.LoadSceneAsync(path);
 
-        await handle.Task;
+        await load.Task;
 
-        return handle;
+        return load;
     }
     public static async Task<T> LoadingToPath<T>(string path) where T : Object
     {

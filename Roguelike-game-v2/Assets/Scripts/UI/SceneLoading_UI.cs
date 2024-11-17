@@ -46,6 +46,8 @@ public class SceneLoading_UI : UserInterface
         yield return new WaitForSecondsRealtime(limitTime);
 
         Managers.UI.DestroyUI<SceneLoading_UI>();
+
+        Util.GetMonoBehaviour().StartCoroutine(Managers.UI.InitalizingUI());
     }
     private IEnumerator PlayAnimation()
     {

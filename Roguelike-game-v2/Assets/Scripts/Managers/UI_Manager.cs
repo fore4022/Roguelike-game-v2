@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 public class UI_Manager
 {
@@ -7,6 +8,9 @@ public class UI_Manager
 
     private Dictionary<string, UserInterface> uiDictionary = new();
 
+    private bool isInitalize;
+
+    public bool IsInitalize { get { return isInitalize; } }
     private Transform Transform
     {
         get 
@@ -91,6 +95,8 @@ public class UI_Manager
         if(!uiDictionary.ContainsKey(name))
         {
             uiDictionary.Add(name, ui);
+
+            isInitalize = false;
         }
     }
     public void ClearDictionary()
@@ -124,18 +130,18 @@ public class UI_Manager
     }
     public IEnumerator InitalizingUI()
     {
-        foreach (UserInterface ui in uiDictionary.Values)
+        UserInterface[] array = uiDictionary.Values.ToArray();
+
+        for (int i = 0; i < uiDictionary.Count; i++)
         {
-            if(!ui.isInitalized)
+            if (!array[i].isInitalized)
             {
-                ui.SetUI();
+                array[i].SetUI();
             }
 
             yield return null;
-            yield return null;
-            yield return null;
-            yield return null;
-            yield return null;
         }
+
+        isInitalize = true;
     }
 }
