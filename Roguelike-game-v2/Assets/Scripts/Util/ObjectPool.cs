@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
 using System.Collections;
+using System.Linq;
+
 public class ObjectPool
 {
     private Dictionary<string, ScriptableObject> scriptableObjects = new();
@@ -66,7 +68,7 @@ public class ObjectPool
             Util.GetMonoBehaviour().StartCoroutine(CreatingInstance(prefab, count));
         }
     }
-    private void CreateInstance(GameObject parent, GameObject prefab, int count, ref List<GameObject> list)
+    private void CreateInstance(GameObject parent, GameObject prefab, int count, ref GameObject[] array)
     {
         GameObject instance;
 
@@ -76,7 +78,7 @@ public class ObjectPool
 
             instance.SetActive(false);
 
-            list.Add(instance);
+            array[i] = (instance);
         }
     }
     private async void CreateScriptableObject(string key)
@@ -94,9 +96,9 @@ public class ObjectPool
     }
     private IEnumerator CreatingInstance(GameObject prefab, int count)
     {
-        List<GameObject> list = new();
+        GameObject[] array = new GameObject[count];
 
-        GameObject parent = new GameObject { name = prefab.name };
+        GameObject parent = new GameObject { name = prefab.name };//
 
         string key = prefab.name;
         int instanceCount = 0;
@@ -112,16 +114,16 @@ public class ObjectPool
 
             instanceCount += createCount;
 
-            CreateInstance(parent, prefab, createCount, ref list);
+            CreateInstance(parent, prefab, createCount, ref array);
 
             yield return null;
         }
 
         coroutineCount--;
 
-        Util.GetMonoBehaviour().StartCoroutine(SetInstance(list, key));
+        Util.GetMonoBehaviour().StartCoroutine(SetInstance(array, key));
     }
-    private IEnumerator SetInstance(List<GameObject> prefabs, string key)
+    private IEnumerator SetInstance(GameObject[] array, string key)
     {
         ScriptableObject so;
 
@@ -136,13 +138,13 @@ public class ObjectPool
 
         so = scriptableObjects[key];
 
-        while (index < prefabs.Count)
+        while (index < array.Length)
         {
             count = maxWorkPerSec;
 
             for (int i = index; i < count; i++)
             {
-                prefabs[i].GetComponent<IScriptableData>().SetScriptableObject = so;
+                array[i].GetComponent<IScriptableData>().SetScriptableObject = so;
             }
 
             index += count;
@@ -154,11 +156,11 @@ public class ObjectPool
 
         if (poolingObjects.ContainsKey(key))
         {
-            poolingObjects[key].AddRange(prefabs);
+            poolingObjects[key].AddRange(array);
         }
         else
         {
-            poolingObjects.Add(key, prefabs);
+            poolingObjects.Add(key, array.ToList());
         }
     }
 }
