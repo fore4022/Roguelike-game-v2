@@ -137,6 +137,8 @@ public class UI_Manager
             if (!array[i].isInitalized)
             {
                 array[i].SetUI();
+
+                array[i].isInitalized = true;
             }
 
             yield return null;

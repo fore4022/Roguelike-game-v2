@@ -89,8 +89,6 @@ public class DataInit
 
         yield return new WaitUntil(() => (skillList != null) && (monsterList != null));
 
-        yield return new WaitUntil(() => Managers.UI.IsInitalize == true);
-
         Managers.Game.monsterSpawner.monsterList = monsterList;
 
         Managers.Game.inGameData.dataInit.objectPool.CreateObjects(monsterList, defaultMonsterCount);
@@ -103,6 +101,10 @@ public class DataInit
         yield return new WaitUntil(() => typeCount == Managers.Game.inGameData.dataInit.objectPool.PoolingObjectsCount);
 
         yield return new WaitUntil(() => typeCount == Managers.Game.inGameData.dataInit.objectPool.ScriptableObjectsCount);
+
+        Util.GetMonoBehaviour().StartCoroutine(Managers.UI.InitalizingUI());
+
+        yield return new WaitUntil(() => Managers.UI.IsInitalize == true);
 
         Time.timeScale = 1;
 

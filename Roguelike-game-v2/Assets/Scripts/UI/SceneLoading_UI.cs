@@ -46,18 +46,19 @@ public class SceneLoading_UI : UserInterface
         yield return new WaitForSecondsRealtime(limitTime);
 
         Managers.UI.DestroyUI<SceneLoading_UI>();
-
-        Util.GetMonoBehaviour().StartCoroutine(Managers.UI.InitalizingUI());
     }
     private IEnumerator PlayAnimation()
     {
-        foreach (AnimatorController controller in animatorController)
+        while(true)
         {
-            animator.runtimeAnimatorController = controller;
+            foreach (AnimatorController controller in animatorController)
+            {
+                animator.runtimeAnimatorController = controller;
 
-            animator.Play(0, 0);
+                animator.Play(0, 0);
 
-            yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
+                yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
+            }
         }
     }
 }

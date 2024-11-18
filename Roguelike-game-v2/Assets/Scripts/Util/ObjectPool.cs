@@ -3,7 +3,6 @@ using UnityEngine;
 using System.Text;
 using System.Collections;
 using System.Linq;
-
 public class ObjectPool
 {
     private Dictionary<string, ScriptableObject> scriptableObjects = new();
@@ -68,7 +67,7 @@ public class ObjectPool
             Util.GetMonoBehaviour().StartCoroutine(CreatingInstance(prefab, count));
         }
     }
-    private void CreateInstance(GameObject parent, GameObject prefab, int count, ref GameObject[] array)
+    private void CreateInstance(GameObject parent, GameObject prefab, int count, int instanceCount, ref GameObject[] array)
     {
         GameObject instance;
 
@@ -78,7 +77,7 @@ public class ObjectPool
 
             instance.SetActive(false);
 
-            array[i] = (instance);
+            array[instanceCount + i] = (instance);
         }
     }
     private async void CreateScriptableObject(string key)
@@ -98,7 +97,14 @@ public class ObjectPool
     {
         GameObject[] array = new GameObject[count];
 
-        GameObject parent = new GameObject { name = prefab.name };//
+        GameObject parent = GameObject.Find(prefab.name);
+
+        if(parent == null)
+        {
+            parent = new GameObject { name = prefab.name };
+        }
+
+        yield return new WaitUntil(() =>parent != null);
 
         string key = prefab.name;
         int instanceCount = 0;
@@ -112,9 +118,9 @@ public class ObjectPool
         {
             createCount = Mathf.Min(MaxWorkPerSec, count - instanceCount);
 
-            instanceCount += createCount;
+            CreateInstance(parent, prefab, createCount, instanceCount, ref array);
 
-            CreateInstance(parent, prefab, createCount, ref array);
+            instanceCount += createCount;
 
             yield return null;
         }
@@ -140,9 +146,9 @@ public class ObjectPool
 
         while (index < array.Length)
         {
-            count = maxWorkPerSec;
+            count = MaxWorkPerSec;
 
-            for (int i = index; i < count; i++)
+            for (int i = index; i < Mathf.Min(index + count, array.Length); i++)
             {
                 array[i].GetComponent<IScriptableData>().SetScriptableObject = so;
             }
