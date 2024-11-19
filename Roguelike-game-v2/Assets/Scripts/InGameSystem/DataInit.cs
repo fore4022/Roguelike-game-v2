@@ -8,8 +8,8 @@ public class DataInit
 
     private const string userLevelInfoPath = "UserLevelInfoSO";
     private const string inGameScene = "InGame";
-    private const int defaultMonsterCount = 300;
-    private const int defaultSkillCount = 100;
+    private const int defaultMonsterCount = 150;
+    private const int defaultSkillCount = 30;
 
     public void GetInGameData()
     {
@@ -73,10 +73,24 @@ public class DataInit
     {
         userLevelInfo = await Util.LoadingToPath<UserLevelInfo_SO>(userLevelInfoPath);
     }
+    private IEnumerator GarbageCollecting()
+    {
+        while(true)
+        {
+            if (Time.frameCount % 30 == 0)
+            {
+                System.GC.Collect();
+            }
+
+            yield return null;
+        }
+    }
     private IEnumerator DataLoading()
     {
         List<GameObject> monsterList = new();
         List<GameObject> skillList = new();
+
+        //Coroutine garbageCollecting = Util.GetMonoBehaviour().StartCoroutine(GarbageCollecting());
 
         Time.timeScale = 0;
         
@@ -109,6 +123,8 @@ public class DataInit
         Time.timeScale = 1;
 
         yield return new WaitUntil(() => Managers.UI.GetUI<SceneLoading_UI>() == null);
+
+        //Util.GetMonoBehaviour().StopCoroutine(garbageCollecting);
 
         Managers.Game.GameStart();
     }

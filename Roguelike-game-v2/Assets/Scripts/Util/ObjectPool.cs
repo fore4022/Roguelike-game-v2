@@ -168,5 +168,12 @@ public class ObjectPool
         {
             poolingObjects.Add(key, array.ToList());
         }
+
+        for (int i = 0; i < array.Length; i++)
+        {
+            array[i] = null;
+
+            yield return null;
+        }
     }
 }

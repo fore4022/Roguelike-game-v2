@@ -159,7 +159,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.DefaultCompany.Roguelikegamev2
-    Standalone: com.DefaultCompany.2DProject
+    Standalone: com.DefaultCompany.Roguelike-game-v2
   buildNumber:
     Standalone: 0
     VisionOS: 0
