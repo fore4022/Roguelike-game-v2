@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using System.Text;
 using System.Collections;
 using System.Linq;
 public class ObjectPool
@@ -31,9 +30,7 @@ public class ObjectPool
     private int MaxWorkPerSec { get { return Mathf.Max(maxWorkPerSec / coroutineCount, 1); } }
     public void ActiveObject(string prefabName)
     {
-        GameObject prefab = GetActiveGameObject(prefabName);
-        
-        prefab.SetActive(true);
+        GetActiveGameObject(prefabName).SetActive(true);
     }
     public void DisableObject(GameObject prefab)
     {
@@ -69,26 +66,17 @@ public class ObjectPool
     }
     private void CreateInstance(GameObject parent, GameObject prefab, int count, int instanceCount, ref GameObject[] array)
     {
-        GameObject instance;
-
         for (int i = 0; i < count; i++)
         {
-            instance = Object.Instantiate(prefab, parent.transform);
-
-            instance.SetActive(false);
-
-            array[instanceCount + i] = (instance);
+            array[instanceCount + i] = Object.Instantiate(prefab, parent.transform);
+            array[instanceCount + i].SetActive(false);
         }
     }
     private async void CreateScriptableObject(string key)
     {
         if (!scriptableObjects.ContainsKey(key))
         {
-            StringBuilder path = new StringBuilder(key);
-
-            path.Append(so);
-
-            ScriptableObject scriptableObject = await Util.LoadingToPath<ScriptableObject>(path.ToString());
+            ScriptableObject scriptableObject = await Util.LoadingToPath<ScriptableObject>(key + so);
 
             scriptableObjects.Add(key, scriptableObject);
         }
@@ -106,7 +94,6 @@ public class ObjectPool
 
         yield return new WaitUntil(() =>parent != null);
 
-        string key = prefab.name;
         int instanceCount = 0;
         int createCount;
 
@@ -127,14 +114,16 @@ public class ObjectPool
 
         coroutineCount--;
 
-        Util.GetMonoBehaviour().StartCoroutine(SetInstance(array, key));
+        Util.GetMonoBehaviour().StartCoroutine(SetInstance(array, prefab.name));
     }
     private IEnumerator SetInstance(GameObject[] array, string key)
     {
         ScriptableObject so;
 
-        int index = 0;
+        int sum = 0;
         int count;
+
+        int index;
 
         coroutineCount++;
 
@@ -144,16 +133,16 @@ public class ObjectPool
 
         so = scriptableObjects[key];
 
-        while (index < array.Length)
+        while (sum < array.Length)
         {
             count = MaxWorkPerSec;
 
-            for (int i = index; i < Mathf.Min(index + count, array.Length); i++)
+            for (index = sum; index < Mathf.Min(sum + count, array.Length); index++)
             {
-                array[i].GetComponent<IScriptableData>().SetScriptableObject = so;
+                array[index].GetComponent<IScriptableData>().SetScriptableObject = so;
             }
 
-            index += count;
+            sum += count;
 
             yield return null;
         }
@@ -167,13 +156,6 @@ public class ObjectPool
         else
         {
             poolingObjects.Add(key, array.ToList());
-        }
-
-        for (int i = 0; i < array.Length; i++)
-        {
-            array[i] = null;
-
-            yield return null;
         }
     }
 }

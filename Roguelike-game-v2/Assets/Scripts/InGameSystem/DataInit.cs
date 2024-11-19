@@ -8,7 +8,7 @@ public class DataInit
 
     private const string userLevelInfoPath = "UserLevelInfoSO";
     private const string inGameScene = "InGame";
-    private const int defaultMonsterCount = 150;
+    private const int defaultMonsterCount = 100;
     private const int defaultSkillCount = 30;
 
     public void GetInGameData()
@@ -17,35 +17,27 @@ public class DataInit
     }
     public void GetMonsterList(ref List<GameObject> monsterList)
     {
-        List<GameObject> list = new();
-
         foreach (SpawnInformation_SO so in Managers.Game.stageInformation.spawnInformationList)
         {
             foreach (SpawnInformation info in so.monsterInformation)
             {
-                list.Add(info.monster);
+                monsterList.Add(info.monster);
             }
         }
-
-        monsterList = list;
     }
     public void LoadSkillList(ref List<GameObject> skillList)
     {
-        List<GameObject> list = new();
-
         for(int i = 0; i < Managers.UserData.GetUserData.userLevel; i++)
         {
             UserLevel_SO userLevel = userLevelInfo.LevelInfo[i];
 
             foreach(AttackInformation_SO so in userLevel.attackInformationList)
             {
-                list.Add(so.skillObject);
+                skillList.Add(so.skillObject);
 
                 Managers.Game.inGameData.attackData.SetDictionaryItem(so);
             }
         }
-
-        skillList = list;
     }
     private IEnumerator Init()
     {
@@ -77,7 +69,7 @@ public class DataInit
     {
         while(true)
         {
-            if (Time.frameCount % 30 == 0)
+            if (Time.frameCount % 50 == 0)
             {
                 System.GC.Collect();
             }
@@ -90,7 +82,7 @@ public class DataInit
         List<GameObject> monsterList = new();
         List<GameObject> skillList = new();
 
-        //Coroutine garbageCollecting = Util.GetMonoBehaviour().StartCoroutine(GarbageCollecting());
+        Coroutine garbageCollecting = Util.GetMonoBehaviour().StartCoroutine(GarbageCollecting());
 
         Time.timeScale = 0;
         
@@ -124,7 +116,7 @@ public class DataInit
 
         yield return new WaitUntil(() => Managers.UI.GetUI<SceneLoading_UI>() == null);
 
-        //Util.GetMonoBehaviour().StopCoroutine(garbageCollecting);
+        Util.GetMonoBehaviour().StopCoroutine(garbageCollecting);
 
         Managers.Game.GameStart();
     }
