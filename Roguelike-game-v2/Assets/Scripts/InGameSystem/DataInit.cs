@@ -47,6 +47,8 @@ public class DataInit
 
         yield return new WaitUntil(() => inGameScene == Managers.Scene.CurrentScene);
 
+        Managers.UI.GetUI<SceneLoading_UI>().PlayAnimation();
+
         GameObject GameSystem = GameObject.Find("GameSystem");
 
         objectPool = new();
@@ -65,24 +67,10 @@ public class DataInit
     {
         userLevelInfo = await Util.LoadingToPath<UserLevelInfo_SO>(userLevelInfoPath);
     }
-    private IEnumerator GarbageCollecting()
-    {
-        while(true)
-        {
-            if (Time.frameCount % 50 == 0)
-            {
-                System.GC.Collect();
-            }
-
-            yield return null;
-        }
-    }
     private IEnumerator DataLoading()
     {
         List<GameObject> monsterList = new();
         List<GameObject> skillList = new();
-
-        Coroutine garbageCollecting = Util.GetMonoBehaviour().StartCoroutine(GarbageCollecting());
 
         Time.timeScale = 0;
         
@@ -112,11 +100,7 @@ public class DataInit
 
         yield return new WaitUntil(() => Managers.UI.IsInitalize == true);
 
-        Time.timeScale = 1;
-
         yield return new WaitUntil(() => Managers.UI.GetUI<SceneLoading_UI>() == null);
-
-        Util.GetMonoBehaviour().StopCoroutine(garbageCollecting);
 
         Managers.Game.GameStart();
     }

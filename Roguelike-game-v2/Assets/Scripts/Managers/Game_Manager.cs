@@ -31,6 +31,8 @@ public class Game_Manager
     }
     public void GameStart()
     {
+        Time.timeScale = 1;
+
         inGameTimer.StartTimer();
         monsterSpawner.StartSpawn();
 

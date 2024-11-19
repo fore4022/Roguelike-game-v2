@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 public class Scene_Manager
 {
     public Action loadScene = null;
@@ -25,12 +24,12 @@ public class Scene_Manager
             return;
         }
 
-        //Resources.UnloadUnusedAssets();
-
         await Util.LoadingScene(path);
 
         currentScene = path;
 
         path = null;
+
+        GC.Collect();
     }
 }

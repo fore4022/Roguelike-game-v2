@@ -10,11 +10,15 @@ public class SceneLoading_UI : UserInterface
 
     private Animator animator;
     private Image background;
+    private Image animationImage;
 
-    private const float limitTime = 0.75f;
+    private const float limitTime = 1.5f;
     private const float minAlpha = 0;
     private const float maxAlpha = 255;
 
+    private bool isLoading = true;
+
+    public bool IsLoading { set { isLoading = value; } }
     public void Awake()
     {
         SetUI();
@@ -26,20 +30,23 @@ public class SceneLoading_UI : UserInterface
         DontDestroyOnLoad(gameObject);
 
         animator = GetComponentInChildren<Animator>();
-        background = Util.GetComponentInChildren<Image>(transform);
+        background = Util.GetComponentsInChildren<Image>(transform)[0];
 
         StartCoroutine(Loading());
-        StartCoroutine(PlayAnimation());
+    }
+    public void PlayAnimation()
+    {
+        StartCoroutine(PlayingAnimation());
     }
     private IEnumerator Loading()
     {
-        StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(background, maxAlpha, limitTime));
+        StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(background, maxAlpha, limitTime, false));
 
         yield return new WaitForSecondsRealtime(limitTime);
 
         Managers.Scene.SetScene();
 
-        yield return new WaitUntil(() => Time.timeScale == 1);
+        yield return new WaitUntil(() => isLoading == false);
 
         StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(background, minAlpha, limitTime));
 
@@ -47,7 +54,7 @@ public class SceneLoading_UI : UserInterface
 
         Managers.UI.DestroyUI<SceneLoading_UI>();
     }
-    private IEnumerator PlayAnimation()
+    private IEnumerator PlayingAnimation()
     {
         while(true)
         {
