@@ -68,8 +68,6 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
 
         yield return new WaitUntil(() => attacking == null);
 
-        yield return new WaitForSeconds(5f);
-
         startAttack = null;
 
         Managers.Game.inGameData.dataInit.objectPool.DisableObject(gameObject);

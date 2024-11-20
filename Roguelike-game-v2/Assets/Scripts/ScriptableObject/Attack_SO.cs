@@ -6,6 +6,5 @@ public class Attack_SO : ScriptableObject
     public float damageCoefficient;
     public float coolTime;
     public float attackRange;
-    public float attackSize;
     public float kinematicDuration = 0.8f;
 }
