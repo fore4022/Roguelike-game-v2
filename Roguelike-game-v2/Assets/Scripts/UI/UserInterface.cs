@@ -1,9 +1,24 @@
 using UnityEngine;
 public abstract class UserInterface : MonoBehaviour
 {
-    [HideInInspector]
-    public bool isInitalized = false;
+    protected bool isInitalized = false;
 
+    public void SetUI()
+    {
+        if(!isInitalized)
+        {
+            isInitalized = true;
+
+            SetUserInterface();
+        }
+    }
+    public bool IsInitalized 
+    {
+        get
+        {
+            return isInitalized; 
+        }
+    }
     protected void OnEnable()
     {
         if(!isInitalized)
@@ -18,5 +33,5 @@ public abstract class UserInterface : MonoBehaviour
         }
     }
     protected virtual void Enable() { }
-    public abstract void SetUI();
+    public abstract void SetUserInterface();
 }

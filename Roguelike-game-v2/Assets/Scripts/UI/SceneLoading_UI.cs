@@ -10,7 +10,7 @@ public class SceneLoading_UI : UserInterface
 
     private Animator animator;
     private Image background;
-    private Image animationImage;
+    private GameObject animationObject;
 
     private const float limitTime = 1.5f;
     private const float minAlpha = 0;
@@ -23,14 +23,17 @@ public class SceneLoading_UI : UserInterface
     {
         SetUI();
     }
-    public override void SetUI()
+    public override void SetUserInterface()
     {
         transform.SetParent(null, false);
 
         DontDestroyOnLoad(gameObject);
 
         animator = GetComponentInChildren<Animator>();
-        background = Util.GetComponentsInChildren<Image>(transform)[0];
+        background = Util.GetComponentInChildren<Image>(transform);
+        animationObject = background.transform.GetChild(0).gameObject;
+
+        animationObject.SetActive(false);
 
         StartCoroutine(Loading());
     }
@@ -56,6 +59,8 @@ public class SceneLoading_UI : UserInterface
     }
     private IEnumerator PlayingAnimation()
     {
+        animationObject.SetActive(true);
+
         while(true)
         {
             foreach (AnimatorController controller in animatorController)

@@ -25,9 +25,9 @@ public class AttackSelection_UI : UserInterface
 
         InputActions.DisableInputAction<TouchControls>();
 
-        Set();
+        SetUserInterface();
     }
-    public override void SetUI()
+    public override void SetUserInterface()
     {
         gridLayoutGroup = GetComponent<GridLayoutGroup>();
         backGroundImage = GetComponent<Image>();
@@ -93,7 +93,7 @@ public class AttackSelection_UI : UserInterface
 
             attackOptionList.Add(component);
 
-            component.SetUI();
+            component.SetUserInterface();
 
             go.SetActive(false);
 

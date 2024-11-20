@@ -52,7 +52,7 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
 
         Managers.UI.HideUI<AttackSelection_UI>();
     }
-    public override void SetUI()
+    public override void SetUserInterface()
     {
         rectTransform = GetComponent<RectTransform>();
         button = GetComponent<Button>();

@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 public class PauseMenu_UI : UserInterface
 {
-    public override void SetUI()
+    public override void SetUserInterface()
     {
         StartCoroutine(Disable());
     }

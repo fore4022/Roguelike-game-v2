@@ -8,7 +8,7 @@ public class Timer_UI : UserInterface
 
     private int beforeSecond = 0;
 
-    public override void SetUI()
+    public override void SetUserInterface()
     {
         timer = GetComponent<TextMeshProUGUI>();
 

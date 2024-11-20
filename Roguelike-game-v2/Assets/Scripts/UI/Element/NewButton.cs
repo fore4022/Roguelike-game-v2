@@ -76,7 +76,7 @@ public abstract class NewButton : UserInterface, IPointerEnterHandler, IPointerE
 
         isPointerDown = false;
     }
-    public override void SetUI()
+    public override void SetUserInterface()
     {
         rectTransform = GetComponent<RectTransform>();
         image = GetComponent<Image>();

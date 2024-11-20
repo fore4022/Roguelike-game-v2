@@ -26,10 +26,10 @@ public class Scene_Manager
 
         await Util.LoadingScene(path);
 
+        GC.Collect();
+
         currentScene = path;
 
         path = null;
-
-        GC.Collect();
     }
 }

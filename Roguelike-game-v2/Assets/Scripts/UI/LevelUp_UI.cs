@@ -12,7 +12,7 @@ public class LevelUp_UI : UserInterface
     {
         StartCoroutine(AnimationPlaying());
     }
-    public override void SetUI()
+    public override void SetUserInterface()
     {
         level = Util.GetComponentInChildren<TextMeshProUGUI>(transform, true);
 

@@ -134,11 +134,9 @@ public class UI_Manager
 
         for (int i = 0; i < uiDictionary.Count; i++)
         {
-            if (!array[i].isInitalized)
+            if (!array[i].IsInitalized)
             {
                 array[i].SetUI();
-
-                array[i].isInitalized = true;
             }
 
             yield return null;
