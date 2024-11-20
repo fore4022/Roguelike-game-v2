@@ -8,9 +8,10 @@ public class SceneLoading_UI : UserInterface
     [SerializeField]
     private List<AnimatorController> animatorController = new();//
 
+    private Coroutine SetAlpha;
     private Animator animator;
     private Image background;
-    private GameObject animationObject;
+    private Image animationImage;
 
     private const float limitTime = 1.5f;
     private const float minAlpha = 0;
@@ -31,9 +32,7 @@ public class SceneLoading_UI : UserInterface
 
         animator = GetComponentInChildren<Animator>();
         background = Util.GetComponentInChildren<Image>(transform);
-        animationObject = background.transform.GetChild(0).gameObject;
-
-        animationObject.SetActive(false);
+        animationImage = Util.GetComponentInChildren<Image>(background.transform);
 
         StartCoroutine(Loading());
     }
@@ -51,6 +50,8 @@ public class SceneLoading_UI : UserInterface
 
         yield return new WaitUntil(() => isLoading == false);
 
+        StopCoroutine(SetAlpha);
+
         StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(background, minAlpha, limitTime));
 
         yield return new WaitForSecondsRealtime(limitTime);
@@ -59,7 +60,7 @@ public class SceneLoading_UI : UserInterface
     }
     private IEnumerator PlayingAnimation()
     {
-        animationObject.SetActive(true);
+        SetAlpha = StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(animationImage, maxAlpha, limitTime));
 
         while(true)
         {

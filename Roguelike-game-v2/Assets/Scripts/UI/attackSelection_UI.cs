@@ -25,7 +25,7 @@ public class AttackSelection_UI : UserInterface
 
         InputActions.DisableInputAction<TouchControls>();
 
-        SetUserInterface();
+        Set();
     }
     public override void SetUserInterface()
     {

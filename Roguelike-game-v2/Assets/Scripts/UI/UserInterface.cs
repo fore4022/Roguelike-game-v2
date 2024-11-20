@@ -3,20 +3,14 @@ public abstract class UserInterface : MonoBehaviour
 {
     protected bool isInitalized = false;
 
+    public bool IsInitalized { get { return isInitalized; } }
     public void SetUI()
     {
-        if(!isInitalized)
+        if (!isInitalized)
         {
             isInitalized = true;
 
             SetUserInterface();
-        }
-    }
-    public bool IsInitalized 
-    {
-        get
-        {
-            return isInitalized; 
         }
     }
     protected void OnEnable()
