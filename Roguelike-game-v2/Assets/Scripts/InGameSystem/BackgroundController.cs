@@ -9,15 +9,22 @@ public class BackgroundController : MonoBehaviour
     public bool IsContact { get { return isContact; } }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        isContact = true;
+        if(collision.CompareTag("View"))
+        {
+            Debug.Log("is trigger false");
+
+            isContact = false;
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        isContact = false;
+        isContact = true;
 
         if(collision.CompareTag("View"))
         {
-            background.BackgroundAdjustment();
+            Debug.Log("Start adjustment");
+
+            background?.BackgroundAdjustment();
         }
     }
 }

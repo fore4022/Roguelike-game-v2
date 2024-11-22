@@ -1,7 +1,6 @@
 using UnityEngine;
 public class Test_Player : MonoBehaviour
 {
-    [SerializeField]
     private float speed = 3;
 
     private void Update()
