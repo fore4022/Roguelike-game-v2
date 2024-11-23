@@ -8,8 +8,10 @@ public class Background : MonoBehaviour
     private Coroutine adjustment = null;
     private Transform controllerTransform;
 
-    private float width;
-    private float height;
+    private const int width = 20;
+    private const int height = 28;
+
+    private Vector3 position;
     private int index = 0;
     private int xValue;
     private int yValue;
@@ -27,7 +29,7 @@ public class Background : MonoBehaviour
 
         foreach (BackgroundController controller in controllers)
         {
-            if(!controller.IsContact)
+            if(controller.IsContact)
             {
                 nonContactControllers[index] = controller;
 
@@ -35,52 +37,77 @@ public class Background : MonoBehaviour
             }
         }
 
-        adjustment = StartCoroutine(Adjustment());
+        if(index == 0)
+        {
+            return;
+        }
 
-        index = 0;
+        adjustment = StartCoroutine(Adjustment());
     }
     private IEnumerator Adjustment()
     {
         xValue = (int)(Managers.Game.player.gameObject.transform.position.x % width);
         yValue = (int)(Managers.Game.player.gameObject.transform.position.y % height);
 
-        if(xValue != 0)
+        if (xValue != 0)
         {
-            xValue /= Mathf.Abs(xValue);
+            xValue = xValue / Mathf.Abs(xValue) * width * 2;
         }
 
         if(yValue != 0)
         {
-            yValue /= Mathf.Abs(yValue);
+            yValue = yValue / Mathf.Abs(yValue) * height * 2;
         }
 
         yield return null;
 
-        Debug.Log(index);
+        //if(index == 1)
+        //{
+        //    for(int i = 0; i < index; i++)
+        //    {
+        //        controllerTransform = nonContactControllers[i].gameObject.transform;
 
-        for(int i = 0; i < index; i++)
+        //        if(i == 0)
+        //        {
+        //            controllerTransform.position += new Vector3(xValue, 0);
+        //        }
+        //        else if(i == 1)
+        //        {
+        //            controllerTransform.position += new Vector3(0, yValue);
+        //        }
+        //        else if(i == 2)
+        //        {
+        //            controllerTransform.position += new Vector3(xValue, yValue);
+        //        }
+        //    }
+        //}
+        //else if(index == 2)
+        //{
+        //    if(xValue > yValue)
+        //    {
+        //        position = new Vector3(xValue, 0);
+        //    }
+        //    else
+        //    {
+        //        position = new Vector3(0, yValue);
+        //    }
+
+        //    for(int i = 0; i < index; i++)
+        //    {
+        //        nonContactControllers[i].gameObject.transform.position += position;
+        //    }
+        //}
+
+        if(index == 1)
         {
-            controllerTransform = nonContactControllers[i].gameObject.transform;
-
-            switch(i)
-            {
-                case 0:
-                    controllerTransform.position += new Vector3(xValue * width, 0);
-
-                    Debug.Log($"controller-1 position = {xValue * width}, {0}");
-                    break;
-                case 1:
-                    controllerTransform.position += new Vector3(0, yValue * height);
-                    Debug.Log($"controller-2 position = {0}, {yValue * height}");
-                    break;
-                case 2:
-                    controllerTransform.position += new Vector3(xValue * width, yValue * height);
-                    Debug.Log($"controller-2 position = {xValue * width}, {yValue * height}");
-                    break;
-            }
-
-            yield return null;
+            
         }
+        else if(index == 2)
+        {
+
+        }
+
+        index = 0;
 
         adjustment = null;
     }
@@ -94,8 +121,5 @@ public class Background : MonoBehaviour
         {
             controller.SetBackground = this;
         }
-
-        width = controllers[0].gameObject.transform.localScale.x;
-        height = controllers[1].gameObject.transform.localScale.y;
     }
 }
