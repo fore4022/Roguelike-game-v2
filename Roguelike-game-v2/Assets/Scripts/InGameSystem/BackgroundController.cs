@@ -2,7 +2,7 @@ using UnityEngine;
 public class BackgroundController : MonoBehaviour
 {
     [SerializeField]
-    private readonly bool axis;
+    private bool isVertical;
 
     private Background background;
 
@@ -10,7 +10,7 @@ public class BackgroundController : MonoBehaviour
 
     public Background SetBackground { set { background = value; } }
     public bool IsContact { get { return isContact; } }
-    public bool Pos { get { return axis; } }
+    public bool Axis { get { return isVertical; } }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("View"))

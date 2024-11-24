@@ -5,16 +5,17 @@ public class Background : MonoBehaviour
     private BackgroundController[] nonContactControllers = new BackgroundController[4];
     private BackgroundController[] controllers = new BackgroundController[4];
 
-    private Coroutine adjustment = null;
+    private BackgroundController contactController;
     private Transform controllerTransform;
+    private Coroutine adjustment = null;
 
     private const int width = 20;
     private const int height = 28;
 
     private Vector3 position;
-    private int index = 0;
     private int xValue;
     private int yValue;
+    private int index = 0;
     
     private void Start()
     {
@@ -51,60 +52,23 @@ public class Background : MonoBehaviour
 
         if (xValue != 0)
         {
-            xValue = xValue / Mathf.Abs(xValue) * width * 2;
+            xValue = xValue / Mathf.Abs(xValue) * width;
         }
 
         if(yValue != 0)
         {
-            yValue = yValue / Mathf.Abs(yValue) * height * 2;
+            yValue = yValue / Mathf.Abs(yValue) * height;
         }
 
         yield return null;
 
-        //if(index == 1)
-        //{
-        //    for(int i = 0; i < index; i++)
-        //    {
-        //        controllerTransform = nonContactControllers[i].gameObject.transform;
-
-        //        if(i == 0)
-        //        {
-        //            controllerTransform.position += new Vector3(xValue, 0);
-        //        }
-        //        else if(i == 1)
-        //        {
-        //            controllerTransform.position += new Vector3(0, yValue);
-        //        }
-        //        else if(i == 2)
-        //        {
-        //            controllerTransform.position += new Vector3(xValue, yValue);
-        //        }
-        //    }
-        //}
-        //else if(index == 2)
-        //{
-        //    if(xValue > yValue)
-        //    {
-        //        position = new Vector3(xValue, 0);
-        //    }
-        //    else
-        //    {
-        //        position = new Vector3(0, yValue);
-        //    }
-
-        //    for(int i = 0; i < index; i++)
-        //    {
-        //        nonContactControllers[i].gameObject.transform.position += position;
-        //    }
-        //}
-
         if(index == 1)
         {
-            
+            nonContactControllers[0].transform.position = 
         }
         else if(index == 2)
         {
-
+            //
         }
 
         index = 0;
