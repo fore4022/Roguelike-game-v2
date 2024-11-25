@@ -10,6 +10,7 @@ public class PlayerMove : IMoveable
     private Vector2? enterTouchPosition;
     private Vector2 direction;
 
+    public Vector2 Direction { get { return direction; } }
     public void OnMove()
     {
         Vector2 touchPosition = context.ReadValue<Vector2>();
@@ -31,7 +32,6 @@ public class PlayerMove : IMoveable
 
         Util.GetMonoBehaviour().StopCoroutine(moving);
 
-        direction = Vector2.zero;
         enterTouchPosition = null;
 
         moving = null;
