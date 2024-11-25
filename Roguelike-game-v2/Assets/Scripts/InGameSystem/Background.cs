@@ -5,32 +5,34 @@ public class Background : MonoBehaviour
     private BackgroundController[] nonContactControllers = new BackgroundController[4];
     private BackgroundController[] controllers = new BackgroundController[4];
 
-    private BackgroundController contactController;
-    private Transform controllerTransform;
+    private WaitForSeconds delay = new(0.01f);
     private Coroutine adjustment = null;
 
     private const int width = 20;
     private const int height = 28;
-
-    private Vector3 position;
+     
     private int xValue;
     private int yValue;
+    private int xPos;
+    private int yPos;
     private int index = 0;
     
     private void Start()
     {
         StartCoroutine(Set());
     }
-    public void BackgroundAdjustment()
+    public void BackgroundAdjustment(BackgroundController contactController)
     {
         if (adjustment != null)
         {
             return;
         }
 
+        Debug.Log(contactController.gameObject.name);
+
         foreach (BackgroundController controller in controllers)
         {
-            if(controller.IsContact)
+            if(!controller.IsContact)
             {
                 nonContactControllers[index] = controller;
 
@@ -43,35 +45,56 @@ public class Background : MonoBehaviour
             return;
         }
 
-        adjustment = StartCoroutine(Adjustment());
+        adjustment = StartCoroutine(Adjustment(contactController.gameObject.transform.position));
     }
-    private IEnumerator Adjustment()
+    private IEnumerator Adjustment(Vector3 position)
     {
         xValue = (int)(Managers.Game.player.gameObject.transform.position.x % width);
         yValue = (int)(Managers.Game.player.gameObject.transform.position.y % height);
 
-        if (xValue != 0)
+        if (Mathf.Sign(xValue) != 0)
         {
-            xValue = xValue / Mathf.Abs(xValue) * width;
+            xPos = (int)Mathf.Sign(xValue) * width;
+        }
+        else
+        {
+            xPos = width;
         }
 
-        if(yValue != 0)
+        if(Mathf.Sign(yValue) != 0)
         {
-            yValue = yValue / Mathf.Abs(yValue) * height;
+            yPos = (int)Mathf.Sign(yValue) * height;
+        }
+        else
+        {
+            yPos = height;
         }
 
         yield return null;
 
-        if(index == 1)
+        if(index == 3)
         {
-            nonContactControllers[0].transform.position = 
+            nonContactControllers[0].transform.position = position + new Vector3(xPos, 0);
+            nonContactControllers[1].transform.position = position + new Vector3(0, yPos);
+            nonContactControllers[2].transform.position = position + new Vector3(xPos, yPos);
         }
-        else if(index == 2)
-        {
-            //
-        }
+        //else if(index == 2)
+        //{
+        //    if(Mathf.Abs(xValue) > Mathf.Abs(yValue))
+        //    {
+        //        nonContactControllers[0].transform.position = position + new Vector3(xPos, 0);
+        //        nonContactControllers[1].transform.position = position + new Vector3(xPos, yPos);
+        //    }
+        //    else
+        //    {
+        //        nonContactControllers[0].transform.position = position + new Vector3(0, yPos);
+        //        nonContactControllers[1].transform.position = position + new Vector3(xPos, yPos);
+        //    }
+        //}
 
         index = 0;
+
+        yield return delay;
 
         adjustment = null;
     }

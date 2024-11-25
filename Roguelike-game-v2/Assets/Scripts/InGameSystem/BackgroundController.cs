@@ -1,23 +1,19 @@
 using UnityEngine;
 public class BackgroundController : MonoBehaviour
 {
-    [SerializeField]
-    private bool isVertical;
-
     private Background background;
-
-    private bool isContact = true;
+    [SerializeField]
+    private bool isContact = false;
 
     public Background SetBackground { set { background = value; } }
     public bool IsContact { get { return isContact; } }
-    public bool Axis { get { return isVertical; } }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("View"))
         {
             isContact = true;
 
-            background?.BackgroundAdjustment();
+            background?.BackgroundAdjustment(this);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
