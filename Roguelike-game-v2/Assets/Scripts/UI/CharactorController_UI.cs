@@ -23,7 +23,7 @@ public class CharactorController_UI : UserInterface
             touchStart = null;
         });
 
-        gameObject.SetActive(false);
+        Managers.UI.HideUI<CharactorController_UI>();
     }
     private void SetJoyStick(InputAction.CallbackContext context)
     {

@@ -48,9 +48,7 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
     {
         Managers.Game.inGameData.attackData.SetValue(info.data.attackType);
 
-        Time.timeScale = 1;
-
-        Managers.UI.HideUI<AttackSelection_UI>();
+        Managers.UI.GetUI<AttackSelection_UI>().Selected();
     }
     public override void SetUserInterface()
     {
@@ -92,8 +90,6 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
     {
         animator.runtimeAnimatorController = null;
         info = null;
-
-        InputActions.EnableInputAction<TouchControls>();
     }
     private void SetAnimator(bool isEnabled)
     {

@@ -6,7 +6,7 @@ public static class InputActions
 
     public static T CreateAndGetInputAction<T>() where T : IInputActionCollection, new ()
     {
-        if(GetInputAction<T>(out T inputAction) != null)
+        if(GetInputAction(out T inputAction) != null)
         {
             return inputAction;
         }
@@ -45,14 +45,14 @@ public static class InputActions
     }
     public static void EnableInputAction<T>() where T : IInputActionCollection, new()
     {
-        if(GetInputAction<T>(out T inputAction) != null)
+        if(GetInputAction(out T inputAction) != null)
         {
             inputAction.Enable();
         }
     }
     public static void DisableInputAction<T>() where T : IInputActionCollection, new()
     {
-        if(GetInputAction<T>(out T inputAction) != null)
+        if(GetInputAction(out T inputAction) != null)
         {
             inputAction.Disable();
         }

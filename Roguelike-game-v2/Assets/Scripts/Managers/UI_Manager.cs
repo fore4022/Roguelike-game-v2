@@ -81,7 +81,7 @@ public class UI_Manager
 
         if(uiDictionary.ContainsKey(name))
         {
-            Object.Destroy(uiDictionary[name]);
+            Object.Destroy(uiDictionary[name].gameObject);
 
             uiDictionary.Remove(name);
         }

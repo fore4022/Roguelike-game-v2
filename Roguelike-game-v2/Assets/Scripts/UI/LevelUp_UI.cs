@@ -30,6 +30,8 @@ public class LevelUp_UI : UserInterface
 
         Time.timeScale = 0;
 
+        InputActions.DisableInputAction<TouchControls>();
+
         Managers.UI.HideUI<CharactorController_UI>();
         Managers.UI.ShowUI<AttackSelection_UI>();
         Managers.UI.HideUI<LevelUp_UI>();

@@ -9,28 +9,29 @@ public class AttackSelection_UI : UserInterface
     private List<AttackOption_UI> attackOptionList = new();
 
     private GridLayoutGroup gridLayoutGroup = null;
-    private Image backGroundImage;
+    private Image background;
     private GameObject attackOption = null;
 
+    private const float duration = 0.75f;
+    private const float basicAlpha = 180;
+    private const float targetAlpha = 0;
     private const int spacingY = 75;
 
     private (int x, int y) cellSize = (700, 255);
 
     protected override void Enable()
     {
-        if(attackOptionList.Count == 0)
+        if (attackOptionList.Count == 0)
         {
             return;
         }
-
-        InputActions.DisableInputAction<TouchControls>();
 
         Set();
     }
     public override void SetUserInterface()
     {
         gridLayoutGroup = GetComponent<GridLayoutGroup>();
-        backGroundImage = GetComponent<Image>();
+        background = GetComponent<Image>();
 
         StartCoroutine(Init());
     }
@@ -40,22 +41,33 @@ public class AttackSelection_UI : UserInterface
 
         int[] DataIndexArray = Managers.Game.calculate.GetRandomValues(2, 2);//Managers.Game.inGameData.attackData.attackInfo.Count, Managers.Game.inGameData.OptionCount
 
+        StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(background, basicAlpha));
+
         for (int i = 0; i < DataIndexArray.Count(); i++)
         {
             attackOptionList[i].gameObject.SetActive(true);
             attackOptionList[i].InitOption(DataIndexArray[i]);
         }
 
-        backGroundImage.enabled = true;
+        background.enabled = true;
     }
     private void AdjustGridLayout()
     {
         gridLayoutGroup.cellSize = new Vector2(cellSize.x, cellSize.y);
         gridLayoutGroup.spacing = new Vector2(0, spacingY);
     }
+    public void Selected()
+    {
+        foreach(AttackOption_UI attackOption in attackOptionList)
+        {
+            attackOption.gameObject.SetActive(false);
+        }
+
+        StartCoroutine(PadeIn());
+    }
     private void OnDisable()
     {
-        foreach (AttackOption_UI attackOption in attackOptionList)
+        foreach(AttackOption_UI attackOption in attackOptionList)
         {
             if (attackOption.enabled == true)
             {
@@ -65,7 +77,9 @@ public class AttackSelection_UI : UserInterface
             attackOption.gameObject.SetActive(false);
         }
 
-        backGroundImage.enabled = false;
+        background.enabled = false;
+
+        InputActions.EnableInputAction<TouchControls>();
     }
     private async void LoadAttackOption()
     {
@@ -79,7 +93,7 @@ public class AttackSelection_UI : UserInterface
 
         AdjustGridLayout();
 
-        backGroundImage.enabled = false;
+        background.enabled = false;
 
         yield return new WaitUntil(() => attackOption != null);
         
@@ -101,5 +115,17 @@ public class AttackSelection_UI : UserInterface
         }
 
         gameObject.SetActive(false);
+    }
+    private IEnumerator PadeIn()
+    {
+        StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(background, targetAlpha, duration));
+
+        yield return new WaitForSecondsRealtime(duration);
+
+        Time.timeScale = 1;
+
+        InputActions.EnableInputAction<TouchControls>();
+
+        Managers.UI.HideUI<AttackSelection_UI>();
     }
 }
