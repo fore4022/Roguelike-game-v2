@@ -8,20 +8,19 @@ public class PlayerMove : IMoveable
     private InputAction.CallbackContext context;
     private Coroutine moving;
     private Vector2? enterTouchPosition;
+    private Vector2 touchPosition;
     private Vector2 direction;
 
     public Vector2 Direction { get { return direction; } }
     public void OnMove()
     {
-        Vector2 touchPosition = context.ReadValue<Vector2>();
-        touchPosition = Camera.main.ScreenToWorldPoint(touchPosition);
+        touchPosition = context.ReadValue<Vector2>();
 
         direction = Managers.Game.calculate.GetDirection(touchPosition, (Vector2)enterTouchPosition);
     }
     private void StartMove()
     {
         enterTouchPosition = context.ReadValue<Vector2>();
-        enterTouchPosition = Camera.main.ScreenToWorldPoint((Vector2)enterTouchPosition);
         moving = Util.GetMonoBehaviour().StartCoroutine(Moving());
 
         Managers.UI.ShowUI<CharactorController_UI>();
@@ -51,7 +50,7 @@ public class PlayerMove : IMoveable
         {
             context = ctx;
             
-            if(enterTouchPosition ==null)
+            if(enterTouchPosition == null)
             {
                 StartMove();
             }

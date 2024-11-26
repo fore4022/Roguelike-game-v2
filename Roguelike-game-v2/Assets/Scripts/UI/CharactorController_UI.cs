@@ -7,6 +7,10 @@ public class CharactorController_UI : UserInterface
 
     private InputAction.CallbackContext? touchStart;
     private Vector2 enterPosition;
+    private Vector2 touchPosition;
+    private Vector2 position;
+
+    private const int maxLength = 100;
 
     public override void SetUserInterface()
     {
@@ -18,22 +22,24 @@ public class CharactorController_UI : UserInterface
         {
             touchStart = null;
         });
+
+        gameObject.SetActive(false);
     }
     private void SetJoyStick(InputAction.CallbackContext context)
     {
-        Vector2 touchPosition = Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>());
-
-        if(touchStart == null)
+        if (touchStart == null)
         {
             touchStart = context;
 
-            enterPosition = Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>());
+            enterPosition = context.ReadValue<Vector2>();
 
-            transform.position = Camera.main.WorldToScreenPoint(enterPosition);
+            transform.position = enterPosition;
         }
 
-        Vector2 position = enterPosition + Vector2.ClampMagnitude(touchPosition - enterPosition, Mathf.Sqrt(0.5f));
+        touchPosition = context.ReadValue<Vector2>();
 
-        stick.transform.position = Camera.main.WorldToScreenPoint(position);
+        position = enterPosition + Vector2.ClampMagnitude(touchPosition - enterPosition, maxLength);
+
+        stick.transform.position = position;
     }
 }

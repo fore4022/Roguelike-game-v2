@@ -132,7 +132,7 @@ public class UI_Manager
     {
         UserInterface[] array = uiDictionary.Values.ToArray();
 
-        for (int i = 0; i < uiDictionary.Count; i++)
+        for (int i = 0; i < array.Length; i++)
         {
             if (!array[i].IsInitalized)
             {

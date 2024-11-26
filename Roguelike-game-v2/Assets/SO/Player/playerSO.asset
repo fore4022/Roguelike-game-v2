@@ -16,7 +16,7 @@ MonoBehaviour:
     health: 1
     damage: 1
     attackSpeed: 1
-    moveSpeed: 1
+    moveSpeed: 5
     size: 1
   charactor:
     dieing_AnimationDuration: 0.5
