@@ -1,10 +1,8 @@
 using UnityEngine;
 public class BackgroundController : MonoBehaviour
 {
-    private const int width = 18;
-    private const int height = 32;
-    private const float target_Width = width * 0.75f;
-    private const float target_Height = height * 0.75f;
+    private const int width = 9;
+    private const int height = 16;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -13,16 +11,20 @@ public class BackgroundController : MonoBehaviour
             return;
         }
 
-        if((int)Managers.Game.player.transform.position.x % target_Width == 0)
+        if(transform.position.x != Mathf.Round(Managers.Game.player.transform.position.x))
         {
-            transform.position += new Vector3(Mathf.Sign(Managers.Game.player.move.Direction.x) * width, 0);
+            if (Mathf.Round(Managers.Game.player.transform.position.x) % width == 0)
+            {
+                transform.position += new Vector3(Mathf.Sign(Managers.Game.player.move.Direction.x) * width * 2, 0);
+            }
         }
 
-        if((int)Managers.Game.player.transform.position.y % target_Height == 0)
+        if(transform.position.y != Mathf.Round(Managers.Game.player.transform.position.y))
         {
-            transform.position += new Vector3(0, Mathf.Sign(Managers.Game.player.move.Direction.y) * height);
+            if (Mathf.Round(Managers.Game.player.transform.position.y) % height == 0)
+            {
+                transform.position += new Vector3(0, Mathf.Sign(Managers.Game.player.move.Direction.y) * height * 2);
+            }
         }
     }
 }
-//transform.position += new Vector3(Mathf.Sign(Managers.Game.player.move.Direction.x) * width, 0);
-//transform.position += new Vector3(0, Mathf.Sign(Managers.Game.player.move.Direction.y) * height);
