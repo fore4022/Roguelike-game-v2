@@ -26,7 +26,7 @@ public class AttackSelection_UI : UserInterface
             return;
         }
 
-        Set();
+        StartCoroutine(Set());
     }
     public override void SetUserInterface()
     {
@@ -35,13 +35,15 @@ public class AttackSelection_UI : UserInterface
 
         StartCoroutine(Init());
     }
-    private void Set()
+    private IEnumerator Set()
     {
         int optionCount = Managers.Game.inGameData.OptionCount - 3;
 
         int[] DataIndexArray = Managers.Game.calculate.GetRandomValues(2, 2);//Managers.Game.inGameData.attackData.attackInfo.Count, Managers.Game.inGameData.OptionCount
 
         StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(background, basicAlpha));
+
+        yield return null;
 
         for (int i = 0; i < DataIndexArray.Count(); i++)
         {

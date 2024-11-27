@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 public class Player : MonoBehaviour, IDamageReceiver
 {
     public PlayerMove move = new();
@@ -43,5 +44,9 @@ public class Player : MonoBehaviour, IDamageReceiver
         PlayerInforamtion_SO info = await Util.LoadingToPath<PlayerInforamtion_SO>(statPath);
 
         information.stat = info.stat;
+    }
+    private void Update()
+    {
+        Debug.Log(EventSystem.current.IsPointerOverGameObject());
     }
 }
