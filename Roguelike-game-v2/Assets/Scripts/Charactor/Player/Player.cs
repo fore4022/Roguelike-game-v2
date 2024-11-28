@@ -1,15 +1,19 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.EventSystems;
+[RequireComponent(typeof(PlayerMove))]
 public class Player : MonoBehaviour, IDamageReceiver
 {
-    public PlayerMove move = new();
+    public PlayerMove move = null;
 
     private PlayerInformation information = new();
 
     private const string statPath = "PlayerInformationSO";
 
     public DefaultStat Stat { get { return information.stat; } }
+    private void Awake()
+    {
+        move = GetComponent<PlayerMove>();
+    }
     private void Start()
     {
         StartCoroutine(Init());
@@ -44,9 +48,5 @@ public class Player : MonoBehaviour, IDamageReceiver
         PlayerInforamtion_SO info = await Util.LoadingToPath<PlayerInforamtion_SO>(statPath);
 
         information.stat = info.stat;
-    }
-    private void Update()
-    {
-        Debug.Log(EventSystem.current.IsPointerOverGameObject());
     }
 }

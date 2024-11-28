@@ -100,10 +100,12 @@ public class DataInit
 
         yield return new WaitUntil(() => Managers.UI.IsInitalize == true);
 
+        yield return new WaitUntil(() => Managers.Game.player != null);
+
         Managers.UI.GetUI<SceneLoading_UI>().IsLoading = false;
 
         yield return new WaitUntil(() => Managers.UI.GetUI<SceneLoading_UI>() == null);
-        
+
         Managers.Game.GameStart();
     }
 }

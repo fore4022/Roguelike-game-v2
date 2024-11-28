@@ -2,30 +2,27 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-public class PlayerMove : IMoveable
+public class PlayerMove : MonoBehaviour, IMoveable
 {
     private TouchControls touchControl;
+    private CharactorController_UI charactorController;
 
     private InputAction.CallbackContext context;
     private Coroutine moving;
-    private Vector2? enterTouchPosition;
+    private Vector3 direction;
+    private Vector2 enterTouchPosition;
     private Vector2 touchPosition;
-    private Vector2 direction;
 
     private bool isPointerOverUI;
     private bool active = false;
+    private bool didStartMove = false;
 
     public Vector2 Direction { get { return direction; } }
     public void OnMove()
     {
         touchPosition = context.ReadValue<Vector2>();
 
-        direction = Managers.Game.calculate.GetDirection(touchPosition, (Vector2)enterTouchPosition);
-    }
-    private void StartMove()
-    {
-        enterTouchPosition = context.ReadValue<Vector2>();
-        moving = Util.GetMonoBehaviour().StartCoroutine(Moving());
+        direction = Managers.Game.calculate.GetDirection(touchPosition, enterTouchPosition, false);
     }
     private void CancelMove()
     {
@@ -33,32 +30,38 @@ public class PlayerMove : IMoveable
 
         if(moving != null)
         {
-            Util.GetMonoBehaviour().StopCoroutine(moving);
+            StopCoroutine(moving);
         }
 
-        enterTouchPosition = null;
         moving = null;
 
         active = false;
+        didStartMove = false;
     }
     public void Init()
+    {
+        StartCoroutine(Initalization());
+    }
+    private void Update()
+    {
+        isPointerOverUI = EventSystem.current.IsPointerOverGameObject();
+    }
+    private IEnumerator Initalization()
     {
         touchControl = InputActions.CreateAndGetInputAction<TouchControls>();
 
         touchControl.Enable();
 
+        yield return new WaitUntil(() => Managers.UI.GetUI<CharactorController_UI>() != null);
+
+        charactorController = Managers.UI.GetUI<CharactorController_UI>();
+
         touchControl.Touch.TouchPress.started += (ctx =>
         {
-            if(EventSystem.current.IsPointerOverGameObject())
+            if (!isPointerOverUI)
             {
-                Debug.Log("is Pointer Over UI");
-
-                return;
+                active = true;
             }
-
-            active = true;
-
-            Managers.UI.ShowUI<CharactorController_UI>();
         });
 
         touchControl.Touch.TouchPress.canceled += (ctx =>
@@ -68,14 +71,14 @@ public class PlayerMove : IMoveable
 
         touchControl.Touch.TouchPosition.performed += (ctx =>
         {
-            if(!active)
+            if (!active)
             {
                 return;
             }
 
             context = ctx;
-            
-            if(enterTouchPosition == null)
+
+            if(!didStartMove)
             {
                 StartMove();
             }
@@ -83,11 +86,25 @@ public class PlayerMove : IMoveable
             OnMove();
         });
     }
+
+    private void StartMove()
+    {
+        Managers.UI.ShowUI<CharactorController_UI>();
+
+        enterTouchPosition = context.ReadValue<Vector2>();
+
+        charactorController.EnterPosition = enterTouchPosition;
+        moving = StartCoroutine(Moving());
+
+        didStartMove = true;
+    }
     private IEnumerator Moving()
     {
         while(true)
         {
-            Managers.Game.player.gameObject.transform.position += (Vector3)direction * Managers.Game.player.Stat.moveSpeed * Time.deltaTime;
+            Managers.Game.player.gameObject.transform.position += direction.normalized * Managers.Game.player.Stat.moveSpeed * Time.deltaTime;
+
+            charactorController.SetJoyStick();
 
             yield return null;
         }
