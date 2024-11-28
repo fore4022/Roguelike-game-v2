@@ -30,7 +30,7 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
         {
             StopCoroutine(adjustmentScale);
         }
-
+        
         adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, maxScale, duration));
     }
     public void OnPointerExit(PointerEventData eventData)
@@ -64,6 +64,8 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
     }
     public void InitOption(int index)
     {
+        adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, minScale));
+
         info = Managers.Game.inGameData.attackData.attackInfo[index];
         
         SetOption();
