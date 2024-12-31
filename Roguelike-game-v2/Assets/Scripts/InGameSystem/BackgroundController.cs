@@ -1,8 +1,11 @@
 using UnityEngine;
 public class BackgroundController : MonoBehaviour
 {
-    private const int width = 9;
-    private const int height = 16;
+    private const float width = 4.5f;
+    private const float height = 8;
+
+    private float xPos;
+    private float yPos;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -11,17 +14,20 @@ public class BackgroundController : MonoBehaviour
             return;
         }
 
-        if(transform.position.x != Mathf.Round(Managers.Game.player.transform.position.x))
+        xPos = Mathf.Round(Managers.Game.player.transform.position.x * 10) / 10;
+        yPos = Mathf.Round(Managers.Game.player.transform.position.y * 10) / 10;
+
+        if(transform.position.x != xPos)
         {
-            if (Mathf.Round(Managers.Game.player.transform.position.x) % width == 0)
+            if (xPos % width == 0)
             {
                 transform.position += new Vector3(Mathf.Sign(Managers.Game.player.move.Direction.x) * width * 2, 0);
             }
         }
 
-        if(transform.position.y != Mathf.Round(Managers.Game.player.transform.position.y))
+        if(transform.position.y != yPos)
         {
-            if (Mathf.Round(Managers.Game.player.transform.position.y) % height == 0)
+            if(yPos % height == 0)
             {
                 transform.position += new Vector3(0, Mathf.Sign(Managers.Game.player.move.Direction.y) * height * 2);
             }
