@@ -1,36 +1,57 @@
 using UnityEngine;
+[RequireComponent(typeof(BoxCollider2D))]
 public class BackgroundController : MonoBehaviour
 {
-    private const float width = 4.5f;
-    private const float height = 8;
+    private const float standard = 0.1f;
+    private const float width = 17f;
+    private const float height = 24;
 
+    private BoxCollider2D col;
+    
+    private Vector3 increasePos = new();
+    private Vector2 direction;
+    private Vector2 player;
     private float xPos;
     private float yPos;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Awake()
     {
-        if(!collision.CompareTag("View"))
+        col = GetComponent<BoxCollider2D>();
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(!collision.gameObject.CompareTag("View"))
         {
             return;
         }
 
-        xPos = Mathf.Round(Managers.Game.player.transform.position.x * 10) / 10;
-        yPos = Mathf.Round(Managers.Game.player.transform.position.y * 10) / 10;
+        player = Managers.Game.player.gameObject.transform.position;
+        direction = Managers.Game.player.move.Direction;
 
-        if(transform.position.x != xPos)
+        xPos = Mathf.Abs(transform.position.x + Mathf.Sign(direction.x) * width);
+        yPos = Mathf.Abs(transform.position.y + Mathf.Sign(direction.y) * );
+
+        if (player.x % width < standard)
         {
-            if (xPos % width == 0)
-            {
-                transform.position += new Vector3(Mathf.Sign(Managers.Game.player.move.Direction.x) * width * 2, 0);
-            }
+            increasePos.x = Mathf.Sign(Managers.Game.player.move.Direction.x) * width * 2;
+        }
+        else
+        {
+            increasePos.x = 0;
         }
 
-        if(transform.position.y != yPos)
+        if(Mathf.Abs(transform.position.y + height) <= Mathf.Abs(player.y))
         {
-            if(yPos % height == 0)
-            {
-                transform.position += new Vector3(0, Mathf.Sign(Managers.Game.player.move.Direction.y) * height * 2);
-            }
+            increasePos.y = Mathf.Sign(Managers.Game.player.move.Direction.y) * height * 2;
         }
+        else
+        {
+            increasePos.y = 0;
+        }
+
+        transform.position += increasePos;
+
+        col.enabled = false;
+        col.enabled = true;
     }
 }
