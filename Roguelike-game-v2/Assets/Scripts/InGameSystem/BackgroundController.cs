@@ -2,22 +2,15 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class BackgroundController : MonoBehaviour
 {
-    private const float standard = 0.1f;
-    private const float width = 17f;
-    private const float height = 24;
+    private const float width = 4.5f;
+    private const float height = 8;
 
-    private BoxCollider2D col;
-    
     private Vector3 increasePos = new();
     private Vector2 direction;
     private Vector2 player;
     private float xPos;
     private float yPos;
 
-    private void Awake()
-    {
-        col = GetComponent<BoxCollider2D>();
-    }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if(!collision.gameObject.CompareTag("View"))
@@ -27,31 +20,21 @@ public class BackgroundController : MonoBehaviour
 
         player = Managers.Game.player.gameObject.transform.position;
         direction = Managers.Game.player.move.Direction;
+        xPos = Mathf.Round(Mathf.Abs(player.x) * 10) / 10;
+        yPos = Mathf.Round(Mathf.Abs(player.y));
 
-        xPos = Mathf.Abs(transform.position.x + Mathf.Sign(direction.x) * width);
-        yPos = Mathf.Abs(transform.position.y + Mathf.Sign(direction.y) * );
+        increasePos = new();
 
-        if (player.x % width < standard)
+        if(xPos % width < 0.2f)
         {
-            increasePos.x = Mathf.Sign(Managers.Game.player.move.Direction.x) * width * 2;
-        }
-        else
-        {
-            increasePos.x = 0;
+            increasePos.x += Mathf.Sign(direction.x) * width * 8;
         }
 
-        if(Mathf.Abs(transform.position.y + height) <= Mathf.Abs(player.y))
+        if(yPos % height < 0.2f)
         {
-            increasePos.y = Mathf.Sign(Managers.Game.player.move.Direction.y) * height * 2;
-        }
-        else
-        {
-            increasePos.y = 0;
+            increasePos.y += Mathf.Sign(direction.y) * height * 8;
         }
 
         transform.position += increasePos;
-
-        col.enabled = false;
-        col.enabled = true;
     }
 }
