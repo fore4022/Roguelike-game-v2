@@ -25,14 +25,20 @@ public class BackgroundController : MonoBehaviour
 
         increasePos = new();
 
-        if(xPos % width < 0.2f)
+        if(xPos % width < 0.25f)
         {
-            increasePos.x += Mathf.Sign(direction.x) * width * 8;
+            if(Mathf.Abs((int)(xPos / width) % 2) == 1)
+            {
+                increasePos.x += Mathf.Sign(direction.x) * width * 8;
+            }
         }
 
-        if(yPos % height < 0.2f)
+        if(yPos % height < 0.25f)
         {
-            increasePos.y += Mathf.Sign(direction.y) * height * 8;
+            if (Mathf.Abs((int)(yPos / height) % 2) == 1)
+            {
+                increasePos.y += Mathf.Sign(direction.y) * height * 8;
+            }
         }
 
         transform.position += increasePos;

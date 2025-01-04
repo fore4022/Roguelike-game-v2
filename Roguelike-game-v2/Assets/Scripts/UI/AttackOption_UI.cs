@@ -75,6 +75,7 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
         image.sprite = info.data.sprite;
 
         animator.runtimeAnimatorController = info.data.controller;
+        animator.playbackTime = 0;
 
         if (info.level == 0)
         {
