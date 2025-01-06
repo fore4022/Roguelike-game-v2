@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExitHandler
+public class AttackOption_UI : UserInterface, IPointerDownHandler, IPointerExitHandler
 {
     public AttackInformation info = null;
 
@@ -22,7 +22,7 @@ public class AttackOption_UI : UserInterface, IPointerEnterHandler, IPointerExit
     private const float maxScale = 1.1f;
     private const float duration = 1;
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public void OnPointerDown(PointerEventData eventData)
     {
         SetAnimator(true);
 

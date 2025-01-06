@@ -6,8 +6,6 @@ public class LevelUp_UI : UserInterface
     private TextMeshProUGUI level;
     private Animator animator;
 
-    private const float delay = 0.35f;
-
     protected override void Enable()
     {
         StartCoroutine(AnimationPlaying());
@@ -25,8 +23,6 @@ public class LevelUp_UI : UserInterface
         level.text = $"Lv.{Managers.Game.inGameData.playerData.Level}";
 
         yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
-
-        yield return new WaitForSeconds(delay);
 
         Time.timeScale = 0;
 
