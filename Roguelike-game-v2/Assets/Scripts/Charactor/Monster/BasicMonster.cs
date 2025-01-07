@@ -2,18 +2,18 @@ using System.Collections;
 using UnityEngine;
 public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 {
-    private DefaultStat stat;
-    private CharactorInformation charactor;
     private Coroutine moveCoroutine = null;
 
-    private float experience;
+    private Color color;
+
+    private float totalTime;
 
     public float DamageAmount { get { return stat.damage; } }
     protected override void OnEnable()
     {
         base.OnEnable();
 
-        LoadStat();
+        moveCoroutine = StartCoroutine(Moving());
     }
     public void OnMove()
     {
@@ -42,23 +42,17 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     {
         if (!rigid.simulated) { return; }
 
-        stat.health -= damage.DamageAmount;
+        health -= damage.DamageAmount;
 
-        if(stat.health <= 0)
+        if(health <= 0)
         {
             Die();
         }
     }
-    private void LoadStat()
-    {
-        stat = monsterSO.stat;
-        charactor = monsterSO.charactor;
-        experience = monsterSO.experience;
-
-        moveCoroutine = StartCoroutine(Moving());
-    }
     private IEnumerator Moving()
     {
+        animator.Play(0, 0);
+
         while(true)
         {
             OnMove();
@@ -68,11 +62,20 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     }
     private IEnumerator Dieing()
     {
-        //animation play
-
-        yield return new WaitForSeconds(charactor.dieing_AnimationDuration);
+        animator.StopRecording();
 
         stat = null;
+
+        while(totalTime <= stat.death_AnimationDuration)
+        {
+            totalTime += Time.deltaTime;
+
+            if()
+
+            render.color = color;
+
+            yield return null;
+        }
 
         Managers.Game.inGameData.dataInit.objectPool.DisableObject(gameObject);
     }

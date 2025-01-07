@@ -1,10 +1,18 @@
 using UnityEngine;
+[RequireComponent(typeof(SpriteRenderer), typeof(Rigidbody2D), typeof(Animator))]
 public class Monster : RenderableObject, IScriptableData
 {
     protected MonsterStat_SO monsterSO = null;
+    protected DefaultStat stat;
     protected Rigidbody2D rigid;
+    protected Animator animator;
 
     protected const float spawnRadius = 5;
+
+    protected float experience;
+    protected float health;
+
+    private bool didInit = false;
 
     public ScriptableObject SetScriptableObject { set { monsterSO = value as MonsterStat_SO; } }
     protected virtual void Awake()
@@ -13,21 +21,32 @@ public class Monster : RenderableObject, IScriptableData
     }
     protected virtual void OnEnable()
     {
-        if(render == null)
+        if(!didInit)
         {
-            render = GetComponent<SpriteRenderer>();
-
-            render.enabled = false;
+            Init();
+            LoadStat();
         }
-        
-        if(rigid == null)
+        else
         {
-            rigid = GetComponent<Rigidbody2D>();
-
-            rigid.simulated = false;
+            health = monsterSO.stat.health;
         }
 
         SetPosition();
+    }
+    private void LoadStat()
+    {
+        stat = monsterSO.stat;
+        experience = monsterSO.experience;
+        health = stat.health;
+    }
+    protected virtual void Init()
+    {
+        render = GetComponent<SpriteRenderer>();
+        rigid = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+
+        render.enabled = false;
+        rigid.simulated = false;
     }
     protected virtual void SetPosition()
     {

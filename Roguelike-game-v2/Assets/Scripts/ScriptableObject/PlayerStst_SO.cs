@@ -3,5 +3,4 @@ using UnityEngine;
 public class PlayerInforamtion_SO : ScriptableObject
 {
     public DefaultStat stat = new();
-    public CharactorInformation charactor = new();
 }
