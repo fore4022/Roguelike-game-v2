@@ -4,9 +4,10 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 {
     private Coroutine moveCoroutine = null;
 
-    private Color color;
+    private Color color = new();
 
     private float totalTime;
+    private float colorValue;
 
     public float DamageAmount { get { return stat.damage; } }
     protected override void OnEnable()
@@ -49,6 +50,12 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
             Die();
         }
     }
+    protected override void Init()
+    {
+        base.Init();
+
+        totalTime = 0;
+    }
     private IEnumerator Moving()
     {
         animator.Play(0, 0);
@@ -64,18 +71,25 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     {
         animator.StopRecording();
 
-        stat = null;
-
-        while(totalTime <= stat.death_AnimationDuration)
+        while(totalTime != stat.death_AnimationDuration)
         {
-            totalTime += Time.deltaTime;
+            totalTime += Time.fixedDeltaTime;
 
-            if()
+            if(totalTime > stat.death_AnimationDuration)
+            {
+                totalTime = stat.death_AnimationDuration;
+            }
+
+            colorValue = Mathf.Lerp(1, 0, (totalTime / stat.death_AnimationDuration));
+
+            color.r = color.g = color.b = color.a = colorValue;
 
             render.color = color;
 
             yield return null;
         }
+
+        stat = null;
 
         Managers.Game.inGameData.dataInit.objectPool.DisableObject(gameObject);
     }
