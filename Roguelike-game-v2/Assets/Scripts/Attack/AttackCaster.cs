@@ -20,9 +20,9 @@ public class AttackCaster
 
         while (true)
         {
-            Managers.Game.inGameData.dataInit.objectPool.ActiveObject(attackType);
-
             yield return new WaitForSeconds(attackSO.coolTime);
+
+            Managers.Game.inGameData.dataInit.objectPool.ActiveObject(attackType);
         }
     }
 }

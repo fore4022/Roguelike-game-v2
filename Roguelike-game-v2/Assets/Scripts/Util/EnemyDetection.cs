@@ -6,6 +6,9 @@ public class EnemyDetection
     public float largeastRange = 2.5f;
     public int maximumEnemyCount = 15;
 
+    private float width = Util.CameraWidth / 2;
+    private float height = Util.CameraHeight / 2;
+
     public GameObject FindNearestEnemy(GameObject center = null, float? range = null)
     {
         List<GameObject> gameObjectList = FindEnemiesOnScreen(center, range);
@@ -192,8 +195,8 @@ public class EnemyDetection
     }
     public Vector2 GetRandomVector()
     {
-        float x = Random.Range(-180, 361);
-        float y = Random.Range(-180, 361);
+        float x = Random.Range(-width, width);
+        float y = Random.Range(-height, height);
 
         return new Vector3(x, y) + Managers.Game.player.gameObject.transform.position;
     }

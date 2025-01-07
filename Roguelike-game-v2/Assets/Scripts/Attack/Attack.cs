@@ -22,10 +22,7 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
     }
     protected void OnEnable()
     {
-        if (startAttack == null)
-        {
-            startAttack = StartCoroutine(StartAttack());
-        }
+        startAttack = StartCoroutine(StartAttack());
     }
     protected void Start()
     {
