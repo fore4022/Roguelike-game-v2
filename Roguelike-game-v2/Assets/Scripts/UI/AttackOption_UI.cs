@@ -37,7 +37,7 @@ public class AttackOption_UI : UserInterface, IPointerDownHandler, IPointerExitH
     {
         SetAnimator(false);
 
-        if (adjustmentScale != null)
+        if(adjustmentScale != null)
         {
             StopCoroutine(adjustmentScale);
         }
@@ -46,9 +46,7 @@ public class AttackOption_UI : UserInterface, IPointerDownHandler, IPointerExitH
     }
     private void PointerClick()
     {
-        Managers.Game.inGameData.attackData.SetValue(info.data.attackType);
-
-        Managers.UI.GetUI<AttackSelection_UI>().Selected();
+        StartCoroutine(OnButtonSelected());
     }
     public override void SetUserInterface()
     {
@@ -59,13 +57,11 @@ public class AttackOption_UI : UserInterface, IPointerDownHandler, IPointerExitH
         textList = Util.GetComponentsInChildren<TextMeshProUGUI>(transform);
 
         button.onClick.AddListener(PointerClick);
-
         SetAnimator(false);
     }
     public void InitOption(int index)
     {
         adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, minScale));
-
         info = Managers.Game.inGameData.attackData.attackInfo[index];
         
         SetOption();
@@ -73,7 +69,6 @@ public class AttackOption_UI : UserInterface, IPointerDownHandler, IPointerExitH
     private void SetOption()
     {
         image.sprite = info.data.sprite;
-
         animator.runtimeAnimatorController = info.data.controller;
 
         if (info.level == 0)
@@ -102,7 +97,7 @@ public class AttackOption_UI : UserInterface, IPointerDownHandler, IPointerExitH
 
         animator.enabled = isEnabled;
 
-        if (isEnabled)
+        if(isEnabled)
         {
             playAnimation = StartCoroutine(PlayAnimation());
         }
@@ -132,5 +127,12 @@ public class AttackOption_UI : UserInterface, IPointerDownHandler, IPointerExitH
         yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime == 0);
 
         SetAnimator(false);
+    }
+    private IEnumerator OnButtonSelected()
+    {
+        yield return new WaitUntil(() => animator.enabled == false);
+
+        Managers.Game.inGameData.attackData.SetValue(info.data.attackType);
+        Managers.UI.GetUI<AttackSelection_UI>().Selected();
     }
 }

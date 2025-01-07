@@ -16,6 +16,6 @@ MonoBehaviour:
     health: 1
     damage: 1
     attackSpeed: 1
-    moveSpeed: 0.5
+    moveSpeed: 2.5
     size: 1
     death_AnimationDuration: 0.5
