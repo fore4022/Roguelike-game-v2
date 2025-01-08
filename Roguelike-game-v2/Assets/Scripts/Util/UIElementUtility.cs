@@ -12,7 +12,7 @@ public class UIElementUtility
     {
         List<Image> imageList = transform.GetComponentsInChildren<Image>().ToList();
 
-        float value = (isPressed ? pressedColor : normalizedColor);
+        float value = isPressed ? pressedColor : normalizedColor;
 
         foreach(Image image in imageList)
         {
