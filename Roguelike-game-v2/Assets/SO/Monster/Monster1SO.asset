@@ -18,5 +18,5 @@ MonoBehaviour:
     attackSpeed: 1
     moveSpeed: 1
     size: 1
-    death_AnimationDuration: 5
+    death_AnimationDuration: 0.5
   experience: 1

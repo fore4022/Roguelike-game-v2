@@ -63,8 +63,24 @@ public static class ColorSetting
             yield return null;
         }
     }
-    public static IEnumerator ChangeAlpha(Image image, float alphaValue, float duration)
+    public static IEnumerator ChangeAlpha(Image img, float targetValue, float defaultValue, float duration)
     {
-        yield return null;
+        Color color = new();
+        float totalTime = 0;
+
+        while (totalTime != duration)
+        {
+            totalTime += Time.deltaTime;
+
+            if (totalTime > duration)
+            {
+                totalTime = duration;
+            }
+
+            color.a = Mathf.Lerp(defaultValue, targetValue, totalTime / duration);
+            img.color = color;
+
+            yield return null;
+        }
     }
 }

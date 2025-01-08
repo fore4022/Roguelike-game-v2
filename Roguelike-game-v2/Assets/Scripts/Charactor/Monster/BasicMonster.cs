@@ -5,15 +5,13 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     private Coroutine moveCoroutine = null;
 
     private Color defaultColor;
-    private float totalTime;
-    private float colorValue;
 
     public float DamageAmount { get { return stat.damage; } }
     protected override void OnEnable()
     {
         base.OnEnable();
 
-        render.color = Color.white;
+        render.color = defaultColor;
         moveCoroutine = StartCoroutine(Moving());
     }
     public void OnMove()
@@ -55,7 +53,6 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
         base.Init();
 
         animator.enabled = true;
-        totalTime = 0;
         defaultColor = render.color;
     }
     private IEnumerator Moving()
@@ -71,11 +68,17 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     }
     private IEnumerator Dieing()
     {
+        float animationDuration = stat.death_AnimationDuration;
+
         animator.enabled = false;
 
-        StartCoroutine(ColorSetting.ChangeColor(render, Color.black, Color.white, stat.death_AnimationDuration));
+        StartCoroutine(ColorSetting.ChangeColor(render, Color.black, defaultColor, animationDuration / 2));
 
-        yield return new WaitForSeconds(stat.death_AnimationDuration);
+        yield return new WaitForSeconds(animationDuration / 2);
+
+        StartCoroutine(ColorSetting.ChangeAlpha(render, 0, render.color.a, animationDuration));
+
+        yield return new WaitForSeconds(animationDuration);
 
         stat = null;
 
