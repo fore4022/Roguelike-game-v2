@@ -19,6 +19,11 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
         Vector3 direction = Managers.Game.calculate.GetDirection(Managers.Game.player.gameObject.transform.position, transform.position);
 
         rigid.velocity = direction * stat.moveSpeed;
+
+        if(visible)
+        {
+            changeDirection();
+        }
     }
     private void Die()
     {

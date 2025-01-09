@@ -1,5 +1,5 @@
 using UnityEngine;
-[RequireComponent(typeof(SpriteRenderer), typeof(Rigidbody2D), typeof(Animator))]
+[RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
 public class Monster : RenderableObject, IScriptableData
 {
     protected MonsterStat_SO monsterSO = null;
@@ -15,8 +15,10 @@ public class Monster : RenderableObject, IScriptableData
     private bool didInit = false;
 
     public ScriptableObject SetScriptableObject { set { monsterSO = value as MonsterStat_SO; } }
-    protected virtual void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         gameObject.SetActive(false);
     }
     protected virtual void OnEnable()
@@ -62,5 +64,19 @@ public class Monster : RenderableObject, IScriptableData
 
         render.enabled = true;
         rigid.simulated = true;
+    }
+    protected virtual void changeDirection()
+    {
+        if(transform.position.x != Managers.Game.player.transform.position.x)
+        {
+            if(transform.position.x > Managers.Game.player.transform.position.x)
+            {
+                transform.rotation = Quaternion.Euler(Vector3.zero);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 180));
+            }
+        }
     }
 }
