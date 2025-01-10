@@ -47,7 +47,7 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
 
         if(collision.TryGetComponent(out IDamageReceiver damageReceiver))
         {
-            damageReceiver.GetDamage(this);
+            damageReceiver.TakeDamage(this);
         }
     }
     private IEnumerator StartAttack()

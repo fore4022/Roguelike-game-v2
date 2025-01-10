@@ -18,7 +18,7 @@ public class Player : MonoBehaviour, IDamageReceiver
     {
         StartCoroutine(Init());
     }
-    public void GetDamage(IDamage damage)
+    public void TakeDamage(IDamage damage)
     {
         information.stat.health -= damage.DamageAmount;
 

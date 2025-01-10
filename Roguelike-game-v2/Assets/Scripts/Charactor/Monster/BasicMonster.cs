@@ -25,6 +25,10 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
             changeDirection();
         }
     }
+    protected virtual void Damaged()
+    {
+        StartCoroutine(TakingDamage());
+    }
     private void Die()
     {
         Managers.Game.inGameData.playerData.Experience += experience;
@@ -39,10 +43,10 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            Managers.Game.player.GetDamage(this);
+            Managers.Game.player.TakeDamage(this);
         }
     }
-    public void GetDamage(IDamage damage)
+    public void TakeDamage(IDamage damage)
     {
         if (!rigid.simulated) { return; }
 
@@ -51,6 +55,10 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
         if(health <= 0)
         {
             Die();
+        }
+        else
+        {
+            Damaged();
         }
     }
     protected override void Init()
@@ -70,6 +78,12 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 
             yield return null;
         }
+    }
+    private IEnumerator TakingDamage()
+    {
+        //render.material = 
+
+        yield return null;
     }
     private IEnumerator Dieing()
     {
