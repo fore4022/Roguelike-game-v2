@@ -81,9 +81,11 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     }
     private IEnumerator TakingDamage()
     {
-        //render.material = 
+        render.material.SetFloat("_Float", 1);
 
-        yield return null;
+        yield return new WaitForSeconds(1f);//
+
+        render.material.SetFloat("_Float", 0);
     }
     private IEnumerator Dieing()
     {
