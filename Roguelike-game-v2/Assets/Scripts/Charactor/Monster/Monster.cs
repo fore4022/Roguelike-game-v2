@@ -35,7 +35,7 @@ public class Monster : RenderableObject, IScriptableData
 
         SetPosition();
     }
-    private void LoadStat()
+    protected virtual void LoadStat()
     {
         stat = monsterSO.stat;
         experience = monsterSO.experience;

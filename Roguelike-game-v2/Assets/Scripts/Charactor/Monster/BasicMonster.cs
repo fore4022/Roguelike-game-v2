@@ -4,6 +4,8 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 {
     private Coroutine moveCoroutine = null;
 
+    private const float damagedDuration = 0.15f;
+
     private Color defaultColor;
 
     public float DamageAmount { get { return stat.damage; } }
@@ -48,17 +50,15 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     }
     public void TakeDamage(IDamage damage)
     {
-        if (!rigid.simulated) { return; }
+        if(!rigid.simulated) { return; }
 
         health -= damage.DamageAmount;
+
+        Damaged();
 
         if(health <= 0)
         {
             Die();
-        }
-        else
-        {
-            Damaged();
         }
     }
     protected override void Init()
@@ -83,7 +83,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     {
         render.material.SetFloat("_Float", 1);
 
-        yield return new WaitForSeconds(1f);//
+        yield return new WaitForSeconds(damagedDuration);
 
         render.material.SetFloat("_Float", 0);
     }

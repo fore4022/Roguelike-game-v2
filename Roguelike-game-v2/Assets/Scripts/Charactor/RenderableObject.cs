@@ -7,6 +7,8 @@ public class RenderableObject : MonoBehaviour
 
     protected bool visible = false;
 
+    private Plane[] planes = new Plane[6];
+
     protected virtual void Awake()
     {
         render = GetComponent<SpriteRenderer>();
@@ -26,7 +28,7 @@ public class RenderableObject : MonoBehaviour
     }
     private void isInvisible()
     {
-        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
+        planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
 
         if(GeometryUtility.TestPlanesAABB(planes, col.bounds))
         {
