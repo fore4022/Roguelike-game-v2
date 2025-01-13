@@ -1,6 +1,6 @@
 using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
-public class BackgroundController : MonoBehaviour
+public class Background_InGame : MonoBehaviour
 {
     private const float width = 4.5f;
     private const float height = 8;
