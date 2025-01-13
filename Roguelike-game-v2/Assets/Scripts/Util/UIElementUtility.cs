@@ -138,7 +138,7 @@ public class UIElementUtility
                     tmp.color = childrenColor;
                 }
 
-                yield return null;
+                yield return new WaitForFixedUpdate();
             }
         }
     }
@@ -185,7 +185,7 @@ public class UIElementUtility
                     img.color = childrenColor;
                 }
 
-                yield return null;
+                yield return new WaitForFixedUpdate();
             }
         }
     }
