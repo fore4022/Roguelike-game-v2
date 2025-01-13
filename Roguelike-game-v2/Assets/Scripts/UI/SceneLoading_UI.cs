@@ -42,7 +42,7 @@ public class SceneLoading_UI : UserInterface
     }
     private IEnumerator Loading()
     {
-        StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(background, maxAlpha, limitTime, false));
+        Managers.UI.uiElementUtility.SetImageAlpha(background, maxAlpha, limitTime, false);
 
         yield return new WaitForSecondsRealtime(limitTime);
 
@@ -52,7 +52,7 @@ public class SceneLoading_UI : UserInterface
 
         StopCoroutine(SetAlpha);
 
-        StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(background, minAlpha, limitTime));
+        Managers.UI.uiElementUtility.SetImageAlpha(background, minAlpha, limitTime);
 
         yield return new WaitForSecondsRealtime(limitTime);
 
@@ -60,7 +60,7 @@ public class SceneLoading_UI : UserInterface
     }
     private IEnumerator PlayingAnimation()
     {
-        SetAlpha = StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(animationImage, maxAlpha, limitTime));
+        SetAlpha = Managers.UI.uiElementUtility.SetImageAlpha(animationImage, maxAlpha, limitTime);
 
         while(true)
         {

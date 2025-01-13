@@ -46,7 +46,7 @@ public abstract class NewButton : UserInterface, IPointerEnterHandler, IPointerE
         }
 
         adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, maxScale, duration));
-        adjustmentColor = StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(image, maxAlpha, duration));
+        adjustmentColor = Managers.UI.uiElementUtility.SetImageAlpha(image, maxAlpha, duration);
     }
     protected virtual void PointerExit()
     {
@@ -59,7 +59,7 @@ public abstract class NewButton : UserInterface, IPointerEnterHandler, IPointerE
         }
 
         adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, minScale));
-        adjustmentColor = StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(image, minAlpha));
+        adjustmentColor = Managers.UI.uiElementUtility.SetImageAlpha(image, minAlpha);
     }
     protected virtual void PointerDown()
     {
@@ -70,7 +70,7 @@ public abstract class NewButton : UserInterface, IPointerEnterHandler, IPointerE
     protected virtual void PointerUp()
     {
         adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, minScale));
-        adjustmentColor = StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(image, minAlpha));
+        adjustmentColor = Managers.UI.uiElementUtility.SetImageAlpha(image, minAlpha);
 
         Managers.UI.uiElementUtility.SetButtonColor(transform, false);
 
@@ -92,7 +92,7 @@ public abstract class NewButton : UserInterface, IPointerEnterHandler, IPointerE
             StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, minScale));
         }
 
-        StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(image, minAlpha, duration));
+        Managers.UI.uiElementUtility.SetImageAlpha(image, minAlpha, duration);
     }
     protected abstract void PointerClick();
     protected abstract void Init();

@@ -1,12 +1,11 @@
 using UnityEngine;
-public class Background_Main : MonoBehaviour
+public class Background_Menu : MonoBehaviour
 {
     private Renderer render;
 
-    private const float speed = 0.0025f;
-
     private Vector2 offset = new();
     private Vector2 vec = new();
+    private float speed = 0.0025f;
 
     private void Awake()
     {

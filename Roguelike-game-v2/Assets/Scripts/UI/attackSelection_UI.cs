@@ -41,7 +41,7 @@ public class AttackSelection_UI : UserInterface
 
         int[] DataIndexArray = Managers.Game.calculate.GetRandomValues(2, 2);//Managers.Game.inGameData.attackData.attackInfo.Count, Managers.Game.inGameData.OptionCount
 
-        StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(background, basicAlpha));
+        Managers.UI.uiElementUtility.SetImageAlpha(background, basicAlpha);
 
         yield return null;
 
@@ -120,7 +120,7 @@ public class AttackSelection_UI : UserInterface
     }
     private IEnumerator PadeIn()
     {
-        StartCoroutine(Managers.UI.uiElementUtility.SetImageAlpha(background, targetAlpha, duration));
+        Managers.UI.uiElementUtility.SetImageAlpha(background, targetAlpha, duration);
 
         yield return new WaitForSecondsRealtime(duration);
 

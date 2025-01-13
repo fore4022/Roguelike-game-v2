@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 public class UIElementUtility
@@ -24,6 +25,40 @@ public class UIElementUtility
 
             image.color = color;
         }
+    }
+    public Coroutine SetTextAlpha(TextMeshProUGUI tmp, float targetAlphaValue, float duration = 0, bool recursive = true)
+    {
+        List<TextMeshProUGUI> tmpList = new();
+
+        Color color = tmp.color;
+
+        targetAlphaValue /= 255;
+
+        if(recursive)
+        {
+            tmpList = tmp.gameObject.GetComponentsInChildren<TextMeshProUGUI>().ToList();
+        }
+
+        tmpList.Add(tmp);
+
+        return Util.GetMonoBehaviour().StartCoroutine(SetTextAlpha(tmpList, color, targetAlphaValue, duration));
+    }
+    public Coroutine SetImageAlpha(Image img, float targetAlphaValue, float duration = 0, bool recursive = true)
+    {
+        List<Image> imgList = new();
+
+        Color color = img.color;
+
+        targetAlphaValue /= 255;
+
+        if(recursive)
+        {
+            imgList = img.gameObject.GetComponentsInChildren<Image>().ToList();
+        }
+
+        imgList.Add(img);
+
+        return Util.GetMonoBehaviour().StartCoroutine(SetImageAlpha(imgList, color, targetAlphaValue, duration));
     }
     public IEnumerator SetImageScale(RectTransform rectTransform, float targetScale, float duration = 0)
     {
@@ -60,29 +95,64 @@ public class UIElementUtility
             }
         }
     }
-    public IEnumerator SetImageAlpha(Image image, float targetAlphaValue, float duration = 0, bool recursive = true)
+    public IEnumerator SetTextAlpha(List<TextMeshProUGUI> tmpList, Color color, float targetAlphaValue, float duration)
     {
-        List<Image> imageList = new();
-
-        Color color = image.color;
         Color childrenColor;
 
         float totalTime = 0;
-
-        targetAlphaValue /= 255;
-
-        if (recursive)
-        {
-            imageList = image.gameObject.GetComponentsInChildren<Image>().ToList();
-        }
 
         if (duration == 0)
         {
             color.a = targetAlphaValue;
 
-            image.color = color;
+            foreach(TextMeshProUGUI tmp in tmpList)
+            {
+                childrenColor = tmp.color;
 
-            foreach (Image img in imageList)
+                childrenColor.a = targetAlphaValue;
+
+                tmp.color = childrenColor;
+            }
+        }
+        else
+        {
+            float alphaValue = color.a;
+
+            while(totalTime != duration)
+            {
+                totalTime += Time.fixedDeltaTime;
+
+                if(totalTime > duration)
+                {
+                    totalTime = duration;
+                }
+
+                color.a = Mathf.Lerp(alphaValue, targetAlphaValue, totalTime / duration);
+
+                foreach(TextMeshProUGUI tmp in tmpList)
+                {
+                    childrenColor = tmp.color;
+
+                    childrenColor.a = color.a;
+
+                    tmp.color = childrenColor;
+                }
+
+                yield return null;
+            }
+        }
+    }
+    public IEnumerator SetImageAlpha(List<Image> imgList, Color color, float targetAlphaValue, float duration)
+    {
+        Color childrenColor;
+
+        float totalTime = 0;
+
+        if (duration == 0)
+        {
+            color.a = targetAlphaValue;
+
+            foreach(Image img in imgList)
             {
                 childrenColor = img.color;
 
@@ -95,18 +165,18 @@ public class UIElementUtility
         {
             float alphaValue = color.a;
 
-            while (totalTime != duration)
+            while(totalTime != duration)
             {
                 totalTime += Time.fixedDeltaTime;
 
-                if (totalTime > duration)
+                if(totalTime > duration)
                 {
                     totalTime = duration;
                 }
 
                 color.a = Mathf.Lerp(alphaValue, targetAlphaValue, totalTime / duration);
 
-                foreach(Image img in imageList)
+                foreach(Image img in imgList)
                 {
                     childrenColor = img.color;
 
@@ -114,8 +184,6 @@ public class UIElementUtility
 
                     img.color = childrenColor;
                 }
-
-                image.color = color;
 
                 yield return null;
             }
