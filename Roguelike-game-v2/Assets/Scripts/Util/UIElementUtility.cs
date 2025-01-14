@@ -38,8 +38,10 @@ public class UIElementUtility
         {
             tmpList = tmp.gameObject.GetComponentsInChildren<TextMeshProUGUI>().ToList();
         }
-
-        tmpList.Add(tmp);
+        else
+        {
+            tmpList.Add(tmp);
+        }
 
         return Util.GetMonoBehaviour().StartCoroutine(SetTextAlpha(tmpList, color, targetAlphaValue, duration));
     }
@@ -55,8 +57,10 @@ public class UIElementUtility
         {
             imgList = img.gameObject.GetComponentsInChildren<Image>().ToList();
         }
-
-        imgList.Add(img);
+        else
+        {
+            imgList.Add(img);
+        }
 
         return Util.GetMonoBehaviour().StartCoroutine(SetImageAlpha(imgList, color, targetAlphaValue, duration));
     }
@@ -120,7 +124,7 @@ public class UIElementUtility
 
             while(totalTime != duration)
             {
-                totalTime += Time.fixedDeltaTime;
+                totalTime += Time.unscaledDeltaTime;
 
                 if(totalTime > duration)
                 {
@@ -138,14 +142,13 @@ public class UIElementUtility
                     tmp.color = childrenColor;
                 }
 
-                yield return new WaitForFixedUpdate();
+                yield return null;
             }
         }
     }
     public IEnumerator SetImageAlpha(List<Image> imgList, Color color, float targetAlphaValue, float duration)
     {
         Color childrenColor;
-
         float totalTime = 0;
 
         if (duration == 0)
@@ -167,7 +170,7 @@ public class UIElementUtility
 
             while(totalTime != duration)
             {
-                totalTime += Time.fixedDeltaTime;
+                totalTime += Time.unscaledDeltaTime;
 
                 if(totalTime > duration)
                 {
@@ -185,7 +188,7 @@ public class UIElementUtility
                     img.color = childrenColor;
                 }
 
-                yield return new WaitForFixedUpdate();
+                yield return null;
             }
         }
     }
