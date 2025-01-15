@@ -1,25 +1,62 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-public class StartMessage_UI : MonoBehaviour
+public class StartMessage_UI : UserInterface
 {
     private TextMeshProUGUI tmp;
 
+    private Coroutine textAnimation;
     private const float duration = 1.5f;
     private const int minAlpha = 50;
     private const int maxAlpha = 255;
 
-    private void Awake()
+    public override void SetUserInterface()
     {
         tmp = GetComponent<TextMeshProUGUI>();
     }
-    private void Start()
+    public void IsLoading(bool isLoading)
     {
-        StartCoroutine(Blink());
+        if(isLoading)
+        {
+            textAnimation = StartCoroutine(Loading());
+        }
+        else
+        {
+            StartCoroutine(Blink());
+        }
+    }
+    private IEnumerator Loading()
+    {
+        string text = "Loading.";
+        int count = 0;
+        int i;
+
+        while (true)
+        {
+            tmp.text = text;
+
+            for(i = 0; i < count; i++)
+            {
+                tmp.text += ".";
+            }
+
+            yield return new WaitForSeconds(duration);
+
+            count++;
+
+            if(count > 2)
+            {
+                count = 0;
+            }
+        }
     }
     private IEnumerator Blink()
     {
-        while(true)
+        StopCoroutine(textAnimation);
+
+        tmp.text = "PRESS TO START";
+
+        while (true)
         {
             Managers.UI.uiElementUtility.SetTextAlpha(tmp, minAlpha, duration, false);
 

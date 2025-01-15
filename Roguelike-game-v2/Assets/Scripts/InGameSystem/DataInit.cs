@@ -96,8 +96,6 @@ public class DataInit
 
         yield return new WaitUntil(() => typeCount == Managers.Game.inGameData.dataInit.objectPool.ScriptableObjectsCount);
 
-        Util.GetMonoBehaviour().StartCoroutine(Managers.UI.InitalizingUI());
-
         yield return new WaitUntil(() => Managers.UI.IsInitalize == true);
 
         yield return new WaitUntil(() => Managers.Game.player != null);

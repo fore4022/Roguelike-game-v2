@@ -3,18 +3,17 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public abstract class NewButton : UserInterface, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler
 {
-    protected float minScale;
-    protected float maxScale;
-    protected float minAlpha;
-    protected float maxAlpha;
-    protected float duration;
+    protected float minScale = 1f;
+    protected float maxScale = 1.075f;
+    protected float minAlpha = 205f;
+    protected float maxAlpha = 255f;
+    protected float duration = 0.1f;
 
     private RectTransform rectTransform;
     private Image image;
 
     private Coroutine adjustmentScale = null;
     private Coroutine adjustmentColor = null;
-
     private bool isPointerDown = false;
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -82,7 +81,6 @@ public abstract class NewButton : UserInterface, IPointerEnterHandler, IPointerE
         image = GetComponent<Image>();
 
         Init();
-
         Set();
     }
     private void Set()
@@ -94,6 +92,6 @@ public abstract class NewButton : UserInterface, IPointerEnterHandler, IPointerE
 
         Managers.UI.uiElementUtility.SetImageAlpha(image, minAlpha, duration);
     }
+    protected virtual void Init() { }
     protected abstract void PointerClick();
-    protected abstract void Init();
 }

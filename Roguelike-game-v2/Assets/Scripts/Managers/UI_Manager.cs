@@ -128,20 +128,4 @@ public class UI_Manager
             ui.gameObject.SetActive(isActive);
         }
     }
-    public IEnumerator InitalizingUI()
-    {
-        UserInterface[] array = uiDictionary.Values.ToArray();
-
-        for (int i = 0; i < array.Length; i++)
-        {
-            if (!array[i].IsInitalized)
-            {
-                array[i].SetUI();
-            }
-
-            yield return null;
-        }
-
-        isInitalize = true;
-    }
 }

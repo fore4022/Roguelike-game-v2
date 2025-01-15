@@ -20,10 +20,6 @@ public class SceneLoading_UI : UserInterface
     private bool isLoading = true;
 
     public bool IsLoading { set { isLoading = value; } }
-    public void Awake()
-    {
-        SetUI();
-    }
     public override void SetUserInterface()
     {
         transform.SetParent(null, false);

@@ -4,12 +4,4 @@ public class Setting_UI : NewButton
     {
         //show UI
     }
-    protected override void Init()
-    {
-        minScale = 1f;
-        maxScale = 1.075f;
-        minAlpha = 205;
-        maxAlpha = 255;
-        duration = 0.1f;
-    }
 }
