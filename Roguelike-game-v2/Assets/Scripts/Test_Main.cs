@@ -6,9 +6,9 @@ public class Test_Main : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(DataLoadTest());
+        //StartCoroutine(DataLoadTest());
 
-        Managers.UserData.UserDataLoad();
+        //Managers.UserData.UserDataLoad();
     }
     private IEnumerator DataLoadTest()
     {

@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using System.Reflection;
 using UnityEngine;
+using Object = UnityEngine.Object;
 public class UI_Manager
 {
     public UIElementUtility uiElementUtility = new();
@@ -99,6 +101,15 @@ public class UI_Manager
             isInitalize = false;
         }
     }
+    public void CreateAndExcute<T>(Action action) where T : UserInterface// type?
+    {
+        Delegate[] delegates = action.GetInvocationList();
+
+        string typeName = GetName<T>();
+
+        Util.GetMonoBehaviour().StartCoroutine(CreatingUI(typeName, true));
+        Util.GetMonoBehaviour().StartCoroutine(Executing(typeName, delegates));
+    }
     public void ClearDictionary()
     {
         uiDictionary = new();
@@ -126,6 +137,21 @@ public class UI_Manager
             uiDictionary[uiName] = Object.Instantiate(uiDictionary[uiName], Transform);
 
             ui.gameObject.SetActive(isActive);
+        }
+    }
+    private IEnumerator Executing(string typeName, Delegate[] methods)
+    {
+        yield return new WaitUntil(() => uiDictionary != null);
+
+        yield return new WaitUntil(() => uiDictionary.ContainsKey(typeName));
+
+        Type type = uiDictionary[typeName].GetType();
+
+        foreach(Delegate _method in methods)
+        {
+            MethodInfo method = type.GetMethod(_method.ToString());
+
+            method.Invoke(type, null);
         }
     }
 }

@@ -27,7 +27,7 @@ public class StartMessage_UI : UserInterface
     }
     private IEnumerator Loading()
     {
-        string text = "Loading.";
+        string text = "Loading";
         int count = 0;
         int i;
 
@@ -40,11 +40,11 @@ public class StartMessage_UI : UserInterface
                 tmp.text += ".";
             }
 
-            yield return new WaitForSeconds(duration);
+            yield return new WaitForSeconds(duration / 2);
 
             count++;
 
-            if(count > 2)
+            if(count > 3)
             {
                 count = 0;
             }

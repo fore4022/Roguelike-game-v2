@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -47,7 +48,7 @@ public class DataInit
 
         yield return new WaitUntil(() => inGameScene == Managers.Scene.CurrentScene);
 
-        Managers.UI.GetUI<SceneLoading_UI>().PlayAnimation();
+        Managers.UI.CreateAndExcute<SceneLoading_UI>(new Action(Managers.UI.GetUI<SceneLoading_UI>().PlayAnimation));
 
         GameObject GameSystem = GameObject.Find("GameSystem");
 
