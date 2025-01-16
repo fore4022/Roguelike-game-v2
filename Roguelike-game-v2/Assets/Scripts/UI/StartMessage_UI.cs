@@ -18,7 +18,7 @@ public class StartMessage_UI : UserInterface
     {
         if(isLoading)
         {
-            textAnimation = StartCoroutine(Loading());
+            textAnimation = StartCoroutine(Loading());  
         }
         else
         {

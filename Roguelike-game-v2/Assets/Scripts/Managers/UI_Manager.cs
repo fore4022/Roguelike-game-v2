@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
+using System.Xml.Linq;
 using UnityEngine;
 using Object = UnityEngine.Object;
 public class UI_Manager
@@ -97,28 +99,27 @@ public class UI_Manager
         if(!uiDictionary.ContainsKey(name))
         {
             uiDictionary.Add(name, ui);
-
-            isInitalize = false;
         }
     }
-    public void CreateAndExcute<T>(Action action) where T : UserInterface// type?
+    public void CreateAndExcute<T>(string methodName) where T : UserInterface
     {
-        Delegate[] delegates = action.GetInvocationList();
-
         string typeName = GetName<T>();
 
         Util.GetMonoBehaviour().StartCoroutine(CreatingUI(typeName, true));
-        Util.GetMonoBehaviour().StartCoroutine(Executing(typeName, delegates));
+        Util.GetMonoBehaviour().StartCoroutine(Executing(typeof(T), typeName, methodName));
     }
     public void ClearDictionary()
     {
         uiDictionary = new();
     }
-    private async void LoadUI(string path)
+    private async void LoadUI(string uiName)
     {
-        GameObject go = await Util.LoadingToPath<GameObject>(path);
+        GameObject go = await Util.LoadingToPath<GameObject>(uiName);
 
-        uiDictionary.Add(path, go.GetComponent<UserInterface>());
+        if(!uiDictionary.ContainsKey(uiName))
+        {
+            uiDictionary.Add(uiName, go.GetComponent<UserInterface>());
+        }
     }
     public IEnumerator CreatingUI(string uiName, bool isActive)
     {
@@ -139,19 +140,27 @@ public class UI_Manager
             ui.gameObject.SetActive(isActive);
         }
     }
-    private IEnumerator Executing(string typeName, Delegate[] methods)
+    private IEnumerator Executing(Type type,string typeName, string methodName)
     {
         yield return new WaitUntil(() => uiDictionary != null);
 
         yield return new WaitUntil(() => uiDictionary.ContainsKey(typeName));
 
-        Type type = uiDictionary[typeName].GetType();
+        MethodInfo method = type.GetMethod(methodName);
 
-        foreach(Delegate _method in methods)
+        method.Invoke(uiDictionary[typeName], null);
+    }
+    public IEnumerator InitalizingUI()
+    {
+        UserInterface[] array = uiDictionary.Values.ToArray();
+
+        for (int i = 0; i < array.Length; i++)
         {
-            MethodInfo method = type.GetMethod(_method.ToString());
+            array[i].gameObject.SetActive(true);
 
-            method.Invoke(type, null);
+            yield return null;
         }
+
+        isInitalize = true;
     }
 }

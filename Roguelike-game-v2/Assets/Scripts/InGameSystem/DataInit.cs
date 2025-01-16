@@ -47,8 +47,8 @@ public class DataInit
         Managers.Scene.LoadScene(inGameScene);
 
         yield return new WaitUntil(() => inGameScene == Managers.Scene.CurrentScene);
-
-        Managers.UI.CreateAndExcute<SceneLoading_UI>(new Action(Managers.UI.GetUI<SceneLoading_UI>().PlayAnimation));
+        Debug.Log(nameof(SceneLoading_UI.PlayAnimation));
+        Managers.UI.CreateAndExcute<SceneLoading_UI>(nameof(SceneLoading_UI.PlayAnimation));
 
         GameObject GameSystem = GameObject.Find("GameSystem");
 
@@ -90,6 +90,8 @@ public class DataInit
         Managers.Game.inGameData.dataInit.objectPool.CreateObjects(skillList, defaultSkillCount);
 
         int typeCount = monsterList.Count + skillList.Count;
+
+        yield return new WaitUntil(() => Managers.UI.IsInitalize == true);
 
         yield return new WaitUntil(() => Managers.Game.inGameData.playerData.levelUpdate != null);
 
