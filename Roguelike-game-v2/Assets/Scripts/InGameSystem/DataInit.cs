@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,6 +39,10 @@ public class DataInit
             }
         }
     }
+    private async void LoadUserLevelInfo()
+    {
+        userLevelInfo = await Util.LoadingToPath<UserLevelInfo_SO>(userLevelInfoPath);
+    }
     private IEnumerator Init()
     {
         Time.timeScale = 0;
@@ -47,8 +50,6 @@ public class DataInit
         Managers.Scene.LoadScene(inGameScene);
 
         yield return new WaitUntil(() => inGameScene == Managers.Scene.CurrentScene);
-
-        Managers.UI.CreateAndExcute<SceneLoading_UI>(nameof(SceneLoading_UI.PlayAnimation));
 
         GameObject GameSystem = GameObject.Find("GameSystem");
 
@@ -63,10 +64,6 @@ public class DataInit
         }
 
         Util.GetMonoBehaviour().StartCoroutine(DataLoading());
-    }
-    private async void LoadUserLevelInfo()
-    {
-        userLevelInfo = await Util.LoadingToPath<UserLevelInfo_SO>(userLevelInfoPath);
     }
     private IEnumerator DataLoading()
     {
@@ -100,8 +97,8 @@ public class DataInit
         yield return new WaitUntil(() => typeCount == Managers.Game.inGameData.dataInit.objectPool.PoolingObjectsCount);
 
         yield return new WaitUntil(() => typeCount == Managers.Game.inGameData.dataInit.objectPool.ScriptableObjectsCount);
-
-        yield return new WaitUntil(() => Managers.UI.IsInitalize == true);
+        
+        Managers.UI.GetUI<SceneLoading_UI>().PlayAnimation();
 
         yield return new WaitUntil(() => Managers.Game.player != null);
 

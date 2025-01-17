@@ -12,7 +12,6 @@ public class Scene_Manager
         this.path = path;
 
         Managers.UI.ClearDictionary();
-
         Managers.UI.ShowUI<SceneLoading_UI>();
 
         loadScene?.Invoke();

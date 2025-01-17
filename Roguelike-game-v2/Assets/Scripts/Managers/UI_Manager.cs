@@ -1,10 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Xml.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using Object = UnityEngine.Object;
 public class UI_Manager
@@ -140,9 +137,14 @@ public class UI_Manager
         }
         else
         {
-            uiDictionary[uiName] = Object.Instantiate(uiDictionary[uiName], Transform);
+            ui = uiDictionary[uiName] = Object.Instantiate(uiDictionary[uiName], Transform);
 
             ui.gameObject.SetActive(isActive);
+
+            if(isActive)
+            {
+                ui.SetUI();
+            }
         }
     }
     private IEnumerator Executing(Type type,string typeName, string methodName)

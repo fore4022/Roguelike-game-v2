@@ -13,6 +13,7 @@ public class SceneLoading_UI : UserInterface
     private Image background;
     private Image animationImage;
 
+    private Coroutine playAnimation;
     private const float limitTime = 1.5f;
     private const float minAlpha = 0;
     private const float maxAlpha = 255;
@@ -34,7 +35,7 @@ public class SceneLoading_UI : UserInterface
     }
     public void PlayAnimation()
     {
-        StartCoroutine(PlayingAnimation());
+        playAnimation = StartCoroutine(PlayingAnimation());
     }
     private IEnumerator Loading()
     {
@@ -52,6 +53,8 @@ public class SceneLoading_UI : UserInterface
 
         yield return new WaitForSecondsRealtime(limitTime);
 
+        StopCoroutine(playAnimation);
+
         Managers.UI.DestroyUI<SceneLoading_UI>();
     }
     private IEnumerator PlayingAnimation()
@@ -60,8 +63,6 @@ public class SceneLoading_UI : UserInterface
 
         while(true)
         {
-            Debug.Log("asdf");
-
             foreach (AnimatorController controller in animatorController)
             {
                 animator.runtimeAnimatorController = controller;
