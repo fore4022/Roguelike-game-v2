@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Xml.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using Object = UnityEngine.Object;
 public class UI_Manager
@@ -108,6 +109,10 @@ public class UI_Manager
         Util.GetMonoBehaviour().StartCoroutine(CreatingUI(typeName, true));
         Util.GetMonoBehaviour().StartCoroutine(Executing(typeof(T), typeName, methodName));
     }
+    public void InitUI()
+    {
+        Util.GetMonoBehaviour().StartCoroutine(InitalizingUI());
+    }
     public void ClearDictionary()
     {
         uiDictionary = new();
@@ -150,13 +155,11 @@ public class UI_Manager
 
         method.Invoke(uiDictionary[typeName], null);
     }
-    public IEnumerator InitalizingUI()
+    private IEnumerator InitalizingUI()
     {
-        UserInterface[] array = uiDictionary.Values.ToArray();
-
-        for (int i = 0; i < array.Length; i++)
+        foreach(UserInterface ui in uiDictionary.Values)
         {
-            array[i].gameObject.SetActive(true);
+            ui.SetUI();
 
             yield return null;
         }

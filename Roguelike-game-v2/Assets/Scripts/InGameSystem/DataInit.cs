@@ -47,7 +47,7 @@ public class DataInit
         Managers.Scene.LoadScene(inGameScene);
 
         yield return new WaitUntil(() => inGameScene == Managers.Scene.CurrentScene);
-        Debug.Log(nameof(SceneLoading_UI.PlayAnimation));
+
         Managers.UI.CreateAndExcute<SceneLoading_UI>(nameof(SceneLoading_UI.PlayAnimation));
 
         GameObject GameSystem = GameObject.Find("GameSystem");
@@ -90,6 +90,8 @@ public class DataInit
         Managers.Game.inGameData.dataInit.objectPool.CreateObjects(skillList, defaultSkillCount);
 
         int typeCount = monsterList.Count + skillList.Count;
+
+        Managers.UI.InitUI();
 
         yield return new WaitUntil(() => Managers.UI.IsInitalize == true);
 

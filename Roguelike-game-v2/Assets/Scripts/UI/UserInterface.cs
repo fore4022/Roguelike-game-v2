@@ -4,17 +4,20 @@ public abstract class UserInterface : MonoBehaviour
     protected bool isInitalized = false;
 
     public bool IsInitalized { get { return isInitalized; } }
-    protected virtual void Awake()
+    public void SetUI()
     {
-        Managers.UI.AddUI(this);
+        if(!isInitalized)
+        {
+            SetUserInterface();
+
+            isInitalized = true;
+        }
     }
     protected void OnEnable()
     {
         if(!isInitalized)
         {
-            isInitalized = true;
-
-            SetUserInterface();
+            Managers.UI.AddUI(this);
         }
         else
         {

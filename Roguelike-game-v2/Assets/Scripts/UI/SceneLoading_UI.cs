@@ -60,6 +60,8 @@ public class SceneLoading_UI : UserInterface
 
         while(true)
         {
+            Debug.Log("asdf");
+
             foreach (AnimatorController controller in animatorController)
             {
                 animator.runtimeAnimatorController = controller;
