@@ -105,7 +105,7 @@ public class DataInit
         Managers.UI.GetUI<SceneLoading_UI>().IsLoading = false;
 
         yield return new WaitUntil(() => Managers.UI.GetUI<SceneLoading_UI>() == null);
-
+        
         Managers.Game.GameStart();
     }
 }

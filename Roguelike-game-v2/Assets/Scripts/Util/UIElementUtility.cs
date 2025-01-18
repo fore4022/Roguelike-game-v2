@@ -99,7 +99,7 @@ public class UIElementUtility
             }
         }
     }
-    public IEnumerator SetTextAlpha(List<TextMeshProUGUI> tmpList, Color color, float targetAlphaValue, float duration)
+    private IEnumerator SetTextAlpha(List<TextMeshProUGUI> tmpList, Color color, float targetAlphaValue, float duration)
     {
         Color childrenColor;
 
@@ -146,7 +146,7 @@ public class UIElementUtility
             }
         }
     }
-    public IEnumerator SetImageAlpha(List<Image> imgList, Color color, float targetAlphaValue, float duration)
+    private IEnumerator SetImageAlpha(List<Image> imgList, Color color, float targetAlphaValue, float duration)
     {
         Color childrenColor;
         float totalTime = 0;
