@@ -9,16 +9,26 @@ public class Title_Scene : MonoBehaviour, IPointerClickHandler
     }
     private void Start()
     {
-        Managers.UserData.UserDataLoad();
-        StartCoroutine(UserDataLoad());
+        StartCoroutine(Initalizing());
     }
-    private IEnumerator UserDataLoad()
+    private IEnumerator Initalizing()
+    {
+        Managers.UserData.UserDataLoad();
+        Managers.UI.InitUI();
+
+        yield return new WaitUntil(() => Managers.UI.IsInitalize == true);
+
+        StartCoroutine(UserDataLoading());
+
+        yield return new WaitUntil(() => Managers.UI.GetUI<SceneLoading_UI>() != null);
+
+        Managers.UI.GetUI<SceneLoading_UI>().IsLoading = false;
+    }
+    private IEnumerator UserDataLoading()
     {
         Managers.UI.GetUI<StartMessage_UI>().IsLoading(true);
 
         yield return new WaitUntil(() => Managers.UserData.GetUserData != null);
-
-        yield return new WaitForSeconds(10);
 
         Managers.UI.GetUI<StartMessage_UI>().IsLoading(false);
     }
