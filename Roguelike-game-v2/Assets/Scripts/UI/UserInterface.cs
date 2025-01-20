@@ -8,9 +8,9 @@ public abstract class UserInterface : MonoBehaviour
     {
         if(!isInitalized)
         {
-            SetUserInterface();
-
             isInitalized = true;
+
+            SetUserInterface();
         }
     }
     protected void OnEnable()

@@ -10,9 +10,7 @@ public class UI_Manager
 
     private Dictionary<string, UserInterface> uiDictionary = new();
 
-    private bool isInitalize;
-
-    public bool IsInitalize { get { return isInitalize; } }
+    public bool isInitalized;
     private Transform Transform
     {
         get 
@@ -97,6 +95,8 @@ public class UI_Manager
         if(!uiDictionary.ContainsKey(name))
         {
             uiDictionary.Add(name, ui);
+
+            isInitalized = false;
         }
     }
     public void CreateAndExcute<T>(string methodName) where T : UserInterface
@@ -159,6 +159,11 @@ public class UI_Manager
     }
     private IEnumerator InitalizingUI()
     {
+        if(isInitalized)
+        {
+            yield break;
+        }
+
         foreach(UserInterface ui in uiDictionary.Values)
         {
             ui.SetUI();
@@ -166,6 +171,6 @@ public class UI_Manager
             yield return null;
         }
 
-        isInitalize = true;
+        isInitalized = true;
     }
 }

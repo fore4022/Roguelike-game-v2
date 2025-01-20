@@ -90,7 +90,7 @@ public class DataInit
 
         Managers.UI.InitUI();
 
-        yield return new WaitUntil(() => Managers.UI.IsInitalize == true);
+        yield return new WaitUntil(() => Managers.UI.isInitalized == true);
 
         yield return new WaitUntil(() => Managers.Game.inGameData.playerData.levelUpdate != null);
 
@@ -98,8 +98,6 @@ public class DataInit
 
         yield return new WaitUntil(() => typeCount == Managers.Game.inGameData.dataInit.objectPool.ScriptableObjectsCount);
         
-        Managers.UI.GetUI<SceneLoading_UI>().PlayAnimation();
-
         yield return new WaitUntil(() => Managers.Game.player != null);
 
         Managers.UI.GetUI<SceneLoading_UI>().IsLoading = false;

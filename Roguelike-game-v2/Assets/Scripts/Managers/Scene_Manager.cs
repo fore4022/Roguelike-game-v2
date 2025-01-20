@@ -13,7 +13,6 @@ public class Scene_Manager
 
         Managers.UI.ClearDictionary();
         Managers.UI.ShowUI<SceneLoading_UI>();
-
         loadScene?.Invoke();
     }
     public async void SetScene()
@@ -27,8 +26,8 @@ public class Scene_Manager
 
         GC.Collect();
 
+        Managers.UI.isInitalized = false;
         currentScene = path;
-
         path = null;
     }
 }

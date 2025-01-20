@@ -3,9 +3,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 public class Title_Scene : MonoBehaviour, IPointerClickHandler
 {
+    private const string sceneName = "Main";
+
     public void OnPointerClick(PointerEventData eventData)
     {
-        Managers.Scene.LoadScene("Main");
+        Managers.Scene.LoadScene(sceneName);
     }
     private void Start()
     {
@@ -16,7 +18,7 @@ public class Title_Scene : MonoBehaviour, IPointerClickHandler
         Managers.UserData.UserDataLoad();
         Managers.UI.InitUI();
 
-        yield return new WaitUntil(() => Managers.UI.IsInitalize == true);
+        yield return new WaitUntil(() => Managers.UI.isInitalized == true);
 
         StartCoroutine(UserDataLoading());
 
