@@ -46,6 +46,8 @@ public class SceneLoading_UI : UserInterface
 
         Managers.Scene.SetScene();
 
+        yield return new WaitUntil(() => sceneName == Managers.Scene.CurrentScene);
+
         yield return new WaitUntil(() => isLoading == false);
 
         StartCoroutine(PlayingAnimation());
@@ -58,9 +60,9 @@ public class SceneLoading_UI : UserInterface
     }
     private IEnumerator PlayingAnimation()
     {
-        //Managers.UI.uiElementUtility.SetImageAlpha(animationImage, maxAlpha, limitTime);
+        Managers.UI.uiElementUtility.SetImageAlpha(animationImage, maxAlpha, limitTime);
 
-        while(true)
+        while (true)
         {
             foreach (AnimatorController controller in animatorController)
             {

@@ -4,12 +4,13 @@ public class Scene_Manager
     public Action loadScene = null;
 
     private string currentScene;
-    private string path = null;
+    private string sceneName = null;
 
     public string CurrentScene { get { return currentScene; } }
+    public string SceneName { get { return sceneName; } }
     public void LoadScene(string path)
     {
-        this.path = path;
+        this.sceneName = path;
 
         Managers.UI.ClearDictionary();
         Managers.UI.ShowUI<SceneLoading_UI>();
@@ -17,17 +18,17 @@ public class Scene_Manager
     }
     public async void SetScene()
     {
-        if(path == null)
+        if(sceneName == null)
         {
             return;
         }
 
-        await Util.LoadingScene(path);
+        await Util.LoadingScene(sceneName);
 
         GC.Collect();
 
         Managers.UI.isInitalized = false;
-        currentScene = path;
-        path = null;
+        currentScene = sceneName;
+        sceneName = null;
     }
 }

@@ -10,7 +10,7 @@ public class UI_Manager
 
     private Dictionary<string, UserInterface> uiDictionary = new();
 
-    public bool isInitalized;
+    public bool isInitalized = false;
     private Transform Transform
     {
         get 
