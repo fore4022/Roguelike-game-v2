@@ -49,8 +49,8 @@ public class DataInit
 
         Managers.Scene.LoadScene(sceneName);
 
-        yield return new WaitUntil(() => sceneName == Managers.Scene.CurrentScene);
-
+        yield return new WaitUntil(() => Managers.Scene.IsSceneLoadComplete);
+        
         GameObject GameSystem = GameObject.Find("GameSystem");
 
         objectPool = new();

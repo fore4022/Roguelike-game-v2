@@ -46,7 +46,7 @@ public class SceneLoading_UI : UserInterface
 
         Managers.Scene.SetScene();
 
-        yield return new WaitUntil(() => sceneName == Managers.Scene.CurrentScene);
+        yield return new WaitUntil(() => Managers.Scene.IsSceneLoadComplete);
 
         yield return new WaitUntil(() => isLoading == false);
 

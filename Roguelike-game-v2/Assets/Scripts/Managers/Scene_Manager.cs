@@ -5,12 +5,13 @@ public class Scene_Manager
 
     private string currentScene;
     private string sceneName = null;
-
-    public string CurrentScene { get { return currentScene; } }
-    public string SceneName { get { return sceneName; } }
-    public void LoadScene(string path)
+    private bool isLoad = false;
+    
+    public bool IsSceneLoadComplete { get { return currentScene == sceneName; } }
+    public void LoadScene(string sceneName)
     {
-        this.sceneName = path;
+        isLoad = true;
+        this.sceneName = sceneName;
 
         Managers.UI.ClearDictionary();
         Managers.UI.ShowUI<SceneLoading_UI>();
@@ -18,7 +19,7 @@ public class Scene_Manager
     }
     public async void SetScene()
     {
-        if(sceneName == null)
+        if(!isLoad)
         {
             return;
         }
@@ -29,6 +30,6 @@ public class Scene_Manager
 
         Managers.UI.isInitalized = false;
         currentScene = sceneName;
-        sceneName = null;
+        isLoad = false;
     }
 }
