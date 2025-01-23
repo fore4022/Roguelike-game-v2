@@ -4,7 +4,7 @@ public class Stage_SO : ScriptableObject
 {
     public StageInformation_SO stageInformation_SO;
 
-    public Sprite background;
+    public GameObject mapIcon;
 
     public string stageName;
     public float difficulty;
