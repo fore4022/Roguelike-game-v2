@@ -1,5 +1,4 @@
-using UnityEngine;
-public class StageIcon_UI : UserInterface
+public class StageIcons_UI : UserInterface
 {
     private Stage_SO stage;
 
