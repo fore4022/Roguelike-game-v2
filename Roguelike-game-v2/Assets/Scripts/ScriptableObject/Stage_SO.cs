@@ -2,10 +2,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Stage", menuName = "Create New SO/Create New Stage_SO")]
 public class Stage_SO : ScriptableObject
 {
-    public StageInformation_SO stageInformation_SO;
+    public StageInformation_SO stageInformation;
+    public MapSprite_SO mapSprite;
 
     public GameObject mapIcon;
 
     public string stageName;
-    public float difficulty;
+    public bool isClear = false;
 }

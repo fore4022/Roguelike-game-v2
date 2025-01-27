@@ -6,9 +6,7 @@ public class Game_Manager
     public DifficultyScaler difficultyScaler = null;
     public EnemyDetection enemyDetection = null;
     public Calculate calculate = null;
-
     public StageInformation_SO stageInformation;
-
     public InGameTimer inGameTimer;
     public MonsterSpawner monsterSpawner;
     public Player player;
@@ -21,12 +19,11 @@ public class Game_Manager
         enemyDetection = new();
         calculate = new();
     }
-    public void DataLoad(StageInformation_SO stageInformation)
+    public void DataLoad()
     {
+        stageInformation = Managers.Main.GetCurrentStage.stageInformation;
+
         Set();
-
-        this.stageInformation = stageInformation;
-
         inGameData.dataInit.GetInGameData();
     }
     public void GameStart()
@@ -35,7 +32,6 @@ public class Game_Manager
 
         inGameTimer.StartTimer();
         monsterSpawner.StartSpawn();
-
         inGameData.playerData.SetLevel();
 
         Managers.UI.ShowUI<LevelUp_UI>();
@@ -47,11 +43,8 @@ public class Game_Manager
         difficultyScaler = null;
         enemyDetection = null;
         calculate = null;
-
         stageInformation = null;
-
         player = null;
-
         Time.timeScale = 0;
     }
 }

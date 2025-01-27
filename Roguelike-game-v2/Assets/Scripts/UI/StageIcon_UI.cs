@@ -1,7 +1,10 @@
 using TMPro;
+using UnityEngine;
 public class StageIcon_UI : UserInterface
 {
+    [SerializeField]
     private TextMeshProUGUI sceneName;
+
     private Stage_SO stage;
 
     public Stage_SO SetStage_SO { set { stage = value; } }
@@ -12,7 +15,7 @@ public class StageIcon_UI : UserInterface
     public void UpdateUI()
     {
         sceneName.text = stage.stageName;
-
+        
         Instantiate(stage.mapIcon);
     }
 }
