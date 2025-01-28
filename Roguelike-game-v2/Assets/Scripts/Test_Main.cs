@@ -17,6 +17,6 @@ public class Test_Main : MonoBehaviour
             yield return null;
         }
 
-        Managers.Game.DataLoad(stageInfromation);
+        Managers.Game.DataLoad();
     }
 }

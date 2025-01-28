@@ -1,18 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-public class MapSprite_SO : MonoBehaviour
+[CreateAssetMenu(fileName ="StageInformation", menuName = "Create New SO/Create New StageInformation_SO")]
+public class MapSprite_SO : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Sprite map_1;
+    public Sprite map_2;
+    public Sprite flag;
+    public Sprite enviroment;
 }
