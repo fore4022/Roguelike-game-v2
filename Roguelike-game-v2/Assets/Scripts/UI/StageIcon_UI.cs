@@ -16,14 +16,15 @@ public class StageIcon_UI : UserInterface
 
     private Stage_SO stage;
 
-    public Stage_SO SetStage_SO { set { stage = value; } }
     public override void SetUserInterface()
     {
         sceneName = Util.GetComponentInChildren<TextMeshProUGUI>(transform);
+
+        UpdateUI();
     }
     public void UpdateUI()
     {
-        sceneName.text = stage.stageName;
+        //stage = Managers.UserData.GetUserData.current_StageName;
 
         Set();
     }
@@ -31,6 +32,7 @@ public class StageIcon_UI : UserInterface
     {
         MapSprite_SO mapSprite = stage.mapSprite;
 
+        sceneName.text = stage.stageName;
         map_1.sprite = mapSprite.map_1;
         map_2.sprite = mapSprite.map_2;
         flag.sprite = mapSprite.flag;
