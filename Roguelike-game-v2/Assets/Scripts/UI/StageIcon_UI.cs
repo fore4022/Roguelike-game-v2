@@ -24,7 +24,7 @@ public class StageIcon_UI : UserInterface
     }
     public void UpdateUI()
     {
-        //stage = Managers.UserData.GetUserData.current_StageName;
+        string stageName = Managers.UserData.GetUserData.current_StageName;
 
         Set();
     }
