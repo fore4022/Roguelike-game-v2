@@ -20,11 +20,17 @@ public class StageIcon_UI : UserInterface
     {
         sceneName = Util.GetComponentInChildren<TextMeshProUGUI>(transform);
 
-        UpdateUI();
+        Init();
     }
-    public void UpdateUI()
+    private void Init()
     {
-        string stageName = Managers.UserData.GetUserData.current_StageName;
+        stage = Managers.Main.gameData.GetStageSO(Managers.UserData.GetUserData.current_StageName);
+
+        Set();
+    }
+    public void UpdateUI(string stageName)
+    {
+        stage = Managers.Main.gameData.GetStageSO(stageName);
 
         Set();
     }
