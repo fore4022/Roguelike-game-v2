@@ -12,7 +12,7 @@ public class Test_Main : MonoBehaviour
     }
     private IEnumerator DataLoadTest()
     {
-        while (Managers.UserData.GetUserData == null)
+        while (Managers.UserData.userData == null)
         {
             yield return null;
         }

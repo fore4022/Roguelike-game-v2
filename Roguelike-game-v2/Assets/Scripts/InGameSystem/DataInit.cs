@@ -27,7 +27,7 @@ public class DataInit
     }
     public void LoadSkillList(ref List<GameObject> skillList)
     {
-        for(int i = 0; i < Managers.UserData.GetUserData.userLevel; i++)
+        for(int i = 0; i < Managers.UserData.userData.userLevel; i++)
         {
             UserLevel_SO userLevel = userLevelInfo.LevelInfo[i];
 

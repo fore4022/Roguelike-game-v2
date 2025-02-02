@@ -1,11 +1,14 @@
 public class UserData//
 {
-    public TechnologyTree techTree = new();
+    public TechnologyTree TechTree { get { return techTree; } set { techTree = value; } }
+    public string StageName { get { return current_StageName; } set{ current_StageName = value; }
 
-    public string current_StageName = "";
+    private TechnologyTree techTree = new();
 
-    public int userLevel = 1;
-    public int userExperience = 0;
-    public int goods = 0;
-    public int lastPlayedStageIndex = 0;
+    private string current_StageName = "";
+
+    private int userLevel = 1;
+    private int userExperience = 0;
+    private int goods = 0;
+    private int lastPlayedStageIndex = 0;
 }

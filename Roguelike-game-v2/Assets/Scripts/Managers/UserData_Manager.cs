@@ -2,11 +2,10 @@ using System.IO;
 using UnityEngine;
 public class UserData_Manager
 {
-    private UserData userData;
+    public UserData userData;
 
     private string filePath = "";
-
-    public UserData GetUserData { get { return userData; } }
+    
     public async void UserDataLoad()
     {
         if(filePath == string.Empty)

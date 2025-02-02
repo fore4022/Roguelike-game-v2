@@ -3,26 +3,29 @@ using UnityEngine;
 public class GameData
 {
     [SerializeField]
-    private Stage_SO[] stages;//
+    private Stage_SO[] stages;
 
     public Stage_SO GetStageSO(string sceneName, int sign = 0)
     {
-        foreach(Stage_SO stage in stages)//
-        {
-            if(stage.stageName == sceneName)
-            {
-                return stage;
-            }
-        }
+        int index = 0;
 
         for(int i = 0; i < stages.Count(); i++)
         {
             if(stages[i].stageName == sceneName)
             {
-
+                index = i + sign;
             }
         }
 
-        return null;
+        if(index > stages.Count())
+        {
+            index = 0;
+        }
+        else if(index == -1)
+        {
+            index = stages.Count();
+        }
+
+        return stages[index];
     }
 }

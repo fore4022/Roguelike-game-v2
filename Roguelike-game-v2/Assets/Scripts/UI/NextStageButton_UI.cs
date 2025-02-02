@@ -7,7 +7,7 @@ public class NextStageButton_UI : NewButton
 
     protected override void PointerClick()
     {
-        string stageName = ;
+        string stageName = "";
 
         Managers.UI.GetUI<StageIcon_UI>().UpdateUI(stageName);
     }

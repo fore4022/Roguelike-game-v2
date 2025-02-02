@@ -24,7 +24,7 @@ public class StageIcon_UI : UserInterface
     }
     private void Init()
     {
-        stage = Managers.Main.gameData.GetStageSO(Managers.UserData.GetUserData.current_StageName);
+        stage = Managers.Main.gameData.GetStageSO(Managers.UserData.userData.current_StageName);
 
         Set();
     }

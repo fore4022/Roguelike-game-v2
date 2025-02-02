@@ -10,7 +10,7 @@ public class DifficultyScaler
     {
         if(userLevelScale == 0)
         {
-            userLevelScale = Managers.UserData.GetUserData.userLevel / divideValue;
+            userLevelScale = Managers.UserData.userData.userLevel / divideValue;
         }
 
         float difficultyScale = Managers.Game.stageInformation.difficulty;

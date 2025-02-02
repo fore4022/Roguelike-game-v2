@@ -35,7 +35,7 @@ public class Title_Scene : MonoBehaviour, IPointerClickHandler
     {
         Managers.UI.GetUI<StartMessage_UI>().IsLoading(true);
 
-        yield return new WaitUntil(() => Managers.UserData.GetUserData != null);
+        yield return new WaitUntil(() => Managers.UserData.userData != null);
 
         Managers.UI.GetUI<StartMessage_UI>().IsLoading(false);
     }
