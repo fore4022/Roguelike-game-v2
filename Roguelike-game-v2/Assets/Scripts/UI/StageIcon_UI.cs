@@ -24,24 +24,33 @@ public class StageIcon_UI : UserInterface
     }
     private void Init()
     {
-        stage = Managers.Main.gameData.GetStageSO(Managers.UserData.userData.current_StageName);
+        stage = Managers.Main.GetCurrentStage();
 
         Set();
     }
     public void UpdateUI(string stageName)
     {
-        stage = Managers.Main.gameData.GetStageSO(stageName);
+        stage = Managers.Main.GameData.GetStageSO(stageName);
 
         Set();
     }
     private void Set()
     {
-        MapSprite_SO mapSprite = stage.mapSprite;
+        IconSprite_SO iconSprite = stage.mapSprite;
+
+        if(iconSprite.enviroment == null)
+        {
+            enviroment.gameObject.SetActive(false);
+        }
+        else
+        {
+            enviroment.gameObject.SetActive(true);
+
+            enviroment.sprite = iconSprite.enviroment;
+        }
 
         sceneName.text = stage.stageName;
-        map_1.sprite = mapSprite.map_1;
-        map_2.sprite = mapSprite.map_2;
-        flag.sprite = mapSprite.flag;
-        enviroment.sprite = mapSprite.enviroment;
+        map_1.sprite = iconSprite.map_1;
+        map_2.sprite = iconSprite.map_2;
     }
 }

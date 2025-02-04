@@ -2,7 +2,7 @@ using System.IO;
 using UnityEngine;
 public class UserData_Manager
 {
-    public UserData userData;
+    public UserData data;
 
     private string filePath = "";
     
@@ -20,16 +20,16 @@ public class UserData_Manager
 
         string jsonData = await File.ReadAllTextAsync(filePath);
 
-        userData = JsonUtility.FromJson<UserData>(jsonData);
+        data = JsonUtility.FromJson<UserData>(jsonData);
     }
     public async void UserDataSave()
     {
-        if(userData == null)
+        if(data == null)
         {
-            userData = new();
+            data = new();
         }
 
-        string jsonData = JsonUtility.ToJson(userData);
+        string jsonData = JsonUtility.ToJson(data);
 
         await File.WriteAllTextAsync(filePath, jsonData);
     }

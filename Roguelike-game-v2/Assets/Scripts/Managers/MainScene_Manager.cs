@@ -1,8 +1,33 @@
 public class MainScene_Manager
 {
-    public GameData gameData = null;
+    private GameData gameData = null;
 
-    private Stage_SO currentStage;
+    public GameData GameData
+    {
+        get { return gameData; }
+        set
+        {
+            Init();
+            gameData = value;
+        }
+    }
+    public Stage_SO GetCurrentStage()
+    {
+        return Managers.Main.gameData.GetStageSO(Managers.UserData.data.StageName);
+    }
+    private void Init()
+    {
+        var stageClearInfo = Managers.UserData.data.StageClearInfo;
+        string stageName;
 
-    public Stage_SO GetCurrentStage { get { return currentStage; } set { currentStage = value; } }
+        foreach (Stage_SO stage in gameData.Stages)
+        {
+            stageName = stage.stageName;
+
+            if(!stageClearInfo.ContainsKey(stageName))
+            {
+                Managers.UserData.data.StageClearInfo.Add(stageName, false);
+            }
+        }
+    }
 }

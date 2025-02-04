@@ -14,7 +14,7 @@ public class Title_Scene : MonoBehaviour, IPointerClickHandler
     }
     private void Start()
     {
-        Managers.Main.gameData = gameData;
+        Managers.Main.GameData = gameData;
 
         StartCoroutine(Initalizing());
     }
@@ -35,7 +35,7 @@ public class Title_Scene : MonoBehaviour, IPointerClickHandler
     {
         Managers.UI.GetUI<StartMessage_UI>().IsLoading(true);
 
-        yield return new WaitUntil(() => Managers.UserData.userData != null);
+        yield return new WaitUntil(() => Managers.UserData.data != null);
 
         Managers.UI.GetUI<StartMessage_UI>().IsLoading(false);
     }

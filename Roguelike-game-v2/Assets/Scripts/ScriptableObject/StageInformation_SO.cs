@@ -5,7 +5,7 @@ public class StageInformation_SO : ScriptableObject
 {
     public List<SpawnInformation_SO> spawnInformationList;
 
-    public Sprite background;
+    public GameObject background;
 
     public float difficulty;
     public float spawnDelay;

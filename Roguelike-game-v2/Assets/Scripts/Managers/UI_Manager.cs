@@ -11,6 +11,9 @@ public class UI_Manager
     private Dictionary<string, UserInterface> uiDictionary = new();
 
     public bool isInitalized = false;
+
+    private Coroutine initalizing = null;
+
     private Transform Transform
     {
         get 
@@ -108,7 +111,10 @@ public class UI_Manager
     }
     public void InitUI()
     {
-        Util.GetMonoBehaviour().StartCoroutine(InitalizingUI());
+        if(initalizing == null)
+        {
+            initalizing = Util.GetMonoBehaviour().StartCoroutine(InitalizingUI());
+        }
     }
     public void ClearDictionary()
     {
@@ -171,6 +177,7 @@ public class UI_Manager
             yield return null;
         }
 
+        initalizing = null;
         isInitalized = true;
     }
 }

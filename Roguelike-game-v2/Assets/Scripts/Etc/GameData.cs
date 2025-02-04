@@ -1,10 +1,12 @@
 using System.Linq;
 using UnityEngine;
+[System.Serializable]
 public class GameData
 {
     [SerializeField]
     private Stage_SO[] stages;
 
+    public Stage_SO[] Stages { get { return stages; } }
     public Stage_SO GetStageSO(string sceneName, int sign = 0)
     {
         int index = 0;

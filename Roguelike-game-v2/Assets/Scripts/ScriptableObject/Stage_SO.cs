@@ -3,8 +3,7 @@ using UnityEngine;
 public class Stage_SO : ScriptableObject
 {
     public StageInformation_SO stageInformation;
-    public MapSprite_SO mapSprite;
+    public IconSprite_SO mapSprite;
 
     public string stageName;
-    public bool isClear = false;
 }
