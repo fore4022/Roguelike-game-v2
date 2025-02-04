@@ -1,7 +1,7 @@
 using UnityEngine;
 public class Resume_UI : NewButton
 {
-    protected override void PointerClick()
+    public override void PointerClick()
     {
         Time.timeScale = 1f;
 

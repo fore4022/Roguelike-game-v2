@@ -7,7 +7,7 @@ public class GameData
     private Stage_SO[] stages;
 
     public Stage_SO[] Stages { get { return stages; } }
-    public Stage_SO GetStageSO(string sceneName, int sign = 0)
+    public Stage_SO GetStageSO(string sceneName, int sign)
     {
         int index = 0;
 
@@ -27,6 +27,8 @@ public class GameData
         {
             index = stages.Count();
         }
+
+        Managers.UserData.data.StageName = stages[index].stageName;
 
         return stages[index];
     }

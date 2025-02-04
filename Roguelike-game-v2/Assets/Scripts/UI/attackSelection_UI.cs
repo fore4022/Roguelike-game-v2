@@ -12,6 +12,7 @@ public class AttackSelection_UI : UserInterface
     private Image background;
     private GameObject attackOption = null;
 
+    private const string path = "AttackOption";
     private const float duration = 0.75f;
     private const float basicAlpha = 180;
     private const float targetAlpha = 0;
@@ -85,8 +86,6 @@ public class AttackSelection_UI : UserInterface
     }
     private async void LoadAttackOption()
     {
-        string path = Managers.UI.GetName<AttackOption_UI>();
-
         attackOption = await Util.LoadingToPath<GameObject>(path);
     }
     private IEnumerator Init()
@@ -109,7 +108,7 @@ public class AttackSelection_UI : UserInterface
 
             attackOptionList.Add(component);
 
-            component.SetUserInterface();
+            component.Set();
 
             go.SetActive(false);
 

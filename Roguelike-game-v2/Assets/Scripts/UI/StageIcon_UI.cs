@@ -28,9 +28,9 @@ public class StageIcon_UI : UserInterface
 
         Set();
     }
-    public void UpdateUI(string stageName)
+    public void UpdateUI(int sign)
     {
-        stage = Managers.Main.GameData.GetStageSO(stageName);
+        stage = Managers.Main.GetCurrentStage(sign);
 
         Set();
     }
@@ -47,6 +47,17 @@ public class StageIcon_UI : UserInterface
             enviroment.gameObject.SetActive(true);
 
             enviroment.sprite = iconSprite.enviroment;
+        }
+
+        if(!Managers.UserData.data.isClear())
+        {
+            flag.gameObject.SetActive(false);
+        }
+        else
+        {
+            flag.gameObject.SetActive(true);
+
+            flag.sprite = iconSprite.flag;
         }
 
         sceneName.text = stage.stageName;

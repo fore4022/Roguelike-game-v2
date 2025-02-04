@@ -1,3 +1,5 @@
+using System.Collections;
+using UnityEngine;
 public class MainScene_Manager
 {
     private GameData gameData = null;
@@ -7,24 +9,26 @@ public class MainScene_Manager
         get { return gameData; }
         set
         {
-            Init();
             gameData = value;
+
+            Util.GetMonoBehaviour().StartCoroutine(Init());
         }
     }
-    public Stage_SO GetCurrentStage()
+    public Stage_SO GetCurrentStage(int sign = 0)
     {
-        return Managers.Main.gameData.GetStageSO(Managers.UserData.data.StageName);
+        return Managers.Main.gameData.GetStageSO(Managers.UserData.data.StageName, sign);
     }
-    private void Init()
+    private IEnumerator Init()
     {
-        var stageClearInfo = Managers.UserData.data.StageClearInfo;
         string stageName;
+
+        yield return new WaitUntil(() => Managers.UserData.data != null);
 
         foreach (Stage_SO stage in gameData.Stages)
         {
             stageName = stage.stageName;
 
-            if(!stageClearInfo.ContainsKey(stageName))
+            if(!Managers.UserData.data.StageClearInfo.ContainsKey(stageName))
             {
                 Managers.UserData.data.StageClearInfo.Add(stageName, false);
             }

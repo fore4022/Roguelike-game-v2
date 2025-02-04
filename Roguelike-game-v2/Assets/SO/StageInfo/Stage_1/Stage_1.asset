@@ -14,5 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageInformation: {fileID: 11400000, guid: 837eca9bbdd2c224db59c36b52c34b9d, type: 2}
   mapSprite: {fileID: 11400000, guid: 142330f41134c5c429201b63327980cc, type: 2}
-  stageName: 
-  isClear: 0
+  stageName: prairie

@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-public class AttackOption_UI : UserInterface, IPointerDownHandler, IPointerExitHandler
+public class AttackOption_UI : MonoBehaviour, IPointerDownHandler, IPointerExitHandler
 {
     public AttackInformation info = null;
 
@@ -48,7 +48,7 @@ public class AttackOption_UI : UserInterface, IPointerDownHandler, IPointerExitH
     {
         StartCoroutine(OnButtonSelected());
     }
-    public override void SetUserInterface()
+    public void Set()
     {
         rectTransform = GetComponent<RectTransform>();
         button = GetComponent<Button>();

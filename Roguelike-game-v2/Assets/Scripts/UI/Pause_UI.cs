@@ -1,7 +1,7 @@
 using UnityEngine;
 public class Pause_UI : NewButton
 {
-    protected override void PointerClick()
+    public override void PointerClick()
     {
         Time.timeScale = 0;
 
