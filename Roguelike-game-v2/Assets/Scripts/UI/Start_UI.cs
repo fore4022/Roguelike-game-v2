@@ -1,4 +1,4 @@
-public class Start_UI : NewButton
+public class Start_UI : Button_1
 {
     public override void PointerClick()
     {

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
-public abstract class NewButton : UserInterface, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
+public abstract class Button_1 : UserInterface, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
 {
     protected float minScale = 1f;
     protected float maxScale = 1.075f;

@@ -1,4 +1,4 @@
-public class Setting_UI : NewButton
+public class Setting_UI : Button_1
 {
     public override void PointerClick()
     {

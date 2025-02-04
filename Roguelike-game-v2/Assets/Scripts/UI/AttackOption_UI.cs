@@ -4,59 +4,39 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-public class AttackOption_UI : MonoBehaviour, IPointerDownHandler, IPointerExitHandler
+public class AttackOption_UI : Button_2
 {
     public AttackInformation info = null;
 
     private List<TextMeshProUGUI> textList = new();
-
-    private RectTransform rectTransform;
-    private Button button;
     private Image image;
     private Animator animator;
 
-    private Coroutine adjustmentScale = null;
     private Coroutine playAnimation = null;
 
-    private const float minScale = 1f;
-    private const float maxScale = 1.1f;
-    private const float duration = 1;
-
-    public void OnPointerDown(PointerEventData eventData)
+    public override void OnPointerDown(PointerEventData eventData)
     {
         SetAnimator(true);
 
-        if(adjustmentScale != null)
-        {
-            StopCoroutine(adjustmentScale);
-        }
-        
-        adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, maxScale, duration));
+        base.OnPointerDown(eventData);
     }
-    public void OnPointerExit(PointerEventData eventData)
+    public override void OnPointerExit(PointerEventData eventData)
     {
         SetAnimator(false);
 
-        if(adjustmentScale != null)
-        {
-            StopCoroutine(adjustmentScale);
-        }
-
-        adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, minScale, duration));
+        base.OnPointerExit(eventData);
     }
-    private void PointerClick()
+    protected override void PointerClick()
     {
         StartCoroutine(OnButtonSelected());
     }
-    public void Set()
+    public override void Set()
     {
-        rectTransform = GetComponent<RectTransform>();
-        button = GetComponent<Button>();
         image = Util.GetComponentInChildren<Image>(transform);
         animator = Util.GetComponentInChildren<Animator>(transform);
         textList = Util.GetComponentsInChildren<TextMeshProUGUI>(transform);
 
-        button.onClick.AddListener(PointerClick);
+        base.Set();
         SetAnimator(false);
     }
     public void InitOption(int index)
