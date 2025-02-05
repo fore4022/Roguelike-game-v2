@@ -4,7 +4,7 @@ public class UserData
     private Dictionary<string, bool> stageClearInfo = new();
     private TechnologyTree techTree = new();
 
-    private string current_StageName = "prairie";
+    private string current_StageName = "Prairie";
     private int userLevel = 1;
     private int userExperience = 0;
 

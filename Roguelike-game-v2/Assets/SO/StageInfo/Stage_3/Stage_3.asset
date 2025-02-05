@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e9cf5da540d6084796d818663cf5253, type: 3}
-  m_Name: Stage_1
+  m_Name: Stage_3
   m_EditorClassIdentifier: 
-  stageInformation: {fileID: 11400000, guid: 837eca9bbdd2c224db59c36b52c34b9d, type: 2}
-  mapSprite: {fileID: 11400000, guid: 142330f41134c5c429201b63327980cc, type: 2}
-  stageName: Prairie
+  stageInformation: {fileID: 11400000, guid: b61c87c7f5e48cc4b86d6cd044614c78, type: 2}
+  mapSprite: {fileID: 11400000, guid: 3e7d67378e48c204e8c0fdb77f0a937d, type: 2}
+  stageName: Rock Mountain

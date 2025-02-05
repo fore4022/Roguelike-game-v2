@@ -62,6 +62,16 @@ public class StageIcon_UI : UserInterface
 
         sceneName.text = stage.stageName;
         map_1.sprite = iconSprite.map_1;
-        map_2.sprite = iconSprite.map_2;
+
+        if(iconSprite.map_2 == null)
+        {
+            map_2.gameObject.SetActive(false);
+        }
+        else
+        {
+            map_2.gameObject.SetActive(true);
+
+            map_2.sprite = iconSprite.map_2;
+        }
     }
 }

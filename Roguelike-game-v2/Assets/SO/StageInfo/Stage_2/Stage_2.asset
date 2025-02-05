@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageInformation: {fileID: 11400000, guid: e0cc80e9efeeda74d8b5a19d57367b32, type: 2}
   mapSprite: {fileID: 11400000, guid: ee6f62b70fee62e459d7e64b762a02c4, type: 2}
-  stageName: desert
+  stageName: Desert
