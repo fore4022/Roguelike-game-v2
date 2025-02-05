@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e9cf5da540d6084796d818663cf5253, type: 3}
-  m_Name: Stage_2
+  m_Script: {fileID: 11500000, guid: 8bb77a592112d124ab7e15e18c162fb2, type: 3}
+  m_Name: GameData
   m_EditorClassIdentifier: 
-  stageInformation: {fileID: 11400000, guid: e0cc80e9efeeda74d8b5a19d57367b32, type: 2}
-  mapSprite: {fileID: 11400000, guid: ee6f62b70fee62e459d7e64b762a02c4, type: 2}
-  stageName: desert
+  stages:
+  - {fileID: 11400000, guid: af5282a45a0be4f45bacf5cbe0321f69, type: 2}
+  - {fileID: 11400000, guid: dc9bac28f69a73347aca81826d720b05, type: 2}

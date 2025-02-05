@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-public class UserData//
+public class UserData
 {
     private Dictionary<string, bool> stageClearInfo = new();
     private TechnologyTree techTree = new();

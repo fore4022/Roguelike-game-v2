@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 public class Title_Scene : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField]
-    private GameData gameData;
+    private GameData_SO gameData;
 
     private const string sceneName = "Main";
 
@@ -14,7 +14,7 @@ public class Title_Scene : MonoBehaviour, IPointerClickHandler
     }
     private void Start()
     {
-        Managers.Main.GameData = gameData;
+        Managers.Main.GameData.SO = gameData;
 
         StartCoroutine(Initalizing());
     }

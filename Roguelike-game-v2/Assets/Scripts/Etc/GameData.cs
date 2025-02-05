@@ -1,11 +1,22 @@
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 [System.Serializable]
 public class GameData
 {
-    [SerializeField]
+    private GameData_SO so;
     private Stage_SO[] stages;
 
+    public GameData_SO SO
+    {
+        set
+        {
+            so = value;
+            stages = so.stages;
+
+            Util.GetMonoBehaviour().StartCoroutine(Init());
+        }
+    }
     public Stage_SO[] Stages { get { return stages; } }
     public Stage_SO GetStageSO(string sceneName, int sign)
     {
@@ -33,5 +44,21 @@ public class GameData
         Managers.UserData.data.StageName = stages[index].stageName;
 
         return stages[index];
+    }
+    private IEnumerator Init()
+    {
+        string stageName;
+
+        yield return new WaitUntil(() => Managers.UserData.data != null);
+
+        foreach (Stage_SO stage in stages)
+        {
+            stageName = stage.stageName;
+
+            if (!Managers.UserData.data.StageClearInfo.ContainsKey(stageName))
+            {
+                Managers.UserData.data.StageClearInfo.Add(stageName, false);
+            }
+        }
     }
 }
