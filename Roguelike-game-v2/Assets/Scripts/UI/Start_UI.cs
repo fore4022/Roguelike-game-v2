@@ -1,6 +1,6 @@
-public class Start_UI : Button_1
+public class Start_UI : Button_Default
 {
-    public override void PointerClick()
+    protected override void PointerClick()
     {
         Managers.Game.DataLoad();
     }

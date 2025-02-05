@@ -38,7 +38,7 @@ public class AttackSelection_UI : UserInterface
     }
     private IEnumerator Set()
     {
-        int optionCount = Managers.Game.inGameData.OptionCount - 3;
+        //int optionCount = Managers.Game.inGameData.OptionCount - 3;
 
         int[] DataIndexArray = Managers.Game.calculate.GetRandomValues(2, 2);//Managers.Game.inGameData.attackData.attackInfo.Count, Managers.Game.inGameData.OptionCount
 
@@ -91,7 +91,6 @@ public class AttackSelection_UI : UserInterface
     private IEnumerator Init()
     {
         LoadAttackOption();
-
         AdjustGridLayout();
 
         background.enabled = false;
@@ -103,13 +102,9 @@ public class AttackSelection_UI : UserInterface
         for (int i = 0; i < Managers.Game.inGameData.OptionCount; i++)
         {
             GameObject go = Instantiate(attackOption, transform);
-
             AttackOption_UI component = go.GetComponent<AttackOption_UI>();
 
             attackOptionList.Add(component);
-
-            component.Set();
-
             go.SetActive(false);
 
             yield return null;
@@ -126,7 +121,6 @@ public class AttackSelection_UI : UserInterface
         Time.timeScale = 1;
 
         InputActions.EnableInputAction<TouchControls>();
-
         Managers.UI.HideUI<AttackSelection_UI>();
     }
 }

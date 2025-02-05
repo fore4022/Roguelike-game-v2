@@ -1,12 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
-[RequireComponent(typeof(Button))]
-public abstract class Button_2 : MonoBehaviour, IPointerDownHandler, IPointerExitHandler
+public abstract class Button_2 : Button_Default, IPointerDownHandler, IPointerExitHandler
 {
-    protected RectTransform rectTransform;
-    protected Button button;
-
     protected Coroutine adjustmentScale = null;
     protected float minScale = 1;
     protected float maxScale = 1.1f;
@@ -30,12 +25,4 @@ public abstract class Button_2 : MonoBehaviour, IPointerDownHandler, IPointerExi
 
         adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, minScale, duration));
     }
-    public virtual void Set()
-    {
-        rectTransform = GetComponent<RectTransform>();
-        button = GetComponent<Button>();
-
-        button.onClick.AddListener(PointerClick);
-    }
-    protected abstract void PointerClick();
 }

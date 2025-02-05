@@ -17,26 +17,25 @@ public class AttackOption_UI : Button_2
     public override void OnPointerDown(PointerEventData eventData)
     {
         SetAnimator(true);
-
         base.OnPointerDown(eventData);
     }
     public override void OnPointerExit(PointerEventData eventData)
     {
         SetAnimator(false);
-
         base.OnPointerExit(eventData);
     }
     protected override void PointerClick()
     {
         StartCoroutine(OnButtonSelected());
     }
-    public override void Set()
+    protected override void Init()
     {
+        base.Init();
+
         image = Util.GetComponentInChildren<Image>(transform);
         animator = Util.GetComponentInChildren<Animator>(transform);
         textList = Util.GetComponentsInChildren<TextMeshProUGUI>(transform);
 
-        base.Set();
         SetAnimator(false);
     }
     public void InitOption(int index)

@@ -16,16 +16,18 @@ public class GameData
             if(stages[i].stageName == sceneName)
             {
                 index = i + sign;
+
+                break;
             }
         }
 
-        if(index > stages.Count())
+        if(index == stages.Count())
         {
             index = 0;
         }
         else if(index == -1)
         {
-            index = stages.Count();
+            index = stages.Count() - 1;
         }
 
         Managers.UserData.data.StageName = stages[index].stageName;
