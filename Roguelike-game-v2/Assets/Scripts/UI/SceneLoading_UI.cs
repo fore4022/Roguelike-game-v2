@@ -70,7 +70,7 @@ public class SceneLoading_UI : UserInterface
 
                 animator.Play(0, 0);
 
-                yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime == 1.0f);
+                yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
             }
         }
     }
