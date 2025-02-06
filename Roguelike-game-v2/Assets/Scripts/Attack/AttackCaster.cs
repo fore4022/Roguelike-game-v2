@@ -5,7 +5,9 @@ public class AttackCaster
     private Attack_SO attackSO = null;
 
     private string attackType;
+    private int level;
 
+    public int Level { set { level = value; } }
     public void SetAttackType(string attackType)
     {
         this.attackType = attackType;
@@ -20,8 +22,8 @@ public class AttackCaster
 
         while (true)
         {
-            yield return new WaitForSeconds(attackSO.coolTime);
-
+            yield return new WaitForSeconds(attackSO.coolTime[level]);
+            
             Managers.Game.inGameData.dataInit.objectPool.ActiveObject(attackType);
         }
     }

@@ -12,31 +12,23 @@ public class AttackCasterManage
 
         return default;
     }
-    public void CreateCaster(string type)
+    public AttackCaster CreateAndGetCaster(string type)
     {
         if(!Casters.ContainsKey(type))
         {
             AttackCaster caster = new();
 
             caster.SetAttackType(type);
-
-            Casters.Add(type, caster);
-        }
-    }
-    public AttackCaster CreateAndGetCaster(string type)
-    {
-        if (!Casters.ContainsKey(type))
-        {
-            AttackCaster caster = new();
-
-            caster.SetAttackType(type);
-
             Casters.Add(type, caster);
 
             return Casters[type];
         }
 
         return default;
+    }
+    public void UpdateCasterLevel(string type, int level)
+    {
+        Casters[type].Level = level;
     }
     public void DestroyCaster(string type)
     {

@@ -4,25 +4,24 @@ using UnityEngine;
 public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
 {
     protected Attack_SO attackSO;
-
     protected Animator animator;
     protected SpriteRenderer render;
     protected Collider2D col;
 
-    private Coroutine startAttack = null;
-    private Coroutine attacking = null;
+    protected int level;
 
+    private Coroutine attacking = null;
     private string attackType;
 
     public ScriptableObject SetScriptableObject { set { attackSO = value as Attack_SO; } }
-    public float DamageAmount { get { return Managers.Game.player.Stat.damage * attackSO.damageCoefficient; } }
+    public float DamageAmount { get { return Managers.Game.player.Stat.damage * attackSO.damageCoefficient[level]; } }
     protected void Awake()
     {
         gameObject.SetActive(false);
     }
     protected void OnEnable()
     {
-        startAttack = StartCoroutine(StartAttack());
+        StartCoroutine(StartAttack());
     }
     protected void Start()
     {
@@ -54,9 +53,9 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
     {
         yield return new WaitUntil(() => (animator != null) && (render != null) && (col != null));
 
-        int level = Managers.Game.inGameData.attackData.GetAttackLevel(attackType);
+        level = Managers.Game.inGameData.attackData.GetAttackLevel(attackType);
 
-        SetAttack(level);
+        SetAttack();
 
         render.enabled = true;
         col.enabled = true;
@@ -64,8 +63,6 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
         attacking = StartCoroutine(Attacking());
 
         yield return new WaitUntil(() => attacking == null);
-
-        startAttack = null;
 
         Managers.Game.inGameData.dataInit.objectPool.DisableObject(gameObject);
     }
@@ -78,8 +75,7 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
         yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
 
         render.enabled = false;
-
         attacking = null;
     }
-    protected abstract void SetAttack(int level);
+    protected abstract void SetAttack();
 }

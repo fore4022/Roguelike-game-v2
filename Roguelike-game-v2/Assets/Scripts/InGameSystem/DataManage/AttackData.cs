@@ -38,6 +38,10 @@ public class AttackData
             {
                 info.caster = Managers.Game.attackCasterManage.CreateAndGetCaster(key);
             }
+            else
+            {
+                Managers.Game.attackCasterManage.UpdateCasterLevel(key, info.level);
+            }
         }
     }
     public (AttackInformation_SO, int) GetAttackData(string key)
@@ -69,7 +73,7 @@ public class AttackData
     }
     private bool TryGetAttackData(string key, out AttackInformation info)
     {
-        if (attackIndexMap.TryGetValue(key, out int index))
+        if(attackIndexMap.TryGetValue(key, out int index))
         {
             info = attackInfo[index];
 

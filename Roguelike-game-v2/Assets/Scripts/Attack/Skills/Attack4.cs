@@ -1,6 +1,6 @@
 public class Attack4 : Attack
 {
-    protected override void SetAttack(int level)
+    protected override void SetAttack()
     {
 
     }

@@ -1,7 +1,7 @@
 using UnityEngine;
 public class Attack3 : Attack
 {
-    protected override void SetAttack(int level)
+    protected override void SetAttack()
     {
         Vector3 targetPosition = Managers.Game.enemyDetection.GetNearestEnemyPosition();
 
