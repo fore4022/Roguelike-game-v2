@@ -15,4 +15,4 @@ MonoBehaviour:
   map_1: {fileID: -532809573, guid: fce004bf373bbe74bb605ea73dd16d37, type: 3}
   map_2: {fileID: 0}
   flag: {fileID: -1641686635, guid: 6019c50433c43cd44b01f8ef6f86fc7c, type: 3}
-  enviroment: {fileID: 0}
+  enviroment: {fileID: 21300004, guid: 596f20bad5aa4644db446480a1583ece, type: 3}

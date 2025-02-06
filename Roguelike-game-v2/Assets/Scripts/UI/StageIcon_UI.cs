@@ -20,13 +20,7 @@ public class StageIcon_UI : UserInterface
     {
         sceneName = Util.GetComponentInChildren<TextMeshProUGUI>(transform);
 
-        Init();
-    }
-    private void Init()
-    {
-        stage = Managers.Main.GetCurrentStage();
-
-        Set();
+        UpdateUI(0);
     }
     public void UpdateUI(int sign)
     {
@@ -38,32 +32,24 @@ public class StageIcon_UI : UserInterface
     {
         IconSprite_SO iconSprite = stage.mapSprite;
 
-        if(iconSprite.enviroment == null)
-        {
-            enviroment.gameObject.SetActive(false);
-        }
-        else
+        sceneName.text = stage.stageName;
+        map_1.sprite = iconSprite.map_1;
+        enviroment.sprite = iconSprite.enviroment;
+
+        if (!Managers.UserData.data.isClear())
         {
             enviroment.gameObject.SetActive(true);
-
-            enviroment.sprite = iconSprite.enviroment;
-        }
-
-        if(!Managers.UserData.data.isClear())
-        {
             flag.gameObject.SetActive(false);
         }
         else
         {
+            enviroment.gameObject.SetActive(false);
             flag.gameObject.SetActive(true);
 
             flag.sprite = iconSprite.flag;
         }
 
-        sceneName.text = stage.stageName;
-        map_1.sprite = iconSprite.map_1;
-
-        if(iconSprite.map_2 == null)
+        if (iconSprite.map_2 == null)
         {
             map_2.gameObject.SetActive(false);
         }
