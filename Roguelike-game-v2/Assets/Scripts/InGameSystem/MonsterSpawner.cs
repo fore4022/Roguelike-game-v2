@@ -3,16 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 public class MonsterSpawner : MonoBehaviour
 {
-    public List<GameObject> monsterList = new();
-
     private Dictionary<string, ScriptableObject> monsterStats = new();
-
-    private Coroutine monsterSpawn = null;
+    public List<GameObject> monsterList = new();
 
     private const float minimumSpawnDelay = 0.075f;
 
+    private Coroutine monsterSpawn = null;
     private int[] monsterSpawnProbabilityArray = new int[100];
-
     private float spawnDelay = 0;
 
     private void Start()

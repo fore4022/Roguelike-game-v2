@@ -10,7 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c43d9ab8d436d3a45adf42fb3b0961a8, type: 3}
-  m_Name: SpawnInformation
+  m_Name: SpawnInfo_1-2
   m_EditorClassIdentifier: 
-  monsterInformation: []
-  duration: 0
+  monsterInformation:
+  - monster: {fileID: 4404251792433351587, guid: b794424a1108ac34abc876c38494f911, type: 3}
+    spawnProbability: 95
+  - monster: {fileID: 9081227401761573370, guid: 617af8e4242f6e745836ef3106d79995, type: 3}
+    spawnProbability: 5
+  duration: 1

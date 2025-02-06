@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89584b487538c5b49bba02d51c981659, type: 3}
   m_Name: Info_5
   m_EditorClassIdentifier: 
-  spawnInformationList: []
+  spawnInformationList:
+  - {fileID: 11400000, guid: e3fb18733038bbb4cb03c19b81aafe30, type: 2}
+  - {fileID: 11400000, guid: 94b24fcd2b2a2db41aa7bbf24d6b56fe, type: 2}
+  - {fileID: 11400000, guid: 313cb940a91c04b498a4febb491824bf, type: 2}
+  - {fileID: 11400000, guid: 83e923ae866220d41998a83313c49d23, type: 2}
+  - {fileID: 11400000, guid: 61f03da54368d8e46a33cdc9885f322f, type: 2}
+  - {fileID: 11400000, guid: 438dfd3ac260afe49a34ad14dab608e7, type: 2}
   background: {fileID: 0}
   difficulty: 0
   spawnDelay: 0

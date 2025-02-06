@@ -14,8 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnInformationList:
   - {fileID: 11400000, guid: 04705a2b39a905a4cacb8888734c5703, type: 2}
+  - {fileID: 11400000, guid: 8101e56418f37924ea8f061874e1c86f, type: 2}
+  - {fileID: 11400000, guid: e3224e561d97a89499dccbf461701089, type: 2}
+  - {fileID: 11400000, guid: 45903d4d6cde02149be727d16783ed57, type: 2}
+  - {fileID: 11400000, guid: 1a01b0a2ad14a594ab1d675698956adb, type: 2}
+  - {fileID: 11400000, guid: 66df15b42ce0c524da943d5d62dc31bd, type: 2}
   background: {fileID: 0}
-  stageName: 
   difficulty: 1
   spawnDelay: 2
   statScale: 0

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c43d9ab8d436d3a45adf42fb3b0961a8, type: 3}
+  m_Name: SpawnInfo_4-4
+  m_EditorClassIdentifier: 
+  monsterInformation:
+  - monster: {fileID: 5613827557723001246, guid: 19d41cee7c3994e44921c4071da060e2, type: 3}
+    spawnProbability: 15
+  - monster: {fileID: 3891743006178786391, guid: ca11336676d9eb7439cbbb744e92008e, type: 3}
+    spawnProbability: 15
+  - monster: {fileID: 8928964945819892327, guid: 8671b965a2eb843429eafddbb1d9b292, type: 3}
+    spawnProbability: 55
+  - monster: {fileID: 5848076756097831968, guid: 9ccf2c6f8fffa594ca88ac5bcb097074, type: 3}
+    spawnProbability: 15
+  duration: 1
