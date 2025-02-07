@@ -75,7 +75,7 @@ public class Monster : RenderableObject, IScriptableData
             }
             else
             {
-                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 180));
+                transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
             }
         }
     }

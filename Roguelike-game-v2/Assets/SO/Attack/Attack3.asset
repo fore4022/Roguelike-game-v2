@@ -14,9 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageCoefficient:
   - 1
+  - 1
+  - 1
+  - 1
   coolTime:
   - 1
+  - 1
+  - 1
+  - 1
   attackRange:
+  - 5
+  - 5
+  - 5
   - 5
   attackTypePath: Attack3
   kinematicDuration: 0.8
