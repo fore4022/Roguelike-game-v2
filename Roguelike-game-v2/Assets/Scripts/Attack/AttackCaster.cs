@@ -7,7 +7,13 @@ public class AttackCaster
     private string attackType;
     private int level;
 
-    public int Level { set { level = value; } }
+    public int Level 
+    {
+        set
+        {
+            level = value;
+        }
+    }
     public void SetAttackType(string attackType)
     {
         this.attackType = attackType;

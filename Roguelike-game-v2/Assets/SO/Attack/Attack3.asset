@@ -17,12 +17,15 @@ MonoBehaviour:
   - 1
   - 1
   - 1
+  - 1
   coolTime:
   - 1
   - 1
   - 1
   - 1
+  - 1
   attackRange:
+  - 5
   - 5
   - 5
   - 5

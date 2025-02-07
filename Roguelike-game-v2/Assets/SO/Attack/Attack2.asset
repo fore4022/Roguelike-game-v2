@@ -17,15 +17,18 @@ MonoBehaviour:
   - 1
   - 1
   - 1
+  - 1
   coolTime:
   - 1
   - 1
   - 1
   - 1
+  - 1
   attackRange:
-  - 3
-  - 3
-  - 3
-  - 3
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
   attackTypePath: Attack2
   kinematicDuration: 0.8

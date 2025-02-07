@@ -2,7 +2,7 @@ using System.Collections.Generic;
 public class AttackInformation
 {
     public AttackInformation_SO data;
-    public AttackCaster caster;
+    public AttackCaster caster = null;
     
     public int level;
 
@@ -32,7 +32,7 @@ public class AttackData
     {
         if(TryGetAttackData(key, out AttackInformation info))
         {
-            if(info.level == 0)
+            if(info.caster == null)
             {
                 info.caster = Managers.Game.attackCasterManage.CreateAndGetCaster(key);
             }

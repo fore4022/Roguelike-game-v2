@@ -50,13 +50,13 @@ public class AttackOption_UI : Button_2
         image.sprite = info.data.sprite;
         animator.runtimeAnimatorController = info.data.controller;
 
-        if (info.level == 0)
+        if (info.caster == null)
         {
             textList[0].text = "New";
         }
         else
         {
-            textList[0].text = $"Lv.{info.level}";
+            textList[0].text = $"Lv.{info.level + 1}";
         }
         
         textList[1].text = $"{info.data.attackType}";

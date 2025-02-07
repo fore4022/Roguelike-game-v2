@@ -40,7 +40,9 @@ public class AttackSelection_UI : UserInterface
     {
         //int optionCount = Managers.Game.inGameData.OptionCount - 3;
 
-        int[] DataIndexArray = Managers.Game.calculate.GetRandomValues(2, 2);//Managers.Game.inGameData.attackData.attackInfo.Count, Managers.Game.inGameData.OptionCount
+        int[] DataIndexArray = Managers.Game.calculate.GetRandomValues(2, 2);
+        
+        //Managers.Game.inGameData.attackData.attackInfo.Count, Managers.Game.inGameData.OptionCount
 
         Managers.UI.uiElementUtility.SetImageAlpha(background, basicAlpha);
 
