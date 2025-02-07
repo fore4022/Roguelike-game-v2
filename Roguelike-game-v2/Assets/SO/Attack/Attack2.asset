@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbad4040f90a6c543b7da75cd5a0bedb, type: 3}
   m_Name: Attack2
   m_EditorClassIdentifier: 
+  damageCoefficient:
+  - 1
+  coolTime:
+  - 1
+  attackRange:
+  - 3
   attackTypePath: Attack2
-  damageCoefficient: 1
-  coolTime: 1
-  attackRange: 2
-  attackSize: 0.5
   kinematicDuration: 0.8

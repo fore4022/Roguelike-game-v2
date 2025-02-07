@@ -9,7 +9,7 @@ public class ObjectPool
 
     private Transform root;
 
-    private const string so = "SO";
+    private const string so = "_SO";
     private const int maxWorkPerSec = 50;
 
     private int coroutineCount = 0;
@@ -66,7 +66,7 @@ public class ObjectPool
     }
     private void CreateInstance(GameObject parent, GameObject prefab, int count, int instanceCount, ref GameObject[] array)
     {
-        for (int i = 0; i < count; i++)
+        for(int i = 0; i < count; i++)
         {
             array[instanceCount + i] = Object.Instantiate(prefab, parent.transform);
             array[instanceCount + i].SetActive(false);
@@ -74,7 +74,7 @@ public class ObjectPool
     }
     private async void CreateScriptableObject(string key)
     {
-        if (!scriptableObjects.ContainsKey(key))
+        if(!scriptableObjects.ContainsKey(key))
         {
             ScriptableObject scriptableObject = await Util.LoadingToPath<ScriptableObject>(key + so);
 
@@ -101,7 +101,7 @@ public class ObjectPool
 
         coroutineCount++;
 
-        while (instanceCount < count)
+        while(instanceCount < count)
         {
             createCount = Mathf.Min(MaxWorkPerSec, count - instanceCount);
 
@@ -133,11 +133,11 @@ public class ObjectPool
 
         so = scriptableObjects[key];
 
-        while (sum < array.Length)
+        while(sum < array.Length)
         {
             count = MaxWorkPerSec;
 
-            for (index = sum; index < Mathf.Min(sum + count, array.Length); index++)
+            for(index = sum; index < Mathf.Min(sum + count, array.Length); index++)
             {
                 array[index].GetComponent<IScriptableData>().SetScriptableObject = so;
             }
@@ -149,7 +149,7 @@ public class ObjectPool
 
         coroutineCount--;
 
-        if (poolingObjects.ContainsKey(key))
+        if(poolingObjects.ContainsKey(key))
         {
             poolingObjects[key].AddRange(array);
         }

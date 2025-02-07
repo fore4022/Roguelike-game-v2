@@ -7,7 +7,7 @@ public class Player : MonoBehaviour, IDamageReceiver
 
     private PlayerInformation information = new();
 
-    private const string statPath = "PlayerInformationSO";
+    private const string statPath = "PlayerInformation_SO";
 
     public DefaultStat Stat { get { return information.stat; } }
     private void Awake()

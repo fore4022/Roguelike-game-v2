@@ -22,7 +22,7 @@ public class MonsterSpawner : MonoBehaviour
     }
     private void LoadInformation()
     {
-        foreach (GameObject monster in monsterList)
+        foreach(GameObject monster in monsterList)
         {
             string soName = monster.name;
 
@@ -42,7 +42,7 @@ public class MonsterSpawner : MonoBehaviour
 
         while(true)
         {
-            foreach (SpawnInformation_SO spawnInformation in Managers.Game.stageInformation.spawnInformationList)
+            foreach(SpawnInformation_SO spawnInformation in Managers.Game.stageInformation.spawnInformationList)
             {
                 monsterSpawn = StartCoroutine(MonsterSpawning(spawnInformation));
 
@@ -54,7 +54,7 @@ public class MonsterSpawner : MonoBehaviour
     {
         int totalMinutes = Managers.Game.inGameTimer.GetTotalMinutes;
 
-        if (spawnInformation.monsterInformation.Count != 1)
+        if(spawnInformation.monsterInformation.Count != 1)
         {
             int index = 0;
 
@@ -69,9 +69,9 @@ public class MonsterSpawner : MonoBehaviour
             }
         }
 
-        while (Managers.Game.inGameTimer.GetTotalMinutes < totalMinutes + spawnInformation.duration)
+        while(Managers.Game.inGameTimer.GetTotalMinutes < totalMinutes + spawnInformation.duration)
         {
-            if (spawnDelay != minimumSpawnDelay)
+            if(spawnDelay != minimumSpawnDelay)
             {
                 spawnDelay = Mathf.Max(Managers.Game.difficultyScaler.SpawnDelay, minimumSpawnDelay);
             }

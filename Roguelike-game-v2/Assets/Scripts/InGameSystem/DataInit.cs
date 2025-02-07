@@ -6,7 +6,7 @@ public class DataInit
     public UserLevelInfo_SO userLevelInfo;
     public ObjectPool objectPool = null;
 
-    private const string userLevelInfoPath = "UserLevelInfoSO";
+    private const string userLevelInfoPath = "UserLevelInfo_SO";
     private const string sceneName = "InGame";
     private const int defaultMonsterCount = 100;
     private const int defaultSkillCount = 30;
@@ -17,11 +17,14 @@ public class DataInit
     }
     public void GetMonsterList(ref List<GameObject> monsterList)
     {
-        foreach (SpawnInformation_SO so in Managers.Game.stageInformation.spawnInformationList)
+        foreach(SpawnInformation_SO so in Managers.Game.stageInformation.spawnInformationList)
         {
-            foreach (SpawnInformation info in so.monsterInformation)
+            foreach(SpawnInformation info in so.monsterInformation)
             {
-                monsterList.Add(info.monster);
+                if(!monsterList.Contains(info.monster))
+                {
+                    monsterList.Add(info.monster);
+                }
             }
         }
     }
@@ -55,7 +58,7 @@ public class DataInit
 
         objectPool = new();
 
-        if (GameSystem == null)
+        if(GameSystem == null)
         {
             GameSystem = new GameObject { name = "GameSystem" };
 

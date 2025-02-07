@@ -32,14 +32,14 @@ public class AttackData
     {
         if(TryGetAttackData(key, out AttackInformation info))
         {
-            info.level += levelDelta;
-            
-            if(info.level == 1)
+            if(info.level == 0)
             {
                 info.caster = Managers.Game.attackCasterManage.CreateAndGetCaster(key);
             }
             else
             {
+                info.level += levelDelta;
+
                 Managers.Game.attackCasterManage.UpdateCasterLevel(key, info.level);
             }
         }
