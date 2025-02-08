@@ -12,6 +12,8 @@ public class AttackCaster
         set
         {
             level = value;
+
+            //if(level )
         }
     }
     public void SetAttackType(string attackType)

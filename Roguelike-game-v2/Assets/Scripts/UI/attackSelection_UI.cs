@@ -38,11 +38,9 @@ public class AttackSelection_UI : UserInterface
     }
     private IEnumerator Set()
     {
-        //int optionCount = Managers.Game.inGameData.OptionCount - 3;
-
         int[] DataIndexArray = Managers.Game.calculate.GetRandomValues(2, 2);
-        
-        //Managers.Game.inGameData.attackData.attackInfo.Count, Managers.Game.inGameData.OptionCount
+
+        //int[] a = Managers.Game.calculate.GetRandomValues(Managers.Game.inGameData.OptionCount);
 
         Managers.UI.uiElementUtility.SetImageAlpha(background, basicAlpha);
 
@@ -56,25 +54,35 @@ public class AttackSelection_UI : UserInterface
 
         background.enabled = true;
     }
-    private void AdjustGridLayout()
-    {
-        gridLayoutGroup.cellSize = new Vector2(cellSize.x, cellSize.y);
-        gridLayoutGroup.spacing = new Vector2(0, spacingY);
-    }
     public void Selected()
     {
-        foreach(AttackOption_UI attackOption in attackOptionList)
+        foreach (AttackOption_UI attackOption in attackOptionList)
         {
             attackOption.gameObject.SetActive(false);
         }
 
         StartCoroutine(PadeIn());
     }
+    private void AdjustGridLayout()
+    {
+        gridLayoutGroup.cellSize = new Vector2(cellSize.x, cellSize.y);
+        gridLayoutGroup.spacing = new Vector2(0, spacingY);
+    }
+    private void CreateOptionUI()
+    {
+        for(int i = 0; i < Managers.Game.inGameData.OptionCount - attackOptionList.Count; i++)
+        {
+            GameObject go = Instantiate(attackOption, transform);
+
+            attackOptionList.Add(go.GetComponent<AttackOption_UI>());
+            go.SetActive(false);
+        }
+    }
     private void OnDisable()
     {
         foreach(AttackOption_UI attackOption in attackOptionList)
         {
-            if (attackOption.enabled == true)
+            if(attackOption.enabled == true)
             {
                 break;
             }
@@ -97,20 +105,11 @@ public class AttackSelection_UI : UserInterface
 
         background.enabled = false;
 
-        yield return new WaitUntil(() => attackOption != null);
-        
         yield return new WaitUntil(() => Managers.Game.inGameData != null);
+        
+        yield return new WaitUntil(() => attackOption != null);
 
-        for (int i = 0; i < Managers.Game.inGameData.OptionCount; i++)
-        {
-            GameObject go = Instantiate(attackOption, transform);
-            AttackOption_UI component = go.GetComponent<AttackOption_UI>();
-
-            attackOptionList.Add(component);
-            go.SetActive(false);
-
-            yield return null;
-        }
+        CreateOptionUI();
 
         gameObject.SetActive(false);
     }

@@ -3,7 +3,7 @@ using System;
 [CreateAssetMenu(fileName = "Attack", menuName = "Create New SO/Create New Attack_SO")]
 public class Attack_SO : ScriptableObject
 {
-    private const int maxLevel = 5;
+    public static int maxLevel = 5;
 
     public float[] damageCoefficient = new float[maxLevel];
     public float[] coolTime = new float[maxLevel];

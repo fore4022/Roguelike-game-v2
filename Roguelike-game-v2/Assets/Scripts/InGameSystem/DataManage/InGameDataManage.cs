@@ -1,13 +1,30 @@
+using System;
 using UnityEngine;
 public class InGameDataManage
 {
+    public Action OptionCountUpdate = null;
     public PlayerData playerData = new();
     public AttackData attackData = new();
     public DataInit dataInit = new();
 
     private const int maxOptionCount = 5;
 
-    private int defaultOptionCount = 3;
+    private int optionCount = 3;
     
-    public int OptionCount { get { return Mathf.Min(defaultOptionCount, maxOptionCount); } }
+    public int OptionCount
+    {
+        get
+        {
+            return Mathf.Min(optionCount, maxOptionCount);
+        }
+        set
+        {
+            optionCount = value;
+
+            if(OptionCountUpdate != null)
+            {
+                OptionCountUpdate.Invoke();
+            }
+        }
+    }
 }
