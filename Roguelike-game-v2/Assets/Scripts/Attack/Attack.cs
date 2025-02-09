@@ -26,8 +26,6 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
     protected void Start()
     {
         Init();
-
-        attackType = GetType().ToString();
     }
     private void Init()
     {
@@ -36,6 +34,8 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
         col = GetComponent<Collider2D>();
 
         render.enabled = false;
+
+        attackType = GetType().ToString();
     }
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
@@ -49,7 +49,7 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
             damageReceiver.TakeDamage(this);
         }
     }
-    private IEnumerator StartAttack()
+    protected virtual IEnumerator StartAttack()
     {
         yield return new WaitUntil(() => (animator != null) && (render != null) && (col != null));
 
@@ -59,7 +59,6 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
 
         render.enabled = true;
         col.enabled = true;
-
         attacking = StartCoroutine(Attacking());
 
         yield return new WaitUntil(() => attacking == null);
