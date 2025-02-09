@@ -13,19 +13,20 @@ public class AttackInformation
 }
 public class AttackData
 {
-    public Dictionary<string, int> attackIndexMap = new();
-    public List<AttackInformation> attackInfo = new();
+    public List<AttackInformation> infoList = new();
 
-    private int totalIndex = 0;
+    private Dictionary<string, int> indexMap = new();
+
+    private int total_Index = 0;
 
     public void SetDictionaryItem(AttackInformation_SO so)
     {
-        if(!attackIndexMap.ContainsKey(so.attackType))
+        if(!indexMap.ContainsKey(so.attackType))
         {
-            attackIndexMap.Add(so.attackType, totalIndex);
-            attackInfo.Add(new AttackInformation(so));
+            indexMap.Add(so.attackType, total_Index);
+            infoList.Add(new AttackInformation(so));
 
-            totalIndex++;
+            total_Index++;
         }
     }
     public void SetValue(string key, int levelDelta = 1)
@@ -41,6 +42,11 @@ public class AttackData
                 info.level += levelDelta;
 
                 Managers.Game.attackCasterManage.UpdateCasterLevel(key, info.level);
+
+                if(info.level == Attack_SO.maxLevel - 1)
+                {
+                    infoList.Remove(info);
+                }
             }
         }
     }
@@ -73,9 +79,9 @@ public class AttackData
     }
     private bool TryGetAttackData(string key, out AttackInformation info)
     {
-        if(attackIndexMap.TryGetValue(key, out int index))
+        if(indexMap.TryGetValue(key, out int index))
         {
-            info = attackInfo[index];
+            info = infoList[index];
 
             return true;
         }

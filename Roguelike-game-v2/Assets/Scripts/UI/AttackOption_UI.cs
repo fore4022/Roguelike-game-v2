@@ -41,7 +41,7 @@ public class AttackOption_UI : Button_2
     public void InitOption(int index)
     {
         adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, minScale));
-        info = Managers.Game.inGameData.attackData.attackInfo[index];
+        info = Managers.Game.inGameData.attackData.infoList[index];
         
         SetOption();
     }
