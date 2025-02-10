@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbad4040f90a6c543b7da75cd5a0bedb, type: 3}
   m_Name: Attack3
   m_EditorClassIdentifier: 
+  projectile_Info:
+    speed: 0
+    Penetration: 0
   damageCoefficient:
   - 1
   - 1
@@ -32,3 +35,4 @@ MonoBehaviour:
   - 5
   attackTypePath: Attack3
   kinematicDuration: 0.8
+  projectile: 0
