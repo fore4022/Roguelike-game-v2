@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b32f468c89f423245814ef0335fae600, type: 3}
-  m_Name: Attack3
+  m_Name: Info1-P
   m_EditorClassIdentifier: 
-  skillObject: {fileID: 468658221666880951, guid: e17c240d00724fb48a0401188920c8bf, type: 3}
-  sprite: {fileID: 21300000, guid: d87ca06aae007f148bae4546943088eb, type: 3}
-  controller: {fileID: 9100000, guid: 8437be695c3a8d84a95516c04e4dbb77, type: 2}
-  attackType: Attack3
-  explanation: Attack3
-  coolTime: 0
+  skillObject: {fileID: 4688760127113871236, guid: 90b86b189854d4140b2ba6ba2fd33ca3, type: 3}
+  sprite: {fileID: 1941407531, guid: 0b486b62547692246a72874e4a6a4ebb, type: 3}
+  controller: {fileID: 9100000, guid: a2c05492382f34e408e912b3c5fe883b, type: 2}
+  attackType: Projectile1
+  explanation: 

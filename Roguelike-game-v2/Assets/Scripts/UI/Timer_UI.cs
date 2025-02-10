@@ -4,15 +4,13 @@ using UnityEngine;
 public class Timer_UI : UserInterface
 {
     private TextMeshProUGUI timer;
-    private Coroutine timerCoroutine;
-
     private int beforeSecond = 0;
 
     public override void SetUserInterface()
     {
         timer = GetComponent<TextMeshProUGUI>();
 
-        timerCoroutine = StartCoroutine(TimerUpdate());
+        StartCoroutine(TimerUpdate());
     }
     private IEnumerator TimerUpdate()
     {

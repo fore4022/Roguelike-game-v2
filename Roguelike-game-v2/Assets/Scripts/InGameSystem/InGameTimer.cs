@@ -3,7 +3,6 @@ using UnityEngine;
 public class InGameTimer : MonoBehaviour
 {
     private Coroutine inGameTimer;
-
     private float elapsedTime;
 
     public int GetSeconds
@@ -17,7 +16,7 @@ public class InGameTimer : MonoBehaviour
     {
         get
         {
-            return GetSeconds / 60;
+            return (int)elapsedTime / 60;
         }
     }
     public int GetHours
@@ -37,7 +36,6 @@ public class InGameTimer : MonoBehaviour
     private void Start()
     {
         elapsedTime = 0;
-
         Managers.Game.inGameTimer = this;
     }
     public void StartTimer()

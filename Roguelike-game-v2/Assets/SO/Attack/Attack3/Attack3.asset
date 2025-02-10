@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile_Info:
     speed: 0
-    Penetration: 0
+    penetration: 0
+    explosion: 0
   damageCoefficient:
   - 1
   - 1

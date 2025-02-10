@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Attack2
   m_EditorClassIdentifier: 
   projectile_Info:
+    animationName: 
     speed: 0
-    Penetration: 0
+    penetration: 0
   damageCoefficient:
   - 1
   - 1
@@ -34,5 +35,4 @@ MonoBehaviour:
   - 1
   - 1
   attackTypePath: Attack2
-  kinematicDuration: 0.8
   projectile: 0

@@ -9,5 +9,4 @@ public class AttackInformation_SO : ScriptableObject
 
     public string attackType;
     public string explanation;
-    public float coolTime;
 }

@@ -2,10 +2,9 @@ using System.Collections;
 using UnityEngine;
 public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 {
-    private Coroutine moveCoroutine = null;
-
     private const float damagedDuration = 0.15f;
 
+    private Coroutine moveCoroutine = null;
     private Color defaultColor;
 
     public float DamageAmount { get { return stat.damage; } }
@@ -19,7 +18,6 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     public void OnMove()
     {
         Vector3 direction = Managers.Game.calculate.GetDirection(Managers.Game.player.gameObject.transform.position, transform.position);
-
         rigid.velocity = direction * stat.moveSpeed;
 
         if(visible)
@@ -93,15 +91,15 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 
         animator.enabled = false;
 
-        StartCoroutine(ColorSetting.ChangeColor(render, Color.black, defaultColor, animationDuration / 2));
+        StartCoroutine(ColorLerp.ChangeColor(render, Color.black, defaultColor, animationDuration / 2));
 
         yield return new WaitForSeconds(animationDuration / 2);
 
-        StartCoroutine(ColorSetting.ChangeAlpha(render, 0, render.color.a, animationDuration));
+        StartCoroutine(ColorLerp.ChangeAlpha(render, 0, render.color.a, animationDuration));
 
         yield return new WaitForSeconds(animationDuration);
 
-        stat = null;
+        render.color = defaultColor;
 
         Managers.Game.inGameData.dataInit.objectPool.DisableObject(gameObject);
     }

@@ -8,9 +8,9 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
     protected SpriteRenderer render;
     protected Collider2D col;
 
+    protected Coroutine attack = null;
     protected int level;
 
-    private Coroutine isAttacking = null;
     private string attackType;
 
     public ScriptableObject SetSO { set { so = value as Attack_SO; } }
@@ -57,7 +57,7 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
             damageReceiver.TakeDamage(this);
         }
     }
-    protected virtual IEnumerator StartAttack()
+    private IEnumerator StartAttack()
     {
         yield return new WaitUntil(() => attackType != null);
 
@@ -67,22 +67,19 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
 
         render.enabled = true;
         col.enabled = true;
-        isAttacking = StartCoroutine(Attacking());
+        attack = StartCoroutine(Attacking());
 
-        yield return new WaitUntil(() => isAttacking == null);
+        yield return new WaitUntil(() => attack == null);
 
         Managers.Game.inGameData.dataInit.objectPool.DisableObject(gameObject);
     }
     protected virtual IEnumerator Attacking()
     {
-        yield return new WaitUntil(() => anime.GetCurrentAnimatorStateInfo(0).normalizedTime >= so.kinematicDuration);
-
-        col.enabled = false;
-
         yield return new WaitUntil(() => anime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
 
+        col.enabled = false;
         render.enabled = false;
-        isAttacking = null;
+        attack = null;
     }
     protected abstract void SetAttack();
 }

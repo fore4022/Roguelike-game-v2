@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-public static class ColorSetting
+public static class ColorLerp
 {
     public static Color GetColor(float value)
     {

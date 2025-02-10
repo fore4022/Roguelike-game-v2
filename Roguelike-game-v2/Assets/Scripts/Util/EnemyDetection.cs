@@ -92,7 +92,7 @@ public class EnemyDetection
 
         return gameObjectList.Take(count).ToList();
     }
-    public Vector2 GetNearestEnemyPosition(GameObject center = null, float? range = null)
+    public Vector3 GetNearestEnemyPosition(GameObject center = null, float? range = null)
     {
         GameObject target = FindNearestEnemy(center, range);
 
