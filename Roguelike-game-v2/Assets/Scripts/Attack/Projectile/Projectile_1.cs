@@ -1,6 +1,10 @@
 using System.Collections;
 public class Projectile_1 : Projectile
 {
+    protected override void SetAttack()
+    {
+
+    }
     protected override IEnumerator Attacking()
     {
         yield return null;

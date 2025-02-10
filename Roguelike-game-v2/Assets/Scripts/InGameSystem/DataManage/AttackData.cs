@@ -68,7 +68,7 @@ public class AttackData
 
         return null;
     }
-    public int GetAttackLevel(string key)
+    public int GetLevel(string key)
     {
         if(TryGetAttackData(key, out AttackInformation info))
         {

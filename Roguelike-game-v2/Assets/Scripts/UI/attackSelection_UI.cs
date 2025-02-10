@@ -38,7 +38,7 @@ public class AttackSelection_UI : UserInterface
     }
     private IEnumerator Set()
     {
-        int[] dataIndexArray = Managers.Game.calculate.GetRandomValues(Managers.Game.inGameData.attackData.infoList.Count(), Managers.Game.inGameData.OptionCount);
+        int[] dataIndexArray = Managers.Game.calculate.GetRandomValues(Managers.Game.inGameData.attack.infoList.Count(), Managers.Game.inGameData.OptionCount);
 
         Managers.UI.uiElementUtility.SetImageAlpha(background, basicAlpha);
 

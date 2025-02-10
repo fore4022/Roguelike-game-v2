@@ -14,7 +14,7 @@ public class Monster : RenderableObject, IScriptableData
 
     private bool didInit = false;
 
-    public ScriptableObject SetScriptableObject { set { monsterSO = value as MonsterStat_SO; } }
+    public ScriptableObject SetSO { set { monsterSO = value as MonsterStat_SO; } }
     protected override void Awake()
     {
         base.Awake();

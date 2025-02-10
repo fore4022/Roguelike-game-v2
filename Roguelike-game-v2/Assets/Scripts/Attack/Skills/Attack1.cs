@@ -7,7 +7,7 @@ public class Attack1 : Attack
         Vector3 direction = Managers.Game.calculate.GetDirection(targetPosition);
         Quaternion quaternion = Managers.Game.calculate.GetQuaternion(direction);
 
-        gameObject.transform.position = Managers.Game.calculate.GetAttackPosition(direction, attackSO.attackRange[level]);
+        gameObject.transform.position = Managers.Game.calculate.GetAttackPosition(direction, so.attackRange[level]);
         gameObject.transform.rotation = quaternion;
     }
 }

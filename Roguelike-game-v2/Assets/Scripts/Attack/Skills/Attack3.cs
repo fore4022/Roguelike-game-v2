@@ -7,11 +7,11 @@ public class Attack3 : Attack
 
         transform.position = targetPosition;
     }
-    protected override void OnTriggerEnter2D(Collider2D collision)
+    protected override void Enter(GameObject go)
     {
-        base.OnTriggerEnter2D(collision);
+        base.Enter(go);
 
-        if(collision.TryGetComponent<Monster>(out Monster monster))
+        if(go.TryGetComponent(out Monster monster))
         {
             //monster.
         }

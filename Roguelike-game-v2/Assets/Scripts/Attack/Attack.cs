@@ -3,18 +3,18 @@ using UnityEngine;
 [RequireComponent(typeof(Animator), typeof(SpriteRenderer))]
 public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
 {
-    protected Attack_SO attackSO;
-    protected Animator animator;
+    protected Attack_SO so;
+    protected Animator anime;
     protected SpriteRenderer render;
     protected Collider2D col;
 
     protected int level;
 
-    private Coroutine attacking = null;
+    private Coroutine isAttacking = null;
     private string attackType;
 
-    public ScriptableObject SetScriptableObject { set { attackSO = value as Attack_SO; } }
-    public float DamageAmount { get { return Managers.Game.player.Stat.damage * attackSO.damageCoefficient[level]; } }
+    public ScriptableObject SetSO { set { so = value as Attack_SO; } }
+    public float DamageAmount { get { return Managers.Game.player.Stat.damage * so.damageCoefficient[level]; } }
     protected void Awake()
     {
         gameObject.SetActive(false);
@@ -29,7 +29,7 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
     }
     private void Init()
     {
-        animator = GetComponent<Animator>();
+        anime = GetComponent<Animator>();
         render = GetComponent<SpriteRenderer>();
         col = GetComponent<Collider2D>();
 
@@ -37,44 +37,52 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
 
         attackType = GetType().ToString();
     }
-    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(!collision.gameObject.CompareTag("Monster"))
+        Enter(collision.gameObject);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Enter(collision.gameObject);
+    }
+    protected virtual void Enter(GameObject go)
+    {
+        if(!go.CompareTag("Monster"))
         {
             return;
         }
 
-        if(collision.TryGetComponent(out IDamageReceiver damageReceiver))
+        if(go.TryGetComponent(out IDamageReceiver damageReceiver))
         {
             damageReceiver.TakeDamage(this);
         }
     }
     protected virtual IEnumerator StartAttack()
     {
-        yield return new WaitUntil(() => (animator != null) && (render != null) && (col != null));
+        yield return new WaitUntil(() => attackType != null);
 
-        level = Managers.Game.inGameData.attackData.GetAttackLevel(attackType);
+        level = Managers.Game.inGameData.attack.GetLevel(attackType);
 
         SetAttack();
 
         render.enabled = true;
         col.enabled = true;
-        attacking = StartCoroutine(Attacking());
+        isAttacking = StartCoroutine(Attacking());
 
-        yield return new WaitUntil(() => attacking == null);
+        yield return new WaitUntil(() => isAttacking == null);
 
         Managers.Game.inGameData.dataInit.objectPool.DisableObject(gameObject);
     }
     protected virtual IEnumerator Attacking()
     {
-        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= attackSO.kinematicDuration);
+        yield return new WaitUntil(() => anime.GetCurrentAnimatorStateInfo(0).normalizedTime >= so.kinematicDuration);
 
         col.enabled = false;
 
-        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
+        yield return new WaitUntil(() => anime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
 
         render.enabled = false;
-        attacking = null;
+        isAttacking = null;
     }
     protected abstract void SetAttack();
 }

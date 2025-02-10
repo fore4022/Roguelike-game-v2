@@ -38,7 +38,7 @@ public class DataInit
             {
                 skillList.Add(so.skillObject);
 
-                Managers.Game.inGameData.attackData.SetDictionaryItem(so);
+                Managers.Game.inGameData.attack.SetDictionaryItem(so);
             }
         }
     }

@@ -41,7 +41,7 @@ public class AttackOption_UI : Button_2
     public void InitOption(int index)
     {
         adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, minScale));
-        info = Managers.Game.inGameData.attackData.infoList[index];
+        info = Managers.Game.inGameData.attack.infoList[index];
         
         SetOption();
     }
@@ -111,7 +111,7 @@ public class AttackOption_UI : Button_2
     {
         yield return new WaitUntil(() => animator.enabled == false);
 
-        Managers.Game.inGameData.attackData.SetValue(info.data.attackType);
+        Managers.Game.inGameData.attack.SetValue(info.data.attackType);
         Managers.UI.GetUI<AttackSelection_UI>().Selected();
     }
 }
