@@ -13,6 +13,4 @@ MonoBehaviour:
   m_Name: Level_1
   m_EditorClassIdentifier: 
   attackInformationList:
-  - {fileID: 11400000, guid: 9be5ab5d833355847836869d95595f97, type: 2}
-  - {fileID: 11400000, guid: 3e08794522022e4488db432c0a15adfa, type: 2}
   - {fileID: 11400000, guid: 7c0751bbc405cb445856e96925bee114, type: 2}

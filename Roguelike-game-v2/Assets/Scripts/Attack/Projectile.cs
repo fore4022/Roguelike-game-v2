@@ -13,13 +13,12 @@ public abstract class Projectile : Attack
 
     protected void Update()
     {
-        if(attack != null)
-        {
-            IsInvisible();
-        }
+        IsInvisible();
     }
     private void IsInvisible()
     {
+        if(attack == null) { return; }
+
         planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
 
         if(!GeometryUtility.TestPlanesAABB(planes, col.bounds))
@@ -36,8 +35,6 @@ public abstract class Projectile : Attack
     private IEnumerator Collectting()
     {
         yield return new WaitForSeconds(collectDelay);
-
-        StopCoroutine(attack);
 
         attack = null;
     }
