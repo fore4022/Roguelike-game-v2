@@ -5,8 +5,8 @@ public class Projectile_1 : Projectile
     protected override void SetAttack()
     {
         transform.position = Managers.Game.player.gameObject.transform.position;
-        direction = (Managers.Game.enemyDetection.GetNearestEnemyPosition() - transform.position).normalized;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg));
+        direction = Managers.Game.calculate.GetDirection(Managers.Game.player.gameObject.transform.position);
+        transform.rotation = Managers.Game.calculate.GetQuaternion(direction);
         penetration_count = so.projectile_Info.penetration;
     }
     protected override void Enter(GameObject go)
@@ -26,7 +26,7 @@ public class Projectile_1 : Projectile
         moving = StartCoroutine(Moving());
 
         yield return new WaitUntil(() => moving == null);
-        Debug.Log("a");
+
         if (so.projectile_Info.animationName != "")
         {
             anime.Play(so.projectile_Info.animationName);
