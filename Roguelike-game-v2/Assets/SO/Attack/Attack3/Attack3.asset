@@ -13,9 +13,22 @@ MonoBehaviour:
   m_Name: Attack3
   m_EditorClassIdentifier: 
   projectile_Info:
+    animationName: 
     speed: 0
     penetration: 0
-    explosion: 0
+  multiCast:
+    delay:
+    - 0.15
+    - 0.15
+    - 0.15
+    - 0.15
+    - 0.15
+    count:
+    - 2
+    - 3
+    - 4
+    - 5
+    - 7
   damageCoefficient:
   - 1
   - 1
@@ -23,11 +36,11 @@ MonoBehaviour:
   - 1
   - 1
   coolTime:
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
+  - 2.5
+  - 2.5
+  - 2.5
+  - 2.5
+  - 2.5
   attackRange:
   - 5
   - 5
@@ -35,5 +48,5 @@ MonoBehaviour:
   - 5
   - 5
   attackTypePath: Attack3
-  kinematicDuration: 0.8
   projectile: 0
+  isMultiCast: 1

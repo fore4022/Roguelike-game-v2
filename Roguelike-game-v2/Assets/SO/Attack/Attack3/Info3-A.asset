@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Info3-A
   m_EditorClassIdentifier: 
   skillObject: {fileID: 468658221666880951, guid: e17c240d00724fb48a0401188920c8bf, type: 3}
-  sprite: {fileID: 21300000, guid: d87ca06aae007f148bae4546943088eb, type: 3}
-  controller: {fileID: 9100000, guid: 8437be695c3a8d84a95516c04e4dbb77, type: 2}
+  sprite: {fileID: -788150445, guid: 109e024aee4cd6c4498dcb1a78b93cad, type: 3}
+  controller: {fileID: 9100000, guid: 42bfe262f59d61c40a8646251eddd145, type: 2}
   attackType: Attack3
   explanation: Attack3
-  coolTime: 0

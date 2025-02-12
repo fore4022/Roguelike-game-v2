@@ -45,7 +45,7 @@ public class AttackData
 
                 if(info.level == Attack_SO.maxLevel - 1)
                 {
-                    infoList.Remove(info);
+                    infoList.Remove(info);//
                 }
             }
         }

@@ -2,7 +2,9 @@ using System.Collections;
 using UnityEngine;
 public class AttackCaster
 {
-    private Attack_SO attackSO = null;
+    private Attack_SO so = null;
+    private WaitForSeconds coolTime;
+    private WaitForSeconds delay;
 
     private string attackType;
     private int level;
@@ -13,26 +15,58 @@ public class AttackCaster
         {
             level = value;
 
-            //if(level )
+            Set();
         }
     }
     public void SetAttackType(string attackType)
     {
         this.attackType = attackType;
 
-        Util.GetMonoBehaviour().StartCoroutine(Attacking());
+        Util.GetMonoBehaviour().StartCoroutine(Casting());
     }
-    public IEnumerator Attacking()
+    private void Set()
     {
-        attackSO = Managers.Game.inGameData.dataInit.objectPool.GetScriptableObject<Attack_SO>(attackType);
+        coolTime = new(so.coolTime[level]);
 
-        yield return new WaitUntil(() => attackSO != null);
-
-        while (true)
+        if (so.isMultiCast)
         {
-            yield return new WaitForSeconds(attackSO.coolTime[level]);
-            
-            Managers.Game.inGameData.dataInit.objectPool.ActiveObject(attackType);
+            delay = new(so.multiCast.delay[level]);
+        }
+    }
+    private IEnumerator Casting()
+    {
+        so = Managers.Game.inGameData.dataInit.objectPool.GetScriptableObject<Attack_SO>(attackType);
+
+        yield return new WaitUntil(() => so != null);
+
+        Set();
+
+        if(!so.isMultiCast)
+        {
+            while (true)
+            {
+                yield return coolTime;
+
+                Managers.Game.inGameData.dataInit.objectPool.ActiveObject(attackType);
+            }
+        }
+        else
+        {
+            int i;
+
+            Debug.Log("a");
+
+            while(true)
+            {
+                yield return coolTime;
+
+                for(i = 0; i < so.multiCast.count[level]; i++)
+                {
+                    Managers.Game.inGameData.dataInit.objectPool.ActiveObject(attackType);
+
+                    yield return delay;
+                }
+            }
         }
     }
 }

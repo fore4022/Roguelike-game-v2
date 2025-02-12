@@ -9,9 +9,22 @@ public class EnemyDetection
     private float width = Util.CameraWidth / 2;
     private float height = Util.CameraHeight / 2;
 
-    public GameObject FindNearestEnemy(GameObject center = null, float? range = null)
+    public GameObject FindRandomEnemy()
     {
-        List<GameObject> gameObjectList = FindEnemiesOnScreen(center, range);
+        List<GameObject> gameObjectList = FindEnemiesOnScreen();
+
+        if(gameObjectList.Count == 0)
+        {
+            return null;
+        }
+
+        int index = Random.Range(0, gameObjectList.Count);
+
+        return gameObjectList[index];
+    }
+    public GameObject FindNearestEnemy(float? range = null)
+    {
+        List<GameObject> gameObjectList = FindEnemiesOnScreen(range);
 
         GameObject targetObject = null;
 
@@ -92,11 +105,24 @@ public class EnemyDetection
 
         return gameObjectList.Take(count).ToList();
     }
-    public Vector3 GetNearestEnemyPosition(GameObject center = null, float? range = null)
+    public Vector3 GetNearestEnemyPosition(float? range = null)
     {
-        GameObject target = FindNearestEnemy(center, range);
+        GameObject target = FindNearestEnemy(range);
 
         if (target == null)
+        {
+            return GetRandomVector();
+        }
+        else
+        {
+            return target.transform.position;
+        }
+    }
+    public Vector3 GetRandomEnemyPosition()
+    {
+        GameObject target = FindRandomEnemy();
+
+        if(target == null)
         {
             return GetRandomVector();
         }
@@ -150,23 +176,16 @@ public class EnemyDetection
 
         return targetPositionList;
     }
-    public List<GameObject> FindEnemiesOnScreen(GameObject center = null, float? range = null)
+    public List<GameObject> FindEnemiesOnScreen(float? range = null)
     {
         List<GameObject> resultList = new List<GameObject>();
         Collider2D[] colliderArray;
         
         Vector2 radiusPosition;
 
-        if(center == null)
-        {
-            radiusPosition = Camera.main.transform.position;
-        }
-        else
-        {
-            radiusPosition = center.transform.position;
-        }
+        radiusPosition = Camera.main.transform.position;
 
-        if(range == null)
+        if (range == null)
         {
             float y = Camera.main.orthographicSize * 2;
             float x = y * Camera.main.aspect;
