@@ -3,11 +3,9 @@ public class Attack1 : Attack
 {
     protected override void SetAttack()
     {
-        Vector3 targetPosition = Managers.Game.enemyDetection.GetNearestEnemyPosition();
-        Vector3 direction = Managers.Game.calculate.GetDirection(targetPosition);
-        Quaternion quaternion = Managers.Game.calculate.GetQuaternion(direction);
+        Vector3 direction = Managers.Game.calculate.GetDirection(Managers.Game.enemyDetection.GetNearestEnemyPosition());
 
         gameObject.transform.position = Managers.Game.calculate.GetAttackPosition(direction, so.attackRange[level]);
-        gameObject.transform.rotation = quaternion;
+        gameObject.transform.rotation = Managers.Game.calculate.GetQuaternion(direction);
     }
 }

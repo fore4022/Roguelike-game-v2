@@ -3,9 +3,7 @@ public class Attack3 : Attack
 {
     protected override void SetAttack()
     {
-        Vector3 targetPosition = Managers.Game.enemyDetection.GetNearestEnemyPosition();
-
-        transform.position = targetPosition;
+        transform.position = Managers.Game.enemyDetection.GetNearestEnemyPosition();
     }
     protected override void Enter(GameObject go)
     {

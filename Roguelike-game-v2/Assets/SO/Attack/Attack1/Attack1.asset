@@ -16,6 +16,19 @@ MonoBehaviour:
     animationName: 
     speed: 0
     penetration: 0
+  multiCast:
+    delay:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    count:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
   damageCoefficient:
   - 1
   - 1
@@ -36,3 +49,4 @@ MonoBehaviour:
   - 2
   attackTypePath: Attack1
   projectile: 0
+  isMultiCast: 0

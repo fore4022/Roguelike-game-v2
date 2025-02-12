@@ -7,12 +7,19 @@ public class ProjectileInfo
     public float speed;
     public int penetration = 0;
 }
+[Serializable]
+public class MultiCast
+{
+    public float[] delay;
+    public float[] count;
+}
 [CreateAssetMenu(fileName = "Attack", menuName = "Create New SO/Create New Attack_SO")]
 public class Attack_SO : ScriptableObject
 {
     public static int maxLevel = 5;
 
     public ProjectileInfo projectile_Info;
+    public MultiCast multiCast;
 
     public float[] damageCoefficient = new float[maxLevel];
     public float[] coolTime = new float[maxLevel];
@@ -20,22 +27,25 @@ public class Attack_SO : ScriptableObject
 
     public string attackTypePath;
     public bool projectile;
+    public bool isMultiCast;
 
     private void OnValidate()
     {
-        if(damageCoefficient.Length != maxLevel)
-        {
-            Array.Resize(ref damageCoefficient, maxLevel);
-        }
+        ResizeArray(ref damageCoefficient);
+        ResizeArray(ref coolTime);
+        ResizeArray(ref attackRange);
 
-        if(coolTime.Length != maxLevel)
+        if(isMultiCast)
         {
-            Array.Resize(ref coolTime, maxLevel);
+            ResizeArray(ref multiCast.delay);
+            ResizeArray(ref multiCast.count);
         }
-
-        if(attackRange.Length != maxLevel)
+    }
+    private void ResizeArray<T>(ref T[] array)
+    {
+        if(array.Length != maxLevel)
         {
-            Array.Resize(ref attackRange, maxLevel);
+            Array.Resize(ref array, maxLevel);
         }
     }
 }
