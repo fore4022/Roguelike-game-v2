@@ -20,7 +20,7 @@ public class LevelUp_UI : UserInterface
     }
     private IEnumerator AnimationPlaying()
     {
-        level.text = $"Lv.{Managers.Game.inGameData.playerData.Level}";
+        level.text = $"Lv.{Managers.Game.inGameData.player.Level}";
 
         yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
 

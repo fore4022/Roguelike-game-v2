@@ -24,7 +24,7 @@ public class Game_Manager
         stageInformation = Managers.Main.GetCurrentStage().stageInformation;
 
         Set();
-        inGameData.dataInit.GetInGameData();
+        inGameData.init.GetInGameData();
     }
     public void GameStart()
     {
@@ -32,7 +32,7 @@ public class Game_Manager
 
         inGameTimer.StartTimer();
         monsterSpawner.StartSpawn();
-        inGameData.playerData.SetLevel();
+        inGameData.player.SetLevel();
 
         Managers.UI.ShowUI<LevelUp_UI>();
     }

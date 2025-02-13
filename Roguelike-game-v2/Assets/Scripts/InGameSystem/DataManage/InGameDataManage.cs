@@ -2,10 +2,10 @@ using System;
 using UnityEngine;
 public class InGameDataManage
 {
-    public Action OptionCountUpdate = null;
-    public PlayerData playerData = new();
+    public Action optionCountUpdate = null;
+    public PlayerData player = new();
     public AttackData attack = new();
-    public DataInit dataInit = new();
+    public DataInit init = new();
 
     private const int maxOptionCount = 5;
 
@@ -21,9 +21,9 @@ public class InGameDataManage
         {
             optionCount = value;
 
-            if(OptionCountUpdate != null)
+            if(optionCountUpdate != null)
             {
-                OptionCountUpdate.Invoke();
+                optionCountUpdate.Invoke();
             }
         }
     }

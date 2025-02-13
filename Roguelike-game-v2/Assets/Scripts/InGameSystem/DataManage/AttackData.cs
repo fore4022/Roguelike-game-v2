@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 public class AttackInformation
 {
     public AttackInformation_SO data;
@@ -13,20 +14,13 @@ public class AttackInformation
 }
 public class AttackData
 {
-    public List<AttackInformation> infoList = new();
-
-    private Dictionary<string, int> indexMap = new();
-
-    private int total_Index = 0;
+    private Dictionary<string, AttackInformation> info = new();
 
     public void SetDictionaryItem(AttackInformation_SO so)
     {
-        if(!indexMap.ContainsKey(so.attackType))
+        if(!info.ContainsKey(so.attackType))
         {
-            indexMap.Add(so.attackType, total_Index);
-            infoList.Add(new AttackInformation(so));
-
-            total_Index++;
+            info.Add(so.attackType, new AttackInformation(so));
         }
     }
     public void SetValue(string key, int levelDelta = 1)
@@ -42,31 +36,8 @@ public class AttackData
                 info.level += levelDelta;
 
                 Managers.Game.attackCasterManage.UpdateCasterLevel(key, info.level);
-
-                if(info.level == Attack_SO.maxLevel - 1)
-                {
-                    infoList.Remove(info);//
-                }
             }
         }
-    }
-    public (AttackInformation_SO, int) GetAttackData(string key)
-    {
-        if(TryGetAttackData(key, out AttackInformation info))
-        {
-            return (info.data, info.level);
-        }
-
-        return (null, 0);
-    }
-    public AttackInformation_SO GetAttackInformation(string key)
-    {
-        if(TryGetAttackData(key, out AttackInformation info))
-        {
-            return info.data;
-        }
-
-        return null;
     }
     public int GetLevel(string key)
     {
@@ -77,11 +48,29 @@ public class AttackData
 
         return 0;
     }
+    public List<AttackInformation> GetAttackInformation()
+    {
+        List<AttackInformation> info = this.info.Values.ToList();
+
+        info.RemoveAll(o => o.level == Attack_SO.maxLevel - 1);
+
+        if(info.Count() > Managers.Game.inGameData.OptionCount)
+        {
+            int[] indexs = Managers.Game.calculate.GetRandomValues(info.Count(), Managers.Game.inGameData.OptionCount);
+
+            for(int i = 0; i < Managers.Game.inGameData.OptionCount; i++)
+            {
+                info.RemoveAt(indexs[i]);
+            }
+        }
+
+        return info;
+    }
     private bool TryGetAttackData(string key, out AttackInformation info)
     {
-        if(indexMap.TryGetValue(key, out int index))
+        if(this.info.ContainsKey(key))
         {
-            info = infoList[index];
+            info = this.info[key];
 
             return true;
         }

@@ -35,7 +35,7 @@ public class Player : MonoBehaviour, IDamageReceiver
     {
         LoadPlayerStat();
 
-        Managers.Game.inGameData.playerData.Info = information;
+        Managers.Game.inGameData.player.Info = information;
 
         yield return new WaitUntil(() => information.stat != null);
 

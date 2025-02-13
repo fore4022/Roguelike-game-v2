@@ -86,8 +86,8 @@ public class DataInit
 
         Managers.Game.monsterSpawner.monsterList = monsterList;
 
-        Managers.Game.inGameData.dataInit.objectPool.CreateObjects(monsterList, defaultMonsterCount);
-        Managers.Game.inGameData.dataInit.objectPool.CreateObjects(skillList, defaultSkillCount);
+        Managers.Game.inGameData.init.objectPool.CreateObjects(monsterList, defaultMonsterCount);
+        Managers.Game.inGameData.init.objectPool.CreateObjects(skillList, defaultSkillCount);
 
         int typeCount = monsterList.Count + skillList.Count;
 
@@ -95,11 +95,11 @@ public class DataInit
 
         yield return new WaitUntil(() => Managers.UI.isInitalized == true);
 
-        yield return new WaitUntil(() => Managers.Game.inGameData.playerData.levelUpdate != null);
+        yield return new WaitUntil(() => Managers.Game.inGameData.player.levelUpdate != null);
 
-        yield return new WaitUntil(() => typeCount == Managers.Game.inGameData.dataInit.objectPool.PoolingObjectsCount);
+        yield return new WaitUntil(() => typeCount == Managers.Game.inGameData.init.objectPool.PoolingObjectsCount);
 
-        yield return new WaitUntil(() => typeCount == Managers.Game.inGameData.dataInit.objectPool.ScriptableObjectsCount);
+        yield return new WaitUntil(() => typeCount == Managers.Game.inGameData.init.objectPool.ScriptableObjectsCount);
         
         yield return new WaitUntil(() => Managers.Game.player != null);
 

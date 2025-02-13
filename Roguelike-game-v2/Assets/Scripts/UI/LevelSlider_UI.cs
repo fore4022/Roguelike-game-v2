@@ -11,18 +11,18 @@ public class LevelSlider_UI : UserInterface
     }
     private void MaxValueUpdate()
     {
-        expSlider.maxValue = Managers.Game.inGameData.playerData.ExperienceForLevelUp;
+        expSlider.maxValue = Managers.Game.inGameData.player.ExperienceForLevelUp;
     }
     private void ValueUpdate()
     {
-        expSlider.value = Managers.Game.inGameData.playerData.Experience;
+        expSlider.value = Managers.Game.inGameData.player.Experience;
     }
     private void Init()
     {
-        Managers.Game.inGameData.playerData.experienceUpdate += ValueUpdate;
-        Managers.Game.inGameData.playerData.levelUpdate += MaxValueUpdate;
+        Managers.Game.inGameData.player.experienceUpdate += ValueUpdate;
+        Managers.Game.inGameData.player.levelUpdate += MaxValueUpdate;
 
-        expSlider.maxValue = Managers.Game.inGameData.playerData.ExperienceForLevelUp;
-        expSlider.value = Managers.Game.inGameData.playerData.Experience;
+        expSlider.maxValue = Managers.Game.inGameData.player.ExperienceForLevelUp;
+        expSlider.value = Managers.Game.inGameData.player.Experience;
     }
 }

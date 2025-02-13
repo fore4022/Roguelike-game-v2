@@ -31,7 +31,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     }
     private void Die()
     {
-        Managers.Game.inGameData.playerData.Experience += experience;
+        Managers.Game.inGameData.player.Experience += experience;
 
         StopCoroutine(moveCoroutine);
 
@@ -101,6 +101,6 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 
         render.color = defaultColor;
 
-        Managers.Game.inGameData.dataInit.objectPool.DisableObject(gameObject);
+        Managers.Game.inGameData.init.objectPool.DisableObject(gameObject);
     }
 }

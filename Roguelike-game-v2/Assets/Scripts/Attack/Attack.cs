@@ -71,7 +71,7 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
 
         yield return new WaitUntil(() => attack == null);
 
-        Managers.Game.inGameData.dataInit.objectPool.DisableObject(gameObject);
+        Managers.Game.inGameData.init.objectPool.DisableObject(gameObject);
     }
     protected virtual IEnumerator Attacking()
     {

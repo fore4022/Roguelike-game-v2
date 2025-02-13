@@ -35,7 +35,7 @@ public class AttackCaster
     }
     private IEnumerator Casting()
     {
-        so = Managers.Game.inGameData.dataInit.objectPool.GetScriptableObject<Attack_SO>(attackType);
+        so = Managers.Game.inGameData.init.objectPool.GetScriptableObject<Attack_SO>(attackType);
 
         yield return new WaitUntil(() => so != null);
 
@@ -47,14 +47,12 @@ public class AttackCaster
             {
                 yield return coolTime;
 
-                Managers.Game.inGameData.dataInit.objectPool.ActiveObject(attackType);
+                Managers.Game.inGameData.init.objectPool.ActiveObject(attackType);
             }
         }
         else
         {
             int i;
-
-            Debug.Log("a");
 
             while(true)
             {
@@ -62,7 +60,7 @@ public class AttackCaster
 
                 for(i = 0; i < so.multiCast.count[level]; i++)
                 {
-                    Managers.Game.inGameData.dataInit.objectPool.ActiveObject(attackType);
+                    Managers.Game.inGameData.init.objectPool.ActiveObject(attackType);
 
                     yield return delay;
                 }
