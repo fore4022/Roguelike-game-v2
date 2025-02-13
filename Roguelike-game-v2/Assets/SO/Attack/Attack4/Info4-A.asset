@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b32f468c89f423245814ef0335fae600, type: 3}
-  m_Name: Info2-A
+  m_Name: Info4-A
   m_EditorClassIdentifier: 
-  skillObject: {fileID: 8179025814334315390, guid: 2d9bcc69775f2fd44be57c183c831f1f, type: 3}
-  sprite: {fileID: 651171721, guid: e2072e807c4cc394e9096f87614a1e0f, type: 3}
-  controller: {fileID: 9100000, guid: b91822e2a3216b242a59ccc6c8c7312f, type: 2}
-  attackType: Attack2
+  skillObject: {fileID: 2446887242956231448, guid: 04ee9868daa9afb4c92da14a902bfd73, type: 3}
+  sprite: {fileID: -430884495, guid: 6bc24ed57ab12f4449c09b3521262328, type: 3}
+  controller: {fileID: 9100000, guid: ac73dc0ed1f3aeb4e897a4fe1b3e2a57, type: 2}
+  attackType: Attack4
   explanation: 

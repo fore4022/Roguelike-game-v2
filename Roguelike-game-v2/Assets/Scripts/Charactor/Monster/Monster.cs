@@ -19,7 +19,7 @@ public class Monster : MonoBehaviour, IScriptableData
     private bool didInit = false;
     protected bool visible = false;
 
-    public ScriptableObject SetSO { set { monsterSO = value as MonsterStat_SO; } }
+    public ScriptableObject SO { set { monsterSO = value as MonsterStat_SO; } }
     protected virtual void Awake()
     {
         render = GetComponent<SpriteRenderer>();

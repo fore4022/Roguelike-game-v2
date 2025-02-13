@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-public class Projectile_1 : Projectile
+public class Projectile_A : Projectile
 {
     protected override void SetAttack()
     {

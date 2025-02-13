@@ -5,7 +5,7 @@ public class AttackInformation
     public AttackInformation_SO data;
     public AttackCaster caster = null;
     
-    public int level;
+    public int level = 0;
 
     public AttackInformation(AttackInformation_SO dataSO)
     {
@@ -46,7 +46,7 @@ public class AttackData
             return info.level;
         }
 
-        return 0;
+        return -1;
     }
     public List<AttackInformation> GetAttackInformation()
     {

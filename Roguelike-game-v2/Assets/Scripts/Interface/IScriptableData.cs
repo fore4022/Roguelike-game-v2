@@ -1,5 +1,5 @@
 using UnityEngine;
 public interface IScriptableData
 {
-    public ScriptableObject SetSO { set; }
+    public ScriptableObject SO { set; }
 }

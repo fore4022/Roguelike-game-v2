@@ -1,5 +1,4 @@
-using UnityEngine;
-public class Attack3 : Attack
+public class Attack_C : Attack
 {
     protected override void SetAttack()
     {

@@ -139,7 +139,7 @@ public class ObjectPool
 
             for(index = sum; index < Mathf.Min(sum + count, array.Length); index++)
             {
-                array[index].GetComponent<IScriptableData>().SetSO = so;
+                array[index].GetComponent<IScriptableData>().SO = so;
             }
 
             sum += count;
