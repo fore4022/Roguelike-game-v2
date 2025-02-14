@@ -9,7 +9,7 @@ public class InGameDataManage
 
     private const int maxOptionCount = 5;
 
-    private int optionCount = 1;// = 3;
+    private int optionCount = 3;
     
     public int OptionCount
     {

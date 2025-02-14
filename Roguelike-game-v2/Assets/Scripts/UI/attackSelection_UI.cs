@@ -36,24 +36,6 @@ public class AttackSelection_UI : UserInterface
 
         StartCoroutine(Init());
     }
-    private IEnumerator Set()
-    {
-        List<AttackInformation> infoList = Managers.Game.inGameData.attack.GetAttackInformation();
-
-        int[] indexs = Managers.Game.calculate.GetRandomValues(infoList.Count, Mathf.Min(Managers.Game.inGameData.OptionCount, infoList.Count));
-
-        Managers.UI.uiElementUtility.SetImageAlpha(background, basicAlpha);
-
-        yield return null;
-
-        for (int i = 0; i < indexs.Count(); i++)
-        {
-            attackOptionList[i].gameObject.SetActive(true);
-            attackOptionList[i].InitOption(infoList[indexs[i]]);
-        }
-
-        background.enabled = true;
-    }
     public void Selected()
     {
         foreach (AttackOption_UI attackOption in attackOptionList)
@@ -67,16 +49,6 @@ public class AttackSelection_UI : UserInterface
     {
         gridLayoutGroup.cellSize = new Vector2(cellSize.x, cellSize.y);
         gridLayoutGroup.spacing = new Vector2(0, spacingY);
-    }
-    private void CreateOptionUI()
-    {
-        for(int i = 0; i < Managers.Game.inGameData.OptionCount - attackOptionList.Count; i++)
-        {
-            GameObject go = Instantiate(attackOption, transform);
-
-            attackOptionList.Add(go.GetComponent<AttackOption_UI>());
-            go.SetActive(false);
-        }
     }
     private void OnDisable()
     {
@@ -98,6 +70,19 @@ public class AttackSelection_UI : UserInterface
     {
         attackOption = await Util.LoadingToPath<GameObject>(path);
     }
+    private void CreateOptionUI()
+    {
+        int count = Managers.Game.inGameData.OptionCount - attackOptionList.Count;
+
+        for (int i = 0; i < count; i++)
+        {
+            GameObject go = Instantiate(attackOption, transform);
+
+            attackOptionList.Add(go.GetComponent<AttackOption_UI>());
+
+            go.SetActive(false);
+        }
+    }
     private IEnumerator Init()
     {
         LoadAttackOption();
@@ -114,6 +99,24 @@ public class AttackSelection_UI : UserInterface
         Managers.Game.inGameData.optionCountUpdate += CreateOptionUI;
 
         gameObject.SetActive(false);
+    }
+    private IEnumerator Set()
+    {
+        List<AttackInformation> infoList = Managers.Game.inGameData.attack.GetAttackInformation();
+
+        int[] indexs = Managers.Game.calculate.GetRandomValues(infoList.Count, Mathf.Min(Managers.Game.inGameData.OptionCount, infoList.Count));
+
+        Managers.UI.uiElementUtility.SetImageAlpha(background, basicAlpha);
+
+        yield return null;
+
+        for (int i = 0; i < indexs.Count(); i++)
+        {
+            attackOptionList[i].gameObject.SetActive(true);
+            attackOptionList[i].InitOption(infoList[indexs[i]]);
+        }
+
+        background.enabled = true;
     }
     private IEnumerator PadeIn()
     {

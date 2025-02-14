@@ -11,6 +11,8 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
     protected Coroutine attack = null;
     protected int level;
 
+    private bool isInit = false;
+
     public ScriptableObject SO { set { so = value as Attack_SO; } }
     public float DamageAmount { get { return Managers.Game.player.Stat.damage * so.damageCoefficient[level]; } }
     protected void Awake()
@@ -32,6 +34,7 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
         col = GetComponent<Collider2D>();
 
         render.enabled = false;
+        isInit = true;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -55,6 +58,8 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
     }
     private IEnumerator StartAttack()
     {
+        yield return new WaitUntil(() => isInit);
+
         level = Managers.Game.inGameData.attack.GetLevel(so.attackTypePath);
 
         SetAttack();

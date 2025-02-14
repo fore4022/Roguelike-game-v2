@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 public class AttackInformation
 {
@@ -56,12 +57,14 @@ public class AttackData
 
         if(info.Count() > Managers.Game.inGameData.OptionCount)
         {
-            int[] indexs = Managers.Game.calculate.GetRandomValues(info.Count(), Managers.Game.inGameData.OptionCount);
+            int[] indexs = Managers.Game.calculate.GetRandomValues(info.Count(), info.Count() - Managers.Game.inGameData.OptionCount);
 
-            for(int i = 0; i < Managers.Game.inGameData.OptionCount; i++)
+            for(int i = 0; i < indexs.Length; i++)
             {
-                info.RemoveAt(indexs[i]);
+                info[i].level = -1;
             }
+
+            info.RemoveAll(o => o.level == -1);
         }
 
         return info;
