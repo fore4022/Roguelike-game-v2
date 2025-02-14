@@ -6,7 +6,7 @@ public abstract class Projectile : Attack
     protected Vector3 direction;
     protected int penetration_count;
 
-    private const float collectDelay = 5;
+    private const float collectDelay = 3;
 
     private Plane[] planes = new Plane[6];
     private Coroutine collect;
@@ -38,7 +38,10 @@ public abstract class Projectile : Attack
 
         attack = null;
     }
+    protected override IEnumerator Attacking()
+    {
+        yield return base.Attacking();
+    }
     protected abstract override void Enter(GameObject go);
-    protected abstract override IEnumerator Attacking();
     protected abstract IEnumerator Moving();
 }

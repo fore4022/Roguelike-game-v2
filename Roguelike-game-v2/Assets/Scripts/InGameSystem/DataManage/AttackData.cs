@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 public class AttackInformation
 {
@@ -51,7 +50,7 @@ public class AttackData
     }
     public List<AttackInformation> GetAttackInformation()
     {
-        List<AttackInformation> info = this.info.Values.ToList();
+        List<AttackInformation> info = this.info.Values.Select(o => new AttackInformation(o.data)).ToList();
 
         info.RemoveAll(o => o.level == Attack_SO.maxLevel - 1);
 
@@ -61,7 +60,7 @@ public class AttackData
 
             for(int i = 0; i < indexs.Length; i++)
             {
-                info[i].level = -1;
+                info[indexs[i]].level = -1;
             }
 
             info.RemoveAll(o => o.level == -1);

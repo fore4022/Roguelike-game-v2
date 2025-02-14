@@ -5,7 +5,7 @@ public class Projectile_A : Projectile
     protected override void SetAttack()
     {
         transform.position = Managers.Game.player.gameObject.transform.position;
-        direction = Managers.Game.calculate.GetDirection(Managers.Game.player.gameObject.transform.position);
+        direction = Managers.Game.calculate.GetDirection(Managers.Game.enemyDetection.GetNearestEnemyPosition());
         transform.rotation = Managers.Game.calculate.GetQuaternion(direction);
         penetration_count = so.projectile_Info.penetration;
     }
@@ -27,14 +27,12 @@ public class Projectile_A : Projectile
 
         yield return new WaitUntil(() => moving == null);
 
-        if (so.projectile_Info.animationName != "")
+        if(so.projectile_Info.animationName != "")
         {
-            anime.Play(so.projectile_Info.animationName);
-
-            yield return new WaitUntil(() => anime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
+            anime.Play(so.projectile_Info.animationName, 0);
         }
 
-        attack = null;
+        yield return base.Attacking();
     }
     protected override IEnumerator Moving()
     {

@@ -6,14 +6,16 @@ public class Attack_D : Attack
     {
         transform.position = Managers.Game.enemyDetection.GetRandomVector();
 
-        anime.Play("default");
+        anime.Play("default", 0);
     }
     protected override IEnumerator Attacking()
     {
         yield return new WaitUntil(() => anime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
 
-        anime.Play("explosion");
+        anime.Play("explosion", 0);
 
-        yield return new WaitUntil(() => anime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
+        yield return null;
+
+        yield return base.Attacking();
     }
 }
