@@ -13,9 +13,7 @@ public class DifficultyScaler
             userLevelScale = Managers.UserData.data.UserLevel / divideValue;
         }
 
-        float difficultyScale = Managers.Game.stageInformation.difficulty;
-
-        difficultyScale += userLevelScale + GetTimeScale();
+        float difficultyScale = Managers.Game.stageInformation.difficulty + userLevelScale + GetTimeScale();
 
         return difficultyScale;
     }

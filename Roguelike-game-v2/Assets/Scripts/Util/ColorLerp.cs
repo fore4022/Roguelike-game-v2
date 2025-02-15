@@ -46,6 +46,7 @@ public static class ColorLerp
     public static IEnumerator ChangeAlpha(SpriteRenderer render, float targetValue, float defaultValue, float duration)
     {
         Color color = new();
+
         float totalTime = 0;
 
         while(totalTime != duration)
@@ -66,6 +67,7 @@ public static class ColorLerp
     public static IEnumerator ChangeAlpha(Image img, float targetValue, float defaultValue, float duration)
     {
         Color color = new();
+
         float totalTime = 0;
 
         while (totalTime != duration)

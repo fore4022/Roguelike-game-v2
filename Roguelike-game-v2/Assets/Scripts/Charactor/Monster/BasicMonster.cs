@@ -48,7 +48,10 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     }
     public void TakeDamage(IDamage damage)
     {
-        if(!rigid.simulated) { return; }
+        if(!rigid.simulated) 
+        {
+            return;
+        }
 
         health -= damage.DamageAmount;
 

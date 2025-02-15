@@ -6,6 +6,7 @@ public class StartMessage_UI : UserInterface
     private TextMeshProUGUI tmp;
 
     private Coroutine textAnimation;
+    private WaitForSeconds delay;
     private const float duration = 1.5f;
     private const int minAlpha = 50;
     private const int maxAlpha = 255;
@@ -31,6 +32,8 @@ public class StartMessage_UI : UserInterface
         int count = 0;
         int i;
 
+        delay = new(duration / 2);
+
         while (true)
         {
             tmp.text = text;
@@ -40,7 +43,7 @@ public class StartMessage_UI : UserInterface
                 tmp.text += ".";
             }
 
-            yield return new WaitForSeconds(duration / 2);
+            yield return delay;
 
             count++;
 
@@ -54,17 +57,19 @@ public class StartMessage_UI : UserInterface
     {
         StopCoroutine(textAnimation);
 
+        delay = new(duration);
+
         tmp.text = "PRESS TO START";
 
         while (true)
         {
             Managers.UI.uiElementUtility.SetTextAlpha(tmp, minAlpha, duration, false);
 
-            yield return new WaitForSecondsRealtime(duration);
+            yield return delay;
 
             Managers.UI.uiElementUtility.SetTextAlpha(tmp, maxAlpha, duration, false);
 
-            yield return new WaitForSecondsRealtime(duration);
+            yield return delay;
         }
     }
 }

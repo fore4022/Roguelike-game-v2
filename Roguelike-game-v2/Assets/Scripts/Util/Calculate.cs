@@ -43,19 +43,6 @@ public class Calculate
     {
         return Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
     }
-    public void IsInvisible(Collider2D targetCollider)
-    {
-        if (!targetCollider.gameObject.activeSelf)
-        {
-            return;
-        }
-
-        Collider2D target = targetCollider;
-
-        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
-
-        if (!GeometryUtility.TestPlanesAABB(planes, target.bounds)) { Object.Destroy(targetCollider.gameObject); }
-    }
     public int[] GetRandomValues(int maxValue, int count)
     {
         List<int> valueList = new();

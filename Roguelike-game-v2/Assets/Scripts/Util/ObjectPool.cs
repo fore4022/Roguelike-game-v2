@@ -122,7 +122,6 @@ public class ObjectPool
 
         int sum = 0;
         int count;
-
         int index;
 
         coroutineCount++;

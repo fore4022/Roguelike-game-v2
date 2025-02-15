@@ -10,6 +10,7 @@ public abstract class Projectile : Attack
 
     private Plane[] planes = new Plane[6];
     private Coroutine collect;
+    private WaitForSeconds delay = new(collectDelay);
 
     protected void Update()
     {
@@ -17,7 +18,10 @@ public abstract class Projectile : Attack
     }
     private void IsInvisible()
     {
-        if(attack == null) { return; }
+        if(attack == null)
+        {
+            return; 
+        }
 
         planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
 
@@ -34,7 +38,7 @@ public abstract class Projectile : Attack
     }
     private IEnumerator Collectting()
     {
-        yield return new WaitForSeconds(collectDelay);
+        yield return delay;
 
         attack = null;
     }

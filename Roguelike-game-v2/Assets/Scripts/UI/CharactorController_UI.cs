@@ -7,7 +7,6 @@ public class CharactorController_UI : UserInterface
 
     private InputAction.CallbackContext? touchStart;
     private Vector2 enterPosition;
-    private Vector2 position;
 
     private const int maxLength = 100;
 
@@ -26,8 +25,6 @@ public class CharactorController_UI : UserInterface
     }
     public void SetJoyStick()
     {
-        position = enterPosition + Vector2.ClampMagnitude(Managers.Game.player.move.Direction, maxLength);
-
-        stick.transform.position = position;
+        stick.transform.position = enterPosition + Vector2.ClampMagnitude(Managers.Game.player.move.Direction, maxLength);
     }
 }

@@ -81,8 +81,8 @@ public class EnemyDetection
     }
     public List<GameObject> FindLargestEnemyGroup(int count)
     {
-        List<GameObject> gameObjectList = FindEnemiesOnScreen();
         List<(GameObject obj, int enemyCount) > targetObjectList = new List<(GameObject obj, int enemyCount)>();
+        List<GameObject> gameObjectList = FindEnemiesOnScreen();
         Collider2D[] colliderArray = new Collider2D[maximumEnemyCount];
 
         int enemyCount;
@@ -181,9 +181,7 @@ public class EnemyDetection
         List<GameObject> resultList = new List<GameObject>();
         Collider2D[] colliderArray;
         
-        Vector2 radiusPosition;
-
-        radiusPosition = Camera.main.transform.position;
+        Vector2 radiusPosition = Camera.main.transform.position;
 
         if (range == null)
         {

@@ -2,10 +2,10 @@ using UnityEditor;
 [CustomEditor(typeof(Attack_SO))]
 public class SO_Editor : Editor
 {
-    SerializedProperty show_1;//projectile
+    SerializedProperty show_1;
     SerializedProperty value_1;
 
-    SerializedProperty show_2;//isMultiCast
+    SerializedProperty show_2;
     SerializedProperty value_2;
 
     private void OnEnable()

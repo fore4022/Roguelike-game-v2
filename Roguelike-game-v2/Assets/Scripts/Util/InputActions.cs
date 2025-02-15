@@ -22,6 +22,7 @@ public static class InputActions
     public static T GetInputAction<T>() where T : IInputActionCollection, new()
     {
         IInputActionCollection instance = inputActionList.Find(input => input.GetType() == typeof(T));
+
         bool isInclude = instance != null;
 
         if(inputActionList.Count == 0)

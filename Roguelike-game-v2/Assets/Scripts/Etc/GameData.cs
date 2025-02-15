@@ -4,8 +4,8 @@ using UnityEngine;
 [System.Serializable]
 public class GameData
 {
-    private GameData_SO so;
     private Stage_SO[] stages;
+    private GameData_SO so;
 
     public GameData_SO SO
     {

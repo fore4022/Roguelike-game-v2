@@ -8,9 +8,9 @@ public class UI_Manager
 {
     public UIElementUtility uiElementUtility = new();
 
-    private Dictionary<string, UserInterface> uiDictionary = new();
-
     public bool isInitalized = false;
+
+    private Dictionary<string, UserInterface> uiDictionary = new();
 
     private Transform Transform
     {

@@ -13,11 +13,11 @@ public class Monster : MonoBehaviour, IScriptableData
 
     protected float experience;
     protected float health;
+    protected bool visible = false;
 
     private Plane[] planes = new Plane[6];
 
     private bool didInit = false;
-    protected bool visible = false;
 
     public ScriptableObject SO { set { monsterSO = value as MonsterStat_SO; } }
     protected virtual void Awake()

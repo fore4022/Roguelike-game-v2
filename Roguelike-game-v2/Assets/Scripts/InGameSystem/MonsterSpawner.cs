@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 public class MonsterSpawner : MonoBehaviour
 {
-    private Dictionary<string, ScriptableObject> monsterStats = new();
     public List<GameObject> monsterList = new();
+
+    private Dictionary<string, ScriptableObject> monsterStats = new();
 
     private const float minimumSpawnDelay = 0.075f;
 

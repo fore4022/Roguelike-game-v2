@@ -67,7 +67,6 @@ public class UIElementUtility
     public IEnumerator SetImageScale(RectTransform rectTransform, float targetScale, float duration = 0)
     {
         Vector3 scale;
-
         float totalTime = 0;
 
         if(duration == 0)
@@ -149,6 +148,7 @@ public class UIElementUtility
     private IEnumerator SetImageAlpha(List<Image> imgList, Color color, float targetAlphaValue, float duration)
     {
         Color childrenColor;
+
         float totalTime = 0;
 
         if (duration == 0)

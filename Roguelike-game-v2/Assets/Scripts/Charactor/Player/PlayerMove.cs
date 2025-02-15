@@ -92,15 +92,14 @@ public class PlayerMove : MonoBehaviour, IMoveable
         Managers.UI.ShowUI<CharactorController_UI>();
 
         enterTouchPosition = context.ReadValue<Vector2>();
-
         charactorController.EnterPosition = enterTouchPosition;
         moving = StartCoroutine(Moving());
-
-        didStartMove = true;
     }
     private IEnumerator Moving()
     {
-        while(true)
+        didStartMove = true;
+
+        while (true)
         {
             Managers.Game.player.gameObject.transform.position += direction.normalized * Managers.Game.player.Stat.moveSpeed * Time.deltaTime;
 

@@ -13,10 +13,7 @@ public class InGameDataManage
     
     public int OptionCount
     {
-        get
-        {
-            return Mathf.Min(optionCount, maxOptionCount);
-        }
+        get { return Mathf.Min(optionCount, maxOptionCount); }
         set
         {
             optionCount = value;
