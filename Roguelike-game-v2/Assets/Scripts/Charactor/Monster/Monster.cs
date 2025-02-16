@@ -1,6 +1,6 @@
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(Animator), typeof(SpriteRenderer))]
-public class Monster : MonoBehaviour, IScriptableData
+public class Monster : MonoBehaviour, IScriptableData, IEffectable
 {
     protected MonsterStat_SO monsterSO = null;
     protected DefaultStat stat;

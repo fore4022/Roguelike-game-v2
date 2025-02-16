@@ -7,8 +7,7 @@ public class Effects
     public enum Types
     {
         Sum,
-        Product,
-        Magnification
+        Product
     }
 
     public Effect effect;
