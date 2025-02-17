@@ -1,6 +1,6 @@
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(Animator), typeof(SpriteRenderer))]
-public class Monster : MonoBehaviour, IScriptableData, IEffectable
+public class Monster : MonoBehaviour, IScriptableData
 {
     protected MonsterStat_SO monsterSO = null;
     protected DefaultStat stat;
@@ -40,13 +40,12 @@ public class Monster : MonoBehaviour, IScriptableData, IEffectable
         if(!didInit)
         {
             Init();
-            LoadStat();
 
             didInit = true;
         }
         else
         {
-            health = monsterSO.stat.health;
+            LoadStat();
         }
 
         SetPosition();
