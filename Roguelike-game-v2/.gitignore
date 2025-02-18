@@ -11,15 +11,12 @@
 /[Uu]ser[Ss]ettings/
 /Assets/StreamingAssets/
 /Assets/AddressableAssetsData/
-/Assets/RPGW ML_v2.0/
 /Assets/FX Pack/
 /Assets/CleanFlatIcon/
 /Assets/Prefabs/
 /Assets/Scenes/
 /Assets/TextMesh Pro/
-/Assets/PixelMobs/
-/Assets/sanctum_pixel/
-/Assets/Pixel Art/
+/Assets/Sprites/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
