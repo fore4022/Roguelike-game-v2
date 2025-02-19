@@ -2,6 +2,8 @@ using System.Collections;
 using UnityEngine;
 public class Projectile_A : Projectile
 {
+    private int penetration_count;
+
     protected override void SetAttack()
     {
         transform.position = Managers.Game.player.gameObject.transform.position;

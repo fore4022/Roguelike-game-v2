@@ -4,7 +4,6 @@ public abstract class Projectile : Attack
 {
     protected Coroutine moving = null;
     protected Vector3 direction;
-    protected int penetration_count;
 
     private const float collectDelay = 3;
 

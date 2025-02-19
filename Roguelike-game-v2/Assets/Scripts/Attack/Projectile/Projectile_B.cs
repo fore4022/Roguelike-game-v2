@@ -9,7 +9,7 @@ public class Projectile_B : Projectile
         transform.position = Managers.Game.player.gameObject.transform.position;
         direction = Managers.Game.calculate.GetDirection(Managers.Game.enemyDetection.GetNearestEnemyPosition());
         transform.rotation = Managers.Game.calculate.GetQuaternion(direction);
-        penetration_count = so.projectile_Info.penetration;
+        isExplosion = false;
 
         anime.Play("default");
     }
@@ -24,9 +24,9 @@ public class Projectile_B : Projectile
 
             if(!isExplosion)
             {
-                isExplosion = true;
-
                 anime.Play(so.projectile_Info.animationName);
+
+                isExplosion = true;
 
                 StopCoroutine(moving);
 
@@ -39,6 +39,8 @@ public class Projectile_B : Projectile
         StartMove();
 
         yield return new WaitUntil(() => moving == null);
+
+        yield return new WaitUntil(() => anime.GetCurrentAnimatorStateInfo(0).IsName(so.projectile_Info.animationName));
 
         yield return base.Attacking();
     }
