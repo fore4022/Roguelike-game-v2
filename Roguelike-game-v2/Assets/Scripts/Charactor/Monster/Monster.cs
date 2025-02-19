@@ -13,7 +13,7 @@ public class Monster : MonoBehaviour, IScriptableData
 
     protected float experience;
     protected float health;
-    protected bool visible = false;
+    protected bool isVisible = false;
 
     private Plane[] planes = new Plane[6];
 
@@ -45,7 +45,7 @@ public class Monster : MonoBehaviour, IScriptableData
         }
         else
         {
-            LoadStat();
+            Set();
         }
 
         SetPosition();
@@ -60,18 +60,19 @@ public class Monster : MonoBehaviour, IScriptableData
 
         if (GeometryUtility.TestPlanesAABB(planes, col.bounds))
         {
-            visible = true;
+            isVisible = true;
         }
         else
         {
-            visible = false;
+            isVisible = false;
         }
     }
-    protected virtual void LoadStat()
+    protected virtual void Set()
     {
         stat = monsterSO.stat;
         experience = monsterSO.experience;
         health = stat.health;
+        animator.speed = 1;
     }
     protected virtual void Init()
     {
@@ -82,7 +83,7 @@ public class Monster : MonoBehaviour, IScriptableData
         render.enabled = false;
         rigid.simulated = false;
 
-        LoadStat();
+        Set();
     }
     protected virtual void SetPosition()
     {

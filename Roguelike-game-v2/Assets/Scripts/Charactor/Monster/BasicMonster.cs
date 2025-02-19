@@ -5,7 +5,9 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     private const float damagedDuration = 0.15f;
 
     private Coroutine moveCoroutine = null;
+    private WaitForSeconds damaged = new(damagedDuration);
     private Color defaultColor;
+    private float animationDuration;
 
     public float DamageAmount { get { return stat.damage; } }
     protected override void OnEnable()
@@ -18,11 +20,18 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     public void OnMove()
     {
         Vector3 direction = Managers.Game.calculate.GetDirection(Managers.Game.player.gameObject.transform.position, transform.position);
+
         rigid.velocity = direction * stat.moveSpeed;
 
-        if(visible)
+        if(isVisible)
         {
+            animator.speed = 1;
+
             changeDirection();
+        }
+        else
+        {
+            animator.speed = 0;
         }
     }
     protected virtual void Damaged()
@@ -66,8 +75,8 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     {
         base.Init();
 
-        animator.enabled = true;
         defaultColor = render.color;
+        animationDuration = stat.death_AnimationDuration;
     }
     private IEnumerator Moving()
     {
@@ -84,15 +93,13 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     {
         render.material.SetFloat("_Float", 1);
 
-        yield return new WaitForSeconds(damagedDuration);
+        yield return damaged;
 
         render.material.SetFloat("_Float", 0);
     }
     private IEnumerator Dieing()
     {
-        float animationDuration = stat.death_AnimationDuration;
-
-        animator.enabled = false;
+        animator.speed = 0;
 
         StartCoroutine(ColorLerp.ChangeColor(render, Color.black, defaultColor, animationDuration / 2));
 

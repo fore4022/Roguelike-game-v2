@@ -5,11 +5,12 @@ public class StartMessage_UI : UserInterface
 {
     private TextMeshProUGUI tmp;
 
-    private Coroutine textAnimation;
-    private WaitForSeconds delay;
     private const float duration = 1.5f;
     private const int minAlpha = 50;
     private const int maxAlpha = 255;
+
+    private Coroutine textAnimation;
+    private WaitForSeconds delay;
 
     public override void SetUserInterface()
     {
