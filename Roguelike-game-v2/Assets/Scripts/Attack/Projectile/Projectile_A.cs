@@ -23,14 +23,9 @@ public class Projectile_A : Projectile
     }
     protected override IEnumerator Attacking()
     {
-        moving = StartCoroutine(Moving());
+        StartMove();
 
         yield return new WaitUntil(() => moving == null);
-
-        if(so.projectile_Info.animationName != "")
-        {
-            anime.Play(so.projectile_Info.animationName, 0);
-        }
 
         yield return base.Attacking();
     }

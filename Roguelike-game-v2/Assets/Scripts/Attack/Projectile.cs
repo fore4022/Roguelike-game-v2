@@ -16,6 +16,10 @@ public abstract class Projectile : Attack
     {
         IsInvisible();
     }
+    protected void StartMove()
+    {
+        moving = StartCoroutine(Moving());
+    }
     private void IsInvisible()
     {
         if(attack == null)

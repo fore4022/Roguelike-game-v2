@@ -52,9 +52,9 @@ public class Monster : MonoBehaviour, IScriptableData
     }
     protected virtual void FixedUpdate()
     {
-        isInvisible();
+        IsInvisible();
     }
-    private void isInvisible()
+    private void IsInvisible()
     {
         planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
 
@@ -81,6 +81,8 @@ public class Monster : MonoBehaviour, IScriptableData
 
         render.enabled = false;
         rigid.simulated = false;
+
+        LoadStat();
     }
     protected virtual void SetPosition()
     {
