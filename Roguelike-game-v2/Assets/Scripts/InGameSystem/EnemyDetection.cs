@@ -6,8 +6,10 @@ public class EnemyDetection
     public float largeastRange = 2.5f;
     public int maximumEnemyCount = 15;
 
-    private float width = Util.CameraWidth / 2;
-    private float height = Util.CameraHeight / 2;
+    private const float offset = 0.5f;
+
+    private float width = Util.CameraWidth / 2 - offset;
+    private float height = Util.CameraHeight / 2 - offset;
 
     public GameObject FindRandomEnemy()
     {

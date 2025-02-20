@@ -11,6 +11,7 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
     protected Coroutine attack = null;
     protected int level;
 
+    private int rand;
     private bool isInit = false;
 
     public ScriptableObject SO { set { so = value as Attack_SO; } }
@@ -33,7 +34,9 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
         render = GetComponent<SpriteRenderer>();
         col = GetComponent<Collider2D>();
 
+        anime.speed = 0;
         render.enabled = false;
+        col.enabled = false;
         isInit = true;
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -61,9 +64,20 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
         yield return new WaitUntil(() => isInit);
 
         level = Managers.Game.inGameData.attack.GetLevel(so.attackTypePath);
+        rand = Random.Range(0, 2);
+
+        if(rand == 0)
+        {
+            render.flipX = true;
+        }
+        else
+        {
+            render.flipX = false;
+        }
 
         SetAttack();
 
+        anime.speed = 1;
         render.enabled = true;
         col.enabled = true;
         attack = StartCoroutine(Attacking());
@@ -76,8 +90,9 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
     {
         yield return new WaitUntil(() => anime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
 
-        col.enabled = false;
+        anime.speed = 0;
         render.enabled = false;
+        col.enabled = false;
         attack = null;
     }
     protected abstract void SetAttack();
