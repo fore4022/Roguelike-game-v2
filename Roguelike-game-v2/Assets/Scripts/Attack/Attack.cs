@@ -11,7 +11,7 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
     protected Coroutine attack = null;
     protected int level;
 
-    private int rand;
+    //private int rand;
     private bool isInit = false;
 
     public ScriptableObject SO { set { so = value as Attack_SO; } }
@@ -64,16 +64,16 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
         yield return new WaitUntil(() => isInit);
 
         level = Managers.Game.inGameData.attack.GetLevel(so.attackTypePath);
-        rand = Random.Range(0, 2);
+        //rand = Random.Range(0, 2);
 
-        if(rand == 0)
-        {
-            render.flipX = true;
-        }
-        else
-        {
-            render.flipX = false;
-        }
+        //if(rand == 0)
+        //{
+        //    render.flipX = true;
+        //}
+        //else
+        //{
+        //    render.flipX = false;
+        //}
 
         SetAttack();
 

@@ -38,7 +38,7 @@ public class Projectile_B : Projectile
     {
         StartMove();
 
-        yield return new WaitUntil(() => moving == null);
+        yield return new WaitUntil(() => isExplosion);
 
         yield return new WaitUntil(() => anime.GetCurrentAnimatorStateInfo(0).IsName(so.projectile_Info.animationName));
 

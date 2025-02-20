@@ -47,6 +47,8 @@ public abstract class Projectile : Attack
     }
     protected override IEnumerator Attacking()
     {
+        yield return new WaitUntil(() => moving == null);
+
         yield return base.Attacking();
     }
     protected abstract override void Enter(GameObject go);

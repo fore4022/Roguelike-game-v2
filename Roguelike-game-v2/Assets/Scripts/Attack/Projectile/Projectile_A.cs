@@ -27,8 +27,6 @@ public class Projectile_A : Projectile
     {
         StartMove();
 
-        yield return new WaitUntil(() => moving == null);
-
         yield return base.Attacking();
     }
     protected override IEnumerator Moving()
