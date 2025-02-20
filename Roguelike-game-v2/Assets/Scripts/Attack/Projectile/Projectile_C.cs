@@ -10,6 +10,8 @@ public class Projectile_C : Projectile
         direction = Managers.Game.calculate.GetDirection(Managers.Game.enemyDetection.GetRandomEnemyPosition());
 
         StartCoroutine(AnimationManaging());
+
+        base.SetAttack();
     }
     protected override void Enter(GameObject go)
     {
@@ -20,12 +22,6 @@ public class Projectile_C : Projectile
                 damageReceiver.TakeDamage(this);
             }
         }
-    }
-    protected override IEnumerator Attacking()
-    {
-        
-
-        yield return base.Attacking();
     }
     protected override IEnumerator Moving()
     {

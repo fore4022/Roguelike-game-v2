@@ -11,13 +11,13 @@ public abstract class Projectile : Attack
     private Coroutine collect;
     private WaitForSeconds delay = new(collectDelay);
 
+    protected override void SetAttack()
+    {
+        moving = StartCoroutine(Moving());
+    }
     protected void Update()
     {
         IsInvisible();
-    }
-    protected void StartMove()
-    {
-        moving = StartCoroutine(Moving());
     }
     private void IsInvisible()
     {

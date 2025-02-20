@@ -10,6 +10,8 @@ public class Projectile_A : Projectile
         direction = Managers.Game.calculate.GetDirection(Managers.Game.enemyDetection.GetNearestEnemyPosition());
         transform.rotation = Managers.Game.calculate.GetQuaternion(direction);
         penetration_count = so.projectile_Info.penetration;
+
+        base.SetAttack();
     }
     protected override void Enter(GameObject go)
     {
@@ -22,12 +24,6 @@ public class Projectile_A : Projectile
 
             penetration_count--;
         }
-    }
-    protected override IEnumerator Attacking()
-    {
-        StartMove();
-
-        yield return base.Attacking();
     }
     protected override IEnumerator Moving()
     {

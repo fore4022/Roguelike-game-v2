@@ -12,6 +12,8 @@ public class Projectile_B : Projectile
         isExplosion = false;
 
         anime.Play("default");
+
+        base.SetAttack();
     }
     protected override void Enter(GameObject go)
     {
@@ -36,8 +38,6 @@ public class Projectile_B : Projectile
     }
     protected override IEnumerator Attacking()
     {
-        StartMove();
-
         yield return new WaitUntil(() => isExplosion);
 
         yield return new WaitUntil(() => anime.GetCurrentAnimatorStateInfo(0).IsName(so.projectile_Info.animationName));
