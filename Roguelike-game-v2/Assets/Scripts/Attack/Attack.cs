@@ -105,7 +105,10 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
     }
     protected virtual IEnumerator Attacking()
     {
-        yield return new WaitUntil(() => anime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
+        if(so.duration == 0)
+        {
+            yield return new WaitUntil(() => anime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
+        }
 
         attack = null;
     }

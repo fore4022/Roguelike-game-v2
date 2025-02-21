@@ -49,7 +49,7 @@ MonoBehaviour:
   - 5
   attackTypePath: Attack4
   duration: 5
-  projectile: 0
-  isMultiCast: 0
   flipX: 0
   flipY: 0
+  projectile: 0
+  isMultiCast: 0

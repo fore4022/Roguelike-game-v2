@@ -27,10 +27,10 @@ public class Attack_SO : ScriptableObject
 
     public string attackTypePath;
     public float duration;
-    public bool projectile;
-    public bool isMultiCast;
     public bool flipX = false;
     public bool flipY = false;
+    public bool projectile;
+    public bool isMultiCast;
 
     private void OnValidate()
     {
