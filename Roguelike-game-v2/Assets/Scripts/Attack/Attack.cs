@@ -11,7 +11,6 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
     protected Coroutine attack = null;
     protected int level;
 
-    //private int rand;
     private bool isInit = false;
 
     public ScriptableObject SO { set { so = value as Attack_SO; } }
@@ -53,7 +52,7 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
         {
             return;
         }
-
+        
         if(go.TryGetComponent(out IDamageReceiver damageReceiver))
         {
             damageReceiver.TakeDamage(this);
@@ -64,16 +63,30 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
         yield return new WaitUntil(() => isInit);
 
         level = Managers.Game.inGameData.attack.GetLevel(so.attackTypePath);
-        //rand = Random.Range(0, 2);
 
-        //if(rand == 0)
-        //{
-        //    render.flipX = true;
-        //}
-        //else
-        //{
-        //    render.flipX = false;
-        //}
+        if(so.flipX)
+        {
+            if(Random.Range(0, 2) == 1)
+            {
+                render.flipX = true;
+            }
+            else
+            {
+                render.flipX = false;
+            }
+        }
+
+        if(so.flipY)
+        {
+            if(Random.Range(0, 2) == 1)
+            {
+                render.flipY = true;
+            }
+            else
+            {
+                render.flipY = false;
+            }
+        }
 
         SetAttack();
 
@@ -84,15 +97,16 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
 
         yield return new WaitUntil(() => attack == null);
 
+        anime.speed = 0;
+        render.enabled = false;
+        col.enabled = false;
+
         Managers.Game.inGameData.init.objectPool.DisableObject(gameObject);
     }
     protected virtual IEnumerator Attacking()
     {
         yield return new WaitUntil(() => anime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
 
-        anime.speed = 0;
-        render.enabled = false;
-        col.enabled = false;
         attack = null;
     }
     protected abstract void SetAttack();

@@ -26,6 +26,7 @@ public class Attack_SO : ScriptableObject
     public float[] attackRange = new float[maxLevel];
 
     public string attackTypePath;
+    public float duration;
     public bool projectile;
     public bool isMultiCast;
     public bool flipX = false;

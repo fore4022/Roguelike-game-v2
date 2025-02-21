@@ -2,12 +2,22 @@ using System.Collections;
 using UnityEngine;
 public class Projectile_C : Projectile
 {
-    private float multiplier = 1;
+    private const float range = 0.5f;
+
+    private float multiplier;
+    private int sign;
 
     protected override void SetAttack()
     {
         transform.position = Managers.Game.player.gameObject.transform.position;
-        direction = Managers.Game.calculate.GetDirection(Managers.Game.enemyDetection.GetRandomEnemyPosition());
+        direction = Managers.Game.calculate.GetDirection(Managers.Game.enemyDetection.GetRandomVector());
+        multiplier = Random.Range(1, 3) * range + range;
+        sign = Random.Range(0, 2);
+
+        if (sign == 0)
+        {
+            sign = -1;
+        }
 
         StartCoroutine(AnimationManaging());
 
@@ -27,10 +37,12 @@ public class Projectile_C : Projectile
     {
         while(true)
         {
-            transform.position += direction * so.projectile_Info.speed * Time.deltaTime * multiplier;
-            multiplier -= Time.deltaTime / so.projectile_Info.speed;
+            transform.position += direction * so.projectile_Info.speed * multiplier * Time.deltaTime;
+            multiplier -= Time.deltaTime;
 
-            if(multiplier <= 0)
+            transform.Rotate(sign * Vector3.back);
+
+            if (multiplier <= 0)
             {
                 moving = null;
                 multiplier = 1;
