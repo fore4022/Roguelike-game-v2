@@ -2,6 +2,15 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Calculate
 {
+    public float GetParabolicY(float size, float peakValue, float value)
+    {
+        if(peakValue == 0 || size == 0)
+        {
+            return 0;
+        }
+
+        return peakValue * (Mathf.Pow((value - size / 2), 2) / Mathf.Pow(size / 2, 2));
+    }
     public Vector3 GetAttackPosition(Vector3 direction, float attackRange)
     {
         return direction * attackRange + Managers.Game.player.transform.position;
@@ -10,16 +19,16 @@ public class Calculate
     {
         if (targetPosition == null)
         {
-            return new Vector3(Random.Range(0, 360), Random.Range(0, 360), 0);
+            return GetRandomDirection();
         }
 
         return (targetPosition - Managers.Game.player.gameObject.transform.position).normalized;
     }
     public Vector3 GetDirection(Vector3 targetPosition, Vector3 position, bool isNormalized = true)
     {
-        if (targetPosition == null)
+        if(targetPosition == null || position == null || targetPosition == position)
         {
-            return new Vector3(Random.Range(0, 360), Random.Range(0, 360), 0);
+            return GetRandomDirection();
         }
 
         if(isNormalized)
@@ -38,6 +47,10 @@ public class Calculate
     public Vector3 GetVector(float vecX, float vecY)
     {
         return new Vector3(vecX, vecY, 0);
+    }
+    public Vector3 GetRandomDirection()
+    {
+        return new Vector3(Random.Range(0, 361), Random.Range(0, 361), 0).normalized;
     }
     public Quaternion GetQuaternion(Vector3 direction)
     {

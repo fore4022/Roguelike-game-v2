@@ -8,6 +8,7 @@ public class EnemyDetection
 
     private const float offset = 0.5f;
 
+    private Vector3 vec = new();
     private float width = Util.CameraWidth / 2 - offset;
     private float height = Util.CameraHeight / 2 - offset;
 
@@ -214,9 +215,9 @@ public class EnemyDetection
     }
     public Vector2 GetRandomVector()
     {
-        float x = Random.Range(-width, width);
-        float y = Random.Range(-height, height);
+        vec.x = Random.Range(-width, width);
+        vec.y = Random.Range(-height, height);
 
-        return new Vector3(x, y) + Managers.Game.player.gameObject.transform.position;
+        return vec + Managers.Game.player.gameObject.transform.position;
     }
 }
