@@ -35,7 +35,7 @@ public class AttackData
             {
                 info.level += levelDelta;
 
-                Managers.Game.attackCasterManage.UpdateCasterLevel(key, info.level);
+                UnityEngine.Debug.Log(this.info[key].level);
             }
         }
     }
@@ -50,21 +50,9 @@ public class AttackData
     }
     public List<AttackInformation> GetAttackInformation()
     {
-        List<AttackInformation> info = this.info.Values.Select(o => new AttackInformation(o.data)).ToList();
+        List<AttackInformation> info = this.info.Values.ToList();
 
         info.RemoveAll(o => o.level == Attack_SO.maxLevel - 1);
-
-        if(info.Count() > Managers.Game.inGameData.OptionCount)
-        {
-            int[] indexs = Managers.Game.calculate.GetRandomValues(info.Count(), info.Count() - Managers.Game.inGameData.OptionCount);
-
-            for(int i = 0; i < indexs.Length; i++)
-            {
-                info[indexs[i]].level = -1;
-            }
-
-            info.RemoveAll(o => o.level == -1);
-        }
 
         return info;
     }

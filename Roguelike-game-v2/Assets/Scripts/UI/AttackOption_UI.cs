@@ -50,7 +50,7 @@ public class AttackOption_UI : Button_2
         image.sprite = info.data.sprite;
         animator.runtimeAnimatorController = info.data.controller;
 
-        if (info.caster == null)
+        if(info.caster == null)
         {
             textList[0].text = "New";
         }

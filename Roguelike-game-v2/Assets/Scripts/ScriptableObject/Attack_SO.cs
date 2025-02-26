@@ -47,7 +47,7 @@ public class Attack_SO : ScriptableObject
     }
     private void ResizeArray<T>(ref T[] array)
     {
-        if(array.Length != maxLevel)
+        if(array.Length > maxLevel)
         {
             Array.Resize(ref array, maxLevel);
         }

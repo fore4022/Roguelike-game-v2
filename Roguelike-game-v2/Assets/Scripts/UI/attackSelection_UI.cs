@@ -22,7 +22,7 @@ public class AttackSelection_UI : UserInterface
 
     protected override void Enable()
     {
-        if (attackOptionList.Count == 0)
+        if(attackOptionList.Count == 0)
         {
             return;
         }
