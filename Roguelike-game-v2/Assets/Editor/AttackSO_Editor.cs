@@ -1,6 +1,6 @@
 using UnityEditor;
 [CustomEditor(typeof(Attack_SO))]
-public class SO_Editor : Editor
+public class AttackSO_Editor : Editor
 {
     SerializedProperty show_1;
     SerializedProperty value_1;

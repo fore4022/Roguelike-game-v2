@@ -8,7 +8,7 @@ public class Projectile_A : Projectile
     {
         transform.position = Managers.Game.player.gameObject.transform.position;
         direction = Managers.Game.calculate.GetDirection(Managers.Game.enemyDetection.GetNearestEnemyPosition());
-        transform.rotation = Managers.Game.calculate.GetQuaternion(direction);
+        transform.rotation = Managers.Game.calculate.GetQuaternion(direction - so.baseRotation);
         penetration_count = so.projectile_Info.penetration;
 
         base.SetAttack();

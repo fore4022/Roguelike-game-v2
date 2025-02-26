@@ -8,9 +8,9 @@ public class Projectile_B : Projectile
     {
         transform.position = Managers.Game.player.gameObject.transform.position;
         direction = Managers.Game.calculate.GetDirection(Managers.Game.enemyDetection.GetNearestEnemyPosition());
-        transform.rotation = Managers.Game.calculate.GetQuaternion(direction);
-        isExplosion = false;
+        transform.rotation = Managers.Game.calculate.GetQuaternion(direction, so.baseRotation);
 
+        isExplosion = false;
         anime.Play("default");
 
         base.SetAttack();

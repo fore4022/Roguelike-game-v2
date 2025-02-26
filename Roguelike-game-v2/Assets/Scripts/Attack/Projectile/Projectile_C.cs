@@ -2,7 +2,12 @@ using System.Collections;
 using UnityEngine;
 public class Projectile_C : Projectile
 {
-    private const float range = 0.5f;
+    [SerializeField]
+    private float range;
+    [SerializeField]
+    private float min_Index;
+    [SerializeField]
+    private float max_Index;
 
     private float multiplier;
     private int sign;
@@ -11,10 +16,10 @@ public class Projectile_C : Projectile
     {
         transform.position = Managers.Game.player.gameObject.transform.position;
         direction = Managers.Game.calculate.GetDirection(Managers.Game.enemyDetection.GetRandomVector());
-        multiplier = Random.Range(1, 3) * range + range;
+        multiplier = Random.Range(min_Index, max_Index + 1) * range + range;
         sign = Random.Range(0, 2);
 
-        if (sign == 0)
+        if(sign == 0)
         {
             sign = -1;
         }
@@ -45,7 +50,6 @@ public class Projectile_C : Projectile
             if (multiplier <= 0)
             {
                 moving = null;
-                multiplier = 1;
 
                 yield break;
             }

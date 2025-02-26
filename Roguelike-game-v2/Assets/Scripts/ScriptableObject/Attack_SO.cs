@@ -25,6 +25,7 @@ public class Attack_SO : ScriptableObject
     public float[] coolTime = new float[maxLevel];
     public float[] attackRange = new float[maxLevel];
 
+    public Vector3 baseRotation;
     public string attackTypePath;
     public float duration;
     public bool flipX = false;

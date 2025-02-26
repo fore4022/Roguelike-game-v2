@@ -56,6 +56,10 @@ public class Calculate
     {
         return Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
     }
+    public Quaternion GetQuaternion(Vector3 direction, Vector3 baseRotation)
+    {
+        return Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + baseRotation.z);
+    }
     public int[] GetRandomValues(int maxValue, int count)
     {
         List<int> valueList = new();

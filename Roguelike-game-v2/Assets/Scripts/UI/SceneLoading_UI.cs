@@ -12,7 +12,7 @@ public class SceneLoading_UI : UserInterface
     private Image background;
     private Image animationImage;
 
-    private const float limitTime = 1.5f;
+    private const float limitTime = 0.5f;
     private const float minAlpha = 0;
     private const float maxAlpha = 255;
 
