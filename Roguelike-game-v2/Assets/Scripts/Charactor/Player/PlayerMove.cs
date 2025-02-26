@@ -6,6 +6,7 @@ public class PlayerMove : MonoBehaviour, IMoveable
 {
     private TouchControls touchControl;
     private CharactorController_UI charactorController;
+    private Animator anime;
 
     private InputAction.CallbackContext context;
     private Coroutine moving;
@@ -18,10 +19,13 @@ public class PlayerMove : MonoBehaviour, IMoveable
     private bool didStartMove = false;
 
     public Vector2 Direction { get { return direction; } }
+    private void Awake()
+    {
+        anime = GetComponent<Animator>();
+    }
     public void OnMove()
     {
         touchPosition = context.ReadValue<Vector2>();
-
         direction = Managers.Game.calculate.GetDirection(touchPosition, enterTouchPosition, false);
     }
     private void CancelMove()
@@ -34,9 +38,10 @@ public class PlayerMove : MonoBehaviour, IMoveable
         }
 
         moving = null;
-
         active = false;
         didStartMove = false;
+
+        anime.Play("idle");
     }
     public void Init()
     {
@@ -78,7 +83,7 @@ public class PlayerMove : MonoBehaviour, IMoveable
 
             context = ctx;
 
-            if(!didStartMove)
+            if (!didStartMove)
             {
                 StartMove();
             }
@@ -86,7 +91,6 @@ public class PlayerMove : MonoBehaviour, IMoveable
             OnMove();
         });
     }
-
     private void StartMove()
     {
         Managers.UI.ShowUI<CharactorController_UI>();
@@ -98,6 +102,8 @@ public class PlayerMove : MonoBehaviour, IMoveable
     private IEnumerator Moving()
     {
         didStartMove = true;
+
+        anime.Play("walk");
 
         while (true)
         {

@@ -13,12 +13,22 @@ MonoBehaviour:
   m_Name: Projectile5
   m_EditorClassIdentifier: 
   projectile_Info:
-    animationName: 
+    animationName: explosion
     speed: 6
     penetration: 2
   multiCast:
-    delay: []
-    count: []
+    delay:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    count:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
   damageCoefficient:
   - 1
   - 1

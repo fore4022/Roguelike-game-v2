@@ -13,5 +13,14 @@ MonoBehaviour:
   m_Name: Level_1
   m_EditorClassIdentifier: 
   attackInformationList:
+  - {fileID: 11400000, guid: 00ec24d143601444a89f24809d2ac663, type: 2}
+  - {fileID: 11400000, guid: 7c0751bbc405cb445856e96925bee114, type: 2}
+  - {fileID: 11400000, guid: 9be5ab5d833355847836869d95595f97, type: 2}
+  - {fileID: 11400000, guid: 6bce2c64723ed994c84b575bb93ee269, type: 2}
+  - {fileID: 11400000, guid: 3e08794522022e4488db432c0a15adfa, type: 2}
+  - {fileID: 11400000, guid: 70bbb877fbe988947880c0a7189c1e68, type: 2}
   - {fileID: 11400000, guid: 9d69c7ce348bdb7488d11d8638c582b3, type: 2}
+  - {fileID: 11400000, guid: 002930f6e5bef3442a6d0f49f3704f64, type: 2}
+  - {fileID: 11400000, guid: 419b70740727b5d4b86c2f46feedc704, type: 2}
   - {fileID: 11400000, guid: 8f8110bd576bc404f929b0500503314e, type: 2}
+  - {fileID: 11400000, guid: e8597e85c4f850a449791d0be5cd0ff5, type: 2}
