@@ -9,8 +9,9 @@ public class MonsterSpawner : MonoBehaviour
 
     private const float minimumSpawnDelay = 0.075f;
 
-    private Coroutine monsterSpawn = null;
     private int[] monsterSpawnProbabilityArray = new int[100];
+
+    private Coroutine monsterSpawn = null;
     private float spawnDelay = 0;
 
     private void Start()
@@ -30,7 +31,7 @@ public class MonsterSpawner : MonoBehaviour
             monsterStats.Add(soName, Managers.Game.inGameData.init.objectPool.GetScriptableObject<ScriptableObject>(soName));
         }
     }
-    private void MonsterSpawn(SpawnInformation_SO spawnInformation)
+    private void MonsterSpawn(SpawnInformation_SO spawnInformation) 
     {
         int randomValue = Random.Range(0, 100);
         int arrayIndexValue = monsterSpawnProbabilityArray[randomValue];
@@ -54,23 +55,19 @@ public class MonsterSpawner : MonoBehaviour
     private IEnumerator MonsterSpawning(SpawnInformation_SO spawnInformation)
     {
         int totalMinutes = Managers.Game.inGameTimer.GetTotalMinutes;
+        int index = 0;
 
-        if(spawnInformation.monsterInformation.Count != 1)
+        foreach (SpawnInformation spawnInfo in spawnInformation.monsterInformation)
         {
-            int index = 0;
-
-            foreach(SpawnInformation spawnInfo in spawnInformation.monsterInformation)
+            for (int i = 0; i < spawnInfo.spawnProbability; i++)
             {
-                for(int i = 0; i < spawnInfo.spawnProbability; i++)
-                {
-                    monsterSpawnProbabilityArray[i] = index;
-                }
-
-                index++;
+                monsterSpawnProbabilityArray[i] = index;
             }
+
+            index++;
         }
 
-        while(Managers.Game.inGameTimer.GetTotalMinutes < totalMinutes + spawnInformation.duration)
+        while (Managers.Game.inGameTimer.GetTotalMinutes < totalMinutes + spawnInformation.duration)
         {
             if(spawnDelay != minimumSpawnDelay)
             {
@@ -78,7 +75,7 @@ public class MonsterSpawner : MonoBehaviour
             }
 
             MonsterSpawn(spawnInformation);
-
+            Debug.Log(spawnDelay);
             yield return new WaitForSeconds(spawnDelay);
         }
 

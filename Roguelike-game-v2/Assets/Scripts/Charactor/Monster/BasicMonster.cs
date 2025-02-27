@@ -9,7 +9,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     private Color defaultColor;
     private float animationDuration;
 
-    public float DamageAmount { get { return stat.damage; } }
+    public float DamageAmount { get { return stat.damage * Managers.Game.difficultyScaler.IncreaseStat; } }
     protected override void OnEnable()
     {
         base.OnEnable();

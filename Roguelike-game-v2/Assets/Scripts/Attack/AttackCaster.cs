@@ -14,7 +14,7 @@ public class AttackCaster
         set
         {
             level = value;
-            Debug.Log(value);
+
             Set();
         }
     }

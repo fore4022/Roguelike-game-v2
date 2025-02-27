@@ -71,7 +71,7 @@ public class Monster : MonoBehaviour, IScriptableData
     {
         stat = monsterSO.stat;
         experience = monsterSO.experience;
-        health = stat.health;
+        health = stat.health * Managers.Game.difficultyScaler.IncreaseStat;
         animator.speed = 1;
     }
     protected virtual void Init()
