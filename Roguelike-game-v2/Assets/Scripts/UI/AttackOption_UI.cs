@@ -11,6 +11,7 @@ public class AttackOption_UI : Button_2
     private List<TextMeshProUGUI> textList = new();
     private Image image;
     private Animator animator;
+    private RectTransform imageRect;
 
     private Coroutine playAnimation = null;
 
@@ -35,6 +36,7 @@ public class AttackOption_UI : Button_2
         image = Util.GetComponentInChildren<Image>(transform);
         animator = Util.GetComponentInChildren<Animator>(transform);
         textList = Util.GetComponentsInChildren<TextMeshProUGUI>(transform);
+        imageRect = image.gameObject.GetComponent<RectTransform>();
 
         SetAnimator(false);
     }
@@ -47,8 +49,24 @@ public class AttackOption_UI : Button_2
     }
     private void SetOption()
     {
+        Vector2 size;
+
         image.sprite = info.data.sprite;
         animator.runtimeAnimatorController = info.data.controller;
+        size = image.sprite.bounds.size;
+
+        if(size.x > size.y)
+        {
+            imageRect.localScale = new Vector3(1, 1 * (size.y / size.x));
+        }
+        else if(size.y > size.x)
+        {
+            imageRect.localScale = new Vector3(1 * (size.x / size.y), 1);
+        }
+        else
+        {
+            imageRect.localScale = Managers.Game.calculate.GetVector(1);
+        }
 
         if(info.caster == null)
         {

@@ -30,12 +30,13 @@ public class AttackData
             if(info.caster == null)
             {
                 info.caster = Managers.Game.attackCasterManage.CreateAndGetCaster(key);
+                info.caster.Level = levelDelta - 1;
             }
             else
             {
                 info.level += levelDelta;
 
-                UnityEngine.Debug.Log(this.info[key].level);
+                Managers.Game.attackCasterManage.UpdateCasterLevel(key, info.level);
             }
         }
     }
