@@ -24,7 +24,7 @@ public class Monster : MonoBehaviour, IScriptableData
     {
         render = GetComponent<SpriteRenderer>();
 
-        if (TryGetComponent(out Collider2D col))
+        if(TryGetComponent(out Collider2D col))
         {
             this.col = col;
         }
@@ -58,18 +58,19 @@ public class Monster : MonoBehaviour, IScriptableData
     {
         planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
 
-        if (GeometryUtility.TestPlanesAABB(planes, col.bounds))
+        if(GeometryUtility.TestPlanesAABB(planes, col.bounds))
         {
+            animator.speed = 1;
             isVisible = true;
         }
         else
         {
+            animator.speed = 0;
             isVisible = false;
         }
     }
     protected virtual void Set()
     {
-        stat = monsterSO.stat;
         experience = monsterSO.experience;
         health = stat.health * Managers.Game.difficultyScaler.IncreaseStat;
         animator.speed = 1;
@@ -82,6 +83,7 @@ public class Monster : MonoBehaviour, IScriptableData
 
         render.enabled = false;
         rigid.simulated = false;
+        stat = monsterSO.stat;
 
         Set();
     }

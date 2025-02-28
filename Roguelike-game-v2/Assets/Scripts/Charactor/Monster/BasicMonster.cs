@@ -7,9 +7,10 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     private Coroutine moveCoroutine = null;
     private WaitForSeconds damaged = new(damagedDuration);
     private Color defaultColor;
+    private Vector3 direction;
     private float animationDuration;
 
-    public float DamageAmount { get { return stat.damage * Managers.Game.difficultyScaler.IncreaseStat; } }
+    public float DamageAmount { get { return stat.damage * Managers.Game.difficultyScaler.IncreaseStat * Time.deltaTime; } }
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -19,19 +20,12 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     }
     public void OnMove()
     {
-        Vector3 direction = Managers.Game.calculate.GetDirection(Managers.Game.player.gameObject.transform.position, transform.position);
-
+        direction = Managers.Game.calculate.GetDirection(Managers.Game.player.gameObject.transform.position, transform.position);
         rigid.velocity = direction * stat.moveSpeed;
 
         if(isVisible)
         {
-            animator.speed = 1;
-
             changeDirection();
-        }
-        else
-        {
-            animator.speed = 0;
         }
     }
     protected virtual void Damaged()
@@ -50,18 +44,14 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     }
     protected void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
-        {
-            Managers.Game.player.TakeDamage(this);
-        }
+        Attack(collision);
+    }
+    protected void OnCollisionStay2D(Collision2D collision)
+    {
+        Attack(collision);
     }
     public void TakeDamage(IDamage damage)
     {
-        if(!rigid.simulated) 
-        {
-            return;
-        }
-
         health -= damage.DamageAmount;
 
         Damaged();
@@ -77,6 +67,13 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 
         defaultColor = render.color;
         animationDuration = stat.death_AnimationDuration;
+    }
+    private void Attack(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Managers.Game.player.TakeDamage(this);
+        }
     }
     private IEnumerator Moving()
     {
