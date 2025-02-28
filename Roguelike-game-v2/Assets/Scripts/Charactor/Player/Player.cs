@@ -6,6 +6,7 @@ public class Player : MonoBehaviour, IDamageReceiver
     public PlayerMove move = null;
 
     private PlayerInformation information = new();
+    private Animator anime;
 
     private const string statPath = "PlayerInformation_SO";
 
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour, IDamageReceiver
     private void Awake()
     {
         move = GetComponent<PlayerMove>();
+        anime = GetComponent<Animator>();
     }
     private void Start()
     {
@@ -29,7 +31,11 @@ public class Player : MonoBehaviour, IDamageReceiver
     }
     public void Die()
     {
-        Managers.Game.GameEnd();
+        anime.Play("death");
+    }
+    public void AnimationPlay(string name)
+    {
+        anime.Play(name);
     }
     private IEnumerator Init()
     {

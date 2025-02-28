@@ -75,7 +75,7 @@ public class MonsterSpawner : MonoBehaviour
             }
 
             MonsterSpawn(spawnInformation);
-            Debug.Log(spawnDelay);
+
             yield return new WaitForSeconds(spawnDelay);
         }
 

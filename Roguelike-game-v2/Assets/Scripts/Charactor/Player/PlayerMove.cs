@@ -6,14 +6,13 @@ public class PlayerMove : MonoBehaviour, IMoveable
 {
     private TouchControls touchControl;
     private CharactorController_UI charactorController;
-    private Animator anime;
+    private SpriteRenderer render;
 
     private InputAction.CallbackContext context;
     private Coroutine moving;
     private Vector3 direction;
     private Vector2 enterTouchPosition;
     private Vector2 touchPosition;
-
     private bool isPointerOverUI;
     private bool active = false;
     private bool didStartMove = false;
@@ -21,7 +20,11 @@ public class PlayerMove : MonoBehaviour, IMoveable
     public Vector2 Direction { get { return direction; } }
     private void Awake()
     {
-        anime = GetComponent<Animator>();
+        render = GetComponent<SpriteRenderer>();
+    }
+    public void Init()
+    {
+        StartCoroutine(Initalization());
     }
     public void OnMove()
     {
@@ -41,11 +44,7 @@ public class PlayerMove : MonoBehaviour, IMoveable
         active = false;
         didStartMove = false;
 
-        anime.Play("idle");
-    }
-    public void Init()
-    {
-        StartCoroutine(Initalization());
+        Managers.Game.player.AnimationPlay("idle");
     }
     private void Update()
     {
@@ -63,7 +62,7 @@ public class PlayerMove : MonoBehaviour, IMoveable
 
         touchControl.Touch.TouchPress.started += (ctx =>
         {
-            if (!isPointerOverUI)
+            if(!isPointerOverUI)
             {
                 active = true;
             }
@@ -76,14 +75,14 @@ public class PlayerMove : MonoBehaviour, IMoveable
 
         touchControl.Touch.TouchPosition.performed += (ctx =>
         {
-            if (!active)
+            if(!active)
             {
                 return;
             }
 
             context = ctx;
 
-            if (!didStartMove)
+            if(!didStartMove)
             {
                 StartMove();
             }
@@ -103,11 +102,20 @@ public class PlayerMove : MonoBehaviour, IMoveable
     {
         didStartMove = true;
 
-        anime.Play("walk");
+        Managers.Game.player.AnimationPlay("walk");
 
-        while (true)
+        while(true)
         {
             Managers.Game.player.gameObject.transform.position += direction.normalized * Managers.Game.player.Stat.moveSpeed * Time.deltaTime;
+
+            if(direction.x > 0)
+            {
+                render.flipX = false;
+            }
+            else if(direction.x < 0)
+            {
+                render.flipX = true;
+            }
 
             charactorController.SetJoyStick();
 
