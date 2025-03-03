@@ -7,7 +7,7 @@ public class StageInformation_SO : ScriptableObject
 
     public GameObject background;
 
-    public float difficulty;
+    public float difficulty = 1;
     public float spawnDelay;
-    public float statScale;
+    public float statScale = 1;
 }

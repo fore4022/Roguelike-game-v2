@@ -31,6 +31,8 @@ public class Player : MonoBehaviour, IDamageReceiver
     }
     public void Die()
     {
+        
+
         anime.Play("death");
     }
     public void AnimationPlay(string name)

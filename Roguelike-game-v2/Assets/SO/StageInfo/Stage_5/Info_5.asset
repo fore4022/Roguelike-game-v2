@@ -20,6 +20,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 61f03da54368d8e46a33cdc9885f322f, type: 2}
   - {fileID: 11400000, guid: 438dfd3ac260afe49a34ad14dab608e7, type: 2}
   background: {fileID: 8714857401625141123, guid: 72abe3f7571a2cd4d9fc0153f60a45ad, type: 3}
-  difficulty: 0
-  spawnDelay: 0
-  statScale: 0
+  difficulty: 1
+  spawnDelay: 2
+  statScale: 1
