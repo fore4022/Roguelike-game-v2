@@ -67,18 +67,18 @@ public class AttackOption_UI : Button_2
         {
             imageRect.localScale = Calculate.GetVector(1);
         }
+        
+        textList[0].text = $"{info.data.attackType}";
+        textList[1].text = $"{info.data.explanation}";
 
         if(info.caster == null)
         {
-            textList[0].text = "New";
+            textList[2].text = "New";
         }
         else
         {
-            textList[0].text = $"Lv. {info.level + 1}";
+            textList[2].text = $"Lv. {info.level + 1}";
         }
-        
-        textList[1].text = $"{info.data.attackType}";
-        textList[2].text = $"{info.data.explanation}";
     }
     private void OnDisable()
     {
