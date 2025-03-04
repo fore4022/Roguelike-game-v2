@@ -74,7 +74,7 @@ public class AttackOption_UI : Button_2
         }
         else
         {
-            textList[0].text = $"Lv.{info.level + 1}";
+            textList[0].text = $"Lv. {info.level + 1}";
         }
         
         textList[1].text = $"{info.data.attackType}";

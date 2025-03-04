@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 public class DataInit
 {
-    public UserLevelInfo_SO userLevelInfo;
+    public UserLevels_SO userLevelInfo;
     public ObjectPool objectPool = null;
 
-    private const string userLevelInfoPath = "UserLevelInfo_SO";
+    private const string userLevelsPath = "UserLevels_SO";
     private const string sceneName = "InGame";
     private const int defaultMonsterCount = 100;
     private const int defaultSkillCount = 30;
@@ -42,9 +42,9 @@ public class DataInit
             }
         }
     }
-    private async void LoadUserLevelInfo()
+    private async void LoadUserLevels()
     {
-        userLevelInfo = await Util.LoadingToPath<UserLevelInfo_SO>(userLevelInfoPath);
+        userLevelInfo = await Util.LoadingToPath<UserLevels_SO>(userLevelsPath);
     }
     private IEnumerator Init()
     {
@@ -75,7 +75,7 @@ public class DataInit
 
         Time.timeScale = 0;
         
-        LoadUserLevelInfo();
+        LoadUserLevels();
             
         yield return new WaitUntil(() => userLevelInfo != null);
 

@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ac8467bb668782419ce06b9c0763820, type: 3}
-  m_Name: UserLevelInfo
+  m_Script: {fileID: 11500000, guid: 9281f4d4c9d9e3d4da65a744bf7e5ea9, type: 3}
+  m_Name: UserLevels
   m_EditorClassIdentifier: 
-  requiredEXP: 6400000096000000fa000000c2010000ee020000e8030000dc050000ca080000a60e000088130000
+  LevelInfo:
+  - {fileID: 11400000, guid: d05fbc331d8f0f147a30d9dc78c3336c, type: 2}
+  requiredEXP: 6400000096000000fa000000900100008a020000e8030000dc050000ca080000b80b000094110000
