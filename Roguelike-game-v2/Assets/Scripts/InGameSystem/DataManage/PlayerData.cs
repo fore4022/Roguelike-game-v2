@@ -7,7 +7,7 @@ public class PlayerData
 
     private PlayerInformation info = null;
 
-    private const float baseExperience = 115;
+    private const float baseExperience = 5;
     private const float experienceMultiplier = 0.35f;
 
     private int increaseValue;
