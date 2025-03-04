@@ -7,8 +7,8 @@ public class Projectile_A : Projectile
     protected override void SetAttack()
     {
         transform.position = Managers.Game.player.gameObject.transform.position;
-        direction = Managers.Game.calculate.GetDirection(Managers.Game.enemyDetection.GetNearestEnemyPosition());
-        transform.rotation = Managers.Game.calculate.GetQuaternion(direction - so.baseRotation);
+        direction = Calculate.GetDirection(EnemyDetection.GetNearestEnemyPosition());
+        transform.rotation = Calculate.GetQuaternion(direction - so.baseRotation);
         penetration_count = so.projectile_Info.penetration;
 
         base.SetAttack();

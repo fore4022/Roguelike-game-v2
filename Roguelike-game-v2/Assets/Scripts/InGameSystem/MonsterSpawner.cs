@@ -42,7 +42,7 @@ public class MonsterSpawner : MonoBehaviour
     {
         LoadInformation();
 
-        while(true)
+        while(!Managers.Game.GameOver)
         {
             foreach(SpawnInformation_SO spawnInformation in Managers.Game.stageInformation.spawnInformationList)
             {
@@ -51,6 +51,8 @@ public class MonsterSpawner : MonoBehaviour
                 yield return new WaitUntil(() => monsterSpawn == null);
             }
         }
+
+        StopCoroutine(monsterSpawn);
     }
     private IEnumerator MonsterSpawning(SpawnInformation_SO spawnInformation)
     {

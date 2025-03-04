@@ -65,7 +65,7 @@ public class AttackOption_UI : Button_2
         }
         else
         {
-            imageRect.localScale = Managers.Game.calculate.GetVector(1);
+            imageRect.localScale = Calculate.GetVector(1);
         }
 
         if(info.caster == null)

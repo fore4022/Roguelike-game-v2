@@ -4,20 +4,19 @@ public class Game_Manager
     public InGameDataManage inGameData = null;
     public AttackCasterManage attackCasterManage = null;
     public DifficultyScaler difficultyScaler = null;
-    public EnemyDetection enemyDetection = null;
-    public Calculate calculate = null;
     public StageInformation_SO stageInformation;
     public InGameTimer inGameTimer;
     public MonsterSpawner monsterSpawner;
     public Player player;
 
+    private bool gameOver = false;
+
+    public bool GameOver { get { return gameOver; } }
     private void Set()
     {
         inGameData = new();
         attackCasterManage = new();
         difficultyScaler = new();
-        enemyDetection = new();
-        calculate = new();
     }
     public void DataLoad()
     {
@@ -29,6 +28,7 @@ public class Game_Manager
     public void GameStart()
     {
         Time.timeScale = 1;
+        gameOver = false;
 
         inGameTimer.StartTimer();
         monsterSpawner.StartSpawn();
@@ -38,13 +38,11 @@ public class Game_Manager
     }
     public void GameEnd()
     {
+        Time.timeScale = 0;
+        gameOver = true;
         inGameData = null;
         attackCasterManage = null;
         difficultyScaler = null;
-        enemyDetection = null;
-        calculate = null;
         stageInformation = null;
-        player = null;
-        Time.timeScale = 0;
     }
 }

@@ -5,8 +5,8 @@ public class Attack_A : Attack
 
     protected override void SetAttack()
     {
-        direction = Managers.Game.calculate.GetDirection(Managers.Game.enemyDetection.GetNearestEnemyPosition());
-        gameObject.transform.position = Managers.Game.calculate.GetAttackPosition(direction, so.attackRange[level]);
-        gameObject.transform.rotation = Managers.Game.calculate.GetQuaternion(direction, so.baseRotation);
+        direction = Calculate.GetDirection(EnemyDetection.GetNearestEnemyPosition());
+        gameObject.transform.position = Calculate.GetAttackPosition(direction, so.attackRange[level]);
+        gameObject.transform.rotation = Calculate.GetQuaternion(direction, so.baseRotation);
     }
 }

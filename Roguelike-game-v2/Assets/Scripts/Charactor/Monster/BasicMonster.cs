@@ -20,7 +20,11 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     }
     public void OnMove()
     {
-        direction = Managers.Game.calculate.GetDirection(Managers.Game.player.gameObject.transform.position, transform.position);
+        if(!Managers.Game.GameOver)
+        {
+            direction = Calculate.GetDirection(Managers.Game.player.gameObject.transform.position, transform.position);
+        }
+
         rigid.velocity = direction * stat.moveSpeed;
 
         if(isVisible)

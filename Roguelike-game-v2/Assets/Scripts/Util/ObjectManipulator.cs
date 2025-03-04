@@ -1,12 +1,14 @@
 using System.Collections;
 using UnityEngine;
-public class ObjectManipulator
+public static class ObjectManipulator
 {
-    public IEnumerator SetScale(Transform transform, float targetScale, float duration = 0)
+    public static IEnumerator SetScale(Transform transform, float targetScale, float duration = 0)
     {
         if(duration == 0)
         {
             transform.localScale = new Vector2(targetScale, targetScale);
+
+            yield return null;
         }
         else
         {
@@ -16,7 +18,7 @@ public class ObjectManipulator
 
             while(totalTime != 1)
             {
-                totalTime += Time.unscaledDeltaTime;
+                totalTime += Time.deltaTime;
 
                 if(totalTime > duration)
                 {
@@ -31,30 +33,61 @@ public class ObjectManipulator
                 yield return null;
             }
         }
-
-        yield return null;
     }
-    public IEnumerator TrasnfromPosition(Transform transform, Vector2 targetPosition, float duration = 0)
+    public static IEnumerator TrasnformPosition(Transform transform, Vector2 targetPosition, float duration = 0)
     {
         if(duration == 0)
         {
             transform.position = targetPosition;
+
+            yield return null;
         }
         else
         {
             float totalTime = 0;
-            float scaleValue;
 
             while(totalTime != duration)
             {
                 totalTime += Time.deltaTime;
 
-                if()
+                if(totalTime > duration)
+                {
+                    totalTime = duration;
+                }
+
+                transform.position = Vector3.Lerp(transform.position, targetPosition, totalTime / duration);
 
                 yield return null;
             }
         }
+    }
+    public static IEnumerator TransformRoatation(Transform transform, Vector2 targetRoatation, float duration = 0)
+    {
+        targetRoatation = targetRoatation.normalized;
 
-        yield return null;
+        if(duration == 0)
+        {
+            transform.rotation = Quaternion.Euler(targetRoatation);
+
+            yield return null;
+        }
+        else
+        {
+            float totalTIme = 0;
+
+            while(totalTIme != duration)
+            {
+                totalTIme += Time.deltaTime;
+
+                if(totalTIme > duration)
+                {
+                    totalTIme = duration;
+                }
+
+                transform.rotation = Quaternion.Euler(targetRoatation * (totalTIme / duration));
+
+                yield return null;
+            }
+        }
     }
 }

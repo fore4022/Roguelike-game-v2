@@ -10,6 +10,8 @@ public class Player : MonoBehaviour, IDamageReceiver
 
     private const string statPath = "PlayerInformation_SO";
 
+    private Vector3 diePosition = new Vector2(0, -0.25f);
+
     public DefaultStat Stat { get { return information.stat; } }
     private void Awake()
     {
@@ -26,14 +28,18 @@ public class Player : MonoBehaviour, IDamageReceiver
 
         if(information.stat.health <= 0)
         {
-            Die();
+            StartCoroutine(Die());
         }
     }
-    public void Die()
+    public IEnumerator Die()
     {
-        
+        Coroutine coroutine = StartCoroutine(ObjectManipulator.TrasnformPosition(transform, transform.position - diePosition, 0.5f));
 
         anime.Play("death");
+        
+        yield return new WaitUntil(() => anime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
+
+        Managers.Game.GameEnd();
     }
     public void AnimationPlay(string name)
     {

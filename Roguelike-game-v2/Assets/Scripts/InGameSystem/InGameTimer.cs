@@ -24,7 +24,7 @@ public class InGameTimer : MonoBehaviour
     }
     private IEnumerator Timer()
     {
-        while(true)
+        while(!Managers.Game.GameOver)
         {
             elapsedTime += Time.deltaTime;
 

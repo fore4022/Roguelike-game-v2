@@ -16,8 +16,8 @@ public class Attack_F : Attack
         currentSpeed = speed;
         totalTime = 0;
         targetTime = Mathf.Lerp(totalTime, so.duration, Random.Range(1, so.duration) / so.duration);
-        direction = Managers.Game.calculate.GetDirection(Managers.Game.enemyDetection.GetRandomVector());
-        transform.position = Managers.Game.enemyDetection.GetRandomVector();
+        direction = Calculate.GetDirection(EnemyDetection.GetRandomVector());
+        transform.position = EnemyDetection.GetRandomVector();
     }
     protected override IEnumerator Attacking()
     {
@@ -28,7 +28,7 @@ public class Attack_F : Attack
                 if(totalTime < so.duration - 1)
                 {
                     targetTime = Mathf.Lerp(totalTime, so.duration, Random.Range(1, so.duration) / so.duration);
-                    direction = Managers.Game.calculate.GetDirection(Managers.Game.enemyDetection.GetRandomVector());
+                    direction = Calculate.GetDirection(EnemyDetection.GetRandomVector());
                 }
             }
 
@@ -48,7 +48,7 @@ public class Attack_F : Attack
             }
             else
             {
-                currentSpeed = Managers.Game.calculate.GetParabolicY(so.duration, speed, totalTime) + 1;
+                currentSpeed = Calculate.GetParabolicY(so.duration, speed, totalTime) + 1;
             }
         }
 

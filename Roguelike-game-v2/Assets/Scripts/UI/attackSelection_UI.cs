@@ -104,7 +104,7 @@ public class AttackSelection_UI : UserInterface
     {
         List<AttackInformation> infoList = Managers.Game.inGameData.attack.GetAttackInformation();
 
-        int[] indexs = Managers.Game.calculate.GetRandomValues(infoList.Count, Mathf.Min(Managers.Game.inGameData.OptionCount, infoList.Count));
+        int[] indexs = Calculate.GetRandomValues(infoList.Count, Mathf.Min(Managers.Game.inGameData.OptionCount, infoList.Count));
 
         Managers.UI.uiElementUtility.SetImageAlpha(background, basicAlpha);
 

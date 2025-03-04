@@ -66,6 +66,8 @@ public class UIElementUtility
         if(duration == 0)
         {
             rectTransform.localScale = new Vector2(targetScale, targetScale);
+
+            yield return null;
         }
         else
         {
@@ -90,8 +92,6 @@ public class UIElementUtility
                 yield return null;
             }
         }
-
-        yield return null;
     }
     private IEnumerator SetTextAlpha(List<TextMeshProUGUI> tmpList, Color color, float targetAlphaValue, float duration)
     {
@@ -107,6 +107,8 @@ public class UIElementUtility
                 childrenColor.a = targetAlphaValue;
                 tmp.color = childrenColor;
             }
+
+            yield return null;
         }
         else
         {
@@ -134,8 +136,6 @@ public class UIElementUtility
                 yield return null;
             }
         }
-
-        yield return null;
     }
     private IEnumerator SetImageAlpha(List<Image> imgList, Color color, float targetAlphaValue, float duration)
     {
@@ -151,6 +151,8 @@ public class UIElementUtility
                 childrenColor.a = targetAlphaValue;
                 img.color = childrenColor;
             }
+
+            yield return null;
         }
         else
         {
@@ -178,7 +180,5 @@ public class UIElementUtility
                 yield return null;
             }
         }
-
-        yield return null;
     }
 }

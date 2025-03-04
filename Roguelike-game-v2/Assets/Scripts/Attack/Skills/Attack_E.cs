@@ -10,7 +10,7 @@ public class Attack_E : Attack
     {
         int rand = Random.Range(min_Index, max_Index + 1);
 
-        transform.position = Managers.Game.enemyDetection.GetLargestEnemyGroup();
+        transform.position = EnemyDetection.GetLargestEnemyGroup();
 
         anime.Play($"default_{rand}");
     }

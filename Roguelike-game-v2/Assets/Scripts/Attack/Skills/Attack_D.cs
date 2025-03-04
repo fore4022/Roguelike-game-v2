@@ -7,7 +7,7 @@ public class Attack_D : Attack
 
     protected override void SetAttack()
     {
-        transform.position = Managers.Game.enemyDetection.GetRandomVector();
+        transform.position = EnemyDetection.GetRandomVector();
 
         anime.Play("default", 0);
     }

@@ -1,18 +1,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-public class EnemyDetection
+public static class EnemyDetection
 {
-    public float largeastRange = 2.5f;
-    public int maximumEnemyCount = 15;
+    public static float largeastRange = 2.5f;
+    public static int maximumEnemyCount = 15;
 
-    private const float offset = 0.5f;
+    private static Vector3 vec = new();
+    private static float width = Util.CameraWidth / 2 - offset;
+    private static float height = Util.CameraHeight / 2 - offset;
+    private static float offset = 0.5f;
 
-    private Vector3 vec = new();
-    private float width = Util.CameraWidth / 2 - offset;
-    private float height = Util.CameraHeight / 2 - offset;
-
-    public GameObject FindRandomEnemy()
+    public static GameObject FindRandomEnemy()
     {
         List<GameObject> gameObjectList = FindEnemiesOnScreen();
 
@@ -25,7 +24,7 @@ public class EnemyDetection
 
         return gameObjectList[index];
     }
-    public GameObject FindNearestEnemy(float? range = null)
+    public static GameObject FindNearestEnemy(float? range = null)
     {
         List<GameObject> gameObjectList = FindEnemiesOnScreen(range);
 
@@ -55,7 +54,7 @@ public class EnemyDetection
 
         return targetObject;
     }
-    public GameObject FindLargestEnemyGroup()
+    public static GameObject FindLargestEnemyGroup()
     {
         List<GameObject> gameObjectList = FindEnemiesOnScreen();
         Collider2D[] colliderArray = new Collider2D[maximumEnemyCount];
@@ -82,7 +81,7 @@ public class EnemyDetection
 
         return targetObject;
     }
-    public List<GameObject> FindLargestEnemyGroup(int count)
+    public static List<GameObject> FindLargestEnemyGroup(int count)
     {
         List<(GameObject obj, int enemyCount) > targetObjectList = new List<(GameObject obj, int enemyCount)>();
         List<GameObject> gameObjectList = FindEnemiesOnScreen();
@@ -108,7 +107,7 @@ public class EnemyDetection
 
         return gameObjectList.Take(count).ToList();
     }
-    public Vector3 GetNearestEnemyPosition(float? range = null)
+    public static Vector3 GetNearestEnemyPosition(float? range = null)
     {
         GameObject target = FindNearestEnemy(range);
 
@@ -121,7 +120,7 @@ public class EnemyDetection
             return target.transform.position;
         }
     }
-    public Vector3 GetRandomEnemyPosition()
+    public static Vector3 GetRandomEnemyPosition()
     {
         GameObject target = FindRandomEnemy();
 
@@ -134,7 +133,7 @@ public class EnemyDetection
             return target.transform.position;
         }
     }
-    public Vector2 GetLargestEnemyGroup()
+    public static Vector2 GetLargestEnemyGroup()
     {
         GameObject target = FindLargestEnemyGroup();
 
@@ -147,7 +146,7 @@ public class EnemyDetection
             return target.transform.position;
         }
     }
-    public List<Vector2> GetLargestEnemyGroup(int count)
+    public static List<Vector2> GetLargestEnemyGroup(int count)
     {
         List<GameObject> targetList = FindLargestEnemyGroup(count);
         List<Vector2> targetPositionList = new List<Vector2>();
@@ -179,7 +178,7 @@ public class EnemyDetection
 
         return targetPositionList;
     }
-    public List<GameObject> FindEnemiesOnScreen(float? range = null)
+    public static List<GameObject> FindEnemiesOnScreen(float? range = null)
     {
         List<GameObject> resultList = new List<GameObject>();
         Collider2D[] colliderArray;
@@ -191,7 +190,7 @@ public class EnemyDetection
             float y = Camera.main.orthographicSize * 2;
             float x = y * Camera.main.aspect;
 
-            Vector2 radius = Managers.Game.calculate.GetVector(x, y);
+            Vector2 radius = Calculate.GetVector(x, y);
 
             colliderArray = Physics2D.OverlapBoxAll(radiusPosition, radius, 0, LayerMask.GetMask("Monster"));
         }
@@ -207,13 +206,13 @@ public class EnemyDetection
 
         return resultList;
     }
-    public float GetDistance(GameObject go, out float result)
+    public static float GetDistance(GameObject go, out float result)
     {
         float distance = (go.transform.position - Managers.Game.player.gameObject.transform.position).magnitude;
 
         return result = distance;
     }
-    public Vector2 GetRandomVector()
+    public static Vector2 GetRandomVector()
     {
         vec.x = Random.Range(-width, width);
         vec.y = Random.Range(-height, height);

@@ -29,7 +29,7 @@ public class PlayerMove : MonoBehaviour, IMoveable
     public void OnMove()
     {
         touchPosition = context.ReadValue<Vector2>();
-        direction = Managers.Game.calculate.GetDirection(touchPosition, enterTouchPosition, false);
+        direction = Calculate.GetDirection(touchPosition, enterTouchPosition, false);
     }
     private void CancelMove()
     {
