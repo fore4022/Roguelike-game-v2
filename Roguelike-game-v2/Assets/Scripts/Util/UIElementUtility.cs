@@ -25,6 +25,10 @@ public class UIElementUtility
             image.color = color;
         }
     }
+    public void SetImageScale(RectTransform rectTransform, float targetScale)
+    {
+        rectTransform.localScale = Calculate.GetVector(targetScale);
+    }
     public Coroutine SetTextAlpha(TextMeshProUGUI tmp, float targetAlphaValue, float duration, bool recursive = true)
     {
         List<TextMeshProUGUI> tmpList = new();
@@ -43,7 +47,7 @@ public class UIElementUtility
 
         return Util.GetMonoBehaviour().StartCoroutine(SetTextAlpha(tmpList, color, targetAlphaValue, duration));
     }
-    public Coroutine SetImageAlpha(Image img, float targetAlphaValue, float duration, bool recursive = true)
+    public void SetImageAlpha(Image img, float targetAlphaValue, float duration = 0, bool recursive = true)
     {
         List<Image> imgList = new();
 
@@ -59,7 +63,7 @@ public class UIElementUtility
             imgList.Add(img);
         }
 
-        return Util.GetMonoBehaviour().StartCoroutine(SetImageAlpha(imgList, color, targetAlphaValue, duration));
+        Util.GetMonoBehaviour().StartCoroutine(SetImageAlpha(imgList, color, targetAlphaValue, duration));
     }
     public IEnumerator SetImageScale(RectTransform rectTransform, float targetScale, float duration)
     {

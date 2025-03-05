@@ -43,8 +43,10 @@ public class AttackOption_UI : Button_2
     public void InitOption(AttackInformation info)
     {
         this.info = info;
-        adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, minScale));
-        
+
+        Managers.UI.uiElementUtility.SetImageScale(rectTransform, minScale);
+
+
         SetOption();
     }
     private void SetOption()
