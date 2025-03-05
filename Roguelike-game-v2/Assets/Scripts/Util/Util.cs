@@ -48,6 +48,15 @@ public class Util
 
         return monoScript;
     }
+    public static Transform GetChildren(Transform transform, int index)
+    {
+        if(index > transform.childCount)
+        {
+            return null;
+        }
+
+        return transform.GetChild(index);
+    }
     public static List<T> GetComponentsInChildren<T>(Transform transform) where T : Component
     {
         List<T> components = new();

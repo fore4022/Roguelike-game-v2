@@ -8,6 +8,8 @@ public class StageInformation_SO : ScriptableObject
     public GameObject background;
 
     public float difficulty = 1;
-    public float spawnDelay;
     public float statScale = 1;
+    public float spawnDelay;
+    [Tooltip("Minute")]
+    public int requiredTime;
 }

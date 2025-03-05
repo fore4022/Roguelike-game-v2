@@ -9,8 +9,10 @@ public class Game_Manager
     public MonsterSpawner monsterSpawner;
     public Player player;
 
+    private int userExp = 0;
     private bool gameOver = false;
 
+    public int UserExp { get { return userExp; } set { userExp = value; } }
     public bool GameOver { get { return gameOver; } }
     private void Set()
     {
@@ -40,6 +42,8 @@ public class Game_Manager
     {
         Time.timeScale = 0;
         gameOver = true;
+
+        Managers.UI.ShowUI<GameOver_UI>();
     }
     public void Clear()
     {
@@ -50,5 +54,6 @@ public class Game_Manager
         inGameTimer = null;
         monsterSpawner = null;
         player = null;
+        userExp = 0;
     }
 }
