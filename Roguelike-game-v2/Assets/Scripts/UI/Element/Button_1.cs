@@ -37,7 +37,7 @@ public abstract class Button_1 : Button_Default, IPointerEnterHandler, IPointerE
             StopCoroutine(adjustmentScale);
         }
 
-        adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, maxScale, duration));
+        adjustmentScale = StartCoroutine(UIElementUtility.SetImageScale(rectTransform, maxScale, duration));
     }
     protected virtual void PointerExit()
     {
@@ -48,7 +48,7 @@ public abstract class Button_1 : Button_Default, IPointerEnterHandler, IPointerE
             StopCoroutine(adjustmentScale);
         }
 
-        Managers.UI.uiElementUtility.SetImageScale(rectTransform, minScale);
+        UIElementUtility.SetImageScale(rectTransform, minScale);
     }
     protected virtual void PointerDown()
     {
@@ -56,7 +56,7 @@ public abstract class Button_1 : Button_Default, IPointerEnterHandler, IPointerE
     }
     protected virtual void PointerUp()
     {
-        Managers.UI.uiElementUtility.SetImageScale(rectTransform, minScale);
+        UIElementUtility.SetImageScale(rectTransform, minScale);
 
         isPointerDown = false;
     }
@@ -64,10 +64,10 @@ public abstract class Button_1 : Button_Default, IPointerEnterHandler, IPointerE
     {
         if(minScale != 1)
         {
-            Managers.UI.uiElementUtility.SetImageScale(rectTransform, minScale);
+            UIElementUtility.SetImageScale(rectTransform, minScale);
         }
 
-        Managers.UI.uiElementUtility.SetImageAlpha(image, minAlpha, duration);
+        UIElementUtility.SetImageAlpha(image, minAlpha, duration);
     }
     protected override void Init()
     {

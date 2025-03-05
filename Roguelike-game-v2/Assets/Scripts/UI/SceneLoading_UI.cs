@@ -28,10 +28,10 @@ public class SceneLoading_UI : UserInterface
         {
             Managers.UI.InitUI();
 
-            yield return new WaitUntil(() => Managers.UI.isInitalized);
+            yield return new WaitUntil(() => Managers.UI.IsInitalized);
         }
 
-        Managers.UI.uiElementUtility.SetImageAlpha(background, maxAlpha, limitTime, false);
+        UIElementUtility.SetImageAlpha(background, maxAlpha, limitTime, false);
 
         yield return new WaitForSecondsRealtime(limitTime);
 
@@ -41,7 +41,7 @@ public class SceneLoading_UI : UserInterface
 
         yield return new WaitUntil(() => isLoading == false);
 
-        Managers.UI.uiElementUtility.SetImageAlpha(background, minAlpha, limitTime);
+        UIElementUtility.SetImageAlpha(background, minAlpha, limitTime);
 
         yield return new WaitForSecondsRealtime(limitTime);
 

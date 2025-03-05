@@ -64,11 +64,11 @@ public class StartMessage_UI : UserInterface
 
         while (true)
         {
-            Managers.UI.uiElementUtility.SetTextAlpha(tmp, minAlpha, duration, false);
+            UIElementUtility.SetTextAlpha(tmp, minAlpha, duration, false);
 
             yield return delay;
 
-            Managers.UI.uiElementUtility.SetTextAlpha(tmp, maxAlpha, duration, false);
+            UIElementUtility.SetTextAlpha(tmp, maxAlpha, duration, false);
 
             yield return delay;
         }

@@ -14,7 +14,7 @@ public abstract class Button_2 : Button_Default, IPointerDownHandler, IPointerEx
             StopCoroutine(adjustmentScale);
         }
 
-        adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, maxScale, duration));
+        adjustmentScale = StartCoroutine(UIElementUtility.SetImageScale(rectTransform, maxScale, duration));
     }
     public virtual void OnPointerExit(PointerEventData eventData)
     {
@@ -23,6 +23,6 @@ public abstract class Button_2 : Button_Default, IPointerDownHandler, IPointerEx
             StopCoroutine(adjustmentScale);
         }
 
-        adjustmentScale = StartCoroutine(Managers.UI.uiElementUtility.SetImageScale(rectTransform, minScale, duration));
+        adjustmentScale = StartCoroutine(UIElementUtility.SetImageScale(rectTransform, minScale, duration));
     }
 }

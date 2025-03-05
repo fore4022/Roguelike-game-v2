@@ -92,7 +92,7 @@ public class DataInit
 
         Managers.UI.InitUI();
 
-        yield return new WaitUntil(() => Managers.UI.isInitalized == true);
+        yield return new WaitUntil(() => Managers.UI.IsInitalized);
 
         yield return new WaitUntil(() => Managers.Game.inGameData.player.levelUpdate != null);
 

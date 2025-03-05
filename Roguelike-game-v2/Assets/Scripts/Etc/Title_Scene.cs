@@ -21,7 +21,7 @@ public class Title_Scene : MonoBehaviour, IPointerClickHandler
         Managers.UserData.UserDataLoad();
         Managers.UI.InitUI();
 
-        yield return new WaitUntil(() => Managers.UI.isInitalized);
+        yield return new WaitUntil(() => Managers.UI.IsInitalized);
 
         StartCoroutine(UserDataLoading());
 

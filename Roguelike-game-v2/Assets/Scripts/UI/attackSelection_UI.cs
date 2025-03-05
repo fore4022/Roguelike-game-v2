@@ -106,7 +106,7 @@ public class AttackSelection_UI : UserInterface
 
         int[] indexs = Calculate.GetRandomValues(infoList.Count, Mathf.Min(Managers.Game.inGameData.OptionCount, infoList.Count));
 
-        Managers.UI.uiElementUtility.SetImageAlpha(background, basicAlpha);
+        UIElementUtility.SetImageAlpha(background, basicAlpha);
 
         yield return null;
 
@@ -120,7 +120,7 @@ public class AttackSelection_UI : UserInterface
     }
     private IEnumerator PadeIn()
     {
-        Managers.UI.uiElementUtility.SetImageAlpha(background, targetAlpha, duration);
+        UIElementUtility.SetImageAlpha(background, targetAlpha, duration);
 
         yield return new WaitForSecondsRealtime(duration);
 

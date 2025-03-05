@@ -6,12 +6,11 @@ using UnityEngine;
 using Object = UnityEngine.Object;
 public class UI_Manager
 {
-    public UIElementUtility uiElementUtility = new();
-
-    public bool isInitalized = false;
-
     private Dictionary<string, UserInterface> uiDictionary = new();
+    
+    private bool isInitalized = false;
 
+    public bool IsInitalized { get { return isInitalized; } set { isInitalized = value; } }
     private Transform Transform
     {
         get 

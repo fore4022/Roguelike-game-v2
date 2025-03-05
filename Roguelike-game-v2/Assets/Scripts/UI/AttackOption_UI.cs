@@ -44,8 +44,7 @@ public class AttackOption_UI : Button_2
     {
         this.info = info;
 
-        Managers.UI.uiElementUtility.SetImageScale(rectTransform, minScale);
-
+        UIElementUtility.SetImageScale(rectTransform, minScale);
 
         SetOption();
     }

@@ -79,7 +79,7 @@ public class GameOver_UI : UserInterface
 
         foreach(Image img in imgList)
         {
-            Managers.UI.uiElementUtility.SetImageAlpha(img, 255, delay.waitTime, true);
+            UIElementUtility.SetImageAlpha(img, 255, delay.waitTime, true);
         }
     }
 }
