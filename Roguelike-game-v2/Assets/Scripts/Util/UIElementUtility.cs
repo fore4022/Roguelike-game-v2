@@ -25,7 +25,7 @@ public class UIElementUtility
             image.color = color;
         }
     }
-    public Coroutine SetTextAlpha(TextMeshProUGUI tmp, float targetAlphaValue, float duration = 0, bool recursive = true)
+    public Coroutine SetTextAlpha(TextMeshProUGUI tmp, float targetAlphaValue, float duration, bool recursive = true)
     {
         List<TextMeshProUGUI> tmpList = new();
 
@@ -43,7 +43,7 @@ public class UIElementUtility
 
         return Util.GetMonoBehaviour().StartCoroutine(SetTextAlpha(tmpList, color, targetAlphaValue, duration));
     }
-    public Coroutine SetImageAlpha(Image img, float targetAlphaValue, float duration = 0, bool recursive = true)
+    public Coroutine SetImageAlpha(Image img, float targetAlphaValue, float duration, bool recursive = true)
     {
         List<Image> imgList = new();
 
@@ -61,80 +61,54 @@ public class UIElementUtility
 
         return Util.GetMonoBehaviour().StartCoroutine(SetImageAlpha(imgList, color, targetAlphaValue, duration));
     }
-    public IEnumerator SetImageScale(RectTransform rectTransform, float targetScale, float duration = 0)
+    public IEnumerator SetImageScale(RectTransform rectTransform, float targetScale, float duration)
     {
-        if(duration == 0)
+        Vector3 scale = new();
+        float totalTime = 0;
+        float scaleValue;
+
+        while (totalTime != 1)
         {
-            rectTransform.localScale = new Vector2(targetScale, targetScale);
+            totalTime += Time.unscaledDeltaTime;
+
+            if (totalTime > duration)
+            {
+                totalTime = 1;
+            }
+
+            scaleValue = Mathf.Lerp(rectTransform.localScale.x, targetScale, totalTime);
+            scale.x = scaleValue;
+            scale.y = scaleValue;
+            rectTransform.localScale = scale;
 
             yield return null;
-        }
-        else
-        {
-            Vector3 scale = new();
-            float totalTime = 0;
-            float scaleValue;
-
-            while(totalTime != 1)
-            {
-                totalTime += Time.unscaledDeltaTime;
-
-                if(totalTime > duration)
-                {
-                    totalTime = 1;
-                }
-
-                scaleValue = Mathf.Lerp(rectTransform.localScale.x, targetScale, totalTime);
-                scale.x = scaleValue;
-                scale.y = scaleValue;
-                rectTransform.localScale = scale;
-
-                yield return null;
-            }
         }
     }
     private IEnumerator SetTextAlpha(List<TextMeshProUGUI> tmpList, Color color, float targetAlphaValue, float duration)
     {
         Color childrenColor;
+        float totalTime = 0;
+        float alphaValue = color.a;
 
-        if(duration == 0)
+        while (totalTime != duration)
         {
-            color.a = targetAlphaValue;
+            totalTime += Time.unscaledDeltaTime;
 
-            foreach(TextMeshProUGUI tmp in tmpList)
+            if (totalTime > duration)
+            {
+                totalTime = duration;
+            }
+
+            color.a = Mathf.Lerp(alphaValue, targetAlphaValue, totalTime / duration);
+
+            foreach (TextMeshProUGUI tmp in tmpList)
             {
                 childrenColor = tmp.color;
-                childrenColor.a = targetAlphaValue;
+                childrenColor.a = color.a;
                 tmp.color = childrenColor;
             }
 
             yield return null;
-        }
-        else
-        {
-            float totalTime = 0;
-            float alphaValue = color.a;
-
-            while(totalTime != duration)
-            {
-                totalTime += Time.unscaledDeltaTime;
-
-                if(totalTime > duration)
-                {
-                    totalTime = duration;
-                }
-
-                color.a = Mathf.Lerp(alphaValue, targetAlphaValue, totalTime / duration);
-
-                foreach(TextMeshProUGUI tmp in tmpList)
-                {
-                    childrenColor = tmp.color;
-                    childrenColor.a = color.a;
-                    tmp.color = childrenColor;
-                }
-
-                yield return null;
-            }
         }
     }
     private IEnumerator SetImageAlpha(List<Image> imgList, Color color, float targetAlphaValue, float duration)
