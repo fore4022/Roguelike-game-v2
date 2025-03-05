@@ -6,11 +6,9 @@ public class Title_Scene : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     private GameData_SO gameData;
 
-    private const string sceneName = "Main";
-
     public void OnPointerClick(PointerEventData eventData)
     {
-        Managers.Scene.LoadScene(sceneName);
+        Managers.Scene.LoadScene(Define.SceneName.Main);
     }
     private void Start()
     {
@@ -23,7 +21,7 @@ public class Title_Scene : MonoBehaviour, IPointerClickHandler
         Managers.UserData.UserDataLoad();
         Managers.UI.InitUI();
 
-        yield return new WaitUntil(() => Managers.UI.isInitalized == true);
+        yield return new WaitUntil(() => Managers.UI.isInitalized);
 
         StartCoroutine(UserDataLoading());
 

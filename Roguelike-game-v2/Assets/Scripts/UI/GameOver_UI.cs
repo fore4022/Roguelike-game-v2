@@ -12,8 +12,6 @@ public class GameOver_UI : UserInterface
     private List<Image> imgList;
     private TextMeshProUGUI resultText;
 
-    private const string sceneName = "Main";
-
     private WaitForSecondsRealtime delay = new(0.225f);
 
     public override void SetUserInterface()
@@ -48,7 +46,7 @@ public class GameOver_UI : UserInterface
     }
     public void GoMain()
     {
-        Managers.Scene.LoadScene(sceneName);
+        Managers.Scene.LoadScene(Define.SceneName.Main);
     }
     private IEnumerator ResultSequence()
     {

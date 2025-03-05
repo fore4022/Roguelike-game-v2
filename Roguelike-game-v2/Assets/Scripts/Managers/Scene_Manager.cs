@@ -3,12 +3,12 @@ public class Scene_Manager
 {
     public Action loadScene = null;
 
-    private string currentScene;
-    private string sceneName = null;
+    private Define.SceneName currentScene;
+    private Define.SceneName sceneName;
     private bool isLoad = false;
     
     public bool IsSceneLoadComplete { get { return currentScene == sceneName; } }
-    public void LoadScene(string sceneName)
+    public void LoadScene(Define.SceneName sceneName)
     {
         isLoad = true;
         this.sceneName = sceneName;
@@ -24,7 +24,7 @@ public class Scene_Manager
             return;
         }
 
-        await Util.LoadingScene(sceneName);
+        await Util.LoadingScene(sceneName.ToString());
 
         GC.Collect();
 

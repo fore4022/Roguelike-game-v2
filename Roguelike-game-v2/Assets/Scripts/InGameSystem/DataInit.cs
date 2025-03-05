@@ -7,7 +7,6 @@ public class DataInit
     public ObjectPool objectPool = null;
 
     private const string userLevelsPath = "UserLevels_SO";
-    private const string sceneName = "InGame";
     private const int defaultMonsterCount = 100;
     private const int defaultSkillCount = 30;
 
@@ -50,7 +49,7 @@ public class DataInit
     {
         Time.timeScale = 0;
 
-        Managers.Scene.LoadScene(sceneName);
+        Managers.Scene.LoadScene(Define.SceneName.InGame);
 
         yield return new WaitUntil(() => Managers.Scene.IsSceneLoadComplete);
         
