@@ -40,9 +40,15 @@ public class Game_Manager
     {
         Time.timeScale = 0;
         gameOver = true;
+    }
+    public void Clear()
+    {
         inGameData = null;
         attackCasterManage = null;
         difficultyScaler = null;
         stageInformation = null;
+        inGameTimer = null;
+        monsterSpawner = null;
+        player = null;
     }
 }

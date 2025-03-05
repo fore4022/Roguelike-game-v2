@@ -10,9 +10,11 @@ public class Player : MonoBehaviour, IDamageReceiver
 
     private const string statPath = "PlayerInformation_SO";
 
-    private Vector3 diePosition = new Vector2(0, -0.25f);
+    private Vector3 diePosition = new Vector2(0, 0.45f);
+    private bool death = false;
 
     public DefaultStat Stat { get { return information.stat; } }
+    public bool Death { get { return death; } }
     private void Awake()
     {
         move = GetComponent<PlayerMove>();
@@ -33,10 +35,14 @@ public class Player : MonoBehaviour, IDamageReceiver
     }
     public IEnumerator Die()
     {
-        Coroutine coroutine = StartCoroutine(ObjectManipulator.TrasnformPosition(transform, transform.position - diePosition, 0.5f));
+        StartCoroutine(ObjectManipulator.TrasnformPosition(transform, transform.position + diePosition, 0.5f));
+
+        death = true;
 
         anime.Play("death");
-        
+
+        yield return new WaitForEndOfFrame();
+
         yield return new WaitUntil(() => anime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
 
         Managers.Game.GameEnd();

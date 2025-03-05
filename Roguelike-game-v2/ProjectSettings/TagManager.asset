@@ -40,9 +40,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Map
     uniqueID: 481499211
+    locked: 0
+  - name: Monster
+    uniqueID: 3472609439
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0

@@ -31,7 +31,7 @@ public class Projectile_A : Projectile
         {
             transform.position += direction * so.projectile_Info.speed * Time.deltaTime;
 
-            if(penetration_count < 0)
+            if(penetration_count <= 0)
             {
                 moving = null;
 
