@@ -6,9 +6,14 @@ public class Title_Scene : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     private GameData_SO gameData;
 
+    private bool isLoad = false;
+
     public void OnPointerClick(PointerEventData eventData)
     {
-        Managers.Scene.LoadScene(Define.SceneName.Main);
+        if(isLoad)
+        {
+            Managers.Scene.LoadScene(Define.SceneName.Main);
+        }
     }
     private void Start()
     {
@@ -36,5 +41,7 @@ public class Title_Scene : MonoBehaviour, IPointerClickHandler
         yield return new WaitUntil(() => Managers.UserData.data != null);
 
         Managers.UI.GetUI<StartMessage_UI>().IsLoading(false);
+
+        isLoad = true;
     }
 }

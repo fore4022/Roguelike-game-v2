@@ -2,8 +2,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 public class Game_Manager
 {
-    public InGameDataManage inGameData = null;
     public AttackCasterManage attackCasterManage = null;
+    public InGameDataManage inGameData = null;
     public DifficultyScaler difficultyScaler = null;
     public StageInformation_SO stageInformation;
     public InGameTimer inGameTimer;
@@ -17,8 +17,8 @@ public class Game_Manager
     public bool GameOver { get { return gameOver; } }
     private void Set()
     {
-        inGameData = new();
         attackCasterManage = new();
+        inGameData = new();
         difficultyScaler = new();
     }
     public void DataLoad(bool isReStart = false)
@@ -48,8 +48,10 @@ public class Game_Manager
     }
     public void Clear()
     {
-        inGameData = null;
+        attackCasterManage.StopAllCaster();
+
         attackCasterManage = null;
+        inGameData = null;
         difficultyScaler = null;
         stageInformation = null;
         inGameTimer = null;

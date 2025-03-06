@@ -39,4 +39,11 @@ public class AttackCasterManage
             Casters.Remove(type);
         }
     }
+    public void StopAllCaster()
+    {
+        foreach(AttackCaster caster in Casters.Values)
+        {
+            caster.CastingStop();
+        }
+    }
 }

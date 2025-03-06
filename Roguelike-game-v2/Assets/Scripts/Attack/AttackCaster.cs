@@ -6,6 +6,7 @@ public class AttackCaster
     private WaitForSeconds coolTime;
     private WaitForSeconds delay;
 
+    private Coroutine caster;
     private string attackType;
     private int level;
 
@@ -22,7 +23,7 @@ public class AttackCaster
     {
         this.attackType = attackType;
 
-        Util.GetMonoBehaviour().StartCoroutine(Casting());
+        caster = Util.GetMonoBehaviour().StartCoroutine(Casting());
     }
     private void Set()
     {
@@ -32,6 +33,10 @@ public class AttackCaster
         {
             delay = new(so.multiCast.delay[level]);
         }
+    }
+    public void CastingStop()
+    {
+        Util.GetMonoBehaviour().StopCoroutine(caster);
     }
     private IEnumerator Casting()
     {
