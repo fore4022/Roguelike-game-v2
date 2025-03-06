@@ -9,10 +9,13 @@ public class InGameTimer : MonoBehaviour
     public int GetMinutes { get { return (int)elapsedTime / 60; } }
     public int GetHours { get { return GetMinutes / 60; } }
     public int GetTotalMinutes { get { return GetMinutes + GetHours * 60; } }
+    private void Awake()
+    {
+        Managers.Game.inGameTimer = this;
+    }
     private void Start()
     {
         elapsedTime = 0;
-        Managers.Game.inGameTimer = this;
     }
     public void StartTimer()
     {

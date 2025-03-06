@@ -10,9 +10,9 @@ public class DataInit
     private const int defaultMonsterCount = 100;
     private const int defaultSkillCount = 30;
 
-    public void GetInGameData()
+    public void GetInGameData(bool isReStart)
     {
-        Util.GetMonoBehaviour().StartCoroutine(Init());
+        Util.GetMonoBehaviour().StartCoroutine(Init(isReStart));
     }
     public void GetMonsterList(ref List<GameObject> monsterList)
     {
@@ -45,24 +45,31 @@ public class DataInit
     {
         userLevelInfo = await Util.LoadingToPath<UserLevels_SO>(userLevelsPath);
     }
-    private IEnumerator Init()
+    private IEnumerator Init(bool isReStart)
     {
         Time.timeScale = 0;
 
-        Managers.Scene.LoadScene(Define.SceneName.InGame);
+        if(!isReStart)
+        {
+            Managers.Scene.LoadScene(Define.SceneName.InGame);
+        }
+        else
+        {
+            Managers.Scene.ReLoadScene();
+        }
 
         yield return new WaitUntil(() => Managers.Scene.IsSceneLoadComplete);
         
-        GameObject GameSystem = GameObject.Find("GameSystem");
+        GameObject gameSystem = GameObject.Find("GameSystem");
 
         objectPool = new();
 
-        if(GameSystem == null)
+        if(gameSystem == null)
         {
-            GameSystem = new GameObject { name = "GameSystem" };
+            gameSystem = new GameObject { name = "GameSystem" };
 
-            Managers.Game.monsterSpawner = GameSystem.AddComponent<MonsterSpawner>();
-            Managers.Game.inGameTimer = GameSystem.AddComponent<InGameTimer>();
+            Managers.Game.monsterSpawner = gameSystem.AddComponent<MonsterSpawner>();
+            Managers.Game.inGameTimer = gameSystem.AddComponent<InGameTimer>();
         }
 
         Util.GetMonoBehaviour().StartCoroutine(DataLoading());
@@ -102,10 +109,10 @@ public class DataInit
         
         yield return new WaitUntil(() => Managers.Game.player != null);
 
-        Managers.UI.GetUI<SceneLoading_UI>().IsLoading = false;
+        Managers.UI.GetUI<SceneLoading_UI>().Wait = false;
 
         yield return new WaitUntil(() => Managers.UI.GetUI<SceneLoading_UI>() == null);
-        
+
         Managers.Game.GameStart();
     }
 }

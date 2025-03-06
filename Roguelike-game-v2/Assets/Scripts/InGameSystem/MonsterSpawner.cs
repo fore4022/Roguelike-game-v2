@@ -14,7 +14,7 @@ public class MonsterSpawner : MonoBehaviour
     private Coroutine monsterSpawn = null;
     private float spawnDelay = 0;
 
-    private void Start()
+    private void Awake()
     {
         Managers.Game.monsterSpawner = this;
     }

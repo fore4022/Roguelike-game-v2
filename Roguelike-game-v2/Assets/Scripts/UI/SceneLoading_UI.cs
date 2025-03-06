@@ -9,9 +9,9 @@ public class SceneLoading_UI : UserInterface
     private const float minAlpha = 0;
     private const float maxAlpha = 255;
 
-    private bool isLoading = true;
+    private bool wait = true;
 
-    public bool IsLoading { set { isLoading = value; } }
+    public bool Wait { set { wait = value; } }
     public override void SetUserInterface()
     {
         transform.SetParent(null, false);
@@ -39,7 +39,7 @@ public class SceneLoading_UI : UserInterface
 
         yield return new WaitUntil(() => Managers.Scene.IsSceneLoadComplete);
 
-        yield return new WaitUntil(() => isLoading == false);
+        yield return new WaitUntil(() => !wait);
 
         UIElementUtility.SetImageAlpha(background, minAlpha, limitTime);
 

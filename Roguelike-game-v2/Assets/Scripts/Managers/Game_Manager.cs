@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 public class Game_Manager
 {
@@ -20,12 +21,12 @@ public class Game_Manager
         attackCasterManage = new();
         difficultyScaler = new();
     }
-    public void DataLoad()
+    public void DataLoad(bool isReStart = false)
     {
         stageInformation = Managers.Main.GetCurrentStage().stageInformation;
 
         Set();
-        inGameData.init.GetInGameData();
+        inGameData.init.GetInGameData(isReStart);
     }
     public void GameStart()
     {
@@ -53,7 +54,6 @@ public class Game_Manager
         stageInformation = null;
         inGameTimer = null;
         monsterSpawner = null;
-        player = null;
         userExp = 0;
     }
 }

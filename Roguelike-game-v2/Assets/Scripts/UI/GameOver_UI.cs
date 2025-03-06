@@ -42,11 +42,13 @@ public class GameOver_UI : UserInterface
     }
     public void ReStart()
     {
-        Managers.Game.DataLoad();
+        Managers.Game.Clear();
+        Managers.Game.DataLoad(true);
     }
     public void GoMain()
     {
-        Managers.Scene.LoadScene(Define.SceneName.Main);
+        Managers.Game.Clear();
+        Managers.Scene.LoadScene(Define.SceneName.Main, false);
     }
     private IEnumerator ResultSequence()
     {

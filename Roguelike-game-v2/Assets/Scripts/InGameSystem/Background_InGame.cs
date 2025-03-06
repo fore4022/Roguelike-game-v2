@@ -13,6 +13,11 @@ public class Background_InGame : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if(Managers.Game.player == null)
+        {
+            return;
+        }
+
         if(!collision.gameObject.CompareTag("View"))
         {
             return;
