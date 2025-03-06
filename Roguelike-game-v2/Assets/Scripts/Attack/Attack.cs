@@ -1,12 +1,16 @@
 using System.Collections;
 using UnityEngine;
 [RequireComponent(typeof(Animator), typeof(SpriteRenderer))]
-public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
+public abstract class Attack : MonoBehaviour, IScriptableData, IDamage, IColliderHandler
 {
+    [SerializeField]
+    protected Collider2D defaultCollider = null;
+    [SerializeField]
+    protected bool enable;
+
     protected Attack_SO so;
-    protected Animator anime;
-    protected SpriteRenderer render;
-    protected Collider2D col;
+    protected SpriteRenderer render = null;
+    protected Animator anime = null;
 
     protected Coroutine attack = null;
     protected int level;
@@ -15,12 +19,19 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
 
     public ScriptableObject SO { set { so = value as Attack_SO; } }
     public float DamageAmount { get { return Managers.Game.player.Stat.damage * so.damageCoefficient[level]; } }
-    protected void Awake()
+    public void SetCollider()
+    {
+        defaultCollider.enabled = enable;
+        enable = !enable;
+    }
+    protected virtual void Awake()
     {
         gameObject.SetActive(false);
     }
     protected void OnEnable()
     {
+        defaultCollider.enabled = enable;
+
         StartCoroutine(StartAttack());
     }
     protected void Start()
@@ -29,13 +40,16 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
     }
     private void Init()
     {
-        anime = GetComponent<Animator>();
-        render = GetComponent<SpriteRenderer>();
-        col = GetComponent<Collider2D>();
+        if(defaultCollider == null)
+        {
+            defaultCollider = GetComponent<Collider2D>();
+        }
 
-        anime.speed = 0;
+        render = GetComponent<SpriteRenderer>();
+        anime = GetComponent<Animator>();
+
         render.enabled = false;
-        col.enabled = false;
+        anime.speed = 0;
         isInit = true;
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -92,14 +106,14 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage
 
         anime.speed = 1;
         render.enabled = true;
-        col.enabled = true;
+        defaultCollider.enabled = true;
         attack = StartCoroutine(Attacking());
 
         yield return new WaitUntil(() => attack == null);
 
         anime.speed = 0;
         render.enabled = false;
-        col.enabled = false;
+        defaultCollider.enabled = false;
 
         Managers.Game.inGameData.init.objectPool.DisableObject(gameObject);
     }

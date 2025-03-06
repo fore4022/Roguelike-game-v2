@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f82a82c6773a6e4fa991894f2da2dcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enable: 1
   range: 0.5
   min_Index: 1
   max_Index: 2

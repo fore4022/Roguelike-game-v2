@@ -15,6 +15,12 @@ public abstract class Projectile : Attack
     {
         moving = StartCoroutine(Moving());
     }
+    protected override void Awake()
+    {
+        base.Awake();
+
+        enable = true;
+    }
     protected void Update()
     {
         IsInvisible();
@@ -28,7 +34,7 @@ public abstract class Projectile : Attack
 
         planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
 
-        if(!GeometryUtility.TestPlanesAABB(planes, col.bounds))
+        if(!GeometryUtility.TestPlanesAABB(planes, defaultCollider.bounds))
         {
             collect = StartCoroutine(Collectting());
         }

@@ -2,13 +2,28 @@ using System.Collections;
 using UnityEngine;
 public class Projectile_B : Projectile
 {
+    [SerializeField]
+    private Collider2D effectCollider;
+
     private bool isExplosion = false;
 
+    public void SetCollider()
+    {
+        effectCollider.enabled = enable;
+        enable = !enable;
+        defaultCollider.enabled = enable;
+    }
+    public void DisableCollider()
+    {
+        defaultCollider.enabled = false;
+        effectCollider.enabled = false;
+    }
     protected override void SetAttack()
     {
         transform.position = Managers.Game.player.gameObject.transform.position;
         direction = Calculate.GetDirection(EnemyDetection.GetNearestEnemyPosition());
         transform.rotation = Calculate.GetQuaternion(direction, so.baseRotation);
+        effectCollider.enabled = !enable;
 
         isExplosion = false;
         anime.Play("default");

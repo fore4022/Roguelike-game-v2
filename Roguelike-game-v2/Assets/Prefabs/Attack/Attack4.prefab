@@ -165,6 +165,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84e519a7377a75f48b5c01d7b4779caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultCollider: {fileID: 0}
-  effectCollider: {fileID: 0}
+  enable: 1
   speed: 1
