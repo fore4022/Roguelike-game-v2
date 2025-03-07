@@ -7,7 +7,7 @@ public class Projectile_B : Projectile
 
     private bool isExplosion = false;
 
-    public void SetCollider()
+    protected override void HandleCollider()
     {
         effectCollider.enabled = enable;
         enable = !enable;

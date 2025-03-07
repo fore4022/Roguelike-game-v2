@@ -21,8 +21,7 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage, ICollide
     public float DamageAmount { get { return Managers.Game.player.Stat.damage * so.damageCoefficient[level]; } }
     public void SetCollider()
     {
-        defaultCollider.enabled = enable;
-        enable = !enable;
+        HandleCollider();
     }
     protected virtual void Awake()
     {
@@ -30,8 +29,6 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage, ICollide
     }
     protected void OnEnable()
     {
-        defaultCollider.enabled = enable;
-
         StartCoroutine(StartAttack());
     }
     protected void Start()
@@ -48,6 +45,7 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage, ICollide
         render = GetComponent<SpriteRenderer>();
         anime = GetComponent<Animator>();
 
+        defaultCollider.enabled = enable;
         render.enabled = false;
         anime.speed = 0;
         isInit = true;
@@ -71,6 +69,11 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage, ICollide
         {
             damageReceiver.TakeDamage(this);
         }
+    }
+    protected virtual void HandleCollider()
+    {
+        defaultCollider.enabled = enable;
+        enable = !enable;
     }
     private IEnumerator StartAttack()
     {
