@@ -9,14 +9,19 @@ public class Projectile_B : Projectile
 
     protected override void HandleCollider()
     {
-        effectCollider.enabled = enable;
         enable = !enable;
-        defaultCollider.enabled = enable;
-    }
-    public void DisableCollider()
-    {
-        defaultCollider.enabled = false;
-        effectCollider.enabled = false;
+        isExplosion = !isExplosion;
+
+        if(isExplosion)
+        {
+            effectCollider.enabled = true;
+            defaultCollider.enabled = false;
+        }
+        else
+        {
+            effectCollider.enabled = false;
+            defaultCollider.enabled = false;
+        }
     }
     protected override void SetAttack()
     {
@@ -24,8 +29,8 @@ public class Projectile_B : Projectile
         direction = Calculate.GetDirection(EnemyDetection.GetNearestEnemyPosition());
         transform.rotation = Calculate.GetQuaternion(direction, so.baseRotation);
         effectCollider.enabled = !enable;
-
         isExplosion = false;
+
         anime.Play("default");
 
         base.SetAttack();
@@ -42,8 +47,6 @@ public class Projectile_B : Projectile
             if(!isExplosion)
             {
                 anime.Play(so.projectile_Info.animationName);
-
-                isExplosion = true;
 
                 StopCoroutine(moving);
 

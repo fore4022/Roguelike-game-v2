@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 [RequireComponent(typeof(Animator), typeof(SpriteRenderer))]
-public abstract class Attack : MonoBehaviour, IScriptableData, IDamage, IColliderHandler
+public class Attack : MonoBehaviour, IScriptableData, IDamage, IColliderHandler
 {
     [SerializeField]
     protected Collider2D defaultCollider = null;
@@ -109,7 +109,7 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage, ICollide
 
         anime.speed = 1;
         render.enabled = true;
-        defaultCollider.enabled = true;
+        defaultCollider.enabled = enable;
         attack = StartCoroutine(Attacking());
 
         yield return new WaitUntil(() => attack == null);
@@ -129,5 +129,8 @@ public abstract class Attack : MonoBehaviour, IScriptableData, IDamage, ICollide
 
         attack = null;
     }
-    protected abstract void SetAttack();
+    protected virtual void SetAttack()
+    {
+        throw new System.NotImplementedException($"{GetType().Name} was not redefined.");
+    }
 }

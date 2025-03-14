@@ -165,5 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55c862ad927090e4c99335b5b21e14e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultCollider: {fileID: 0}
+  enable: 0
   min_Index: 1
   max_Index: 2
