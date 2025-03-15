@@ -11,6 +11,6 @@ public class Level_Main_UI : UserInterface
     }
     private void Init()
     {
-        levelText.text = $"Lv. {Managers.UserData.data.UserLevel}";
+        levelText.text = $"Lv. {Managers.UserData.data.Level}";
     }
 }

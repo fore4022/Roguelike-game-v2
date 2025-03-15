@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 public static class ColorLerp
 {
     public static Color GetColor(float value)

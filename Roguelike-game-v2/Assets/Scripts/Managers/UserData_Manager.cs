@@ -23,6 +23,8 @@ public class UserData_Manager
         if(!File.Exists(filePath))
         {
             UserDataSave();
+
+            return;
         }
 
         string jsonData = await File.ReadAllTextAsync(filePath);
