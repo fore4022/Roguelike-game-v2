@@ -55,9 +55,11 @@ public class GameData
         {
             stageName = stage.stageName;
 
-            if (!Managers.UserData.data.StageClearInfo.ContainsKey(stageName))
+            if(Managers.UserData.data.StageClearInfo.Find(info => info.name == stageName) == null)
             {
-                Managers.UserData.data.StageClearInfo.Add(stageName, false);
+                Debug.Log(stageName);
+
+                Managers.UserData.data.StageClearInfo.Add(new StageClearInfo(stageName, false));
             }
         }
     }

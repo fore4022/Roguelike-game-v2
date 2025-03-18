@@ -36,6 +36,14 @@ public class UserData_Manager
         if(data == null)
         {
             data = new();
+
+            foreach(Stage_SO so in Managers.Main.GameData.Stages)
+            {
+                if(Managers.UserData.data.StageClearInfo.Find(info => info.name == so.stageName) == null)
+                {
+                    data.StageClearInfo.Add(new StageClearInfo(so.name, false));
+                }
+            }
         }
 
         string jsonData = JsonUtility.ToJson(data);

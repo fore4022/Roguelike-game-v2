@@ -16,7 +16,7 @@ public class MultiCast
 [CreateAssetMenu(fileName = "Attack", menuName = "Create New SO/Create New Attack_SO")]
 public class Attack_SO : ScriptableObject
 {
-    public static int maxLevel = 5;
+    public const int maxLevel = 5;
 
     public ProjectileInfo projectile_Info;
     public MultiCast multiCast;
