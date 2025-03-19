@@ -2,7 +2,7 @@ using System.IO;
 using UnityEngine;
 public class UserData_Manager
 {
-    public UserData data;
+    public UserData data = null;
 
     private UserLevelInfo_SO userLevelInfo;
 
@@ -11,7 +11,7 @@ public class UserData_Manager
     private string filePath = "";
     
     public UserLevelInfo_SO UserLevelInfo { get { return userLevelInfo; } }
-    public async void UserDataLoad()
+    public async void Load()
     {
         userLevelInfo = await Util.LoadingToPath<UserLevelInfo_SO>(userLevelInfoPath);
 
@@ -22,7 +22,7 @@ public class UserData_Manager
 
         if(!File.Exists(filePath))
         {
-            UserDataSave();
+            Save();
 
             return;
         }
@@ -31,7 +31,7 @@ public class UserData_Manager
 
         data = JsonUtility.FromJson<UserData>(jsonData);
     }
-    public async void UserDataSave()
+    public async void Save()
     {
         if(data == null)
         {
@@ -41,7 +41,7 @@ public class UserData_Manager
             {
                 if(Managers.UserData.data.StageClearInfo.Find(info => info.name == so.stageName) == null)
                 {
-                    data.StageClearInfo.Add(new StageClearInfo(so.name, false));
+                    data.StageClearInfo.Add(new StageClearInfo(so.stageName, false));
                 }
             }
         }

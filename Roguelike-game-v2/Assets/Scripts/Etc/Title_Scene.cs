@@ -23,10 +23,11 @@ public class Title_Scene : MonoBehaviour, IPointerClickHandler
     }
     private IEnumerator Initalizing()
     {
-        Managers.UserData.UserDataLoad();
         Managers.UI.InitUI();
 
         yield return new WaitUntil(() => Managers.UI.IsInitalized);
+
+        Managers.UserData.Load();
 
         StartCoroutine(UserDataLoading());
 
