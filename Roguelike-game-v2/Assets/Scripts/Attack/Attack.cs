@@ -1,29 +1,26 @@
 using System.Collections;
 using UnityEngine;
 [RequireComponent(typeof(Animator), typeof(SpriteRenderer))]
-public class Attack : MonoBehaviour, IScriptableData, IDamage, IColliderHandler
+public class Attack : MonoBehaviour, IScriptableData, IDamage
 {
     [SerializeField]
     protected Collider2D defaultCollider = null;
     [SerializeField]
     protected bool enable;
 
+    protected IAttacker attacker;
     protected Attack_SO so;
     protected SpriteRenderer render = null;
     protected Animator anime = null;
 
-    protected Coroutine attack = null;
+    protected Coroutine baseAttack = null;
     protected int level;
 
     private bool isInit = false;
 
     public ScriptableObject SO { set { so = value as Attack_SO; } }
     public float DamageAmount { get { return Managers.Game.player.Stat.damage * so.damageCoefficient[level]; } }
-    public void SetCollider()
-    {
-        HandleCollider();
-    }
-    protected virtual void Awake()
+    protected void Awake()
     {
         gameObject.SetActive(false);
     }
@@ -37,6 +34,11 @@ public class Attack : MonoBehaviour, IScriptableData, IDamage, IColliderHandler
     }
     private void Init()
     {
+        if(TryGetComponent(out IAttacker attacker))
+        {
+            this.attacker = attacker;
+        }
+
         if(defaultCollider == null)
         {
             defaultCollider = GetComponent<Collider2D>();
@@ -52,28 +54,11 @@ public class Attack : MonoBehaviour, IScriptableData, IDamage, IColliderHandler
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Enter(collision.gameObject);
+        attacker.Enter(collision.gameObject);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Enter(collision.gameObject);
-    }
-    protected virtual void Enter(GameObject go)
-    {
-        if(!go.CompareTag("Monster"))
-        {
-            return;
-        }
-        
-        if(go.TryGetComponent(out IDamageReceiver damageReceiver))
-        {
-            damageReceiver.TakeDamage(this);
-        }
-    }
-    protected virtual void HandleCollider()
-    {
-        defaultCollider.enabled = enable;
-        enable = !enable;
+        attacker.Enter(collision.gameObject);
     }
     private IEnumerator StartAttack()
     {
@@ -105,14 +90,14 @@ public class Attack : MonoBehaviour, IScriptableData, IDamage, IColliderHandler
             }
         }
 
-        SetAttack();
+        attacker.SetAttack();
 
         anime.speed = 1;
         render.enabled = true;
         defaultCollider.enabled = enable;
-        attack = StartCoroutine(Attacking());
+        baseAttack = StartCoroutine(BaseAttacking());
 
-        yield return new WaitUntil(() => attack == null);
+        yield return new WaitUntil(() => baseAttack == null);
 
         anime.speed = 0;
         render.enabled = false;
@@ -120,17 +105,12 @@ public class Attack : MonoBehaviour, IScriptableData, IDamage, IColliderHandler
 
         Managers.Game.inGameData.init.objectPool.DisableObject(gameObject);
     }
-    protected virtual IEnumerator Attacking()
+    private IEnumerator BaseAttacking()
     {
-        if(so.duration == 0)
-        {
-            yield return new WaitUntil(() => anime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
-        }
+        yield return new WaitUntil(() => attacker.Finished);
 
-        attack = null;
-    }
-    protected virtual void SetAttack()
-    {
-        throw new System.NotImplementedException($"{GetType().Name} was not redefined.");
+        yield return new WaitUntil(() => anime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
+
+        baseAttack = null;
     }
 }

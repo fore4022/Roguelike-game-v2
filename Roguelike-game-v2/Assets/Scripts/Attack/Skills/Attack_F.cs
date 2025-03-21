@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-public class Attack_F : Attack
+public class Attack_F : Attack, IAttacker
 {
     [SerializeField]
     private float speed;
@@ -11,15 +11,35 @@ public class Attack_F : Attack
     private float totalTime = 0;
     private float targetTime = 0;
 
-    protected override void SetAttack()
+    public bool Finished { get { return so.duration == totalTime; } }
+    public void SetAttack()
     {
         currentSpeed = speed;
         totalTime = 0;
         targetTime = Mathf.Lerp(totalTime, so.duration, Random.Range(1, so.duration) / so.duration);
         direction = Calculate.GetDirection(EnemyDetection.GetRandomVector());
         transform.position = EnemyDetection.GetRandomVector();
+
+        StartCoroutine(Attacking());
     }
-    protected override IEnumerator Attacking()
+    public void SetCollider()
+    {
+        enable = !enable;
+        defaultCollider.enabled = enable;
+    }
+    public void Enter(GameObject go)
+    {
+        if (!go.CompareTag("Monster"))
+        {
+            return;
+        }
+
+        if (go.TryGetComponent(out IDamageReceiver damageReceiver))
+        {
+            damageReceiver.TakeDamage(this);
+        }
+    }
+    public IEnumerator Attacking()
     {
         while(totalTime < so.duration)
         {
@@ -56,7 +76,5 @@ public class Attack_F : Attack
 
         colorVairation = null;
         render.color = Color.white;
-
-        yield return base.Attacking();
     }
 }

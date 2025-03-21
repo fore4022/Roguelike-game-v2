@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-public class Projectile_C : Projectile
+public class Projectile_C : Projectile, IProjectile
 {
     [SerializeField]
     private float range;
@@ -12,12 +12,14 @@ public class Projectile_C : Projectile
     private float multiplier;
     private int sign;
 
-    protected override void SetAttack()
+    public bool Finished { get { return moving == null; } }
+    public void SetAttack()
     {
         transform.position = Managers.Game.player.gameObject.transform.position;
         direction = Calculate.GetDirection(EnemyDetection.GetRandomVector());
         multiplier = Random.Range(min_Index, max_Index + 1) * range + range;
         sign = Random.Range(0, 2);
+        moving = StartCoroutine(Moving());
 
         if(sign == 0)
         {
@@ -25,10 +27,13 @@ public class Projectile_C : Projectile
         }
 
         StartCoroutine(AnimationManaging());
-
-        base.SetAttack();
     }
-    protected override void Enter(GameObject go)
+    public void SetCollider()
+    {
+        enable = !enable;
+        defaultCollider.enabled = enable;
+    }
+    public void Enter(GameObject go)
     {
         if(go.CompareTag("Monster"))
         {
@@ -38,9 +43,9 @@ public class Projectile_C : Projectile
             }
         }
     }
-    protected override IEnumerator Moving()
+    public IEnumerator Moving()
     {
-        while(true)
+        while (true)
         {
             transform.position += direction * so.projectile_Info.speed * multiplier * Time.deltaTime;
             multiplier -= Time.deltaTime;

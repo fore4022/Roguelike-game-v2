@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-public abstract class Projectile : Attack
+public class Projectile : Attack
 {
     protected Coroutine moving = null;
     protected Vector3 direction;
@@ -11,23 +11,13 @@ public abstract class Projectile : Attack
     private Coroutine collect;
     private WaitForSeconds delay = new(collectDelay);
 
-    protected override void SetAttack()
-    {
-        moving = StartCoroutine(Moving());
-    }
-    protected override void Awake()
-    {
-        base.Awake();
-
-        enable = true;
-    }
     protected void Update()
     {
         IsInvisible();
     }
     private void IsInvisible()
     {
-        if(attack == null)
+        if(baseAttack == null)
         {
             return; 
         }
@@ -49,14 +39,6 @@ public abstract class Projectile : Attack
     {
         yield return delay;
 
-        attack = null;
+        baseAttack = null;
     }
-    protected override IEnumerator Attacking()
-    {
-        yield return new WaitUntil(() => moving == null);
-
-        yield return base.Attacking();
-    }
-    protected abstract override void Enter(GameObject go);
-    protected abstract IEnumerator Moving();
 }

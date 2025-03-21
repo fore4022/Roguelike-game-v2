@@ -156,5 +156,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultCollider: {fileID: 0}
-  enable: 1
+  enable: 0
   animationName: explosion

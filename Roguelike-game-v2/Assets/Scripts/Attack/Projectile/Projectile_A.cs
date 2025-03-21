@@ -1,19 +1,25 @@
 using System.Collections;
 using UnityEngine;
-public class Projectile_A : Projectile
+public class Projectile_A : Projectile, IProjectile
 {
     private int penetration_count;
 
-    protected override void SetAttack()
+    public bool Finished { get { return moving == null; } }
+    public void SetAttack()
     {
         transform.position = Managers.Game.player.gameObject.transform.position;
         direction = Calculate.GetDirection(EnemyDetection.GetNearestEnemyPosition());
         transform.rotation = Calculate.GetQuaternion(direction - so.baseRotation);
         penetration_count = so.projectile_Info.penetration;
 
-        base.SetAttack();
+        moving = StartCoroutine(Moving());
     }
-    protected override void Enter(GameObject go)
+    public void SetCollider()
+    {
+        enable = !enable;
+        defaultCollider.enabled = enable;
+    }
+    public void Enter(GameObject go)
     {
         if(go.CompareTag("Monster"))
         {
@@ -23,20 +29,20 @@ public class Projectile_A : Projectile
             }
 
             penetration_count--;
+
+            if (penetration_count <= 0)
+            {
+                StopCoroutine(moving);
+
+                moving = null;
+            }
         }
     }
-    protected override IEnumerator Moving()
+    public IEnumerator Moving()
     {
-        while(true)
+        while (true)
         {
             transform.position += direction * so.projectile_Info.speed * Time.deltaTime;
-
-            if(penetration_count <= 0)
-            {
-                moving = null;
-
-                yield break;
-            }
 
             yield return null;
         }
