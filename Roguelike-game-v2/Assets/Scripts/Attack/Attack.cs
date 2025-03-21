@@ -20,10 +20,6 @@ public class Attack : MonoBehaviour, IScriptableData, IDamage
 
     public ScriptableObject SO { set { so = value as Attack_SO; } }
     public float DamageAmount { get { return Managers.Game.player.Stat.damage * so.damageCoefficient[level]; } }
-    protected void Awake()
-    {
-        gameObject.SetActive(false);
-    }
     protected void OnEnable()
     {
         StartCoroutine(StartAttack());
@@ -51,6 +47,10 @@ public class Attack : MonoBehaviour, IScriptableData, IDamage
         render.enabled = false;
         anime.speed = 0;
         isInit = true;
+
+        anime.Update(0);
+
+        gameObject.SetActive(false);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
