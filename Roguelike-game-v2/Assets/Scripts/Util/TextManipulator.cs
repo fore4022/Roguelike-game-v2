@@ -19,4 +19,34 @@ public static class TextManipulator
             tmp.text = builder.ToString();
         }
     }
+    public static IEnumerator TypeEffecting(TextMeshProUGUI tmp, string currentStr, string str)
+    {
+        StringBuilder builder = new();
+
+        builder.Append(currentStr);
+
+        for(int i = 0; i < str.Length; i++)
+        {
+            yield return delay;
+
+            builder.Append(str[i]);
+
+            tmp.text = builder.ToString();
+        }
+    }
+    public static IEnumerator EraseEffecting(TextMeshProUGUI tmp,  int targetCount)
+    {
+        StringBuilder builder = new();
+
+        builder.Append(tmp.text);
+
+        while(builder.Length > targetCount)
+        {
+            yield return delay;
+
+            builder.Remove(0, 1);
+
+            tmp.text = builder.ToString();
+        }
+    }
 }
