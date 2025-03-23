@@ -10,9 +10,9 @@ public class ExpSlider_Main_UI : UserInterface
         expSlider = GetComponent<Slider>();
         expText = Util.GetComponentInChildren<TextMeshProUGUI>(transform);
 
-        Init();
+        UpdateExp();
     }
-    private void Init()
+    public void UpdateExp()
     {
         expSlider.value = Managers.UserData.data.Exp / Managers.UserData.UserLevelInfo.requiredEXP[Managers.UserData.data.Level - 1];
         expText.text = $"{Managers.UserData.data.Exp} / {Managers.UserData.UserLevelInfo.requiredEXP[Managers.UserData.data.Level - 1]}";

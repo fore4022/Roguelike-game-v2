@@ -99,12 +99,18 @@ public class UI_Manager
             isInitalized = false;
         }
     }
-    public void CreateAndExcute<T>(string methodName) where T : UserInterface
+    public T ShowAndGet<T>() where T : UserInterface
     {
-        string typeName = GetName<T>();
+        string name = GetName<T>();
 
-        Util.GetMonoBehaviour().StartCoroutine(CreatingUI(typeName, true));
-        Util.GetMonoBehaviour().StartCoroutine(Executing(typeof(T), typeName, methodName));
+        if (uiDictionary.ContainsKey(name))
+        {
+            uiDictionary[name].gameObject.SetActive(true);
+
+            return uiDictionary[name].GetComponentInChildren<T>();
+        }
+
+        return null;
     }
     public void InitUI()
     {
@@ -146,16 +152,6 @@ public class UI_Manager
                 ui.SetUI();
             }
         }
-    }
-    private IEnumerator Executing(Type type,string typeName, string methodName)
-    {
-        yield return new WaitUntil(() => uiDictionary != null);
-
-        yield return new WaitUntil(() => uiDictionary.ContainsKey(typeName));
-
-        MethodInfo method = type.GetMethod(methodName);
-
-        method.Invoke(uiDictionary[typeName], null);
     }
     private IEnumerator InitalizingUI()
     {

@@ -1,21 +1,28 @@
 using UnityEngine;
 public class Main_Scene : MonoBehaviour
 {
-    private void Start()
+    private void Update()
     {
-        bool isLevelUp = false;
-
-        while(Managers.UserData.data.Exp < Managers.UserData.UserLevelInfo.requiredEXP[Managers.UserData.data.Level - 1])
+        if(Input.GetKeyDown(KeyCode.Space))
         {
-            Managers.UserData.data.Exp -= Managers.UserData.UserLevelInfo.requiredEXP[Managers.UserData.data.Level - 1];
-            Managers.UserData.data.Level++;
+            int levelUpCount = 0;
 
-            isLevelUp = true;
-        }
+            Managers.UserData.data.Exp += 250;
 
-        if(isLevelUp)
-        {
-            Managers.UI.ShowUI<UserLevelUp_UI>();
+            while(Managers.UserData.data.Exp >= Managers.UserData.UserLevelInfo.requiredEXP[Managers.UserData.data.Level - 1])
+            {
+                Managers.UserData.data.Exp -= Managers.UserData.UserLevelInfo.requiredEXP[Managers.UserData.data.Level - 1];
+                Managers.UserData.data.Level++;
+
+                levelUpCount++;
+            }
+
+            if(levelUpCount != 0)
+            {
+                Managers.UI.ShowAndGet<UserLevelUp_UI>().PlayEffect(levelUpCount);
+                Managers.UI.GetUI<ExpSlider_Main_UI>().UpdateExp();
+                Managers.UI.GetUI<Level_Main_UI>().UpdateLevel();
+            }
         }
     }
 }

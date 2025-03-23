@@ -4,26 +4,20 @@ using TMPro;
 using UnityEngine;
 public static class TextManipulator
 {
-    private static WaitForSecondsRealtime delay = new(0.02f);
+    private static WaitForSeconds delay = new(0.02f);
 
-    public static IEnumerator TypeEffecting(TextMeshProUGUI tmp, string str)
+    public static IEnumerator TypeEffecting(TextMeshProUGUI tmp, string str, string currentStr = "")
     {
         StringBuilder builder = new();
 
-        for(int i = 0; i < str.Length; i++)
+        if(currentStr == "")
         {
-            yield return delay;
-
-            builder.Append(str[i]);
-
-            tmp.text = builder.ToString();
+            builder.Append(tmp.text);
         }
-    }
-    public static IEnumerator TypeEffecting(TextMeshProUGUI tmp, string currentStr, string str)
-    {
-        StringBuilder builder = new();
-
-        builder.Append(currentStr);
+        else
+        {
+            builder.Append(currentStr);
+        }
 
         for(int i = 0; i < str.Length; i++)
         {

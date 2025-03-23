@@ -1,33 +1,42 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-public class UserLevelUp_UI : UserInterface
+using UnityEngine.EventSystems;
+public class UserLevelUp_UI : UserInterface, IPointerClickHandler
 {
     [SerializeField]
     private GameObject[] particles;
     [SerializeField]
     private TextMeshProUGUI levelLog;
 
-    protected override void Enable()
+    private WaitForSeconds delay = new(0.5f);
+
+    public void OnPointerClick(PointerEventData eventData)
     {
-        StartCoroutine(LevelUpEffecting());
+        gameObject.SetActive(false);
     }
     public override void SetUserInterface()
     {
         gameObject.SetActive(false);
     }
-    private IEnumerator LevelUpEffecting()
+    public void PlayEffect(int levelUpCount)
     {
-        yield return new WaitForSeconds(1);
+        StartCoroutine(LevelUpEffecting(levelUpCount));
+    }
+    private IEnumerator LevelUpEffecting(int levelUpCount)
+    {
+        string str = $"Lv. {Managers.UserData.data.Level - levelUpCount}";
 
-        string str = $"Lv. {Managers.UserData.data.Level}";
+        levelLog.text = str;
 
-        StartCoroutine(TextManipulator.TypeEffecting(levelLog, $"Lv. {Managers.UserData.data.Level - 1}", " -> " + str));
+        yield return delay;
 
-        yield return new WaitForSeconds(1);
+        str = $"Lv. {Managers.UserData.data.Level}";
+
+        StartCoroutine(TextManipulator.TypeEffecting(levelLog, " -> " + str));
+
+        yield return delay;
 
         StartCoroutine(TextManipulator.EraseEffecting(levelLog, str.Length));
-
-        //
     }
 }

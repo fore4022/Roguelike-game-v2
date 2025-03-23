@@ -7,9 +7,9 @@ public class Level_Main_UI : UserInterface
     {
         levelText = GetComponent<TextMeshProUGUI>();
 
-        Init();
+        UpdateLevel();
     }
-    private void Init()
+    public void UpdateLevel()
     {
         levelText.text = $"Lv. {Managers.UserData.data.Level}";
     }
