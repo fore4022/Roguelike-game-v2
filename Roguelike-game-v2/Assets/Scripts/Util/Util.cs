@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -89,5 +90,12 @@ public class Util
         }
 
         return default;
+    }
+    public static void ResizeArray<T>(ref T[] array, int limits)
+    {
+        if(array.Length != limits)
+        {
+            Array.Resize(ref array, limits);
+        }
     }
 }

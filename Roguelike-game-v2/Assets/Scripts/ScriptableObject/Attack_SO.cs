@@ -35,21 +35,14 @@ public class Attack_SO : ScriptableObject
 
     private void OnValidate()
     {
-        ResizeArray(ref damageCoefficient);
-        ResizeArray(ref coolTime);
-        ResizeArray(ref attackRange);
+        Util.ResizeArray(ref damageCoefficient, maxLevel);
+        Util.ResizeArray(ref coolTime, maxLevel);
+        Util.ResizeArray(ref attackRange, maxLevel);
 
         if(isMultiCast)
         {
-            ResizeArray(ref multiCast.delay);
-            ResizeArray(ref multiCast.count);
-        }
-    }
-    private void ResizeArray<T>(ref T[] array)
-    {
-        if(array.Length > maxLevel)
-        {
-            Array.Resize(ref array, maxLevel);
+            Util.ResizeArray(ref multiCast.delay, maxLevel);
+            Util.ResizeArray(ref multiCast.count, maxLevel);
         }
     }
 }

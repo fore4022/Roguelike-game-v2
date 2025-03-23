@@ -9,9 +9,6 @@ public class UserLevelInfo_SO : ScriptableObject
 
     private void OnValidate()
     {
-        if(requiredEXP.Length != maxLevel)
-        {
-            Array.Resize(ref requiredEXP, maxLevel);
-        }
+        Util.ResizeArray(ref requiredEXP, maxLevel);
     }
 }

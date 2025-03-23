@@ -11,6 +11,13 @@ public class Level_Main_UI : UserInterface
     }
     public void UpdateLevel()
     {
-        levelText.text = $"Lv. {Managers.UserData.data.Level}";
+        if(Managers.UserData.data.Level != UserLevelInfo_SO.maxLevel)
+        {
+            levelText.text = $"Lv. {Managers.UserData.data.Level}";
+        }
+        else
+        {
+            levelText.text = "Lv. MAX";
+        }
     }
 }

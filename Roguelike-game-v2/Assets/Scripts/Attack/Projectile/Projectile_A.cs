@@ -30,7 +30,7 @@ public class Projectile_A : Projectile, IProjectile
 
             penetration_count--;
 
-            if (penetration_count <= 0)
+            if(penetration_count <= 0)
             {
                 StopCoroutine(moving);
 

@@ -60,23 +60,40 @@ public static class Calculate
     {
         return Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + baseRotation.z);
     }
-    public static int[] GetRandomValues(int maxValue, int count)
+    public static int[] GetRandomValues(int maxValue, int count = 0)
     {
         List<int> valueList = new();
-        int[] result = new int[count];
+        int[] result;
+        int index;
 
-        for(int i = 0; i < maxValue; i++)
+        for (int i = 0; i < maxValue; i++)
         {
             valueList.Add(i);
         }
 
-        for(int i = 0; i < count; i++)
+        if(count != 0)
         {
-            int index = Random.Range(0, maxValue - i);
+            result = new int[count];
 
-            result[i] = valueList[index];
+            for (int i = 0; i < count; i++)
+            {
+                index = Random.Range(0, maxValue - i);
+                result[i] = valueList[index];
 
-            valueList.RemoveAt(index);
+                valueList.RemoveAt(index);
+            }
+        }
+        else
+        {
+            result = new int[maxValue];
+
+            for (int i = 0; i < maxValue; i++)
+            {
+                index = Random.Range(0, maxValue - i);
+                result[i] = valueList[index];
+
+                valueList.RemoveAt(index);
+            }
         }
 
         return result;
