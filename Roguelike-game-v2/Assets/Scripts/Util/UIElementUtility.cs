@@ -65,6 +65,21 @@ public static class UIElementUtility
 
         Util.GetMonoBehaviour().StartCoroutine(SetImageAlpha(imgList, color, targetAlphaValue, duration));
     }
+    public static IEnumerator BlinkText(TextMeshProUGUI tmp, int minAlpha, int maxAlpha, float duration, bool recursive = true)
+    {
+        WaitForSeconds delay = new(duration);
+
+        while (true)
+        {
+            SetTextAlpha(tmp, minAlpha, duration, recursive);
+
+            yield return delay;
+
+            SetTextAlpha(tmp, maxAlpha, duration, recursive);
+
+            yield return delay;
+        }
+    }
     public static IEnumerator SetImageScale(RectTransform rectTransform, float targetScale, float duration)
     {
         Vector3 scale = new();

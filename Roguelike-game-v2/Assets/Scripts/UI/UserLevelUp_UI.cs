@@ -19,9 +19,20 @@ public class UserLevelUp_UI : UserInterface, IPointerClickHandler
     private const int maxAlpha = 255;
 
     private WaitForSeconds delay = new(delaySec);
+    private bool allowClose = false;
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if(!allowClose)
+        {
+            return;
+        }
+
+        for (int i = 0; i < maxCount; i++)
+        {
+            particles[i].SetActive(false);
+        }
+
         gameObject.SetActive(false);
     }
     public override void SetUserInterface()
@@ -69,21 +80,10 @@ public class UserLevelUp_UI : UserInterface, IPointerClickHandler
             yield return delay;
         }
 
-        StartCoroutine(Blink());
-    }
-    private IEnumerator Blink()
-    {
+        allowClose = true;
+
         prompt.gameObject.SetActive(true);
 
-        while(true)
-        {
-            UIElementUtility.SetTextAlpha(prompt, minAlpha, duration, false);
-
-            yield return delay;
-
-            UIElementUtility.SetTextAlpha(prompt, maxAlpha, duration, false);
-
-            yield return delay;
-        }
+        StartCoroutine(UIElementUtility.BlinkText(prompt, minAlpha, maxAlpha, duration, false));
     }
 }

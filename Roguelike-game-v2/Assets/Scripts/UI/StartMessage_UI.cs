@@ -24,7 +24,7 @@ public class StartMessage_UI : UserInterface
         }
         else
         {
-            StartCoroutine(Blink());
+            Blink();
         }
     }
     private IEnumerator Loading()
@@ -54,7 +54,7 @@ public class StartMessage_UI : UserInterface
             }
         }
     }
-    private IEnumerator Blink()
+    private void Blink()
     {
         StopCoroutine(textAnimation);
 
@@ -62,15 +62,6 @@ public class StartMessage_UI : UserInterface
 
         tmp.text = "PRESS TO START";
 
-        while (true)
-        {
-            UIElementUtility.SetTextAlpha(tmp, minAlpha, duration, false);
-
-            yield return delay;
-
-            UIElementUtility.SetTextAlpha(tmp, maxAlpha, duration, false);
-
-            yield return delay;
-        }
+        StartCoroutine(UIElementUtility.BlinkText(tmp, minAlpha, maxAlpha, duration, false));
     }
 }
