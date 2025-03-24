@@ -39,4 +39,15 @@ public class Managers : MonoBehaviour
             DontDestroyOnLoad(go);
         }
     }
+    public void OnApplicationQuit()
+    {
+        UserData.Save();
+    }
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.S))
+        {
+            UserData.Save();
+        }
+    }
 }

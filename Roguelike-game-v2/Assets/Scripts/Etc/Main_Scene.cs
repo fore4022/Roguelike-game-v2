@@ -12,7 +12,7 @@ public class Main_Scene : MonoBehaviour
     }
     private void Update()//
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Mouse0))
         {
             Managers.UserData.data.Exp += 250;
 
