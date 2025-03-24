@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameData: {fileID: 11400000, guid: b89a04819aac2204581d299ba593864e, type: 2}
+  go: {fileID: 0}
 --- !u!61 &193922145
 BoxCollider2D:
   m_ObjectHideFlags: 0

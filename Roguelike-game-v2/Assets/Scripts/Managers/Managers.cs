@@ -29,7 +29,7 @@ public class Managers : MonoBehaviour
         {
             GameObject go = GameObject.Find("@Managers");
 
-            if (go == null) 
+            if(go == null) 
             {
                 go = new GameObject { name = "@Managers" }; 
             }
@@ -42,12 +42,5 @@ public class Managers : MonoBehaviour
     public void OnApplicationQuit()
     {
         UserData.Save();
-    }
-    public void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.S))
-        {
-            UserData.Save();
-        }
     }
 }
