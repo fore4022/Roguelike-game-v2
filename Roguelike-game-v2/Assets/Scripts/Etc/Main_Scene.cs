@@ -2,6 +2,10 @@ using System.Collections;
 using UnityEngine;
 public class Main_Scene : MonoBehaviour
 {
+    private void Awake()
+    {
+        Time.timeScale = 1;
+    }
     private void Start()
     {
         StartCoroutine(Initalizing());

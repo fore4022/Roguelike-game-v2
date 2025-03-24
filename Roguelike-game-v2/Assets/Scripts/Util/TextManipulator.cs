@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 public static class TextManipulator
 {
-    private static WaitForSeconds delay = new(0.02f);
+    private static WaitForSecondsRealtime delay = new(0.02f);
 
     public static IEnumerator TypeEffecting(TextMeshProUGUI tmp, string str, string currentStr = "")
     {
