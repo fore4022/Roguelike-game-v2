@@ -1,0 +1,5 @@
+C:/Users/User/UnityProjects/Roguelike-game-v2/Roguelike-game-v2/.utmp/RelWithDebInfo/47454i4v/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/User/UnityProjects/Roguelike-game-v2/Roguelike-game-v2/.utmp/RelWithDebInfo/47454i4v/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+C:/Users/User/UnityProjects/Roguelike-game-v2/Roguelike-game-v2/.utmp/RelWithDebInfo/47454i4v/armeabi-v7a/FramePacing/CMakeFiles/swappywrapper.dir
+C:/Users/User/UnityProjects/Roguelike-game-v2/Roguelike-game-v2/.utmp/RelWithDebInfo/47454i4v/armeabi-v7a/FramePacing/CMakeFiles/edit_cache.dir
+C:/Users/User/UnityProjects/Roguelike-game-v2/Roguelike-game-v2/.utmp/RelWithDebInfo/47454i4v/armeabi-v7a/FramePacing/CMakeFiles/rebuild_cache.dir

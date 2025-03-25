@@ -5,6 +5,8 @@ public class Title_Scene : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField]
     private GameData_SO gameData;
+    [SerializeField]
+    private GameObject go;
 
     private bool isLoad = false;
 
@@ -13,6 +15,13 @@ public class Title_Scene : MonoBehaviour, IPointerClickHandler
         if(isLoad)
         {
             Managers.Scene.LoadScene(Define.SceneName.Main);
+        }
+        else
+        {
+            GameObject a = Instantiate(go);
+
+            a.transform.position = Vector3.zero;
+
         }
     }
     private void Start()
