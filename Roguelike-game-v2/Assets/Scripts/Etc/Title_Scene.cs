@@ -5,23 +5,16 @@ public class Title_Scene : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField]
     private GameData_SO gameData;
-    [SerializeField]
-    private GameObject go;
 
     private bool isLoad = false;
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(isLoad)
+        if(isLoad && !Managers.Scene.isSceneLoading)
         {
+            Managers.UI.GetUI<StartMessage_UI>().SetState();
+
             Managers.Scene.LoadScene(Define.SceneName.Main);
-        }
-        else
-        {
-            GameObject a = Instantiate(go);
-
-            a.transform.position = Vector3.zero;
-
         }
     }
     private void Start()
@@ -46,11 +39,11 @@ public class Title_Scene : MonoBehaviour, IPointerClickHandler
     }
     private IEnumerator UserDataLoading()
     {
-        Managers.UI.GetUI<StartMessage_UI>().IsLoading(true);
+        Managers.UI.GetUI<StartMessage_UI>().SetState();
 
         yield return new WaitUntil(() => Managers.UserData.data != null);
 
-        Managers.UI.GetUI<StartMessage_UI>().IsLoading(false);
+        Managers.UI.GetUI<StartMessage_UI>().SetState();
 
         isLoad = true;
     }

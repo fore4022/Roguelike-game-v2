@@ -10,15 +10,6 @@ public class Main_Scene : MonoBehaviour
     {
         StartCoroutine(Initalizing());
     }
-    private void Update()//
-    {
-        if(Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            Managers.UserData.data.Exp += 250;
-
-            StartCoroutine(Initalizing());
-        }
-    }
     private IEnumerator Initalizing()
     {
         yield return new WaitUntil(() => Managers.UI.IsInitalized);

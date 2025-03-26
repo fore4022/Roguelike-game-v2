@@ -4,7 +4,6 @@ using UnityEngine;
 public static class EnemyDetection
 {
     public static float largeastRange = 2.5f;
-    public static int maximumEnemyCount = 15;
 
     private static Vector3 vec = new();
     private static float width = Util.CameraWidth / 2 - offset;
@@ -57,15 +56,17 @@ public static class EnemyDetection
     public static GameObject FindLargestEnemyGroup()
     {
         List<GameObject> gameObjectList = FindEnemiesOnScreen();
-        Collider2D[] colliderArray = new Collider2D[maximumEnemyCount];
+        Collider2D[] colliderArray;
 
         GameObject targetObject = null;
 
         int maxIntCount = 0;
+        int count;
 
         foreach (GameObject go in gameObjectList)
         {
-            int count = Physics2D.OverlapCircleNonAlloc(go.transform.position, largeastRange, colliderArray);
+            colliderArray = Physics2D.OverlapCircleAll(go.transform.position, largeastRange);
+            count = colliderArray.Length;
 
             if(maxIntCount < count)
             {
@@ -85,13 +86,12 @@ public static class EnemyDetection
     {
         List<(GameObject obj, int enemyCount) > targetObjectList = new List<(GameObject obj, int enemyCount)>();
         List<GameObject> gameObjectList = FindEnemiesOnScreen();
-        Collider2D[] colliderArray = new Collider2D[maximumEnemyCount];
 
         int enemyCount;
 
         foreach(GameObject go in gameObjectList)
         {
-            enemyCount = Physics2D.OverlapCircleNonAlloc(go.transform.position, largeastRange, colliderArray);
+            enemyCount = Physics2D.OverlapCircleAll(go.transform.position, largeastRange).Count();
 
             targetObjectList.Add((go, enemyCount));
         }

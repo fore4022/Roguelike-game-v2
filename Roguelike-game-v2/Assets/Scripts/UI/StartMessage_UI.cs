@@ -10,28 +10,45 @@ public class StartMessage_UI : UserInterface
     private const int maxAlpha = 255;
 
     private Coroutine textAnimation;
+    private Coroutine blink;
     private WaitForSeconds delay;
+    private int state = 0;
 
     public override void SetUserInterface()
     {
         tmp = GetComponent<TextMeshProUGUI>();
     }
-    public void IsLoading(bool isLoading)
+    public void SetState()
     {
-        if(isLoading)
+        if(state != 1)
         {
-            textAnimation = StartCoroutine(Loading());  
+            textAnimation = StartCoroutine(Effecting());  
         }
         else
         {
             Blink();
         }
+
+        state++;
     }
-    private IEnumerator Loading()
+    private IEnumerator Effecting()
     {
-        string text = "Loading";
+        string text;
         int count = 0;
         int i;
+
+        if(state == 0)
+        {
+            text = "Loading";
+        }
+        else
+        {
+            text = "Starting";
+
+            StopCoroutine(blink);
+
+            UIElementUtility.SetTextAlpha(tmp, maxAlpha, 0);
+        }
 
         delay = new(duration / 2);
 
@@ -62,6 +79,6 @@ public class StartMessage_UI : UserInterface
 
         tmp.text = "PRESS TO START";
 
-        StartCoroutine(UIElementUtility.BlinkText(tmp, minAlpha, maxAlpha, duration, false));
+        blink = StartCoroutine(UIElementUtility.BlinkText(tmp, minAlpha, maxAlpha, duration, false));
     }
 }
