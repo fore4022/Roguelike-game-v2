@@ -27,7 +27,7 @@ public abstract class UserInterface : MonoBehaviour
     protected virtual void Enable() { }
     protected virtual void Start()
     {
-        Managers.UI.InitUI();
+        SetUI();
     }
     public abstract void SetUserInterface();
 }

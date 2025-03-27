@@ -97,8 +97,6 @@ public class DataInit
 
         int typeCount = monsterList.Count + skillList.Count;
 
-        Managers.UI.InitUI();
-
         yield return new WaitUntil(() => Managers.UI.IsInitalized);
 
         yield return new WaitUntil(() => Managers.Game.inGameData.player.levelUpdate != null);

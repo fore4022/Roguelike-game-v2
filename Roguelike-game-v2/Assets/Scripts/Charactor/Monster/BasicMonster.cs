@@ -25,9 +25,9 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
             direction = Calculate.GetDirection(Managers.Game.player.gameObject.transform.position, transform.position);
         }
 
-        //rigid.linearVelocity = direction * stat.moveSpeed;
+        rigid.velocity = direction * stat.moveSpeed;
 
-        if(isVisible)
+        if (isVisible)
         {
             changeDirection();
         }

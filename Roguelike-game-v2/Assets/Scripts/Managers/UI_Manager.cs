@@ -6,9 +6,23 @@ public class UI_Manager
 {
     private Dictionary<string, UserInterface> uiDictionary = new();
     
-    private bool isInitalized = false;
+    public bool IsInitalized
+    {
+        get
+        {
+            foreach(UserInterface ui in uiDictionary.Values)
+            {
+                if(!ui.IsInitalized)
+                {
+                    ui.SetUI();
 
-    public bool IsInitalized { get { return isInitalized; } set { isInitalized = value; } }
+                    return false;
+                }
+            }
+
+            return true;
+        }
+    }
     private Transform Transform
     {
         get 
@@ -93,8 +107,6 @@ public class UI_Manager
         if(!uiDictionary.ContainsKey(name))
         {
             uiDictionary.Add(name, ui);
-
-            isInitalized = false;
         }
     }
     public T ShowAndGet<T>() where T : UserInterface
@@ -109,10 +121,6 @@ public class UI_Manager
         }
 
         return null;
-    }
-    public void InitUI()
-    {
-        Util.GetMonoBehaviour().StartCoroutine(InitalizingUI());
     }
     public void ClearDictionary()
     {
@@ -150,21 +158,5 @@ public class UI_Manager
                 ui.SetUI();
             }
         }
-    }
-    private IEnumerator InitalizingUI()
-    {
-        if(isInitalized)
-        {
-            yield break;
-        }
-
-        foreach(UserInterface ui in uiDictionary.Values)
-        {
-            ui.SetUI();
-
-            yield return null;
-        }
-
-        isInitalized = true;
     }
 }

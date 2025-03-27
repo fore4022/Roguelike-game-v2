@@ -26,8 +26,6 @@ public class SceneLoading_UI : UserInterface
     {
         if(!isInitalized)
         {
-            Managers.UI.InitUI();
-
             yield return new WaitUntil(() => Managers.UI.IsInitalized);
         }
 

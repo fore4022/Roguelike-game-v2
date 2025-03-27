@@ -19,14 +19,14 @@ public class Title_Scene : MonoBehaviour, IPointerClickHandler
     }
     private void Start()
     {
+        Util.InitAddressableAsset();
+
         Managers.Main.GameData.SO = gameData;
 
         StartCoroutine(Initalizing());
     }
     private IEnumerator Initalizing()
     {
-        Managers.UI.InitUI();
-
         yield return new WaitUntil(() => Managers.UI.IsInitalized);
 
         Managers.UserData.Load();

@@ -19,7 +19,7 @@ public class Scene_Manager
         Managers.UI.ClearDictionary();
         Managers.UI.ShowUI<SceneLoading_UI>();
 
-        if (!wait)
+        if(!wait)
         {
             Util.GetMonoBehaviour().StartCoroutine(SetSceneLoading());
         }
@@ -38,7 +38,7 @@ public class Scene_Manager
     }
     public async void SetScene()
     {
-        if (!isLoad)
+        if(!isLoad)
         {
             return;
         }
@@ -47,7 +47,6 @@ public class Scene_Manager
 
         //GC.Collect();
 
-        Managers.UI.IsInitalized = false;
         currentScene = sceneName;
         isLoad = false;
     }
