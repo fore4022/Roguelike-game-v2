@@ -55,7 +55,7 @@ public class UI_Manager
         }
         else
         {
-            Util.GetMonoBehaviour().StartCoroutine(CreatingUI(name, true));
+            CreatingUI(name, true);
         }
     }
     public void HideUI<T>() where T : UserInterface
@@ -71,9 +71,9 @@ public class UI_Manager
     {
         string name = GetName<T>();
 
-        if (!uiDictionary.ContainsKey(name))
+        if(!uiDictionary.ContainsKey(name))
         {
-            Util.GetMonoBehaviour().StartCoroutine(CreatingUI(name, isActive));
+            CreatingUI(name, isActive);
         }
     }
     public T GetUI<T>() where T : UserInterface
@@ -126,24 +126,24 @@ public class UI_Manager
     {
         uiDictionary = new();
     }
-    private async void LoadUI(string uiName)
+    private void LoadUI(string uiName)
     {
-        GameObject go = await Util.LoadingToPath<GameObject>(uiName);
+        GameObject go = Util.LoadingToPath<GameObject>(uiName);
 
         if(!uiDictionary.ContainsKey(uiName))
         {
             uiDictionary.Add(uiName, go.GetComponent<UserInterface>());
         }
     }
-    public IEnumerator CreatingUI(string uiName, bool isActive)
+    public void CreatingUI(string uiName, bool isActive)
     {
+        UserInterface ui;
+        
         LoadUI(uiName);
 
-        yield return new WaitUntil(() => uiDictionary.ContainsKey(uiName));
+        ui = uiDictionary[uiName];
 
-        UserInterface ui = uiDictionary[uiName];
-
-        if (ui == null)
+        if(ui == null)
         {
             uiDictionary.Remove(uiName);
         }

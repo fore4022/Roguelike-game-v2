@@ -72,11 +72,11 @@ public class ObjectPool
             array[instanceCount + i].SetActive(false);
         }
     }
-    private async void CreateScriptableObject(string key)
+    private void CreateScriptableObject(string key)
     {
         if(!scriptableObjects.ContainsKey(key))
         {
-            ScriptableObject scriptableObject = await Util.LoadingToPath<ScriptableObject>(key + so);
+            ScriptableObject scriptableObject = Util.LoadingToPath<ScriptableObject>(key + so);
 
             scriptableObjects.Add(key, scriptableObject);
         }

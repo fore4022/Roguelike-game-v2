@@ -41,9 +41,9 @@ public class DataInit
             }
         }
     }
-    private async void LoadUserLevels()
+    private void LoadUserLevels()
     {
-        userLevelInfo = await Util.LoadingToPath<UserLevels_SO>(userLevelsPath);
+        userLevelInfo = Util.LoadingToPath<UserLevels_SO>(userLevelsPath);
     }
     private IEnumerator Init(bool isReStart)
     {

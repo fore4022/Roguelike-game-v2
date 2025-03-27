@@ -14,20 +14,15 @@ public class SceneLoading_UI : UserInterface
     public bool Wait { set { wait = value; } }
     public override void SetUserInterface()
     {
-        transform.SetParent(null, false);
-
-        DontDestroyOnLoad(gameObject);
-
         background = Util.GetComponentInChildren<Image>(transform);
 
+        transform.SetParent(null, false);
+        DontDestroyOnLoad(gameObject);
         StartCoroutine(Loading());
     }
     private IEnumerator Loading()
     {
-        if(!isInitalized)
-        {
-            yield return new WaitUntil(() => Managers.UI.IsInitalized);
-        }
+        yield return new WaitUntil(() => Managers.UI.IsInitalized);
 
         UIElementUtility.SetImageAlpha(background, maxAlpha, limitTime, false);
 

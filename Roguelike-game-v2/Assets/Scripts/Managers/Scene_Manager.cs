@@ -8,18 +8,19 @@ public class Scene_Manager
     private string currentScene = null;
     private string sceneName;
     private bool isLoad = false;
+    private bool hasInitialization;
 
-    public bool isSceneLoading { get { return isLoad; } }
     public bool IsSceneLoadComplete { get { return currentScene == sceneName; } }
-    public void LoadScene(Define.SceneName sceneName, bool wait = true)
+    public void LoadScene(Define.SceneName sceneName, bool hasInitialization = true)
     {
         isLoad = true;
+        this.hasInitialization = hasInitialization;
         this.sceneName = sceneName.ToString();
 
         Managers.UI.ClearDictionary();
         Managers.UI.ShowUI<SceneLoading_UI>();
 
-        if(!wait)
+        if(!hasInitialization)
         {
             Util.GetMonoBehaviour().StartCoroutine(SetSceneLoading());
         }
@@ -36,19 +37,22 @@ public class Scene_Manager
 
         loadScene?.Invoke();
     }
-    public async void SetScene()
+    public void SetScene()
     {
         if(!isLoad)
         {
             return;
         }
 
-        await Util.LoadingScene(sceneName.ToString());
-
-        //GC.Collect();
+        Util.LoadingScene(sceneName.ToString());
 
         currentScene = sceneName;
         isLoad = false;
+
+        if(!hasInitialization)
+        {
+            Managers.UI.GetUI<SceneLoading_UI>().Wait = false;
+        }
     }
     private IEnumerator SetSceneLoading()
     {

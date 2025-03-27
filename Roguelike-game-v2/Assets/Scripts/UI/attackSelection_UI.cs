@@ -66,9 +66,9 @@ public class AttackSelection_UI : UserInterface
 
         InputActions.EnableInputAction<TouchControls>();
     }
-    private async void LoadAttackOption()
+    private void LoadAttackOption()
     {
-        attackOption = await Util.LoadingToPath<GameObject>(path);
+        attackOption = Util.LoadingToPath<GameObject>(path);
     }
     private void CreateOptionUI()
     {

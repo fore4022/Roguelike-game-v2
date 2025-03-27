@@ -1,10 +1,7 @@
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.ResourceManagement.AsyncOperations;
-using UnityEngine.ResourceManagement.ResourceProviders;
 using Object = UnityEngine.Object;
 public class Util
 {
@@ -12,29 +9,18 @@ public class Util
 
     public static float CameraHeight { get { return Camera.main.orthographicSize * 2; } }
     public static float CameraWidth { get { return CameraHeight * Camera.main.aspect; } }
-    public static async Task<AsyncOperationHandle<SceneInstance>> LoadingScene(string path)
+    public static void LoadingScene(string path)
     {
-        AsyncOperationHandle<SceneInstance> load = Addressables.LoadSceneAsync(path);
-
-        await load.Task;
-
-        return load;
+        Addressables.LoadSceneAsync(path, UnityEngine.SceneManagement.LoadSceneMode.Single).WaitForCompletion();
     }
-    public static async Task<T> LoadingToPath<T>(string path) where T : Object
+    public static T LoadingToPath<T>(string path) where T : Object
     {
-        AsyncOperationHandle<T> handle = Addressables.LoadAssetAsync<T>(path);
+        T resources = Addressables.LoadAssetAsync<T>(path).WaitForCompletion();
+        T result = resources;
 
-        await handle.Task;
-
-        T result = handle.Result;
-
-        Addressables.Release(handle);
+        Addressables.Release(resources);
 
         return result;
-    }
-    public static async void InitAddressableAsset()
-    {
-        await Addressables.InitializeAsync().Task;
     }
     public static MonoBehaviour GetMonoBehaviour()
     {

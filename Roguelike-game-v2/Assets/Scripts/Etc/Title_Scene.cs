@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.EventSystems;
 public class Title_Scene : MonoBehaviour, IPointerClickHandler
 {
@@ -10,16 +11,17 @@ public class Title_Scene : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(isLoad && !Managers.Scene.isSceneLoading)
+        if(isLoad)
         {
-            Managers.UI.GetUI<StartMessage_UI>().SetState();
+            isLoad = false;
 
-            Managers.Scene.LoadScene(Define.SceneName.Main);
+            Managers.UI.GetUI<StartMessage_UI>().SetState();
+            Managers.Scene.LoadScene(Define.SceneName.Main, false);
         }
     }
     private void Start()
     {
-        Util.InitAddressableAsset();
+        Addressables.InitializeAsync().WaitForCompletion();
 
         Managers.Main.GameData.SO = gameData;
 

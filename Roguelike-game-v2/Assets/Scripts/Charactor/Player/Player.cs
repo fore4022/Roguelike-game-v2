@@ -63,9 +63,9 @@ public class Player : MonoBehaviour, IDamageReceiver
 
         move.Init();
     }
-    private async void LoadPlayerStat()
+    private void LoadPlayerStat()
     {
-        PlayerInforamtion_SO info = await Util.LoadingToPath<PlayerInforamtion_SO>(statPath);
+        PlayerInforamtion_SO info = Util.LoadingToPath<PlayerInforamtion_SO>(statPath);
 
         information.stat = info.stat;
     }
