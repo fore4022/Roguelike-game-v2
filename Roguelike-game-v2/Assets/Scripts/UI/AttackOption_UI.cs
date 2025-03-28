@@ -6,9 +6,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public class AttackOption_UI : Button_2
 {
-    public AttackInformation info = null;
-
     private List<TextMeshProUGUI> textList = new();
+    private AttackInformation info = null;
     private Image image;
     private Animator animator;
     private RectTransform imageRect;

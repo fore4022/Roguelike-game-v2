@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.EventSystems;
 public class Title_Scene : MonoBehaviour, IPointerClickHandler
 {
@@ -21,8 +20,6 @@ public class Title_Scene : MonoBehaviour, IPointerClickHandler
     }
     private void Start()
     {
-        Addressables.InstantiateAsync("Player");
-
         Managers.Main.GameData.SO = gameData;
 
         StartCoroutine(Initalizing());
