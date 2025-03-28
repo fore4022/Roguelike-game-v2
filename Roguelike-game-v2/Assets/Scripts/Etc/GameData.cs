@@ -39,6 +39,8 @@ public class GameData
 
         Managers.UserData.data.StageName = stages[index].stageName;
 
+        UnityEngine.Debug.Log(stages[index]);
+
         return stages[index];
     }
 }

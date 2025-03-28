@@ -16,10 +16,17 @@ public class DataInit
     }
     public void GetMonsterList(ref List<GameObject> monsterList)
     {
+        Debug.Log(Managers.Game.stageInformation);
+        Debug.Log(Managers.Game.stageInformation.spawnInformationList);
+
         foreach(SpawnInformation_SO so in Managers.Game.stageInformation.spawnInformationList)
         {
+            Debug.Log(so);
+
             foreach(SpawnInformation info in so.monsterInformation)
             {
+                Debug.Log(info);
+
                 if(!monsterList.Contains(info.monster))
                 {
                     monsterList.Add(info.monster);
@@ -29,12 +36,17 @@ public class DataInit
     }
     public void LoadSkillList(ref List<GameObject> skillList)
     {
+        Debug.Log(Managers.UserData.data.Level);
+
         for(int i = 0; i < Managers.UserData.data.Level; i++)
         {
             UserLevel_SO userLevel = userLevelInfo.LevelInfo[i];
 
+            Debug.Log(userLevel);
+
             foreach(AttackInformation_SO so in userLevel.attackInformationList)
             {
+                Debug.Log(so);
                 skillList.Add(so.skillObject);
 
                 Managers.Game.inGameData.attack.SetDictionaryItem(so);

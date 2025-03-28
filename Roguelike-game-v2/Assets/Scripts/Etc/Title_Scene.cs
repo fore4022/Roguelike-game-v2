@@ -21,7 +21,7 @@ public class Title_Scene : MonoBehaviour, IPointerClickHandler
     }
     private void Start()
     {
-        Addressables.InitializeAsync().WaitForCompletion();
+        Addressables.InstantiateAsync("Player");
 
         Managers.Main.GameData.SO = gameData;
 
