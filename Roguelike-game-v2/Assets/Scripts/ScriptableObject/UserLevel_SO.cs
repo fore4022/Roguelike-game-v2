@@ -4,4 +4,6 @@ using UnityEngine;
 public class UserLevel_SO : ScriptableObject
 {
     public List<AttackInformation_SO> attackInformationList;
+
+    public int count;
 }

@@ -33,10 +33,13 @@ public class DataInit
 
         for(int i = 0; i < Managers.UserData.data.Level; i++)
         {
-            userLevel = userLevelInfo.LevelInfo[i];
+            userLevel = userLevelInfo.levelInfo[i];
+
+            Debug.Log(Managers.UserData.data.Level);
 
             foreach(AttackInformation_SO so in userLevel.attackInformationList)
             {
+                Debug.Log(so);
                 skillList.Add(so.skillObject);
 
                 Managers.Game.inGameData.attack.SetDictionaryItem(so);
@@ -79,6 +82,8 @@ public class DataInit
 
         userLevelInfo = Util.LoadingToPath<UserLevels_SO>(userLevelsPath);
         Time.timeScale = 0;
+
+        Debug.Log(userLevelInfo.count);
 
         yield return new WaitUntil(() => userLevelInfo != null);
 

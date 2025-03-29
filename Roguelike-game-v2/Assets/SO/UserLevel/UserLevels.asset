@@ -1,5 +1,98 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9061024263256644659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b32f468c89f423245814ef0335fae600, type: 3}
+  m_Name: AttackInformation_6
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  skillObject: {fileID: 0}
+  sprite: {fileID: 0}
+  attackType: 
+  explanation: 
+--- !u!114 &-9041068554390136939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21d498e24a7895446a0aeed7161bcecc, type: 3}
+  m_Name: UserLevel_0
+  m_EditorClassIdentifier: 
+  attackInformationList:
+  - {fileID: 5295550406003020661}
+  - {fileID: -831599807576398958}
+  - {fileID: 7066307741659246682}
+  - {fileID: 4979714716824142607}
+  - {fileID: 8215415623744879775}
+  - {fileID: -1533701576228181715}
+  - {fileID: -9061024263256644659}
+  - {fileID: 7550848480409667108}
+  - {fileID: -4953649414785108495}
+  - {fileID: 6674897575970880734}
+  - {fileID: 7479830811799763648}
+  count: 11
+--- !u!114 &-4953649414785108495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b32f468c89f423245814ef0335fae600, type: 3}
+  m_Name: AttackInformation_8
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  skillObject: {fileID: 0}
+  sprite: {fileID: 0}
+  attackType: 
+  explanation: 
+--- !u!114 &-1533701576228181715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b32f468c89f423245814ef0335fae600, type: 3}
+  m_Name: AttackInformation_5
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  skillObject: {fileID: 0}
+  sprite: {fileID: 0}
+  attackType: 
+  explanation: 
+--- !u!114 &-831599807576398958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b32f468c89f423245814ef0335fae600, type: 3}
+  m_Name: AttackInformation_1
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  skillObject: {fileID: 0}
+  sprite: {fileID: 0}
+  attackType: 
+  explanation: 
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12,6 +105,125 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9281f4d4c9d9e3d4da65a744bf7e5ea9, type: 3}
   m_Name: UserLevels
   m_EditorClassIdentifier: 
-  LevelInfo:
-  - {fileID: 11400000, guid: d05fbc331d8f0f147a30d9dc78c3336c, type: 2}
-  requiredEXP: 6400000096000000fa000000900100008a020000e8030000dc050000ca080000b80b000094110000
+  levelInfo:
+  - {fileID: -9041068554390136939}
+  count: 1
+--- !u!114 &4979714716824142607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b32f468c89f423245814ef0335fae600, type: 3}
+  m_Name: AttackInformation_3
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  skillObject: {fileID: 0}
+  sprite: {fileID: 0}
+  attackType: 
+  explanation: 
+--- !u!114 &5295550406003020661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b32f468c89f423245814ef0335fae600, type: 3}
+  m_Name: AttackInformation_0
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  skillObject: {fileID: 0}
+  sprite: {fileID: 0}
+  attackType: 
+  explanation: 
+--- !u!114 &6674897575970880734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b32f468c89f423245814ef0335fae600, type: 3}
+  m_Name: AttackInformation_9
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  skillObject: {fileID: 0}
+  sprite: {fileID: 0}
+  attackType: 
+  explanation: 
+--- !u!114 &7066307741659246682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b32f468c89f423245814ef0335fae600, type: 3}
+  m_Name: AttackInformation_2
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  skillObject: {fileID: 0}
+  sprite: {fileID: 0}
+  attackType: 
+  explanation: 
+--- !u!114 &7479830811799763648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b32f468c89f423245814ef0335fae600, type: 3}
+  m_Name: AttackInformation_10
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  skillObject: {fileID: 0}
+  sprite: {fileID: 0}
+  attackType: 
+  explanation: 
+--- !u!114 &7550848480409667108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b32f468c89f423245814ef0335fae600, type: 3}
+  m_Name: AttackInformation_7
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  skillObject: {fileID: 0}
+  sprite: {fileID: 0}
+  attackType: 
+  explanation: 
+--- !u!114 &8215415623744879775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b32f468c89f423245814ef0335fae600, type: 3}
+  m_Name: AttackInformation_4
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  skillObject: {fileID: 0}
+  sprite: {fileID: 0}
+  attackType: 
+  explanation: 
