@@ -83,11 +83,13 @@ public class DataInit
         userLevelInfo = Util.LoadingToPath<UserLevels_SO>(userLevelsPath);
         Time.timeScale = 0;
 
-        Debug.Log(userLevelInfo.count);
 
         yield return new WaitUntil(() => userLevelInfo != null);
 
         GetMonsterList(ref monsterList);
+
+        Debug.Log(userLevelInfo.levelInfo.Count);
+        
         LoadSkillList(ref skillList);
 
         yield return new WaitUntil(() => (skillList != null) && (monsterList != null));
