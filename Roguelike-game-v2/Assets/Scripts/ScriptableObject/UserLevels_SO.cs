@@ -4,6 +4,4 @@ using UnityEngine;
 public class UserLevels_SO : ScriptableObject
 {
     public List<UserLevel_SO> levelInfo;
-
-    public int count;
 }

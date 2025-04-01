@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 public class DataInit
 {
-    public UserLevels_SO userLevelInfo;
     public ObjectPool objectPool = null;
 
-    private const string userLevelsPath = "UserLevels_SO";
+    private const string userLevelPath = "_Level_SO";
     private const int defaultMonsterCount = 100;
     private const int defaultSkillCount = 30;
 
@@ -31,15 +32,12 @@ public class DataInit
     {
         UserLevel_SO userLevel;
 
-        for(int i = 0; i < Managers.UserData.data.Level; i++)
+        for(int i = 1; i <= Managers.UserData.data.Level; i++)
         {
-            userLevel = userLevelInfo.levelInfo[i];
-
-            Debug.Log(Managers.UserData.data.Level);
+            userLevel = Util.LoadingToPath<UserLevel_SO>(i + userLevelPath);
 
             foreach(AttackInformation_SO so in userLevel.attackInformationList)
             {
-                Debug.Log(so);
                 skillList.Add(so.skillObject);
 
                 Managers.Game.inGameData.attack.SetDictionaryItem(so);
@@ -60,10 +58,15 @@ public class DataInit
         }
 
         yield return new WaitUntil(() => Managers.Scene.IsSceneLoadComplete);
-        
-        GameObject gameSystem = GameObject.Find("GameSystem");
 
-        objectPool = new();
+        Util.GetMonoBehaviour().StartCoroutine(DataLoading());
+    }
+    private IEnumerator DataLoading()
+    {
+        List<GameObject> monsterList = new();
+        List<GameObject> skillList = new();
+
+        GameObject gameSystem = GameObject.Find("GameSystem");
 
         if(gameSystem == null)
         {
@@ -73,23 +76,14 @@ public class DataInit
             Managers.Game.inGameTimer = gameSystem.AddComponent<InGameTimer>();
         }
 
-        Util.GetMonoBehaviour().StartCoroutine(DataLoading());
-    }
-    private IEnumerator DataLoading()
-    {
-        List<GameObject> monsterList = new();
-        List<GameObject> skillList = new();
-
-        userLevelInfo = Util.LoadingToPath<UserLevels_SO>(userLevelsPath);
         Time.timeScale = 0;
 
+        Debug.Log(SceneManager.GetActiveScene().name);
 
-        yield return new WaitUntil(() => userLevelInfo != null);
+        objectPool = new();
 
+        Debug.Log(SceneManager.GetActiveScene().name);
         GetMonsterList(ref monsterList);
-
-        Debug.Log(userLevelInfo.levelInfo.Count);
-        
         LoadSkillList(ref skillList);
 
         yield return new WaitUntil(() => (skillList != null) && (monsterList != null));
