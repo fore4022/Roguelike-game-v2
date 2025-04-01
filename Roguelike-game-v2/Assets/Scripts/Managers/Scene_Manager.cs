@@ -27,15 +27,6 @@ public class Scene_Manager
 
         loadScene?.Invoke();
     }
-    public void ReLoadScene()
-    {
-        isLoad = true;
-
-        Managers.UI.ClearDictionary();
-        Managers.UI.ShowUI<SceneLoading_UI>();
-
-        loadScene?.Invoke();
-    }
     public IEnumerator SceneSetting()
     {
         if(!isLoad)

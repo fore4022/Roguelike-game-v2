@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-
 public class DataInit
 {
     public ObjectPool objectPool = null;
@@ -11,9 +9,9 @@ public class DataInit
     private const int defaultMonsterCount = 100;
     private const int defaultSkillCount = 30;
 
-    public void GetInGameData(bool isReStart)
+    public void GetInGameData()
     {
-        Util.GetMonoBehaviour().StartCoroutine(Init(isReStart));
+        Util.GetMonoBehaviour().StartCoroutine(Init());
     }
     public void GetMonsterList(ref List<GameObject> monsterList)
     {
@@ -31,31 +29,30 @@ public class DataInit
     public void LoadSkillList(ref List<GameObject> skillList)
     {
         UserLevel_SO userLevel;
+        AttackInformation_SO attackInfo;
 
-        for(int i = 1; i <= Managers.UserData.data.Level; i++)
+        Debug.Log(Util.LoadingToPath<ScriptableObject>("Info1-A_SO"));
+
+        for (int i = 1; i <= Managers.UserData.data.Level; i++)
         {
+            Debug.Log(i + userLevelPath);
             userLevel = Util.LoadingToPath<UserLevel_SO>(i + userLevelPath);
 
-            foreach(AttackInformation_SO so in userLevel.attackInformationList)
+            foreach(string path in userLevel.pathList)
             {
-                skillList.Add(so.skillObject);
+                attackInfo = Util.LoadingToPath<ScriptableObject>(path) as AttackInformation_SO;
 
-                Managers.Game.inGameData.attack.SetDictionaryItem(so);
+                skillList.Add(attackInfo.skillObject);
+
+                Managers.Game.inGameData.attack.SetDictionaryItem(attackInfo);
             }
         }
     }
-    private IEnumerator Init(bool isReStart)
+    private IEnumerator Init()
     {
         Time.timeScale = 0;
 
-        if(!isReStart)
-        {
-            Managers.Scene.LoadScene(Define.SceneName.InGame);
-        }
-        else
-        {
-            Managers.Scene.ReLoadScene();
-        }
+        Managers.Scene.LoadScene(Define.SceneName.InGame);
 
         yield return new WaitForEndOfFrame();
 

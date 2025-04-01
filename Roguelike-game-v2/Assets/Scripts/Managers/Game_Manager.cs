@@ -20,12 +20,12 @@ public class Game_Manager
         inGameData = new();
         difficultyScaler = new();
     }
-    public void DataLoad(bool isReStart = false)
+    public void DataLoad()
     {
         stageInformation = Managers.Main.GetCurrentStage().stageInformation;
 
         Set();
-        inGameData.init.GetInGameData(isReStart);
+        inGameData.init.GetInGameData();
     }
     public void GameStart()
     {
@@ -37,6 +37,10 @@ public class Game_Manager
         inGameData.player.SetLevel();
 
         Managers.UI.ShowUI<LevelUp_UI>();
+    }
+    public void ReStart()
+    {
+        Set();
     }
     public void GameEnd()
     {

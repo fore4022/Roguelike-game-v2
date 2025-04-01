@@ -33,6 +33,7 @@ public class Attack_SO : ScriptableObject
     public bool projectile;
     public bool isMultiCast;
 
+#if UNITY_EDITOR
     private void OnValidate()
     {
         Util.ResizeArray(ref damageCoefficient, maxLevel);
@@ -45,4 +46,5 @@ public class Attack_SO : ScriptableObject
             Util.ResizeArray(ref multiCast.count, maxLevel);
         }
     }
+#endif
 }
