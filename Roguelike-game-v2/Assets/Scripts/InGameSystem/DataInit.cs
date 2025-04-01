@@ -57,6 +57,8 @@ public class DataInit
             Managers.Scene.ReLoadScene();
         }
 
+        yield return new WaitForEndOfFrame();
+
         yield return new WaitUntil(() => Managers.Scene.IsSceneLoadComplete);
 
         Util.GetMonoBehaviour().StartCoroutine(DataLoading());
@@ -78,11 +80,8 @@ public class DataInit
 
         Time.timeScale = 0;
 
-        Debug.Log(SceneManager.GetActiveScene().name);
-
         objectPool = new();
 
-        Debug.Log(SceneManager.GetActiveScene().name);
         GetMonsterList(ref monsterList);
         LoadSkillList(ref skillList);
 

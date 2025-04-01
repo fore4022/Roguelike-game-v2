@@ -28,7 +28,7 @@ public class SceneLoading_UI : UserInterface
 
         yield return new WaitForSecondsRealtime(limitTime);
 
-        Managers.Scene.SetScene();
+        StartCoroutine(Managers.Scene.SceneSetting());
 
         yield return new WaitUntil(() => Managers.Scene.IsSceneLoadComplete);
 

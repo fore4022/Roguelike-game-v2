@@ -1,16 +1,16 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class Scene_Manager
 {
     public Action loadScene = null;
 
-    private string currentScene = null;
     private string sceneName;
     private bool isLoad = false;
     private bool hasInitialization;
 
-    public bool IsSceneLoadComplete { get { return currentScene == sceneName; } }
+    public bool IsSceneLoadComplete { get { return !isLoad; } }
     public void LoadScene(Define.SceneName sceneName, bool hasInitialization = true)
     {
         isLoad = true;
@@ -29,7 +29,6 @@ public class Scene_Manager
     }
     public void ReLoadScene()
     {
-        currentScene = "";
         isLoad = true;
 
         Managers.UI.ClearDictionary();
@@ -37,16 +36,17 @@ public class Scene_Manager
 
         loadScene?.Invoke();
     }
-    public void SetScene()
+    public IEnumerator SceneSetting()
     {
         if(!isLoad)
         {
-            return;
+            yield break;
         }
 
         Util.LoadingScene(sceneName.ToString());
 
-        currentScene = sceneName;
+        yield return new WaitUntil(() => SceneManager.GetActiveScene().name == sceneName);
+
         isLoad = false;
 
         if(!hasInitialization)
