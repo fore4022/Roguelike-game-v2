@@ -9,7 +9,6 @@ public class ObjectPool
 
     private Transform root;
 
-    private const string so = "_SO";
     private const int maxWorkPerSec = 50;
 
     private int coroutineCount = 0;
@@ -57,11 +56,11 @@ public class ObjectPool
 
         return null;
     }
-    public void CreateObjects(List<GameObject> prefabs, int count)
+    public void Create(List<GameObject> prefabs, Define.ScriptableObjectType type, int count)
     {
         foreach(GameObject prefab in prefabs)
         {
-            Util.GetMonoBehaviour().StartCoroutine(CreatingInstance(prefab, count));
+            Util.GetMonoBehaviour().StartCoroutine(CreatingInstance(prefab, type, count));
         }
     }
     private void CreateInstance(GameObject parent, GameObject prefab, int count, int instanceCount, ref GameObject[] array)
@@ -72,16 +71,30 @@ public class ObjectPool
             array[instanceCount + i].SetActive(false);
         }
     }
-    private void CreateScriptableObject(string key)
+    private void CreateScriptableObject(Define.ScriptableObjectType type, string key)
     {
         if(!scriptableObjects.ContainsKey(key))
         {
-            ScriptableObject scriptableObject = Util.LoadingToPath<ScriptableObject>(key + so);
+            ScriptableObject scriptableObject;
+
+            string path = "";
+
+            switch(type)
+            {
+                case Define.ScriptableObjectType.Monster:
+                    path = $"Assets/SO/Monster/{key}.asset";
+                    break;
+                case Define.ScriptableObjectType.Attack:
+                    path = $"Assets/SO/Attack/{key}.asset";
+                    break;
+            }
+
+            scriptableObject = Util.LoadingToPath<ScriptableObject>(path);
 
             scriptableObjects.Add(key, scriptableObject);
         }
     }
-    private IEnumerator CreatingInstance(GameObject prefab, int count)
+    private IEnumerator CreatingInstance(GameObject prefab, Define.ScriptableObjectType type, int count)
     {
         GameObject[] array = new GameObject[count];
 
@@ -114,6 +127,10 @@ public class ObjectPool
 
         coroutineCount--;
 
+        CreateScriptableObject(type, prefab.name);
+
+        yield return new WaitUntil(() => scriptableObjects.ContainsKey(prefab.name) == true);
+
         Util.GetMonoBehaviour().StartCoroutine(SetInstance(array, prefab.name));
     }
     private IEnumerator SetInstance(GameObject[] array, string key)
@@ -125,10 +142,6 @@ public class ObjectPool
         int index;
 
         coroutineCount++;
-
-        CreateScriptableObject(key);
-
-        yield return new WaitUntil(() => scriptableObjects.ContainsKey(key) == true);
 
         so = scriptableObjects[key];
 

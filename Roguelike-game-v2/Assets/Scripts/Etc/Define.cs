@@ -5,4 +5,9 @@ public class Define
         Main,
         InGame
     }
+    public enum ScriptableObjectType
+    {
+        Monster,
+        Attack
+    }
 }
