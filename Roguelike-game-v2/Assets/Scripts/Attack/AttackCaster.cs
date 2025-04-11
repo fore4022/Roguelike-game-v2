@@ -40,6 +40,7 @@ public class AttackCaster
     }
     private IEnumerator Casting()
     {
+        Debug.Log(attackType);
         so = Managers.Game.inGameData.init.objectPool.GetScriptableObject<Attack_SO>(attackType);
 
         yield return new WaitUntil(() => so != null);

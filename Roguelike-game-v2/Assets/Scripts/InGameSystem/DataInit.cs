@@ -5,7 +5,7 @@ public class DataInit
 {
     public ObjectPool objectPool = null;
 
-    private const string userLevelPath = "_Level_SO";
+    private const string userLevelPath = "_Level";
     private const int defaultMonsterCount = 100;
     private const int defaultSkillCount = 30;
 
@@ -31,11 +31,8 @@ public class DataInit
         UserLevel_SO userLevel;
         AttackInformation_SO attackInfo;
 
-        Debug.Log(Util.LoadingToPath<ScriptableObject>("Info1-A_SO"));
-
         for (int i = 1; i <= Managers.UserData.data.Level; i++)
         {
-            Debug.Log(i + userLevelPath);
             userLevel = Util.LoadingToPath<UserLevel_SO>(i + userLevelPath);
 
             foreach(string path in userLevel.pathList)
