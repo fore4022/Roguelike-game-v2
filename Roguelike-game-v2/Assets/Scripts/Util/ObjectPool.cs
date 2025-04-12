@@ -56,6 +56,19 @@ public class ObjectPool
 
         return null;
     }
+    public void ReSetting()
+    {
+        foreach(List<GameObject> objList in poolingObjects.Values)
+        {
+            foreach(GameObject obj in objList)
+            {
+                if(obj.activeSelf)
+                {
+                    obj.SetActive(false);
+                }
+            }
+        }
+    }
     public void Create(List<GameObject> prefabs, Define.ScriptableObjectType type, int count)
     {
         foreach(GameObject prefab in prefabs)

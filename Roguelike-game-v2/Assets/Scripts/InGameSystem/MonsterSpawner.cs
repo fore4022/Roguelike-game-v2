@@ -27,7 +27,7 @@ public class MonsterSpawner : MonoBehaviour
         foreach(GameObject monster in monsterList)
         {
             string soName = monster.name;
-            Debug.Log(soName);
+
             monsterStats.Add(soName, Managers.Game.inGameData.init.objectPool.GetScriptableObject<ScriptableObject>(soName));
         }
     }

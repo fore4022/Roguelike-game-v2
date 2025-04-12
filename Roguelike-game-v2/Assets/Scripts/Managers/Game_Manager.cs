@@ -41,6 +41,9 @@ public class Game_Manager
     public void ReStart()
     {
         Set();
+        inGameData.init.objectPool.ReSetting();
+
+        //player information resetting
     }
     public void GameEnd()
     {
