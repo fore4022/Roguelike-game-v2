@@ -42,7 +42,6 @@ public class GameOver_UI : UserInterface
     }
     public void ReStart()
     {
-        Managers.Game.Clear();
         Managers.Game.ReStart();
     }
     public void GoMain()

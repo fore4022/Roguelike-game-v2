@@ -47,9 +47,9 @@ public class Player : MonoBehaviour, IDamageReceiver
 
         Managers.Game.GameEnd();
     }
-    public void AnimationPlay(string name)
+    public void AnimationPlay(string animationName)
     {
-        anime.Play(name);
+        anime.Play(animationName);
     }
     private IEnumerator Init()
     {
@@ -63,7 +63,7 @@ public class Player : MonoBehaviour, IDamageReceiver
 
         move.Init();
     }
-    private void LoadPlayerStat()
+    public void LoadPlayerStat()
     {
         PlayerInforamtion_SO info = Util.LoadingToPath<PlayerInforamtion_SO>(statPath);
 

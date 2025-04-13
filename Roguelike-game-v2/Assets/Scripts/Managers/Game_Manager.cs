@@ -40,10 +40,14 @@ public class Game_Manager
     }
     public void ReStart()
     {
-        Set();
-        inGameData.init.objectPool.ReSetting();
+        UserExp = 0;
 
-        //player information resetting
+        attackCasterManage = new();
+        difficultyScaler = new();
+        inGameData.attack = new();
+        
+        inGameData.init.objectPool.ReSetting();
+        player.LoadPlayerStat();
     }
     public void GameEnd()
     {
