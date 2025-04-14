@@ -4,11 +4,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "UserLevel", menuName = "Create New SO/Create New UserLevel_SO")]
 public class UserLevel_SO : ScriptableObject
 {
-    public List<AttackInformation_SO> attackInformationList;
     [HideInInspector]
     public List<string> pathList;
 
 #if UNITY_EDITOR
+
+    public List<AttackInformation_SO> attackInformationList;
+
     private string path;
     private int count = 0;
 

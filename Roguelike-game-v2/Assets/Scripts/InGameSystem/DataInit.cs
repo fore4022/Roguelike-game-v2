@@ -33,9 +33,9 @@ public class DataInit
 
         for (int i = 1; i <= Managers.UserData.data.Level; i++)
         {
-            userLevel = Util.LoadingToPath<UserLevel_SO>(i + userLevelPath);
+            userLevel = Util.LoadingToPath<UserLevel_SO>($"{i}{userLevelPath}");
 
-            foreach(string path in userLevel.pathList)
+            foreach (string path in userLevel.pathList)
             {
                 attackInfo = Util.LoadingToPath<ScriptableObject>(path) as AttackInformation_SO;
 
