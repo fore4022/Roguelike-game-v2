@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Info2-P
   m_EditorClassIdentifier: 
   controller: {fileID: 9100000, guid: 4e78234afbedf54458b45d0d11f36e53, type: 2}
-  skillObject: {fileID: 1647761571587782042, guid: 2e39363e5b55c734f988b68a1375a124, type: 3}
+  attack: {fileID: 1647761571587782042, guid: 2e39363e5b55c734f988b68a1375a124, type: 3}
   sprite: {fileID: 1214221375, guid: 6b39728b29a4ec6498db8fa43ea9e951, type: 3}
   attackType: Projectile2
   explanation: 

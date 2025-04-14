@@ -30,16 +30,18 @@ public class DataInit
     {
         UserLevel_SO userLevel;
         AttackInformation_SO attackInfo;
+        GameObject attack;
 
-        for (int i = 1; i <= Managers.UserData.data.Level; i++)
+        for(int i = 1; i <= Managers.UserData.data.Level; i++)
         {
             userLevel = Util.LoadingToPath<UserLevel_SO>($"{i}{userLevelPath}");
 
-            foreach (string path in userLevel.pathList)
+            foreach(string path in userLevel.pathList)
             {
-                attackInfo = Util.LoadingToPath<ScriptableObject>(path) as AttackInformation_SO;
+                attackInfo = Util.LoadingToPath<AttackInformation_SO>(path);
+                attack = Util.LoadingToPath<GameObject>(attackInfo.attackType);
 
-                skillList.Add(attackInfo.skillObject);
+                skillList.Add(attack);
 
                 Managers.Game.inGameData.attack.SetDictionaryItem(attackInfo);
             }
@@ -73,7 +75,6 @@ public class DataInit
         }
 
         Time.timeScale = 0;
-
         objectPool = new();
 
         GetMonsterList(ref monsterList);

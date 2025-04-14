@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b32f468c89f423245814ef0335fae600, type: 3}
   m_Name: Info2-A
   m_EditorClassIdentifier: 
-  skillObject: {fileID: 8179025814334315390, guid: 2d9bcc69775f2fd44be57c183c831f1f, type: 3}
-  sprite: {fileID: 651171721, guid: e2072e807c4cc394e9096f87614a1e0f, type: 3}
   controller: {fileID: 9100000, guid: b91822e2a3216b242a59ccc6c8c7312f, type: 2}
+  attack: {fileID: 8179025814334315390, guid: 2d9bcc69775f2fd44be57c183c831f1f, type: 3}
+  sprite: {fileID: 651171721, guid: e2072e807c4cc394e9096f87614a1e0f, type: 3}
   attackType: Attack2
   explanation: 

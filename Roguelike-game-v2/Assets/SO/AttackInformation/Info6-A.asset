@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Info6-A
   m_EditorClassIdentifier: 
   controller: {fileID: 9100000, guid: ad733b6e6fce991479e6606a9fbd6f1b, type: 2}
-  skillObject: {fileID: 4019139698218218091, guid: c6692cae81e03064aac075932da418fd, type: 3}
+  attack: {fileID: 4019139698218218091, guid: c6692cae81e03064aac075932da418fd, type: 3}
   sprite: {fileID: -840356753, guid: 93a33f2ab05113548b0cc096505a48a8, type: 3}
   attackType: Attack6
   explanation: 

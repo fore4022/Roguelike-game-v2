@@ -5,6 +5,8 @@ using UnityEngine.AddressableAssets;
 using Object = UnityEngine.Object;
 public class Util
 {
+    public static List<GameObject> resourceList = new();
+
     private static MonoScript monoScript = null;
 
     public static float CameraHeight { get { return Camera.main.orthographicSize * 2; } }
@@ -18,7 +20,14 @@ public class Util
         T resources = Addressables.LoadAssetAsync<T>(path).WaitForCompletion();
         T result = resources;
 
-        Addressables.Release(resources);
+        if(typeof(T) == typeof(GameObject))
+        {
+            resourceList.Add(resources as GameObject);
+        }
+        else
+        {
+            Addressables.Release(resources);
+        }
 
         return result;
     }

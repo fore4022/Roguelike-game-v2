@@ -3,7 +3,7 @@ using UnityEngine;
 public class AttackInformation_SO : ScriptableObject
 {
     public RuntimeAnimatorController controller;
-    public GameObject skillObject;
+    public GameObject attack;
     public Sprite sprite;
 
     public string attackType;
