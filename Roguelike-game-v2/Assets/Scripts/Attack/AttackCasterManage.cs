@@ -16,6 +16,8 @@ public class AttackCasterManage
     {
         if(!Casters.ContainsKey(type))
         {
+            UnityEngine.Debug.Log("C");
+
             AttackCaster caster = new();
 
             caster.SetAttackType(type);

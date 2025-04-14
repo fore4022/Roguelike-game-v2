@@ -22,7 +22,7 @@ public class AttackCaster
     public void SetAttackType(string attackType)
     {
         this.attackType = attackType;
-
+        Debug.Log("aaa");
         caster = Util.GetMonoBehaviour().StartCoroutine(Casting());
     }
     private void Set()
@@ -45,11 +45,13 @@ public class AttackCaster
         yield return new WaitUntil(() => so != null);
 
         Set();
-
+        Debug.Log("b");
         if(!so.isMultiCast)
         {
             while (true)
             {
+                Debug.Log("a");
+
                 yield return coolTime;
 
                 Managers.Game.inGameData.init.objectPool.ActiveObject(attackType);

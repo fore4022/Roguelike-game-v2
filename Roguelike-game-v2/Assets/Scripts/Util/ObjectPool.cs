@@ -73,7 +73,6 @@ public class ObjectPool
     {
         foreach(GameObject prefab in prefabs)
         {
-            Debug.Log(prefab);
             Util.GetMonoBehaviour().StartCoroutine(CreatingInstance(prefab, type, count));
         }
     }

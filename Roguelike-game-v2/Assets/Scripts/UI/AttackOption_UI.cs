@@ -128,7 +128,7 @@ public class AttackOption_UI : Button_2
     private IEnumerator OnButtonSelected()
     {
         yield return new WaitUntil(() => animator.enabled == false);
-
+        Debug.Log("f");
         Managers.Game.inGameData.attack.SetValue(info.data.attackType);
         Managers.UI.GetUI<AttackSelection_UI>().Selected();
     }
