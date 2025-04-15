@@ -25,7 +25,6 @@ public class AttackData
     }
     public void SetValue(string key, int levelDelta = 1)
     {
-        UnityEngine.Debug.Log("e");
         if(TryGetAttackData(key, out AttackInformation info))
         {
             if(info.caster == null)

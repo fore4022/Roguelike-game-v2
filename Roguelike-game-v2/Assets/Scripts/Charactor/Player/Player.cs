@@ -35,6 +35,8 @@ public class Player : MonoBehaviour, IDamageReceiver
     }
     public IEnumerator Die()
     {
+        InputActions.DisableInputAction<TouchControls>();
+
         StartCoroutine(ObjectManipulator.TrasnformPosition(transform, transform.position + diePosition, 0.5f));
 
         death = true;

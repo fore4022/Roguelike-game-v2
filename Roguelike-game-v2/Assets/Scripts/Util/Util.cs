@@ -6,8 +6,11 @@ using Object = UnityEngine.Object;
 public class Util
 {
     public static List<GameObject> resourceList = new();
+    public static List<ScriptableObject> scriptableObjectList = new();
 
     private static MonoScript monoScript = null;
+    public static Type type_GameObject = typeof(GameObject);
+    public static Type type_ScriptableObject = typeof(ScriptableObject);
 
     public static float CameraHeight { get { return Camera.main.orthographicSize * 2; } }
     public static float CameraWidth { get { return CameraHeight * Camera.main.aspect; } }
@@ -19,10 +22,15 @@ public class Util
     {
         T resources = Addressables.LoadAssetAsync<T>(path).WaitForCompletion();
         T result = resources;
+        Type type = typeof(T);
 
-        if(typeof(T) == typeof(GameObject))
+        if(type == type_GameObject)
         {
             resourceList.Add(resources as GameObject);
+        }
+        else if(type == type_ScriptableObject)
+        {
+            scriptableObjectList.Add(resources as ScriptableObject);
         }
         else
         {

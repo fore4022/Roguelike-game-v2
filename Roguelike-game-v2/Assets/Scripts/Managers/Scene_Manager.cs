@@ -24,6 +24,7 @@ public class Scene_Manager
         }
 
         Util.resourceList = new();
+        Util.scriptableObjectList = new();
 
         Managers.UI.ClearDictionary();
         Managers.UI.ShowUI<SceneLoading_UI>();
