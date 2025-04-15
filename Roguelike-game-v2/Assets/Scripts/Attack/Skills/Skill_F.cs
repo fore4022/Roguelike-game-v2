@@ -1,6 +1,12 @@
 using System.Collections;
 using UnityEngine;
-public class Attack_F : Attack, IAttacker
+/// <summary>
+/// <para>
+/// 범위 공격
+/// </para>
+/// 지속 시간 동안 유지되며, 방향을 바꿔 가면서 공격한다.
+/// </summary>
+public class Skill_F : Attack, Iskill
 {
     [SerializeField]
     private float speed;
@@ -11,7 +17,7 @@ public class Attack_F : Attack, IAttacker
     private float totalTime = 0;
     private float targetTime = 0;
 
-    public bool Finished { get { return so.duration == totalTime; } }
+    public bool Finished { get { return so.duration <= totalTime; } }
     public void SetAttack()
     {
         currentSpeed = speed;

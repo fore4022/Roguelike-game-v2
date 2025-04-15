@@ -1,5 +1,11 @@
 using System.Collections;
 using UnityEngine;
+/// <summary>
+/// <para>
+/// 범위 공격형 원거리 공격
+/// </para>
+/// 무작위 방향과 힘으로 날아가며, 지속 시간 이후 사라진다.
+/// </summary>
 public class Projectile_C : Projectile, IProjectile
 {
     [SerializeField]

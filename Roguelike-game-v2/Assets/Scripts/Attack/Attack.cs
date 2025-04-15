@@ -8,7 +8,7 @@ public class Attack : MonoBehaviour, IScriptableData, IDamage
     [SerializeField]
     protected bool enable;
 
-    protected IAttacker attacker;
+    protected Iskill attacker;
     protected Attack_SO so;
     protected SpriteRenderer render = null;
     protected Animator anime = null;
@@ -34,7 +34,7 @@ public class Attack : MonoBehaviour, IScriptableData, IDamage
     }
     private void Init()
     {
-        if(TryGetComponent(out IAttacker attacker))
+        if(TryGetComponent(out Iskill attacker))
         {
             this.attacker = attacker;
         }

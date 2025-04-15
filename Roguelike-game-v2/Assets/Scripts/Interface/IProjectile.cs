@@ -1,5 +1,5 @@
 using System.Collections;
-public interface IProjectile : IAttacker
+public interface IProjectile : Iskill
 {
     public IEnumerator Moving();
 }

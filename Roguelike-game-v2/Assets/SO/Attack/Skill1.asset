@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbad4040f90a6c543b7da75cd5a0bedb, type: 3}
-  m_Name: Attack4
+  m_Name: Skill1
   m_EditorClassIdentifier: 
   projectile_Info:
     animationName: 
@@ -18,17 +18,17 @@ MonoBehaviour:
     penetration: 0
   multiCast:
     delay:
-    - 0.15
-    - 0.15
-    - 0.15
-    - 0.15
-    - 0.15
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
     count:
-    - 2
-    - 3
-    - 4
-    - 5
-    - 7
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
   damageCoefficient:
   - 1
   - 1
@@ -36,19 +36,20 @@ MonoBehaviour:
   - 1
   - 1
   coolTime:
-  - 2.5
-  - 2.5
-  - 2.5
-  - 2.5
-  - 2.5
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
   attackRange:
-  - 5
-  - 5
-  - 5
-  - 5
-  - 5
-  attackTypePath: Attack4
-  duration: 5
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
+  baseRotation: {x: 0, y: 0, z: 0}
+  attackTypePath: Skill1
+  duration: 0
   flipX: 0
   flipY: 0
   projectile: 0

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 582489947814455192}
   - component: {fileID: 4793440712667177571}
   m_Layer: 0
-  m_Name: Attack4
+  m_Name: Skill4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

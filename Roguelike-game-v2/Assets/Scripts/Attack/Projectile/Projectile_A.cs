@@ -1,5 +1,11 @@
 using System.Collections;
 using UnityEngine;
+/// <summary>
+/// <para>
+/// 원거리 공격 / 연속 타격 원거리 공격
+/// </para>
+/// 가장 가까운 적을 향해서 날아간다.
+/// </summary>
 public class Projectile_A : Projectile, IProjectile
 {
     private int penetration_count;

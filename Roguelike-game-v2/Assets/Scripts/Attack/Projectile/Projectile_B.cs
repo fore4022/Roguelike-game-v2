@@ -1,5 +1,11 @@
 using System.Collections;
 using UnityEngine;
+/// <summary>
+/// <para>
+/// 폭발형 원거리 공격
+/// </para>
+/// 가장 가까운 적을 향해서 날아가며, 충돌 시 범위 내 적에게 피해를 입힌다.
+/// </summary>
 public class Projectile_B : Projectile, IProjectile
 {
     [SerializeField]

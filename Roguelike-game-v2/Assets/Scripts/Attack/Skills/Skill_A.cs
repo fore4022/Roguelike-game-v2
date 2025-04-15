@@ -1,9 +1,15 @@
 using UnityEngine;
-public class Attack_A : Attack, IAttacker
+/// <summary>
+/// <para>
+/// 범위 공격
+/// </para>
+/// 가장 가까운 적을 공격하며, 원의 외각에 위치한다.
+/// </summary>
+public class Skill_A : Attack, Iskill
 {
     private Vector3 direction;
 
-    public bool Finished { get { return so.duration == 0; } }
+    public bool Finished { get { return true; } }
     public void SetAttack()
     {
         direction = Calculate.GetDirection(EnemyDetection.GetNearestEnemyPosition());

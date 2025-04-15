@@ -1,6 +1,12 @@
 using System.Collections;
 using UnityEngine;
-public class Attack_D : Attack, IAttacker
+/// <summary>
+/// <para>
+/// 범위 공격
+/// </para>
+/// 대기 애니메이션 재생 이후 적을 공격하며, 화면 상의 무작위 공간에 위치한다.
+/// </summary>
+public class Skill_D : Attack, Iskill
 {
     [SerializeField]
     private string animationName;

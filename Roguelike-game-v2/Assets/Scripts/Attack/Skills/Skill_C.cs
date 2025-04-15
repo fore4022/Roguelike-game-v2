@@ -1,7 +1,13 @@
 using UnityEngine;
-public class Attack_C : Attack, IAttacker
+/// <summary>
+/// <para>
+/// 범위 공격
+/// </para>
+/// 화면에 보이는 무작위 적을 공격한다.
+/// </summary>
+public class Skill_C : Attack, Iskill
 {
-    public bool Finished { get { return so.duration == 0; } }
+    public bool Finished { get { return true; } }
     public void SetAttack()
     {
         transform.position = EnemyDetection.GetRandomEnemyPosition();
