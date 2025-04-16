@@ -10,6 +10,8 @@ public static class TextManipulator
     {
         StringBuilder builder = new();
 
+        tmp.text = "";
+
         if(currentStr == "")
         {
             builder.Append(tmp.text);

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 public class Game_Manager
 {
@@ -13,7 +14,7 @@ public class Game_Manager
     private bool gameOver = false;
 
     public int UserExp { get { return userExp; } set { userExp = value; } }
-    public bool GameOver { get { return gameOver; } }
+    public bool IsGameOver { get { return gameOver; } }
     private void Set()
     {
         attackCasterManage = new();
@@ -41,15 +42,17 @@ public class Game_Manager
     public void ReStart()
     {
         UserExp = 0;
+        
+        attackCasterManage.StopAllCaster();
+        inGameData.init.objectPool.ReSetting();
 
         attackCasterManage = new();
         difficultyScaler = new();
         inGameData.attack = new();
-        
-        inGameData.init.objectPool.ReSetting();
-        player.LoadPlayerStat();
+
+        Util.GetMonoBehaviour().StartCoroutine(ReSetting());
     }
-    public void GameEnd()
+    public void GameOver()
     {
         Time.timeScale = 0;
         gameOver = true;
@@ -67,5 +70,23 @@ public class Game_Manager
         inGameTimer = null;
         monsterSpawner = null;
         userExp = 0;
+    }
+    private IEnumerator ReSetting()
+    {
+        Managers.UI.ShowUI<SceneLoading_UI>();
+
+        yield return new WaitForSecondsRealtime(SceneLoading_UI.limitTime);
+
+        Managers.UI.GetUI<SceneLoading_UI>().Wait = false;
+        Camera.main.orthographicSize = 8;
+
+        Managers.UI.HideUI<GameOver_UI>();
+        InputActions.EnableInputAction<TouchControls>();
+        
+        player.Reset();
+
+        yield return new WaitUntil(() => Managers.UI.GetUI<SceneLoading_UI>() == null);
+
+        Time.timeScale = 1;
     }
 }

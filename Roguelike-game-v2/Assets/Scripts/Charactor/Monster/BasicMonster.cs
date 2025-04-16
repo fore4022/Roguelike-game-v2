@@ -20,7 +20,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     }
     public void OnMove()
     {
-        if(!Managers.Game.GameOver)
+        if(!Managers.Game.IsGameOver)
         {
             direction = Calculate.GetDirection(Managers.Game.player.gameObject.transform.position, transform.position);
         }

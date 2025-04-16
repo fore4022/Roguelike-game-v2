@@ -49,6 +49,10 @@ public class GameOver_UI : UserInterface
         Managers.Game.Clear();
         Managers.Scene.LoadScene(Define.SceneName.Main, false);
     }
+    private void OnDisable()
+    {
+        headUpDisplay.SetActive(true);
+    }
     private IEnumerator ResultSequence()
     {
         string requiredTime = $"목표 시간\n\n{(Managers.Game.stageInformation.requiredTime / 60):D2} : {Managers.Game.stageInformation.requiredTime:D2} : 00";

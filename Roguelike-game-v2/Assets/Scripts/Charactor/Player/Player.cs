@@ -33,6 +33,13 @@ public class Player : MonoBehaviour, IDamageReceiver
             StartCoroutine(Die());
         }
     }
+    public void Reset()
+    {
+        death = false;
+
+        LoadPlayerStat();
+        anime.Play("idle");
+    }
     public IEnumerator Die()
     {
         InputActions.DisableInputAction<TouchControls>();
@@ -47,7 +54,7 @@ public class Player : MonoBehaviour, IDamageReceiver
 
         yield return new WaitUntil(() => anime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
 
-        Managers.Game.GameEnd();
+        Managers.Game.GameOver();
     }
     public void AnimationPlay(string animationName)
     {
@@ -65,7 +72,7 @@ public class Player : MonoBehaviour, IDamageReceiver
 
         move.Init();
     }
-    public void LoadPlayerStat()
+    private void LoadPlayerStat()
     {
         PlayerInforamtion_SO info = Util.LoadingToPath<PlayerInforamtion_SO>(statPath);
 

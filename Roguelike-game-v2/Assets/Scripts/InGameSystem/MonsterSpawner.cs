@@ -42,7 +42,7 @@ public class MonsterSpawner : MonoBehaviour
     {
         LoadInformation();
 
-        while(!Managers.Game.GameOver)
+        while(!Managers.Game.IsGameOver)
         {
             foreach(SpawnInformation_SO spawnInformation in Managers.Game.stageInformation.spawnInformationList)
             {

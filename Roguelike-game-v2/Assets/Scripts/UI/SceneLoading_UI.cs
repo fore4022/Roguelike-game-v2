@@ -3,9 +3,10 @@ using UnityEngine;
 using UnityEngine.UI;
 public class SceneLoading_UI : UserInterface
 {
+    public const float limitTime = 0.5f;
+
     private Image background;
 
-    private const float limitTime = 0.5f;
     private const float minAlpha = 0;
     private const float maxAlpha = 255;
 
