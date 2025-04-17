@@ -5,7 +5,7 @@ public class InGame_Camera : MonoBehaviour
     private GameObject player = null;
 
     private const float duration = 0.5f;
-    private const float targetCameraSize = 2f;
+    private const float targetCameraSize = 1.25f;
     private const float zpos = -10;
 
     private Coroutine cameraScale = null;

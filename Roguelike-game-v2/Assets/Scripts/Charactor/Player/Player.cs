@@ -9,8 +9,10 @@ public class Player : MonoBehaviour, IDamageReceiver
     private Animator anime;
 
     private const string statPath = "PlayerInformation_SO";
+    private const float targetScale = 2.4f;
+    private const float duration = 0.4f;
 
-    private Vector3 diePosition = new Vector2(0, 0.45f);
+    private Vector3 diePosition = new Vector2(0, 0.15f);
     private bool death = false;
 
     public DefaultStat Stat { get { return information.stat; } }
@@ -44,13 +46,14 @@ public class Player : MonoBehaviour, IDamageReceiver
     {
         InputActions.DisableInputAction<TouchControls>();
 
-        StartCoroutine(ObjectManipulator.TrasnformPosition(transform, transform.position + diePosition, 0.5f));
+        StartCoroutine(ObjectManipulator.TrasnformPosition(transform, transform.position + diePosition, duration));
+        StartCoroutine(ObjectManipulator.SetScale(transform, targetScale, duration));
 
         death = true;
 
         anime.Play("death");
 
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(duration);
 
         yield return new WaitUntil(() => anime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
 

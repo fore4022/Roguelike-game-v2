@@ -78,7 +78,7 @@ public class Game_Manager
         yield return new WaitForSecondsRealtime(SceneLoading_UI.limitTime);
 
         Managers.UI.GetUI<SceneLoading_UI>().Wait = false;
-        Camera.main.orthographicSize = 8;
+        Camera.main.orthographicSize = 6;
 
         Managers.UI.HideUI<GameOver_UI>();
         InputActions.EnableInputAction<TouchControls>();
