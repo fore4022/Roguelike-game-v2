@@ -2,15 +2,16 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using Object = UnityEngine.Object;
 public class Util
 {
-    public static List<GameObject> resourceList = new();
-    public static List<ScriptableObject> scriptableObjectList = new();
+    public static List<AsyncOperationHandle> handleList = new();
 
     private static MonoScript monoScript = null;
     public static Type type_GameObject = typeof(GameObject);
     public static Type type_ScriptableObject = typeof(ScriptableObject);
+    public static Type type_Sprite = typeof(Sprite);
 
     public static float CameraHeight { get { return Camera.main.orthographicSize * 2; } }
     public static float CameraWidth { get { return CameraHeight * Camera.main.aspect; } }
@@ -20,24 +21,29 @@ public class Util
     }
     public static T LoadingToPath<T>(string path) where T : Object
     {
-        T resources = Addressables.LoadAssetAsync<T>(path).WaitForCompletion();
-        T result = resources;
+        AsyncOperationHandle<T> handle = Addressables.LoadAssetAsync<T>(path);
+        T result = handle.WaitForCompletion();
         Type type = typeof(T);
 
-        if(type == type_GameObject)
+        if(type == type_GameObject || type == type_ScriptableObject || type == type_Sprite)
         {
-            resourceList.Add(resources as GameObject);
-        }
-        else if(type == type_ScriptableObject)
-        {
-            scriptableObjectList.Add(resources as ScriptableObject);
+            handleList.Add(handle);
         }
         else
         {
-            Addressables.Release(resources);
+            Addressables.Release(handle);
         }
 
         return result;
+    }
+    public static void AddressableResourcesRelease()
+    {
+        foreach (AsyncOperationHandle handle in handleList)
+        {
+            Addressables.Release(handle);
+        }
+
+        handleList.Clear();
     }
     public static MonoBehaviour GetMonoBehaviour()
     {

@@ -39,8 +39,8 @@ public class DataInit
             foreach(string path in userLevel.pathList)
             {
                 attackInfo = Util.LoadingToPath<AttackInformation_SO>(path);
-                attack = Util.LoadingToPath<GameObject>(attackInfo.attackType);
-
+                attack = Util.LoadingToPath<GameObject>(attackInfo.attackInfo.type);
+                
                 skillList.Add(attack);
 
                 Managers.Game.inGameData.attack.SetDictionaryItem(attackInfo);

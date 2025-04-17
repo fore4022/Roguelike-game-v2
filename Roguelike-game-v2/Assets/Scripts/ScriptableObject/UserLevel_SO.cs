@@ -8,7 +8,6 @@ public class UserLevel_SO : ScriptableObject
     public List<string> pathList;
 
 #if UNITY_EDITOR
-
     public List<AttackInformation_SO> attackInformationList;
 
     private string path;

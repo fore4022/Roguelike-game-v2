@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
 public class Scene_Manager
 {
@@ -18,14 +17,7 @@ public class Scene_Manager
         this.hasInitialization = hasInitialization;
         this.sceneName = sceneName.ToString();
         
-        foreach(GameObject resource in Util.resourceList)
-        {
-            Addressables.Release(resource);
-        }
-
-        Util.resourceList = new();
-        Util.scriptableObjectList = new();
-
+        Util.AddressableResourcesRelease();
         Managers.UI.ClearDictionary();
         Managers.UI.ShowUI<SceneLoading_UI>();
 

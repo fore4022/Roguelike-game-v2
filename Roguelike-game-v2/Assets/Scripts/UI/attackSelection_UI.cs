@@ -102,7 +102,7 @@ public class AttackSelection_UI : UserInterface
     }
     private IEnumerator Set()
     {
-        List<AttackInformation> infoList = Managers.Game.inGameData.attack.GetAttackInformation();
+        List<AttackContext> infoList = Managers.Game.inGameData.attack.GetAttackInformation();
 
         int[] indexs = Calculate.GetRandomValues(infoList.Count, Mathf.Min(Managers.Game.inGameData.OptionCount, infoList.Count));
 

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b32f468c89f423245814ef0335fae600, type: 3}
   m_Name: Info3-S
   m_EditorClassIdentifier: 
-  controller: {fileID: 9100000, guid: 42bfe262f59d61c40a8646251eddd145, type: 2}
-  attack: {fileID: 6967527459479230250, guid: e17c240d00724fb48a0401188920c8bf, type: 3}
-  sprite: {fileID: -788150445, guid: 109e024aee4cd6c4498dcb1a78b93cad, type: 3}
-  attackType: Skill3
-  explanation: 
+  attackInfo:
+    icon: {fileID: 0}
+    type: Skill3
+    explanation: 
+  spritePath: Assets/Sprites/Icon/ElectricLighting2_3.asset
+  sprite: {fileID: 21300000, guid: db75157ff90ba3343a0188c5677b29ee, type: 2}

@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b32f468c89f423245814ef0335fae600, type: 3}
   m_Name: Info6-S
   m_EditorClassIdentifier: 
-  controller: {fileID: 9100000, guid: ad733b6e6fce991479e6606a9fbd6f1b, type: 2}
-  attack: {fileID: 4019139698218218091, guid: c6692cae81e03064aac075932da418fd, type: 3}
-  sprite: {fileID: -840356753, guid: 93a33f2ab05113548b0cc096505a48a8, type: 3}
-  attackType: Skill6
-  explanation: 
+  attackInfo:
+    icon: {fileID: 0}
+    type: Skill6
+    explanation: 
+  spritePath: Assets/Sprites/Icon/Holy VFX 02_3.asset
+  sprite: {fileID: 21300000, guid: c95981ab25f9dfc4a9694fecdcee3873, type: 2}

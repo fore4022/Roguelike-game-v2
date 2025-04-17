@@ -1,31 +1,31 @@
 using System.Collections.Generic;
 using System.Linq;
-public class AttackInformation
+public class AttackContext
 {
-    public AttackInformation_SO data;
+    public AttackInformation data;
     public AttackCaster caster = null;
     
     public int level = 0;
 
-    public AttackInformation(AttackInformation_SO dataSO)
+    public AttackContext(AttackInformation_SO dataSO)
     {
-        data = dataSO;
+        data = new(dataSO);
     }
 }
 public class AttackData
 {
-    private Dictionary<string, AttackInformation> info = new();
+    private Dictionary<string, AttackContext> info = new();
 
     public void SetDictionaryItem(AttackInformation_SO so)
     {
-        if(!info.ContainsKey(so.attackType))
+        if(!info.ContainsKey(so.attackInfo.type))
         {
-            info.Add(so.attackType, new AttackInformation(so));
+            info.Add(so.attackInfo.type, new AttackContext(so));
         }
     }
     public void SetValue(string key, int levelDelta = 1)
     {
-        if(TryGetAttackData(key, out AttackInformation info))
+        if(TryGetAttackData(key, out AttackContext info))
         {
             if(info.caster == null)
             {
@@ -42,22 +42,22 @@ public class AttackData
     }
     public int GetLevel(string key)
     {
-        if(TryGetAttackData(key, out AttackInformation info))
+        if(TryGetAttackData(key, out AttackContext info))
         {
             return info.level;
         }
 
         return -1;
     }
-    public List<AttackInformation> GetAttackInformation()
+    public List<AttackContext> GetAttackInformation()
     {
-        List<AttackInformation> info = this.info.Values.ToList();
+        List<AttackContext> info = this.info.Values.ToList();
 
         info.RemoveAll(o => o.level == Attack_SO.maxLevel - 1);
 
         return info;
     }
-    private bool TryGetAttackData(string key, out AttackInformation info)
+    private bool TryGetAttackData(string key, out AttackContext info)
     {
         if(this.info.ContainsKey(key))
         {
