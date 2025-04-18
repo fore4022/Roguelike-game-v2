@@ -21,19 +21,21 @@ public class UserLevel_SO : ScriptableObject
     {
         EditorApplication.delayCall += () =>
         {
-            if (count == attackInformationList.Count)
+            if(count != attackInformationList.Count)
             {
                 ValidateUntilReady();
             }
-
-            Validate();
+            else
+            {
+                Validate();
+            }
         };
     }
     private void Validate()
     {
-        if (count < attackInformationList.Count)
+        if(count < attackInformationList.Count)
         {
-            for (int i = count; i < attackInformationList.Count; i++)
+            for(int i = count; i < attackInformationList.Count; i++)
             {
                 path = $"Assets/SO/AttackInformation/{attackInformationList[i].name}.asset";
 

@@ -14,13 +14,13 @@ public class GameData
         }
     }
     public Stage_SO[] Stages { get { return stages; } }
-    public Stage_SO GetStageSO(string sceneName, int sign)
+    public Stage_SO GetStageSO(string stageName, int sign)
     {
         int index = 0;
 
         for(int i = 0; i < stages.Count(); i++)
         {
-            if(stages[i].stageName == sceneName)
+            if(stages[i].stageName == stageName)
             {
                 index = i + sign;
 

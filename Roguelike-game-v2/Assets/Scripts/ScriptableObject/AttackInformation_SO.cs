@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 [System.Serializable]
 public class AttackInformation
@@ -28,11 +29,25 @@ public class AttackInformation_SO : ScriptableObject
 
     public void OnValidate()
     {
-        spritePath = SetSpritePath();
+        ValidateUntilReady();
     }
-    public string SetSpritePath()
+    private void ValidateUntilReady()
     {
-        return $"Assets/Sprites/Icon/{sprite.name}.asset";
+        EditorApplication.delayCall += () =>
+        {
+            if(sprite == null)
+            {
+                ValidateUntilReady();
+            }
+            else
+            {
+                Validate();
+            }
+        };
+    }
+    public void Validate()
+    {
+        spritePath = $"Assets/Sprites/Icon/{sprite.name}.asset";
     }
 #endif
 }

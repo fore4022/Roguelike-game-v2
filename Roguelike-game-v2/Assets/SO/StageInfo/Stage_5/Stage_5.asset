@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageInformation: {fileID: 11400000, guid: fcd482bab32eaed40b2f8ea1070ef2e9, type: 2}
   mapSprite: {fileID: 11400000, guid: b5e1ac6374bdfe247901a1b0c0119cff, type: 2}
-  stageName: Snowfield
+  stagePath: Assets/Prefabs/Background/Snowfield.prefab
+  stage: {fileID: 8714857401625141123, guid: 72abe3f7571a2cd4d9fc0153f60a45ad, type: 3}

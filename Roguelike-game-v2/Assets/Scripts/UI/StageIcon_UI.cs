@@ -14,7 +14,7 @@ public class StageIcon_UI : UserInterface
     [SerializeField]
     private Image enviroment;
 
-    private Stage_SO stage;
+    private Stage_SO so;
 
     public override void SetUserInterface()
     {
@@ -24,15 +24,15 @@ public class StageIcon_UI : UserInterface
     }
     public void UpdateUI(int sign)
     {
-        stage = Managers.Main.GetCurrentStage(sign);
+        so = Managers.Main.GetCurrentStage(sign);
 
         Set();
     }
     private void Set()
     {
-        IconSprite_SO iconSprite = stage.mapSprite;
+        IconSprite_SO iconSprite = so.mapSprite;
 
-        sceneName.text = stage.stageName;
+        sceneName.text = so.stageName;
         map_1.sprite = iconSprite.map_1;
         enviroment.sprite = iconSprite.enviroment;
 
