@@ -10,6 +10,10 @@ public class InGame_Camera : MonoBehaviour
 
     private Coroutine cameraScale = null;
 
+    public void Start()
+    {
+        Managers.Game.onGameOver += Reset;
+    }
     private void Update()
     {
         if(player == null)
@@ -32,6 +36,10 @@ public class InGame_Camera : MonoBehaviour
         {
             cameraScale = StartCoroutine(SetCameraScale());
         }
+    }
+    private void Reset()
+    {
+        cameraScale = null;
     }
     private IEnumerator SetCameraScale()
     {

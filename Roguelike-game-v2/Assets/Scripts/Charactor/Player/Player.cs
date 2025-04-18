@@ -12,7 +12,8 @@ public class Player : MonoBehaviour, IDamageReceiver
     private const float targetScale = 2.4f;
     private const float duration = 0.4f;
 
-    private Vector3 diePosition = new Vector2(0, 0.15f);
+    private Coroutine die = null;
+    private Vector3 diePosition = new Vector2(0, 0.3f);
     private bool death = false;
 
     public DefaultStat Stat { get { return information.stat; } }
@@ -30,9 +31,9 @@ public class Player : MonoBehaviour, IDamageReceiver
     {
         information.stat.health -= damage.DamageAmount;
 
-        if(information.stat.health <= 0)
+        if(information.stat.health <= 0 && die == null)
         {
-            StartCoroutine(Die());
+            die = StartCoroutine(Dieing());
         }
     }
     public void Reset()
@@ -40,9 +41,12 @@ public class Player : MonoBehaviour, IDamageReceiver
         death = false;
 
         LoadPlayerStat();
+        StopCoroutine(die);
         anime.Play("idle");
+
+        die = null;
     }
-    public IEnumerator Die()
+    public IEnumerator Dieing()
     {
         InputActions.DisableInputAction<TouchControls>();
 

@@ -10,10 +10,16 @@ public class Timer_UI : UserInterface
     {
         timer = GetComponent<TextMeshProUGUI>();
 
+        Managers.Game.onGameOver += Reset;
         StartCoroutine(TimerUpdate());
     }
     protected override void Enable()
     {
+        StartCoroutine(TimerUpdate());
+    }
+    public void Reset()
+    {
+        beforeSecond = 0;
         StartCoroutine(TimerUpdate());
     }
     private IEnumerator TimerUpdate()

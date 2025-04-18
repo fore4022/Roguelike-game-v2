@@ -28,7 +28,10 @@ public class MonsterSpawner : MonoBehaviour
         {
             string soName = monster.name;
 
-            monsterStats.Add(soName, Managers.Game.inGameData.init.objectPool.GetScriptableObject<ScriptableObject>(soName));
+            if(!monsterStats.ContainsKey(soName))
+            {
+                monsterStats.Add(soName, Managers.Game.inGameData.init.objectPool.GetScriptableObject<ScriptableObject>(soName));
+            }
         }
     }
     private void MonsterSpawn(SpawnInformation_SO spawnInformation) 

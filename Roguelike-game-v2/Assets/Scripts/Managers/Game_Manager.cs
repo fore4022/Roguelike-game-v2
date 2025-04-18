@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 public class Game_Manager
@@ -9,6 +10,7 @@ public class Game_Manager
     public InGameTimer inGameTimer;
     public MonsterSpawner monsterSpawner;
     public Player player;
+    public Action onGameOver;
 
     private int userExp = 0;
     private bool gameOver = false;
@@ -42,6 +44,7 @@ public class Game_Manager
     public void ReStart()
     {
         UserExp = 0;
+        gameOver = false;
         
         attackCasterManage.StopAllCaster();
         inGameData.init.objectPool.ReSetting();
@@ -80,13 +83,19 @@ public class Game_Manager
         Managers.UI.GetUI<SceneLoading_UI>().Wait = false;
         Camera.main.orthographicSize = 6;
 
+        player.Reset();
         Managers.UI.HideUI<GameOver_UI>();
         InputActions.EnableInputAction<TouchControls>();
-        
-        player.Reset();
 
         yield return new WaitUntil(() => Managers.UI.GetUI<SceneLoading_UI>() == null);
 
         Time.timeScale = 1;
+
+        inGameTimer.StartTimer();
+        monsterSpawner.StartSpawn();
+        //inGameData.player.SetLevel();
+
+        //Managers.UI.ShowUI<LevelUp_UI>();
+        onGameOver.Invoke();
     }
 }
