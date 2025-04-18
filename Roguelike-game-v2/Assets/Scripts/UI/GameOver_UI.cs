@@ -42,6 +42,7 @@ public class GameOver_UI : UserInterface
     }
     public void ReStart()
     {
+        StartCoroutine(ActiveHeadUpDisplay());
         Managers.Game.ReStart();
     }
     public void GoMain()
@@ -49,8 +50,10 @@ public class GameOver_UI : UserInterface
         Managers.Game.Clear();
         Managers.Scene.LoadScene(Define.SceneName.Main, false);
     }
-    private void OnDisable()
+    private IEnumerator ActiveHeadUpDisplay()
     {
+        yield return new WaitForSecondsRealtime(SceneLoading_UI.limitTime);
+
         headUpDisplay.SetActive(true);
     }
     private IEnumerator ResultSequence()

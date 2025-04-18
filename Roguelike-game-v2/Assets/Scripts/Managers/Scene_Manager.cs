@@ -17,7 +17,6 @@ public class Scene_Manager
         this.hasInitialization = hasInitialization;
         this.sceneName = sceneName.ToString();
         
-        Util.AddressableResourcesRelease();
         Managers.UI.ClearDictionary();
         Managers.UI.ShowUI<SceneLoading_UI>();
 
