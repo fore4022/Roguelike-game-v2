@@ -1,0 +1,372 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: SO
+  m_EditorClassIdentifier: 
+  m_GroupName: SO
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 31eff7f77c62bc84a8150b860df75413
+  m_SerializeEntries:
+  - m_GUID: 45ef55db348837746aab9d7e9a51a92f
+    m_Address: Assets/SO/Monster/CloudD.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5e4e3b8e9bb14c748a7f8dd3e339166a
+    m_Address: Assets/SO/Monster/FactoryB.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 756c57ec289580049a2eef0c630c65f6
+    m_Address: Assets/SO/Monster/DogB.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 60ecbe87d6f603e4e9be2d425873c957
+    m_Address: Assets/SO/Monster/MaskA.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e9131c5333843674f8c5602a9462ab33
+    m_Address: Assets/SO/Monster/BatG.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d62223e64d1970d4bb40195b708b51dd
+    m_Address: Assets/SO/Monster/SnakeF.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b6bb7cd27adeb384690b557cac01952b
+    m_Address: Assets/SO/Monster/WitchE.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 230bb47dbab8ea041a563a10d122c863
+    m_Address: Assets/SO/Monster/ChestA.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9e9e5b15162ca65498d75a4532e7c774
+    m_Address: 1_Level
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fb1793eb2ef4cfd468b23f2f61cdeca6
+    m_Address: UserLevelInfo_SO
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: addb30ed121e65846ba88f38ab57ca9c
+    m_Address: PlayerInformation_SO
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 41c8022872bcc144db35dd500af8e2cf
+    m_Address: Assets/SO/Monster/CountA.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1a00b904f1641874280c78e9790a2640
+    m_Address: Assets/SO/Monster/BatSmallA.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 617ac983b76cc7f469ba83b84c355564
+    m_Address: Assets/SO/Monster/SkullFlamingB.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b77fa8e168c55e943b8b48cbeaa315a8
+    m_Address: Assets/SO/Monster/GolemA.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c371ee60d093d4e419cd77865f04c378
+    m_Address: Assets/SO/Monster/PuddleB.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bf2e04b358916e240bb76db97cb4b721
+    m_Address: Assets/SO/Monster/PotionI.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 32f9d2054fe6d7b42a9bcb2ab6b2a593
+    m_Address: Assets/SO/Monster/ScorpionC.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d44dd977ead31a94d85eed4128aa6456
+    m_Address: Assets/SO/Monster/AirA.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2e8a31ca33a2eac4e9bc2d1dcd91fcdd
+    m_Address: Assets/SO/Monster/FireSmallA.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 07d0b9d09ba740142b49c61aae588d14
+    m_Address: Assets/SO/Monster/MushroomB.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 624279fc12be8fc48a8c2c89a2f7eb1a
+    m_Address: Assets/SO/Monster/MothD.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0b2232a1d1d473e42b2011bc8c670a9e
+    m_Address: Assets/SO/Monster/SwordA.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9598366a7f84c0645b2ad13984b8df5e
+    m_Address: Assets/SO/Monster/ReaperA.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: accdcd689e6198b4fa76aef11585c608
+    m_Address: Assets/SO/Monster/MummyA.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b23e08bf69c595a489b8f93d517c0764
+    m_Address: Assets/SO/Monster/GhastC.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ed31ba346a4e9e1478c65a94ae5e55ba
+    m_Address: Assets/SO/Monster/EarthB.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 934cdc6408aa27b498f6b9fde82fd5fd
+    m_Address: Assets/SO/Monster/SlimeSquareH.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 70bbb877fbe988947880c0a7189c1e68
+    m_Address: Assets/SO/AttackInformation/Info3-P.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3e08794522022e4488db432c0a15adfa
+    m_Address: Assets/SO/AttackInformation/Info3-S.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9be5ab5d833355847836869d95595f97
+    m_Address: Assets/SO/AttackInformation/Info2-S.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9d69c7ce348bdb7488d11d8638c582b3
+    m_Address: Assets/SO/AttackInformation/Info4-S.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e8597e85c4f850a449791d0be5cd0ff5
+    m_Address: Assets/SO/AttackInformation/Info6-S.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8f8110bd576bc404f929b0500503314e
+    m_Address: Assets/SO/AttackInformation/Info5-P.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 419b70740727b5d4b86c2f46feedc704
+    m_Address: Assets/SO/AttackInformation/Info5-S.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6bce2c64723ed994c84b575bb93ee269
+    m_Address: Assets/SO/AttackInformation/Info2-P.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 00ec24d143601444a89f24809d2ac663
+    m_Address: Assets/SO/AttackInformation/Info1-S.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7c0751bbc405cb445856e96925bee114
+    m_Address: Assets/SO/AttackInformation/Info1-P.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 002930f6e5bef3442a6d0f49f3704f64
+    m_Address: Assets/SO/AttackInformation/Info4-P.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fd012ecb96a6d8a43b5a2fd8b0ba93d0
+    m_Address: Assets/SO/Attack/Skill5.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2c4777bb34ebb434db6aa55f4288724d
+    m_Address: Assets/SO/Attack/Projectile4.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8979347b26c7c574989d1212ec8d7713
+    m_Address: Assets/SO/Attack/Projectile3.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6882f3bbd40c2274fb7830d6b9374687
+    m_Address: Assets/SO/Attack/Projectile2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fdffa95edc2a94d4e9d4bd7149be9068
+    m_Address: Assets/SO/Attack/Skill1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a8bc8e350d8634c47900f39365d319e9
+    m_Address: Assets/SO/Attack/Skill2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 81117842609177540b090167a60db79e
+    m_Address: Assets/SO/Attack/Skill3.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9f76fe1a7c0e2264690f125fbde0b211
+    m_Address: Assets/SO/Attack/Skill6.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d29d981e52de7784ca6d13511b774060
+    m_Address: Assets/SO/Attack/Projectile1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7847dcbdb33bba342870be9d3bb6d502
+    m_Address: Assets/SO/Attack/Projectile5.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8155d7991e9ed9849b294424113f45ab
+    m_Address: Assets/SO/Attack/Skill4.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 761c6e2b1891ec64b9cf97bc303d63a1, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: b35acb7d7e57b1a42a84188be273b1ed, type: 2}
+    - {fileID: 11400000, guid: 6db9056eee13226449d5cba8de656923, type: 2}

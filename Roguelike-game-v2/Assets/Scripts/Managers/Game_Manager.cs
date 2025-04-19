@@ -49,6 +49,7 @@ public class Game_Manager
         attackCasterManage.StopAllCaster();
         inGameData.init.objectPool.ReSetting();
 
+        inGameTimer = new();
         attackCasterManage = new();
         difficultyScaler = new();
         inGameData.attack = new();
