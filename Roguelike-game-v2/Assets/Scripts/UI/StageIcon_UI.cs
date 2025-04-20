@@ -36,7 +36,7 @@ public class StageIcon_UI : UserInterface
         map_1.sprite = iconSprite.map_1;
         enviroment.sprite = iconSprite.enviroment;
 
-        if (!Managers.UserData.data.isClear())
+        if(!Managers.UserData.data.isClear())
         {
             enviroment.gameObject.SetActive(true);
             flag.gameObject.SetActive(false);
@@ -49,7 +49,7 @@ public class StageIcon_UI : UserInterface
             flag.sprite = iconSprite.flag;
         }
 
-        if (iconSprite.map_2 == null)
+        if(iconSprite.map_2 == null)
         {
             map_2.gameObject.SetActive(false);
         }

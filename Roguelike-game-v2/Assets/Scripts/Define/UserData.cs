@@ -30,6 +30,15 @@ public class UserData
     public int Exp { get { return exp; } set { exp = value; } }
     public bool isClear()
     {
+        foreach(StageClearInfo info in stageClearInfoList)
+        {
+            Debug.Log(info.name == current_StageName);
+        }
+
+        Debug.Log("-----");
+        Debug.Log(current_StageName);
+        Debug.Log("-----");
+
         return stageClearInfoList.Find(info => info.name == current_StageName).isClear;
     }
 }
