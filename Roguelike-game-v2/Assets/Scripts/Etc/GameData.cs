@@ -1,4 +1,5 @@
 using System.Linq;
+using UnityEngine;
 [System.Serializable]
 public class GameData
 {
@@ -37,10 +38,12 @@ public class GameData
             index = stages.Count() - 1;
         }
 
-        UnityEngine.Debug.Log(stages[index].stageName);
-        UnityEngine.Debug.Log("-----");
+        Debug.Log(Managers.UserData.data.StageName);
+        Debug.Log(stages[index].stageName);
 
         Managers.UserData.data.StageName = stages[index].stageName;
+
+        Debug.Log(Managers.UserData.data.StageName);
 
         return stages[index];
     }
