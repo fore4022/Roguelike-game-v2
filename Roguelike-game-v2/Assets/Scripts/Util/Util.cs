@@ -19,19 +19,23 @@ public class Util
     {
         Addressables.LoadSceneAsync(path, UnityEngine.SceneManagement.LoadSceneMode.Single).WaitForCompletion();
     }
-    public static T LoadingToPath<T>(string path) where T : Object
+    public static T LoadingToPath<T>(string path, bool releasable = true) where T : Object
     {
         AsyncOperationHandle<T> handle = Addressables.LoadAssetAsync<T>(path);
         T result = handle.WaitForCompletion();
-        Type type = typeof(T);
 
-        if(type == type_GameObject || type == type_ScriptableObject || type == type_Sprite)
+        if(releasable)
         {
-            handleList.Add(handle);
-        }
-        else
-        {
-            Addressables.Release(handle);
+            Type type = typeof(T);
+
+            if (type == type_GameObject || type == type_ScriptableObject || type == type_Sprite)
+            {
+                handleList.Add(handle);
+            }
+            else
+            {
+                Addressables.Release(handle);
+            }
         }
 
         return result;

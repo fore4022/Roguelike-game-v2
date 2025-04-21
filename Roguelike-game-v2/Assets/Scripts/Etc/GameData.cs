@@ -1,9 +1,9 @@
+using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 [System.Serializable]
 public class GameData
 {
-    private Stage_SO[] stages;
+    private List<Stage_SO> stages;
     private GameData_SO so;
 
     public GameData_SO SO
@@ -14,7 +14,7 @@ public class GameData
             stages = so.stages;
         }
     }
-    public Stage_SO[] Stages { get { return stages; } }
+    public List<Stage_SO> Stages { get { return stages; } }
     public Stage_SO GetStageSO(string stageName, int sign)
     {
         int index = 0;
@@ -38,12 +38,7 @@ public class GameData
             index = stages.Count() - 1;
         }
 
-        Debug.Log(Managers.UserData.data.StageName);
-        Debug.Log(stages[index].stageName);
-
         Managers.UserData.data.StageName = stages[index].stageName;
-
-        Debug.Log(Managers.UserData.data.StageName);
 
         return stages[index];
     }

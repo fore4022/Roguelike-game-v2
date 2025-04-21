@@ -9,7 +9,9 @@
     <type fullname="CharactorController_UI" preserve="all" />
     <type fullname="ExpSlider_InGame_UI" preserve="all" />
     <type fullname="ExpSlider_Main_UI" preserve="all" />
+    <type fullname="GameData_SO" preserve="all" />
     <type fullname="GameOver_UI" preserve="all" />
+    <type fullname="IconSprite_SO" preserve="all" />
     <type fullname="Information_UI" preserve="all" />
     <type fullname="InGame_Camera" preserve="all" />
     <type fullname="InGameTimer" preserve="all" />
@@ -37,7 +39,10 @@
     <type fullname="Skill_D" preserve="all" />
     <type fullname="Skill_E" preserve="all" />
     <type fullname="Skill_F" preserve="all" />
+    <type fullname="SpawnInformation_SO" preserve="all" />
+    <type fullname="Stage_SO" preserve="all" />
     <type fullname="StageIcon_UI" preserve="all" />
+    <type fullname="StageInformation_SO" preserve="all" />
     <type fullname="Start_UI" preserve="all" />
     <type fullname="Timer_UI" preserve="all" />
     <type fullname="UserLevel_SO" preserve="all" />
@@ -47,6 +52,7 @@
     <type fullname="DefaultStat" preserve="nothing" serialized="true" />
     <type fullname="MultiCast" preserve="nothing" serialized="true" />
     <type fullname="ProjectileInfo" preserve="nothing" serialized="true" />
+    <type fullname="SpawnInformation" preserve="nothing" serialized="true" />
   </assembly>
   <assembly fullname="Unity.2D.Tilemap.Extras, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="UnityEngine.RuleTile" preserve="all" />

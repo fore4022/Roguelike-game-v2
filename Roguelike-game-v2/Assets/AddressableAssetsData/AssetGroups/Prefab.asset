@@ -304,6 +304,11 @@ MonoBehaviour:
     - Map
     - Prefab
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b89a04819aac2204581d299ba593864e
+    m_Address: GameData
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 761c6e2b1891ec64b9cf97bc303d63a1, type: 2}
   m_SchemaSet:

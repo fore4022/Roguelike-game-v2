@@ -30,25 +30,6 @@ public class UserData
     public int Exp { get { return exp; } set { exp = value; } }
     public bool isClear()
     {
-        Debug.Log(current_StageName == null);
-        Debug.Log(current_StageName);
-
-        Debug.Log("---");
-
-        foreach (StageClearInfo s in stageClearInfoList)
-        {
-            Debug.Log(s.name);
-        }
-
-        for(int i = 0; i < current_StageName.Length; i++)
-        {
-            Debug.Log(current_StageName[i]);
-        }
-
-        Debug.Log(current_StageName.Length);
-
-        Debug.Log(stageClearInfoList.Find(info => info.name == current_StageName));
-
-        return true;
+        return stageClearInfoList.Find(info => info.name == current_StageName).isClear;
     }
 }

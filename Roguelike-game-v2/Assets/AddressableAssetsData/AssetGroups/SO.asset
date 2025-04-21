@@ -364,6 +364,36 @@ MonoBehaviour:
     - Attack
     - SO
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: af5282a45a0be4f45bacf5cbe0321f69
+    m_Address: Stage_1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dc9bac28f69a73347aca81826d720b05
+    m_Address: Stage_2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 26a56fe9ccd89fa4e858f84e7346ef2e
+    m_Address: Stage_3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bc97dc86eafbb384995288583fd9ca1a
+    m_Address: Stage_4
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 56b1667412087a74fabef3d2c379b916
+    m_Address: Stage_5
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 761c6e2b1891ec64b9cf97bc303d63a1, type: 2}
   m_SchemaSet:

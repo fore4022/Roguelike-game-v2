@@ -3,8 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 public class Title_Scene : MonoBehaviour, IPointerClickHandler
 {
-    [SerializeField]
-    private GameData_SO gameData;
+    private const string gameDataPath = "GameData";
 
     private bool isLoad = false;
 
@@ -20,7 +19,7 @@ public class Title_Scene : MonoBehaviour, IPointerClickHandler
     }
     private void Start()
     {
-        Managers.Main.GameData.SO = gameData;
+        Managers.Main.GameData.SO = Util.LoadingToPath<GameData_SO>(gameDataPath, false);
 
         StartCoroutine(Initalizing());
     }
