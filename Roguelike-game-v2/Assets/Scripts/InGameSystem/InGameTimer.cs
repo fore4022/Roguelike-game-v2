@@ -21,9 +21,13 @@ public class InGameTimer : MonoBehaviour
     {
         inGameTimer = StartCoroutine(Timer());
     }
-    public void StopTimer()
+    public void ReStart()
     {
+        elapsedTime = 0;
+
         StopCoroutine(inGameTimer);
+
+        inGameTimer = StartCoroutine(Timer());
     }
     private IEnumerator Timer()
     {

@@ -12,6 +12,7 @@ public class MonsterSpawner : MonoBehaviour
     private int[] monsterSpawnProbabilityArray = new int[100];
 
     private Coroutine monsterSpawn = null;
+    private Coroutine spawnGroup = null;
     private float spawnDelay = 0;
 
     private void Awake()
@@ -20,7 +21,17 @@ public class MonsterSpawner : MonoBehaviour
     }
     public void StartSpawn()
     {
-        StartCoroutine(SpawningSystem());
+        monsterSpawn = StartCoroutine(SpawningSystem());
+    }
+    public void ReStart()
+    {
+        if(spawnGroup != null)
+        {
+            StopCoroutine(spawnGroup);
+        }
+
+        StopCoroutine(monsterSpawn);
+        StartSpawn();
     }
     private void LoadInformation()
     {
@@ -49,13 +60,13 @@ public class MonsterSpawner : MonoBehaviour
         {
             foreach(SpawnInformation_SO spawnInformation in Managers.Game.stageInformation.spawnInformationList)
             {
-                monsterSpawn = StartCoroutine(MonsterSpawning(spawnInformation));
+                spawnGroup = StartCoroutine(MonsterSpawning(spawnInformation));
 
-                yield return new WaitUntil(() => monsterSpawn == null);
+                yield return new WaitUntil(() => spawnGroup == null);
             }
         }
 
-        StopCoroutine(monsterSpawn);
+        StopCoroutine(spawnGroup);
     }
     private IEnumerator MonsterSpawning(SpawnInformation_SO spawnInformation)
     {
@@ -84,6 +95,6 @@ public class MonsterSpawner : MonoBehaviour
             yield return new WaitForSeconds(spawnDelay);
         }
 
-        monsterSpawn = null;
+        spawnGroup = null;
     }
 }

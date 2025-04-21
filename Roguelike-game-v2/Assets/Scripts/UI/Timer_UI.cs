@@ -10,7 +10,8 @@ public class Timer_UI : UserInterface
     {
         timer = GetComponent<TextMeshProUGUI>();
 
-        Managers.Game.onGameOver += Reset;
+        Managers.Game.onStageReset += Reset;
+
         StartCoroutine(TimerUpdate());
     }
     protected override void Enable()
@@ -20,6 +21,7 @@ public class Timer_UI : UserInterface
     public void Reset()
     {
         beforeSecond = 0;
+
         StartCoroutine(TimerUpdate());
     }
     private IEnumerator TimerUpdate()
@@ -31,6 +33,8 @@ public class Timer_UI : UserInterface
         while(Managers.Game.player.Stat.health > 0)
         {
             yield return new WaitUntil(() => beforeSecond != Managers.Game.inGameTimer.GetSeconds);
+            Debug.Log(Managers.Game.inGameTimer.GetHours);
+            Debug.Log(Managers.Game.inGameTimer.GetSeconds);
 
             beforeSecond = Managers.Game.inGameTimer.GetSeconds;
 

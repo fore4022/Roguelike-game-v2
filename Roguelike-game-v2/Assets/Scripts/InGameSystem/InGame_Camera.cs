@@ -12,7 +12,7 @@ public class InGame_Camera : MonoBehaviour
 
     public void Start()
     {
-        Managers.Game.onGameOver += Reset;
+        Managers.Game.onStageReset += Reset;
     }
     private void Update()
     {

@@ -10,7 +10,7 @@ public class Game_Manager
     public InGameTimer inGameTimer;
     public MonsterSpawner monsterSpawner;
     public Player player;
-    public Action onGameOver;
+    public Action onStageReset;
 
     private int userExp = 0;
     private bool gameOver = false;
@@ -49,7 +49,6 @@ public class Game_Manager
         attackCasterManage.StopAllCaster();
         inGameData.init.objectPool.ReSetting();
 
-        inGameTimer = new();
         attackCasterManage = new();
         difficultyScaler = new();
         inGameData.attack = new();
@@ -92,11 +91,11 @@ public class Game_Manager
 
         Time.timeScale = 1;
 
-        inGameTimer.StartTimer();
-        monsterSpawner.StartSpawn();
+        inGameTimer.ReStart();
+        monsterSpawner.ReStart();
         //inGameData.player.SetLevel();
+        onStageReset.Invoke();
 
         //Managers.UI.ShowUI<LevelUp_UI>();
-        onGameOver.Invoke();
     }
 }
