@@ -39,9 +39,9 @@ public class UserData_Manager
 
             foreach(Stage_SO so in Managers.Main.GameData.Stages)
             {
-                if(Managers.UserData.data.StageClearInfo.Find(info => info.name == so.stageName) == null)
+                if(Managers.UserData.data.StageClearInfo.Find(info => info.name == so.stagePath) == null)
                 {
-                    data.StageClearInfo.Add(new StageClearInfo(so.stageName, false));
+                    data.StageClearInfo.Add(new StageClearInfo(so.stagePath, false));
                 }
             }
         }

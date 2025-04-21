@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e9cf5da540d6084796d818663cf5253, type: 3}
   m_Name: Stage_2
   m_EditorClassIdentifier: 
-  stageInformation: {fileID: 11400000, guid: e0cc80e9efeeda74d8b5a19d57367b32, type: 2}
-  mapSprite: {fileID: 11400000, guid: ee6f62b70fee62e459d7e64b762a02c4, type: 2}
-  stagePath: Assets/Prefabs/Background/Desert.prefab
+  infoPath: Info_2
+  iconPath: Icon_2
+  stagePath: Desert
+  information: {fileID: 11400000, guid: e0cc80e9efeeda74d8b5a19d57367b32, type: 2}
+  iconSprite: {fileID: 11400000, guid: ee6f62b70fee62e459d7e64b762a02c4, type: 2}
   stage: {fileID: 8714857401625141123, guid: d4a782af82990f74cbcddb8fb55c8bcc, type: 3}

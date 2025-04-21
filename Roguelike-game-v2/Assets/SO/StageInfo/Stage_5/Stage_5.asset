@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e9cf5da540d6084796d818663cf5253, type: 3}
   m_Name: Stage_5
   m_EditorClassIdentifier: 
-  stageInformation: {fileID: 11400000, guid: fcd482bab32eaed40b2f8ea1070ef2e9, type: 2}
-  mapSprite: {fileID: 11400000, guid: b5e1ac6374bdfe247901a1b0c0119cff, type: 2}
-  stagePath: Assets/Prefabs/Background/Snowfield.prefab
+  infoPath: Info_5
+  iconPath: Icon_5
+  stagePath: Snowfield
+  information: {fileID: 11400000, guid: fcd482bab32eaed40b2f8ea1070ef2e9, type: 2}
+  iconSprite: {fileID: 11400000, guid: b5e1ac6374bdfe247901a1b0c0119cff, type: 2}
   stage: {fileID: 8714857401625141123, guid: 72abe3f7571a2cd4d9fc0153f60a45ad, type: 3}

@@ -21,7 +21,7 @@ public class GameData
 
         for(int i = 0; i < stages.Count(); i++)
         {
-            if(stages[i].stageName == stageName)
+            if(stages[i].stagePath == stageName)
             {
                 index = i + sign;
 
@@ -38,7 +38,7 @@ public class GameData
             index = stages.Count() - 1;
         }
 
-        Managers.UserData.data.StageName = stages[index].stageName;
+        Managers.UserData.data.StageName = stages[index].stagePath;
 
         return stages[index];
     }

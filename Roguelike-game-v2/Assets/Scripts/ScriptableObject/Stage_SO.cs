@@ -3,14 +3,18 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Stage", menuName = "Create New SO/Create New Stage_SO")]
 public class Stage_SO : ScriptableObject
 {
-    public StageInformation_SO stageInformation;
-    public IconSprite_SO mapSprite;
+    public StageInformation_SO information = null;
+    public IconSprite_SO iconSprite = null;
 
     [HideInInspector]
-    public string stageName;
+    public string infoPath;
+    [HideInInspector]
+    public string iconPath;
+    [HideInInspector]
+    public string stagePath;
 
 #if UNITY_EDITOR
-    public GameObject stage;
+    public GameObject stage = null;
 
     public void OnValidate()
     {
@@ -20,7 +24,7 @@ public class Stage_SO : ScriptableObject
     {
         EditorApplication.delayCall += () =>
         {
-            if(stage == null)
+            if(stage == null || iconSprite == null || information == null)
             {
                 ValidateUntilReady();
             }
@@ -32,7 +36,9 @@ public class Stage_SO : ScriptableObject
     }
     public void Validate()
     {
-        stageName = stage.name;
+        infoPath = information.name;
+        iconPath = iconSprite.name;
+        stagePath = stage.name;
     }
 #endif
 }

@@ -30,9 +30,9 @@ public class StageIcon_UI : UserInterface
     }
     private void Set()
     {
-        IconSprite_SO iconSprite = so.mapSprite;
+        IconSprite_SO iconSprite = so.iconSprite;
 
-        sceneName.text = so.stageName;
+        sceneName.text = so.stagePath;
         map_1.sprite = iconSprite.map_1;
         enviroment.sprite = iconSprite.enviroment;
 

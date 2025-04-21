@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e9cf5da540d6084796d818663cf5253, type: 3}
   m_Name: Stage_1
   m_EditorClassIdentifier: 
-  stageInformation: {fileID: 11400000, guid: 837eca9bbdd2c224db59c36b52c34b9d, type: 2}
-  mapSprite: {fileID: 11400000, guid: 142330f41134c5c429201b63327980cc, type: 2}
-  stagePath: Assets/Prefabs/Background/Prairie.prefab
+  infoPath: Info_1
+  iconPath: Icon_1
+  stagePath: Prairie
+  information: {fileID: 11400000, guid: 837eca9bbdd2c224db59c36b52c34b9d, type: 2}
+  iconSprite: {fileID: 11400000, guid: 142330f41134c5c429201b63327980cc, type: 2}
   stage: {fileID: 8714857401625141123, guid: 7b3b5da37c0e0c94da70d80e7309cea6, type: 3}

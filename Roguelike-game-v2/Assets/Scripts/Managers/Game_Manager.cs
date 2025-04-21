@@ -25,7 +25,7 @@ public class Game_Manager
     }
     public void DataLoad()
     {
-        stageInformation = Managers.Main.GetCurrentStage().stageInformation;
+        stageInformation = Managers.Main.GetCurrentStage().information;
 
         Set();
         inGameData.init.GetInGameData();

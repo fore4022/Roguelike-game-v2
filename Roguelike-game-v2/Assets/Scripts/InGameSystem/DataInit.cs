@@ -99,7 +99,7 @@ public class DataInit
 
         yield return new WaitUntil(() => Managers.Game.player != null);
 
-        Object.Instantiate(Util.LoadingToPath<GameObject>(Managers.Main.GetCurrentStage().stageName));
+        Object.Instantiate(Util.LoadingToPath<GameObject>(Managers.Main.GetCurrentStage().stagePath));
 
         Managers.UI.GetUI<SceneLoading_UI>().Wait = false;
 
