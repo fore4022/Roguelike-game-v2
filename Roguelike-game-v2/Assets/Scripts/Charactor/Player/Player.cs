@@ -6,9 +6,10 @@ public class Player : MonoBehaviour, IDamageReceiver
     public PlayerMove move = null;
 
     private PlayerInformation information = new();
+    private PlayerStat_SO playerStatSO = null;
     private Animator anime;
 
-    private const string statPath = "PlayerInformation_SO";
+    private const string statPath = "PlayerOriginalStat_SO";
     private const float targetScale = 2.4f;
     private const float duration = 0.4f;
 
@@ -81,8 +82,11 @@ public class Player : MonoBehaviour, IDamageReceiver
     }
     private void LoadPlayerStat()
     {
-        PlayerInforamtion_SO info = Util.LoadingToPath<PlayerInforamtion_SO>(statPath);
+        if(playerStatSO == null)
+        {
+            playerStatSO = Util.LoadingToPath<PlayerStat_SO>(statPath);
+        }
 
-        information.stat = info.stat;
+        information.stat = new(playerStatSO.stat);
     }
 }

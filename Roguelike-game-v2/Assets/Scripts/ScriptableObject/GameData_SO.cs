@@ -12,7 +12,7 @@ public class GameData_SO : ScriptableObject
 
 #if UNITY_EDITOR
     private string path;
-    private int count = 0;
+    private int count { get { return stageInfoPathList.Count; } }
 
     private void ValidateUntilReady()
     {
@@ -38,8 +38,6 @@ public class GameData_SO : ScriptableObject
 
                 stageInfoPathList.Add(path);
             }
-
-            count = stages.Count;
         }
         else
         {

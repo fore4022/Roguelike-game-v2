@@ -90,20 +90,26 @@ public class DataInit
         int typeCount = monsterList.Count + skillList.Count;
 
         yield return new WaitUntil(() => Managers.UI.IsInitalized);
+        Debug.Log("a");
 
         yield return new WaitUntil(() => Managers.Game.inGameData.player.levelUpdate != null);
+        Debug.Log("b");
 
         yield return new WaitUntil(() => typeCount == Managers.Game.inGameData.init.objectPool.PoolingObjectsCount);
+        Debug.Log("c");
 
         yield return new WaitUntil(() => typeCount == Managers.Game.inGameData.init.objectPool.ScriptableObjectsCount);
+        Debug.Log("d");
 
         yield return new WaitUntil(() => Managers.Game.player != null);
+        Debug.Log("e");
 
         Object.Instantiate(Util.LoadingToPath<GameObject>(Managers.Main.GetCurrentStage().stagePath));
 
         Managers.UI.GetUI<SceneLoading_UI>().Wait = false;
 
         yield return new WaitUntil(() => Managers.UI.GetUI<SceneLoading_UI>() == null);
+        Debug.Log("f");
 
         Managers.Game.GameStart();
     }

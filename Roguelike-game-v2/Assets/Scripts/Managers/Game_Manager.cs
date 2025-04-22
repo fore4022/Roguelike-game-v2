@@ -84,6 +84,7 @@ public class Game_Manager
         Camera.main.orthographicSize = 6;
 
         player.Reset();
+        inGameTimer.ReStart();
         Managers.UI.HideUI<GameOver_UI>();
         InputActions.EnableInputAction<TouchControls>();
 
@@ -91,7 +92,6 @@ public class Game_Manager
 
         Time.timeScale = 1;
 
-        inGameTimer.ReStart();
         monsterSpawner.ReStart();
         //inGameData.player.SetLevel();
         onStageReset.Invoke();

@@ -11,7 +11,7 @@ public class UserLevel_SO : ScriptableObject
     public List<AttackInformation_SO> attackInformationList;
 
     private string path;
-    private int count = 0;
+    private int count { get { return attackInformationList.Count; } }
 
     private void OnValidate()
     {
@@ -21,7 +21,7 @@ public class UserLevel_SO : ScriptableObject
     {
         EditorApplication.delayCall += () =>
         {
-            if(count != attackInformationList.Count)
+            if(pathList.Count != attackInformationList.Count)
             {
                 Validate();
             }
@@ -41,14 +41,12 @@ public class UserLevel_SO : ScriptableObject
 
                 pathList.Add(path);
             }
-
-            count = attackInformationList.Count;
         }
         else
         {
             pathList = new();
 
-            foreach (AttackInformation_SO so in attackInformationList)
+            foreach(AttackInformation_SO so in attackInformationList)
             {
                 path = $"Assets/SO/AttackInformation/{so.name}.asset";
 

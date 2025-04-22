@@ -41,15 +41,15 @@ public class Managers : MonoBehaviour
     }
     public void OnApplicationQuit()
     {
-        Debug.Log("a");
+        Debug.Log("OnApplicationQuit");
         UserData.Save();
     }
     public void OnApplicationFocus(bool focus)
     {
-        Debug.Log("b");
+        Debug.Log("OnApplicationFocus");
     }
     public void OnApplicationPause(bool pause)
     {
-        Debug.Log("c");
+        Debug.Log("OnApplicationPause");
     }
 }

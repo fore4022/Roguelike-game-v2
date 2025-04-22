@@ -86,7 +86,7 @@ MonoBehaviour:
     - SO
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: addb30ed121e65846ba88f38ab57ca9c
-    m_Address: PlayerInformation_SO
+    m_Address: PlayerOriginalStat_SO
     m_ReadOnly: 0
     m_SerializedLabels:
     - SO
