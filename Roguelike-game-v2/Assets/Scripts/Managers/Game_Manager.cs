@@ -47,11 +47,9 @@ public class Game_Manager
         gameOver = false;
         
         attackCasterManage.StopAllCaster();
-        inGameData.init.objectPool.ReSetting();
 
         attackCasterManage = new();
         difficultyScaler = new();
-        inGameData.attack = new();
 
         Util.GetMonoBehaviour().StartCoroutine(ReSetting());
     }
@@ -83,6 +81,7 @@ public class Game_Manager
         Managers.UI.GetUI<SceneLoading_UI>().Wait = false;
         Camera.main.orthographicSize = 6;
 
+        inGameData.init.objectPool.ReSetting();
         player.Reset();
         inGameTimer.ReStart();
         Managers.UI.HideUI<GameOver_UI>();
@@ -93,9 +92,9 @@ public class Game_Manager
         Time.timeScale = 1;
 
         monsterSpawner.ReStart();
-        //inGameData.player.SetLevel();
+        inGameData.player.SetLevel();
         onStageReset.Invoke();
 
-        //Managers.UI.ShowUI<LevelUp_UI>();
+        Managers.UI.ShowUI<LevelUp_UI>();
     }
 }

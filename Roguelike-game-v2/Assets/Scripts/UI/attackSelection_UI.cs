@@ -27,7 +27,7 @@ public class AttackSelection_UI : UserInterface
             return;
         }
 
-        StartCoroutine(Set());
+        StartCoroutine(Set());//
     }
     public override void SetUserInterface()
     {
@@ -104,16 +104,16 @@ public class AttackSelection_UI : UserInterface
     {
         List<AttackContext> infoList = Managers.Game.inGameData.attack.GetAttackInformation();
 
-        int[] indexs = Calculate.GetRandomValues(infoList.Count, Mathf.Min(Managers.Game.inGameData.OptionCount, infoList.Count));
+        int[] indexArray = Calculate.GetRandomValues(infoList.Count, Mathf.Min(Managers.Game.inGameData.OptionCount, infoList.Count));//
 
         UIElementUtility.SetImageAlpha(background, basicAlpha);
 
-        yield return null;
+        yield return new WaitForEndOfFrame();
 
-        for (int i = 0; i < indexs.Count(); i++)
+        for (int i = 0; i < indexArray.Count(); i++)
         {
             attackOptionList[i].gameObject.SetActive(true);
-            attackOptionList[i].InitOption(infoList[indexs[i]]);
+            attackOptionList[i].InitOption(infoList[indexArray[i]]);
         }
 
         background.enabled = true;
