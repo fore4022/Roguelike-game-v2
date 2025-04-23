@@ -39,17 +39,24 @@ public class Managers : MonoBehaviour
             DontDestroyOnLoad(go);
         }
     }
-    public void OnApplicationQuit()
+    private void OnApplicationQuit()
     {
-        Debug.Log("OnApplicationQuit");
         UserData.Save();
     }
-    public void OnApplicationFocus(bool focus)
+    private void OnApplicationFocus(bool focus)
     {
-        Debug.Log("OnApplicationFocus");
-    }
-    public void OnApplicationPause(bool pause)
-    {
-        Debug.Log("OnApplicationPause");
+        if(Scene.CurrentSceneName.Equals(Define.SceneName.InGame.ToString()))
+        {
+            if(focus)
+            {
+                UserData.Save();
+            }
+            else
+            {
+                Time.timeScale = 0;
+
+                Managers.UI.ShowUI<PauseMenu_UI>();
+            }
+        }
     }
 }

@@ -10,6 +10,7 @@ public class Scene_Manager
     private bool isLoad = false;
     private bool hasInitialization;
 
+    public string CurrentSceneName { get { return sceneName; } }
     public bool IsSceneLoadComplete { get { return !isLoad; } }
     public void LoadScene(Define.SceneName sceneName, bool hasInitialization = true)
     {
