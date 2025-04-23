@@ -22,6 +22,10 @@ public class AttackOption_UI : Button_2
         textList = Util.GetComponentsInChildren<TextMeshProUGUI>(transform);
         imageRect = image.gameObject.GetComponent<RectTransform>();
     }
+    public void Reset()
+    {
+        info = null;
+    }
     public void InitOption(AttackContext info)
     {
         this.info = info;
@@ -61,9 +65,5 @@ public class AttackOption_UI : Button_2
         {
             textList[2].text = $"Lv. {info.level + 1}";
         }
-    }
-    private void OnDisable()
-    {
-        info = null;
     }
 }

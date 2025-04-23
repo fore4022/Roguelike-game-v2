@@ -5,9 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 public class GameOver_UI : UserInterface
 {
-    [SerializeField]
-    private GameObject headUpDisplay;
-
     private List<TextMeshProUGUI> tmpList;
     private List<Image> imgList;
     private TextMeshProUGUI resultText;
@@ -26,7 +23,7 @@ public class GameOver_UI : UserInterface
     {
         string result;
 
-        headUpDisplay.SetActive(false);
+        Managers.UI.HideUI<HeadUpDisplay_UI>();
 
         if(Managers.Game.inGameTimer.GetMinutes > Managers.Game.stageInformation.requiredTime || Managers.Game.inGameTimer.GetHours > 0)
         {
@@ -54,7 +51,7 @@ public class GameOver_UI : UserInterface
     {
         yield return new WaitForSecondsRealtime(SceneLoading_UI.limitTime);
 
-        headUpDisplay.SetActive(true);
+        Managers.UI.ShowUI<HeadUpDisplay_UI>();
     }
     private IEnumerator ResultSequence()
     {

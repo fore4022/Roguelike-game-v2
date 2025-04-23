@@ -47,15 +47,18 @@ public class Managers : MonoBehaviour
     {
         if(Scene.CurrentSceneName.Equals(Define.SceneName.InGame.ToString()))
         {
-            if(focus)
+            if(!game.IsGameOver)
             {
-                UserData.Save();
-            }
-            else
-            {
-                Time.timeScale = 0;
+                if (focus)
+                {
+                    UserData.Save();
+                }
+                else
+                {
+                    Time.timeScale = 0;
 
-                Managers.UI.ShowUI<PauseMenu_UI>();
+                    Managers.UI.ShowUI<PauseMenu_UI>();
+                }
             }
         }
     }

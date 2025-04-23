@@ -6,6 +6,7 @@ public class Pause_UI : Button_1
         Time.timeScale = 0;
 
         Managers.UI.ShowUI<PauseMenu_UI>();
+        Managers.UI.HideUI<UserInterface>();
     }
     protected override void Init()
     {

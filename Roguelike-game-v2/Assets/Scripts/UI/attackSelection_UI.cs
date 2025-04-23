@@ -27,7 +27,7 @@ public class AttackSelection_UI : UserInterface
             return;
         }
 
-        StartCoroutine(Set());//
+        StartCoroutine(Set());
     }
     public override void SetUserInterface()
     {
@@ -36,9 +36,18 @@ public class AttackSelection_UI : UserInterface
 
         StartCoroutine(Init());
     }
+    public void AttackOptionToggle(bool active)
+    {
+        foreach(AttackOption_UI attackOption in attackOptionList)
+        {
+            attackOption.gameObject.SetActive(active);
+        }
+
+        background.enabled = active;
+    }
     public void Selected()
     {
-        foreach (AttackOption_UI attackOption in attackOptionList)
+        foreach(AttackOption_UI attackOption in attackOptionList)
         {
             attackOption.gameObject.SetActive(false);
         }
@@ -59,6 +68,7 @@ public class AttackSelection_UI : UserInterface
                 break;
             }
 
+            attackOption.Reset();
             attackOption.gameObject.SetActive(false);
         }
 
@@ -74,7 +84,7 @@ public class AttackSelection_UI : UserInterface
     {
         int count = Managers.Game.inGameData.OptionCount - attackOptionList.Count;
 
-        for (int i = 0; i < count; i++)
+        for(int i = 0; i < count; i++)
         {
             GameObject go = Instantiate(attackOption, transform);
 
@@ -104,13 +114,13 @@ public class AttackSelection_UI : UserInterface
     {
         List<AttackContext> infoList = Managers.Game.inGameData.attack.GetAttackInformation();
 
-        int[] indexArray = Calculate.GetRandomValues(infoList.Count, Mathf.Min(Managers.Game.inGameData.OptionCount, infoList.Count));//
+        int[] indexArray = Calculate.GetRandomValues(infoList.Count, Mathf.Min(Managers.Game.inGameData.OptionCount, infoList.Count));
 
         UIElementUtility.SetImageAlpha(background, basicAlpha);
 
         yield return new WaitForEndOfFrame();
 
-        for (int i = 0; i < indexArray.Count(); i++)
+        for(int i = 0; i < indexArray.Count(); i++)
         {
             attackOptionList[i].gameObject.SetActive(true);
             attackOptionList[i].InitOption(infoList[indexArray[i]]);
@@ -127,6 +137,7 @@ public class AttackSelection_UI : UserInterface
         Time.timeScale = 1;
 
         InputActions.EnableInputAction<TouchControls>();
+        Managers.UI.ShowUI<HeadUpDisplay_UI>();
         Managers.UI.HideUI<AttackSelection_UI>();
     }
 }

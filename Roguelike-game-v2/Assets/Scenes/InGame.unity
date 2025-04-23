@@ -970,6 +970,7 @@ GameObject:
   - component: {fileID: 763586098}
   - component: {fileID: 763586097}
   - component: {fileID: 763586096}
+  - component: {fileID: 763586100}
   m_Layer: 5
   m_Name: Head-Up-Display
   m_TagString: Untagged
@@ -1063,6 +1064,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &763586100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763586095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f183038dd597c694fb79983c56cb306e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &835199939
 GameObject:
   m_ObjectHideFlags: 0
@@ -3656,7 +3669,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 229f212ef1aa0e14f805b8976d99a657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  headUpDisplay: {fileID: 763586095}
 --- !u!1 &5578738693128055594
 GameObject:
   m_ObjectHideFlags: 0

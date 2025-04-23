@@ -6,7 +6,7 @@ public class Scene_Manager
 {
     public Action loadScene = null;
 
-    private string sceneName;
+    private string sceneName = "title";
     private bool isLoad = false;
     private bool hasInitialization;
 
