@@ -130,6 +130,7 @@ public class AttackSelection_UI : UserInterface
     }
     private IEnumerator PadeIn()
     {
+        Managers.UI.ShowUI<HeadUpDisplay_UI>();
         UIElementUtility.SetImageAlpha(background, targetAlpha, duration);
 
         yield return new WaitForSecondsRealtime(duration);
@@ -137,7 +138,6 @@ public class AttackSelection_UI : UserInterface
         Time.timeScale = 1;
 
         InputActions.EnableInputAction<TouchControls>();
-        Managers.UI.ShowUI<HeadUpDisplay_UI>();
         Managers.UI.HideUI<AttackSelection_UI>();
     }
 }

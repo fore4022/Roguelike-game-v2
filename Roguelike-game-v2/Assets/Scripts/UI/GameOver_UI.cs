@@ -34,7 +34,7 @@ public class GameOver_UI : UserInterface
             result = "스테이지\n실패";
         }
 
-        StartCoroutine(TextManipulator.TypeEffecting(resultText, result));
+        StartCoroutine(TextManipulator.TypeEffecting(resultText, result, true));
         StartCoroutine(ResultSequence());
     }
     public void ReStart()

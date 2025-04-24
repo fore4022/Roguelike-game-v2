@@ -49,7 +49,7 @@ public class Managers : MonoBehaviour
         {
             if(!game.IsGameOver)
             {
-                if (focus)
+                if(focus)
                 {
                     UserData.Save();
                 }

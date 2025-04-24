@@ -4,9 +4,9 @@ using TMPro;
 using UnityEngine;
 public static class TextManipulator
 {
-    private static WaitForSecondsRealtime delay = new(0.02f);
+    private static WaitForSecondsRealtime delay = new(0.075f);
 
-    public static IEnumerator TypeEffecting(TextMeshProUGUI tmp, string str, string currentStr = "")
+    public static IEnumerator TypeEffecting(TextMeshProUGUI tmp, string str, bool recursive = false, string currentStr = "")//
     {
         StringBuilder builder = new();
 
@@ -21,13 +21,32 @@ public static class TextManipulator
             builder.Append(currentStr);
         }
 
-        for(int i = 0; i < str.Length; i++)
+        if(recursive)
         {
-            yield return delay;
+            TextMeshProUGUI[] tmpArray = tmp.gameObject.GetComponentsInChildren<TextMeshProUGUI>();
 
-            builder.Append(str[i]);
+            for (int i = 0; i < str.Length; i++)
+            {
+                yield return delay;
 
-            tmp.text = builder.ToString();
+                builder.Append(str[i]);
+
+                foreach(TextMeshProUGUI _tmp in tmpArray)
+                {
+                    _tmp.text = builder.ToString();
+                }
+            }
+        }
+        else
+        {
+            for(int i = 0; i < str.Length; i++)
+            {
+                yield return delay;
+
+                builder.Append(str[i]);
+
+                tmp.text = builder.ToString();
+            }
         }
     }
     public static IEnumerator EraseEffecting(TextMeshProUGUI tmp,  int targetCount)
