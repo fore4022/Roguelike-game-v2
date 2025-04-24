@@ -23,8 +23,8 @@ public class Skill_F : Attack, Iskill
         currentSpeed = speed;
         totalTime = 0;
         targetTime = Mathf.Lerp(totalTime, so.duration, Random.Range(1, so.duration) / so.duration);
-        direction = Calculate.GetDirection(EnemyDetection.GetRandomVector());
-        transform.position = EnemyDetection.GetRandomVector();
+        direction = Calculate.GetDirection(Calculate.GetRandomVector());
+        transform.position = Calculate.GetRandomVector();
 
         StartCoroutine(Attacking());
     }
@@ -54,7 +54,7 @@ public class Skill_F : Attack, Iskill
                 if(totalTime < so.duration - 1)
                 {
                     targetTime = Mathf.Lerp(totalTime, so.duration, Random.Range(1, so.duration) / so.duration);
-                    direction = Calculate.GetDirection(EnemyDetection.GetRandomVector());
+                    direction = Calculate.GetDirection(Calculate.GetRandomVector());
                 }
             }
 

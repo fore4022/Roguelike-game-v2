@@ -22,7 +22,7 @@ public class Projectile_C : Projectile, IProjectile
     public void SetAttack()
     {
         transform.position = Managers.Game.player.gameObject.transform.position;
-        direction = Calculate.GetDirection(EnemyDetection.GetRandomVector());
+        direction = Calculate.GetDirection(Calculate.GetRandomVector());
         multiplier = Random.Range(min_Index, max_Index + 1) * range + range;
         sign = Random.Range(0, 2);
         moving = StartCoroutine(Moving());

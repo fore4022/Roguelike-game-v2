@@ -6,9 +6,6 @@ public static class EnemyDetection
     public static float largeastRange = 2.5f;
 
     private static Vector3 vec = new();
-    private static float width = Util.CameraWidth / 2 - offset;
-    private static float height = Util.CameraHeight / 2 - offset;
-    private static float offset = 0.5f;
 
     public static GameObject FindRandomEnemy()
     {
@@ -214,8 +211,8 @@ public static class EnemyDetection
     }
     public static Vector2 GetRandomVector()
     {
-        vec.x = Random.Range(-width, width);
-        vec.y = Random.Range(-height, height);
+        vec.x = Random.Range(-Calculate.width, Calculate.width);
+        vec.y = Random.Range(-Calculate.height, Calculate.height);
 
         return vec + Managers.Game.player.gameObject.transform.position;
     }

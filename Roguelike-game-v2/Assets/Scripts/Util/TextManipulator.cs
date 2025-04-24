@@ -6,13 +6,16 @@ public static class TextManipulator
 {
     private static WaitForSecondsRealtime delay = new(0.075f);
 
-    public static IEnumerator TypeEffecting(TextMeshProUGUI tmp, string str, bool recursive = false, string currentStr = "")//
+    public static IEnumerator TypeEffecting(TextMeshProUGUI tmp, string str, bool recursive = false, bool isClear = false, string currentStr = "")
     {
         StringBuilder builder = new();
 
-        tmp.text = "";
+        if(isClear)
+        {
+            tmp.text = "";
+        }
 
-        if(currentStr == "")
+        if (currentStr == "")
         {
             builder.Append(tmp.text);
         }

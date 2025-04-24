@@ -14,7 +14,7 @@ public class Skill_D : Attack, Iskill
     public bool Finished { get { return anime.GetCurrentAnimatorStateInfo(0).IsName(animationName); } }
     public void SetAttack()
     {
-        transform.position = EnemyDetection.GetRandomVector();
+        transform.position = Calculate.GetRandomVector();
 
         anime.Play("default", 0);
 
