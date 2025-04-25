@@ -45,11 +45,11 @@ public class Managers : MonoBehaviour
     }
     private void OnApplicationFocus(bool focus)
     {
-        if(Scene.CurrentSceneName.Equals(Define.SceneName.InGame.ToString()))
+        if (Scene.CurrentSceneName.Equals(Define.SceneName.InGame.ToString()))
         {
-            if(!game.IsGameOver)
+            if (!game.IsGameOver)
             {
-                if(focus)
+                if (focus)
                 {
                     UserData.Save();
                 }
