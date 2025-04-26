@@ -97,11 +97,11 @@ public class ObjectPool
                 case Define.ScriptableObjectType.Monster:
                     path = $"Assets/SO/Monster/{key}.asset";
                     break;
-                case Define.ScriptableObjectType.Attack:
+                case Define.ScriptableObjectType.Skill:
                     path = $"Assets/SO/Attack/{key}.asset";
                     break;
             }
-
+            
             scriptableObject = Util.LoadingToPath<ScriptableObject>(path);
 
             scriptableObjects.Add(key, scriptableObject);

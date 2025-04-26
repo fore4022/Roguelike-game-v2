@@ -85,7 +85,7 @@ public class DataInit
         Managers.Game.monsterSpawner.monsterList = monsterList;
 
         Managers.Game.inGameData.init.objectPool.Create(monsterList, Define.ScriptableObjectType.Monster,defaultMonsterCount);
-        Managers.Game.inGameData.init.objectPool.Create(skillList, Define.ScriptableObjectType.Attack, defaultSkillCount);
+        Managers.Game.inGameData.init.objectPool.Create(skillList, Define.ScriptableObjectType.Skill, defaultSkillCount);
 
         int typeCount = monsterList.Count + skillList.Count;
 

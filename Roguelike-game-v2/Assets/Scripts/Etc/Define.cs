@@ -8,6 +8,6 @@ public class Define
     public enum ScriptableObjectType
     {
         Monster,
-        Attack
+        Skill
     }
 }

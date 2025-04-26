@@ -26,7 +26,7 @@ public class Skill_SO : ScriptableObject
     public float[] attackRange = new float[maxLevel];
 
     public Vector3 baseRotation;
-    public string attackTypePath;
+    public string typePath;
     public float duration;
     public bool flipX = false;
     public bool flipY = false;

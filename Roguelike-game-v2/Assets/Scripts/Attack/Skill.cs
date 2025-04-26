@@ -64,7 +64,7 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
     {
         yield return new WaitUntil(() => isInit);
 
-        level = Managers.Game.inGameData.attack.GetLevel(so.attackTypePath);
+        level = Managers.Game.inGameData.attack.GetLevel(so.typePath);
 
         if(so.flipX)
         {

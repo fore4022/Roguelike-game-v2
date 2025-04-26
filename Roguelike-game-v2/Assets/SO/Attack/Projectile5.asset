@@ -9,26 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbad4040f90a6c543b7da75cd5a0bedb, type: 3}
+  m_Script: {fileID: 11500000, guid: c2c2d8910f95c1f409edd1c4b2ef9beb, type: 3}
   m_Name: Projectile5
   m_EditorClassIdentifier: 
   projectile_Info:
     animationName: explosion
-    speed: 6
-    penetration: 2
+    speed: 1
+    penetration: 1
   multiCast:
-    delay:
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
-    count:
-    - 0
-    - 0
-    - 0
-    - 0
-    - 0
+    delay: []
+    count: []
   damageCoefficient:
   - 1
   - 1
@@ -36,19 +26,19 @@ MonoBehaviour:
   - 1
   - 1
   coolTime:
-  - 0.5
-  - 0.5
-  - 0.5
-  - 0.5
-  - 0.5
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
   attackRange:
   - 1
   - 1
   - 1
   - 1
   - 1
-  baseRotation: {x: 0, y: 0, z: 90}
-  attackTypePath: Projectile5
+  baseRotation: {x: 0, y: 0, z: 0}
+  typePath: Projectile5
   duration: 0
   flipX: 0
   flipY: 0
