@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using System.Linq;
 public class AttackContext
 {
-    public AttackInformation data;
-    public AttackCaster caster = null;
+    public SkillInformation data;
+    public SkillCaster caster = null;
     
     public int level = 0;
 
-    public AttackContext(AttackInformation_SO dataSO)
+    public AttackContext(Skillnformation_SO dataSO)
     {
         data = new(dataSO);
     }
@@ -16,7 +16,7 @@ public class AttackData
 {
     private Dictionary<string, AttackContext> info = new();
 
-    public void SetDictionaryItem(AttackInformation_SO so)
+    public void SetDictionaryItem(Skillnformation_SO so)
     {
         if(!info.ContainsKey(so.attackInfo.type))
         {
@@ -53,7 +53,7 @@ public class AttackData
     {
         List<AttackContext> info = this.info.Values.ToList();
 
-        info.RemoveAll(o => o.level == Attack_SO.maxLevel - 1);
+        info.RemoveAll(o => o.level == Skill_SO.maxLevel - 1);
 
         return info;
     }

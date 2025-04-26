@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-public class Projectile : Attack
+public class ProjectileSkill : Skill
 {
     protected Coroutine moving = null;
     protected Vector3 direction;

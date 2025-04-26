@@ -6,7 +6,7 @@ using UnityEngine;
 /// </para>
 /// 지속 시간 동안 유지되며, 방향을 바꿔 가면서 공격한다.
 /// </summary>
-public class Skill_F : Attack, Iskill
+public class Skill_F : Skill, Iskill
 {
     [SerializeField]
     private float speed;

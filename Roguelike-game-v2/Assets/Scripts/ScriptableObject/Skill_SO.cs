@@ -13,8 +13,8 @@ public class MultiCast
     public float[] delay;
     public float[] count;
 }
-[CreateAssetMenu(fileName = "Attack", menuName = "Create New SO/Create New Attack_SO")]
-public class Attack_SO : ScriptableObject
+[CreateAssetMenu(fileName = "Skill", menuName = "Create New SO/Create New Skill_SO")]
+public class Skill_SO : ScriptableObject
 {
     public const int maxLevel = 5;
 

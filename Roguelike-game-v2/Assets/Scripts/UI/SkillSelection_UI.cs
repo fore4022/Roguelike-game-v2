@@ -4,25 +4,25 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 [RequireComponent(typeof(GridLayoutGroup))]
-public class AttackSelection_UI : UserInterface
+public class SkillSelection_UI : UserInterface
 {
-    private List<AttackOption_UI> attackOptionList = new();
+    private List<SkillOption_UI> skillOptionList = new();
 
     private GridLayoutGroup gridLayoutGroup = null;
     private Image background;
     private GameObject attackOption = null;
 
-    private const string path = "AttackOption";
+    private const string path = "SkillOption";
     private const float duration = 0.75f;
     private const float basicAlpha = 180;
     private const float targetAlpha = 0;
     private const int spacingY = 75;
 
     private (int x, int y) cellSize = (700, 255);
-
+        
     protected override void Enable()
     {
-        if(attackOptionList.Count == 0)
+        if(skillOptionList.Count == 0)
         {
             return;
         }
@@ -36,9 +36,9 @@ public class AttackSelection_UI : UserInterface
 
         StartCoroutine(Init());
     }
-    public void AttackOptionToggle(bool active)
+    public void SkillOptionToggle(bool active)
     {
-        foreach(AttackOption_UI attackOption in attackOptionList)
+        foreach(SkillOption_UI attackOption in skillOptionList)
         {
             attackOption.gameObject.SetActive(active);
         }
@@ -47,7 +47,7 @@ public class AttackSelection_UI : UserInterface
     }
     public void Selected()
     {
-        foreach(AttackOption_UI attackOption in attackOptionList)
+        foreach(SkillOption_UI attackOption in skillOptionList)
         {
             attackOption.gameObject.SetActive(false);
         }
@@ -61,7 +61,7 @@ public class AttackSelection_UI : UserInterface
     }
     private void OnDisable()
     {
-        foreach(AttackOption_UI attackOption in attackOptionList)
+        foreach(SkillOption_UI attackOption in skillOptionList)
         {
             if(attackOption.enabled == true)
             {
@@ -82,13 +82,13 @@ public class AttackSelection_UI : UserInterface
     }
     private void CreateOptionUI()
     {
-        int count = Managers.Game.inGameData.OptionCount - attackOptionList.Count;
+        int count = Managers.Game.inGameData.OptionCount - skillOptionList.Count;
 
         for(int i = 0; i < count; i++)
         {
             GameObject go = Instantiate(attackOption, transform);
 
-            attackOptionList.Add(go.GetComponent<AttackOption_UI>());
+            skillOptionList.Add(go.GetComponent<SkillOption_UI>());
 
             go.SetActive(false);
         }
@@ -122,8 +122,8 @@ public class AttackSelection_UI : UserInterface
 
         for(int i = 0; i < indexArray.Count(); i++)
         {
-            attackOptionList[i].gameObject.SetActive(true);
-            attackOptionList[i].InitOption(infoList[indexArray[i]]);
+            skillOptionList[i].gameObject.SetActive(true);
+            skillOptionList[i].InitOption(infoList[indexArray[i]]);
         }
 
         background.enabled = true;
@@ -138,6 +138,6 @@ public class AttackSelection_UI : UserInterface
         Time.timeScale = 1;
 
         InputActions.EnableInputAction<TouchControls>();
-        Managers.UI.HideUI<AttackSelection_UI>();
+        Managers.UI.HideUI<SkillSelection_UI>();
     }
 }

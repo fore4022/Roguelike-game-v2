@@ -28,7 +28,7 @@ public class LevelUp_UI : UserInterface
         InputActions.DisableInputAction<TouchControls>();
         Managers.UI.HideUI<CharactorController_UI>();
         Managers.UI.HideUI<HeadUpDisplay_UI>();
-        Managers.UI.ShowUI<AttackSelection_UI>();
+        Managers.UI.ShowUI<SkillSelection_UI>();
         Managers.UI.HideUI<LevelUp_UI>();
     }
 }

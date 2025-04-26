@@ -5,7 +5,7 @@ using UnityEngine;
 /// </para>
 /// 가장 가까운 적을 공격하며, 원의 외각에 위치한다.
 /// </summary>
-public class Skill_A : Attack, Iskill
+public class Skill_A : Skill, Iskill
 {
     private Vector3 direction;
 

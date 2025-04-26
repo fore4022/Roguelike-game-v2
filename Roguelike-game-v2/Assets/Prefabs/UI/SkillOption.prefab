@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1288704483672966346}
   - component: {fileID: 5358508939300597731}
   m_Layer: 5
-  m_Name: AttackOption
+  m_Name: SkillOption
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

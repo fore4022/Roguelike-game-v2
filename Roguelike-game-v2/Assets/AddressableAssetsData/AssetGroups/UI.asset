@@ -18,7 +18,7 @@ MonoBehaviour:
   m_GUID: ad7d7e74974710d4998324ba9ffcfe21
   m_SerializeEntries:
   - m_GUID: a5d4c9df08f49cc4aad58d879d61ce7a
-    m_Address: AttackOption
+    m_Address: SkillOption
     m_ReadOnly: 0
     m_SerializedLabels:
     - UI

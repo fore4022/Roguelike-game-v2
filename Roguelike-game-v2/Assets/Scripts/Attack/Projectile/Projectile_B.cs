@@ -6,7 +6,7 @@ using UnityEngine;
 /// </para>
 /// 가장 가까운 적을 향해서 날아가며, 충돌 시 범위 내 적에게 피해를 입힌다.
 /// </summary>
-public class Projectile_B : Projectile, IProjectile
+public class Projectile_B : ProjectileSkill, IProjectileSkill
 {
     [SerializeField]
     private Collider2D effectCollider;

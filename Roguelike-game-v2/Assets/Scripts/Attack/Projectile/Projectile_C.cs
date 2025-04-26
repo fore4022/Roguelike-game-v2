@@ -6,7 +6,7 @@ using UnityEngine;
 /// </para>
 /// 무작위 방향과 힘으로 날아가며, 지속 시간 이후 사라진다.
 /// </summary>
-public class Projectile_C : Projectile, IProjectile
+public class Projectile_C : ProjectileSkill, IProjectileSkill
 {
     [SerializeField]
     private float range;

@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 [System.Serializable]
-public class AttackInformation
+public class SkillInformation
 {
     [HideInInspector]
     public Sprite icon;
@@ -9,17 +9,17 @@ public class AttackInformation
     public string type;
     public string explanation;
 
-    public AttackInformation(AttackInformation_SO info)
+    public SkillInformation(Skillnformation_SO info)
     {
         icon = Util.LoadingToPath<Sprite>(info.spritePath);
         type = info.attackInfo.type;
         explanation = info.attackInfo.explanation;
     }
 }
-[CreateAssetMenu(fileName = "AttackInformation", menuName = "Create New SO/Create New AttackInformation_SO")]
-public class AttackInformation_SO : ScriptableObject
+[CreateAssetMenu(fileName = "SkillInformation", menuName = "Create New SO/Create New SkillInformation_SO")]
+public class Skillnformation_SO : ScriptableObject
 {
-    public AttackInformation attackInfo;
+    public SkillInformation attackInfo;
 
     [HideInInspector]
     public string spritePath;

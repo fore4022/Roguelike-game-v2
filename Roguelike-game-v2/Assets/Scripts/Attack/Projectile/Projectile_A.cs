@@ -6,7 +6,7 @@ using UnityEngine;
 /// </para>
 /// 가장 가까운 적을 향해서 날아간다.
 /// </summary>
-public class Projectile_A : Projectile, IProjectile
+public class Projectile_A : ProjectileSkill, IProjectileSkill
 {
     private int penetration_count;
 

@@ -1,8 +1,8 @@
 using System.Collections;
 using UnityEngine;
-public class AttackCaster
+public class SkillCaster
 {
-    private Attack_SO so = null;
+    private Skill_SO so = null;
     private WaitForSeconds coolTime;
     private WaitForSeconds delay;
 
@@ -40,7 +40,7 @@ public class AttackCaster
     }
     private IEnumerator Casting()
     {
-        so = Managers.Game.inGameData.init.objectPool.GetScriptableObject<Attack_SO>(attackType);
+        so = Managers.Game.inGameData.init.objectPool.GetScriptableObject<Skill_SO>(attackType);
 
         yield return new WaitUntil(() => so != null);
 

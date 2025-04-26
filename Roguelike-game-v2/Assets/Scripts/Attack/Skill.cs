@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 [RequireComponent(typeof(Animator), typeof(SpriteRenderer))]
-public class Attack : MonoBehaviour, IScriptableData, IDamage
+public class Skill : MonoBehaviour, IScriptableData, IDamage
 {
     [SerializeField]
     protected Collider2D defaultCollider = null;
@@ -9,7 +9,7 @@ public class Attack : MonoBehaviour, IScriptableData, IDamage
     protected bool enable;
 
     protected Iskill attacker;
-    protected Attack_SO so;
+    protected Skill_SO so;
     protected SpriteRenderer render = null;
     protected Animator anime = null;
 
@@ -18,7 +18,7 @@ public class Attack : MonoBehaviour, IScriptableData, IDamage
 
     private bool isInit = false;
 
-    public ScriptableObject SO { set { so = value as Attack_SO; } }
+    public ScriptableObject SO { set { so = value as Skill_SO; } }
     public float DamageAmount { get { return Managers.Game.player.Stat.damage * so.damageCoefficient[level]; } }
     protected void Awake()
     {

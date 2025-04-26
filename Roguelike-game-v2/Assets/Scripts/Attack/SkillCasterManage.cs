@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-public class AttackCasterManage
+public class SkillCasterManage
 {
-    private Dictionary<string, AttackCaster> Casters = new();
+    private Dictionary<string, SkillCaster> Casters = new();
 
-    public AttackCaster GetCaster(string type)
+    public SkillCaster GetCaster(string type)
     {
         if(Casters.ContainsKey(type))
         {
@@ -12,11 +12,11 @@ public class AttackCasterManage
 
         return default;
     }
-    public AttackCaster CreateAndGetCaster(string type)
+    public SkillCaster CreateAndGetCaster(string type)
     {
         if(!Casters.ContainsKey(type))
         {
-            AttackCaster caster = new();
+            SkillCaster caster = new();
 
             caster.SetAttackType(type);
             Casters.Add(type, caster);
@@ -41,7 +41,7 @@ public class AttackCasterManage
     }
     public void StopAllCaster()
     {
-        foreach(AttackCaster caster in Casters.Values)
+        foreach(SkillCaster caster in Casters.Values)
         {
             caster.CastingStop();
         }

@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 public class Game_Manager
 {
-    public AttackCasterManage attackCasterManage = null;
+    public SkillCasterManage attackCasterManage = null;
     public InGameDataManage inGameData = null;
     public DifficultyScaler difficultyScaler = null;
     public StageInformation_SO stageInformation;

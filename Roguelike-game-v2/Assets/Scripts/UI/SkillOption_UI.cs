@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-public class AttackOption_UI : Button_2
+public class SkillOption_UI : Button_2
 {
     private List<TextMeshProUGUI> textList = new();
     private AttackContext info = null;
@@ -12,7 +12,7 @@ public class AttackOption_UI : Button_2
     protected override void PointerClick()
     {
         Managers.Game.inGameData.attack.SetValue(info.data.type);
-        Managers.UI.GetUI<AttackSelection_UI>().Selected();
+        Managers.UI.GetUI<SkillSelection_UI>().Selected();
     }
     protected override void Init()
     {
