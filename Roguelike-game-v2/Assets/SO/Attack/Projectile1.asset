@@ -17,8 +17,18 @@ MonoBehaviour:
     speed: 1
     penetration: 1
   multiCast:
-    delay: []
-    count: []
+    delay:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    count:
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
   damageCoefficient:
   - 1
   - 1
@@ -37,6 +47,7 @@ MonoBehaviour:
   - 1
   - 1
   - 1
+  aaa: {fileID: 11500000, guid: 76f134077bfdd9440b68b10a51d31cfb, type: 3}
   baseRotation: {x: 0, y: 0, z: 0}
   typePath: Projectile1
   duration: 0

@@ -2,11 +2,11 @@ using UnityEditor;
 [CustomEditor(typeof(Skill_SO))]
 public class SkillSO_Editor : Editor
 {
-    SerializedProperty show_1;
-    SerializedProperty value_1;
+    private SerializedProperty show_1;
+    private SerializedProperty value_1;
 
-    SerializedProperty show_2;
-    SerializedProperty value_2;
+    private SerializedProperty show_2;
+    private SerializedProperty value_2;
 
     private void OnEnable()
     {
