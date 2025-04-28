@@ -14,7 +14,7 @@ public class Title_Scene : MonoBehaviour, IPointerClickHandler
             isLoad = false;
 
             Managers.UI.GetUI<StartMessage_UI>().SetState();
-            Managers.Scene.LoadScene(Define.SceneName.Main, false);
+            Managers.Scene.LoadScene(SceneName.Main, false);
         }
     }
     private void Start()

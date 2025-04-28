@@ -45,7 +45,7 @@ public class GameOver_UI : UserInterface
     public void GoMain()
     {
         Managers.Game.Clear();
-        Managers.Scene.LoadScene(Define.SceneName.Main, false);
+        Managers.Scene.LoadScene(SceneName.Main, false);
     }
     private IEnumerator ActiveHeadUpDisplay()
     {

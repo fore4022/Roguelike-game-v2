@@ -69,7 +69,7 @@ public class ObjectPool
             }
         }
     }
-    public void Create(List<GameObject> prefabs, Define.ScriptableObjectType type, int count)
+    public void Create(List<GameObject> prefabs, ScriptableObjectType type, int count)
     {
         foreach(GameObject prefab in prefabs)
         {
@@ -84,7 +84,7 @@ public class ObjectPool
             array[instanceCount + i].SetActive(false);
         }
     }
-    private void CreateScriptableObject(Define.ScriptableObjectType type, string key)
+    private void CreateScriptableObject(ScriptableObjectType type, string key)
     {
         if(!scriptableObjects.ContainsKey(key))
         {
@@ -94,10 +94,10 @@ public class ObjectPool
 
             switch(type)
             {
-                case Define.ScriptableObjectType.Monster:
+                case ScriptableObjectType.Monster:
                     path = $"Assets/SO/Monster/{key}.asset";
                     break;
-                case Define.ScriptableObjectType.Skill:
+                case ScriptableObjectType.Skill:
                     path = $"Assets/SO/Attack/{key}.asset";
                     break;
             }
@@ -107,7 +107,7 @@ public class ObjectPool
             scriptableObjects.Add(key, scriptableObject);
         }
     }
-    private IEnumerator CreatingInstance(GameObject prefab, Define.ScriptableObjectType type, int count)
+    private IEnumerator CreatingInstance(GameObject prefab, ScriptableObjectType type, int count)
     {
         GameObject[] array = new GameObject[count];
 

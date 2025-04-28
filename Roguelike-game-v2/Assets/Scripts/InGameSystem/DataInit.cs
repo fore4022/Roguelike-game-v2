@@ -51,7 +51,7 @@ public class DataInit
     {
         Time.timeScale = 0;
 
-        Managers.Scene.LoadScene(Define.SceneName.InGame);
+        Managers.Scene.LoadScene(SceneName.InGame);
 
         yield return new WaitForEndOfFrame();
 
@@ -84,8 +84,8 @@ public class DataInit
 
         Managers.Game.monsterSpawner.monsterList = monsterList;
 
-        Managers.Game.inGameData.init.objectPool.Create(monsterList, Define.ScriptableObjectType.Monster,defaultMonsterCount);
-        Managers.Game.inGameData.init.objectPool.Create(skillList, Define.ScriptableObjectType.Skill, defaultSkillCount);
+        Managers.Game.inGameData.init.objectPool.Create(monsterList, ScriptableObjectType.Monster,defaultMonsterCount);
+        Managers.Game.inGameData.init.objectPool.Create(skillList, ScriptableObjectType.Skill, defaultSkillCount);
 
         int typeCount = monsterList.Count + skillList.Count;
 

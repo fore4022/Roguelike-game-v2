@@ -1,9 +1,36 @@
-public class Tween
+using System.Collections;
+using UnityEngine;
+public static class Tween
 {
-    private Ease ease = new();
+    private static Easing easing = new();
 
-    public Tween SetScale()
+    public static Transform SetScale(this Transform transform, float targetScale, float duration)
     {
-        return this;
+        Vector2 scale = new();
+        float currentTime = 0;
+        float scaleValue = 0;
+
+        while(currentTime != duration)
+        {
+            currentTime += Time.deltaTime;
+
+            if(currentTime > duration)
+            {
+                currentTime = duration;
+            }
+
+            //scaleValue = easing.
+
+            //yield return null;
+        }
+
+        return transform;
     }
+    //private static IEnumerator RunProgress()
+    //{
+    //    while()
+    //    {
+
+    //    }
+    //}
 }

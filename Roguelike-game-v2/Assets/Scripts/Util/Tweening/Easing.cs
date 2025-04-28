@@ -1,9 +1,13 @@
 using UnityEngine;
-public class Ease
+public class Easing
 {
     private const float start = 0;
     private const float end = 1;
 
+    public float Linear(float value)
+    {
+        return Mathf.Lerp(start, end, value);
+    }
     public float InQuad(float value)
     {
         return end * value * value + start;
