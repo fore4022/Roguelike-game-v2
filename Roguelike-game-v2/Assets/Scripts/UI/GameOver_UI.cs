@@ -34,7 +34,7 @@ public class GameOver_UI : UserInterface
             result = "스테이지\n실패";
         }
 
-        StartCoroutine(TextManipulator.TypeEffecting(resultText, result, true));
+        StartCoroutine(Typing.TypeEffecting(resultText, result, true));
         StartCoroutine(ResultSequence());
     }
     public void ReStart()
@@ -70,15 +70,15 @@ public class GameOver_UI : UserInterface
 
         yield return delay;
 
-        StartCoroutine(TextManipulator.TypeEffecting(tmpList[0], requiredTime));
+        StartCoroutine(Typing.TypeEffecting(tmpList[0], requiredTime));
 
         yield return delay;
 
-        StartCoroutine(TextManipulator.TypeEffecting(tmpList[1], survivalTime));
+        StartCoroutine(Typing.TypeEffecting(tmpList[1], survivalTime));
         
         yield return delay;
     
-        StartCoroutine(TextManipulator.TypeEffecting(tmpList[2], gainExp));
+        StartCoroutine(Typing.TypeEffecting(tmpList[2], gainExp));
 
         yield return delay;
 

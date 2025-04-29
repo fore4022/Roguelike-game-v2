@@ -58,12 +58,12 @@ public class UserLevelUp_UI : UserInterface, IPointerClickHandler
 
         str = $"Lv. {Managers.UserData.data.Level}";
 
-        StartCoroutine(TextManipulator.TypeEffecting(levelLog, " -> " + str));
+        StartCoroutine(Typing.TypeEffecting(levelLog, " -> " + str));
 
         yield return delay;
 
         prompt.gameObject.SetActive(true);
-        StartCoroutine(TextManipulator.EraseEffecting(levelLog, length));
+        StartCoroutine(Typing.EraseEffecting(levelLog, length));
         StartCoroutine(UIElementUtility.BlinkText(prompt, minAlpha, maxAlpha, duration, false));
     }
     private IEnumerator ParticleEffecting()

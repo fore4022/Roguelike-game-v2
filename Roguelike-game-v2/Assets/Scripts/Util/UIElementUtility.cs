@@ -6,30 +6,11 @@ using UnityEngine;
 using UnityEngine.UI;
 public static class UIElementUtility
 {
-    private static float pressedColor = 1.25f;
-    private static float normalizedColor = 0.8f;
-
-    public static void SetButtonColor(Transform transform, bool isPressed)
-    {
-        List<Image> imageList = transform.GetComponentsInChildren<Image>().ToList();
-
-        float value = isPressed ? pressedColor : normalizedColor;
-
-        foreach(Image image in imageList)
-        {
-            Color color = image.color;
-
-            color.r /= value;
-            color.g /= value;
-            color.b /= value;
-            image.color = color;
-        }
-    }
-    public static void SetImageScale(RectTransform rectTransform, float targetScale)
+    public static void SetImageScale(RectTransform rectTransform, float targetScale)//img
     {
         rectTransform.localScale = Calculate.GetVector(targetScale);
     }
-    public static Coroutine SetTextAlpha(TextMeshProUGUI tmp, float targetAlphaValue, float duration, bool recursive = true)
+    public static Coroutine SetTextAlpha(TextMeshProUGUI tmp, float targetAlphaValue, float duration, bool recursive = true)//
     {
         List<TextMeshProUGUI> tmpList = new();
 
@@ -47,7 +28,7 @@ public static class UIElementUtility
 
         return Util.GetMonoBehaviour().StartCoroutine(SetTextAlpha(tmpList, color, targetAlphaValue, duration));
     }
-    public static void SetImageAlpha(Image img, float targetAlphaValue, float duration = 0, bool recursive = true)
+    public static void SetImageAlpha(Image img, float targetAlphaValue, float duration = 0, bool recursive = true)//
     {
         List<Image> imgList = new();
 
@@ -80,7 +61,7 @@ public static class UIElementUtility
             yield return delay;
         }
     }
-    public static IEnumerator SetImageScale(RectTransform rectTransform, float targetScale, float duration)
+    public static IEnumerator SetImageScale(RectTransform rectTransform, float targetScale, float duration)//img
     {
         Vector3 scale = new();
         float totalTime = 0;
@@ -103,7 +84,7 @@ public static class UIElementUtility
             yield return null;
         }
     }
-    private static IEnumerator SetTextAlpha(List<TextMeshProUGUI> tmpList, Color color, float targetAlphaValue, float duration)
+    private static IEnumerator SetTextAlpha(List<TextMeshProUGUI> tmpList, Color color, float targetAlphaValue, float duration)//
     {
         Color childrenColor;
         float totalTime = 0;
@@ -130,7 +111,7 @@ public static class UIElementUtility
             yield return null;
         }
     }
-    private static IEnumerator SetImageAlpha(List<Image> imgList, Color color, float targetAlphaValue, float duration)
+    private static IEnumerator SetImageAlpha(List<Image> imgList, Color color, float targetAlphaValue, float duration)//
     {
         Color childrenColor;
 

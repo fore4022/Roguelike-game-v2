@@ -2,7 +2,7 @@ using System.Collections;
 using System.Text;
 using TMPro;
 using UnityEngine;
-public static class TextManipulator
+public static class Typing
 {
     private static WaitForSecondsRealtime delay = new(0.075f);
 

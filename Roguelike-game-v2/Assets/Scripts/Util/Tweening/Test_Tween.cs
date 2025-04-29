@@ -1,8 +1,18 @@
+using System.Collections;
 using UnityEngine;
 public class Test_Tween : MonoBehaviour
 {
+    [SerializeField]
+    private RectTransform rectTransform;
+
     private void Start()
     {
-        transform.SetRotation(new Vector3(0, 0, 90), 3);
+        StartCoroutine(Delay());
+    }
+    private IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(1);
+
+        rectTransform.SetScale(1.5f, 0.75f);
     }
 }
