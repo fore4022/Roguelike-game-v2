@@ -14,6 +14,7 @@ public enum Ease
     OutQuint,
     InOutQuint,
     InSine,
+    OutSine,
     InOutSine,
     InExpo,
     OutExpo,
