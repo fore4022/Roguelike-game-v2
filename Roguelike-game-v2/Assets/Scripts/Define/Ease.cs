@@ -1,6 +1,7 @@
 public enum Ease
 {
-    Linear,
+    InLinear,
+    OutLinear,
     InQuad,
     OutQuad,
     InOutQuad,
