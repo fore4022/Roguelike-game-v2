@@ -51,8 +51,7 @@ public class Player : MonoBehaviour, IDamageReceiver
     {
         InputActions.DisableInputAction<TouchControls>();
 
-        StartCoroutine(ObjectManipulator.TrasnformPosition(transform, transform.position + diePosition, duration));
-        StartCoroutine(ObjectManipulator.SetScale(transform, targetScale, duration));
+        transform.SetPosition(transform.position + diePosition, duration).SetScale(targetScale, duration);
 
         death = true;
 

@@ -10,11 +10,8 @@ public class Easing
 
         switch (ease)
         {
-            case Ease.InLinear:
-                del += InLinear;
-                break;
-            case Ease.OutLinear:
-                del += OutLinear;
+            case Ease.Linear:
+                del += Linear;
                 break;
             case Ease.InQuad:
                 del += InQuad;
@@ -110,7 +107,7 @@ public class Easing
 
         return del;
     }
-    private static float InLinear(float value)
+    private static float Linear(float value)
     {
         return Mathf.Lerp(start, end, value);
     }
