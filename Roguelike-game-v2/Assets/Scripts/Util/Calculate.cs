@@ -50,10 +50,6 @@ public static class Calculate
     {
         return new Vector3(vec, vec, 0);
     }
-    public static Vector3 GetVector(float vecX, float vecY)
-    {
-        return new Vector3(vecX, vecY, 0);
-    }
     public static Vector3 GetRandomDirection()
     {
         return new Vector3(Random.Range(0, 361), Random.Range(0, 361), 0).normalized;

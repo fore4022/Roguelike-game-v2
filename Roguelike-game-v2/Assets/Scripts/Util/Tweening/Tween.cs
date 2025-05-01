@@ -1,33 +1,59 @@
 using System.Collections;
 using UnityEngine;
-public delegate float EaseDelegate(float f);
 public class Tween
 {
-    // Scale
-    public IEnumerator ScaleOverTime(EaseDelegate ease, Transform transform, float targetScale, float duration)
+    private delegate void Tween_TF(Transform transform, FlexibleValue initial, FlexibleValue target, float value);
+    private delegate void Tween_RTF(RectTransform rectTransform, FlexibleValue initial, FlexibleValue target, float value);
+
+    public IEnumerator OverTime(TweenType type, EaseDelegate ease, Transform transform, FlexibleValue targetValue, float duration)
     {
-        Vector2 scale = new();
-        float initialScale = transform.localScale.x;
+        Tween_TF del = null;
+        FlexibleValue initialValue = new();
+        Status status = null;
         float currentTime = 0;
-        float scaleValue;
+
+        yield return new WaitUntil(() => TweenSystemManage.GetStatus(transform) != null);
+
+        status = TweenSystemManage.GetStatus(transform);
+
+        yield return new WaitForEndOfFrame();
+
+        switch (type)
+        {
+            case TweenType.Scale:
+                initialValue.Float = transform.localScale.x;
+                del += Scale;
+                break;
+            case TweenType.Position:
+                break;
+            case TweenType.Rotation:
+                break;
+        }
 
         while(currentTime != duration)
         {
-            currentTime += Time.deltaTime;
-
-            if(currentTime > duration)
+            if(status.flag)
             {
-                currentTime = duration;
-            }
+                currentTime += Time.deltaTime;
 
-            scaleValue = Mathf.Lerp(initialScale, targetScale, ease(currentTime / duration));
-            scale.x = scaleValue;
-            scale.y = scaleValue;
-            transform.localScale = scale;
+                if(currentTime > duration)
+                {
+                    currentTime = duration;
+                }
+
+                del(transform, initialValue, targetValue, ease(currentTime / duration));
+            }
 
             yield return null;
         }
     }
+
+    // Scale
+    public void Scale(Transform transform, FlexibleValue inital, FlexibleValue target, float value)
+    {
+        transform.localScale = Calculate.GetVector(Mathf.Lerp(inital.Float, target.Float, value));
+    }
+
     public IEnumerator ScaleOverTime(EaseDelegate ease, RectTransform rectTransform, float targetScale, float duration)
     {
         Vector3 scale = new();

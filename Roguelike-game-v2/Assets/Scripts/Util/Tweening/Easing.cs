@@ -1,4 +1,5 @@
 using UnityEngine;
+public delegate float EaseDelegate(float f);
 public class Easing
 {
     private const float start = 0;

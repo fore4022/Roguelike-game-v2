@@ -14,6 +14,6 @@ public struct FlexibleValue
         this.vec = vec;
         f = null;
     }
-    public Vector3 Vector { get { return (Vector3)vec; } }
-    public float Float { get { return (float)f; } }
+    public Vector3 Vector { get { return (Vector3)vec; } set { vec = value; } }
+    public float Float { get { return (float)f; } set { f = value; } }
 }

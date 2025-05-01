@@ -2,17 +2,20 @@ using System.Collections;
 using UnityEngine;
 public class Test_Tween : MonoBehaviour
 {
-    [SerializeField]
-    private RectTransform rectTransform;
-
     private void Start()
     {
-        //StartCoroutine(Delay());
+        StartCoroutine(Test());
     }
-    private IEnumerator Delay()
+    private IEnumerator Test()
     {
+        transform.SetScale(2, 2);
+
         yield return new WaitForSeconds(1);
 
-        rectTransform.SetScale(1.5f, 0.75f);
+        transform.StopTween();
+
+        yield return new WaitForSeconds(1);
+
+        transform.PlayTween();
     }
 }

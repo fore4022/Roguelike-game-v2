@@ -182,12 +182,12 @@ public static class EnemyDetection
         
         Vector2 radiusPosition = Camera.main.transform.position;
 
-        if (range == null)
+        if(range == null)
         {
             float y = Camera.main.orthographicSize * 2;
             float x = y * Camera.main.aspect;
 
-            Vector2 radius = Calculate.GetVector(x, y);
+            Vector2 radius = new(x, y);
 
             colliderArray = Physics2D.OverlapBoxAll(radiusPosition, radius, 0, LayerMask.GetMask("Monster"));
         }
