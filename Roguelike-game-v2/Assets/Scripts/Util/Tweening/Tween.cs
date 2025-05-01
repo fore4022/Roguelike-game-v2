@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 public class Tween
@@ -5,12 +6,15 @@ public class Tween
     private delegate void Tween_TF(Transform transform, FlexibleValue initial, FlexibleValue target, float value);
     private delegate void Tween_RTF(RectTransform rectTransform, FlexibleValue initial, FlexibleValue target, float value);
 
+    private static readonly Type _rectTransform = typeof(RectTransform);
+
     public IEnumerator OverTime(TweenType type, EaseDelegate ease, Transform transform, FlexibleValue targetValue, float duration)
     {
         Tween_TF del = null;
         FlexibleValue initialValue = new();
         Status status = null;
         float currentTime = 0;
+        bool isRectTransform = transform.GetType() == _rectTransform;
 
         yield return new WaitUntil(() => TweenSystemManage.GetStatus(transform) != null);
 
@@ -25,8 +29,12 @@ public class Tween
                 del += Scale;
                 break;
             case TweenType.Position:
+                initialValue.Vector = transform.localPosition;
+                del += Position;
                 break;
             case TweenType.Rotation:
+                initialValue.Vector = transform.localRotation.eulerAngles;
+                del += Rotation;
                 break;
         }
 
@@ -41,7 +49,14 @@ public class Tween
                     currentTime = duration;
                 }
 
-                del(transform, initialValue, targetValue, ease(currentTime / duration));
+                if(isRectTransform)
+                {
+                    del(transform as RectTransform, initialValue, targetValue, ease(currentTime / duration));
+                }
+                else
+                {
+                    del(transform, initialValue, targetValue, ease(currentTime / duration));
+                }
             }
 
             yield return null;
@@ -49,74 +64,32 @@ public class Tween
     }
 
     // Scale
-    public void Scale(Transform transform, FlexibleValue inital, FlexibleValue target, float value)
+    public void Scale(Transform transform, FlexibleValue initial, FlexibleValue target, float value)
     {
-        transform.localScale = Calculate.GetVector(Mathf.Lerp(inital.Float, target.Float, value));
+        transform.localScale = Calculate.GetVector(Mathf.Lerp(initial.Float, target.Float, value));
     }
-
-    public IEnumerator ScaleOverTime(EaseDelegate ease, RectTransform rectTransform, float targetScale, float duration)
+    public void Scale(RectTransform rectTransform, FlexibleValue initial, FlexibleValue target, float value)
     {
-        Vector3 scale = new();
-        float initialScale = rectTransform.localScale.x;
-        float currentTime = 0;
-        float scaleValue;
-
-        while(currentTime != duration)
-        {
-            currentTime += Time.unscaledDeltaTime;
-
-            if(currentTime > duration)
-            {
-                currentTime = duration;
-            }
-
-            scaleValue = Mathf.Lerp(initialScale, targetScale, ease(currentTime / duration));
-            scale.x = scaleValue;
-            scale.y = scaleValue;
-            rectTransform.localScale = scale;
-
-            yield return null;
-        }
+        rectTransform.localScale = Calculate.GetVector(Mathf.Lerp(initial.Float, target.Float, value));
     }
 
     // Position
-    public IEnumerator PositionOverTime(EaseDelegate ease, Transform transform, Vector2 targetPosition, float duration)
+    public void Position(Transform transform, FlexibleValue initial, FlexibleValue target, float value)
     {
-        Vector3 initialPosition = transform.position;
-        float currentTime = 0;
-
-        while(currentTime != duration)
-        {
-            currentTime += Time.deltaTime;
-
-            if(currentTime > duration)
-            {
-                currentTime = duration;
-            }
-
-            transform.position = Vector3.Lerp(initialPosition, targetPosition, ease(currentTime / duration));
-
-            yield return null;
-        }
+        transform.localPosition = Vector3.Lerp(initial.Vector, target.Vector, value);
+    }
+    public void Position(RectTransform rectTransform, FlexibleValue initial, FlexibleValue target, float value)
+    {
+        rectTransform.localPosition = Vector3.Lerp(initial.Vector, target.Vector, value);
     }
 
     // Rotation
-    public IEnumerator RotationOverTime(EaseDelegate ease, Transform transform, Vector3 targetRotation, float duration)
+    public void Rotation(Transform transform, FlexibleValue initial, FlexibleValue target, float value)
     {
-        float currentTime = 0;
-
-        while(currentTime != duration)
-        {
-            currentTime += Time.deltaTime;
-
-            if(currentTime > duration)
-            {
-                currentTime = duration;
-            }
-
-            transform.rotation = Quaternion.Euler(targetRotation * ease(currentTime / duration));
-
-            yield return null;
-        }
+        transform.localRotation = Quaternion.Euler(initial.Vector + target.Vector * value);
+    }
+    public void Rotation(RectTransform rectTransform, FlexibleValue initial, FlexibleValue target, float value)
+    {
+        rectTransform.localRotation = Quaternion.Euler(initial.Vector + target.Vector * value);
     }
 }
