@@ -6,6 +6,7 @@ public class TweenSystemManage
     private static Tween tween = new();
 
     private static Dictionary<Component, Queue<List<Coroutine>>> tweenSchedule = new();
+    private static Dictionary<Component, bool> tweenStatus = new();
 
     private readonly Type transform = typeof(Transform);
     private readonly Type rectTransform = typeof(RectTransform);
@@ -16,7 +17,7 @@ public class TweenSystemManage
         EaseDelegate easeDelegate = Easing.Get(ease);
         Type t = comp.GetType();
 
-        switch (type)
+        switch(type)
         {
             case TweenType.Scale:
                 ScaleTweening(ref coroutine, t, comp, flexible, duration, easeDelegate);
@@ -29,7 +30,7 @@ public class TweenSystemManage
                 break;
         }
 
-        if (tweenSchedule.TryGetValue(comp, out Queue<List<Coroutine>> schedule))
+        if(tweenSchedule.TryGetValue(comp, out Queue<List<Coroutine>> schedule))
         {
             schedule.Peek().Add(coroutine);
         }
@@ -43,7 +44,7 @@ public class TweenSystemManage
             tweenSchedule.Add(comp, schedule);
         }
     }
-    public void ScaleTweening(ref Coroutine coroutine, Type type, Component comp, FlexibleValue flexible, float duration, EaseDelegate ease)
+    private void ScaleTweening(ref Coroutine coroutine, Type type, Component comp, FlexibleValue flexible, float duration, EaseDelegate ease)
     {
         if(type == transform)
         {
@@ -54,14 +55,14 @@ public class TweenSystemManage
             coroutine = Util.GetMonoBehaviour().StartCoroutine(tween.ScaleOverTime(ease, comp as RectTransform, flexible.Float, duration));
         }
     }
-    public void PositionTweening(ref Coroutine coroutine, Type type, Component comp, FlexibleValue flexible, float duration, EaseDelegate ease)
+    private void PositionTweening(ref Coroutine coroutine, Type type, Component comp, FlexibleValue flexible, float duration, EaseDelegate ease)
     {
         if(type == transform)
         {
             coroutine = Util.GetMonoBehaviour().StartCoroutine(tween.PositionOverTime(ease, comp as Transform, flexible.Vector, duration));
         }
     }
-    public void RotationTweening(ref Coroutine coroutine, Type type, Component comp, FlexibleValue flexible, float duration, EaseDelegate ease)
+    private void RotationTweening(ref Coroutine coroutine, Type type, Component comp, FlexibleValue flexible, float duration, EaseDelegate ease)
     {
         if(type == transform)
         {

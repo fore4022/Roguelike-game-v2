@@ -7,7 +7,7 @@ public class Test_Tween : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(Delay());
+        //StartCoroutine(Delay());
     }
     private IEnumerator Delay()
     {
