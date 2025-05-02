@@ -1,68 +1,18 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-public class Sequence
-{
-    private Queue<List<Coroutine>> tweenQueue = new();
-
-    public List<Coroutine> Peek()
-    {
-        return tweenQueue.Peek();
-    }
-    public void Enqueue(List<Coroutine> list)
-    {
-        tweenQueue.Enqueue(list);
-    }
-    public void Dequeue(Transform transform, Coroutine coroutine)
-    {
-        tweenQueue.Peek().Remove(coroutine);
-
-        if(tweenQueue.Peek().Count == 0)
-        {
-            tweenQueue.Dequeue();
-
-            if(tweenQueue.Count == 0)
-            {
-                TweenSystem.KillTween(transform);
-            }
-            else
-            {
-
-            }
-        }
-    }
-}
-public class Status
-{
-    public bool flag;
-
-    public Status(bool status)
-    {
-        flag = status;
-    }
-}
-public class Tween
-{
-    public Coroutine coroutine;
-
-    public Tween() { }
-    public Tween(Coroutine coroutine)
-    {
-        this.coroutine = coroutine;
-    }
-}
 public static class TweenSystemManage
 {
     private static Tweening _tweening = new();
 
     private static Dictionary<Component, Sequence> _schedule = new();
-    private static Dictionary<Component, Status> _status = new();
+    private static Dictionary<Component, TweenStatus> _status = new();
 
     private static readonly Type _transform = typeof(Transform);
 
-    public static Status GetStatus(Component comp)
+    public static TweenStatus GetStatus(Component comp)
     {
-        if(_status.TryGetValue(comp, out Status value))
+        if(_status.TryGetValue(comp, out TweenStatus value))
         {
             return value;
         }
@@ -115,7 +65,7 @@ public static class TweenSystemManage
 
         tween.coroutine = coroutine;
 
-        if(_schedule.TryGetValue(comp, out Sequence schedule))
+        if(_schedule.TryGetValue(trans, out Sequence schedule))
         {
             schedule.Peek().Add(coroutine);
         }
@@ -126,18 +76,21 @@ public static class TweenSystemManage
             schedule = new();
 
             schedule.Enqueue(sched);
-            _schedule.Add(comp, schedule);
-            _status.Add(comp, new(true));
+            _schedule.Add(trans, schedule);
+            _status.Add(trans, new(true));
         }
     }
     public static void Release(Transform transform, Tween tween)
     {
         _schedule[transform].Dequeue(transform, tween.coroutine);
     }
+    public static void Clear(Transform transform)
+    {
+        _schedule.Remove(transform);
+        _status.Remove(transform);
+    }
     public static void Kill(Component comp)
     {
-        Debug.Log("g");
-
         //if(_schedule.TryGetValue(comp, out ))
         //{
 

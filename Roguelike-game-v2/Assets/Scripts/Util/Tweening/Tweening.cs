@@ -12,7 +12,7 @@ public class Tweening
     {
         Tween_TF del = null;
         FlexibleValue initialValue = new();
-        Status status = null;
+        TweenStatus status = null;
         float currentTime = 0;
         bool isRectTransform = transform.GetType() == _rectTransform;
 
