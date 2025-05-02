@@ -11,20 +11,10 @@ public class Test_Tween : MonoBehaviour
     }
     private IEnumerator Test()
     {
-        //transform.SetScale(2, 2);
-
-        //yield return new WaitForSeconds(1);
-
-        //transform.StopTween();
-
-        //yield return new WaitForSeconds(1);
-
-        //transform.PlayTween();
-
-        transform.SetRotation(new(0, 0, 90), 2);
+        transform.SetRotation(new(0, 0, 90), 2, Ease.InExpo);
 
         yield return new WaitForSeconds(2.5f);
 
-        transform.SetRotation(new(0, 0, 90), 2);
+        transform.SetPosition(new(0, 5), 2, Ease.InBounce);
     }
 }

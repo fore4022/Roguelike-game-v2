@@ -1,14 +1,14 @@
 using System;
 using System.Collections;
 using UnityEngine;
-public class Tween
+public class Tweening
 {
     private delegate void Tween_TF(Transform transform, FlexibleValue initial, FlexibleValue target, float value);
     private delegate void Tween_RTF(RectTransform rectTransform, FlexibleValue initial, FlexibleValue target, float value);
 
     private static readonly Type _rectTransform = typeof(RectTransform);
 
-    public IEnumerator OverTime(TweenType type, EaseDelegate ease, Transform transform, FlexibleValue targetValue, float duration)
+    public IEnumerator OverTime(TweenType type, Tween tween, Transform transform, EaseDelegate ease, FlexibleValue targetValue, float duration)
     {
         Tween_TF del = null;
         FlexibleValue initialValue = new();
@@ -22,7 +22,7 @@ public class Tween
 
         yield return new WaitForEndOfFrame();
 
-        switch (type)
+        switch(type)
         {
             case TweenType.Scale:
                 initialValue.Float = transform.localScale.x;
@@ -61,6 +61,8 @@ public class Tween
 
             yield return null;
         }
+
+        TweenSystemManage.Release(transform, tween);
     }
 
     // Scale
