@@ -29,7 +29,7 @@ public static class TweenSystemManage
     {
         Coroutine coroutine = null;
         EaseDelegate easeDel = Easing.Get(ease);
-        Transform trans = null;
+        Transform trans;
         Tween tween = null;
 
         if(comp.Equals(_transform))
@@ -91,9 +91,30 @@ public static class TweenSystemManage
     }
     public static void Kill(Component comp)
     {
-        //if(_schedule.TryGetValue(comp, out ))
-        //{
+        Transform trans;
 
-        //}
+        if(comp.Equals(_transform))
+        {
+            trans = comp as Transform;
+        }
+        else
+        {
+            trans = comp.GetComponent<Transform>();
+        }
+
+        if(trans == null)
+        {
+            return;
+        }
+
+        if(_schedule.TryGetValue(trans, out Sequence sequence))
+        {
+            foreach(Coroutine coroutine in sequence.Values()[0])
+            {
+                Util.GetMonoBehaviour().StopCoroutine(coroutine);
+            }
+
+            Clear(trans);
+        }
     }
 }

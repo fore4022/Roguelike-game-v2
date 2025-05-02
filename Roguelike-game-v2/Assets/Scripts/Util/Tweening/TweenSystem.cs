@@ -35,6 +35,6 @@ public static class TweenSystem
     }
     public static void KillTween(this Transform transform)
     {
-        //TweenSystemManage
+        TweenSystemManage.Kill(transform);
     }
 }

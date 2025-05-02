@@ -8,9 +8,13 @@ public class Sequence
     {
         return tweenQueue.Count;
     }
+    public List<Coroutine>[] Values()
+    {
+        return tweenQueue.ToArray();
+    }
     public List<Coroutine> Peek()
     {
-        if (tweenQueue.Count == 0)
+        if(tweenQueue.Count == 0)
         {
             tweenQueue.Enqueue(new());
         }
@@ -25,11 +29,11 @@ public class Sequence
     {
         tweenQueue.Peek().Remove(coroutine);
 
-        if (tweenQueue.Peek().Count == 0)
+        if(tweenQueue.Peek().Count == 0)
         {
             tweenQueue.Dequeue();
 
-            if (tweenQueue.Count == 0)
+            if(tweenQueue.Count == 0)
             {
                 TweenSystemManage.Clear(transform);
             }
