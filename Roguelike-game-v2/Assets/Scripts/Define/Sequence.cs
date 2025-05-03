@@ -2,17 +2,17 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Sequence
 {
-    private Queue<List<Coroutine>> tweenQueue = new();
+    private Queue<List<TweenData>> tweenQueue = new();
 
     public int Count()
     {
         return tweenQueue.Count;
     }
-    public List<Coroutine>[] Values()
+    public List<TweenData>[] Values()
     {
         return tweenQueue.ToArray();
     }
-    public List<Coroutine> Peek()
+    public List<TweenData> Peek()
     {
         if(tweenQueue.Count == 0)
         {
@@ -21,13 +21,13 @@ public class Sequence
 
         return tweenQueue.Peek();
     }
-    public void Enqueue(List<Coroutine> list)
+    public void Enqueue(List<TweenData> list)
     {
         tweenQueue.Enqueue(list);
     }
-    public void Dequeue(Transform transform, Coroutine coroutine)
+    public void Dequeue(Transform transform, TweenData data)
     {
-        tweenQueue.Peek().Remove(coroutine);
+        tweenQueue.Peek().Remove(data);
 
         if(tweenQueue.Peek().Count == 0)
         {

@@ -1,15 +1,15 @@
 using UnityEngine;
-public struct FlexibleValue
+public struct NumericValue
 {
     private Vector3? _vec;
     private float? _f;
 
-    public FlexibleValue(float f)
+    public NumericValue(float f)
     {
         _vec = null;
         _f = f;
     }
-    public FlexibleValue(Vector3 vec)
+    public NumericValue(Vector3 vec)
     {
         _vec = vec;
         _f = null;

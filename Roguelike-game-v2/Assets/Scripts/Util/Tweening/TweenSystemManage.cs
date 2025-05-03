@@ -25,12 +25,11 @@ public static class TweenSystemManage
     {
         _status[comp].flag = status;
     }
-    public static void Execute(TweenType type, Component comp, FlexibleValue flexible, float duration, Ease ease = Ease.Linear)
+    public static void Execute(TweenType type, Component comp, NumericValue numeric, float duration, Ease ease = Ease.Linear)
     {
-        Coroutine coroutine = null;
         EaseDelegate easeDel = Easing.Get(ease);
         Transform trans;
-        Tween tween = null;
+        TweenData data = null;
 
         trans = GetTransform(comp);
 
@@ -40,19 +39,16 @@ public static class TweenSystemManage
         }
         else
         {
-            tween = new();
+            data = new(Util.GetMonoBehaviour().StartCoroutine(_tweening.OverTime(type, data, trans, easeDel, numeric, duration)));
         }
-
-        coroutine = Util.GetMonoBehaviour().StartCoroutine(_tweening.OverTime(type, tween, trans, easeDel, flexible, duration));
-        tween.coroutine = coroutine;
 
         if(_schedule.TryGetValue(trans, out Sequence schedule))
         {
-            schedule.Peek().Add(coroutine);
+            schedule.Peek().Add(data);
         }
-        else
+        else 
         {
-            List<Coroutine> sched = new() { coroutine };
+            List<TweenData> sched = new() { data };
 
             schedule = new();
 
@@ -61,9 +57,9 @@ public static class TweenSystemManage
             _status.Add(trans, new(true));
         }
     }
-    public static void Release(Transform transform, Tween tween)
+    public static void Release(Transform transform, TweenData tween)
     {
-        _schedule[transform].Dequeue(transform, tween.coroutine);
+        _schedule[transform].Dequeue(transform, tween);
     }
     public static void Clear(Transform transform)
     {
@@ -81,9 +77,12 @@ public static class TweenSystemManage
 
         if(_schedule.TryGetValue(trans, out Sequence sequence))
         {
-            foreach(Coroutine coroutine in sequence.Values()[0])
+            foreach(TweenData data in sequence.Values()[0])
             {
-                Util.GetMonoBehaviour().StopCoroutine(coroutine);
+                Debug.Log(data);
+                Debug.Log(data.coroutine);
+
+                Util.GetMonoBehaviour().StopCoroutine(data.coroutine);
             }
 
             Clear(trans);
