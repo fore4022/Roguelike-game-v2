@@ -20,7 +20,7 @@ public class Test_Tween : MonoBehaviour
     }
     private IEnumerator Test_B()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.25f);
 
         transform.KillTween();
     }

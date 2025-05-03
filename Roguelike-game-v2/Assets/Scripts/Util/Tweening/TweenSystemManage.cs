@@ -32,14 +32,7 @@ public static class TweenSystemManage
         Transform trans;
         Tween tween = null;
 
-        if(comp.Equals(_transform))
-        {
-            trans = comp as Transform;
-        }
-        else
-        {
-            trans = comp.GetComponent<Transform>();
-        }
+        trans = GetTransform(comp);
 
         if(trans == null)
         {
@@ -50,19 +43,7 @@ public static class TweenSystemManage
             tween = new();
         }
 
-        switch(type)
-        {
-            case TweenType.Scale:
-                coroutine = Util.GetMonoBehaviour().StartCoroutine(_tweening.OverTime(TweenType.Scale, tween, trans, easeDel, flexible, duration));
-                break;
-            case TweenType.Position:
-                coroutine = Util.GetMonoBehaviour().StartCoroutine(_tweening.OverTime(TweenType.Position, tween, trans, easeDel, flexible, duration));
-                break;
-            case TweenType.Rotation:
-                coroutine = Util.GetMonoBehaviour().StartCoroutine(_tweening.OverTime(TweenType.Rotation, tween, trans, easeDel, flexible, duration));
-                break;
-        }
-
+        coroutine = Util.GetMonoBehaviour().StartCoroutine(_tweening.OverTime(type, tween, trans, easeDel, flexible, duration));
         tween.coroutine = coroutine;
 
         if(_schedule.TryGetValue(trans, out Sequence schedule))
@@ -91,16 +72,7 @@ public static class TweenSystemManage
     }
     public static void Kill(Component comp)
     {
-        Transform trans;
-
-        if(comp.Equals(_transform))
-        {
-            trans = comp as Transform;
-        }
-        else
-        {
-            trans = comp.GetComponent<Transform>();
-        }
+        Transform trans = GetTransform(comp);
 
         if(trans == null)
         {
@@ -115,6 +87,17 @@ public static class TweenSystemManage
             }
 
             Clear(trans);
+        }
+    }
+    private static Transform GetTransform(Component comp)
+    {
+        if (comp.Equals(_transform))
+        {
+            return comp as Transform;
+        }
+        else
+        {
+            return comp.GetComponent<Transform>();
         }
     }
 }
