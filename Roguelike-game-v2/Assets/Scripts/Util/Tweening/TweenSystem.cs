@@ -1,40 +1,56 @@
 using UnityEngine;
 public static class TweenSystem
 {
-    public static Transform SetScale(this Transform transform, float targetScale, float duration, Ease ease = Ease.Linear)
+    public static Component SetScale(this Component comp, float targetScale, float duration, Ease ease = Ease.Linear)
     {
-        TweenSystemManage.Execute(TweenType.Scale, transform, new(targetScale), duration, ease);
+        TweenSystemManage.Execute(comp, TweenType.Scale, new(targetScale), duration, ease);
 
-        return transform;
+        return comp;
     }
-    public static Transform SetPosition(this Transform transform, Vector2 targetPosition, float duration, Ease ease = Ease.Linear)
+    public static Component SetPosition(this Component comp, Vector2 targetPosition, float duration, Ease ease = Ease.Linear)
     {
-        TweenSystemManage.Execute(TweenType.Position, transform, new(targetPosition), duration, ease);
+        TweenSystemManage.Execute(comp, TweenType.Position, new(targetPosition), duration, ease);
 
-        return transform;
+        return comp;
     }
-    public static Transform SetRotation(this Transform rectTransform, Vector3 targetRotation, float duration, Ease ease = Ease.Linear)
+    public static Component SetRotation(this Component comp, Vector3 targetRotation, float duration, Ease ease = Ease.Linear)
     {
-        TweenSystemManage.Execute(TweenType.Rotation, rectTransform, new(targetRotation), duration, ease);
+        TweenSystemManage.Execute(comp, TweenType.Rotation, new(targetRotation), duration, ease);
 
-        return rectTransform;
+        return comp;
     }
 
     // Manage
-    public static Transform StopTween(this Transform transform)
+    public static Component StopTween(this Component comp)
     {
-        TweenSystemManage.SetStatus(transform, false);
+        TweenSystemManage.SetStatus(comp, false);
 
-        return transform;
+        return comp;
     }
-    public static Transform PlayTween(this Transform transform)
+    public static Component PlayTween(this Component comp)
     {
-        TweenSystemManage.SetStatus(transform, true);
+        TweenSystemManage.SetStatus(comp, true);
 
-        return transform;
+        return comp;
     }
-    public static void KillTween(this Transform transform)
+    public static void KillTween(this Component comp)
     {
-        TweenSystemManage.Kill(transform);
+        TweenSystemManage.Kill(comp);
+    }
+    public static void TweenAppend(this Component comp, TweenType type, NumericValue numeric, float duration, Ease ease = Ease.Linear)
+    {
+        TweenSystemManage.Append(comp);
+    }
+    public static void TweenInsert(this Component comp, TweenType type, NumericValue numeric, float duration, Ease ease = Ease.Linear)
+    {
+        TweenSystemManage.Insert(comp);
+    }
+    public static void TweenJoin(this Component comp, TweenType type, NumericValue numeric, float duration, Ease ease = Ease.Linear)
+    {
+        TweenSystemManage.Join(comp);
+    }
+    public static void TweenPrepend(this Component comp, TweenType type, NumericValue numeric, float duration, Ease ease = Ease.Linear)
+    {
+        TweenSystemManage.Prepend(comp);
     }
 }

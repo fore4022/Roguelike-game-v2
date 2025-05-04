@@ -25,13 +25,10 @@ public static class TweenSystemManage
     {
         _status[comp].flag = status;
     }
-    public static void Execute(TweenType type, Component comp, NumericValue numeric, float duration, Ease ease = Ease.Linear)
+    public static void Execute(Component comp, TweenType type, NumericValue numeric, float duration, Ease ease = Ease.Linear)
     {
-        EaseDelegate easeDel = Easing.Get(ease);
-        Transform trans;
+        Transform trans = GetTransform(comp);
         TweenData data = null;
-
-        trans = GetTransform(comp);
 
         if(trans == null)
         {
@@ -39,7 +36,7 @@ public static class TweenSystemManage
         }
         else
         {
-            data = new(Util.GetMonoBehaviour().StartCoroutine(_tweening.OverTime(type, data, trans, easeDel, numeric, duration)));
+            data = new(Util.GetMonoBehaviour().StartCoroutine(_tweening.OverTime(type, data, trans, Easing.Get(ease), numeric, duration)));
         }
 
         if(_schedule.TryGetValue(trans, out Sequence schedule))
@@ -56,6 +53,41 @@ public static class TweenSystemManage
             _schedule.Add(trans, schedule);
             _status.Add(trans, new(true));
         }
+    }
+    public static void Append(Component comp, TweenType type, NumericValue numeric, float duration, Ease ease = Ease.Linear)
+    {
+        Transform trans = GetTransform(comp);
+        TweenData data = null;
+
+        if(trans == null)
+        {
+            return;
+        }
+        else
+        {
+            data = new(type, trans, Easing.Get(ease), numeric, duration);
+        }
+
+        if(_schedule.TryGetValue(trans, out Sequence schedule))
+        {
+
+        }
+        else
+        {
+
+        }
+    }
+    public static void Insert(Component comp, TweenType type, NumericValue numeric, float duration, Ease ease = Ease.Linear)
+    {
+
+    }
+    public static void Join(Component comp, TweenType type, NumericValue numeric, float duration, Ease ease = Ease.Linear)
+    {
+
+    }
+    public static void Prepend(Component comp, TweenType type, NumericValue numeric, float duration, Ease ease = Ease.Linear)
+    {
+
     }
     public static void Release(Transform transform, TweenData tween)
     {

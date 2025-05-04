@@ -1,9 +1,14 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 public class Test_Tween : MonoBehaviour
 {
     [SerializeField]
     private RectTransform rect;
+
+    private Image image;
+    private GridLayoutGroup grid;
+    private Rigidbody rigid;
 
     private void Start()
     {
