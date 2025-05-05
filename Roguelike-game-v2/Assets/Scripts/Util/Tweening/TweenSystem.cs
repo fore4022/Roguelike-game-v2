@@ -1,4 +1,4 @@
-using UnityEngine;
+     using UnityEngine;
 public static class TweenSystem
 {
     public static Component SetScale(this Component comp, float targetScale, float duration, Ease ease = Ease.Linear)
@@ -39,18 +39,18 @@ public static class TweenSystem
     }
     public static void TweenAppend(this Component comp, TweenType type, NumericValue numeric, float duration, Ease ease = Ease.Linear)
     {
-        TweenSystemManage.Append(comp);
+        TweenSystemManage.Append(comp, type, numeric, duration, ease);
     }
     public static void TweenInsert(this Component comp, TweenType type, NumericValue numeric, float duration, Ease ease = Ease.Linear)
     {
-        TweenSystemManage.Insert(comp);
+        TweenSystemManage.Insert(comp, type, numeric, duration, ease);
     }
     public static void TweenJoin(this Component comp, TweenType type, NumericValue numeric, float duration, Ease ease = Ease.Linear)
     {
-        TweenSystemManage.Join(comp);
+        TweenSystemManage.Join(comp, type, numeric, duration, ease);
     }
     public static void TweenPrepend(this Component comp, TweenType type, NumericValue numeric, float duration, Ease ease = Ease.Linear)
     {
-        TweenSystemManage.Prepend(comp);
+        TweenSystemManage.Prepend(comp, type, numeric, duration, ease);
     }
 }

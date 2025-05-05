@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 public static class TweenSystemManage
 {
-    private static Tweening _tweening = new();
-
     private static Dictionary<Component, Sequence> _schedule = new();
     private static Dictionary<Component, TweenStatus> _status = new();
 
@@ -36,7 +34,7 @@ public static class TweenSystemManage
         }
         else
         {
-            data = new(Util.GetMonoBehaviour().StartCoroutine(_tweening.OverTime(type, data, trans, Easing.Get(ease), numeric, duration)));
+            data = new(Util.GetMonoBehaviour().StartCoroutine(Tweening.OverTime(type, data, trans, Easing.Get(ease), numeric, duration)));
         }
 
         if(_schedule.TryGetValue(trans, out Sequence schedule))
@@ -70,7 +68,7 @@ public static class TweenSystemManage
 
         if(_schedule.TryGetValue(trans, out Sequence schedule))
         {
-
+            
         }
         else
         {

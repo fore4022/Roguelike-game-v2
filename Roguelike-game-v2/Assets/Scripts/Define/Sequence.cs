@@ -37,6 +37,13 @@ public class Sequence
             {
                 TweenSystemManage.Clear(transform);
             }
+            else
+            {
+                foreach(TweenData _data in tweenQueue.Peek())
+                {
+
+                }
+            }
         }
     }
 }
