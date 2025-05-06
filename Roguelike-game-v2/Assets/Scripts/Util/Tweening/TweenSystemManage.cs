@@ -23,7 +23,7 @@ public static class TweenSystemManage
     {
         _status[comp].flag = status;
     }
-    public static void Execute(Component comp, TweenType type, NumericValue numeric, float duration, Ease ease = Ease.Linear)
+    public static void Execute(Component comp, TweeningType type, NumericValue numeric, float duration, Ease ease = Ease.Linear)
     {
         Transform trans = GetTransform(comp);
         TweenData data = null;
@@ -52,7 +52,7 @@ public static class TweenSystemManage
             _status.Add(trans, new(true));
         }
     }
-    public static void Append(Component comp, TweenType type, NumericValue numeric, float duration, Ease ease = Ease.Linear)
+    public static void Append(Component comp, TweeningType type, NumericValue numeric, float duration, Ease ease = Ease.Linear)
     {
         Transform trans = GetTransform(comp);
         TweenData data = null;
@@ -75,15 +75,11 @@ public static class TweenSystemManage
 
         }
     }
-    public static void Insert(Component comp, TweenType type, NumericValue numeric, float duration, Ease ease = Ease.Linear)
+    public static void Insert(Component comp, TweeningType type, NumericValue numeric, float duration, Ease ease = Ease.Linear)
     {
 
     }
-    public static void Join(Component comp, TweenType type, NumericValue numeric, float duration, Ease ease = Ease.Linear)
-    {
-
-    }
-    public static void Prepend(Component comp, TweenType type, NumericValue numeric, float duration, Ease ease = Ease.Linear)
+    public static void Join(Component comp, TweeningType type, NumericValue numeric, float duration, Ease ease = Ease.Linear)
     {
 
     }

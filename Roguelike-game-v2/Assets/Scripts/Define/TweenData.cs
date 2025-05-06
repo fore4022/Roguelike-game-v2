@@ -2,7 +2,7 @@ using UnityEngine;
 public class TweenData
 {
     public Coroutine coroutine;
-    public TweenType type;
+    public TweeningType type;
     public Transform trans;
     public EaseDelegate easeDel;
     public NumericValue numeric;
@@ -12,7 +12,7 @@ public class TweenData
     {
         this.coroutine = coroutine;
     }
-    public TweenData(TweenType type, Transform trans, EaseDelegate easeDel, NumericValue numeric, float duration)
+    public TweenData(TweeningType type, Transform trans, EaseDelegate easeDel, NumericValue numeric, float duration)
     {
         this.type = type;
         this.trans = trans;

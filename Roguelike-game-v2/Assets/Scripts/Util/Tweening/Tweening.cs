@@ -8,7 +8,7 @@ public static class Tweening
 
     private static readonly Type _rectTransform = typeof(RectTransform);
 
-    public static IEnumerator OverTime(TweenType type, TweenData data, Transform transform, EaseDelegate ease, NumericValue targetValue, float duration)
+    public static IEnumerator OverTime(TweeningType type, TweenData data, Transform transform, EaseDelegate ease, NumericValue targetValue, float duration)
     {
         Tween_TF del = null;
         NumericValue initialValue = new();
@@ -24,15 +24,15 @@ public static class Tweening
 
         switch(type)
         {
-            case TweenType.Scale:
+            case TweeningType.Scale:
                 initialValue.Float = transform.localScale.x;
                 del += Scale;
                 break;
-            case TweenType.Position:
+            case TweeningType.Position:
                 initialValue.Vector = transform.localPosition;
                 del += Position;
                 break;
-            case TweenType.Rotation:
+            case TweeningType.Rotation:
                 initialValue.Vector = transform.localRotation.eulerAngles;
                 del += Rotation;
                 break;
