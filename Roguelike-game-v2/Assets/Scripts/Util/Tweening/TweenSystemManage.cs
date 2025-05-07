@@ -23,10 +23,10 @@ public static class TweenSystemManage
     {
         _status[comp].flag = status;
     }
-    public static void Execute(Component comp, TweeningType type, NumericValue numeric, float duration, Ease ease = Ease.Linear)
+    public static void Execute(Component comp, TweenOperation op, TweenType type, NumericValue numeric, float duration, Ease ease, float delay = 0)
     {
         Transform trans = GetTransform(comp);
-        TweenData data = null;
+        TweenData data = new();
 
         if(trans == null)
         {
@@ -34,10 +34,17 @@ public static class TweenSystemManage
         }
         else
         {
-            data = new(Util.GetMonoBehaviour().StartCoroutine(Tweening.OverTime(type, data, trans, Easing.Get(ease), numeric, duration)));
+            if(op == TweenOperation.Append)
+            {
+                data.Set(type, trans, Easing.Get(ease), numeric, duration);
+            }
+            else
+            {
+                data.Set(Util.GetMonoBehaviour().StartCoroutine(Tweening.OverTime(type, data, trans, Easing.Get(ease), numeric, duration, delay)));
+            }
         }
 
-        if(_schedule.TryGetValue(trans, out Sequence schedule))
+        if(_schedule.TryGetValue(trans, out Sequence schedule) && op != TweenOperation.Append)
         {
             schedule.Peek().Add(data);
         }
@@ -45,47 +52,20 @@ public static class TweenSystemManage
         {
             List<TweenData> sched = new() { data };
 
-            schedule = new();
+            if(op != TweenOperation.Append)
+            {
+                schedule = new();
+
+                _schedule.Add(trans, schedule);
+                _status.Add(trans, new(true));
+            }
 
             schedule.Enqueue(sched);
-            _schedule.Add(trans, schedule);
-            _status.Add(trans, new(true));
-        }
+        }      
     }
-    public static void Append(Component comp, TweeningType type, NumericValue numeric, float duration, Ease ease = Ease.Linear)
+    public static void Release(Transform transform, TweenData data)
     {
-        Transform trans = GetTransform(comp);
-        TweenData data = null;
-
-        if(trans == null)
-        {
-            return;
-        }
-        else
-        {
-            data = new(type, trans, Easing.Get(ease), numeric, duration);
-        }
-
-        if(_schedule.TryGetValue(trans, out Sequence schedule))
-        {
-            
-        }
-        else
-        {
-
-        }
-    }
-    public static void Insert(Component comp, TweeningType type, NumericValue numeric, float duration, Ease ease = Ease.Linear)
-    {
-
-    }
-    public static void Join(Component comp, TweeningType type, NumericValue numeric, float duration, Ease ease = Ease.Linear)
-    {
-
-    }
-    public static void Release(Transform transform, TweenData tween)
-    {
-        _schedule[transform].Dequeue(transform, tween);
+        _schedule[transform].Dequeue(transform, data);
     }
     public static void Clear(Transform transform)
     {
@@ -105,10 +85,10 @@ public static class TweenSystemManage
         {
             foreach(TweenData data in sequence.Values()[0])
             {
-                Debug.Log(data);
-                Debug.Log(data.coroutine);
-
-                Util.GetMonoBehaviour().StopCoroutine(data.coroutine);
+                if(data.coroutine != null)
+                {
+                    Util.GetMonoBehaviour().StopCoroutine(data.coroutine);
+                }
             }
 
             Clear(trans);

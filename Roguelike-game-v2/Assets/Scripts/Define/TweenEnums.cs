@@ -1,10 +1,10 @@
-public enum TweeningType
+public enum TweenType
 {
     Scale,
     Position,
     Rotation
 }
-public enum TweenType
+public enum TweenOperation
 {
     Append,
     Insert,

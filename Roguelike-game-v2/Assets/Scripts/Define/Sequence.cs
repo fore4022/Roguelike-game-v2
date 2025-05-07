@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 public class Sequence
 {
@@ -29,7 +30,7 @@ public class Sequence
     {
         tweenQueue.Peek().Remove(data);
 
-        if(tweenQueue.Peek().Count == 0)
+        if(tweenQueue.Peek().Count == 0 || tweenQueue.Peek().Count(o => o.delay != 0) != 0)
         {
             tweenQueue.Dequeue();
 
@@ -41,7 +42,7 @@ public class Sequence
             {
                 foreach(TweenData _data in tweenQueue.Peek())
                 {
-                    _data.coroutine = Util.GetMonoBehaviour().StartCoroutine(Tweening.OverTime(_data.type, data, _data.trans, _data.easeDel, _data.numeric, _data.duration));
+                    _data.Set(Util.GetMonoBehaviour().StartCoroutine(Tweening.OverTime(_data.type, _data, _data.trans, _data.easeDel, _data.numeric, _data.duration)));
                 }
             }
         }

@@ -8,7 +8,7 @@ public static class Tweening
 
     private static readonly Type _rectTransform = typeof(RectTransform);
 
-    public static IEnumerator OverTime(TweeningType type, TweenData data, Transform transform, EaseDelegate ease, NumericValue targetValue, float duration)
+    public static IEnumerator OverTime(TweenType type, TweenData data, Transform transform, EaseDelegate ease, NumericValue targetValue, float duration, float delay = 0)
     {
         Tween_TF del = null;
         NumericValue initialValue = new();
@@ -16,23 +16,40 @@ public static class Tweening
         float currentTime = 0;
         bool isRectTransform = transform.GetType() == _rectTransform;
 
+        data.delay = delay;
+
         yield return new WaitUntil(() => TweenSystemManage.GetStatus(transform) != null);
 
         status = TweenSystemManage.GetStatus(transform);
 
         yield return new WaitForEndOfFrame();
 
+        if(delay > 0)
+        {
+            while (currentTime < delay)
+            {
+                if (status.flag)
+                {
+                    currentTime += Time.deltaTime;
+                }
+
+                yield return null;
+            }
+
+            currentTime = 0;
+        }
+
         switch(type)
         {
-            case TweeningType.Scale:
+            case TweenType.Scale:
                 initialValue.Float = transform.localScale.x;
                 del += Scale;
                 break;
-            case TweeningType.Position:
+            case TweenType.Position:
                 initialValue.Vector = transform.localPosition;
                 del += Position;
                 break;
-            case TweeningType.Rotation:
+            case TweenType.Rotation:
                 initialValue.Vector = transform.localRotation.eulerAngles;
                 del += Rotation;
                 break;
@@ -62,7 +79,10 @@ public static class Tweening
             yield return null;
         }
 
-        TweenSystemManage.Release(transform, data);
+        if(delay == 0)
+        {
+            TweenSystemManage.Release(transform, data);
+        }
     }
 
     // Scale
