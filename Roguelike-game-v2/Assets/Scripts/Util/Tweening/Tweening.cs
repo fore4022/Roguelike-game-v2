@@ -55,7 +55,7 @@ public static class Tweening
                 break;
         }
 
-        while(currentTime != duration)
+        while (currentTime != duration)
         {
             if(status.flag)
             {

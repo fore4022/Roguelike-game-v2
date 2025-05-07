@@ -13,6 +13,10 @@ public class Sequence
     {
         return tweenQueue.ToArray();
     }
+    public List<TweenData> PeekLast()
+    {
+        return tweenQueue.ToArray()[tweenQueue.Count - 1];
+    }
     public List<TweenData> Peek()
     {
         if(tweenQueue.Count == 0)
@@ -30,7 +34,7 @@ public class Sequence
     {
         tweenQueue.Peek().Remove(data);
 
-        if(tweenQueue.Peek().Count == 0 || tweenQueue.Peek().Count(o => o.delay != 0) != 0)
+        if(tweenQueue.Peek().Count == tweenQueue.Peek().Count(o => o.delay != 0))
         {
             tweenQueue.Dequeue();
 

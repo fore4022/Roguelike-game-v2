@@ -18,13 +18,14 @@ public class TweenData
         this.numeric = numeric;
         this.duration = duration;
     }
-    public void Set(Coroutine coroutine, float delay)
-    {
-        this.coroutine = coroutine;
-        this.delay = delay;
-    }
     public void Set(Coroutine coroutine)
     {
         this.coroutine = coroutine;
+
+        type = default;
+        trans = null;
+        easeDel = null;
+        numeric = default;
+        duration = default;
     }
 }

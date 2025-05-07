@@ -23,30 +23,43 @@ public static class TweenSystemManage
     {
         _status[comp].flag = status;
     }
-    public static void Execute(Component comp, TweenOperation op, TweenType type, NumericValue numeric, float duration, Ease ease, float delay = 0)
+    public static Component Execute(Component comp, TweenOperation op, TweenType type, NumericValue numeric, float duration, Ease ease, float delay = 0)
     {
         Transform trans = GetTransform(comp);
         TweenData data = new();
 
         if(trans == null)
         {
-            return;
+            return null;
         }
         else
         {
-            if(op == TweenOperation.Append)
+            switch(op)
             {
-                data.Set(type, trans, Easing.Get(ease), numeric, duration);
-            }
-            else
-            {
-                data.Set(Util.GetMonoBehaviour().StartCoroutine(Tweening.OverTime(type, data, trans, Easing.Get(ease), numeric, duration, delay)));
+                case TweenOperation.Append:
+                    data.Set(type, trans, Easing.Get(ease), numeric, duration);
+                    break;
+                case TweenOperation.Insert:
+                    data.Set(Util.GetMonoBehaviour().StartCoroutine(Tweening.OverTime(type, data, trans, Easing.Get(ease), numeric, duration, delay)));
+                    break;
+                case TweenOperation.Join:
+                    if(_schedule.ContainsKey(trans))
+                    {
+                        if(_schedule[trans].Count() > 1)
+                        {
+                            data.Set(type, trans, Easing.Get(ease), numeric, duration);
+                            break;
+                        }
+                    }
+
+                    data.Set(Util.GetMonoBehaviour().StartCoroutine(Tweening.OverTime(type, data, trans, Easing.Get(ease), numeric, duration, delay)));
+                    break;
             }
         }
 
         if(_schedule.TryGetValue(trans, out Sequence schedule) && op != TweenOperation.Append)
         {
-            schedule.Peek().Add(data);
+            schedule.PeekLast().Add(data);
         }
         else 
         {
@@ -61,7 +74,9 @@ public static class TweenSystemManage
             }
 
             schedule.Enqueue(sched);
-        }      
+        }
+
+        return comp;
     }
     public static void Release(Transform transform, TweenData data)
     {
