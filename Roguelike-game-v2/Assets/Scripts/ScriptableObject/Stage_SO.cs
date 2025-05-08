@@ -4,7 +4,7 @@ using UnityEngine;
 public class Stage_SO : ScriptableObject
 {
     public StageInformation_SO information = null;
-    public IconSprite_SO iconSprite = null;
+    public Icon_SO iconSprite = null;
 
     [HideInInspector]
     public string infoPath;

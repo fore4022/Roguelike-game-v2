@@ -1,5 +1,5 @@
 using UnityEngine;
-public interface Iskill
+public interface ISkill
 {
     public bool Finished { get; }
     public void SetAttack();

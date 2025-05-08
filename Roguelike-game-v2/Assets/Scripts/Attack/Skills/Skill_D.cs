@@ -6,7 +6,7 @@ using UnityEngine;
 /// </para>
 /// 대기 애니메이션 재생 이후 적을 공격하며, 화면 상의 무작위 공간에 위치한다.
 /// </summary>
-public class Skill_D : Skill, Iskill
+public class Skill_D : Skill, ISkill
 {
     [SerializeField]
     private string animationName;
