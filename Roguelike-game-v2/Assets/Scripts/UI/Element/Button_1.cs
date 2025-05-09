@@ -1,4 +1,3 @@
-using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 public abstract class Button_1 : Button_Default, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
@@ -11,7 +10,6 @@ public abstract class Button_1 : Button_Default, IPointerEnterHandler, IPointerE
 
     private Image image;
 
-    private Coroutine adjustmentScale = null;
     private bool isPointerDown = false;
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -32,23 +30,15 @@ public abstract class Button_1 : Button_Default, IPointerEnterHandler, IPointerE
     }
     protected virtual void PointerEnter()
     {
-        if(adjustmentScale != null)
-        {
-            StopCoroutine(adjustmentScale);
-        }
-
-        adjustmentScale = StartCoroutine(UIElementUtility.SetImageScale(rectTransform, maxScale, duration));
+        rectTransform.KillTween();
+        rectTransform.SetScale(maxScale, duration);
     }
     protected virtual void PointerExit()
     {
         if(isPointerDown) { return; }
 
-        if(adjustmentScale != null)
-        {
-            StopCoroutine(adjustmentScale);
-        }
-
-        UIElementUtility.SetImageScale(rectTransform, minScale);
+        rectTransform.KillTween();
+        rectTransform.SetScale(minScale, duration);
     }
     protected virtual void PointerDown()
     {
@@ -56,7 +46,7 @@ public abstract class Button_1 : Button_Default, IPointerEnterHandler, IPointerE
     }
     protected virtual void PointerUp()
     {
-        UIElementUtility.SetImageScale(rectTransform, minScale);
+        rectTransform.SetScale(minScale, 0);
 
         isPointerDown = false;
     }
@@ -64,7 +54,7 @@ public abstract class Button_1 : Button_Default, IPointerEnterHandler, IPointerE
     {
         if(minScale != 1)
         {
-            UIElementUtility.SetImageScale(rectTransform, minScale);
+            rectTransform.SetScale(minScale, 0);
         }
 
         UIElementUtility.SetImageAlpha(image, minAlpha, duration);

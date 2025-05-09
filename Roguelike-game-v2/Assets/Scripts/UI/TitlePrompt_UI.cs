@@ -1,17 +1,17 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
-public class Title_Scene : MonoBehaviour, IPointerClickHandler
+public class TitlePrompt_UI : MonoBehaviour, IPointerClickHandler
 {
-    private const string gameDataPath = "GameData";
+    private const string _gameDataPath = "GameData";
 
-    private bool isLoad = false;
+    private bool _isLoad = false;
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(isLoad)
+        if(_isLoad)
         {
-            isLoad = false;
+            _isLoad = false;
 
             Managers.UI.GetUI<StartMessage_UI>().SetState();
             Managers.Scene.LoadScene(SceneName.Main, false);
@@ -19,7 +19,7 @@ public class Title_Scene : MonoBehaviour, IPointerClickHandler
     }
     private void Start()
     {
-        Managers.Main.GameData.SO = Util.LoadingToPath<GameData_SO>(gameDataPath, false);
+        Managers.Main.GameData.SO = Util.LoadingToPath<GameData_SO>(_gameDataPath, false);
 
         StartCoroutine(Initalizing());
     }
@@ -43,6 +43,6 @@ public class Title_Scene : MonoBehaviour, IPointerClickHandler
 
         Managers.UI.GetUI<StartMessage_UI>().SetState();
 
-        isLoad = true;
+        _isLoad = true;
     }
 }

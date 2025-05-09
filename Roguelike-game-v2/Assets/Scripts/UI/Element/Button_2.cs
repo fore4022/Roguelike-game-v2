@@ -9,20 +9,12 @@ public abstract class Button_2 : Button_Default, IPointerDownHandler, IPointerEx
 
     public virtual void OnPointerDown(PointerEventData eventData)
     {
-        if (adjustmentScale != null)
-        {
-            StopCoroutine(adjustmentScale);
-        }
-
-        adjustmentScale = StartCoroutine(UIElementUtility.SetImageScale(rectTransform, maxScale, duration));
+        rectTransform.KillTween();
+        rectTransform.SetScale(maxScale, duration);
     }
     public virtual void OnPointerExit(PointerEventData eventData)
     {
-        if (adjustmentScale != null)
-        {
-            StopCoroutine(adjustmentScale);
-        }
-
-        adjustmentScale = StartCoroutine(UIElementUtility.SetImageScale(rectTransform, minScale, duration));
+        rectTransform.KillTween();
+        rectTransform.SetScale(minScale, duration);
     }
 }

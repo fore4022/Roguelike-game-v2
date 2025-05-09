@@ -61,29 +61,6 @@ public static class UIElementUtility
             yield return delay;
         }
     }
-    public static IEnumerator SetImageScale(RectTransform rectTransform, float targetScale, float duration)//img
-    {
-        Vector3 scale = new();
-        float totalTime = 0;
-        float scaleValue;
-
-        while (totalTime != 1)
-        {
-            totalTime += Time.unscaledDeltaTime;
-
-            if (totalTime > duration)
-            {
-                totalTime = 1;
-            }
-
-            scaleValue = Mathf.Lerp(rectTransform.localScale.x, targetScale, totalTime);
-            scale.x = scaleValue;
-            scale.y = scaleValue;
-            rectTransform.localScale = scale;
-
-            yield return null;
-        }
-    }
     private static IEnumerator SetTextAlpha(List<TextMeshProUGUI> tmpList, Color color, float targetAlphaValue, float duration)//
     {
         Color childrenColor;
