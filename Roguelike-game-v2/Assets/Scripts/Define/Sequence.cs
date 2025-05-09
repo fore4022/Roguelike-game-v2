@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 public class Sequence
 {
@@ -34,7 +33,7 @@ public class Sequence
     {
         tweenQueue.Peek().Remove(data);
 
-        if(tweenQueue.Peek().Count == tweenQueue.Peek().Count(o => o.delay != 0))
+        if(tweenQueue.Peek().Count == 0)
         {
             tweenQueue.Dequeue();
 

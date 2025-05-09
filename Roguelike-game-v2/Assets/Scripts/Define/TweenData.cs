@@ -7,7 +7,6 @@ public class TweenData
     public EaseDelegate easeDel;
     public NumericValue numeric;
     public float duration;
-    public float delay;
 
     public TweenData() { }
     public void Set(TweenType type, Transform trans, EaseDelegate easeDel, NumericValue numeric, float duration)

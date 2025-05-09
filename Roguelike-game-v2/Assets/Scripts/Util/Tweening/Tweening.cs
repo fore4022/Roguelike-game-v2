@@ -16,8 +16,6 @@ public static class Tweening
         float currentTime = 0;
         bool isRectTransform = transform.GetType() == _rectTransform;
 
-        data.delay = delay;
-
         yield return new WaitUntil(() => TweenSystemManage.GetStatus(transform) != null);
 
         status = TweenSystemManage.GetStatus(transform);

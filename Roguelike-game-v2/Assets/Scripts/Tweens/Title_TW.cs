@@ -18,9 +18,8 @@ public class Title_TW : MonoBehaviour
         StartCoroutine(ReOrder());
 
         _dino.SetScale(17, 1.2f, 0.15f, Ease.OutExpo)
-            .SetPosition(new(0, 0.5f), 0.5f, 0.15f, Ease.OutCubic)
-            .SetRotation(new(0, 0, 7.5f), 1, 0.15f, Ease.OutCirc)
-            .SetPosition(new(0, 0), 2, Ease.InBack, TweenOperation.Append);
+            .SetPosition(new(0, 0.5f), 0.5f, 0.15f, Ease.OutCirc)
+            .SetRotation(new(0, 0, 7.5f), 1.2f, 0.15f, Ease.OutExpo);
     }
     private IEnumerator ReOrder()
     {
