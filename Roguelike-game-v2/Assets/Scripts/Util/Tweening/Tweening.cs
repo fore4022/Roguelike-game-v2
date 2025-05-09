@@ -76,10 +76,7 @@ public static class Tweening
             yield return null;
         }
 
-        if(delay == 0)
-        {
-            TweenSystemManage.Release(transform, data);
-        }
+        TweenSystemManage.Release(transform, data);
     }
 
     // Scale

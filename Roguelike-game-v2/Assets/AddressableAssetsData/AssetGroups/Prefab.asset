@@ -309,6 +309,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 737960541761ede48a947d47e2f096de
+    m_Address: Assets/Sprites/FX Pack/Demo/Impact/impact002.anim
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 761c6e2b1891ec64b9cf97bc303d63a1, type: 2}
   m_SchemaSet:
