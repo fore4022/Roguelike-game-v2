@@ -43,12 +43,6 @@ public static class TweenSystem
         return TweenSystemManage.Execute(comp, TweenOperation.Insert, TweenType.Rotation, new(targetRotation), duration, ease, delay);
     }
 
-    // Alpha
-    public static Component SetAlpha(this Component comp)
-    {
-        return comp;
-    }
-
     // Manage
     public static Component StopTween(this Component comp)
     {
