@@ -38,12 +38,18 @@ public class Title_TW : MonoBehaviour
 
         // mon1
         _mon1.SetScale(3, 0.6f, 0.2f, Ease.OutExpo)
-            .SetPosition(new(0.45f, -3.15f), 0.65f, 0.2f, Ease.OutCirc)
-            .SetRotation(new(0, 0, 20), 1f, 0.2f, Ease.OutExpo);
+            .SetPosition(new(0.45f, -3.15f), 0.65f, 0.25f, Ease.OutCirc)
+            .SetRotation(new(0, 0, 20), 1f, 0.25f, Ease.OutExpo);
 
         // mon2
+        _mon2.SetScale(2.5f, 0.7f, 0.3f, Ease.OutExpo)
+            .SetPosition(new(2.2f, -4.05f), 0.65f, 0.3f, Ease.OutCirc)
+            .SetRotation(new(0, 0, 7.5f), 1f, 0.3f, Ease.OutExpo);
 
         // mon3
+        _mon3.SetScale(3, 0.9f, 0.4f, Ease.OutExpo)
+            .SetPosition(new(-2.9f, -0.8f), 1f, 0.4f, Ease.OutCirc)
+            .SetRotation(new(0, 0, 40), 1.1f, 0.4f, Ease.OutExpo);
 
         // mon4
 
