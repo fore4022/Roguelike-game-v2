@@ -21,49 +21,56 @@ public class Title_TW : MonoBehaviour
     [SerializeField]
     private Transform _mon8;
     [SerializeField]
-    private Transform _mon9;
-    [SerializeField]
-    private Transform _mon10;
-    [SerializeField]
     private SpriteRenderer _explosion;
 
     private void Start()
     {
         StartCoroutine(ReOrder());
 
-        // dino
+        // Dino
         _dino.SetScale(17, 1.2f, 0.15f, Ease.OutExpo)
             .SetPosition(new(0, 0.5f), 0.5f, 0.15f, Ease.OutCirc)
-            .SetRotation(new(0, 0, 727.5f), 1f, 0.15f, Ease.OutExpo);
+            .SetRotation(new(0, 0, 727.5f), 1.1f, 0.15f, Ease.OutExpo);
 
-        // mon1
+        // Moth
         _mon1.SetScale(3, 0.6f, 0.2f, Ease.OutExpo)
             .SetPosition(new(0.45f, -3.15f), 0.65f, 0.25f, Ease.OutCirc)
             .SetRotation(new(0, 0, 20), 1f, 0.25f, Ease.OutExpo);
 
-        // mon2
+        // Cloud
         _mon2.SetScale(2.5f, 0.7f, 0.3f, Ease.OutExpo)
             .SetPosition(new(2.2f, -4.05f), 0.65f, 0.3f, Ease.OutCirc)
             .SetRotation(new(0, 0, 7.5f), 1f, 0.3f, Ease.OutExpo);
 
-        // mon3
+        // SlimeSquare
         _mon3.SetScale(3, 0.9f, 0.4f, Ease.OutExpo)
             .SetPosition(new(-2.9f, -0.8f), 1f, 0.4f, Ease.OutCirc)
-            .SetRotation(new(0, 0, 40), 1.1f, 0.4f, Ease.OutExpo);
+            .SetRotation(new(0, 0, 1120), 1.1f, 0.4f, Ease.OutExpo);
 
-        // mon4
+        // Mushroom_1
+        _mon4.SetScale(2, 1.05f, 0.4f, Ease.OutExpo)
+            .SetPosition(new(3f, 5.5f), 1f, 0.4f, Ease.OutExpo)
+            .SetRotation(new(0, 0, 390), 1.1f, 0.4f, Ease.OutExpo);
 
-        // mon5
+        // Mushroom_2
+        _mon5.SetScale(3, 1.2f, 0.45f, Ease.OutExpo)
+            .SetPosition(new(3f, -1.4f), 0.8f, 0.45f, Ease.OutExpo)
+            .SetRotation(new(0, 0, 150), 1.2f, 0.45f, Ease.OutExpo);
 
-        // mon6
+        // Sword_1
+        _mon6.SetScale(3, 1.2f, 0.55f, Ease.OutExpo)
+            .SetPosition(new(-2.25f, 6.5f), 0.8f, 0.55f, Ease.OutExpo)
+            .SetRotation(new(0, 0, 332.5f), 1.2f, 0.55f, Ease.OutExpo);
 
-        // mon7
+        // Sword_2
+        _mon7.SetScale(4, 1.2f, 0.45f, Ease.OutExpo)
+            .SetPosition(new(-1.85f, 5f), 0.8f, 0.45f, Ease.OutExpo)
+            .SetRotation(new(0, 0, 752.5f), 1.2f, 0.45f, Ease.OutExpo);
 
-        // mon8
-
-        // mon9
-
-        // mon10
+        // Mask
+        _mon8.SetScale(1.8f, 1.2f, 0.45f, Ease.OutExpo)
+            .SetPosition(new(3f, -7f), 0.8f, 0.45f, Ease.OutExpo)
+            .SetRotation(new(0, 0, 15), 1.2f, 0.45f, Ease.OutExpo);
     }
     private IEnumerator ReOrder()
     {
