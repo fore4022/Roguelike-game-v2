@@ -6,8 +6,6 @@ public class StartMessage_UI : UserInterface
     private TextMeshProUGUI tmp;
 
     private const float duration = 1.5f;
-    private const int minAlpha = 50;
-    private const int maxAlpha = 255;
 
     private Coroutine textAnimation;
     private Coroutine blink;
@@ -47,7 +45,7 @@ public class StartMessage_UI : UserInterface
 
             StopCoroutine(blink);
 
-            UIElementUtility.SetTextAlpha(tmp, maxAlpha, 0);
+            UIElementUtility.SetTextAlpha(tmp, 255, 0);
         }
 
         delay = new(duration / 2);
@@ -79,6 +77,6 @@ public class StartMessage_UI : UserInterface
 
         tmp.text = "PRESS TO START";
 
-        blink = StartCoroutine(UIElementUtility.BlinkText(tmp, minAlpha, maxAlpha, duration, false));
+        blink = StartCoroutine(UIElementUtility.BlinkText(tmp, duration, false));
     }
 }

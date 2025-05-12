@@ -14,8 +14,6 @@ public class UserLevelUp_UI : UserInterface, IPointerClickHandler
     private const float delaySec = 0.8f;
     private const float duration = 1.5f;
     private const int maxCount = 6;
-    private const int minAlpha = 50;
-    private const int maxAlpha = 255;
 
     private WaitForSeconds delay = new(delaySec);
     private bool allowClose = false;
@@ -64,7 +62,7 @@ public class UserLevelUp_UI : UserInterface, IPointerClickHandler
 
         prompt.gameObject.SetActive(true);
         StartCoroutine(Typing.EraseEffecting(levelLog, length));
-        StartCoroutine(UIElementUtility.BlinkText(prompt, minAlpha, maxAlpha, duration, false));
+        StartCoroutine(UIElementUtility.BlinkText(prompt, duration, false));
     }
     private IEnumerator ParticleEffecting()
     {

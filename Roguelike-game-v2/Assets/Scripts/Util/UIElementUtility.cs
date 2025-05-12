@@ -6,11 +6,11 @@ using UnityEngine;
 using UnityEngine.UI;
 public static class UIElementUtility
 {
-    public static void SetImageScale(RectTransform rectTransform, float targetScale)//img
+    public static void SetImageScale(RectTransform rectTransform, float targetScale)
     {
         rectTransform.localScale = Calculate.GetVector(targetScale);
     }
-    public static Coroutine SetTextAlpha(TextMeshProUGUI tmp, float targetAlphaValue, float duration, bool recursive = true)//
+    public static Coroutine SetTextAlpha(TextMeshProUGUI tmp, float targetAlphaValue, float duration, bool recursive = true)
     {
         List<TextMeshProUGUI> tmpList = new();
 
@@ -28,7 +28,7 @@ public static class UIElementUtility
 
         return Util.GetMonoBehaviour().StartCoroutine(SetTextAlpha(tmpList, color, targetAlphaValue, duration));
     }
-    public static void SetImageAlpha(Image img, float targetAlphaValue, float duration = 0, bool recursive = true)//
+    public static void SetImageAlpha(Image img, float targetAlphaValue, float duration = 0, bool recursive = true)
     {
         List<Image> imgList = new();
 
@@ -46,7 +46,7 @@ public static class UIElementUtility
 
         Util.GetMonoBehaviour().StartCoroutine(SetImageAlpha(imgList, color, targetAlphaValue, duration));
     }
-    public static IEnumerator BlinkText(TextMeshProUGUI tmp, int minAlpha, int maxAlpha, float duration, bool recursive = true)
+    public static IEnumerator BlinkText(TextMeshProUGUI tmp, float duration, bool recursive = true, int minAlpha = 155, int maxAlpha = 255)
     {
         WaitForSeconds delay = new(duration);
 
@@ -61,7 +61,7 @@ public static class UIElementUtility
             yield return delay;
         }
     }
-    private static IEnumerator SetTextAlpha(List<TextMeshProUGUI> tmpList, Color color, float targetAlphaValue, float duration)//
+    private static IEnumerator SetTextAlpha(List<TextMeshProUGUI> tmpList, Color color, float targetAlphaValue, float duration)
     {
         Color childrenColor;
         float totalTime = 0;
@@ -88,7 +88,7 @@ public static class UIElementUtility
             yield return null;
         }
     }
-    private static IEnumerator SetImageAlpha(List<Image> imgList, Color color, float targetAlphaValue, float duration)//
+    private static IEnumerator SetImageAlpha(List<Image> imgList, Color color, float targetAlphaValue, float duration)
     {
         Color childrenColor;
 

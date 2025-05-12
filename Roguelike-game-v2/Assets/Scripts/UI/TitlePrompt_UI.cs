@@ -1,12 +1,18 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
-public class TitlePrompt_UI : MonoBehaviour, IPointerClickHandler
+public class TitlePrompt_UI : UserInterface, IPointerClickHandler
 {
     private const string _gameDataPath = "GameData";
 
     private bool _isLoad = false;
 
+    public override void SetUserInterface()
+    {
+        Managers.Main.GameData.SO = Util.LoadingToPath<GameData_SO>(_gameDataPath, false);
+
+        StartCoroutine(Initalizing());
+    }
     public void OnPointerClick(PointerEventData eventData)
     {
         if(_isLoad)
@@ -16,12 +22,6 @@ public class TitlePrompt_UI : MonoBehaviour, IPointerClickHandler
             Managers.UI.GetUI<StartMessage_UI>().SetState();
             Managers.Scene.LoadScene(SceneName.Main, false);
         }
-    }
-    private void Start()
-    {
-        Managers.Main.GameData.SO = Util.LoadingToPath<GameData_SO>(_gameDataPath, false);
-
-        StartCoroutine(Initalizing());
     }
     private IEnumerator Initalizing()
     {
