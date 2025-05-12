@@ -59,7 +59,7 @@ public class Title_TW : MonoBehaviour
 
         // Sword_1
         _mon6.SetScale(3, 1.2f, 0.55f, Ease.OutExpo)
-            .SetPosition(new(-3f, 6.25f), 0.8f, 0.55f, Ease.OutQuad)
+            .SetPosition(new(-3f, 6.25f), 0.8f, 0.5f, Ease.OutQuad)
             .SetRotation(new(0, 0, 332.5f), 1.2f, 0.55f, Ease.OutQuad);
 
         // Sword_2
@@ -81,5 +81,7 @@ public class Title_TW : MonoBehaviour
         yield return new WaitUntil(() => anime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1);
 
         _explosion.sortingOrder = -1;
+
+        StartCoroutine(Managers.UI.GetUI<TitlePrompt_UI>().UserDataLoading());
     }
 }

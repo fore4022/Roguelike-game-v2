@@ -24,7 +24,7 @@ public static class Tweening
 
         if(delay > 0)
         {
-            while (currentTime < delay)
+            while(currentTime < delay)
             {
                 if (status.flag)
                 {
@@ -53,7 +53,7 @@ public static class Tweening
                 break;
         }
 
-        while (currentTime != duration)
+        while(currentTime != duration)
         {
             if(status.flag)
             {

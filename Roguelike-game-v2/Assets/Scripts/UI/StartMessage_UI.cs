@@ -14,7 +14,9 @@ public class StartMessage_UI : UserInterface
 
     public override void SetUserInterface()
     {
-        tmp = GetComponent<TextMeshProUGUI>();
+        tmp = GetComponentInChildren<TextMeshProUGUI>();
+
+        gameObject.SetActive(false);
     }
     public void SetState()
     {
@@ -44,13 +46,12 @@ public class StartMessage_UI : UserInterface
             text = "Starting";
 
             StopCoroutine(blink);
-
             UIElementUtility.SetTextAlpha(tmp, 255, 0);
         }
 
         delay = new(duration / 2);
 
-        while (true)
+        while(true)
         {
             tmp.text = text;
 
@@ -76,7 +77,6 @@ public class StartMessage_UI : UserInterface
         delay = new(duration);
 
         tmp.text = "PRESS TO START";
-
         blink = StartCoroutine(UIElementUtility.BlinkText(tmp, duration, false));
     }
 }
