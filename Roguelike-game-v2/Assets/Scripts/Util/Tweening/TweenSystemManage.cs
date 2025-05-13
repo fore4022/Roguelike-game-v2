@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 public static class TweenSystemManage
 {
@@ -131,6 +132,31 @@ public static class TweenSystemManage
                 Tweening.ToEnd(data);
             }
         }
+    }
+    public static void AllSkipToEnd()
+    {
+        List<Component> keys = _schedule.Keys.ToList();
+
+        for(int i = 0; i < keys.Count; i++)
+        {
+            SkipToEnd(keys[i]);
+        }
+    }
+    public static void Reset()
+    {
+        foreach(Sequence schedule in _schedule.Values)
+        {
+            foreach(List<TweenData> datas in schedule.Values())
+            {
+                foreach(TweenData data in datas)
+                {
+                    Util.GetMonoBehaviour().StopCoroutine(data.coroutine);
+                }
+            }
+        }
+
+        _schedule = new();
+        _status = new();
     }
     private static Transform GetTransform(Component comp)
     {

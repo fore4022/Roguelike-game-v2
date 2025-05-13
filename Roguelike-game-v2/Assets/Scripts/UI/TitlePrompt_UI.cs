@@ -21,6 +21,10 @@ public class TitlePrompt_UI : UserInterface, IPointerClickHandler
             Managers.UI.GetUI<StartMessage_UI>().SetState();
             Managers.Scene.LoadScene(SceneName.Main, false);
         }
+        else
+        {
+            TweenSystemManage.AllSkipToEnd();
+        }
     }
     public IEnumerator UserDataLoading()
     {

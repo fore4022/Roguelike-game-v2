@@ -17,7 +17,8 @@ public class Scene_Manager
         isLoad = true;
         this.hasInitialization = hasInitialization;
         this.sceneName = sceneName.ToString();
-        
+
+        TweenSystemManage.Reset();
         Managers.UI.ClearDictionary();
         Managers.UI.ShowUI<SceneLoading_UI>();
 

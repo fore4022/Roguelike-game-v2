@@ -1155,7 +1155,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: -64764471, guid: 484383a900636444e8e2a51210bdeee4, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.9411765}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1209,16 +1209,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 877121e9873a02b40a45cf81f84839c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dino: {fileID: 1310386625}
-  _mon1: {fileID: 755523342}
-  _mon2: {fileID: 78203341}
-  _mon3: {fileID: 1806859643}
-  _mon4: {fileID: 856207650}
-  _mon5: {fileID: 1864643146}
-  _mon6: {fileID: 902362351}
-  _mon7: {fileID: 345573745}
-  _mon8: {fileID: 25695299}
-  _mon9: {fileID: 1468336697}
+  tweens:
+  - {fileID: 1310386625}
+  - {fileID: 755523342}
+  - {fileID: 78203341}
+  - {fileID: 1806859643}
+  - {fileID: 856207650}
+  - {fileID: 1864643146}
+  - {fileID: 902362351}
+  - {fileID: 345573745}
+  - {fileID: 25695299}
+  - {fileID: 1468336697}
   _explosion: {fileID: 912782002}
 --- !u!4 &946866530
 Transform:
