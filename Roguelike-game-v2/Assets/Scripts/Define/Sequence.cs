@@ -45,7 +45,7 @@ public class Sequence
             {
                 foreach(TweenData _data in tweenQueue.Peek())
                 {
-                    _data.Set(Util.GetMonoBehaviour().StartCoroutine(Tweening.OverTime(_data.type, _data, _data.trans, _data.easeDel, _data.numeric, _data.duration)));
+                    _data.Set(Util.GetMonoBehaviour().StartCoroutine(Tweening.OverTime(_data.type, _data, _data.trans, _data.easeDel, _data.targetValue, _data.duration)));
                 }
             }
         }

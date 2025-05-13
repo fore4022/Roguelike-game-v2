@@ -9,12 +9,12 @@ public abstract class Button_2 : Button_Default, IPointerDownHandler, IPointerEx
 
     public virtual void OnPointerDown(PointerEventData eventData)
     {
-        rectTransform.KillTween();
+        rectTransform.Kill();
         rectTransform.SetScale(maxScale, duration);
     }
     public virtual void OnPointerExit(PointerEventData eventData)
     {
-        rectTransform.KillTween();
+        rectTransform.Kill();
         rectTransform.SetScale(minScale, duration);
     }
 }

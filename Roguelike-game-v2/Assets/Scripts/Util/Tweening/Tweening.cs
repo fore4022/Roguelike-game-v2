@@ -8,7 +8,7 @@ public static class Tweening
 
     private static readonly Type _rectTransform = typeof(RectTransform);
 
-    public static IEnumerator OverTime(TweenType type, TweenData data, Transform transform, EaseDelegate ease, NumericValue targetValue, float duration, float delay = 0)
+    public static IEnumerator OverTime(TweenType type, TweenData data, Transform transform, EaseDelegate easeDel, NumericValue targetValue, float duration, float delay = 0)
     {
         Tween_TF del = null;
         NumericValue initialValue = new();
@@ -61,13 +61,13 @@ public static class Tweening
                 {
                     currentTime = Mathf.Min(currentTime + Time.unscaledDeltaTime, duration);
 
-                    del(transform as RectTransform, initialValue, targetValue, ease(currentTime / duration));
+                    del(transform as RectTransform, initialValue, targetValue, easeDel(currentTime / duration));
                 }
                 else
                 {
                     currentTime = Mathf.Min(currentTime + Time.deltaTime, duration);
                     
-                    del(transform, initialValue, targetValue, ease(currentTime / duration));
+                    del(transform, initialValue, targetValue, easeDel(currentTime / duration));
                 }
             }
 
@@ -76,33 +76,66 @@ public static class Tweening
 
         TweenSystemManage.Release(transform, data);
     }
+    public static void ToEnd(TweenData data)
+    {
+        Tween_TF del = null;
+        NumericValue initialValue = new();
+        bool isRectTransform = data.trans.GetType() == _rectTransform;
+
+        switch(data.type)
+        {
+            case TweenType.Scale:
+                initialValue.Float = default;
+                del += Scale;
+                break;
+            case TweenType.Position:
+                initialValue.Vector = default;
+                del += Position;
+                break;
+            case TweenType.Rotation:
+                initialValue.Vector = default;
+                del += Rotation;
+                break;
+        }
+
+        if (isRectTransform)
+        {
+            del(data.trans as RectTransform, initialValue, data.targetValue, data.easeDel(1));
+        }
+        else
+        {
+            del(data.trans, initialValue, data.targetValue, data.easeDel(1));
+        }
+
+        TweenSystemManage.Release(data.trans, data);
+    }
 
     // Scale
-    public static void Scale(Transform transform, NumericValue initial, NumericValue target, float value)
+    private static void Scale(Transform transform, NumericValue initial, NumericValue target, float value)
     {
         transform.localScale = Calculate.GetVector(Mathf.Lerp(initial.Float, target.Float, value));
     }
-    public static void Scale(RectTransform rectTransform, NumericValue initial, NumericValue target, float value)
+    private static void Scale(RectTransform rectTransform, NumericValue initial, NumericValue target, float value)
     {
         rectTransform.localScale = Calculate.GetVector(Mathf.Lerp(initial.Float, target.Float, value));
     }
 
     // Position
-    public static void Position(Transform transform, NumericValue initial, NumericValue target, float value)
+    private static void Position(Transform transform, NumericValue initial, NumericValue target, float value)
     {
         transform.localPosition = Vector3.Lerp(initial.Vector, target.Vector, value);
     }
-    public static void Position(RectTransform rectTransform, NumericValue initial, NumericValue target, float value)
+    private static void Position(RectTransform rectTransform, NumericValue initial, NumericValue target, float value)
     {
         rectTransform.localPosition = Vector3.Lerp(initial.Vector, target.Vector, value);
     }
 
     // Rotation
-    public static void Rotation(Transform transform, NumericValue initial, NumericValue target, float value)
+    private static void Rotation(Transform transform, NumericValue initial, NumericValue target, float value)
     {
         transform.localRotation = Quaternion.Euler(initial.Vector + target.Vector * value);
     }
-    public static void Rotation(RectTransform rectTransform, NumericValue initial, NumericValue target, float value)
+    private static void Rotation(RectTransform rectTransform, NumericValue initial, NumericValue target, float value)
     {
         rectTransform.localRotation = Quaternion.Euler(initial.Vector + target.Vector * value);
     }

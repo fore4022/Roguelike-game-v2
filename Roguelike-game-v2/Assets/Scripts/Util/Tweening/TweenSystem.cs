@@ -44,20 +44,24 @@ public static class TweenSystem
     }
 
     // Manage
-    public static Component StopTween(this Component comp)
+    public static Component Stop(this Component comp)
     {
         TweenSystemManage.SetStatus(comp, false);
 
         return comp;
     }
-    public static Component PlayTween(this Component comp)
+    public static Component Play(this Component comp)
     {
         TweenSystemManage.SetStatus(comp, true);
 
         return comp;
     }
-    public static void KillTween(this Component comp)
+    public static void Kill(this Component comp)
     {
         TweenSystemManage.Kill(comp);
+    }
+    public static void SkipToEnd(this Component comp)
+    {
+        TweenSystemManage.SkipToEnd(comp);
     }
 }

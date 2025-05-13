@@ -34,6 +34,8 @@ public class Title_TW : MonoBehaviour
             .SetPosition(new(0.045f, 0.515f), 0.5f, 0.15f, Ease.OutCirc)
             .SetRotation(new(0, 0, 727.5f), 1.1f, 0.15f, Ease.OutExpo);
 
+        _dino.SkipToEnd();
+
         // Moth
         _mon1.SetScale(3, 0.6f, 0.2f, Ease.OutExpo)
             .SetPosition(new(0.45f, -3.15f), 0.5f, 0.25f, Ease.OutSine)

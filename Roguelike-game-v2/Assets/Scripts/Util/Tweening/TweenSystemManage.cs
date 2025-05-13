@@ -40,7 +40,7 @@ public static class TweenSystemManage
                     data.Set(type, trans, Easing.Get(ease), numeric, duration);
                     break;
                 case TweenOperation.Insert:
-                    data.Set(Util.GetMonoBehaviour().StartCoroutine(Tweening.OverTime(type, data, trans, Easing.Get(ease), numeric, duration, delay)));
+                    data.Set(Util.GetMonoBehaviour().StartCoroutine(Tweening.OverTime(type, data, trans, Easing.Get(ease), numeric, duration, delay)), type, trans, Easing.Get(ease), numeric, duration);
                     break;
                 case TweenOperation.Join:
                     if(_schedule.ContainsKey(trans))
@@ -52,7 +52,7 @@ public static class TweenSystemManage
                         }
                     }
 
-                    data.Set(Util.GetMonoBehaviour().StartCoroutine(Tweening.OverTime(type, data, trans, Easing.Get(ease), numeric, duration, delay)));
+                    data.Set(Util.GetMonoBehaviour().StartCoroutine(Tweening.OverTime(type, data, trans, Easing.Get(ease), numeric, duration, delay)), type, trans, Easing.Get(ease), numeric, duration);
                     break;
             }
         }
@@ -109,9 +109,32 @@ public static class TweenSystemManage
             Clear(trans);
         }
     }
+    public static void SkipToEnd(Component comp)
+    {
+        Transform trans = GetTransform(comp);
+
+        if(trans == null)
+        {
+            return;
+        }
+
+        if(_schedule.TryGetValue(trans, out Sequence sequence))
+        {
+            List<TweenData> dataList = sequence.Peek();
+            int count = dataList.Count;
+
+            for(int i = 0; i < count; i++)
+            {
+                TweenData data = dataList[0];
+
+                Util.GetMonoBehaviour().StopCoroutine(data.coroutine);
+                Tweening.ToEnd(data);
+            }
+        }
+    }
     private static Transform GetTransform(Component comp)
     {
-        if (comp.Equals(_transform))
+        if(comp.Equals(_transform))
         {
             return comp as Transform;
         }

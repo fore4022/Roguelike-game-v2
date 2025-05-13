@@ -30,14 +30,14 @@ public abstract class Button_1 : Button_Default, IPointerEnterHandler, IPointerE
     }
     protected virtual void PointerEnter()
     {
-        rectTransform.KillTween();
+        rectTransform.Kill();
         rectTransform.SetScale(maxScale, duration);
     }
     protected virtual void PointerExit()
     {
         if(isPointerDown) { return; }
 
-        rectTransform.KillTween();
+        rectTransform.Kill();
         rectTransform.SetScale(minScale, duration);
     }
     protected virtual void PointerDown()
