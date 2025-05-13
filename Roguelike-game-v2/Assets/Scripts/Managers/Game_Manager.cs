@@ -12,10 +12,13 @@ public class Game_Manager
     public Player player;
     public Action onStageReset;
 
+
     private int userExp = 0;
+    private bool isPlaying = false;
     private bool gameOver = false;
 
     public int UserExp { get { return userExp; } set { userExp = value; } }
+    public bool IsPlaying { get { return isPlaying; } set { isPlaying = value; } }
     public bool IsGameOver { get { return gameOver; } }
     private void Set()
     {
@@ -33,6 +36,7 @@ public class Game_Manager
     public void GameStart()
     {
         Time.timeScale = 1;
+        isPlaying = true;
         gameOver = false;
 
         inGameTimer.StartTimer();
@@ -44,6 +48,7 @@ public class Game_Manager
     public void ReStart()
     {
         UserExp = 0;
+        isPlaying = false;
         gameOver = false;
         
         attackCasterManage.StopAllCaster();
@@ -56,6 +61,7 @@ public class Game_Manager
     public void GameOver()
     {
         Time.timeScale = 0;
+        isPlaying = false;
         gameOver = true;
 
         Managers.UI.ShowUI<GameOver_UI>();
@@ -90,6 +96,7 @@ public class Game_Manager
         yield return new WaitUntil(() => Managers.UI.GetUI<SceneLoading_UI>() == null);
 
         Time.timeScale = 1;
+        isPlaying = true;
 
         monsterSpawner.ReStart();
         inGameData.player.SetLevel();

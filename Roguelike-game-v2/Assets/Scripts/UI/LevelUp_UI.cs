@@ -24,6 +24,7 @@ public class LevelUp_UI : UserInterface
         yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
 
         Time.timeScale = 0;
+        Managers.Game.IsPlaying = false;
 
         InputActions.DisableInputAction<TouchControls>();
         Managers.UI.HideUI<CharactorController_UI>();

@@ -50,6 +50,7 @@ public class DataInit
     private IEnumerator Init()
     {
         Time.timeScale = 0;
+        Managers.Game.IsPlaying = false;
 
         Managers.Scene.LoadScene(SceneName.InGame);
 
