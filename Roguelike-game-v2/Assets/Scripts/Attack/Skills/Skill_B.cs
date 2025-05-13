@@ -10,7 +10,7 @@ public class Skill_B : Skill, ISkill
     public bool Finished { get { return true; } }
     public void SetAttack()
     {
-        transform.position = EnemyDetection.GetLargestEnemyGroup();
+        transform.position = EnemyDetection.GetLargestEnemyGroup() + so.adjustmentPosition;
     }
     public void SetCollider()
     {

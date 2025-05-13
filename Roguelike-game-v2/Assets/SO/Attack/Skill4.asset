@@ -39,7 +39,7 @@ MonoBehaviour:
   - 1
   baseRotation: {x: 0, y: 0, z: 0}
   typePath: Skill4
-  duration: 0
+  duration: 3
   flipX: 0
   flipY: 0
   projectile: 0

@@ -37,7 +37,8 @@ MonoBehaviour:
   - 1
   - 1
   - 1
-  baseRotation: {x: 0, y: 0, z: 0}
+  adjustmentRotation: {x: 0, y: 0, z: 0}
+  adjustmentPosition: {x: 0, y: 0.325}
   typePath: Skill2
   duration: 0
   flipX: 0

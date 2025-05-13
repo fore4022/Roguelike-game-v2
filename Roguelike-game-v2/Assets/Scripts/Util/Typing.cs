@@ -4,9 +4,9 @@ using TMPro;
 using UnityEngine;
 public static class Typing
 {
-    private static WaitForSecondsRealtime delay = new(0.075f);
+    private static WaitForSecondsRealtime delay = new(0.04f);
 
-    public static IEnumerator TypeEffecting(TextMeshProUGUI tmp, string str, bool recursive = false, bool isClear = false, string currentStr = "")
+    public static IEnumerator TypeEffecting(TextMeshProUGUI tmp, string str, bool recursive = false, bool isClear = true, string currentStr = "")
     {
         StringBuilder builder = new();
 
@@ -15,7 +15,7 @@ public static class Typing
             tmp.text = "";
         }
 
-        if (currentStr == "")
+        if(currentStr == "")
         {
             builder.Append(tmp.text);
         }
@@ -28,7 +28,7 @@ public static class Typing
         {
             TextMeshProUGUI[] tmpArray = tmp.gameObject.GetComponentsInChildren<TextMeshProUGUI>();
 
-            for (int i = 0; i < str.Length; i++)
+            for(int i = 0; i < str.Length; i++)
             {
                 yield return delay;
 

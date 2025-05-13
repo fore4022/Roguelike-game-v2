@@ -51,14 +51,14 @@ public class Projectile_C : ProjectileSkill, IProjectile
     }
     public IEnumerator Moving()
     {
-        while (true)
+        while(true)
         {
             transform.position += direction * so.projectile_Info.speed * multiplier * Time.deltaTime;
             multiplier -= Time.deltaTime;
 
-            transform.Rotate(sign * Vector3.back);
+            transform.Rotate(sign * Vector3.back * Time.timeScale);
 
-            if (multiplier <= 0)
+            if(multiplier <= 0)
             {
                 moving = null;
 

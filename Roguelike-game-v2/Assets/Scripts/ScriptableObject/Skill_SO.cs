@@ -25,7 +25,8 @@ public class Skill_SO : ScriptableObject
     public float[] coolTime = new float[maxLevel];
     public float[] attackRange = new float[maxLevel];
 
-    public Vector3 baseRotation;
+    public Vector3 adjustmentRotation;
+    public Vector2 adjustmentPosition;
     public string typePath;
     public float duration;
     public bool flipX = false;

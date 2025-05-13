@@ -14,7 +14,7 @@ public class Skill_A : Skill, ISkill
     {
         direction = Calculate.GetDirection(EnemyDetection.GetNearestEnemyPosition());
         gameObject.transform.position = Calculate.GetAttackPosition(direction, so.attackRange[level]);
-        gameObject.transform.rotation = Calculate.GetQuaternion(direction, so.baseRotation);
+        gameObject.transform.rotation = Calculate.GetQuaternion(direction, so.adjustmentRotation);
     }
     public void SetCollider()
     {

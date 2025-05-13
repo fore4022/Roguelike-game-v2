@@ -15,7 +15,7 @@ public class Projectile_A : ProjectileSkill, IProjectile
     {
         transform.position = Managers.Game.player.gameObject.transform.position;
         direction = Calculate.GetDirection(EnemyDetection.GetNearestEnemyPosition());
-        transform.rotation = Calculate.GetQuaternion(direction - so.baseRotation);
+        transform.rotation = Calculate.GetQuaternion(direction - so.adjustmentRotation);
         penetration_count = so.projectile_Info.penetration;
 
         moving = StartCoroutine(Moving());
