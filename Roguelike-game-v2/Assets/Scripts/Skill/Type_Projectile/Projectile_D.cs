@@ -14,7 +14,7 @@ public class Projectile_D : ProjectileSkill, IProjectile
         transform.position = Managers.Game.player.gameObject.transform.position;
         direction = Calculate.GetRandomDirection();
         transform.rotation = Calculate.GetQuaternion(direction - so.adjustmentRotation);
-
+        transform.SetScale(5, 12);
         moving = StartCoroutine(Moving());
     }
     public void SetCollider()
@@ -31,6 +31,7 @@ public class Projectile_D : ProjectileSkill, IProjectile
     }
     private void OnDisable()
     {
+        transform.Kill().SetScale(1);
         SetCollider();
     }
     public IEnumerator Moving()

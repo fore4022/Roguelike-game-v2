@@ -19,7 +19,6 @@ public class Projectile_B : ProjectileSkill, IProjectile
         transform.position = Managers.Game.player.gameObject.transform.position;
         direction = Calculate.GetDirection(EnemyDetection.GetNearestEnemyPosition());
         transform.rotation = Calculate.GetQuaternion(direction, so.adjustmentRotation);
-
         moving = StartCoroutine(Moving());
 
         anime.Play("default");

@@ -17,7 +17,6 @@ public class Projectile_A : ProjectileSkill, IProjectile
         direction = Calculate.GetDirection(EnemyDetection.GetNearestEnemyPosition());
         transform.rotation = Calculate.GetQuaternion(direction - so.adjustmentRotation);
         penetration_count = so.projectile_Info.penetration;
-
         moving = StartCoroutine(Moving());
     }
     public void SetCollider()

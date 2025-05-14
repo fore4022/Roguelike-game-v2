@@ -14,6 +14,10 @@ public static class TweenSystem
     {
         return TweenSystemManage.Execute(comp, TweenOperation.Insert, TweenType.Scale, new(targetScale), duration, ease, delay);
     }
+    public static Component SetScale(this Component comp, float targetScale)
+    {
+        return TweenSystemManage.Execute(comp, TweenOperation.Join, TweenType.Scale, new(targetScale), 0, Ease.Linear, 0);
+    }
 
     // Position
     public static Component SetPosition(this Component comp, Vector2 targetPosition, float duration, Ease ease = Ease.Linear, TweenOperation op = TweenOperation.Join)
@@ -28,6 +32,10 @@ public static class TweenSystem
     {
         return TweenSystemManage.Execute(comp, TweenOperation.Insert, TweenType.Position, new(targetPosition), duration, ease, delay);
     }
+    public static Component SetPosition(this Component comp, Vector2 targetPosition)
+    {
+        return TweenSystemManage.Execute(comp, TweenOperation.Join, TweenType.Position, new(targetPosition), 0, Ease.Linear, 0);
+    }
 
     // Rotation
     public static Component SetRotation(this Component comp, Vector3 targetRotation, float duration, Ease ease = Ease.Linear, TweenOperation op = TweenOperation.Join)
@@ -41,6 +49,10 @@ public static class TweenSystem
     public static Component SetRotation(this Component comp, Vector3 targetRotation, float duration, float delay, Ease ease = Ease.Linear)
     {
         return TweenSystemManage.Execute(comp, TweenOperation.Insert, TweenType.Rotation, new(targetRotation), duration, ease, delay);
+    }
+    public static Component SetRotation(this Component comp, Vector3 targetRotation)
+    {
+        return TweenSystemManage.Execute(comp, TweenOperation.Join, TweenType.Rotation, new(targetRotation), 0, Ease.Linear, 0);
     }
 
     // Manage

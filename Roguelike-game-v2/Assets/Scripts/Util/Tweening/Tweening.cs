@@ -53,28 +53,35 @@ public static class Tweening
                 break;
         }
 
-        while(currentTime != duration)
+        if(duration != 0)
         {
-            if(status.flag)
+            while(currentTime != duration)
             {
-                if(isRectTransform)
+                if(status.flag)
                 {
-                    currentTime = Mathf.Min(currentTime + Time.unscaledDeltaTime, duration);
+                    if(isRectTransform)
+                    {
+                        currentTime = Mathf.Min(currentTime + Time.unscaledDeltaTime, duration);
 
-                    del(transform as RectTransform, initialValue, targetValue, easeDel(currentTime / duration));
+                        del(transform as RectTransform, initialValue, targetValue, easeDel(currentTime / duration));
+                    }
+                    else
+                    {
+                        currentTime = Mathf.Min(currentTime + Time.deltaTime, duration);
+
+                        del(transform, initialValue, targetValue, easeDel(currentTime / duration));
+                    }
                 }
-                else
-                {
-                    currentTime = Mathf.Min(currentTime + Time.deltaTime, duration);
-                    
-                    del(transform, initialValue, targetValue, easeDel(currentTime / duration));
-                }
+
+                yield return null;
             }
 
-            yield return null;
+            TweenSystemManage.Release(transform, data);
         }
-
-        TweenSystemManage.Release(transform, data);
+        else
+        {
+            ToEnd(data);
+        }
     }
     public static void ToEnd(TweenData data)
     {
@@ -98,7 +105,7 @@ public static class Tweening
                 break;
         }
 
-        if (isRectTransform)
+        if(isRectTransform)
         {
             del(data.trans as RectTransform, initialValue, data.targetValue, data.easeDel(1));
         }

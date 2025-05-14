@@ -14,19 +14,27 @@ public static class TweenSystemManage
         if(GetTransform(comp, out Transform trans))
         {
             TweenData data = new();
+            bool isContain = _schedule.TryGetValue(trans, out Sequence schedule);
 
             switch(op)
             {
                 case TweenOperation.Append:
                     data.Set(type, trans, Easing.Get(ease), numeric, duration);
+
+                    if(!isContain)
+                    {
+                        data.Set(Util.GetMonoBehaviour().StartCoroutine(Tweening.OverTime(type, data, trans, Easing.Get(ease), numeric, duration, delay)));
+
+                        op = TweenOperation.Join;
+                    }
                     break;
                 case TweenOperation.Insert:
                     data.Set(Util.GetMonoBehaviour().StartCoroutine(Tweening.OverTime(type, data, trans, Easing.Get(ease), numeric, duration, delay)), type, trans, Easing.Get(ease), numeric, duration);
                     break;
                 case TweenOperation.Join:
-                    if(_schedule.ContainsKey(trans))
+                    if(isContain)
                     {
-                        if(_schedule[trans].Count() > 1)
+                        if(schedule.Count() > 1)
                         {
                             data.Set(type, trans, Easing.Get(ease), numeric, duration);
                             break;
@@ -37,7 +45,7 @@ public static class TweenSystemManage
                     break;
             }
 
-            if(_schedule.TryGetValue(trans, out Sequence schedule) && op != TweenOperation.Append)
+            if(isContain && op != TweenOperation.Append)
             {
                 schedule.PeekLast().Add(data);
             }
