@@ -95,7 +95,7 @@ public class Game_Manager
 
         yield return new WaitUntil(() => Managers.UI.GetUI<SceneLoading_UI>() == null);
 
-        Time.timeScale = 1;
+        Time.timeScale = 3;
         isPlaying = true;
 
         monsterSpawner.ReStart();

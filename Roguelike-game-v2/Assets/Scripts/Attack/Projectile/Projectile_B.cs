@@ -19,12 +19,10 @@ public class Projectile_B : ProjectileSkill, IProjectile
         transform.position = Managers.Game.player.gameObject.transform.position;
         direction = Calculate.GetDirection(EnemyDetection.GetNearestEnemyPosition());
         transform.rotation = Calculate.GetQuaternion(direction, so.adjustmentRotation);
-        effectCollider.enabled = !enable;
-        isExplosion = false;
-
-        anime.Play("default");
 
         moving = StartCoroutine(Moving());
+
+        anime.Play("default");
     }
     public void SetCollider()
     {
@@ -54,16 +52,21 @@ public class Projectile_B : ProjectileSkill, IProjectile
             if(!isExplosion)
             {
                 anime.Play(so.projectile_Info.animationName);
-
                 StopCoroutine(moving);
 
                 moving = null;
+                isExplosion = true;
             }
         }
     }
+    private void OnDisable()
+    {
+        effectCollider.enabled = false;
+        isExplosion = false;
+    }
     public IEnumerator Moving()
     {
-        while (true)
+        while(true)
         {
             transform.position += direction * so.projectile_Info.speed * Time.deltaTime;
 

@@ -10,7 +10,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     private Vector3 direction;
     private float animationDuration;
 
-    public float DamageAmount { get { return stat.damage * Managers.Game.difficultyScaler.IncreaseStat * Time.deltaTime; } }
+    public float DamageAmount { get { return stat.damage * stat.attackSpeed * Managers.Game.difficultyScaler.IncreaseStat * Time.deltaTime; } }
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -74,7 +74,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     }
     private void Attack(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if(collision.gameObject.CompareTag("Player"))
         {
             Managers.Game.player.TakeDamage(this);
         }

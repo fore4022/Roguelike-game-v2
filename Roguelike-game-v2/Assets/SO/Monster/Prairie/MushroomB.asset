@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0596d4e2f4aa12242b2f768a5b44b207, type: 3}
-  m_Name: ChestA
+  m_Name: MushroomB
   m_EditorClassIdentifier: 
   stat:
-    health: 0
-    damage: 1
-    attackSpeed: 1
-    moveSpeed: 1
-    size: 1
+    health: 5
+    damage: 2
+    attackSpeed: 0.8
+    moveSpeed: 0.9
+    size: 1.2
     death_AnimationDuration: 0.5
-  experience: 1
+  experience: 1.5

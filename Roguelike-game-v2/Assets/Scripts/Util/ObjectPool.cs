@@ -95,7 +95,7 @@ public class ObjectPool
             switch(type)
             {
                 case ScriptableObjectType.Monster:
-                    path = $"Assets/SO/Monster/{key}.asset";
+                    path = $"Assets/SO/Monster/{Managers.UserData.data.StageName}/{key}.asset";
                     break;
                 case ScriptableObjectType.Skill:
                     path = $"Assets/SO/Attack/{key}.asset";

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SnakeF
   m_EditorClassIdentifier: 
   stat:
-    health: 0
-    damage: 1
+    health: 2
+    damage: 1.5
     attackSpeed: 1
     moveSpeed: 1
     size: 1

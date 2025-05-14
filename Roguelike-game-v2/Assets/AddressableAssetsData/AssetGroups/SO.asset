@@ -18,56 +18,56 @@ MonoBehaviour:
   m_GUID: 31eff7f77c62bc84a8150b860df75413
   m_SerializeEntries:
   - m_GUID: 45ef55db348837746aab9d7e9a51a92f
-    m_Address: Assets/SO/Monster/CloudD.asset
+    m_Address: Assets/SO/Monster/Snowfield/CloudD.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - Monster
     - SO
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 5e4e3b8e9bb14c748a7f8dd3e339166a
-    m_Address: Assets/SO/Monster/FactoryB.asset
+  - m_GUID: 934cdc6408aa27b498f6b9fde82fd5fd
+    m_Address: Assets/SO/Monster/Desert/SlimeSquareH.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - Monster
     - SO
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 756c57ec289580049a2eef0c630c65f6
-    m_Address: Assets/SO/Monster/DogB.asset
+    m_Address: Assets/SO/Monster/Prairie/DogB.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - Monster
     - SO
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 60ecbe87d6f603e4e9be2d425873c957
-    m_Address: Assets/SO/Monster/MaskA.asset
+  - m_GUID: 07d0b9d09ba740142b49c61aae588d14
+    m_Address: Assets/SO/Monster/Prairie/MushroomB.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - Monster
     - SO
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e9131c5333843674f8c5602a9462ab33
-    m_Address: Assets/SO/Monster/BatG.asset
+  - m_GUID: 41c8022872bcc144db35dd500af8e2cf
+    m_Address: Assets/SO/Monster/Snowfield/CountA.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - Monster
     - SO
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d62223e64d1970d4bb40195b708b51dd
-    m_Address: Assets/SO/Monster/SnakeF.asset
+  - m_GUID: 624279fc12be8fc48a8c2c89a2f7eb1a
+    m_Address: Assets/SO/Monster/Prairie/MothD.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - Monster
     - SO
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b6bb7cd27adeb384690b557cac01952b
-    m_Address: Assets/SO/Monster/WitchE.asset
+  - m_GUID: bf2e04b358916e240bb76db97cb4b721
+    m_Address: Assets/SO/Monster/Snowfield/PotionI.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - Monster
     - SO
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 230bb47dbab8ea041a563a10d122c863
-    m_Address: Assets/SO/Monster/ChestA.asset
+  - m_GUID: ed31ba346a4e9e1478c65a94ae5e55ba
+    m_Address: Assets/SO/Monster/Rock Mountain/EarthB.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - Monster
@@ -91,120 +91,120 @@ MonoBehaviour:
     m_SerializedLabels:
     - SO
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 41c8022872bcc144db35dd500af8e2cf
-    m_Address: Assets/SO/Monster/CountA.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Monster
-    - SO
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1a00b904f1641874280c78e9790a2640
-    m_Address: Assets/SO/Monster/BatSmallA.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Monster
-    - SO
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 617ac983b76cc7f469ba83b84c355564
-    m_Address: Assets/SO/Monster/SkullFlamingB.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Monster
-    - SO
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b77fa8e168c55e943b8b48cbeaa315a8
-    m_Address: Assets/SO/Monster/GolemA.asset
+  - m_GUID: e9131c5333843674f8c5602a9462ab33
+    m_Address: Assets/SO/Monster/Snowfield/BatG.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - Monster
     - SO
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c371ee60d093d4e419cd77865f04c378
-    m_Address: Assets/SO/Monster/PuddleB.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Monster
-    - SO
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: bf2e04b358916e240bb76db97cb4b721
-    m_Address: Assets/SO/Monster/PotionI.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Monster
-    - SO
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 32f9d2054fe6d7b42a9bcb2ab6b2a593
-    m_Address: Assets/SO/Monster/ScorpionC.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Monster
-    - SO
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d44dd977ead31a94d85eed4128aa6456
-    m_Address: Assets/SO/Monster/AirA.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Monster
-    - SO
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2e8a31ca33a2eac4e9bc2d1dcd91fcdd
-    m_Address: Assets/SO/Monster/FireSmallA.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Monster
-    - SO
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 07d0b9d09ba740142b49c61aae588d14
-    m_Address: Assets/SO/Monster/MushroomB.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Monster
-    - SO
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 624279fc12be8fc48a8c2c89a2f7eb1a
-    m_Address: Assets/SO/Monster/MothD.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Monster
-    - SO
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0b2232a1d1d473e42b2011bc8c670a9e
-    m_Address: Assets/SO/Monster/SwordA.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Monster
-    - SO
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9598366a7f84c0645b2ad13984b8df5e
-    m_Address: Assets/SO/Monster/ReaperA.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Monster
-    - SO
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: accdcd689e6198b4fa76aef11585c608
-    m_Address: Assets/SO/Monster/MummyA.asset
+    m_Address: Assets/SO/Monster/Rock Mountain/PuddleB.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - Monster
     - SO
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b23e08bf69c595a489b8f93d517c0764
-    m_Address: Assets/SO/Monster/GhastC.asset
+    m_Address: Assets/SO/Monster/Volcano/GhastC.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - Monster
     - SO
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ed31ba346a4e9e1478c65a94ae5e55ba
-    m_Address: Assets/SO/Monster/EarthB.asset
+  - m_GUID: b77fa8e168c55e943b8b48cbeaa315a8
+    m_Address: Assets/SO/Monster/Rock Mountain/GolemA.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - Monster
     - SO
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 934cdc6408aa27b498f6b9fde82fd5fd
-    m_Address: Assets/SO/Monster/SlimeSquareH.asset
+  - m_GUID: 1a00b904f1641874280c78e9790a2640
+    m_Address: Assets/SO/Monster/Rock Mountain/BatSmallA.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b6bb7cd27adeb384690b557cac01952b
+    m_Address: Assets/SO/Monster/Snowfield/WitchE.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: accdcd689e6198b4fa76aef11585c608
+    m_Address: Assets/SO/Monster/Desert/MummyA.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d44dd977ead31a94d85eed4128aa6456
+    m_Address: Assets/SO/Monster/Desert/AirA.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9598366a7f84c0645b2ad13984b8df5e
+    m_Address: Assets/SO/Monster/Volcano/ReaperA.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 60ecbe87d6f603e4e9be2d425873c957
+    m_Address: Assets/SO/Monster/Prairie/MaskA.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d62223e64d1970d4bb40195b708b51dd
+    m_Address: Assets/SO/Monster/Prairie/SnakeF.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0b2232a1d1d473e42b2011bc8c670a9e
+    m_Address: Assets/SO/Monster/Volcano/SwordA.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2e8a31ca33a2eac4e9bc2d1dcd91fcdd
+    m_Address: Assets/SO/Monster/Volcano/FireSmallA.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 32f9d2054fe6d7b42a9bcb2ab6b2a593
+    m_Address: Assets/SO/Monster/Desert/ScorpionC.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 617ac983b76cc7f469ba83b84c355564
+    m_Address: Assets/SO/Monster/Volcano/SkullFlamingB.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 230bb47dbab8ea041a563a10d122c863
+    m_Address: Assets/SO/Monster/Rock Mountain/ChestA.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Monster
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5e4e3b8e9bb14c748a7f8dd3e339166a
+    m_Address: Assets/SO/Monster/Desert/FactoryB.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - Monster
