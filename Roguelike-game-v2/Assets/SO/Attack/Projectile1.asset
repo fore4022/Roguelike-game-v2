@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile_Info:
     animationName: explosion
-    speed: 1
-    penetration: 1
+    speed: 10
+    penetration: 10
   multiCast:
     delay:
     - 0
@@ -30,25 +30,25 @@ MonoBehaviour:
     - 0
     - 0
   damageCoefficient:
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
+  - 0.5
+  - 0.8
+  - 1.2
+  - 1.7
+  - 2.5
   coolTime:
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
+  - 2
+  - 1.8
+  - 1.6
+  - 1.4
+  - 1.2
   attackRange:
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
-  aaa: {fileID: 11500000, guid: 76f134077bfdd9440b68b10a51d31cfb, type: 3}
-  baseRotation: {x: 0, y: 0, z: 0}
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  adjustmentRotation: {x: 0, y: 0, z: 0}
+  adjustmentPosition: {x: 0, y: 0}
   typePath: Projectile1
   duration: 0
   flipX: 0

@@ -42,21 +42,18 @@ public class Projectile_B : ProjectileSkill, IProjectile
     }
     public void Enter(GameObject go)
     {
-        if(go.CompareTag("Monster"))
+        if(go.TryGetComponent(out IDamageReceiver damageReceiver))
         {
-            if(go.TryGetComponent(out IDamageReceiver damageReceiver))
-            {
-                damageReceiver.TakeDamage(this);
-            }
+            damageReceiver.TakeDamage(this);
+        }
 
-            if(!isExplosion)
-            {
-                anime.Play(so.projectile_Info.animationName);
-                StopCoroutine(moving);
+        if(!isExplosion)
+        {
+            anime.Play(so.projectile_Info.animationName);
+            StopCoroutine(moving);
 
-                moving = null;
-                isExplosion = true;
-            }
+            moving = null;
+            isExplosion = true;
         }
     }
     private void OnDisable()

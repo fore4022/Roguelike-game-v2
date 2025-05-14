@@ -27,21 +27,18 @@ public class Projectile_A : ProjectileSkill, IProjectile
     }
     public void Enter(GameObject go)
     {
-        if(go.CompareTag("Monster"))
+        if(go.TryGetComponent(out IDamageReceiver damageReceiver))
         {
-            if(go.TryGetComponent(out IDamageReceiver damageReceiver))
-            {
-                damageReceiver.TakeDamage(this);
-            }
+            damageReceiver.TakeDamage(this);
+        }
 
-            penetration_count--;
+        penetration_count--;
 
-            if(penetration_count == 0)
-            {
-                StopCoroutine(moving);
+        if(penetration_count == 0)
+        {
+            StopCoroutine(moving);
 
-                moving = null;
-            }
+            moving = null;
         }
     }
     public IEnumerator Moving()

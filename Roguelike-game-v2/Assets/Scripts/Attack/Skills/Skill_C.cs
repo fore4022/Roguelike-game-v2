@@ -19,12 +19,7 @@ public class Skill_C : Skill, ISkill
     }
     public void Enter(GameObject go)
     {
-        if (!go.CompareTag("Monster"))
-        {
-            return;
-        }
-
-        if (go.TryGetComponent(out IDamageReceiver damageReceiver))
+        if(go.TryGetComponent(out IDamageReceiver damageReceiver))
         {
             damageReceiver.TakeDamage(this);
         }

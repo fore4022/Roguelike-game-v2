@@ -54,11 +54,18 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        attacker.Enter(collision.gameObject);
+        OnEnter(collision.gameObject);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        attacker.Enter(collision.gameObject);
+        OnEnter(collision.gameObject);
+    }
+    private void OnEnter(GameObject go)
+    {
+        if(go.CompareTag("Monster"))
+        {
+            attacker.Enter(go);
+        }
     }
     private IEnumerator StartAttack()
     {

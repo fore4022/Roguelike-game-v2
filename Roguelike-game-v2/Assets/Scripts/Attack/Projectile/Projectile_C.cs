@@ -41,12 +41,9 @@ public class Projectile_C : ProjectileSkill, IProjectile
     }
     public void Enter(GameObject go)
     {
-        if(go.CompareTag("Monster"))
+        if(go.TryGetComponent(out IDamageReceiver damageReceiver))
         {
-            if(go.TryGetComponent(out IDamageReceiver damageReceiver))
-            {
-                damageReceiver.TakeDamage(this);
-            }
+            damageReceiver.TakeDamage(this);
         }
     }
     public IEnumerator Moving()
