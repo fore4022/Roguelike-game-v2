@@ -13,31 +13,32 @@ MonoBehaviour:
   m_Name: Projectile3
   m_EditorClassIdentifier: 
   projectile_Info:
-    animationName: explosion
-    speed: 1
-    penetration: 1
+    animationName: 
+    speed: 4.25
+    penetration: 99
   multiCast:
     delay: []
     count: []
   damageCoefficient:
   - 1
-  - 1
-  - 1
-  - 1
-  - 1
+  - 1.2
+  - 1.4
+  - 1.6
+  - 2
   coolTime:
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
+  - 4
+  - 3.75
+  - 3.5
+  - 3.25
+  - 3
   attackRange:
   - 1
   - 1
   - 1
   - 1
   - 1
-  baseRotation: {x: 0, y: 0, z: 0}
+  adjustmentRotation: {x: 0, y: 0, z: 0}
+  adjustmentPosition: {x: 0, y: 0}
   typePath: Projectile3
   duration: 0
   flipX: 0

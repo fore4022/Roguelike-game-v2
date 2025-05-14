@@ -287,78 +287,78 @@ MonoBehaviour:
     - Attack
     - SO
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: fd012ecb96a6d8a43b5a2fd8b0ba93d0
-    m_Address: Assets/SO/Attack/Skill5.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Attack
-    - SO
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2c4777bb34ebb434db6aa55f4288724d
-    m_Address: Assets/SO/Attack/Projectile4.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Attack
-    - SO
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 8979347b26c7c574989d1212ec8d7713
-    m_Address: Assets/SO/Attack/Projectile3.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Attack
-    - SO
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6882f3bbd40c2274fb7830d6b9374687
-    m_Address: Assets/SO/Attack/Projectile2.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Attack
-    - SO
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: fdffa95edc2a94d4e9d4bd7149be9068
-    m_Address: Assets/SO/Attack/Skill1.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Attack
-    - SO
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a8bc8e350d8634c47900f39365d319e9
-    m_Address: Assets/SO/Attack/Skill2.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Attack
-    - SO
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 81117842609177540b090167a60db79e
-    m_Address: Assets/SO/Attack/Skill3.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Attack
-    - SO
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9f76fe1a7c0e2264690f125fbde0b211
-    m_Address: Assets/SO/Attack/Skill6.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Attack
-    - SO
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d29d981e52de7784ca6d13511b774060
-    m_Address: Assets/SO/Attack/Projectile1.asset
+  - m_GUID: 8155d7991e9ed9849b294424113f45ab
+    m_Address: Assets/SO/Skill/Skill4.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - Attack
     - SO
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7847dcbdb33bba342870be9d3bb6d502
-    m_Address: Assets/SO/Attack/Projectile5.asset
+    m_Address: Assets/SO/Skill/Projectile5.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - Attack
     - SO
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 8155d7991e9ed9849b294424113f45ab
-    m_Address: Assets/SO/Attack/Skill4.asset
+  - m_GUID: d29d981e52de7784ca6d13511b774060
+    m_Address: Assets/SO/Skill/Projectile1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9f76fe1a7c0e2264690f125fbde0b211
+    m_Address: Assets/SO/Skill/Skill6.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 81117842609177540b090167a60db79e
+    m_Address: Assets/SO/Skill/Skill3.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a8bc8e350d8634c47900f39365d319e9
+    m_Address: Assets/SO/Skill/Skill2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fdffa95edc2a94d4e9d4bd7149be9068
+    m_Address: Assets/SO/Skill/Skill1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6882f3bbd40c2274fb7830d6b9374687
+    m_Address: Assets/SO/Skill/Projectile2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8979347b26c7c574989d1212ec8d7713
+    m_Address: Assets/SO/Skill/Projectile3.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2c4777bb34ebb434db6aa55f4288724d
+    m_Address: Assets/SO/Skill/Projectile4.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Attack
+    - SO
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fd012ecb96a6d8a43b5a2fd8b0ba93d0
+    m_Address: Assets/SO/Skill/Skill5.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - Attack

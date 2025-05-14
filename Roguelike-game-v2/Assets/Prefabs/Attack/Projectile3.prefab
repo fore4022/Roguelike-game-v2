@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3677030615095578607}
   - component: {fileID: 3775282305813700391}
   - component: {fileID: 6140145207592339691}
-  - component: {fileID: 1901242940861813291}
+  - component: {fileID: -4049993973401501520}
   m_Layer: 0
   m_Name: Projectile3
   m_TagString: Untagged
@@ -116,7 +116,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.025}
@@ -143,7 +143,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1901242940861813291
+--- !u!114 &-4049993973401501520
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -152,8 +152,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6458013873426487770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7fbca15017601342987147f1653945b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f4f35fe5d35e7140a7071240ef57f80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultCollider: {fileID: 0}
+  defaultCollider: {fileID: 3775282305813700391}
   enable: 1

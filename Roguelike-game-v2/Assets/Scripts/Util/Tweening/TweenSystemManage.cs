@@ -9,32 +9,12 @@ public static class TweenSystemManage
 
     private static readonly Type _transform = typeof(Transform);
 
-    public static TweenStatus GetStatus(Component comp)
-    {
-        if(_status.TryGetValue(comp, out TweenStatus value))
-        {
-            return value;
-        }
-        else
-        {
-            return null;
-        }
-    }
-    public static void SetStatus(Component comp, bool status)
-    {
-        _status[comp].flag = status;
-    }
     public static Component Execute(Component comp, TweenOperation op, TweenType type, NumericValue numeric, float duration, Ease ease, float delay = 0)
     {
-        Transform trans = GetTransform(comp);
-        TweenData data = new();
+        if(GetTransform(comp, out Transform trans))
+        {
+            TweenData data = new();
 
-        if(trans == null)
-        {
-            return null;
-        }
-        else
-        {
             switch(op)
             {
                 case TweenOperation.Append:
@@ -56,82 +36,97 @@ public static class TweenSystemManage
                     data.Set(Util.GetMonoBehaviour().StartCoroutine(Tweening.OverTime(type, data, trans, Easing.Get(ease), numeric, duration, delay)), type, trans, Easing.Get(ease), numeric, duration);
                     break;
             }
-        }
 
-        if(_schedule.TryGetValue(trans, out Sequence schedule) && op != TweenOperation.Append)
-        {
-            schedule.PeekLast().Add(data);
-        }
-        else 
-        {
-            List<TweenData> sched = new() { data };
-
-            if(op != TweenOperation.Append)
+            if(_schedule.TryGetValue(trans, out Sequence schedule) && op != TweenOperation.Append)
             {
-                schedule = new();
+                schedule.PeekLast().Add(data);
+            }
+            else
+            {
+                List<TweenData> sched = new() { data };
 
-                _schedule.Add(trans, schedule);
-                _status.Add(trans, new(true));
+                if(op != TweenOperation.Append)
+                {
+                    schedule = new();
+
+                    _schedule.Add(trans, schedule);
+                    _status.Add(trans, new(true));
+                }
+
+                schedule.Enqueue(sched);
             }
 
-            schedule.Enqueue(sched);
+            return comp;
+        }
+        else
+        {
+            return null;
+        }
+    }
+    public static Component SetStatus(Component comp, bool status)
+    {
+        _status[comp].flag = status;
+
+        return comp;
+    }
+    public static Component Kill(Component comp)
+    {
+        if (GetTransform(comp, out Transform trans))
+        {
+            if (_schedule.TryGetValue(trans, out Sequence sequence))
+            {
+                foreach (TweenData data in sequence.Values()[0])
+                {
+                    if (data.coroutine != null)
+                    {
+                        Util.GetMonoBehaviour().StopCoroutine(data.coroutine);
+                    }
+                }
+
+                Clear(trans);
+            }
         }
 
         return comp;
     }
-    public static void Release(Transform transform, TweenData data)
+    public static Component PlayNext(Component comp)
     {
-        _schedule[transform].Dequeue(transform, data);
-    }
-    public static void Clear(Transform transform)
-    {
-        _schedule.Remove(transform);
-        _status.Remove(transform);
-    }
-    public static void Kill(Component comp)
-    {
-        Transform trans = GetTransform(comp);
-
-        if(trans == null)
+        if(GetTransform(comp, out Transform trans))
         {
-            return;
-        }
-
-        if(_schedule.TryGetValue(trans, out Sequence sequence))
-        {
-            foreach(TweenData data in sequence.Values()[0])
+            if(_schedule.TryGetValue(trans, out Sequence sequence))
             {
-                if(data.coroutine != null)
+                List<TweenData> dataList = sequence.Peek();
+                int count = dataList.Count;
+
+                for (int i = 0; i < count; i++)
                 {
-                    Util.GetMonoBehaviour().StopCoroutine(data.coroutine);
+                    Release(trans, dataList[0]);
                 }
             }
-
-            Clear(trans);
         }
+
+        return comp;
     }
-    public static void SkipToEnd(Component comp)
+    public static Component SkipToEnd(Component comp)
     {
-        Transform trans = GetTransform(comp);
-
-        if(trans == null)
+        if(GetTransform(comp, out Transform trans))
         {
-            return;
-        }
-
-        if(_schedule.TryGetValue(trans, out Sequence sequence))
-        {
-            List<TweenData> dataList = sequence.Peek();
-            int count = dataList.Count;
-
-            for(int i = 0; i < count; i++)
+            if(_schedule.TryGetValue(trans, out Sequence sequence))
             {
-                TweenData data = dataList[0];
+                List<TweenData> dataList = sequence.Peek();
+                int count = dataList.Count;
 
-                Util.GetMonoBehaviour().StopCoroutine(data.coroutine);
-                Tweening.ToEnd(data);
+                for (int i = 0; i < count; i++)
+                {
+                    TweenData data = dataList[0];
+
+                    Util.GetMonoBehaviour().StopCoroutine(data.coroutine);
+                    Tweening.ToEnd(data);
+                }
             }
         }
+
+        return comp;
     }
     public static void AllSkipToEnd()
     {
@@ -144,11 +139,11 @@ public static class TweenSystemManage
     }
     public static void Reset()
     {
-        foreach(Sequence schedule in _schedule.Values)
+        foreach (Sequence schedule in _schedule.Values)
         {
-            foreach(List<TweenData> datas in schedule.Values())
+            foreach (List<TweenData> datas in schedule.Values())
             {
-                foreach(TweenData data in datas)
+                foreach (TweenData data in datas)
                 {
                     Util.GetMonoBehaviour().StopCoroutine(data.coroutine);
                 }
@@ -158,15 +153,39 @@ public static class TweenSystemManage
         _schedule = new();
         _status = new();
     }
-    private static Transform GetTransform(Component comp)
+    public static void Release(Transform transform, TweenData data)
     {
-        if(comp.Equals(_transform))
+        _schedule[transform].Dequeue(transform, data);
+    }
+    public static void Clear(Transform transform)
+    {
+        _schedule.Remove(transform);
+        _status.Remove(transform);
+    }
+    public static TweenStatus GetStatus(Component comp)
+    {
+        if (_status.TryGetValue(comp, out TweenStatus value))
         {
-            return comp as Transform;
+            return value;
         }
         else
         {
-            return comp.GetComponent<Transform>();
+            return null;
+        }
+    }
+    private static bool GetTransform(Component comp, out Transform transform)
+    {
+        if(comp.Equals(_transform))
+        {
+            transform = comp as Transform;
+
+            return true;
+        }
+        else
+        {
+            transform = comp.GetComponent<Transform>();
+
+            return transform != null ? true : false;
         }
     }
 }
