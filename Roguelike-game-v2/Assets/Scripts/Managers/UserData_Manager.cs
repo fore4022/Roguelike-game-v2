@@ -22,17 +22,24 @@ public class UserData_Manager
 
         if(!File.Exists(filePath))
         {
+            Debug.Log("a");
+
             Save();
 
             return;
         }
 
+        //string jsonData = await File.ReadAllTextAsync(filePath);
+
+        //data = JsonUtility.FromJson<UserData>(jsonData);
         data = JsonUtility.FromJson<UserData>(await File.ReadAllTextAsync(filePath));
     }
     public async void Save()
     {
         if(data == null)
         {
+            Debug.Log("create");
+
             data = new();
 
             foreach(Stage_SO so in Managers.Main.GameData.Stages)
@@ -44,6 +51,9 @@ public class UserData_Manager
             }
         }
 
+        //string jsonData = JsonUtility.ToJson(data);
+
+        //await File.WriteAllTextAsync(filePath, jsonData);
         await File.WriteAllTextAsync(filePath, JsonUtility.ToJson(data));
     }
 }

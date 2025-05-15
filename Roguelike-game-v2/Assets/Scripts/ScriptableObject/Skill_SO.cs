@@ -23,7 +23,6 @@ public class Skill_SO : ScriptableObject
 
     public float[] damageCoefficient = new float[maxLevel];
     public float[] coolTime = new float[maxLevel];
-    public float[] attackRange = new float[maxLevel];
 
     public Vector3 adjustmentRotation;
     public Vector2 adjustmentPosition;
@@ -39,7 +38,6 @@ public class Skill_SO : ScriptableObject
     {
         Util.ResizeArray(ref damageCoefficient, maxLevel);
         Util.ResizeArray(ref coolTime, maxLevel);
-        Util.ResizeArray(ref attackRange, maxLevel);
 
         if(isMultiCast)
         {

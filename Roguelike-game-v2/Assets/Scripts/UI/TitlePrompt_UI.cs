@@ -10,6 +10,7 @@ public class TitlePrompt_UI : UserInterface, IPointerClickHandler
     public override void SetUserInterface()
     {
         Managers.Main.GameData.SO = Util.LoadingToPath<GameData_SO>(_gameDataPath, false);
+
         StartCoroutine(Initalizing());
     }
     public void OnPointerClick(PointerEventData eventData)

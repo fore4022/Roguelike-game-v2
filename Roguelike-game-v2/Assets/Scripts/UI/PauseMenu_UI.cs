@@ -28,7 +28,5 @@ public class PauseMenu_UI : UserInterface
         {
             Time.timeScale = 1;
         }
-
-        Managers.UI.ShowUI<HeadUpDisplay_UI>();
     }
 }

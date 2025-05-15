@@ -28,6 +28,8 @@ public class GameOver_UI : UserInterface
         if(Managers.Game.inGameTimer.GetMinutes > Managers.Game.stageInformation.requiredTime || Managers.Game.inGameTimer.GetHours > 0)
         {
             result = "스테이지\n클리어";
+
+            Managers.UserData.data.Clear(Managers.UserData.data.StageName);
         }
         else
         {

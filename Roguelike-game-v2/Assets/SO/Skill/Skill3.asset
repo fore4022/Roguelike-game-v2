@@ -17,30 +17,41 @@ MonoBehaviour:
     speed: 0
     penetration: 0
   multiCast:
-    delay: []
-    count: []
+    delay:
+    - 0.075
+    - 0.075
+    - 0.075
+    - 0.075
+    - 0.075
+    count:
+    - 3
+    - 4
+    - 5
+    - 6
+    - 8
   damageCoefficient:
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
+  - 1.25
+  - 1.25
+  - 1.25
+  - 1.25
+  - 1.25
   coolTime:
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
+  - 6
+  - 5.8
+  - 5.6
+  - 5.4
+  - 5.2
   attackRange:
   - 1
   - 1
   - 1
   - 1
   - 1
-  baseRotation: {x: 0, y: 0, z: 0}
+  adjustmentRotation: {x: 0, y: 0, z: 0}
+  adjustmentPosition: {x: 0, y: 0}
   typePath: Skill3
   duration: 0
   flipX: 0
   flipY: 0
   projectile: 0
-  isMultiCast: 0
+  isMultiCast: 1

@@ -30,11 +30,11 @@ MonoBehaviour:
     - 0
     - 0
   damageCoefficient:
-  - 0.5
-  - 0.8
-  - 1.2
-  - 1.7
-  - 2.5
+  - 1
+  - 1.6
+  - 2.4
+  - 3.4
+  - 5
   coolTime:
   - 2
   - 1.8

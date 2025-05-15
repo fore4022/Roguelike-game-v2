@@ -20,24 +20,25 @@ MonoBehaviour:
     delay: []
     count: []
   damageCoefficient:
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
+  - 1.5
+  - 1.65
+  - 1.9
+  - 2.2
+  - 2.75
   coolTime:
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
+  - 2.5
+  - 2.5
+  - 2.5
+  - 2.5
+  - 2.5
   attackRange:
   - 1
   - 1
   - 1
   - 1
   - 1
-  baseRotation: {x: 0, y: 0, z: 0}
+  adjustmentRotation: {x: 0, y: 0, z: 0}
+  adjustmentPosition: {x: 0, y: 0}
   typePath: Skill4
   duration: 3
   flipX: 0

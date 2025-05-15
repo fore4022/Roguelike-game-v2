@@ -21,23 +21,24 @@ MonoBehaviour:
     count: []
   damageCoefficient:
   - 1
-  - 1
-  - 1
-  - 1
-  - 1
+  - 1.25
+  - 1.5
+  - 1.75
+  - 2.25
   coolTime:
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
+  - 0.85
+  - 0.85
+  - 0.85
+  - 0.85
+  - 0.85
   attackRange:
   - 1
-  - 1
-  - 1
-  - 1
-  - 1
-  baseRotation: {x: 0, y: 0, z: 0}
+  - 1.1
+  - 1.2
+  - 1.3
+  - 1.45
+  adjustmentRotation: {x: 0, y: 0, z: 0}
+  adjustmentPosition: {x: 0, y: 0}
   typePath: Skill1
   duration: 0
   flipX: 0

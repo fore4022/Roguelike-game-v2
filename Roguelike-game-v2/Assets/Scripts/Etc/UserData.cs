@@ -34,6 +34,13 @@ public class UserData
     }
     public void Clear(string stageName)
     {
-        stageClearInfos.Find(o => o.name == stageName).isClear = true;
+        StageClearInfo info = stageClearInfos.Find(o => o.name == stageName);
+
+        if(info != null)
+        {
+            info.isClear = true;
+
+            Managers.UserData.Save();
+        }
     }
 }

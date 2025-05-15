@@ -54,6 +54,13 @@ public static class Calculate
     {
         return new Vector3(Random.Range(0, 361), Random.Range(0, 361), 0).normalized;
     }
+    public static Vector2 GetRandomVector()
+    {
+        vec.x = Random.Range(-width, width);
+        vec.y = Random.Range(-height, height);
+
+        return vec;
+    }
     public static Quaternion GetQuaternion(Vector3 direction)
     {
         return Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
@@ -62,12 +69,11 @@ public static class Calculate
     {
         return Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + baseRotation.z);
     }
-    public static Vector2 GetRandomVector()
+    public static Quaternion GetRandomQuaternion()
     {
-        vec.x = Random.Range(-width, width);
-        vec.y = Random.Range(-height, height);
+        Vector2 vec = GetRandomVector();
 
-        return vec;
+        return Quaternion.Euler(0, 0, Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg);
     }
     public static int[] GetRandomValues(int maxValue, int count = 0)
     {

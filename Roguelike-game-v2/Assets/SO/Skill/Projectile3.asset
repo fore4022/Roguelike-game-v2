@@ -41,7 +41,7 @@ MonoBehaviour:
   adjustmentPosition: {x: 0, y: 0}
   typePath: Projectile3
   duration: 0
-  flipX: 0
-  flipY: 0
+  flipX: 1
+  flipY: 1
   projectile: 1
   isMultiCast: 0

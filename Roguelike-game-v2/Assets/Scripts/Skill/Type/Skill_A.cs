@@ -7,14 +7,11 @@ using UnityEngine;
 /// </summary>
 public class Skill_A : Skill, ISkill
 {
-    private Vector3 direction;
-
     public bool Finished { get { return true; } }
     public void SetAttack()
     {
-        direction = Calculate.GetDirection(EnemyDetection.GetNearestEnemyPosition());
-        gameObject.transform.position = Calculate.GetAttackPosition(direction, so.attackRange[level]);
-        gameObject.transform.rotation = Calculate.GetQuaternion(direction, so.adjustmentRotation);
+        gameObject.transform.position = EnemyDetection.GetNearestEnemyPosition();
+        gameObject.transform.rotation = Calculate.GetRandomQuaternion();
     }
     public void SetCollider()
     {
