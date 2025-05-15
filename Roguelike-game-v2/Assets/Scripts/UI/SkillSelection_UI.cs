@@ -120,8 +120,6 @@ public class SkillSelection_UI : UserInterface
 
         yield return new WaitForEndOfFrame();
 
-        indexArray[0] = 4;//
-
         for(int i = 0; i < indexArray.Count(); i++)
         {
             skillOptionList[i].gameObject.SetActive(true);

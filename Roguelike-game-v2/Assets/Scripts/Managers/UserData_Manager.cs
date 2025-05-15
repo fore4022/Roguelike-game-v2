@@ -27,9 +27,7 @@ public class UserData_Manager
             return;
         }
 
-        string jsonData = await File.ReadAllTextAsync(filePath);
-
-        data = JsonUtility.FromJson<UserData>(jsonData);
+        data = JsonUtility.FromJson<UserData>(await File.ReadAllTextAsync(filePath));
     }
     public async void Save()
     {
@@ -46,8 +44,6 @@ public class UserData_Manager
             }
         }
 
-        string jsonData = JsonUtility.ToJson(data);
-
-        await File.WriteAllTextAsync(filePath, jsonData);
+        await File.WriteAllTextAsync(filePath, JsonUtility.ToJson(data));
     }
 }

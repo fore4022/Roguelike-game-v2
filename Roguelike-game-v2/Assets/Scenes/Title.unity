@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 25695299}
   - component: {fileID: 25695300}
   m_Layer: 0
-  m_Name: Sword_2
+  m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 345573745}
   - component: {fileID: 345573744}
   m_Layer: 0
-  m_Name: Sword_1
+  m_Name: PotionI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -349,7 +349,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a1d3342ccccdda3408e70dacc66b2c70, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 44052fe90eddfd54894143528b2cd691, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -917,7 +917,7 @@ GameObject:
   - component: {fileID: 856207650}
   - component: {fileID: 856207651}
   m_Layer: 0
-  m_Name: SlimeSquare_2
+  m_Name: BatSmallA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -979,7 +979,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 48887c7bff8cc364fb32641be6f76f5b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9692fb68f2cba8248addc01b5a3bc7cf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -1656,7 +1656,7 @@ GameObject:
   - component: {fileID: 1806859643}
   - component: {fileID: 1806859642}
   m_Layer: 0
-  m_Name: SlimeSquare_1
+  m_Name: SlimeSquare
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
