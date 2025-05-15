@@ -13,12 +13,7 @@ public class Background_InGame : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(Managers.Game.player == null)
-        {
-            return;
-        }
-
-        if(!collision.gameObject.CompareTag("View"))
+        if(!collision.gameObject.CompareTag("View") || Managers.Game.player == null)
         {
             return;
         }
@@ -30,7 +25,7 @@ public class Background_InGame : MonoBehaviour
 
         increasePos = new();
 
-        if(xPos % width < 0.25f)
+        if(xPos % width < 0.33f)
         {
             if(Mathf.Abs((int)(xPos / width) % 2) == 1)
             {
@@ -38,7 +33,7 @@ public class Background_InGame : MonoBehaviour
             }
         }
 
-        if(yPos % height < 0.25f)
+        if(yPos % height < 0.33f)
         {
             if (Mathf.Abs((int)(yPos / height) % 2) == 1)
             {

@@ -22,38 +22,35 @@ public class UserData_Manager
 
         if(!File.Exists(filePath))
         {
-            Debug.Log("a");
-
             Save();
 
             return;
         }
 
-        //string jsonData = await File.ReadAllTextAsync(filePath);
-
-        //data = JsonUtility.FromJson<UserData>(jsonData);
         data = JsonUtility.FromJson<UserData>(await File.ReadAllTextAsync(filePath));
     }
     public async void Save()
     {
         if(data == null)
         {
-            Debug.Log("create");
-
             data = new();
 
             foreach(Stage_SO so in Managers.Main.GameData.Stages)
             {
                 if(Managers.UserData.data.StageClearInfo.Find(info => info.name == so.stagePath) == null)
                 {
-                    data.StageClearInfo.Add(new StageClearInfo(so.stagePath, false));
+                    if(data.StageClearInfo.Count == 0)
+                    {
+                        data.StageClearInfo.Add(new(so.stagePath, StageState.Unlocked));
+                    }
+                    else
+                    {
+                        data.StageClearInfo.Add(new(so.stagePath, StageState.Locked));
+                    }
                 }
             }
         }
 
-        //string jsonData = JsonUtility.ToJson(data);
-
-        //await File.WriteAllTextAsync(filePath, jsonData);
         await File.WriteAllTextAsync(filePath, JsonUtility.ToJson(data));
     }
 }

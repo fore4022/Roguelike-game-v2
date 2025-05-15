@@ -1,17 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-[System.Serializable]
-public class StageClearInfo
-{
-    public string name;
-    public bool isClear;
-
-    public StageClearInfo(string name, bool isClear)
-    {
-        this.name = name;
-        this.isClear = isClear;
-    }
-}
 public class UserData
 {
     [SerializeField]
@@ -25,12 +13,24 @@ public class UserData
     private int exp = 0;
 
     public List<StageClearInfo> StageClearInfo { get { return stageClearInfos; } set { stageClearInfos = value; } }
-    public string StageName { get { return current_StageName; } set { current_StageName = value; } }
+    public string StageName
+    {
+        get
+        {
+            return current_StageName;
+        }
+        set 
+        {
+            current_StageName = value;
+
+            Managers.UserData.Save();
+        }
+    }
     public int Level { get { return level; } set { level = value; } }
     public int Exp { get { return exp; } set { exp = value; } }
-    public bool isClear()
+    public StageState GetStageState()
     {
-        return stageClearInfos.Find(info => info.name == current_StageName).isClear;
+        return stageClearInfos.Find(info => info.name == current_StageName).state;
     }
     public void Clear(string stageName)
     {
@@ -38,7 +38,7 @@ public class UserData
 
         if(info != null)
         {
-            info.isClear = true;
+            info.state = StageState.Cleared;
 
             Managers.UserData.Save();
         }

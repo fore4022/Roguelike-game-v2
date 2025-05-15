@@ -6,15 +6,19 @@ public class StageIcon_UI : UserInterface
     [SerializeField]
     private TextMeshProUGUI sceneName;
     [SerializeField]
-    private Image map_1;
+    private Image ground_1;
     [SerializeField]
-    private Image map_2;
+    private Image ground_2;
     [SerializeField]
     private Image flag;
     [SerializeField]
-    private Image enviroment;
+    private Image monster;
+    [SerializeField]
+    private GameObject padlock;
 
     private Stage_SO so;
+
+    private const string LockedText = "???";
 
     public override void SetUserInterface()
     {
@@ -30,34 +34,53 @@ public class StageIcon_UI : UserInterface
     }
     private void Set()
     {
+        StageState state = Managers.UserData.data.GetStageState();
         Icon_SO iconSprite = so.iconSprite;
 
-        sceneName.text = so.stagePath;
-        map_1.sprite = iconSprite.map_1;
-        enviroment.sprite = iconSprite.enviroment;
+        ground_1.sprite = iconSprite.ground_1;
+        monster.sprite = iconSprite.monster;
 
-        if(!Managers.UserData.data.isClear())
+        if(state == StageState.Locked)
         {
-            enviroment.gameObject.SetActive(true);
+            sceneName.text = LockedText;
+            ground_1.color = Color.black;
+            ground_2.color = Color.black;
+            monster.color = Color.black;
+
             flag.gameObject.SetActive(false);
+            monster.gameObject.SetActive(true);
+            padlock.SetActive(true);
         }
         else
         {
-            enviroment.gameObject.SetActive(false);
-            flag.gameObject.SetActive(true);
+            sceneName.text = so.stagePath;
+            ground_1.color = Color.white;
+            ground_2.color = Color.white;
+            monster.color = Color.white;
 
-            flag.sprite = iconSprite.flag;
+            if(state == StageState.Cleared)
+            {
+                flag.sprite = iconSprite.flag;
+                flag.gameObject.SetActive(true);
+            }
+            else
+            {
+                flag.gameObject.SetActive(false);
+            }
+
+            monster.gameObject.SetActive(true);
+            padlock.SetActive(false);
         }
 
-        if(iconSprite.map_2 == null)
+        if(iconSprite.ground_2 == null)
         {
-            map_2.gameObject.SetActive(false);
+            ground_2.gameObject.SetActive(false);
         }
         else
         {
-            map_2.gameObject.SetActive(true);
+            ground_2.sprite = iconSprite.ground_2;
 
-            map_2.sprite = iconSprite.map_2;
+            ground_2.gameObject.SetActive(true);
         }
     }
 }

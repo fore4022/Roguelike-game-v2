@@ -6,13 +6,9 @@ public class DataInit
     public ObjectPool objectPool = null;
 
     private const string userLevelPath = "_Level";
-    private const int defaultMonsterCount = 100;
-    private const int defaultSkillCount = 30;
+    private const int defaultMonsterCount = 300;
+    private const int defaultSkillCount = 20;
 
-    public void GetInGameData()
-    {
-        Util.GetMonoBehaviour().StartCoroutine(Init());
-    }
     public void GetMonsterList(ref List<GameObject> monsterList)
     {
         foreach(SpawnInformation_SO so in Managers.Game.stageInformation.spawnInformationList)
@@ -47,7 +43,7 @@ public class DataInit
             }
         }
     }
-    private IEnumerator Init()
+    public IEnumerator Initializing()
     {
         Time.timeScale = 0;
         Managers.Game.IsPlaying = false;

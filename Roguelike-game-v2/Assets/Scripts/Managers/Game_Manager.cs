@@ -12,7 +12,6 @@ public class Game_Manager
     public Player player;
     public Action onStageReset;
 
-
     private int userExp = 0;
     private bool isPlaying = false;
     private bool gameOver = false;
@@ -31,7 +30,7 @@ public class Game_Manager
         stageInformation = Managers.Main.GetCurrentStage().information;
 
         Set();
-        inGameData.init.GetInGameData();
+        Util.GetMonoBehaviour().StartCoroutine(inGameData.init.Initializing());
     }
     public void GameStart()
     {
@@ -42,7 +41,6 @@ public class Game_Manager
         inGameTimer.StartTimer();
         monsterSpawner.StartSpawn();
         inGameData.player.SetLevel();
-
         Managers.UI.ShowUI<LevelUp_UI>();
     }
     public void ReStart()
@@ -101,7 +99,6 @@ public class Game_Manager
         monsterSpawner.ReStart();
         inGameData.player.SetLevel();
         onStageReset.Invoke();
-
         Managers.UI.ShowUI<LevelUp_UI>();
     }
 }
