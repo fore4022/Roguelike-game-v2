@@ -62,6 +62,7 @@ public class Game_Manager
         isPlaying = false;
         gameOver = true;
 
+        Managers.UI.HideUI<LevelUp_UI>();
         Managers.UI.ShowUI<GameOver_UI>();
     }
     public void Clear()
