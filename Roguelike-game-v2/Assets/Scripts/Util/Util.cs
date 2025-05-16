@@ -62,6 +62,10 @@ public class Util
 
         return monoScript;
     }
+    public static void StopCoroutine(Coroutine coroutine)
+    {
+        GetMonoBehaviour().StopCoroutine(coroutine);
+    }
     public static Transform GetChildren(Transform transform, int index)
     {
         if(index > transform.childCount)

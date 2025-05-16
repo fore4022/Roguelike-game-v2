@@ -62,13 +62,14 @@ public class StageIcon_UI : UserInterface
             {
                 flag.sprite = iconSprite.flag;
                 flag.gameObject.SetActive(true);
+                monster.gameObject.SetActive(false);
             }
             else
             {
                 flag.gameObject.SetActive(false);
+                monster.gameObject.SetActive(true);
             }
 
-            monster.gameObject.SetActive(true);
             padlock.SetActive(false);
         }
 

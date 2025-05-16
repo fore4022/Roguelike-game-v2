@@ -10,7 +10,7 @@ public static class UIElementUtility
     {
         rectTransform.localScale = Calculate.GetVector(targetScale);
     }
-    public static Coroutine SetTextAlpha(TextMeshProUGUI tmp, float targetAlphaValue, float duration, bool recursive = true)
+    public static Coroutine SetTextAlpha(TextMeshProUGUI tmp, float targetAlphaValue, float duration = 0, bool recursive = true)
     {
         List<TextMeshProUGUI> tmpList = new();
 
@@ -28,7 +28,7 @@ public static class UIElementUtility
 
         return Util.GetMonoBehaviour().StartCoroutine(SetTextAlpha(tmpList, color, targetAlphaValue, duration));
     }
-    public static void SetImageAlpha(Image img, float targetAlphaValue, float duration = 0, bool recursive = true)
+    public static Coroutine SetImageAlpha(Image img, float targetAlphaValue, float duration = 0, bool recursive = true)
     {
         List<Image> imgList = new();
 
@@ -44,7 +44,7 @@ public static class UIElementUtility
             imgList.Add(img);
         }
 
-        Util.GetMonoBehaviour().StartCoroutine(SetImageAlpha(imgList, color, targetAlphaValue, duration));
+        return Util.GetMonoBehaviour().StartCoroutine(SetImageAlpha(imgList, color, targetAlphaValue, duration));
     }
     public static IEnumerator BlinkText(TextMeshProUGUI tmp, float duration, bool recursive = true, int minAlpha = 155, int maxAlpha = 255)
     {
@@ -63,50 +63,59 @@ public static class UIElementUtility
     }
     private static IEnumerator SetTextAlpha(List<TextMeshProUGUI> tmpList, Color color, float targetAlphaValue, float duration)
     {
-        Color childrenColor;
-        float totalTime = 0;
-        float alphaValue = color.a;
-
-        while (totalTime != duration)
+        if(duration == 0)
         {
-            totalTime += Time.unscaledDeltaTime;
-
-            if (totalTime > duration)
+            foreach(TextMeshProUGUI tmp in tmpList)
             {
-                totalTime = duration;
+                color = tmp.color;
+                color.a = targetAlphaValue;
+                tmp.color = color;
             }
+        }
+        else
+        {
+            Color childrenColor;
+            float totalTime = 0;
+            float alphaValue = color.a;
 
-            color.a = Mathf.Lerp(alphaValue, targetAlphaValue, totalTime / duration);
-
-            foreach (TextMeshProUGUI tmp in tmpList)
+            while(totalTime != duration)
             {
-                childrenColor = tmp.color;
-                childrenColor.a = color.a;
-                tmp.color = childrenColor;
-            }
+                totalTime += Time.unscaledDeltaTime;
 
-            yield return null;
+                if(totalTime > duration)
+                {
+                    totalTime = duration;
+                }
+
+                color.a = Mathf.Lerp(alphaValue, targetAlphaValue, totalTime / duration);
+
+                foreach(TextMeshProUGUI tmp in tmpList)
+                {
+                    childrenColor = tmp.color;
+                    childrenColor.a = color.a;
+                    tmp.color = childrenColor;
+                }
+
+                yield return null;
+            }
         }
     }
     private static IEnumerator SetImageAlpha(List<Image> imgList, Color color, float targetAlphaValue, float duration)
     {
-        Color childrenColor;
-
         if(duration == 0)
         {
-            color.a = targetAlphaValue;
-
             foreach(Image img in imgList)
             {
-                childrenColor = img.color;
-                childrenColor.a = targetAlphaValue;
-                img.color = childrenColor;
+                color = img.color;
+                color.a = targetAlphaValue;
+                img.color = color;
             }
 
             yield return null;
         }
         else
         {
+            Color childrenColor;
             float totalTime = 0;
             float alphaValue = color.a;
 

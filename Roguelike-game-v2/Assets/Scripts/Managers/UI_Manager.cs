@@ -61,7 +61,7 @@ public class UI_Manager
     {
         string name = GetName<T>();
 
-        if (uiDictionary.TryGetValue(name, out UserInterface ui))
+        if(uiDictionary.TryGetValue(name, out UserInterface ui))
         {
             ui.gameObject.SetActive(false);
         }
