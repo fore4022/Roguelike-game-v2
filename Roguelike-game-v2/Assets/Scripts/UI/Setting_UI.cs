@@ -1,7 +1,7 @@
-public class Setting_UI : Button_1
+public class Setting_UI : UserInterface
 {
-    protected override void PointerClick()
+    public override void SetUserInterface()
     {
-        //show UI
+
     }
 }
