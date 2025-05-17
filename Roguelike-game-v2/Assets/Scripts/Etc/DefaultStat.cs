@@ -1,6 +1,10 @@
+using System;
 [System.Serializable]
 public class DefaultStat
 {
+    [NonSerialized]
+    public float maxHealth;
+    
     public float health;
     public float damage;
     public float attackSpeed;
@@ -10,7 +14,7 @@ public class DefaultStat
 
     public DefaultStat(DefaultStat stat)
     {
-        health = stat.health;
+        maxHealth = health = stat.health;
         damage = stat.damage;
         attackSpeed = stat.attackSpeed;
         moveSpeed = stat.moveSpeed;
