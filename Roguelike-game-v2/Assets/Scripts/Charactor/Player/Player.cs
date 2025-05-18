@@ -1,12 +1,17 @@
+using System;
 using System.Collections;
 using UnityEngine;
 [RequireComponent(typeof(PlayerMove))]
 public class Player : MonoBehaviour, IDamageReceiver
 {
     public PlayerMove move = null;
+    public Action maxHealthUpdate = null;
+    public Action healthUpdate = null;
 
     private PlayerInformation information = new();
     private PlayerStat_SO playerStatSO = null;
+    private DefaultStat stat = null;
+
     private Animator anime;
 
     private const string statPath = "PlayerOriginalStat_SO";
@@ -17,7 +22,27 @@ public class Player : MonoBehaviour, IDamageReceiver
     private Vector3 diePosition = new Vector2(0, 0.3f);
     private bool death = false;
 
-    public DefaultStat Stat { get { return information.stat; } }
+    public DefaultStat Stat { get { return stat; } }
+    public float MaxHealth
+    {
+        get { return stat.maxHealth; }
+        set
+        {
+            stat.maxHealth = value;
+
+            maxHealthUpdate?.Invoke();
+        }
+    }
+    public float Health
+    {
+        get { return stat.health; }
+        set
+        {
+            stat.health = value;
+
+            healthUpdate?.Invoke();
+        }
+    }
     public bool Death { get { return death; } }
     private void Awake()
     {
@@ -30,8 +55,8 @@ public class Player : MonoBehaviour, IDamageReceiver
     }
     public void TakeDamage(IDamage damage)
     {
-        information.stat.health -= damage.DamageAmount;
-
+        Health -= damage.DamageAmount;
+        
         if(information.stat.health <= 0 && die == null)
         {
             die = StartCoroutine(Dieing());
@@ -87,6 +112,6 @@ public class Player : MonoBehaviour, IDamageReceiver
             playerStatSO = Util.LoadingToPath<PlayerStat_SO>(statPath);
         }
 
-        information.stat = new(playerStatSO.stat);
+        stat = information.stat = new(playerStatSO.stat);
     }
 }

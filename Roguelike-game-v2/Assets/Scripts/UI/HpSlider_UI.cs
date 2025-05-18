@@ -13,19 +13,19 @@ public class HpSlider_UI : UserInterface
     }
     private void Init()
     {
-        Managers.Game.inGameData.player.maxHealthUpdate += MaxValueUpdate;
-        Managers.Game.inGameData.player.healthUpdate += ValueUpdate;
+        Managers.Game.player.maxHealthUpdate += MaxValueUpdate;
+        Managers.Game.player.healthUpdate += ValueUpdate;
 
         MaxValueUpdate();
         ValueUpdate();
     }
     private void MaxValueUpdate()
     {
-        hpSlider.maxValue = Managers.Game.inGameData.player.MaxHealth;
+        hpSlider.maxValue = Managers.Game.player.MaxHealth;
     }
     private void ValueUpdate()
     {
-        hpSlider.value = Managers.Game.inGameData.player.Health;
+        hpSlider.value = Managers.Game.player.Health;
     }
     private IEnumerator WaitPlayerStatInit()
     {

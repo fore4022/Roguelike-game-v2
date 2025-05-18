@@ -1,8 +1,6 @@
 using System;
 public class PlayerData
 {
-    public Action maxHealthUpdate = null;
-    public Action healthUpdate = null;
     public Action experienceUpdate = null;
     public Action levelUpdate = null;
 
@@ -21,26 +19,6 @@ public class PlayerData
             info = value;
 
             Set();
-        }
-    }
-    public float MaxHealth
-    {
-        get { return info.stat.maxHealth; }
-        set
-        {
-            info.stat.maxHealth = value;
-
-            maxHealthUpdate?.Invoke();
-        }
-    }
-    public float Health
-    {
-        get { return info.stat.health; }
-        set
-        {
-            info.stat.health = value;
-
-            healthUpdate?.Invoke();
         }
     }
     public int Level
