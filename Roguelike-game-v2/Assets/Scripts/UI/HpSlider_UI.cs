@@ -1,3 +1,5 @@
+using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 public class HpSlider_UI : UserInterface
 {
@@ -7,7 +9,7 @@ public class HpSlider_UI : UserInterface
     {
         hpSlider = GetComponent<Slider>();
 
-        Init();
+        Util.GetMonoBehaviour().StartCoroutine(WaitPlayerStatInit());
     }
     private void Init()
     {
@@ -17,12 +19,18 @@ public class HpSlider_UI : UserInterface
         MaxValueUpdate();
         ValueUpdate();
     }
-    public void MaxValueUpdate()
+    private void MaxValueUpdate()
     {
         hpSlider.maxValue = Managers.Game.inGameData.player.MaxHealth;
     }
     private void ValueUpdate()
     {
         hpSlider.value = Managers.Game.inGameData.player.Health;
+    }
+    private IEnumerator WaitPlayerStatInit()
+    {
+        yield return new WaitUntil(() => Managers.Game.player != null);
+
+        Init();
     }
 }

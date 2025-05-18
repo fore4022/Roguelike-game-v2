@@ -50,6 +50,7 @@ public class Player : MonoBehaviour, IDamageReceiver
     public IEnumerator Dieing()
     {
         InputActions.DisableInputAction<TouchControls>();
+        Managers.UI.HideUI<HpSlider_UI>();
 
         transform.SetPosition(transform.position + diePosition, duration).SetScale(targetScale, duration);
 
