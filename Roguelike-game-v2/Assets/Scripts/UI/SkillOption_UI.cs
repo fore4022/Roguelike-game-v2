@@ -30,8 +30,7 @@ public class SkillOption_UI : Button_2
     {
         this.info = info;
 
-        UIElementUtility.SetImageScale(rectTransform, minScale);
-
+        transform.SetScale(minScale);
         SetOption();
     }
     private void SetOption()

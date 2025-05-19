@@ -22,13 +22,17 @@ public class ToastMessage_UI : UserInterface
     }
     protected override void Enable()
     {
+        coroutine = StartCoroutine(ToastHide());
+    }
+    private void OnDisable()
+    {
         if(coroutine != null)
         {
             Util.StopCoroutine(coroutine_img);
             Util.StopCoroutine(coroutine_text);
-        }
 
-        coroutine = StartCoroutine(ToastHide());
+            coroutine = null;
+        }
     }
     private IEnumerator ToastHide()
     {

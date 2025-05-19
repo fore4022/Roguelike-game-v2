@@ -6,10 +6,6 @@ using UnityEngine;
 using UnityEngine.UI;
 public static class UIElementUtility
 {
-    public static void SetImageScale(RectTransform rectTransform, float targetScale)
-    {
-        rectTransform.localScale = Calculate.GetVector(targetScale);
-    }
     public static Coroutine SetTextAlpha(TextMeshProUGUI tmp, float targetAlphaValue, float duration = 0, bool recursive = true)
     {
         List<TextMeshProUGUI> tmpList = new();
