@@ -3016,6 +3016,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0ab05389dfb82d42b68c325c9bfe429, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icons:
+  - {fileID: 1258046671}
+  - {fileID: 1971938053}
+  - {fileID: 835199941}
 --- !u!222 &1872518922
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5335,9 +5339,9 @@ SceneRoots:
   - {fileID: 1090018846}
   - {fileID: 763586099}
   - {fileID: 1872518920}
+  - {fileID: 526359418}
   - {fileID: 1244422184}
   - {fileID: 1274162526790183542}
   - {fileID: 2291308905188928534}
   - {fileID: 2174373080269794877}
   - {fileID: 4012136727401027386}
-  - {fileID: 526359418}
