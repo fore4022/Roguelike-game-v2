@@ -7,11 +7,11 @@ public class ToastMessage_UI : UserInterface
     private Image img;
     private TextMeshProUGUI text;
 
-    private const float delay = 1.25f;
-
     private Coroutine coroutine_img = null;
     private Coroutine coroutine_text = null;
     private Coroutine coroutine = null;
+
+    private const float delay = 1.25f;
 
     public override void SetUserInterface()
     {
@@ -28,8 +28,11 @@ public class ToastMessage_UI : UserInterface
     {
         if(coroutine != null)
         {
-            Util.StopCoroutine(coroutine_img);
-            Util.StopCoroutine(coroutine_text);
+            if(coroutine_img != null)
+            {
+                Util.StopCoroutine(coroutine_img);
+                Util.StopCoroutine(coroutine_text);
+            }
 
             coroutine = null;
         }
