@@ -37,6 +37,8 @@ public class SceneLoading_UI : UserInterface
 
         yield return new WaitUntil(() => Managers.Scene.IsSceneLoadComplete);
 
+        TweenSystemManage.Reset();
+
         yield return new WaitUntil(() => !wait);
 
         UIElementUtility.SetImageAlpha(background, minAlpha, limitTime);

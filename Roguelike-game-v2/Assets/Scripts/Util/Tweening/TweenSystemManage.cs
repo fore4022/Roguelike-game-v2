@@ -14,6 +14,7 @@ public static class TweenSystemManage
         if(GetTransform(comp, out Transform trans))
         {
             TweenData data = new();
+
             bool isContain = _schedule.TryGetValue(trans, out Sequence schedule);
 
             switch(op)

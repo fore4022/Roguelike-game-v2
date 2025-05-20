@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-[RequireComponent(typeof(Animator), typeof(SpriteRenderer))]
+[RequireComponent(typeof(Animator), typeof(SpriteRenderer), typeof(AudioSource))]
 public class Skill : MonoBehaviour, IScriptableData, IDamage
 {
     [SerializeField]
@@ -12,6 +12,7 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
     protected Skill_SO so;
     protected SpriteRenderer render = null;
     protected Animator anime = null;
+    protected AudioSource audioSource = null;
 
     protected Coroutine baseAttack = null;
     protected int level;
@@ -46,8 +47,10 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
 
         render = GetComponent<SpriteRenderer>();
         anime = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
 
         defaultCollider.enabled = enable;
+        audioSource.playOnAwake = true;
         render.enabled = false;
         anime.speed = 0;
         isInit = true;
