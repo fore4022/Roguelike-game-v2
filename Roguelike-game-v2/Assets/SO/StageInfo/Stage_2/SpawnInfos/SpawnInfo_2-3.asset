@@ -9,14 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c43d9ab8d436d3a45adf42fb3b0961a8, type: 3}
+  m_Script: {fileID: 11500000, guid: 43c4022969386b349bfa98fd095bc257, type: 3}
   m_Name: SpawnInfo_2-3
   m_EditorClassIdentifier: 
-  monsterInformation:
-  - monster: {fileID: 4087729720634512069, guid: 5e40eadb87ed55c46a0717d78e68f3bf, type: 3}
-    spawnProbability: 25
-  - monster: {fileID: 6654537298000785097, guid: 12e6145afa4f8f44b8fe1c2371fdb5e2, type: 3}
-    spawnProbability: 65
-  - monster: {fileID: 4399197652402371659, guid: b2790f1fca9475f42974eb5e016d66a7, type: 3}
-    spawnProbability: 10
-  duration: 1
+  monsterInformation: []
+  duration: 0

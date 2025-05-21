@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bb77a592112d124ab7e15e18c162fb2, type: 3}
+  m_Script: {fileID: 11500000, guid: af7ff4c782f3b324c91fa6b6fc689146, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: 
-  stages:
-  - {fileID: 11400000, guid: af5282a45a0be4f45bacf5cbe0321f69, type: 2}
-  - {fileID: 11400000, guid: dc9bac28f69a73347aca81826d720b05, type: 2}
-  - {fileID: 11400000, guid: 26a56fe9ccd89fa4e858f84e7346ef2e, type: 2}
-  - {fileID: 11400000, guid: bc97dc86eafbb384995288583fd9ca1a, type: 2}
-  - {fileID: 11400000, guid: 56b1667412087a74fabef3d2c379b916, type: 2}
+  stages: []
+  stageInfoPathList: []

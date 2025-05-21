@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class StageIcon_UI : UserInterface
 {
     [SerializeField]
-    private TextMeshProUGUI sceneName;
+    private TextMeshProUGUI themaName;
     [SerializeField]
     private Image ground_1;
     [SerializeField]
@@ -22,7 +22,7 @@ public class StageIcon_UI : UserInterface
 
     public override void SetUserInterface()
     {
-        sceneName = Util.GetComponentInChildren<TextMeshProUGUI>(transform);
+        themaName = Util.GetComponentInChildren<TextMeshProUGUI>(transform);
 
         UpdateUI(0);
     }
@@ -42,7 +42,7 @@ public class StageIcon_UI : UserInterface
 
         if(state == StageState.Locked)
         {
-            sceneName.text = LockedText;
+            themaName.text = LockedText;
             ground_1.color = Color.black;
             ground_2.color = Color.black;
             monster.color = Color.black;
@@ -53,7 +53,7 @@ public class StageIcon_UI : UserInterface
         }
         else
         {
-            sceneName.text = so.stagePath;
+            themaName.text = so.stagePath;
             ground_1.color = Color.white;
             ground_2.color = Color.white;
             monster.color = Color.white;

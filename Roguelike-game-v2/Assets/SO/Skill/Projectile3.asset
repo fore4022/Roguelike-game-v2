@@ -9,39 +9,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2c2d8910f95c1f409edd1c4b2ef9beb, type: 3}
+  m_Script: {fileID: 11500000, guid: 73ca3fa60cacd8349afc667de9942f53, type: 3}
   m_Name: Projectile3
   m_EditorClassIdentifier: 
   projectile_Info:
     animationName: 
-    speed: 4.25
-    penetration: 99
+    speed: 0
+    penetration: 0
   multiCast:
     delay: []
     count: []
   damageCoefficient:
-  - 1
-  - 1.2
-  - 1.4
-  - 1.6
-  - 2
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   coolTime:
-  - 4
-  - 3.75
-  - 3.5
-  - 3.25
-  - 3
-  attackRange:
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   adjustmentRotation: {x: 0, y: 0, z: 0}
   adjustmentPosition: {x: 0, y: 0}
-  typePath: Projectile3
+  typePath: 
   duration: 0
-  flipX: 1
-  flipY: 1
-  projectile: 1
+  flipX: 0
+  flipY: 0
+  projectile: 0
   isMultiCast: 0

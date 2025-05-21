@@ -9,18 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89584b487538c5b49bba02d51c981659, type: 3}
+  m_Script: {fileID: 11500000, guid: 6c81c6b72b3bcf74b9c4de406606a7e0, type: 3}
   m_Name: Info_5
   m_EditorClassIdentifier: 
-  spawnInformationList:
-  - {fileID: 11400000, guid: e3fb18733038bbb4cb03c19b81aafe30, type: 2}
-  - {fileID: 11400000, guid: 94b24fcd2b2a2db41aa7bbf24d6b56fe, type: 2}
-  - {fileID: 11400000, guid: 313cb940a91c04b498a4febb491824bf, type: 2}
-  - {fileID: 11400000, guid: 83e923ae866220d41998a83313c49d23, type: 2}
-  - {fileID: 11400000, guid: 61f03da54368d8e46a33cdc9885f322f, type: 2}
-  - {fileID: 11400000, guid: 438dfd3ac260afe49a34ad14dab608e7, type: 2}
-  background: {fileID: 8714857401625141123, guid: 72abe3f7571a2cd4d9fc0153f60a45ad, type: 3}
-  requiredTime: 20
+  spawnInformationList: []
   difficulty: 1
   statScale: 1
-  spawnDelay: 0.5
+  spawnDelay: 0
+  requiredTime: 0

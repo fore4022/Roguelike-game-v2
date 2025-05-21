@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2c2d8910f95c1f409edd1c4b2ef9beb, type: 3}
+  m_Script: {fileID: 11500000, guid: 73ca3fa60cacd8349afc667de9942f53, type: 3}
   m_Name: Skill6
   m_EditorClassIdentifier: 
   projectile_Info:
@@ -20,26 +20,20 @@ MonoBehaviour:
     delay: []
     count: []
   damageCoefficient:
-  - 2
-  - 2.2
-  - 2.4
-  - 2.6
-  - 3
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   coolTime:
-  - 3
-  - 2.85
-  - 2.6
-  - 2.45
-  - 2.15
-  attackRange:
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   adjustmentRotation: {x: 0, y: 0, z: 0}
   adjustmentPosition: {x: 0, y: 0}
-  typePath: Skill6
+  typePath: 
   duration: 0
   flipX: 0
   flipY: 0

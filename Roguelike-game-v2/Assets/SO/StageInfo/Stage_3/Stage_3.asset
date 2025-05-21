@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e9cf5da540d6084796d818663cf5253, type: 3}
+  m_Script: {fileID: 11500000, guid: 15c42b0b75fa6a14db3375d1155e331f, type: 3}
   m_Name: Stage_3
   m_EditorClassIdentifier: 
-  infoPath: Info_3
-  iconPath: Icon_3
-  stagePath: Rock Mountain
-  information: {fileID: 11400000, guid: b61c87c7f5e48cc4b86d6cd044614c78, type: 2}
-  iconSprite: {fileID: 11400000, guid: 3e7d67378e48c204e8c0fdb77f0a937d, type: 2}
-  stage: {fileID: 8714857401625141123, guid: 59b87b04926237d4f9b5264d711a1c3c, type: 3}
+  information: {fileID: 0}
+  iconSprite: {fileID: 0}
+  infoPath: 
+  iconPath: 
+  stagePath: 
+  stage: {fileID: 0}

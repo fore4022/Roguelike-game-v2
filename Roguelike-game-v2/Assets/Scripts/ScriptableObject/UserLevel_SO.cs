@@ -8,7 +8,7 @@ public class UserLevel_SO : ScriptableObject
     public List<string> pathList;
 
 #if UNITY_EDITOR
-    public List<Skillnformation_SO> attackInformationList;
+    public List<SkillInformation_SO> attackInformationList;
 
     private string path;
     private int count { get { return attackInformationList.Count; } }
@@ -46,7 +46,7 @@ public class UserLevel_SO : ScriptableObject
         {
             pathList = new();
 
-            foreach(Skillnformation_SO so in attackInformationList)
+            foreach(SkillInformation_SO so in attackInformationList)
             {
                 path = $"Assets/SO/AttackInformation/{so.name}.asset";
 

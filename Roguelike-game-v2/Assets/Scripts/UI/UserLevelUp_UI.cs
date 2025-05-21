@@ -7,7 +7,7 @@ public class UserLevelUp_UI : UserInterface, IPointerClickHandler
     [SerializeField]
     private GameObject[] particles;
     [SerializeField]
-    private TextMeshProUGUI levelLog;
+    private TextMeshProUGUI log;
     [SerializeField]
     private TextMeshProUGUI prompt;
 
@@ -50,18 +50,18 @@ public class UserLevelUp_UI : UserInterface, IPointerClickHandler
         string str = $"Lv. {Managers.UserData.data.Level - levelUpCount}";
         int length = str.Length;
 
-        levelLog.text = str;
+        log.text = str;
 
         yield return delay;
 
         str = $"Lv. {Managers.UserData.data.Level}";
 
-        StartCoroutine(Typing.TypeEffecting(levelLog, " -> " + str));
+        StartCoroutine(Typing.TypeEffecting(log, " -> " + str));
 
         yield return delay;
 
         prompt.gameObject.SetActive(true);
-        StartCoroutine(Typing.EraseEffecting(levelLog, length));
+        StartCoroutine(Typing.EraseEffecting(log, length));
         StartCoroutine(UIElementUtility.BlinkText(prompt, duration, false));
     }
     private IEnumerator ParticleEffecting()

@@ -7,7 +7,7 @@ public class AttackContext
     
     public int level = 0;
 
-    public AttackContext(Skillnformation_SO dataSO)
+    public AttackContext(SkillInformation_SO dataSO)
     {
         data = new(dataSO);
     }
@@ -16,11 +16,11 @@ public class AttackData
 {
     private Dictionary<string, AttackContext> info = new();
 
-    public void SetDictionaryItem(Skillnformation_SO so)
+    public void SetDictionaryItem(SkillInformation_SO so)
     {
-        if(!info.ContainsKey(so.attackInfo.type))
+        if(!info.ContainsKey(so.skillInfo.type))
         {
-            info.Add(so.attackInfo.type, new AttackContext(so));
+            info.Add(so.skillInfo.type, new AttackContext(so));
         }
     }
     public void SetValue(string key, int levelDelta = 1)

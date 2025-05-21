@@ -9,17 +9,17 @@ public class SkillInformation
     public string type;
     public string explanation;
 
-    public SkillInformation(Skillnformation_SO info)
+    public SkillInformation(SkillInformation_SO info)
     {
         icon = Util.LoadingToPath<Sprite>(info.spritePath);
-        type = info.attackInfo.type;
-        explanation = info.attackInfo.explanation;
+        type = info.skillInfo.type;
+        explanation = info.skillInfo.explanation;
     }
 }
 [CreateAssetMenu(fileName = "SkillInformation", menuName = "Create New SO/Create New SkillInformation_SO")]
-public class Skillnformation_SO : ScriptableObject
+public class SkillInformation_SO : ScriptableObject
 {
-    public SkillInformation attackInfo;
+    public SkillInformation skillInfo;
 
     [HideInInspector]
     public string spritePath;
