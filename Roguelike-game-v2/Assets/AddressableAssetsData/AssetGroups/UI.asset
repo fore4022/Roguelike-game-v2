@@ -15,25 +15,11 @@ MonoBehaviour:
   m_GroupName: UI
   m_Data:
     m_SerializedData: []
-  m_GUID: ad7d7e74974710d4998324ba9ffcfe21
-  m_SerializeEntries:
-  - m_GUID: a5d4c9df08f49cc4aad58d879d61ce7a
-    m_Address: SkillOption
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - UI
-    - Prefab
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6e3e6b7590871ab4b9a159bff70ac264
-    m_Address: SceneLoading
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - UI
-    - Prefab
-    FlaggedDuringContentUpdateRestriction: 0
+  m_GUID: 4ba626d8a5a779c46b5d9f0291b3b527
+  m_SerializeEntries: []
   m_ReadOnly: 0
-  m_Settings: {fileID: 11400000, guid: 761c6e2b1891ec64b9cf97bc303d63a1, type: 2}
+  m_Settings: {fileID: 11400000, guid: 0f0f1efd53420e34ba93e0637d25113c, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: f874a9977eca728448d8fbb7c58f73bb, type: 2}
-    - {fileID: 11400000, guid: faa240c5af7bb07459b38e3ffebb99c0, type: 2}
+    - {fileID: 11400000, guid: 71f498c515f4a9747814a21ef4de98a4, type: 2}
+    - {fileID: 11400000, guid: 29f88fed0b219e246a35eaf41313b5fc, type: 2}

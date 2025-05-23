@@ -15,88 +15,11 @@ MonoBehaviour:
   m_GroupName: Sprite
   m_Data:
     m_SerializedData: []
-  m_GUID: 6a05fa00c956f2b4bbe96bc77987cd2b
-  m_SerializeEntries:
-  - m_GUID: c95981ab25f9dfc4a9694fecdcee3873
-    m_Address: Assets/Sprites/Icon/Holy VFX 02_3.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Attack
-    - Sprite
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: cf97bf5a6954c3d4b9fbe3e0d3f7334b
-    m_Address: Assets/Sprites/Icon/FireBall_0.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Attack
-    - Sprite
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e7f34519573c79e42909334d3ad97ec1
-    m_Address: Assets/Sprites/Icon/Small_Poisonball_9x25_0.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Attack
-    - Sprite
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 5daaba6b5f49061438042ba832db578d
-    m_Address: Assets/Sprites/Icon/FireTornado_2.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Attack
-    - Sprite
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 73fdba864e354084083ec85b28eeec58
-    m_Address: Assets/Sprites/Icon/spark_3.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Attack
-    - Sprite
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: db75157ff90ba3343a0188c5677b29ee
-    m_Address: Assets/Sprites/Icon/ElectricLighting2_3.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Attack
-    - Sprite
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a3f94b990e181ee46928ec270eb3e953
-    m_Address: Assets/Sprites/Icon/VoidBlackHole_0.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Attack
-    - Sprite
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4b8b8e6feb8114f40b28d32bff4bd190
-    m_Address: Assets/Sprites/Icon/VoidExplosion1_1.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Attack
-    - Sprite
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b90b2867cb9ecb747b6f65459697c404
-    m_Address: Assets/Sprites/Icon/Ice VFX 1 192x192_4.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Attack
-    - Sprite
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3776069ec8dc19d41895200376786641
-    m_Address: Assets/Sprites/Icon/Slash_attack_006_4.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Attack
-    - Sprite
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0251eeecc42c9c048a24eeccd4d1877b
-    m_Address: Assets/Sprites/Icon/HolyProjectile_0.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Attack
-    - Sprite
-    FlaggedDuringContentUpdateRestriction: 0
+  m_GUID: da87016f52317cf468ed229095f589fa
+  m_SerializeEntries: []
   m_ReadOnly: 0
-  m_Settings: {fileID: 11400000, guid: 761c6e2b1891ec64b9cf97bc303d63a1, type: 2}
+  m_Settings: {fileID: 11400000, guid: 0f0f1efd53420e34ba93e0637d25113c, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 071ec8c8fb138634b8b998129ea4d298, type: 2}
-    - {fileID: 11400000, guid: 44eee07d259612c42b698556e7bf9447, type: 2}
+    - {fileID: 11400000, guid: bbc56da4a719bcd45897a61606aace51, type: 2}
+    - {fileID: 11400000, guid: 2c57fad97d45f7e4598613724adb51aa, type: 2}

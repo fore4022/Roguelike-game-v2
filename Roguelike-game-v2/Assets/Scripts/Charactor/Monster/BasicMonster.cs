@@ -2,13 +2,13 @@ using System.Collections;
 using UnityEngine;
 public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 {
+    private const float death_AnimationDuration = 0.5f;
     private const float damagedDuration = 0.15f;
 
     private Coroutine moveCoroutine = null;
     private WaitForSeconds damaged = new(damagedDuration);
     private Color defaultColor;
     private Vector3 direction;
-    private float animationDuration;
 
     public float DamageAmount { get { return stat.damage * stat.attackSpeed * Managers.Game.difficultyScaler.IncreaseStat * Time.deltaTime; } }
     protected override void OnEnable()
@@ -70,7 +70,6 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
         base.Init();
 
         defaultColor = render.color;
-        animationDuration = stat.death_AnimationDuration;
     }
     private void Attack(Collision2D collision)
     {
@@ -102,13 +101,13 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     {
         animator.speed = 0;
 
-        StartCoroutine(ColorLerp.ChangeColor(render, Color.black, defaultColor, animationDuration / 2));
+        StartCoroutine(ColorLerp.ChangeColor(render, Color.black, defaultColor, death_AnimationDuration / 2));
 
-        yield return new WaitForSeconds(animationDuration / 2);
+        yield return new WaitForSeconds(death_AnimationDuration / 2);
 
-        StartCoroutine(ColorLerp.ChangeAlpha(render, 0, render.color.a, animationDuration));
+        StartCoroutine(ColorLerp.ChangeAlpha(render, 0, render.color.a, death_AnimationDuration));
 
-        yield return new WaitForSeconds(animationDuration);
+        yield return new WaitForSeconds(death_AnimationDuration);
 
         render.color = defaultColor;
 

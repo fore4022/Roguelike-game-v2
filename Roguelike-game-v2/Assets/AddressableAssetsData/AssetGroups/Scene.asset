@@ -15,23 +15,16 @@ MonoBehaviour:
   m_GroupName: Scene
   m_Data:
     m_SerializedData: []
-  m_GUID: 9dabcf21e4f6de14dbd701e9b6206f03
+  m_GUID: 99fcda9ef5a1b644dac371b646b6bbd0
   m_SerializeEntries:
-  - m_GUID: 2cda990e2423bbf4892e6590ba056729
-    m_Address: InGame
+  - m_GUID: 6f5836baf98c34a4b98048231d1e5269
+    m_Address: 1_Level
     m_ReadOnly: 0
-    m_SerializedLabels:
-    - Scene
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c60da2f90a5bdc84fa9dba23b8baa9e1
-    m_Address: Main
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Scene
+    m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
-  m_Settings: {fileID: 11400000, guid: 761c6e2b1891ec64b9cf97bc303d63a1, type: 2}
+  m_Settings: {fileID: 11400000, guid: 0f0f1efd53420e34ba93e0637d25113c, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: c817c3f65eb9b344c8d1576c310e7219, type: 2}
-    - {fileID: 11400000, guid: 6ab6f32907d6ec941b8e88841940bf18, type: 2}
+    - {fileID: 11400000, guid: 36395b7191d2aca41b5b33c33c1a1b41, type: 2}
+    - {fileID: 11400000, guid: 47728a295b9ac85468a0515d199a8792, type: 2}
