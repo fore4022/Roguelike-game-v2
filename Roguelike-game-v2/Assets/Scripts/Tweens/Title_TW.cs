@@ -13,7 +13,7 @@ public class Title_TW : MonoBehaviour
         //StartCoroutine(ReOrder());
 
         // Wisp
-        tweens[0].SetScale(17, 1.2f, 0.15f, Ease.OutExpo)
+        tweens[0].SetScale(23, 1.2f, 0.15f, Ease.OutExpo)
             .SetPosition(new(0.045f, 0.515f), 0.5f, 0.15f, Ease.OutCirc)
             .SetRotation(new(0, 0, 727.5f), 1.1f, 0.15f, Ease.OutExpo);
 
