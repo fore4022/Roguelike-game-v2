@@ -10,11 +10,11 @@ public class Title_TW : MonoBehaviour
 
     private void Start()
     {
-        //StartCoroutine(ReOrder());
+        StartCoroutine(ReOrder());
 
         // Wisp
         tweens[0].SetScale(23, 1.2f, 0.15f, Ease.OutExpo)
-            .SetPosition(new(0.045f, 0.515f), 0.5f, 0.15f, Ease.OutCirc)
+            .SetPosition(new(-0.15f, 0.515f), 0.5f, 0.15f, Ease.OutCirc)
             .SetRotation(new(0, 0, 727.5f), 1.1f, 0.15f, Ease.OutExpo);
 
         // Moth
@@ -70,7 +70,7 @@ public class Title_TW : MonoBehaviour
 
         yield return new WaitUntil(() => anime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1);
 
-        _explosion.sortingOrder = -1;
+        _explosion.sortingOrder = 0;
 
         StartCoroutine(Managers.UI.GetUI<TitlePrompt_UI>().UserDataLoading());
     }

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Icon_2
   m_EditorClassIdentifier: 
   ground_1: {fileID: 0}
-  ground_2: {fileID: 0}
-  flag: {fileID: 0}
-  monster: {fileID: 0}
+  ground_2: {fileID: 6836142153017594085, guid: aee85871f0df4213b4ae5a8d1be6fa59, type: 3}
+  flag: {fileID: 554435669, guid: 5bd989fecb5450e4cbba2937e9a62b34, type: 3}
+  monster: {fileID: 21300002, guid: 90d0473d0aae12d4d877496a6984cb5f, type: 3}

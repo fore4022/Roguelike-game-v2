@@ -147,6 +147,71 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2e6ba11cb8e5dd748bd15cfcb5795250
+    m_Address: Assets/SO/Skill/Skill4.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dc562fa984c5c124ab5467bf0e283356
+    m_Address: Assets/SO/Skill/Skill2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0117c6dc04d98b449af7c105c2f6d2a4
+    m_Address: Assets/SO/Skill/Projectile3.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 54d1164d43d21ac45898685023de9794
+    m_Address: Assets/SO/Skill/Projectile1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0c28ae9a911f1784b9b3952327dc49ac
+    m_Address: Assets/SO/Skill/Projectile5.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 645acf28d92d7ad46b026bcde5cc5345
+    m_Address: Assets/SO/Skill/Projectile4.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9a17c648fedd6ab45b6643590c7085fc
+    m_Address: Assets/SO/Skill/Projectile2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1a35818287b0bc2459f4a9ec48006041
+    m_Address: Assets/SO/Skill/Skill1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 705e2b58b9dfec14fa045dbe021b2876
+    m_Address: Assets/SO/Skill/Skill5.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3b87993d9bd8c8242aedae1c07544eb2
+    m_Address: Assets/SO/Skill/Skill6.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e540e19fa49ae6047ae03c6f559c8e90
+    m_Address: Assets/SO/Skill/Skill3.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3a21b810a432d2d47bc16667327f4993
+    m_Address: GameData
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f7a166059084acc49ad2e50ebea7165c
+    m_Address: UserLevelInfo_SO
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0f0f1efd53420e34ba93e0637d25113c, type: 2}
   m_SchemaSet:

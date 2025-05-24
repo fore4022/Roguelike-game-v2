@@ -22,6 +22,76 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 638614d3c143b3a43becca58456eb848
+    m_Address: Assets/SO/SkillInformation/Info6-S.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 61cc9ccac9c405b45a49cb7e36f89ff9
+    m_Address: Assets/SO/SkillInformation/Info3-P.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7944311dac1751c4c9f5385866517a52
+    m_Address: Assets/SO/SkillInformation/Info3-S.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 70ac5aa45abfc9846b7829777b718f86
+    m_Address: Assets/SO/SkillInformation/Info1-S.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 582c875a28dca284c8c2f7158f881662
+    m_Address: Assets/SO/SkillInformation/Info2-S.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 248f3c23e8b94d841a974e60f00ddec9
+    m_Address: Assets/SO/SkillInformation/Info4-P.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ec600e2dded5e3246ac1162222bff279
+    m_Address: Assets/SO/SkillInformation/Info2-P.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d677659c5a1e8f640be66bdf143494dc
+    m_Address: Assets/SO/SkillInformation/Info1-P.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d88a84974f5dff84a8423fd3091b2aab
+    m_Address: Assets/SO/SkillInformation/Info5-S.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 36915492acc929c4290a91b7b9db0b3b
+    m_Address: Assets/SO/SkillInformation/Info4-S.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ad595dbd92b15ea4c819be3f31b016ad
+    m_Address: Assets/SO/SkillInformation/Info5-P.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 58dd71ce3e432c04daff3a04bce0eccf
+    m_Address: SkillOption
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9baaa93e1a9df0a4787a77e1d996cadd
+    m_Address: Main
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 72262ff1cfe024f4f9e9d280c1669fc1
+    m_Address: InGame
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0f0f1efd53420e34ba93e0637d25113c, type: 2}
   m_SchemaSet:
