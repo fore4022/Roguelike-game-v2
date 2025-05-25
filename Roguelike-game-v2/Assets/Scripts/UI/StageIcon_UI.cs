@@ -6,11 +6,11 @@ public class StageIcon_UI : UserInterface
     [SerializeField]
     private TextMeshProUGUI themaName;
     [SerializeField]
-    private Image ground_1;
+    private Image cover;
     [SerializeField]
-    private Image ground_2;
+    private Image ground;
     [SerializeField]
-    private Image flag;
+    private Image banner;
     [SerializeField]
     private Image monster;
     [SerializeField]
@@ -37,51 +37,51 @@ public class StageIcon_UI : UserInterface
         StageState state = Managers.UserData.data.GetStageState();
         Icon_SO iconSprite = so.iconSprite;
 
-        ground_1.sprite = iconSprite.ground_1;
+        cover.sprite = iconSprite.ground;
         monster.sprite = iconSprite.monster;
 
         if(state == StageState.Locked)
         {
             themaName.text = LockedText;
-            ground_1.color = Color.black;
-            ground_2.color = Color.black;
+            cover.color = Color.black;
+            ground.color = Color.black;
             monster.color = Color.black;
 
-            flag.gameObject.SetActive(false);
+            banner.gameObject.SetActive(false);
             monster.gameObject.SetActive(true);
             padlock.SetActive(true);
         }
         else
         {
             themaName.text = so.stagePath;
-            ground_1.color = Color.white;
-            ground_2.color = Color.white;
+            cover.color = Color.white;
+            ground.color = Color.white;
             monster.color = Color.white;
 
             if(state == StageState.Cleared)
             {
-                flag.sprite = iconSprite.flag;
-                flag.gameObject.SetActive(true);
+                banner.sprite = iconSprite.banner;
+                banner.gameObject.SetActive(true);
                 monster.gameObject.SetActive(false);
             }
             else
             {
-                flag.gameObject.SetActive(false);
+                banner.gameObject.SetActive(false);
                 monster.gameObject.SetActive(true);
             }
 
             padlock.SetActive(false);
         }
 
-        if(iconSprite.ground_2 == null)
+        if(iconSprite.cover == null)
         {
-            ground_2.gameObject.SetActive(false);
+            cover.gameObject.SetActive(false);
         }
         else
         {
-            ground_2.sprite = iconSprite.ground_2;
+            cover.sprite = iconSprite.cover;
 
-            ground_2.gameObject.SetActive(true);
+            cover.gameObject.SetActive(true);
         }
     }
 }
