@@ -60,6 +60,11 @@ public static class InputActions
     }
     public static void ClearActions()
     {
+        foreach(IInputActionCollection act in inputActionList)
+        {
+            act.Disable();
+        }
+
         inputActionList = new();
 
         Managers.Scene.loadScene -= ClearActions;
