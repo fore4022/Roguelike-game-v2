@@ -18,9 +18,9 @@ public class AttackData
 
     public void SetDictionaryItem(SkillInformation_SO so)
     {
-        if(!info.ContainsKey(so.skillInfo.type))
+        if(!info.ContainsKey(so.info.type))
         {
-            info.Add(so.skillInfo.type, new AttackContext(so));
+            info.Add(so.info.type, new AttackContext(so));
         }
     }
     public void SetValue(string key, int levelDelta = 1)

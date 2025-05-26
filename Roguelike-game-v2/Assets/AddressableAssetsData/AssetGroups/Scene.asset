@@ -72,11 +72,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ad595dbd92b15ea4c819be3f31b016ad
-    m_Address: Assets/SO/SkillInformation/Info5-P.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 58dd71ce3e432c04daff3a04bce0eccf
     m_Address: SkillOption
     m_ReadOnly: 0

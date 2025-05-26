@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ec6efdbd2a82040bb65451859f8197, type: 3}
   m_Name: Info2-P
   m_EditorClassIdentifier: 
-  attackInfo:
+  info:
     icon: {fileID: 0}
-    type: 
+    type: Projectile2
     explanation: 
   spritePath: 
   sprite: {fileID: 0}

@@ -8,10 +8,10 @@ public class UserLevel_SO : ScriptableObject
     public List<string> pathList;
 
 #if UNITY_EDITOR
-    public List<SkillInformation_SO> attackInformationList;
+    public List<SkillInformation_SO> skillInformationList;
 
     private string path;
-    private int count { get { return attackInformationList.Count; } }
+    private int count { get { return skillInformationList.Count; } }
 
     private void OnValidate()
     {
@@ -21,7 +21,7 @@ public class UserLevel_SO : ScriptableObject
     {
         EditorApplication.delayCall += () =>
         {
-            if(pathList.Count != attackInformationList.Count)
+            if(pathList.Count != skillInformationList.Count)
             {
                 Validate();
             }
@@ -33,11 +33,11 @@ public class UserLevel_SO : ScriptableObject
     }
     private void Validate()
     {
-        if(count < attackInformationList.Count)
+        if(count < skillInformationList.Count)
         {
-            for(int i = count; i < attackInformationList.Count; i++)
+            for(int i = count; i < skillInformationList.Count; i++)
             {
-                path = $"Assets/SO/AttackInformation/{attackInformationList[i].name}.asset";
+                path = $"Assets/SO/SkillInformation/{skillInformationList[i].name}.asset";
 
                 pathList.Add(path);
             }
@@ -46,9 +46,9 @@ public class UserLevel_SO : ScriptableObject
         {
             pathList = new();
 
-            foreach(SkillInformation_SO so in attackInformationList)
+            foreach(SkillInformation_SO so in skillInformationList)
             {
-                path = $"Assets/SO/AttackInformation/{so.name}.asset";
+                path = $"Assets/SO/SkillInformation/{so.name}.asset";
 
                 pathList.Add(path);
             }

@@ -13,18 +13,17 @@ MonoBehaviour:
   m_Name: UserLevel
   m_EditorClassIdentifier: 
   pathList:
-  - Assets/SO/AttackInformation/Info1-P.asset
-  - Assets/SO/AttackInformation/Info1-S.asset
-  - Assets/SO/AttackInformation/Info2-P.asset
-  - Assets/SO/AttackInformation/Info2-S.asset
-  - Assets/SO/AttackInformation/Info3-P.asset
-  - Assets/SO/AttackInformation/Info3-S.asset
-  - Assets/SO/AttackInformation/Info4-P.asset
-  - Assets/SO/AttackInformation/Info4-S.asset
-  - Assets/SO/AttackInformation/Info5-P.asset
-  - Assets/SO/AttackInformation/Info5-S.asset
-  - Assets/SO/AttackInformation/Info6-S.asset
-  attackInformationList:
+  - Assets/SO/SkillInformation/Info1-P.asset
+  - Assets/SO/SkillInformation/Info1-S.asset
+  - Assets/SO/SkillInformation/Info2-P.asset
+  - Assets/SO/SkillInformation/Info2-S.asset
+  - Assets/SO/SkillInformation/Info3-P.asset
+  - Assets/SO/SkillInformation/Info3-S.asset
+  - Assets/SO/SkillInformation/Info4-P.asset
+  - Assets/SO/SkillInformation/Info4-S.asset
+  - Assets/SO/SkillInformation/Info5-S.asset
+  - Assets/SO/SkillInformation/Info6-S.asset
+  skillInformationList:
   - {fileID: 11400000, guid: d677659c5a1e8f640be66bdf143494dc, type: 2}
   - {fileID: 11400000, guid: 70ac5aa45abfc9846b7829777b718f86, type: 2}
   - {fileID: 11400000, guid: ec600e2dded5e3246ac1162222bff279, type: 2}
@@ -33,6 +32,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7944311dac1751c4c9f5385866517a52, type: 2}
   - {fileID: 11400000, guid: 248f3c23e8b94d841a974e60f00ddec9, type: 2}
   - {fileID: 11400000, guid: 36915492acc929c4290a91b7b9db0b3b, type: 2}
-  - {fileID: 11400000, guid: ad595dbd92b15ea4c819be3f31b016ad, type: 2}
   - {fileID: 11400000, guid: d88a84974f5dff84a8423fd3091b2aab, type: 2}
   - {fileID: 11400000, guid: 638614d3c143b3a43becca58456eb848, type: 2}

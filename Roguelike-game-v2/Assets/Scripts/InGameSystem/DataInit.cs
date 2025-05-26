@@ -25,8 +25,8 @@ public class DataInit
     public void LoadSkillList(ref List<GameObject> skillList)
     {
         UserLevel_SO userLevel;
-        SkillInformation_SO attackInfo;
-        GameObject attack;
+        SkillInformation_SO so;
+        GameObject skill;
 
         for(int i = 1; i <= Managers.UserData.data.Level; i++)
         {
@@ -34,12 +34,12 @@ public class DataInit
 
             foreach(string path in userLevel.pathList)
             {
-                attackInfo = Util.LoadingToPath<SkillInformation_SO>(path);
-                attack = Util.LoadingToPath<GameObject>(attackInfo.skillInfo.type);
+                so = Util.LoadingToPath<SkillInformation_SO>(path);
+                skill = Util.LoadingToPath<GameObject>(so.info.type);
                 
-                skillList.Add(attack);
+                skillList.Add(skill);
 
-                Managers.Game.inGameData.attack.SetDictionaryItem(attackInfo);
+                Managers.Game.inGameData.attack.SetDictionaryItem(so);
             }
         }
     }
