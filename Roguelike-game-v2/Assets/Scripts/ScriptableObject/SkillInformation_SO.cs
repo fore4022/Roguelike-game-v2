@@ -47,7 +47,7 @@ public class SkillInformation_SO : ScriptableObject
     }
     public void Validate()
     {
-        spritePath = $"Assets/Sprites/Icon/Skills/{sprite.name}.asset";
+        spritePath = $"Assets/Sprites/Icon/Skills/{sprite.name}.png";
     }
 #endif
 }

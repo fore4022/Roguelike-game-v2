@@ -4,8 +4,8 @@ public abstract class Button_2 : Button_Default, IPointerDownHandler, IPointerEx
 {
     protected Coroutine adjustmentScale = null;
     protected float minScale = 1;
-    protected float maxScale = 1.1f;
-    protected float duration = 1;
+    protected float maxScale = 1.025f;
+    protected float duration = 0.15f;
 
     public virtual void OnPointerDown(PointerEventData eventData)
     {

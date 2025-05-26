@@ -27,13 +27,13 @@ public class GameOver_UI : UserInterface
 
         if(Managers.Game.inGameTimer.GetMinutes > Managers.Game.stageInformation.requiredTime || Managers.Game.inGameTimer.GetHours > 0)
         {
-            result = "스테이지\n클리어";
+            result = "Stage\nClear";
 
             Managers.UserData.data.Clear(Managers.UserData.data.StageName);
         }
         else
         {
-            result = "스테이지\n실패";
+            result = "Stage\nFailed";
         }
 
         StartCoroutine(Typing.TypeEffecting(resultText, result, true));
@@ -57,17 +57,17 @@ public class GameOver_UI : UserInterface
     }
     private IEnumerator ResultSequence()
     {
-        string requiredTime = $"목표 시간\n\n{(Managers.Game.stageInformation.requiredTime / 60):D2} : {Managers.Game.stageInformation.requiredTime:D2} : 00";
-        string survivalTime = $"생존 시간\n\n{Managers.Game.inGameTimer.GetHours:D2} : {Managers.Game.inGameTimer.GetMinutes:D2} : {Managers.Game.inGameTimer.GetSeconds:D2}";
+        string requiredTime = $"Target Time\n\n{(Managers.Game.stageInformation.requiredTime / 60):D2} : {Managers.Game.stageInformation.requiredTime:D2} : 00";
+        string survivalTime = $"Survival Time\n\n{Managers.Game.inGameTimer.GetHours:D2} : {Managers.Game.inGameTimer.GetMinutes:D2} : {Managers.Game.inGameTimer.GetSeconds:D2}";
         string gainExp;
 
         if(Managers.Game.UserExp == 0)
         {
-            gainExp = "경험치\n\n+ 0 EXP";
+            gainExp = "Experience\n\n+ 0 EXP";
         }
         else
         {
-            gainExp = $"경험치\n\n+ {Managers.Game.UserExp:N0} EXP";
+            gainExp = $"Experience\n\n+ {Managers.Game.UserExp:N0} EXP";
         }
 
         yield return delay;

@@ -16,5 +16,5 @@ MonoBehaviour:
     icon: {fileID: 0}
     type: Projectile1
     explanation: 
-  spritePath: 
-  sprite: {fileID: 0}
+  spritePath: Assets/Sprites/Icon/Skills/HolyProjectile.png
+  sprite: {fileID: 21300000, guid: b4fcd567f9b1211468aee6414f4be3c7, type: 3}

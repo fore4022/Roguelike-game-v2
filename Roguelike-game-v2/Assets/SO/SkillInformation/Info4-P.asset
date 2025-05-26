@@ -16,5 +16,5 @@ MonoBehaviour:
     icon: {fileID: 0}
     type: Projectile4
     explanation: 
-  spritePath: 
-  sprite: {fileID: 0}
+  spritePath: Assets/Sprites/Icon/Skills/spark.png
+  sprite: {fileID: 21300000, guid: 392457ac3a17e2543b72c50fe43a2efb, type: 3}

@@ -16,5 +16,5 @@ MonoBehaviour:
     icon: {fileID: 0}
     type: Projectile2
     explanation: 
-  spritePath: 
-  sprite: {fileID: 0}
+  spritePath: Assets/Sprites/Icon/Skills/Ice VFX 1 192x192.png
+  sprite: {fileID: 21300000, guid: 3d68c71f9f8b92345bd999b736eb06db, type: 3}

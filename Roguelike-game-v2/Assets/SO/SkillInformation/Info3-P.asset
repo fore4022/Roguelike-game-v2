@@ -16,5 +16,5 @@ MonoBehaviour:
     icon: {fileID: 0}
     type: Projectile3
     explanation: 
-  spritePath: 
-  sprite: {fileID: 0}
+  spritePath: Assets/Sprites/Icon/Skills/VoidBlackHole.png
+  sprite: {fileID: 21300000, guid: 8c723446d189f764d8dd18fb21a81cf0, type: 3}

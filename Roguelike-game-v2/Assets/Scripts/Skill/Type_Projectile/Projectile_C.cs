@@ -73,6 +73,6 @@ public class Projectile_C : ProjectileSkill, IProjectile
 
         yield return new WaitUntil(() => multiplier <= 0.1f);
         
-        anime.Play("destroy");
+        anime.Play(so.projectile_Info.animationName);
     }
 }

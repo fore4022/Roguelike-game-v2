@@ -16,5 +16,5 @@ MonoBehaviour:
     icon: {fileID: 0}
     type: Skill3
     explanation: 
-  spritePath: 
-  sprite: {fileID: 0}
+  spritePath: Assets/Sprites/Icon/Skills/ElectricLighting2.png
+  sprite: {fileID: 21300000, guid: fb68e2ce3d491ce4b9a4eec1413047a5, type: 3}

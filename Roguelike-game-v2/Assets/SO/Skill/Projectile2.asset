@@ -13,29 +13,29 @@ MonoBehaviour:
   m_Name: Projectile2
   m_EditorClassIdentifier: 
   projectile_Info:
-    animationName: 
-    speed: 0
-    penetration: 0
+    animationName: explosion
+    speed: 2
+    penetration: 1
   multiCast:
     delay: []
     count: []
   damageCoefficient:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
   coolTime:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
   adjustmentRotation: {x: 0, y: 0, z: 0}
   adjustmentPosition: {x: 0, y: 0}
-  typePath: 
+  typePath: Projectile2
   duration: 0
   flipX: 0
   flipY: 0
-  projectile: 0
+  projectile: 1
   isMultiCast: 0

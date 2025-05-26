@@ -16,5 +16,5 @@ MonoBehaviour:
     icon: {fileID: 0}
     type: Skill5
     explanation: 
-  spritePath: 
-  sprite: {fileID: 0}
+  spritePath: Assets/Sprites/Icon/Skills/FireBall.png
+  sprite: {fileID: 21300000, guid: bb47c03c20052f2429478fe4cfa1bac5, type: 3}

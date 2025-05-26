@@ -416,7 +416,6 @@ GameObject:
   - component: {fileID: 5767369108350638384}
   - component: {fileID: 3712025979843644072}
   - component: {fileID: 4283096253299103646}
-  - component: {fileID: 5873529049623062623}
   m_Layer: 0
   m_Name: attackImage
   m_TagString: Untagged
@@ -481,27 +480,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!95 &5873529049623062623
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6935417682184151166}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6efa566de6b254f4eb452b3c8f8d0009, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 2
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8185655933810385846
 GameObject:
   m_ObjectHideFlags: 0

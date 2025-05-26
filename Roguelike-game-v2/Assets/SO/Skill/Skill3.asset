@@ -20,20 +20,20 @@ MonoBehaviour:
     delay: []
     count: []
   damageCoefficient:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
   coolTime:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
   adjustmentRotation: {x: 0, y: 0, z: 0}
   adjustmentPosition: {x: 0, y: 0}
-  typePath: 
+  typePath: Skill3
   duration: 0
   flipX: 0
   flipY: 0

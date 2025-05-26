@@ -16,5 +16,5 @@ MonoBehaviour:
     icon: {fileID: 0}
     type: Skill4
     explanation: 
-  spritePath: 
-  sprite: {fileID: 0}
+  spritePath: Assets/Sprites/Icon/Skills/FireTornado.png
+  sprite: {fileID: 21300000, guid: 0c5d01f030f902d4f915b3373e0e4cde, type: 3}

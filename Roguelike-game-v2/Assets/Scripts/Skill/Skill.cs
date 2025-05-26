@@ -16,8 +16,7 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
 
     protected Coroutine baseAttack = null;
     protected int level;
-
-    private bool isInit = false;
+    protected bool isInit = false;
 
     public ScriptableObject SO { set { so = value as Skill_SO; } }
     public float DamageAmount { get { return Managers.Game.player.Stat.damage * so.damageCoefficient[level]; } }

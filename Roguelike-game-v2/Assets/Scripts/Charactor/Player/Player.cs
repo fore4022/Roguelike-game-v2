@@ -15,7 +15,7 @@ public class Player : MonoBehaviour, IDamageReceiver
     private Animator anime;
 
     private const string statPath = "PlayerOriginalStat_SO";
-    private const float targetScale = 2.4f;
+    private const float targetScale = 3.5f;
     private const float duration = 0.4f;
 
     private Coroutine die = null;

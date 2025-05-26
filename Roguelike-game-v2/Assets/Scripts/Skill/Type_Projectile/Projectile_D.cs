@@ -30,8 +30,11 @@ public class Projectile_D : ProjectileSkill, IProjectile
     }
     private void OnDisable()
     {
-        transform.Kill().SetScale(1);
-        SetCollider();
+        if(isInit)
+        {
+            transform.Kill().SetScale(1);
+            SetCollider();
+        }
     }
     public IEnumerator Moving()
     {
