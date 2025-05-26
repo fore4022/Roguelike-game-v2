@@ -143,7 +143,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 43222aabd2e96e94ca9b6adb577e16e0
-    m_Address: Assets/SO/playerSO.asset
+    m_Address: PlayerOriginalStat_SO
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

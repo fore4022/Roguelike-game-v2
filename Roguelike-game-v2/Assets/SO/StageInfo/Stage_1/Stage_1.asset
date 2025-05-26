@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   information: {fileID: 11400000, guid: 2c4fa5fad6ea1d24c8b1b4b5c7e87f44, type: 2}
   iconSprite: {fileID: 11400000, guid: e562d4a9a1ef32048a52b314503e5e49, type: 2}
-  infoPath: 
-  iconPath: 
-  stagePath: 
-  stage: {fileID: 0}
+  infoPath: Info_1
+  iconPath: Icon_1
+  stagePath: Prairie
+  stage: {fileID: 8714857401625141123, guid: 5c88a951c7b3b8945b63863aae11a409, type: 3}

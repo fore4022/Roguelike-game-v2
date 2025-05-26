@@ -3255,10 +3255,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1888160965}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a4c6fadc61cef244a7dfd5c1a672457, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ad13606c704f17458a71fa756131a16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterList: []
 --- !u!4 &1888160968
 Transform:
   m_ObjectHideFlags: 0
@@ -3283,9 +3282,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1888160965}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49a879f2c4bd6a343982b03783837e9e, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c104f31ee92a7b4d9b097bbb4c25f93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monsterList: []
 --- !u!1 &1896984127
 GameObject:
   m_ObjectHideFlags: 0

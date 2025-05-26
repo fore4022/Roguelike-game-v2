@@ -6,9 +6,9 @@ public class StageIcon_UI : UserInterface
     [SerializeField]
     private TextMeshProUGUI themaName;
     [SerializeField]
-    private Image cover;
-    [SerializeField]
     private Image ground;
+    [SerializeField]
+    private Image cover;
     [SerializeField]
     private Image banner;
     [SerializeField]
@@ -37,7 +37,7 @@ public class StageIcon_UI : UserInterface
         StageState state = Managers.UserData.data.GetStageState();
         Icon_SO iconSprite = so.iconSprite;
 
-        cover.sprite = iconSprite.ground;
+        ground.sprite = iconSprite.ground;
         monster.sprite = iconSprite.monster;
 
         if(state == StageState.Locked)

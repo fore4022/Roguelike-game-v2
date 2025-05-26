@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c42b0b75fa6a14db3375d1155e331f, type: 3}
   m_Name: Stage_3
   m_EditorClassIdentifier: 
-  information: {fileID: 0}
-  iconSprite: {fileID: 0}
-  infoPath: 
-  iconPath: 
-  stagePath: 
-  stage: {fileID: 0}
+  information: {fileID: 11400000, guid: fc329efd9be45564c9b8fc5aa7ff705e, type: 2}
+  iconSprite: {fileID: 11400000, guid: 0a5a8a3b54eeb5042b700283f1538629, type: 2}
+  infoPath: Info_3
+  iconPath: Icon_3
+  stagePath: Rock Mountain
+  stage: {fileID: 8714857401625141123, guid: 4be93441fcb7a83459386f42587740ba, type: 3}

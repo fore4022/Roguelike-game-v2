@@ -16,7 +16,32 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 27db53741aa770c4caa7ad6349b30c65
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 88e274bc4f7f38e47bc5c549f68450c1
+    m_Address: Desert
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5c88a951c7b3b8945b63863aae11a409
+    m_Address: Prairie
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4be93441fcb7a83459386f42587740ba
+    m_Address: Rock Mountain
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f00a1dcc5a570fc4b8af3a6315f925ba
+    m_Address: Snowfield
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1d603d12d61bc334ab5c1de99766f677
+    m_Address: Volcano
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 0f0f1efd53420e34ba93e0637d25113c, type: 2}
   m_SchemaSet:

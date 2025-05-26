@@ -4,7 +4,7 @@ using System.Linq;
 public class GameData
 {
     private List<Stage_SO> stages;
-    private  GameData_SO so;
+    private GameData_SO so;
 
     public GameData_SO SO
     {
