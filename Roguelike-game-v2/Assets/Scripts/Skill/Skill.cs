@@ -49,7 +49,6 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
         audioSource = GetComponent<AudioSource>();
 
         defaultCollider.enabled = enable;
-        audioSource.playOnAwake = true;
         render.enabled = false;
         anime.speed = 0;
         isInit = true;

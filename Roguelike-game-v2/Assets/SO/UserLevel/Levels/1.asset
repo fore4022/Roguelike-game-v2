@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e8da89300e54d74c87d8e14134d77ac, type: 3}
-  m_Name: UserLevel
+  m_Name: 1
   m_EditorClassIdentifier: 
   pathList:
   - Assets/SO/SkillInformation/Info1-P.asset

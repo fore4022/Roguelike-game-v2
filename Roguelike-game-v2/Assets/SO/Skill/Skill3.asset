@@ -17,8 +17,18 @@ MonoBehaviour:
     speed: 0
     penetration: 0
   multiCast:
-    delay: []
-    count: []
+    delay:
+    - 0.05
+    - 0.05
+    - 0.05
+    - 0.05
+    - 0.05
+    count:
+    - 2
+    - 3
+    - 4
+    - 5
+    - 7
   damageCoefficient:
   - 1
   - 1
@@ -38,4 +48,4 @@ MonoBehaviour:
   flipX: 0
   flipY: 0
   projectile: 0
-  isMultiCast: 0
+  isMultiCast: 1

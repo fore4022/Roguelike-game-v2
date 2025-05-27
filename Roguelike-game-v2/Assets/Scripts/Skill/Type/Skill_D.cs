@@ -36,6 +36,7 @@ public class Skill_D : Skill, ISkill
     {
         yield return new WaitUntil(() => anime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
 
+        audioSource.Play();
         anime.Play(animationName, 0);
     }
 }

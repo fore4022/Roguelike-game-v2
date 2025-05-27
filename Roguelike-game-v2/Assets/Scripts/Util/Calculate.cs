@@ -52,7 +52,7 @@ public static class Calculate
     }
     public static Vector3 GetRandomDirection()
     {
-        return new Vector3(Random.Range(0, 361), Random.Range(0, 361), 0).normalized;
+        return new Vector3(Random.Range(-360, 721), Random.Range(-360, 721), 0).normalized;
     }
     public static Vector2 GetRandomVector()
     {
