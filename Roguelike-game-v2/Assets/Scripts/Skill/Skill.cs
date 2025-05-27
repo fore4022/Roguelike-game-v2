@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
-[RequireComponent(typeof(Animator), typeof(SpriteRenderer), typeof(AudioSource))]
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(AudioSource))]
 public class Skill : MonoBehaviour, IScriptableData, IDamage
 {
     [SerializeField]
@@ -10,11 +12,11 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
 
     protected ISkill attacker;
     protected Skill_SO so;
-    protected SpriteRenderer render = null;
-    protected Animator anime = null;
-    protected AudioSource audioSource = null;
+    protected SpriteRenderer render;
+    protected Animator anime;
+    protected AudioSource audioSource;
 
-    protected Coroutine baseAttack = null;
+    protected Coroutine baseAttack;
     protected int level;
     protected bool isInit = false;
 

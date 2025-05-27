@@ -1,5 +1,8 @@
 using UnityEngine;
-[RequireComponent(typeof(Rigidbody2D), typeof(Animator), typeof(SpriteRenderer))]
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(AudioSource))]
 public class Monster : MonoBehaviour, IScriptableData
 {
     protected MonsterStat_SO monsterSO = null;
@@ -7,6 +10,7 @@ public class Monster : MonoBehaviour, IScriptableData
     protected Rigidbody2D rigid;
     protected Animator animator;
     protected SpriteRenderer render;
+    protected AudioSource audioSource;
     protected Collider2D col;
 
     protected const float spawnRadius = 5;
@@ -77,12 +81,14 @@ public class Monster : MonoBehaviour, IScriptableData
     }
     protected virtual void Init()
     {
-        render = GetComponent<SpriteRenderer>();
         rigid = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        render = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
 
-        render.enabled = false;
         rigid.simulated = false;
+        render.enabled = false;
+        audioSource.playOnAwake = false;
         stat = monsterSO.stat;
 
         Set();

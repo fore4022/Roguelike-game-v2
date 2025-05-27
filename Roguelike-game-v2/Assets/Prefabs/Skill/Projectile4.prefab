@@ -159,8 +159,8 @@ MonoBehaviour:
   defaultCollider: {fileID: 0}
   enable: 1
   range: 1
-  min_Index: 1
-  max_Index: 3
+  min_Index: 0.3
+  max_Index: 1
 --- !u!82 &433829638882945673
 AudioSource:
   m_ObjectHideFlags: 0
@@ -170,7 +170,7 @@ AudioSource:
   m_GameObject: {fileID: 104679271344969195}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 6650388381906554065, guid: 8197a9bb3246ca64786a5316d0a2ccae, type: 2}
   m_audioClip: {fileID: 8300000, guid: 4524f81281043db47999d4a0ad338991, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1

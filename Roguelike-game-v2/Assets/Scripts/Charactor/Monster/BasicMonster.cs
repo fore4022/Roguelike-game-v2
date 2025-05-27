@@ -58,6 +58,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     {
         health -= damage.DamageAmount;
 
+        audioSource.Play();
         Damaged();
 
         if(health <= 0)
