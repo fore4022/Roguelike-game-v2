@@ -26,15 +26,15 @@ MonoBehaviour:
   - 1
   - 1
   coolTime:
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
+  - 2
+  - 2
+  - 2
+  - 2
+  - 2
   adjustmentRotation: {x: 0, y: 0, z: 0}
   adjustmentPosition: {x: 0, y: 0}
   typePath: Skill4
-  duration: 0
+  duration: 3
   flipX: 0
   flipY: 0
   projectile: 0
