@@ -146,6 +146,15 @@ public static class TweenSystemManage
             SkipToEnd(keys[i]);
         }
     }
+    public static bool IsTweenActive()
+    {
+        if(_schedule.Count != 0)
+        {
+            return true;
+        }
+
+        return false;
+    }
     public static void Reset()
     {
         foreach (Sequence schedule in _schedule.Values)

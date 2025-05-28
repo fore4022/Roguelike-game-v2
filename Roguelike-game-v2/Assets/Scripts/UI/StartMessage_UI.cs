@@ -15,14 +15,12 @@ public class StartMessage_UI : UserInterface
     public override void SetUserInterface()
     {
         tmp = GetComponentInChildren<TextMeshProUGUI>();
-
-        gameObject.SetActive(false);
     }
     public void SetState()
     {
         if(state != 1)
         {
-            textAnimation = StartCoroutine(Effecting());  
+            textAnimation = StartCoroutine(Effecting());
         }
         else
         {

@@ -8,6 +8,7 @@ public class Managers : MonoBehaviour
     public UserData_Manager userData = new();
     public Scene_Manager scene = new();
     public MainScene_Manager main = new();
+    public new Audio_Manager audio = new();
 
     public static Managers Instance
     {

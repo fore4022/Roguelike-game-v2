@@ -71,7 +71,5 @@ public class Title_TW : MonoBehaviour
         yield return new WaitUntil(() => anime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1);
 
         _explosion.sortingOrder = 0;
-
-        StartCoroutine(Managers.UI.GetUI<TitlePrompt_UI>().UserDataLoading());
     }
 }

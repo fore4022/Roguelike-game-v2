@@ -1,18 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Audio_Manager : MonoBehaviour
+using UnityEngine.Audio;
+public class Audio_Manager
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private AudioMixer audioMixer;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public AudioMixer AudioMixer { set { audioMixer = value; } }
 }
