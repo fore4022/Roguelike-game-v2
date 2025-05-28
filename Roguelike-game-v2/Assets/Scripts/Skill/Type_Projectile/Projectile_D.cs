@@ -16,11 +16,6 @@ public class Projectile_D : ProjectileSkill, IProjectile
         transform.SetScale(5, 12);
         moving = StartCoroutine(Moving());
     }
-    public void SetCollider()
-    {
-        enable = !enable;
-        defaultCollider.enabled = enable;
-    }
     public void Enter(GameObject go)
     {
         if(go.TryGetComponent(out IDamageReceiver damageReceiver))
@@ -32,8 +27,9 @@ public class Projectile_D : ProjectileSkill, IProjectile
     {
         if(isInit)
         {
+            defaultCollider.enabled = false;
+
             transform.Kill().SetScale(1);
-            SetCollider();
         }
     }
     public IEnumerator Moving()

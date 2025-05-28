@@ -3,7 +3,8 @@ public class Audio_Manager
 {
     private AudioMixer audioMixer;
 
-    private const float maxValue = -5;
+    private const float maxValue_BGM = -5;
+    private const float maxValue_FX = 2.5f;
     private const float minValue = -80;
 
     public AudioMixer Mixer { get { return audioMixer; } set { audioMixer = value; } }
@@ -14,14 +15,13 @@ public class Audio_Manager
     }
     public void SetGroup(SoundTypes type)
     {
-        switch(type)
+        if(type == SoundTypes.BGM)
         {
-            case SoundTypes.BGM:
-                SetGroup(type, Managers.UserData.data.SetBGM());
-                break;
-            case SoundTypes.FX:
-                SetGroup(type, Managers.UserData.data.SetFX());
-                break;
+            SetGroup(type, Managers.UserData.data.SetBGM());
+        }
+        else
+        {
+            SetGroup(type, Managers.UserData.data.SetFX());
         }
     }
     public void SetGroup(SoundTypes type, bool isActive)
@@ -30,7 +30,14 @@ public class Audio_Manager
 
         if(isActive)
         {
-            value = maxValue;
+            if(type == SoundTypes.FX)
+            {
+                value = maxValue_FX;
+            }
+            else
+            {
+                value = maxValue_BGM;
+            }
         }
         else
         {

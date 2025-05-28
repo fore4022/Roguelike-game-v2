@@ -13,11 +13,6 @@ public class Skill_A : Skill, ISkill
         gameObject.transform.position = EnemyDetection.GetNearestEnemyPosition();
         gameObject.transform.rotation = Calculate.GetRandomQuaternion();
     }
-    public void SetCollider()
-    {
-        enable = !enable;
-        defaultCollider.enabled = enable;
-    }
     public void Enter(GameObject go)
     {
         if(go.TryGetComponent(out IDamageReceiver damageReceiver))

@@ -22,8 +22,7 @@ public class Skill_D : Skill, ISkill
     }
     public void SetCollider()
     {
-        enable = !enable;
-        defaultCollider.enabled = enable;
+        defaultCollider.enabled = false;
     }
     public void Enter(GameObject go)
     {

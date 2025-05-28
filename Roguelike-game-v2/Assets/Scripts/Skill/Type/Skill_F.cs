@@ -28,11 +28,6 @@ public class Skill_F : Skill, ISkill
 
         StartCoroutine(Attacking());
     }
-    public void SetCollider()
-    {
-        enable = !enable;
-        defaultCollider.enabled = enable;
-    }
     public void Enter(GameObject go)
     {
         if(go.TryGetComponent(out IDamageReceiver damageReceiver))

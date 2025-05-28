@@ -21,5 +21,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e0f6237bfa9ed1648bdc70be377a22a3, type: 2}
   difficulty: 1
   statScale: 1
-  spawnDelay: 0
-  requiredTime: 0
+  spawnDelay: 1
+  requiredTime: 20

@@ -34,11 +34,6 @@ public class Projectile_C : ProjectileSkill, IProjectile
 
         StartCoroutine(AnimationManaging());
     }
-    public void SetCollider()
-    {
-        enable = !enable;
-        defaultCollider.enabled = enable;
-    }
     public void Enter(GameObject go)
     {
         if(go.TryGetComponent(out IDamageReceiver damageReceiver))

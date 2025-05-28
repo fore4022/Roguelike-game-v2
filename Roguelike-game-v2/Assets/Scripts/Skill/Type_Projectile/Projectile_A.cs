@@ -19,11 +19,6 @@ public class Projectile_A : ProjectileSkill, IProjectile
         penetration_count = so.projectile_Info.penetration;
         moving = StartCoroutine(Moving());
     }
-    public void SetCollider()
-    {
-        enable = !enable;
-        defaultCollider.enabled = enable;
-    }
     public void Enter(GameObject go)
     {
         if(go.TryGetComponent(out IDamageReceiver damageReceiver))
