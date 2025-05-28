@@ -5,7 +5,7 @@ public class UserData
     [SerializeField]
     private List<StageClearInfo> stageClearInfos = new();
     [SerializeField]
-    private SettingInformation setting = new();
+    private SettingInformation _setting = new();
 
     [SerializeField]
     private string current_StageName = "Prairie";
@@ -30,8 +30,8 @@ public class UserData
     }
     public int Level { get { return level; } set { level = value; } }
     public int Exp { get { return exp; } set { exp = value; } }
-    public bool BGM { get { return setting._BGM; } }
-    public bool SFX { get { return setting._SFX; } }
+    public bool BGM { get { return _setting.BGM; } }
+    public bool FX { get { return _setting.FX; } }
     public StageState GetStageState()
     {
         return stageClearInfos.Find(info => info.name == current_StageName).state;
@@ -47,12 +47,16 @@ public class UserData
             Managers.UserData.Save();
         }
     }
-    public void SetBGM()
+    public bool SetBGM()
     {
-        setting._BGM = !setting._BGM;
+        _setting.BGM = !_setting.BGM;
+
+        return _setting.BGM;
     }
-    public void SetSFX()
+    public bool SetFX()
     {
-        setting._SFX = !setting._SFX;
+        _setting.FX = !_setting.FX;
+
+        return _setting.FX;
     }
 }

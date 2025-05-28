@@ -1,15 +1,22 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 public class Title_Scene : MonoBehaviour
 {
     [SerializeField]
     private EnterMainScene enterMainScene;
+    [SerializeField]
+    private AudioMixer audioMixer;
+
+    private AudioSource audioSource;
 
     private const string _gameDataPath = "GameData";
 
     private void Start()
     {
         Managers.Main.GameData.SO = Util.LoadingToPath<GameData_SO>(_gameDataPath, false);
+        Managers.Audio.Mixer = audioMixer;
+        audioSource = GetComponent<AudioSource>();
 
         StartCoroutine(Initializing());
     }
@@ -19,6 +26,8 @@ public class Title_Scene : MonoBehaviour
 
         yield return new WaitUntil(() => Managers.UI.IsInitalized);
 
+        Managers.Audio.Init();
+        audioSource.Play();
         StartCoroutine(UserDataLoading());
     }
     private IEnumerator UserDataLoading()

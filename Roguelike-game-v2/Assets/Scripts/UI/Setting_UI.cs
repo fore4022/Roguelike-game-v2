@@ -6,11 +6,11 @@ public class Setting_UI : UserInterface
     [SerializeField]
     private List<Sprite> _BgmSprite;
     [SerializeField]
-    private List<Sprite> _SfxSprite;
+    private List<Sprite> _FxSprite;
     [SerializeField]
     private Image _Bgm;
     [SerializeField]
-    private Image _Sfx;
+    private Image _Fx;
 
     public override void SetUserInterface()
     {
@@ -23,12 +23,12 @@ public class Setting_UI : UserInterface
     }
     public void ToggleBGM()
     {
-        Managers.UserData.data.SetBGM();
+        Managers.Audio.SetGroup(SoundTypes.BGM);
         BgmUpdate();
     }
     public void ToggleSFX()
     {
-        Managers.UserData.data.SetSFX();
+        Managers.Audio.SetGroup(SoundTypes.FX);
         SfxUpdate();
     }
     private void BgmUpdate()
@@ -44,13 +44,13 @@ public class Setting_UI : UserInterface
     }
     private void SfxUpdate()
     {
-        if(Managers.UserData.data.SFX)
+        if(Managers.UserData.data.FX)
         {
-            _Sfx.sprite = _SfxSprite[0];
+            _Fx.sprite = _FxSprite[0];
         }
         else
         {
-            _Sfx.sprite = _SfxSprite[1];
+            _Fx.sprite = _FxSprite[1];
         }
     }
     public void Confirm()

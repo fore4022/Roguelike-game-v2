@@ -24,6 +24,7 @@ public class Managers : MonoBehaviour
     public static UserData_Manager UserData { get { return Instance.userData; } }
     public static Scene_Manager Scene { get { return Instance.scene; } }
     public static MainScene_Manager Main { get { return Instance.main; } }
+    public static Audio_Manager Audio { get { return Instance.audio; } }
     public static void Init()
     {
         if(managers == null)
