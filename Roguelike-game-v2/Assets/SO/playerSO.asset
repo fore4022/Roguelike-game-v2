@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: playerSO
   m_EditorClassIdentifier: 
   stat:
-    health: 10
+    health: 1e+18
     damage: 1
     attackSpeed: 1
     moveSpeed: 1

@@ -85,6 +85,7 @@ public class Game_Manager
 
         Managers.UI.GetUI<SceneLoading_UI>().Wait = false;
         Camera.main.orthographicSize = 6;
+        Managers.Game.inGameData.player.Experience = 0;
 
         inGameData.init.objectPool.ReSetting();
         player.Reset();

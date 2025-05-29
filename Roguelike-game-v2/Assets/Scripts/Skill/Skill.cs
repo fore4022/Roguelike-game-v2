@@ -30,10 +30,6 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
     {
         StartCoroutine(StartAttack());
     }
-    protected void Start()
-    {
-        Init();
-    }
     private void Init()
     {
         if(TryGetComponent(out ISkill attacker))
@@ -72,6 +68,11 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
     }
     private IEnumerator StartAttack()
     {
+        if(!isInit)
+        {
+            Init();
+        }
+
         yield return new WaitUntil(() => isInit);
 
         level = Managers.Game.inGameData.attack.GetLevel(so.typePath);

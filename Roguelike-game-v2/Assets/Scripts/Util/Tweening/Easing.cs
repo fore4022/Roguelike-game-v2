@@ -112,10 +112,6 @@ public class Easing
     {
         return Mathf.Lerp(_start, _end, value);
     }
-    private static float OutLinear(float value)
-    {
-        return Mathf.Lerp(_end, _start, value);
-    }
     private static float InQuad(float value)
     {
         return _end * value * value + _start;

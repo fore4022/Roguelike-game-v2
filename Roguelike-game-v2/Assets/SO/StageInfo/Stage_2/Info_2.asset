@@ -19,7 +19,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4fd27505bcb47e144b686070d6ae3049, type: 2}
   - {fileID: 11400000, guid: 21ad94ef126562c4eb137845a2a783ac, type: 2}
   - {fileID: 11400000, guid: 16b8c54cc2a390e43b6832344f579fee, type: 2}
-  difficulty: 1
+  difficulty: 2
   statScale: 1
   spawnDelay: 1
-  requiredTime: 20
+  requiredTime: 2

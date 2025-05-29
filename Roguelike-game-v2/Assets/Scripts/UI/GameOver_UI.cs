@@ -7,7 +7,7 @@ public class GameOver_UI : UserInterface
 {
     private List<TextMeshProUGUI> tmpList;
     private List<Image> imgList;
-    private TextMeshProUGUI resultText;
+    private TextMeshProUGUI result;
 
     private WaitForSecondsRealtime delay = new(0.225f);
 
@@ -15,7 +15,7 @@ public class GameOver_UI : UserInterface
     {
         tmpList = Util.GetComponentsInChildren<TextMeshProUGUI>(Util.GetChildren(transform, 1));
         imgList = Util.GetComponentsInChildren<Image>(Util.GetChildren(transform, 1));
-        resultText = Util.GetComponentInChildren<TextMeshProUGUI>(transform);
+        result = Util.GetComponentInChildren<TextMeshProUGUI>(transform);
 
         Managers.UI.HideUI<GameOver_UI>();
     }
@@ -36,8 +36,17 @@ public class GameOver_UI : UserInterface
             result = "Stage\nFailed";
         }
 
-        StartCoroutine(Typing.TypeEffecting(resultText, result, true));
+        StartCoroutine(Typing.TypeEffecting(this.result, result, true));
         StartCoroutine(ResultSequence());
+    }
+    private void OnDisable()
+    {
+        foreach(TextMeshProUGUI tmp in tmpList)
+        {
+            tmp.text = "";
+        }
+
+        result.text = "";
     }
     public void ReStart()
     {
