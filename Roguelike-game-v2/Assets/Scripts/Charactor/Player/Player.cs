@@ -15,11 +15,12 @@ public class Player : MonoBehaviour, IDamageReceiver
     private Animator anime;
 
     private const string statPath = "PlayerOriginalStat_SO";
-    private const float targetScale = 3.5f;
+    private const float targetScale = 10f;
     private const float duration = 0.4f;
 
     private Coroutine die = null;
-    private Vector3 diePosition = new Vector2(0, 0.3f);
+    private Vector3 diePosition = new Vector3(0, 0.5f);
+    private Vector3 dieRotation = new Vector3(0, 0, 370);
     private bool death = false;
 
     public DefaultStat Stat { get { return stat; } }
@@ -64,10 +65,14 @@ public class Player : MonoBehaviour, IDamageReceiver
     }
     public void Reset()
     {
+        transform.localScale = Calculate.GetVector(3);
+        transform.rotation = Quaternion.Euler(Vector3.zero);
         death = false;
 
         LoadPlayerStat();
         StopCoroutine(die);
+        maxHealthUpdate?.Invoke();
+        healthUpdate?.Invoke();
         anime.Play("idle");
 
         die = null;
@@ -77,7 +82,9 @@ public class Player : MonoBehaviour, IDamageReceiver
         InputActions.DisableInputAction<TouchControls>();
         Managers.UI.HideUI<HpSlider_UI>();
 
-        transform.SetPosition(transform.position + diePosition, duration).SetScale(targetScale, duration);
+        transform.SetScale(targetScale, duration)
+            .SetPosition(transform.position + diePosition, duration)
+            .SetRotation(dieRotation, duration);
 
         death = true;
 

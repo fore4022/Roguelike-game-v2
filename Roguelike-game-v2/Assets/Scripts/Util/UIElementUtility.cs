@@ -42,9 +42,9 @@ public static class UIElementUtility
 
         return Util.GetMonoBehaviour().StartCoroutine(SetImageAlpha(imgList, color, targetAlphaValue, duration));
     }
-    public static IEnumerator BlinkText(TextMeshProUGUI tmp, float duration, bool recursive = true, int minAlpha = 155, int maxAlpha = 255)
+    public static IEnumerator BlinkText(TextMeshProUGUI tmp, float duration, bool recursive = true, int minAlpha = 215, int maxAlpha = 255)
     {
-        WaitForSeconds delay = new(duration + 0.25f);
+        WaitForSeconds delay = new(duration + 0.35f);
 
         while (true)
         {

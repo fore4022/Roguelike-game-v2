@@ -30,37 +30,37 @@ public class Title_TW : MonoBehaviour
         // SlimeSquare
         tweens[3].SetScale(3, 0.9f, 0.35f, Ease.OutExpo)
             .SetPosition(new(-2.9f, -0.8f), 1f, 0.35f, Ease.OutBack)
-            .SetRotation(new(0, 0, 1120), 1.1f, 0.35f, Ease.OutExpo);
+            .SetRotation(new(0, 0, 1120), 1.1f, 0.3f, Ease.OutExpo);
 
         // BatSmallA
         tweens[4].SetScale(2.75f, 0.9f, 0.4f, Ease.OutExpo)
             .SetPosition(new(-3.5f, 0.6f), 1f, 0.375f, Ease.OutBack)
-            .SetRotation(new(0, 0, 740), 1.1f, 0.375f, Ease.OutExpo);
+            .SetRotation(new(0, 0, 740), 1.1f, 0.3f, Ease.OutExpo);
 
         // Mushroom_1
         tweens[5].SetScale(2, 1.05f, 0.3f, Ease.OutExpo)
-            .SetPosition(new(3.5f, 6.1f), 1.15f, 0.35f, Ease.OutExpo)
-            .SetRotation(new(0, 0, 390), 1.25f, 0.375f, Ease.OutExpo);
+            .SetPosition(new(3.5f, 6.1f), 0.95f, 0.35f, Ease.OutExpo)
+            .SetRotation(new(0, 0, 390), 1.15f, 0.25f, Ease.OutExpo);
 
         // Mushroom_2
         tweens[6].SetScale(3, 1.2f, 0.35f, Ease.OutExpo)
             .SetPosition(new(2.15f, -2.55f), 0.8f, 0.35f, Ease.OutQuart)
-            .SetRotation(new(0, 0, 155), 1.2f, 0.35f, Ease.OutQuart);
+            .SetRotation(new(0, 0, 155), 1f, 0.35f, Ease.OutQuart);
 
         // PotionI
         tweens[7].SetScale(3, 1.2f, 0.45f, Ease.OutExpo)
             .SetPosition(new(-3f, 6.75f), 0.8f, 0.35f, Ease.OutQuart)
-            .SetRotation(new(0, 0, 405f), 1.15f, 0.375f, Ease.OutQuad);
+            .SetRotation(new(0, 0, 405f), 1f, 0.3f, Ease.OutQuad);
 
         // Sword
         tweens[8].SetScale(4, 1.2f, 0.35f, Ease.OutExpo)
             .SetPosition(new(-1.7f, 6.3f), 0.8f, 0.35f, Ease.OutExpo)
-            .SetRotation(new(0, 0, 752.5f), 1.2f, 0.35f, Ease.OutExpo);
+            .SetRotation(new(0, 0, 752.5f), 1.1f, 0.25f, Ease.OutExpo);
 
         // Mask
         tweens[9].SetScale(3.2f, 1.2f, 0.35f, Ease.OutQuint)
             .SetPosition(new(3f, -7f), 0.8f, 0.35f, Ease.OutQuint)
-            .SetRotation(new(0, 0, 15), 1.2f, 0.4f, Ease.OutQuint);
+            .SetRotation(new(0, 0, 15), 1.1f, 0.3f, Ease.OutQuint);
     }
     private IEnumerator ReOrder()
     {

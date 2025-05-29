@@ -102,5 +102,6 @@ public class Game_Manager
         inGameData.player.SetLevel();
         onStageReset.Invoke();
         Managers.UI.ShowUI<LevelUp_UI>();
+        Managers.UI.ShowUI<HpSlider_UI>();
     }
 }
