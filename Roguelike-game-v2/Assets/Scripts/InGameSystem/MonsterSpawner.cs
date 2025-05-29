@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class MonsterSpawner : MonoBehaviour
 {
+    [HideInInspector]
     public List<GameObject> monsterList = new();
 
     private Dictionary<string, ScriptableObject> monsterStats = new();

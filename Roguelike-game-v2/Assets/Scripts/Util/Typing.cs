@@ -4,16 +4,24 @@ using TMPro;
 using UnityEngine;
 public static class Typing
 {
-    private static WaitForSecondsRealtime delay = new(0.04f);
+    private static WaitForSecondsRealtime waitRealSec = new(0.04f);
 
-    public static IEnumerator TypeEffecting(TextMeshProUGUI tmp, string str, bool recursive = false, bool isClear = true, string currentStr = "")
+    public static WaitForSecondsRealtime TypeEffectAndWaiting(TextMeshProUGUI tmp, string str, Coroutine coroutine = null, float delay = 0, bool recursive = false, string currentStr = "")
+    {
+        if(coroutine == null)
+        {
+            Util.GetMonoBehaviour().StartCoroutine(TypeEffecting(tmp, str, recursive, currentStr));
+        }
+        else
+        {
+            coroutine = Util.GetMonoBehaviour().StartCoroutine(TypeEffecting(tmp, str, recursive, currentStr));
+        }
+
+        return new(waitRealSec.waitTime * str.Length + delay);
+    }
+    public static IEnumerator TypeEffecting(TextMeshProUGUI tmp, string str, bool recursive = false, string currentStr = "")
     {
         StringBuilder builder = new();
-
-        if(isClear)
-        {
-            tmp.text = "";
-        }
 
         if(currentStr == "")
         {
@@ -30,7 +38,7 @@ public static class Typing
 
             for(int i = 0; i < str.Length; i++)
             {
-                yield return delay;
+                yield return waitRealSec;
 
                 builder.Append(str[i]);
 
@@ -44,7 +52,7 @@ public static class Typing
         {
             for(int i = 0; i < str.Length; i++)
             {
-                yield return delay;
+                yield return waitRealSec;
 
                 builder.Append(str[i]);
 
@@ -52,7 +60,7 @@ public static class Typing
             }
         }
     }
-    public static IEnumerator EraseEffecting(TextMeshProUGUI tmp,  int targetCount)
+    public static IEnumerator EraseEffecting(TextMeshProUGUI tmp, int targetCount = 0)
     {
         StringBuilder builder = new();
 
@@ -60,11 +68,22 @@ public static class Typing
 
         while(builder.Length > targetCount)
         {
-            yield return delay;
+            yield return waitRealSec;
+
+            IsNewLineStart(ref builder);
 
             builder.Remove(0, 1);
 
             tmp.text = builder.ToString();
+        }
+    }
+    private static void IsNewLineStart(ref StringBuilder builder)
+    {
+        if(builder[0] == '\r' || builder[0] == '\n')
+        {
+            builder.Remove(0, 1);
+
+            IsNewLineStart(ref builder);
         }
     }
 }

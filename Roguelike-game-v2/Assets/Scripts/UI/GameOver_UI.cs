@@ -9,7 +9,8 @@ public class GameOver_UI : UserInterface
     private List<Image> imgList;
     private TextMeshProUGUI result;
 
-    private WaitForSecondsRealtime delay = new(0.225f);
+    private readonly WaitForSecondsRealtime waitRealSec = new(delay);
+    private const float delay = 0.225f;
 
     public override void SetUserInterface()
     {
@@ -66,8 +67,9 @@ public class GameOver_UI : UserInterface
     }
     private IEnumerator ResultSequence()
     {
-        string requiredTime = $"Target Time\n\n{(Managers.Game.stageInformation.requiredTime / 60):D2} : {Managers.Game.stageInformation.requiredTime:D2} : 00";
-        string survivalTime = $"Survival Time\n\n{Managers.Game.inGameTimer.GetHours:D2} : {Managers.Game.inGameTimer.GetMinutes:D2} : {Managers.Game.inGameTimer.GetSeconds:D2}";
+        Coroutine coroutine = null;
+        string required = $"Target Time\n\n{(Managers.Game.stageInformation.requiredTime / 60):D2} : {Managers.Game.stageInformation.requiredTime:D2} : 00";
+        string survival = $"Survival Time\n\n{Managers.Game.inGameTimer.GetHours:D2} : {Managers.Game.inGameTimer.GetMinutes:D2} : {Managers.Game.inGameTimer.GetSeconds:D2}";
         string gainExp;
 
         if(Managers.Game.UserExp == 0)
@@ -79,23 +81,21 @@ public class GameOver_UI : UserInterface
             gainExp = $"Experience\n\n+ {Managers.Game.UserExp:N0} EXP";
         }
 
-        yield return delay;
+        yield return waitRealSec;
 
-        StartCoroutine(Typing.TypeEffecting(tmpList[0], requiredTime));
+        yield return Typing.TypeEffectAndWaiting(tmpList[0], required, coroutine, delay);
 
-        yield return delay;
+        yield return Typing.TypeEffectAndWaiting(tmpList[1], required, coroutine, delay);
 
-        StartCoroutine(Typing.TypeEffecting(tmpList[1], survivalTime));
-        
-        yield return delay;
-    
-        StartCoroutine(Typing.TypeEffecting(tmpList[2], gainExp));
+        yield return Typing.TypeEffectAndWaiting(tmpList[2], survival, coroutine, delay);
 
-        yield return delay;
+        yield return Typing.TypeEffectAndWaiting(tmpList[3], gainExp, coroutine, delay);
+
+        yield return waitRealSec;
 
         foreach(Image img in imgList)
         {
-            UIElementUtility.SetImageAlpha(img, 255, delay.waitTime, true);
+            UIElementUtility.SetImageAlpha(img, 255, delay, true);
         }
     }
 }

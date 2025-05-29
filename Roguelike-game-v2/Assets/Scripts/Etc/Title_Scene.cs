@@ -27,6 +27,9 @@ public class Title_Scene : MonoBehaviour
         yield return new WaitUntil(() => Managers.UI.IsInitalized);
 
         Managers.Audio.Init();
+
+        yield return new WaitForEndOfFrame();
+
         audioSource.Play();
         StartCoroutine(UserDataLoading());
     }
