@@ -5,13 +5,13 @@ using UnityEngine.UI;
 public class SkillOption_UI : Button_2
 {
     private List<TextMeshProUGUI> textList = new();
-    private AttackContext info = null;
+    private SkillContext info = null;
     private Image image;
     private RectTransform imageRect;
 
     protected override void PointerClick()
     {
-        Managers.Game.inGameData.attack.SetValue(info.data.type);
+        Managers.Game.inGameData.skill.SetValue(info.data.type);
         Managers.UI.GetUI<SkillSelection_UI>().Selected();
     }
     protected override void Init()
@@ -26,7 +26,7 @@ public class SkillOption_UI : Button_2
     {
         info = null;
     }
-    public void InitOption(AttackContext info)
+    public void InitOption(SkillContext info)
     {
         this.info = info;
 

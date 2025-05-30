@@ -112,7 +112,7 @@ public class SkillSelection_UI : UserInterface
     }
     private IEnumerator Set()
     {
-        List<AttackContext> infoList = Managers.Game.inGameData.attack.GetAttackInformation();
+        List<SkillContext> infoList = Managers.Game.inGameData.skill.GetAttackInformation();
 
         int[] indexArray = Calculate.GetRandomValues(infoList.Count, Mathf.Min(Managers.Game.inGameData.OptionCount, infoList.Count));
 

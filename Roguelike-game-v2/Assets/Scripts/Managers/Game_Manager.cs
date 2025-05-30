@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 public class Game_Manager
 {
-    public SkillCasterManage attackCasterManage = null;
+    public SkillCasterManage skillCasterManage = null;
     public InGameDataManage inGameData = null;
     public DifficultyScaler difficultyScaler = null;
     public StageInformation_SO stageInformation;
@@ -21,7 +21,7 @@ public class Game_Manager
     public bool IsGameOver { get { return gameOver; } }
     private void Set()
     {
-        attackCasterManage = new();
+        skillCasterManage = new();
         inGameData = new();
         difficultyScaler = new();
     }
@@ -49,9 +49,9 @@ public class Game_Manager
         isPlaying = false;
         gameOver = false;
         
-        attackCasterManage.StopAllCaster();
+        skillCasterManage.StopAllCaster();
 
-        attackCasterManage = new();
+        skillCasterManage = new();
         difficultyScaler = new();
 
         Util.GetMonoBehaviour().StartCoroutine(ReSetting());
@@ -67,9 +67,9 @@ public class Game_Manager
     }
     public void Clear()
     {
-        attackCasterManage.StopAllCaster();
+        skillCasterManage.StopAllCaster();
 
-        attackCasterManage = null;
+        skillCasterManage = null;
         inGameData = null;
         difficultyScaler = null;
         stageInformation = null;

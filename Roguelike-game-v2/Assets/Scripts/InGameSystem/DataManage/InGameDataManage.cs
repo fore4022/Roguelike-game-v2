@@ -4,7 +4,7 @@ public class InGameDataManage
 {
     public Action optionCountUpdate = null;
     public PlayerData player = new();
-    public AttackData attack = new();
+    public SkillData skill = new();
     public DataInit init = new();
 
     private const int maxOptionCount = 5;
