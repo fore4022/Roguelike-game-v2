@@ -10,11 +10,12 @@ public class GameOver_UI : UserInterface
     private TextMeshProUGUI result;
 
     private readonly WaitForSecondsRealtime waitRealSec = new(delay);
+    private const string arrow = "->";
     private const float delay = 0.225f;
 
     public override void SetUserInterface()
     {
-        tmpList = Util.GetComponentsInChildren<TextMeshProUGUI>(Util.GetChildren(transform, 1));
+        tmpList = Util.GetComponentsInChildren<TextMeshProUGUI>(Util.GetChildren(transform, 1), true);
         imgList = Util.GetComponentsInChildren<Image>(Util.GetChildren(transform, 1));
         result = Util.GetComponentInChildren<TextMeshProUGUI>(transform);
 
@@ -46,6 +47,10 @@ public class GameOver_UI : UserInterface
         {
             tmp.text = "";
         }
+
+        tmpList[0].gameObject.SetActive(true);
+        tmpList[1].gameObject.SetActive(false);
+        tmpList[2].gameObject.SetActive(false);
 
         result.text = "";
     }
@@ -85,9 +90,29 @@ public class GameOver_UI : UserInterface
 
         yield return Typing.TypeEffectAndWaiting(tmpList[0], required, coroutine, delay);
 
-        yield return Typing.TypeEffectAndWaiting(tmpList[1], required, coroutine, delay);
+        tmpList[0].SetPosition(new(-175, 260), delay);
+        tmpList[1].gameObject.SetActive(true);
 
-        yield return Typing.TypeEffectAndWaiting(tmpList[2], survival, coroutine, delay);
+        yield return Typing.TypeEffectAndWaiting(tmpList[1], arrow, coroutine);
+
+        tmpList[1].SetPosition(new(-175, 260), delay);
+
+        StartCoroutine(Typing.EraseEffecting(tmpList[0], delay));
+
+        yield return new WaitForSecondsRealtime(delay);
+
+        tmpList[0].gameObject.SetActive(false);
+        tmpList[2].gameObject.SetActive(true);
+
+        yield return Typing.TypeEffectAndWaiting(tmpList[2], survival, coroutine);
+
+        tmpList[2].SetPosition(new(0, 260), delay);
+
+        StartCoroutine(Typing.EraseEffecting(tmpList[1], delay));
+
+        yield return new WaitForSecondsRealtime(delay);
+
+        tmpList[1].gameObject.SetActive(false);
 
         yield return Typing.TypeEffectAndWaiting(tmpList[3], gainExp, coroutine, delay);
 

@@ -3,6 +3,10 @@ public class SkillCasterManage
 {
     private Dictionary<string, SkillCaster> Casters = new();
 
+    public int count()
+    {
+        return Casters.Count;
+    }
     public SkillCaster GetCaster(string type)
     {
         if(Casters.ContainsKey(type))

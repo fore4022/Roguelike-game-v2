@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 public static class Typing
 {
-    private static WaitForSecondsRealtime waitRealSec = new(0.04f);
+    private static WaitForSecondsRealtime waitRealSec = new(0.03f);
 
     public static WaitForSecondsRealtime TypeEffectAndWaiting(TextMeshProUGUI tmp, string str, Coroutine coroutine = null, float delay = 0, bool recursive = false, string currentStr = "")
     {
@@ -58,6 +58,35 @@ public static class Typing
 
                 tmp.text = builder.ToString();
             }
+        }
+    }
+    public static IEnumerator EraseEffecting(TextMeshProUGUI tmp, float duration)
+    {
+        WaitForSecondsRealtime waitRealSec;
+        StringBuilder builder = new();
+        int count = 0;
+
+        builder.Append(tmp.text);
+
+        for(int i = 0; i < builder.Length; i++)
+        {
+            if(builder[i] != '\r' || builder[i] != '\n')
+            {
+                count++;
+            }
+        }
+
+        waitRealSec = new(duration / count);
+
+        while(builder.Length > 0)
+        {
+            yield return waitRealSec;
+
+            IsNewLineStart(ref builder);
+
+            builder.Remove(0, 1);
+
+            tmp.text = builder.ToString();
         }
     }
     public static IEnumerator EraseEffecting(TextMeshProUGUI tmp, int targetCount = 0)

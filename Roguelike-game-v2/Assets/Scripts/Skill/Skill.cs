@@ -110,10 +110,6 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
 
         yield return new WaitUntil(() => baseAttack == null);
 
-        anime.speed = 0;
-        render.enabled = false;
-        defaultCollider.enabled = false;
-
         Managers.Game.inGameData.init.objectPool.DisableObject(gameObject);
     }
     private IEnumerator BaseAttacking()
@@ -123,5 +119,8 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
         yield return new WaitUntil(() => anime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
 
         baseAttack = null;
+        render.enabled = false;
+        defaultCollider.enabled = false;
+        anime.speed = 0;
     }
 }

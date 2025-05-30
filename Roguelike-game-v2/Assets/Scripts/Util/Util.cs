@@ -75,15 +75,30 @@ public class Util
 
         return transform.GetChild(index);
     }
-    public static List<T> GetComponentsInChildren<T>(Transform transform) where T : Component
+    public static List<T> GetComponentsInChildren<T>(Transform transform, bool recursive = false) where T : Component
     {
         List<T> components = new();
 
-        for(int index = 0; index < transform.childCount; index++)
+        if(recursive)
         {
-            if(transform.GetChild(index).TryGetComponent(out T component))
+            for(int index = 0; index < transform.childCount; index++)
+            {
+                components.AddRange(GetComponentsInChildren<T>(transform.GetChild(index), true));
+            }
+
+            if(transform.TryGetComponent(out T component))
             {
                 components.Add(component);
+            }
+        }
+        else
+        {
+            for(int index = 0; index < transform.childCount; index++)
+            {
+                if(transform.GetChild(index).TryGetComponent(out T component))
+                {
+                    components.Add(component);
+                }
             }
         }
 
