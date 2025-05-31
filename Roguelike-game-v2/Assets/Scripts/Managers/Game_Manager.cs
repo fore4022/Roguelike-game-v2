@@ -50,6 +50,7 @@ public class Game_Manager
         gameOver = false;
         
         skillCasterManage.StopAllCaster();
+        inGameData.skill.Reset();
 
         skillCasterManage = new();
         difficultyScaler = new();

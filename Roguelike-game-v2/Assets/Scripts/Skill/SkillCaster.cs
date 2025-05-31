@@ -29,7 +29,7 @@ public class SkillCaster
     {
         coolTime = new(so.coolTime[level]);
 
-        if (so.isMultiCast)
+        if(so.isMultiCast)
         {
             delay = new(so.multiCast.delay[level]);
         }

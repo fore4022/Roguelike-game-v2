@@ -14,18 +14,25 @@ public class SkillContext
 }
 public class SkillData
 {
-    private Dictionary<string, SkillContext> info = new();
+    private Dictionary<string, SkillContext> infos = new();
 
+    public void Reset()
+    {
+        foreach(string key in infos.Keys)
+        {
+            infos[key].caster = null;
+        }
+    }
     public void SetDictionaryItem(SkillInformation_SO so)
     {
-        if(!info.ContainsKey(so.info.type))
+        if(!infos.ContainsKey(so.info.type))
         {
-            info.Add(so.info.type, new SkillContext(so));
+            infos.Add(so.info.type, new SkillContext(so));
         }
     }
     public void SetValue(string key, int levelDelta = 1)
     {
-        if(TryGetAttackData(key, out SkillContext info))
+        if(TryGetSkillData(key, out SkillContext info))
         {
             if(info.caster == null)
             {
@@ -42,7 +49,7 @@ public class SkillData
     }
     public int GetLevel(string key)
     {
-        if(TryGetAttackData(key, out SkillContext info))
+        if(TryGetSkillData(key, out SkillContext info))
         {
             return info.level;
         }
@@ -51,17 +58,17 @@ public class SkillData
     }
     public List<SkillContext> GetAttackInformation()
     {
-        List<SkillContext> info = this.info.Values.ToList();
+        List<SkillContext> info = infos.Values.ToList();
 
         info.RemoveAll(o => o.level == Skill_SO.maxLevel - 1);
 
         return info;
     }
-    private bool TryGetAttackData(string key, out SkillContext info)
+    private bool TryGetSkillData(string key, out SkillContext info)
     {
-        if(this.info.ContainsKey(key))
+        if(infos.ContainsKey(key))
         {
-            info = this.info[key];
+            info = this.infos[key];
 
             return true;
         }
