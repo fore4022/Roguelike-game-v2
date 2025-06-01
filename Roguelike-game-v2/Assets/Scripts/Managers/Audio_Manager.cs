@@ -45,5 +45,7 @@ public class Audio_Manager
         }
 
         audioMixer.SetFloat(type.ToString(), value);
+
+        UnityEngine.Debug.Log(audioMixer.GetFloat(type.ToString(), out float aValue));
     }
 }

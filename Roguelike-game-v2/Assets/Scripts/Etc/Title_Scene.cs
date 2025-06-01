@@ -26,11 +26,6 @@ public class Title_Scene : MonoBehaviour
 
         yield return new WaitUntil(() => Managers.UI.IsInitalized);
 
-        Managers.Audio.Init();
-
-        yield return new WaitForEndOfFrame();
-
-        audioSource.Play();
         StartCoroutine(UserDataLoading());
     }
     private IEnumerator UserDataLoading()
@@ -39,6 +34,8 @@ public class Title_Scene : MonoBehaviour
 
         yield return new WaitUntil(() => Managers.UserData.data != null);
 
+        audioSource.Play();
+        Managers.Audio.Init();
         Managers.UI.GetUI<StartMessage_UI>().SetState();
 
         enterMainScene.isLoad = true;
