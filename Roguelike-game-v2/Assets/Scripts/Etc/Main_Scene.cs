@@ -12,9 +12,9 @@ public class Main_Scene : MonoBehaviour
     }
     private IEnumerator Initalizing()
     {
-        yield return new WaitUntil(() => Managers.UI.IsInitalized);
-
         int levelUpCount = 0;
+
+        yield return new WaitUntil(() => Managers.UI.IsInitalized);
 
         while (Managers.UserData.data.Exp >= Managers.UserData.UserLevelInfo.requiredEXP[Managers.UserData.data.Level - 1])
         {
