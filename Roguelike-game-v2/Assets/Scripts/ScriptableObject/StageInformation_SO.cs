@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 [CreateAssetMenu(fileName = "StageInformation", menuName = "Create New SO/Create New StageInformation_SO")]
 public class StageInformation_SO : ScriptableObject
 {
     public List<SpawnInformation_SO> spawnInformationList;
+    public AudioClip bgm;
 
     public float difficulty = 1;
     public float statScale = 1;

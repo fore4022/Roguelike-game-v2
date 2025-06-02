@@ -67,11 +67,22 @@ public class DataInit
         {
             gameSystem = new GameObject { name = "GameSystem" };
 
+            Managers.Game._bgm = gameSystem.AddComponent<AudioSource>();
             Managers.Game.monsterSpawner = gameSystem.AddComponent<MonsterSpawner>();
             Managers.Game.inGameTimer = gameSystem.AddComponent<InGameTimer>();
+
+            Managers.Game._bgm.playOnAwake = true;
+
+            Managers.Audio.Registration(Managers.Game._bgm, SoundTypes.BGM);
+        }
+        else
+        {
+            Managers.Game._bgm = gameSystem.GetComponent<AudioSource>();
         }
 
+        Managers.Game._bgm.clip = Managers.Game.stageInformation.bgm;
         Time.timeScale = 0;
+
         objectPool = new();
 
         GetMonsterList(ref monsterList);
@@ -102,6 +113,7 @@ public class DataInit
 
         yield return new WaitUntil(() => Managers.UI.GetUI<SceneLoading_UI>() == null);
 
+        Managers.Game._bgm.Play();
         Managers.Game.GameStart();
     }
 }

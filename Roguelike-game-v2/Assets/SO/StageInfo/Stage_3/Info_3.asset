@@ -19,6 +19,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e8e7591a18c490c46a4a27f1bd3d96ef, type: 2}
   - {fileID: 11400000, guid: add9100a4124a5a4a8b194a3a8239c27, type: 2}
   - {fileID: 11400000, guid: f38cd69b5162b1341b571114323474d8, type: 2}
+  bgm: {fileID: 8300000, guid: 67b2c9de31a741c409c8e3fa5d05221a, type: 3}
   difficulty: 3
   statScale: 1
   spawnDelay: 1

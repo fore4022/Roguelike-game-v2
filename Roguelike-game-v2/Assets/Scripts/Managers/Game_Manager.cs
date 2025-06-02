@@ -10,7 +10,9 @@ public class Game_Manager
     public InGameTimer inGameTimer;
     public MonsterSpawner monsterSpawner;
     public Player player;
+    public AudioSource _bgm;
     public Action onStageReset;
+
 
     private int userExp = 0;
     private bool isPlaying = false;

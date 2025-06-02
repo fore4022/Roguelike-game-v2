@@ -1,10 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 public class Audio_Manager
 {
-    private List<AudioSource> _sources = new();
     private AudioMixer _audioMixer;
 
     private const SoundTypes _fx = SoundTypes.FX;
@@ -30,17 +28,15 @@ public class Audio_Manager
             }
         }
     }
-    public void Registration(AudioSource source)
+    public void Registration(AudioSource source, SoundTypes? type = null)
     {
-        _sources.Add(source);
-
         if(_audioMixer == null)
         {
-            Util.GetMonoBehaviour().StartCoroutine(WaitForAudioMixer(source));
+            Util.GetMonoBehaviour().StartCoroutine(WaitForAudioMixer(source, type));
         }
         else
         {
-            SetOutputMixerGroup(source);
+            SetOutputMixerGroup(source, type);
         }
     }
     public void SetGroup(SoundTypes type)
@@ -76,9 +72,9 @@ public class Audio_Manager
 
         _audioMixer.SetFloat(type.ToString(), value);
     }
-    private void SetOutputMixerGroup(AudioSource source)
+    public void SetOutputMixerGroup(AudioSource source, SoundTypes? type = null)
     {
-        if(source.outputAudioMixerGroup.ToString() == _fx.ToString())
+        if(source.outputAudioMixerGroup.ToString() == _fx.ToString() || type == _fx)
         {
             source.outputAudioMixerGroup = _audioMixer.FindMatchingGroups("Master/FX")[0];
         }
@@ -92,7 +88,7 @@ public class Audio_Manager
             source.Play();
         }
     }
-    private IEnumerator WaitForAudioMixer(AudioSource source)
+    private IEnumerator WaitForAudioMixer(AudioSource source, SoundTypes? type = null)
     {
         source.Stop();
 
