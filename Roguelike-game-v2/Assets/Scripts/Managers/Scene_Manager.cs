@@ -39,6 +39,8 @@ public class Scene_Manager
 
         yield return new WaitUntil(() => SceneManager.GetActiveScene().name == sceneName);
 
+        Managers.Audio.InitializedAudio();
+
         isLoad = false;
 
         if(!hasInitialization)

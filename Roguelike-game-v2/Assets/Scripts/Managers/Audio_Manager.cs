@@ -7,7 +7,6 @@ public class Audio_Manager
     private List<AudioSource> _sources = new();
     private AudioMixer _audioMixer;
 
-    private const SoundTypes _bgm = SoundTypes.BGM;
     private const SoundTypes _fx = SoundTypes.FX;
     private const float _maxValue_BGM = -5;
     private const float _maxValue_FX = 2.5f;
@@ -19,13 +18,25 @@ public class Audio_Manager
         SetGroup(SoundTypes.BGM, Managers.UserData.data.BGM);
         SetGroup(SoundTypes.FX, Managers.UserData.data.FX);
     }
-    public void Add(AudioSource source)
+    public void InitializedAudio()
+    {
+        GameObject[] objs = GameObject.FindObjectsOfType<GameObject>();
+
+        foreach(GameObject obj in objs)
+        {
+            if(obj.TryGetComponent(out AudioSource audio))
+            {
+                Registration(audio);
+            }
+        }
+    }
+    public void Registration(AudioSource source)
     {
         _sources.Add(source);
 
         if(_audioMixer == null)
         {
-            Util.GetMonoBehaviour().StartCoroutine(SetOutputMixerGroup());
+            Util.GetMonoBehaviour().StartCoroutine(WaitForAudioMixer(source));
         }
         else
         {
@@ -75,11 +86,18 @@ public class Audio_Manager
         {
             source.outputAudioMixerGroup = _audioMixer.FindMatchingGroups("Master/BGM")[0];
         }
+
+        if(source.playOnAwake)
+        {
+            source.Play();
+        }
     }
-    private IEnumerator SetOutputMixerGroup()
+    private IEnumerator WaitForAudioMixer(AudioSource source)
     {
+        source.Stop();
+
         yield return new WaitUntil(() => _audioMixer != null);
 
-        SetOutputMixerGroup();
+        SetOutputMixerGroup(source);
     }
 }

@@ -8,21 +8,19 @@ public class Title_Scene : MonoBehaviour
     [SerializeField]
     private AudioMixer audioMixer;
 
-    private AudioSource audioSource;
-
     private const string _gameDataPath = "GameData";
 
     private void Start()
     {
         Managers.Main.GameData.SO = Util.LoadingToPath<GameData_SO>(_gameDataPath, false);
         Managers.Audio.Mixer = audioMixer;
-        audioSource = GetComponent<AudioSource>();
 
         StartCoroutine(Initializing());
     }
     private IEnumerator Initializing()
     {
         Managers.UserData.Load();
+        Managers.Audio.InitializedAudio();
 
         yield return new WaitUntil(() => Managers.UI.IsInitalized);
 
@@ -34,7 +32,6 @@ public class Title_Scene : MonoBehaviour
 
         yield return new WaitUntil(() => Managers.UserData.data != null);
 
-        audioSource.Play();
         Managers.Audio.Init();
         Managers.UI.GetUI<StartMessage_UI>().SetState();
 
