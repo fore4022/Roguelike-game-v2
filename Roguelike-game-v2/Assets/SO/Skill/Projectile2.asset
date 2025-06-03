@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile_Info:
     animationName: explosion
-    speed: 3
+    speed: 4.5
     penetration: 1
   multiCast:
     delay: []
@@ -26,11 +26,11 @@ MonoBehaviour:
   - 1.45
   - 1.5
   coolTime:
-  - 1.2
-  - 1.15
-  - 1.1
   - 1.05
   - 1
+  - 0.95
+  - 0.9
+  - 0.85
   adjustmentRotation: {x: 0, y: 0, z: 0}
   adjustmentPosition: {x: 0, y: 0}
   typePath: Projectile2

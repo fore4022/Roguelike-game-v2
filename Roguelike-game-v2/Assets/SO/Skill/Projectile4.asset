@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile_Info:
     animationName: destroy
-    speed: 0.5
+    speed: 0.75
     penetration: 0
   multiCast:
     delay:
@@ -24,11 +24,11 @@ MonoBehaviour:
     - 0.05
     - 0.05
     count:
+    - 2
     - 3
     - 4
     - 5
     - 6
-    - 7
   damageCoefficient:
   - 0.8
   - 0.9
@@ -36,11 +36,11 @@ MonoBehaviour:
   - 1.1
   - 1.2
   coolTime:
-  - 4
-  - 3.75
-  - 3.5
-  - 3.25
   - 3
+  - 2.75
+  - 2.5
+  - 2.25
+  - 2
   adjustmentRotation: {x: 0, y: 0, z: 0}
   adjustmentPosition: {x: 0, y: 0}
   typePath: Projectile4

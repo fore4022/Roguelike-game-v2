@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: GhastC
   m_EditorClassIdentifier: 
   stat:
-    health: 1
-    damage: 1
-    attackSpeed: 1
-    moveSpeed: 1
-    size: 1
+    health: 9
+    damage: 2
+    moveSpeed: 0.85
   experience: 1

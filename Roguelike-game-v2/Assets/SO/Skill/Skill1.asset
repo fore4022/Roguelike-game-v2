@@ -30,17 +30,17 @@ MonoBehaviour:
     - 4
     - 5
   damageCoefficient:
-  - 1
-  - 1.05
-  - 1.1
-  - 1.15
-  - 1.2
+  - 1.25
+  - 1.35
+  - 1.45
+  - 1.55
+  - 1.65
   coolTime:
-  - 2
-  - 1.9
-  - 1.8
-  - 1.7
   - 1.6
+  - 1.5
+  - 1.4
+  - 1.3
+  - 1.2
   adjustmentRotation: {x: 0, y: 0, z: 0}
   adjustmentPosition: {x: 0, y: 0}
   typePath: Skill1

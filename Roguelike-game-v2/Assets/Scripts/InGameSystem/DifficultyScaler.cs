@@ -12,6 +12,6 @@ public class DifficultyScaler
     {
         minute = Managers.Game.inGameTimer.GetMinutes;
 
-        return (1 + increaseRate * Managers.Game.stageInformation.difficulty) * (1 + increaseRate * minute + (minute > criticalMinute ? 0.001f * Mathf.Pow(minute - criticalMinute, 3) : 0));
+        return (1 + increaseRate * (Managers.Game.stageInformation.difficulty - 1)) * (1 + increaseRate * minute + (minute > criticalMinute ? 0.001f * Mathf.Pow(minute - criticalMinute, 3) : 0));
     }
 }

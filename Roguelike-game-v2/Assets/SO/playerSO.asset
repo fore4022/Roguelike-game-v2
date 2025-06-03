@@ -15,6 +15,4 @@ MonoBehaviour:
   stat:
     health: 10
     damage: 1
-    attackSpeed: 1
     moveSpeed: 1
-    size: 1

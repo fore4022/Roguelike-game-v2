@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: EarthB
   m_EditorClassIdentifier: 
   stat:
-    health: 1
-    damage: 1
-    attackSpeed: 1
-    moveSpeed: 1
-    size: 1
+    health: 5
+    damage: 1.2
+    moveSpeed: 0.7
   experience: 1

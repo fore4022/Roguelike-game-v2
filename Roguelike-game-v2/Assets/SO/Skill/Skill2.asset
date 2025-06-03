@@ -20,17 +20,17 @@ MonoBehaviour:
     delay: []
     count: []
   damageCoefficient:
-  - 1.2
-  - 1.4
+  - 1.3
   - 1.6
-  - 1.8
-  - 2
-  coolTime:
-  - 2
   - 1.9
+  - 2.2
+  - 2.5
+  coolTime:
   - 1.8
   - 1.7
   - 1.6
+  - 1.5
+  - 1.4
   adjustmentRotation: {x: 0, y: 0, z: 0}
   adjustmentPosition: {x: 0, y: 0}
   typePath: Skill2

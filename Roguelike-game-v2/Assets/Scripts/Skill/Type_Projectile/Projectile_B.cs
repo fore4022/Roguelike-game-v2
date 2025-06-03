@@ -25,17 +25,14 @@ public class Projectile_B : ProjectileSkill, IProjectile
     }
     public void SetCollider()
     {
-        enable = !enable;
-        isExplosion = !isExplosion;
-
         if(isExplosion)
         {
-            effectCollider.enabled = true;
+            effectCollider.enabled = false;
             defaultCollider.enabled = false;
         }
         else
         {
-            effectCollider.enabled = false;
+            effectCollider.enabled = true;
             defaultCollider.enabled = false;
         }
     }

@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: FactoryB
   m_EditorClassIdentifier: 
   stat:
-    health: 1
-    damage: 1
-    attackSpeed: 1
-    moveSpeed: 1
-    size: 1
+    health: 3
+    damage: 1.5
+    moveSpeed: 0.8
   experience: 1

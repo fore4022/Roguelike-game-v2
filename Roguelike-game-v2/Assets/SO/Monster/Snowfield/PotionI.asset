@@ -13,9 +13,7 @@ MonoBehaviour:
   m_Name: PotionI
   m_EditorClassIdentifier: 
   stat:
-    health: 1
-    damage: 1
-    attackSpeed: 1
-    moveSpeed: 1
-    size: 1
+    health: 16
+    damage: 5
+    moveSpeed: 1.25
   experience: 1
