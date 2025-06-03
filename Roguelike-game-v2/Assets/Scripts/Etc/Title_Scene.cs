@@ -7,6 +7,8 @@ public class Title_Scene : MonoBehaviour
     private EnterMainScene enterMainScene;
     [SerializeField]
     private AudioMixer audioMixer;
+    [SerializeField]
+    private AudioSource audioSource;
 
     private const string _gameDataPath = "GameData";
 
@@ -20,7 +22,6 @@ public class Title_Scene : MonoBehaviour
     private IEnumerator Initializing()
     {
         Managers.UserData.Load();
-        Managers.Audio.InitializedAudio();
 
         yield return new WaitUntil(() => Managers.UI.IsInitalized);
 
@@ -33,7 +34,9 @@ public class Title_Scene : MonoBehaviour
         yield return new WaitUntil(() => Managers.UserData.data != null);
 
         Managers.Audio.Init();
+        Managers.Audio.InitializedAudio();
         Managers.UI.GetUI<StartMessage_UI>().SetState();
+        audioSource.Play();
 
         enterMainScene.isLoad = true;
     }

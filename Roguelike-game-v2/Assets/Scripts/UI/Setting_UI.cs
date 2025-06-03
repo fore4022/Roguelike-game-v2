@@ -12,12 +12,23 @@ public class Setting_UI : UserInterface
     [SerializeField]
     private Image _Fx;
 
+    private const string _sceneName = "InGame";
+
+    private bool _isInGame;
+
     public override void SetUserInterface()
     {
+        _isInGame = Managers.Scene.CurrentSceneName == _sceneName ? true : false;
+
         Managers.UI.HideUI<Setting_UI>();
     }
     protected override void Enable()
     {
+        if(_isInGame)
+        {
+            Managers.UI.GetUI<PauseMenu_UI>().HideIcons();
+        }
+
         BgmUpdate();
         SfxUpdate();
     }
@@ -55,8 +66,12 @@ public class Setting_UI : UserInterface
     }
     public void Confirm()
     {
+        if(_isInGame)
+        {
+            Managers.UI.GetUI<PauseMenu_UI>().ShowIcons();
+        }
+
         Managers.UserData.Save();
-        Managers.UI.GetUI<PauseMenu_UI>().ShowIcons();
         Managers.UI.HideUI<Setting_UI>();
     }
 }
