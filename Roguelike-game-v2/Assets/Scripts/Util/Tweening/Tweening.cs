@@ -87,7 +87,14 @@ public static class Tweening
             {
                 if(status.flag)
                 {
-                    currentTime = Mathf.Min(currentTime + Time.unscaledDeltaTime, duration);
+                    if(isRectTransform)
+                    {
+                        currentTime = Mathf.Min(currentTime + Time.unscaledDeltaTime, duration);
+                    }
+                    else
+                    {
+                        currentTime = Mathf.Min(currentTime + Time.deltaTime, duration);
+                    }
 
                     del(transform, initialValue, targetValue, easeDel(currentTime / duration));
                 }

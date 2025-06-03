@@ -20,22 +20,22 @@ MonoBehaviour:
     delay: []
     count: []
   damageCoefficient:
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
+  - 1.2
+  - 1.4
+  - 1.6
+  - 1.8
+  - 2
   coolTime:
-  - 1
-  - 1
-  - 1
-  - 1
-  - 1
+  - 2
+  - 1.9
+  - 1.8
+  - 1.7
+  - 1.6
   adjustmentRotation: {x: 0, y: 0, z: 0}
   adjustmentPosition: {x: 0, y: 0}
   typePath: Skill2
   duration: 0
-  flipX: 0
+  flipX: 1
   flipY: 0
   projectile: 0
   isMultiCast: 0
