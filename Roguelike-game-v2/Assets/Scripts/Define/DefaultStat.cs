@@ -1,10 +1,10 @@
 using System;
-[System.Serializable]
+[Serializable]
 public class DefaultStat
 {
     [NonSerialized]
     public float maxHealth;
-    
+
     public float health;
     public float damage;
     public float moveSpeed;

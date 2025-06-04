@@ -142,11 +142,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 43222aabd2e96e94ca9b6adb577e16e0
-    m_Address: PlayerOriginalStat_SO
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2e6ba11cb8e5dd748bd15cfcb5795250
     m_Address: Assets/SO/Skill/Skill4.asset
     m_ReadOnly: 0

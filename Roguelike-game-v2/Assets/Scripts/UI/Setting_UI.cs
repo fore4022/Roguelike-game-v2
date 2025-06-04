@@ -4,9 +4,9 @@ using UnityEngine.UI;
 public class Setting_UI : UserInterface
 {
     [SerializeField]
-    private List<Sprite> _BgmSprite;
+    private List<Sprite> _bgmSprite;
     [SerializeField]
-    private List<Sprite> _FxSprite;
+    private List<Sprite> _fxSprite;
     [SerializeField]
     private Image _Bgm;
     [SerializeField]
@@ -46,22 +46,22 @@ public class Setting_UI : UserInterface
     {
         if(Managers.UserData.data.BGM)
         {
-            _Bgm.sprite = _BgmSprite[0];
+            _Bgm.sprite = _bgmSprite[0];
         }
         else
         {
-            _Bgm.sprite = _BgmSprite[1];
+            _Bgm.sprite = _bgmSprite[1];
         }
     }
     private void SfxUpdate()
     {
         if(Managers.UserData.data.FX)
         {
-            _Fx.sprite = _FxSprite[0];
+            _Fx.sprite = _fxSprite[0];
         }
         else
         {
-            _Fx.sprite = _FxSprite[1];
+            _Fx.sprite = _fxSprite[1];
         }
     }
     public void Confirm()
