@@ -15,4 +15,10 @@ public class DefaultStat
         damage = stat.damage;
         moveSpeed = stat.moveSpeed;
     }
+    public DefaultStat(float health, float damage, float moveSpeed)
+    {
+        maxHealth = this.health = health;
+        this.damage = damage;
+        this.moveSpeed = moveSpeed;
+    }
 }

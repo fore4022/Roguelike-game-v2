@@ -15,8 +15,9 @@ public class Monster : MonoBehaviour, IScriptableData
 
     protected const float spawnRadius = 5;
 
-    protected float experience;
     protected float health;
+    protected float user_Experience;
+    protected int inGame_Experience;
     protected bool isVisible = false;
 
     private Plane[] planes = new Plane[6];
@@ -75,7 +76,6 @@ public class Monster : MonoBehaviour, IScriptableData
     }
     protected virtual void Set()
     {
-        experience = monsterSO.experience;
         health = stat.health * Managers.Game.difficultyScaler.IncreaseStat;
         animator.speed = 1;
     }
@@ -90,6 +90,9 @@ public class Monster : MonoBehaviour, IScriptableData
         render.enabled = false;
         audioSource.playOnAwake = false;
         stat = monsterSO.stat;
+        user_Experience = monsterSO.user_Experience;
+        inGame_Experience = monsterSO.inGame_Experience;
+        monsterSO = null;
 
         Set();
     }

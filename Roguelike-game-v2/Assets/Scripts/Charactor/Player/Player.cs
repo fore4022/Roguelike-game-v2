@@ -9,12 +9,10 @@ public class Player : MonoBehaviour, IDamageReceiver
     public Action healthUpdate = null;
 
     private PlayerInformation information = new();
-    private PlayerStat_SO playerStatSO = null;
     private DefaultStat stat = null;
 
     private Animator anime;
 
-    private const string statPath = "PlayerOriginalStat_SO";
     private const float targetScale = 10f;
     private const float duration = 0.4f;
 
@@ -77,12 +75,21 @@ public class Player : MonoBehaviour, IDamageReceiver
 
         die = null;
     }
+    public void AnimationPlay(string animationName)
+    {
+        anime.Play(animationName);
+    }
+    private void LoadPlayerStat()
+    {
+        stat = information.stat = new(Managers.UserData.data.Stat.defaultStat);
+    }
     public IEnumerator Dieing()
     {
         InputActions.DisableInputAction<TouchControls>();
         Managers.UI.HideUI<HpSlider_UI>();
 
-        transform.SetScale(targetScale, duration)
+        transform.SetRotation(new(0, 0, 0))
+            .SetScale(targetScale, duration)
             .SetPosition(transform.position + diePosition, duration)
             .SetRotation(dieRotation, duration);
 
@@ -96,10 +103,6 @@ public class Player : MonoBehaviour, IDamageReceiver
 
         Managers.Game.GameOver();
     }
-    public void AnimationPlay(string animationName)
-    {
-        anime.Play(animationName);
-    }
     private IEnumerator Init()
     {
         LoadPlayerStat();
@@ -111,14 +114,5 @@ public class Player : MonoBehaviour, IDamageReceiver
         Managers.Game.player = this;
 
         move.Init();
-    }
-    private void LoadPlayerStat()
-    {
-        if(playerStatSO == null)
-        {
-            playerStatSO = Util.LoadingToPath<PlayerStat_SO>(statPath);
-        }
-
-        stat = information.stat = new(playerStatSO.stat);
     }
 }

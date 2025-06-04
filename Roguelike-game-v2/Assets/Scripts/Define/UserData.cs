@@ -6,6 +6,8 @@ public class UserData
     private List<StageClearInfo> stageClearInfos = new();
     [SerializeField]
     private SettingInformation _setting = new();
+    [SerializeField]
+    private PlayerStat _stat = new();
 
     [SerializeField]
     private string current_StageName = "Prairie";
@@ -15,6 +17,7 @@ public class UserData
     private int exp = 0;
 
     public List<StageClearInfo> StageClearInfo { get { return stageClearInfos; } set { stageClearInfos = value; } }
+    public PlayerStat Stat { get { return _stat; } }
     public string StageName
     {
         get

@@ -75,16 +75,10 @@ public class GameOver_UI : UserInterface
         Coroutine coroutine = null;
         string required = $"Target Time\n\n{(Managers.Game.stageInformation.requiredTime / 60):D2} : {Managers.Game.stageInformation.requiredTime:D2} : 00";
         string survival = $"Survival Time\n\n{Managers.Game.inGameTimer.GetHours:D2} : {Managers.Game.inGameTimer.GetMinutes:D2} : {Managers.Game.inGameTimer.GetSeconds:D2}";
-        string gainExp;
+        string gainExp = $"Experience\n\n+ {Managers.Game.UserExp:N0} EXP";
 
-        if(Managers.Game.UserExp == 0)
-        {
-            gainExp = "Experience\n\n+ 0 EXP";
-        }
-        else
-        {
-            gainExp = $"Experience\n\n+ {Managers.Game.UserExp:N0} EXP";
-        }
+        Managers.UserData.data.Exp += Managers.Game.UserExp;
+        Managers.Game.UserExp = 0;
 
         yield return waitRealSec;
 

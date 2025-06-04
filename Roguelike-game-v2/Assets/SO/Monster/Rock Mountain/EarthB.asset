@@ -16,4 +16,5 @@ MonoBehaviour:
     health: 5
     damage: 1.2
     moveSpeed: 0.7
-  experience: 1
+  user_Experience: 1
+  inGame_Experience: 1

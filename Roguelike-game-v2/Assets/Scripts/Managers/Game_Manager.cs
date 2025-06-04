@@ -47,7 +47,6 @@ public class Game_Manager
     }
     public void ReStart()
     {
-        UserExp = 0;
         isPlaying = false;
         gameOver = false;
         
