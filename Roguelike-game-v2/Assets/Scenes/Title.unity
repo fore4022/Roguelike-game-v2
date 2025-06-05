@@ -1203,7 +1203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 881958270}
-  - component: {fileID: 881958269}
+  - component: {fileID: 881958271}
   m_Layer: 0
   m_Name: Test
   m_TagString: Untagged
@@ -1211,21 +1211,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &881958269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 881958268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf0f03b92ea9fd04587e15e006155a56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  file:
-    targetObject: {fileID: 11500000, guid: f2ed0991f89caaf439a7741709f3f634, type: 3}
-    fieldName: 
 --- !u!4 &881958270
 Transform:
   m_ObjectHideFlags: 0
@@ -1241,6 +1226,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &881958271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881958268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf0f03b92ea9fd04587e15e006155a56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  file:
+    targetObject: {fileID: 1554419365}
+    fieldName: enterMainScene
+    fieldNames:
+    - enterMainScene
+    - audioMixer
+    - audioSource
+    - _gameDataPath
 --- !u!1 &902362349
 GameObject:
   m_ObjectHideFlags: 0
@@ -2003,6 +2008,7 @@ MonoBehaviour:
   enterMainScene: {fileID: 843880395}
   audioMixer: {fileID: 24100000, guid: 8197a9bb3246ca64786a5316d0a2ccae, type: 2}
   audioSource: {fileID: 1554419363}
+  _gameDataPath: GameData
 --- !u!1 &1649881420
 GameObject:
   m_ObjectHideFlags: 0

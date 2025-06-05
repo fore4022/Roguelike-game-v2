@@ -5,6 +5,8 @@ public class FileReference
     [PlayerStat]
     public UnityEngine.Object targetObject;
     [PlayerStat]
+    public string[] fieldNames;
+    [PlayerStat]
     public string fieldName;
 
     public object GetValue()
@@ -14,8 +16,7 @@ public class FileReference
             return null;
         }
 
-        var type = targetObject.GetType();
-        var field = type.GetField(fieldName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        var field = targetObject.GetType().GetField(fieldName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
 
         return field?.GetValue(targetObject);
     }
@@ -26,8 +27,7 @@ public class FileReference
             return;
         }
 
-        var type = targetObject.GetType();
-        var field = type.GetField(fieldName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        var field = targetObject.GetType().GetField(fieldName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
 
         if(field != null && field.FieldType.IsAssignableFrom(value.GetType()))
         {

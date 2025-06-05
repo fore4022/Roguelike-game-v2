@@ -10,8 +10,6 @@ public class FieldReferenceDrawer : PropertyDrawer
         var targetProp = property.FindPropertyRelative("targetObject");
         var fieldNameProp = property.FindPropertyRelative("fieldName");
 
-        Debug.Log(fieldNameProp);
-
         EditorGUI.BeginProperty(position, label, property);
 
         float halfWidth = position.width / 2f;
@@ -22,15 +20,22 @@ public class FieldReferenceDrawer : PropertyDrawer
 
         if(targetProp.objectReferenceValue != null)
         {
-            var target = EditorUtility.InstanceIDToObject(targetProp.objectReferenceValue.GetInstanceID());
-            var type = target.GetType();
+            var type = EditorUtility.InstanceIDToObject(targetProp.objectReferenceValue.GetInstanceID()).GetType();
             var fields = type.GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
 
             if(fields.Count() > 0)
             {
+                var fieldNamesProp = property.FindPropertyRelative("fieldNames");
                 string[] options = fields.Select(o => o.Name).ToArray();
                 Rect dropdownRect = new Rect(position.x + halfWidth + 5, position.y, halfWidth - 5, position.height);
                 int currentIndex = 0;
+
+                fieldNamesProp.arraySize = options.Count();
+
+                for(int i = 0; i < options.Count(); i++)
+                {
+                    fieldNamesProp.GetArrayElementAtIndex(i).stringValue = options[i];
+                }
 
                 if(fieldNameProp.stringValue != "")
                 {
@@ -38,8 +43,6 @@ public class FieldReferenceDrawer : PropertyDrawer
                 }
 
                 int selected = EditorGUI.Popup(dropdownRect, currentIndex, options);
-
-                Debug.Log(selected);
 
                 fieldNameProp.stringValue = options[selected];
             }
