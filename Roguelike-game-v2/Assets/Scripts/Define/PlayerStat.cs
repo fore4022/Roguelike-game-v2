@@ -3,9 +3,9 @@ public class PlayerStat
 {
     public DefaultStat defaultStat;
 
-    [PlayerStat]
+    [ShowInInspector]
     public float increaseHealth = 0;
-    [PlayerStat]
+    [ShowInInspector]
     public float increaseDamage = 0;
 
     public PlayerStat()

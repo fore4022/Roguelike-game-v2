@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using System.Reflection;
 using System.Linq;
-[CustomPropertyDrawer(typeof(FileReference))]
+[CustomPropertyDrawer(typeof(StatUpgrade_UI))]
 public class FieldReferenceDrawer : PropertyDrawer
 {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)

@@ -2,11 +2,11 @@ using System.Reflection;
 [System.Serializable]
 public class FileReference
 {
-    [PlayerStat]
+    [ShowInInspector]
     public UnityEngine.Object targetObject;
-    [PlayerStat]
+    [ShowInInspector]
     public string[] fieldNames;
-    [PlayerStat]
+    [ShowInInspector]
     public string fieldName;
 
     public object GetValue()
