@@ -5,8 +5,6 @@ public class FileReference
     [ShowInInspector]
     public UnityEngine.Object targetObject;
     [ShowInInspector]
-    public string[] fieldNames;
-    [ShowInInspector]
     public string fieldName;
 
     public object GetValue()

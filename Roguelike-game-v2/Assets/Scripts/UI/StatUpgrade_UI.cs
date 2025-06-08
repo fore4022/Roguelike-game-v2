@@ -1,10 +1,6 @@
-using UnityEngine;
 public class StatUpgrade_UI : UserInterface
 {
-    [HideInInspector]
-    public PlayerStat stat;
-
-    private FileReference file;
+    public FileReference file;
 
     public override void SetUserInterface()
     {

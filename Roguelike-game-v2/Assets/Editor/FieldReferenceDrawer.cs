@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 using System.Reflection;
 using System.Linq;
-[CustomPropertyDrawer(typeof(StatUpgrade_UI))]
+[CustomPropertyDrawer(typeof(FileReference))]
 public class FieldReferenceDrawer : PropertyDrawer
 {
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -25,17 +25,9 @@ public class FieldReferenceDrawer : PropertyDrawer
 
             if(fields.Count() > 0)
             {
-                var fieldNamesProp = property.FindPropertyRelative("fieldNames");
                 string[] options = fields.Select(o => o.Name).ToArray();
                 Rect dropdownRect = new Rect(position.x + halfWidth + 5, position.y, halfWidth - 5, position.height);
                 int currentIndex = 0;
-
-                fieldNamesProp.arraySize = options.Count();
-
-                for(int i = 0; i < options.Count(); i++)
-                {
-                    fieldNamesProp.GetArrayElementAtIndex(i).stringValue = options[i];
-                }
 
                 if(fieldNameProp.stringValue != "")
                 {
@@ -44,7 +36,10 @@ public class FieldReferenceDrawer : PropertyDrawer
 
                 int selected = EditorGUI.Popup(dropdownRect, currentIndex, options);
 
-                fieldNameProp.stringValue = options[selected];
+                if(selected != -1)
+                {
+                    fieldNameProp.stringValue = options[selected];
+                }
             }
         }
 
