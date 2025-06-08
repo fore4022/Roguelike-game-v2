@@ -1,22 +1,15 @@
-using UnityEngine;
 public class StatUpgrade_UI : UserInterface
 {
-    [SerializeField]
-    private int sign;
-
     public FileReference file;
 
     public override void SetUserInterface()
     {
-        Managers.UI.HideUI<StatUpgrade_UI>();
+        //Set
+
+        //Managers.UI.HideUI<StatUpgrade_UI>();
     }
-    public void ChangeAmound()
+    protected override void Enable()
     {
-        //UI Update
-    }
-    public void Confirm()
-    {
-        Managers.UserData.Save();
-        Managers.UI.HideUI<StatUpgrade_UI>();
+        transform.SetPosition(new(0, 35), 1);
     }
 }
