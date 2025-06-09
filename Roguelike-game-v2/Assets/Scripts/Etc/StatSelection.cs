@@ -1,11 +1,11 @@
 using UnityEngine;
 public class StatSelection : MonoBehaviour
 {
-    private float health;
-    private float damage;
-    private float moveSpeed;
-    private float increaseHealth;
-    private float increaseDamage;
+    private float health = 0;
+    private float damage = 0;
+    private float moveSpeed = 0;
+    private float increaseHealth = 0;
+    private float increaseDamage = 0;
 
     public void Set(float health, float damage, float moveSpeed, float increaseHealth, float increaseDamage)
     {

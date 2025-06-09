@@ -99,8 +99,6 @@ public static class Tweening
                     del(transform, initialValue, targetValue, easeDel(currentTime / duration));
                 }
 
-                //Debug.Log(currentTime);
-
                 yield return null;
             }
 
@@ -110,8 +108,6 @@ public static class Tweening
         {
             ToEnd(data);
         }
-
-        Debug.Log(currentTime);
     }
     public static void ToEnd(TweenData data)
     {
@@ -186,10 +182,6 @@ public static class Tweening
     private static void Position_rt(Transform transform, NumericValue initial, NumericValue target, float value)
     {        
         (transform as RectTransform).anchoredPosition = Vector3.Lerp(initial.Vector, target.Vector, value);
-        Debug.Log((transform as RectTransform).anchoredPosition);
-        Debug.Log(target.Vector);
-        Debug.Log((transform as RectTransform).anchoredPosition == (Vector2)target.Vector);
-        Debug.Log(value);
     }
 
     // Rotation

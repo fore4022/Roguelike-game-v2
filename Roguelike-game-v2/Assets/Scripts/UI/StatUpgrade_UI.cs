@@ -1,15 +1,41 @@
+using System.Collections.Generic;
+using UnityEngine;
+[RequireComponent(typeof(StatSelection))]
 public class StatUpgrade_UI : UserInterface
 {
-    public FileReference file;
+    public List<FileReference> files;
+    public GameObject background;
+
+    private const float duration = 0.2f;
+
+    private bool toggle = false;
+
+    // StatElement
+
+    // stat points
 
     public override void SetUserInterface()
     {
-        //Set
+        for(int i = 0; i < files.Count; i++)
+        {
+            // Instantiate();
+        }
 
-        //Managers.UI.HideUI<StatUpgrade_UI>();
+        background.SetActive(false);
     }
-    protected override void Enable()
+    public void ToggleUI()
     {
-        transform.SetPosition(new(0, 35), 1);
+        toggle = !toggle;
+
+        background.SetActive(toggle);
+        
+        if(toggle)
+        {
+            transform.SetPosition(new(0, 35), duration, Ease.OutSine);
+        }
+        else
+        { 
+            transform.SetPosition(new(0, -1500), duration, Ease.OutSine);
+        }
     }
 }

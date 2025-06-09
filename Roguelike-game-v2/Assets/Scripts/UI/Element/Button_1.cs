@@ -30,15 +30,15 @@ public abstract class Button_1 : Button_Default, IPointerEnterHandler, IPointerE
     }
     protected virtual void PointerEnter()
     {
-        rectTransform.Kill();
-        rectTransform.SetScale(maxScale, duration);
+        rectTransform.SkipToEnd()
+            .SetScale(maxScale, duration);
     }
     protected virtual void PointerExit()
     {
         if(isPointerDown) { return; }
 
-        rectTransform.Kill();
-        rectTransform.SetScale(minScale, duration);
+        rectTransform.SkipToEnd()
+            .SetScale(minScale, duration);
     }
     protected virtual void PointerDown()
     {
@@ -52,12 +52,7 @@ public abstract class Button_1 : Button_Default, IPointerEnterHandler, IPointerE
     }
     private void Set()
     {
-        if(minScale != 1)
-        {
-            rectTransform.SetScale(minScale, 0);
-        }
-
-        UIElementUtility.SetImageAlpha(image, minAlpha, duration);
+        UIElementUtility.SetImageAlpha(image, maxAlpha, duration);
     }
     protected override void Init()
     {
