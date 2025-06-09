@@ -1345,10 +1345,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71b13135e4740647b29fdd89e00ed68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _BgmSprite:
+  _bgmSprite:
   - {fileID: 8972043204431142000, guid: 236587ec711348a4792e0060efb1bf73, type: 3}
   - {fileID: 889037309, guid: cbceac98cd8f851489f255a7dab1ce9a, type: 3}
-  _FxSprite:
+  _fxSprite:
   - {fileID: -1342299805662588276, guid: 236587ec711348a4792e0060efb1bf73, type: 3}
   - {fileID: 1365388156, guid: cbceac98cd8f851489f255a7dab1ce9a, type: 3}
   _Bgm: {fileID: 1420768176}

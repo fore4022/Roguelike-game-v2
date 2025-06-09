@@ -4,10 +4,12 @@ using UnityEngine;
 public class StatUpgrade_UI : UserInterface
 {
     public List<FileReference> files;
+    public StatSelection statSelection;
     public GameObject background;
 
     private const float duration = 0.2f;
 
+    private int index = 0;
     private bool toggle = false;
 
     // StatElement
@@ -16,6 +18,10 @@ public class StatUpgrade_UI : UserInterface
 
     public override void SetUserInterface()
     {
+        statSelection = GetComponent<StatSelection>();
+
+        statSelection.Set(Managers.UserData.data.Stat);
+
         for(int i = 0; i < files.Count; i++)
         {
             // Instantiate();

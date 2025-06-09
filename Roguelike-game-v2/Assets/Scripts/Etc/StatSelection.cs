@@ -6,13 +6,15 @@ public class StatSelection : MonoBehaviour
     private float moveSpeed = 0;
     private float increaseHealth = 0;
     private float increaseDamage = 0;
+    private float healthRegenPerSec = 0;
 
-    public void Set(float health, float damage, float moveSpeed, float increaseHealth, float increaseDamage)
+    public void Set(PlayerStat stat)
     {
-        this.health = health;
-        this.damage = damage;
-        this.moveSpeed = moveSpeed;
-        this.increaseHealth = increaseHealth;
-        this.increaseDamage = increaseDamage;
+        health = stat.defaultStat.health;
+        damage = stat.defaultStat.damage;
+        moveSpeed = stat.defaultStat.moveSpeed;
+        increaseHealth = stat.increaseHealth;
+        increaseDamage = stat.increaseDamage;
+        healthRegenPerSec = stat.healthRegenPerSec;
     }
 }
