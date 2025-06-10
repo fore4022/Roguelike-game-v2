@@ -10,9 +10,18 @@ public class StatSelection : MonoBehaviour
 
     public void Set(PlayerStat stat)
     {
-        moveSpeed = stat.MoveSpeed;
-        increaseHealth = stat.IncreaseHealth;
-        increaseDamage = stat.IncreaseDamage;
-        healthRegenPerSec = stat.HealthRegenPerSec;
+        moveSpeed = (int)stat.MoveSpeed;
+        increaseHealth = (int)stat.IncreaseHealth;
+        increaseDamage = (int)stat.IncreaseDamage;
+        healthRegenPerSec = (int)stat.HealthRegenPerSec;
+    }
+    public void Save()
+    {
+        Managers.UserData.data.Stat.MoveSpeed = moveSpeed;
+        Managers.UserData.data.Stat.IncreaseHealth = increaseHealth;
+        Managers.UserData.data.Stat.IncreaseDamage = increaseDamage;
+        Managers.UserData.data.Stat.HealthRegenPerSec = healthRegenPerSec;
+
+        Managers.UserData.Save();
     }
 }

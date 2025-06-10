@@ -1,22 +1,25 @@
+using UnityEngine;
 [System.Serializable]
 public class PlayerStat
 {
     public DefaultStat defaultStat;
 
-    public int statPoint = 0;
-
     private const string sceneName = "Main";
     private const float coef_MoveSpeed = 0.05f;
     private const float coef_IncreaseHealth = 2;
-    private const float coef_IncreaseDamage = 2;
+    private const float coef_IncreaseDamage = 1;
     private const float coef_HealthRegenPerSec = 2;
 
+    [SerializeField]
     private int moveSpeed = 0;
+    [SerializeField]
     private int increaseHealth = 0;
+    [SerializeField]
     private int increaseDamage = 0;
+    [SerializeField]
     private int healthRegenPerSec = 0;
 
-    public int MoveSpeed
+    public float MoveSpeed
     {
         get
         {
@@ -26,18 +29,18 @@ public class PlayerStat
             }
             else
             {
-                return 1;
+                return moveSpeed * coef_MoveSpeed;
             }
         }
         set
         {
             if(IsSceneMain())
             {
-                moveSpeed = value;
+                moveSpeed = (int)value;
             }
         }
     }
-    public int IncreaseHealth
+    public float IncreaseHealth
     {
         get
         {
@@ -47,18 +50,18 @@ public class PlayerStat
             }
             else
             {
-                return 1;
+                return increaseHealth * coef_IncreaseHealth;
             }
         }
         set
         {
             if(IsSceneMain())
             {
-                increaseHealth = value;
+                increaseHealth = (int)value;
             }
         }
     }
-    public int IncreaseDamage
+    public float IncreaseDamage
     {
         get
         {
@@ -68,18 +71,18 @@ public class PlayerStat
             }
             else
             {
-                return 1;
+                return increaseDamage * coef_IncreaseDamage;
             }
         }
         set
         {
             if(IsSceneMain())
             {
-                increaseDamage = value;
+                increaseDamage = (int)value;
             }
         }
     }
-    public int HealthRegenPerSec
+    public float HealthRegenPerSec
     {
         get
         {
@@ -89,14 +92,14 @@ public class PlayerStat
             }
             else
             {
-                return 1;
+                return healthRegenPerSec * coef_HealthRegenPerSec;
             }
         }
         set
         {
             if(IsSceneMain())
             {
-                healthRegenPerSec = value;
+                healthRegenPerSec = (int)value;
             }
         }
     }

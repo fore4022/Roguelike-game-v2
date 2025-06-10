@@ -62,7 +62,9 @@ public class UserLevelUp_UI : UserInterface, IPointerClickHandler
 
         prompt.gameObject.SetActive(true);
         StartCoroutine(Typing.EraseEffecting(log, length));
-        StartCoroutine(UIElementUtility.BlinkText(prompt, duration, false));
+        StartCoroutine(UIElementUtility.BlinkText(prompt, duration, false, 65));
+
+        allowClose = true;
     }
     private IEnumerator ParticleEffecting()
     {

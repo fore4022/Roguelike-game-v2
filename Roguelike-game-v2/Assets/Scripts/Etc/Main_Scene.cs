@@ -31,7 +31,7 @@ public class Main_Scene : MonoBehaviour
 
         if(levelUpCount != 0)
         {
-            Managers.UserData.data.Stat.statPoint++;
+            Managers.UserData.data.StatPoint += levelUpCount;
 
             Managers.UI.ShowAndGet<UserLevelUp_UI>().PlayEffect(levelUpCount);
             Managers.UI.Get<ExpSlider_Main_UI>().UpdateExp();

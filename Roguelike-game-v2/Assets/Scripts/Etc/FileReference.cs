@@ -1,11 +1,18 @@
+using System;
 using System.Reflection;
-[System.Serializable]
+using UnityEngine;
+[Serializable]
 public class FileReference
 {
     [ShowInInspector]
     public UnityEngine.Object targetObject;
     [ShowInInspector]
     public string fieldName;
+
+    [HideInInspector]
+    public Action GetAction = null;
+    [HideInInspector]
+    public Action SetAction = null;
 
     public object GetValue()
     {
@@ -15,6 +22,8 @@ public class FileReference
         }
 
         var field = targetObject.GetType().GetField(fieldName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+
+        GetAction?.Invoke();
 
         return field?.GetValue(targetObject);
     }
@@ -31,5 +40,7 @@ public class FileReference
         {
             field.SetValue(targetObject, value);
         }
+
+        SetAction?.Invoke();
     }
 }

@@ -23,17 +23,17 @@ public class StatElementUpgrade_UI : UserInterface
     }
     public void ChangeAmount(int sign)
     {
-        if(Managers.UserData.data.Stat.statPoint == 0)
+        int value = (int)file.GetValue();
+
+        if(Managers.UserData.data.StatPoint == 0)
         {
-            if(sign != 0)
+            if(sign == 1 || (sign == -1 && value == 0))
             {
                 Managers.UI.ShowAndGet<ToastMessage_UI>().SetText(log1);
 
                 return;
             }
         }
-
-        int value = (int)file.GetValue();
 
         if((value == 0 && sign == -1) || (value == StatSelection.maxLevel && sign == 1))
         {
@@ -51,11 +51,12 @@ public class StatElementUpgrade_UI : UserInterface
             inc.SetActive(true);
         }
 
-        Managers.UserData.data.Stat.statPoint -= sign;
         value += sign;
         tmp.text = $"+ {value}";
+        Managers.UserData.data.StatPoint -= sign;
 
         file.SetValue(value);
+        Managers.UI.Get<StatUpgrade_UI>().TextUpdate();
 
         if(value == 0)
         {

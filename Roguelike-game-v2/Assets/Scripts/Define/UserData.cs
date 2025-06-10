@@ -15,6 +15,8 @@ public class UserData
     private int level = 1;
     [SerializeField]
     private int exp = 0;
+    [SerializeField]
+    private int statPoint = 1;
 
     public List<StageClearInfo> StageClearInfo { get { return stageClearInfos; } set { stageClearInfos = value; } }
     public PlayerStat Stat { get { return _stat; } }
@@ -33,6 +35,7 @@ public class UserData
     }
     public int Level { get { return level; } set { level = value; } }
     public int Exp { get { return exp; } set { exp = value; } }
+    public int StatPoint { get { return statPoint; } set { statPoint = value; } }
     public bool BGM { get { return _setting.BGM; } }
     public bool FX { get { return _setting.FX; } }
     public StageState GetStageState()
