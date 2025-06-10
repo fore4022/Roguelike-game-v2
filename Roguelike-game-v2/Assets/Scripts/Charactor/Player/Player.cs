@@ -13,12 +13,12 @@ public class Player : MonoBehaviour, IDamageReceiver
 
     private Animator anime;
 
+    private readonly Vector3 diePosition = new Vector3(0, 0.5f);
+    private readonly Vector3 dieRotation = new Vector3(0, 0, 370);
     private const float targetScale = 10f;
     private const float duration = 0.4f;
 
     private Coroutine die = null;
-    private Vector3 diePosition = new Vector3(0, 0.5f);
-    private Vector3 dieRotation = new Vector3(0, 0, 370);
     private bool death = false;
 
     public DefaultStat Stat { get { return stat; } }
@@ -51,6 +51,10 @@ public class Player : MonoBehaviour, IDamageReceiver
     private void Start()
     {
         StartCoroutine(Init());
+    }
+    private void Update()
+    {
+        Health += Mathf.Min((Health + stat.healthRegenPerSec) * Time.deltaTime, MaxHealth);
     }
     public void TakeDamage(IDamage damage)
     {

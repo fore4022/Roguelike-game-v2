@@ -55,6 +55,10 @@ public class Monster : MonoBehaviour, IScriptableData
 
         SetPosition();
     }
+    private void Update()
+    {
+        health += Mathf.Min((health + stat.healthRegenPerSec) * Time.deltaTime, stat.maxHealth);
+    }
     protected virtual void FixedUpdate()
     {
         IsInvisible();
