@@ -71,7 +71,7 @@ public class PlayerData
         info.experience = 0;
         info.level = 0;
 
-        levelUpdate += () => Managers.UI.ShowUI<LevelUp_UI>();
+        levelUpdate += () => Managers.UI.Show<LevelUp_UI>();
     }
     private void SetRequiredExperience()
     {

@@ -9,18 +9,18 @@ public class PauseMenu_UI : UserInterface
 
     public override void SetUserInterface()
     {
-        Managers.UI.HideUI<PauseMenu_UI>();
+        Managers.UI.Hide<PauseMenu_UI>();
     }
     protected override void Enable()
     {
-        attackSelectionActive = Managers.UI.GetUI<SkillSelection_UI>().gameObject.activeSelf;
+        attackSelectionActive = Managers.UI.Get<SkillSelection_UI>().gameObject.activeSelf;
 
         if(attackSelectionActive)
         {
-            Managers.UI.GetUI<SkillSelection_UI>().SkillOptionToggle(false);
+            Managers.UI.Get<SkillSelection_UI>().SkillOptionToggle(false);
         }
 
-        Managers.UI.HideUI<HeadUpDisplay_UI>();
+        Managers.UI.Hide<HeadUpDisplay_UI>();
     }
     public void ShowIcons()
     {
@@ -40,7 +40,7 @@ public class PauseMenu_UI : UserInterface
     {
         if(attackSelectionActive)
         {
-            Managers.UI.GetUI<SkillSelection_UI>().SkillOptionToggle(true);
+            Managers.UI.Get<SkillSelection_UI>().SkillOptionToggle(true);
         }
         else
         {

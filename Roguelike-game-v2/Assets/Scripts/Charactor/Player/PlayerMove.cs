@@ -33,7 +33,7 @@ public class PlayerMove : MonoBehaviour, IMoveable
     }
     private void CancelMove()
     {
-        Managers.UI.HideUI<CharactorController_UI>();
+        Managers.UI.Hide<CharactorController_UI>();
 
         if(moving != null)
         {
@@ -56,9 +56,9 @@ public class PlayerMove : MonoBehaviour, IMoveable
 
         touchControl.Enable();
 
-        yield return new WaitUntil(() => Managers.UI.GetUI<CharactorController_UI>() != null);
+        yield return new WaitUntil(() => Managers.UI.Get<CharactorController_UI>() != null);
 
-        charactorController = Managers.UI.GetUI<CharactorController_UI>();
+        charactorController = Managers.UI.Get<CharactorController_UI>();
 
         touchControl.Touch.TouchPress.started += (ctx =>
         {
@@ -92,7 +92,7 @@ public class PlayerMove : MonoBehaviour, IMoveable
     }
     private void StartMove()
     {
-        Managers.UI.ShowUI<CharactorController_UI>();
+        Managers.UI.Show<CharactorController_UI>();
 
         enterTouchPosition = context.ReadValue<Vector2>();
         charactorController.EnterPosition = enterTouchPosition;

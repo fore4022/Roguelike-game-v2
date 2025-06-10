@@ -36,15 +36,7 @@ public class UI_Manager
             return go.transform;
         }
     }
-    public string GetName<T>() where T : UserInterface
-    {
-        string name = typeof(T).ToString();
-
-        name = name.Replace("_UI", "");
-
-        return name;
-    }
-    public void ShowUI<T>() where T : UserInterface
+    public void Show<T>() where T : UserInterface
     {
         string name = GetName<T>();
 
@@ -54,10 +46,10 @@ public class UI_Manager
         }
         else
         {
-            CreatingUI(name, true);
+            Creating(name, true);
         }
     }
-    public void HideUI<T>() where T : UserInterface
+    public void Hide<T>() where T : UserInterface
     {
         string name = GetName<T>();
 
@@ -66,16 +58,16 @@ public class UI_Manager
             ui.gameObject.SetActive(false);
         }
     }
-    public void CreateUI<T>(bool isActive = false) where T : UserInterface
+    public void Create<T>(bool isActive = false) where T : UserInterface
     {
         string name = GetName<T>();
 
         if(!uiDictionary.ContainsKey(name))
         {
-            CreatingUI(name, isActive);
+            Creating(name, isActive);
         }
     }
-    public T GetUI<T>() where T : UserInterface
+    public T Get<T>() where T : UserInterface
     {
         string name = GetName<T>();
 
@@ -86,7 +78,7 @@ public class UI_Manager
 
         return null;
     }
-    public void DestroyUI<T>() where T : UserInterface
+    public void Destroy<T>() where T : UserInterface
     {
         string name = GetName<T>();
 
@@ -97,7 +89,7 @@ public class UI_Manager
             uiDictionary.Remove(name);
         }
     }
-    public void AddUI(UserInterface ui)
+    public void Add(UserInterface ui)
     {
         string name = ui.GetType().ToString();
 
@@ -125,7 +117,15 @@ public class UI_Manager
     {
         uiDictionary = new();
     }
-    private void LoadUI(string uiName)
+    private string GetName<T>() where T : UserInterface
+    {
+        string name = typeof(T).ToString();
+
+        name = name.Replace("_UI", "");
+
+        return name;
+    }
+    private void Load(string uiName)
     {
         GameObject go = Util.LoadingToPath<GameObject>(uiName);
 
@@ -134,11 +134,11 @@ public class UI_Manager
             uiDictionary.Add(uiName, go.GetComponent<UserInterface>());
         }
     }
-    public void CreatingUI(string uiName, bool isActive)
+    private void Creating(string uiName, bool isActive)
     {
         UserInterface ui;
         
-        LoadUI(uiName);
+        Load(uiName);
 
         ui = uiDictionary[uiName];
 

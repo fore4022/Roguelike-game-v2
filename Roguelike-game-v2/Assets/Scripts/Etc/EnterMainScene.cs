@@ -18,7 +18,7 @@ public class EnterMainScene : MonoBehaviour, IPointerClickHandler
 
             isLoad = false;
 
-            Managers.UI.GetUI<StartMessage_UI>().SetState();
+            Managers.UI.Get<StartMessage_UI>().SetState();
             Managers.Scene.LoadScene(SceneName.Main, false);
         }
     }

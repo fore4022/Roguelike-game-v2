@@ -34,8 +34,8 @@ public class Main_Scene : MonoBehaviour
             Managers.UserData.data.Stat.statPoint++;
 
             Managers.UI.ShowAndGet<UserLevelUp_UI>().PlayEffect(levelUpCount);
-            Managers.UI.GetUI<ExpSlider_Main_UI>().UpdateExp();
-            Managers.UI.GetUI<Level_Main_UI>().UpdateLevel();
+            Managers.UI.Get<ExpSlider_Main_UI>().UpdateExp();
+            Managers.UI.Get<Level_Main_UI>().UpdateLevel();
         }
     }
 }

@@ -17,7 +17,7 @@ public abstract class UserInterface : MonoBehaviour
     {
         if(!isInitalized)
         {
-            Managers.UI.AddUI(this);
+            Managers.UI.Add(this);
         }
         else
         {

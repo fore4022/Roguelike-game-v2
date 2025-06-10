@@ -2,6 +2,6 @@ public class HeadUpDisplay_UI : UserInterface
 {
     public override void SetUserInterface()
     {
-        Managers.UI.HideUI<HeadUpDisplay_UI>();
+        Managers.UI.Hide<HeadUpDisplay_UI>();
     }
 }

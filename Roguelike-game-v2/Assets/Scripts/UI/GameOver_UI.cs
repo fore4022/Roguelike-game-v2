@@ -19,13 +19,13 @@ public class GameOver_UI : UserInterface
         imgList = Util.GetComponentsInChildren<Image>(Util.GetChildren(transform, 1));
         result = Util.GetComponentInChildren<TextMeshProUGUI>(transform);
 
-        Managers.UI.HideUI<GameOver_UI>();
+        Managers.UI.Hide<GameOver_UI>();
     }
     protected override void Enable()
     {
         string result;
 
-        Managers.UI.HideUI<HeadUpDisplay_UI>();
+        Managers.UI.Hide<HeadUpDisplay_UI>();
 
         if(Managers.Game.inGameTimer.GetMinutes > Managers.Game.stageInformation.requiredTime || Managers.Game.inGameTimer.GetHours > 0)
         {
@@ -68,7 +68,7 @@ public class GameOver_UI : UserInterface
     {
         yield return new WaitForSecondsRealtime(SceneLoading_UI.limitTime);
 
-        Managers.UI.ShowUI<HeadUpDisplay_UI>();
+        Managers.UI.Show<HeadUpDisplay_UI>();
     }
     private IEnumerator ResultSequence()
     {

@@ -130,7 +130,7 @@ public class SkillSelection_UI : UserInterface
     }
     private IEnumerator PadeIn()
     {
-        Managers.UI.ShowUI<HeadUpDisplay_UI>();
+        Managers.UI.Show<HeadUpDisplay_UI>();
         UIElementUtility.SetImageAlpha(background, targetAlpha, duration);
 
         yield return new WaitForSecondsRealtime(duration);
@@ -139,6 +139,6 @@ public class SkillSelection_UI : UserInterface
         Managers.Game.IsPlaying = true;
 
         InputActions.EnableInputAction<TouchControls>();
-        Managers.UI.HideUI<SkillSelection_UI>();
+        Managers.UI.Hide<SkillSelection_UI>();
     }
 }

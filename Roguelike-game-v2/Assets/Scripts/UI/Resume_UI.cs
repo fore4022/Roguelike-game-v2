@@ -3,7 +3,7 @@ public class Resume_UI : Button_1
 {
     protected override void PointerClick()
     {
-        Managers.UI.ShowUI<HeadUpDisplay_UI>();
-        Managers.UI.HideUI<PauseMenu_UI>();
+        Managers.UI.Show<HeadUpDisplay_UI>();
+        Managers.UI.Hide<PauseMenu_UI>();
     }
 }

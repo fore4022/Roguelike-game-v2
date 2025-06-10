@@ -36,7 +36,7 @@ public class StatUpgrade_UI : UserInterface
         
         if(toggle)
         {
-            transform.SetPosition(new(0, 35), duration, Ease.OutSine);
+            transform.SetPosition(new(0, 40), duration, Ease.OutSine);
         }
         else
         {

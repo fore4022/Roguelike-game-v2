@@ -109,9 +109,9 @@ public class DataInit
 
         Object.Instantiate(Util.LoadingToPath<GameObject>(Managers.Main.GetCurrentStage().stagePath));
 
-        Managers.UI.GetUI<SceneLoading_UI>().Wait = false;
+        Managers.UI.Get<SceneLoading_UI>().Wait = false;
 
-        yield return new WaitUntil(() => Managers.UI.GetUI<SceneLoading_UI>() == null);
+        yield return new WaitUntil(() => Managers.UI.Get<SceneLoading_UI>() == null);
 
         Managers.Game._bgm.Play();
         Managers.Game.GameStart();

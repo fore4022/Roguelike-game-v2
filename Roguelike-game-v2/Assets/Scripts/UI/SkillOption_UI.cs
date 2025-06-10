@@ -12,7 +12,7 @@ public class SkillOption_UI : Button_2
     protected override void PointerClick()
     {
         Managers.Game.inGameData.skill.SetValue(info.data.type);
-        Managers.UI.GetUI<SkillSelection_UI>().Selected();
+        Managers.UI.Get<SkillSelection_UI>().Selected();
     }
     protected override void Init()
     {

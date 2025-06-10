@@ -19,7 +19,7 @@ public class Scene_Manager
         this.sceneName = sceneName.ToString();
 
         Managers.UI.ClearDictionary();
-        Managers.UI.ShowUI<SceneLoading_UI>();
+        Managers.UI.Show<SceneLoading_UI>();
 
         if(!hasInitialization)
         {
@@ -45,13 +45,13 @@ public class Scene_Manager
 
         if(!hasInitialization)
         {
-            Managers.UI.GetUI<SceneLoading_UI>().Wait = false;
+            Managers.UI.Get<SceneLoading_UI>().Wait = false;
         }
     }
     private IEnumerator SetSceneLoading()
     {
-        yield return new WaitUntil(() => Managers.UI.GetUI<SceneLoading_UI>() != null);
+        yield return new WaitUntil(() => Managers.UI.Get<SceneLoading_UI>() != null);
 
-        Managers.UI.GetUI<SceneLoading_UI>().Wait = false;
+        Managers.UI.Get<SceneLoading_UI>().Wait = false;
     }
 }

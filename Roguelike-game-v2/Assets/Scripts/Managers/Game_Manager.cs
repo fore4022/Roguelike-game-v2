@@ -43,7 +43,7 @@ public class Game_Manager
         inGameTimer.StartTimer();
         monsterSpawner.StartSpawn();
         inGameData.player.SetLevel();
-        Managers.UI.ShowUI<LevelUp_UI>();
+        Managers.UI.Show<LevelUp_UI>();
     }
     public void ReStart()
     {
@@ -64,8 +64,8 @@ public class Game_Manager
         isPlaying = false;
         gameOver = true;
 
-        Managers.UI.HideUI<LevelUp_UI>();
-        Managers.UI.ShowUI<GameOver_UI>();
+        Managers.UI.Hide<LevelUp_UI>();
+        Managers.UI.Show<GameOver_UI>();
     }
     public void Clear()
     {
@@ -81,21 +81,21 @@ public class Game_Manager
     }
     private IEnumerator ReSetting()
     {
-        Managers.UI.ShowUI<SceneLoading_UI>();
+        Managers.UI.Show<SceneLoading_UI>();
 
         yield return new WaitForSecondsRealtime(SceneLoading_UI.limitTime);
 
-        Managers.UI.GetUI<SceneLoading_UI>().Wait = false;
+        Managers.UI.Get<SceneLoading_UI>().Wait = false;
         Camera.main.orthographicSize = 6;
         Managers.Game.inGameData.player.Experience = 0;
 
         inGameData.init.objectPool.ReSetting();
         player.Reset();
         inGameTimer.ReStart();
-        Managers.UI.HideUI<GameOver_UI>();
+        Managers.UI.Hide<GameOver_UI>();
         InputActions.EnableInputAction<TouchControls>();
 
-        yield return new WaitUntil(() => Managers.UI.GetUI<SceneLoading_UI>() == null);
+        yield return new WaitUntil(() => Managers.UI.Get<SceneLoading_UI>() == null);
 
         Time.timeScale = 1;
         isPlaying = true;
@@ -103,7 +103,7 @@ public class Game_Manager
         monsterSpawner.ReStart();
         inGameData.player.SetLevel();
         onStageReset.Invoke();
-        Managers.UI.ShowUI<LevelUp_UI>();
-        Managers.UI.ShowUI<HpSlider_UI>();
+        Managers.UI.Show<LevelUp_UI>();
+        Managers.UI.Show<HpSlider_UI>();
     }
 }

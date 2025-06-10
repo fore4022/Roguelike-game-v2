@@ -45,6 +45,6 @@ public class SceneLoading_UI : UserInterface
 
         yield return new WaitForSecondsRealtime(limitTime);
 
-        Managers.UI.DestroyUI<SceneLoading_UI>();
+        Managers.UI.Destroy<SceneLoading_UI>();
     }
 }

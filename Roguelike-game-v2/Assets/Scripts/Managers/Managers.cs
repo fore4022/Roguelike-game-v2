@@ -61,7 +61,7 @@ public class Managers : MonoBehaviour
                     {
                         Time.timeScale = 0;
 
-                        Managers.UI.ShowUI<PauseMenu_UI>();
+                        Managers.UI.Show<PauseMenu_UI>();
                     }
                 }
             }

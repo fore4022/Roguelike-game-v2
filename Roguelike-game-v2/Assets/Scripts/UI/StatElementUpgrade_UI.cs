@@ -8,6 +8,9 @@ public class StatElementUpgrade_UI : UserInterface
 
     private FileReference file;
 
+    private const string log1 = "You are lacking stat points.";
+    private const string log2 = "Stat points cannot be used.";
+
     public override void SetUserInterface()
     {
         tmp = Util.GetComponentInChildren<TextMeshProUGUI>(transform, true);
@@ -24,6 +27,8 @@ public class StatElementUpgrade_UI : UserInterface
         {
             if(sign != 0)
             {
+                Managers.UI.ShowAndGet<ToastMessage_UI>().SetText(log1);
+
                 return;
             }
         }
@@ -32,6 +37,8 @@ public class StatElementUpgrade_UI : UserInterface
 
         if((value == 0 && sign == -1) || (value == StatSelection.maxLevel && sign == 1))
         {
+            Managers.UI.ShowAndGet<ToastMessage_UI>().SetText(log2);
+
             return;
         }
 

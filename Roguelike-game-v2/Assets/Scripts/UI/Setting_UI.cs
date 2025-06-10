@@ -20,13 +20,13 @@ public class Setting_UI : UserInterface
     {
         _isInGame = Managers.Scene.CurrentSceneName == _sceneName ? true : false;
 
-        Managers.UI.HideUI<Setting_UI>();
+        Managers.UI.Hide<Setting_UI>();
     }
     protected override void Enable()
     {
         if(_isInGame)
         {
-            Managers.UI.GetUI<PauseMenu_UI>().HideIcons();
+            Managers.UI.Get<PauseMenu_UI>().HideIcons();
         }
 
         BgmUpdate();
@@ -68,10 +68,10 @@ public class Setting_UI : UserInterface
     {
         if(_isInGame)
         {
-            Managers.UI.GetUI<PauseMenu_UI>().ShowIcons();
+            Managers.UI.Get<PauseMenu_UI>().ShowIcons();
         }
 
         Managers.UserData.Save();
-        Managers.UI.HideUI<Setting_UI>();
+        Managers.UI.Hide<Setting_UI>();
     }
 }

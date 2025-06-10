@@ -21,7 +21,7 @@ public class CharactorController_UI : UserInterface
     }
     public override void SetUserInterface()
     {
-        Managers.UI.HideUI<CharactorController_UI>();
+        Managers.UI.Hide<CharactorController_UI>();
     }
     public void SetJoyStick()
     {

@@ -29,13 +29,13 @@ public class Title_Scene : MonoBehaviour
     }
     private IEnumerator UserDataLoading()
     {
-        Managers.UI.GetUI<StartMessage_UI>().SetState();
+        Managers.UI.Get<StartMessage_UI>().SetState();
 
         yield return new WaitUntil(() => Managers.UserData.data != null);
 
         Managers.Audio.Init();
         Managers.Audio.InitializedAudio();
-        Managers.UI.GetUI<StartMessage_UI>().SetState();
+        Managers.UI.Get<StartMessage_UI>().SetState();
         audioSource.Play();
 
         enterMainScene.isLoad = true;
