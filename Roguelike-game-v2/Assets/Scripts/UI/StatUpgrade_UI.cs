@@ -7,8 +7,9 @@ public class StatUpgrade_UI : UserInterface
     private Transform statElement_parent;
 
     public List<FileReference> files;
-    public StatSelection statSelection;
     public GameObject background;
+
+    private StatSelection statSelection;
 
     private const float duration = 0.2f;
 
@@ -38,7 +39,8 @@ public class StatUpgrade_UI : UserInterface
             transform.SetPosition(new(0, 35), duration, Ease.OutSine);
         }
         else
-        { 
+        {
+            Managers.UserData.Save();
             transform.SetPosition(new(0, -1500), duration, Ease.OutSine);
         }
     }

@@ -10,9 +10,9 @@ public class StatSelection : MonoBehaviour
 
     public void Set(PlayerStat stat)
     {
-        moveSpeed = (int)stat.defaultStat.moveSpeed;
-        increaseHealth = (int)stat.increaseHealth;
-        increaseDamage = (int)stat.increaseDamage;
-        healthRegenPerSec = (int)stat.healthRegenPerSec;
+        moveSpeed = stat.MoveSpeed;
+        increaseHealth = stat.IncreaseHealth;
+        increaseDamage = stat.IncreaseDamage;
+        healthRegenPerSec = stat.HealthRegenPerSec;
     }
 }

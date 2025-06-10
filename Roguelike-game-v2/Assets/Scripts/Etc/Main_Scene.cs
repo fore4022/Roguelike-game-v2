@@ -16,7 +16,7 @@ public class Main_Scene : MonoBehaviour
 
         yield return new WaitUntil(() => Managers.UI.IsInitalized);
 
-        while (Managers.UserData.data.Exp >= Managers.UserData.UserLevelInfo.requiredEXP[Managers.UserData.data.Level - 1])
+        while(Managers.UserData.data.Exp >= Managers.UserData.UserLevelInfo.requiredEXP[Managers.UserData.data.Level - 1])
         {
             Managers.UserData.data.Exp -= Managers.UserData.UserLevelInfo.requiredEXP[Managers.UserData.data.Level - 1];
             Managers.UserData.data.Level++;
@@ -29,8 +29,10 @@ public class Main_Scene : MonoBehaviour
             }
         }
 
-        if (levelUpCount != 0)
+        if(levelUpCount != 0)
         {
+            Managers.UserData.data.Stat.statPoint++;
+
             Managers.UI.ShowAndGet<UserLevelUp_UI>().PlayEffect(levelUpCount);
             Managers.UI.GetUI<ExpSlider_Main_UI>().UpdateExp();
             Managers.UI.GetUI<Level_Main_UI>().UpdateLevel();
