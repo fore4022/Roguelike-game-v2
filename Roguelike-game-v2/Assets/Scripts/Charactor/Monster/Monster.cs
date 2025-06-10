@@ -3,6 +3,13 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(AudioSource))]
+/// <summary>
+/// <para>
+/// 모든 몬스터에 대한 기본 구현이다.
+/// </para>
+/// 모든 몬스터는 ObjectPool로 생성된다. 또한, 생성되는 과정에서 일부 초기화 작업을 진행한다.
+/// ObjectPool에서 처음 사용될 때, 남아있는 초기화 작업을 마무리한다.
+/// </summary>
 public class Monster : MonoBehaviour, IScriptableData
 {
     protected MonsterStat_SO monsterSO = null;

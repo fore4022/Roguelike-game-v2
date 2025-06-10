@@ -1,5 +1,8 @@
 using System.Collections;
 using UnityEngine;
+/// <summary>
+/// 단순히 플레이어를 향해 이동하는 기본 몬스터이다.
+/// </summary>
 public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 {
     private const float death_AnimationDuration = 0.5f;

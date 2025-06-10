@@ -2,6 +2,10 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+/// <summary>
+/// InputSystem을 이용하여 구현하였다.
+/// 
+/// </summary>
 public class PlayerMove : MonoBehaviour, IMoveable
 {
     private TouchControls touchControl;
