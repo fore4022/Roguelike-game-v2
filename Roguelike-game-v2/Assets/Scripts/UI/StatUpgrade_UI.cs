@@ -3,18 +3,16 @@ using UnityEngine;
 [RequireComponent(typeof(StatSelection))]
 public class StatUpgrade_UI : UserInterface
 {
+    [SerializeField]
+    private Transform statElement_parent;
+
     public List<FileReference> files;
     public StatSelection statSelection;
     public GameObject background;
 
     private const float duration = 0.2f;
 
-    private int index = 0;
     private bool toggle = false;
-
-    // StatElement
-
-    // stat points
 
     public override void SetUserInterface()
     {
@@ -22,9 +20,9 @@ public class StatUpgrade_UI : UserInterface
 
         statSelection.Set(Managers.UserData.data.Stat);
 
-        for(int i = 0; i < files.Count; i++)
+        for(int i = 0; i < statElement_parent.childCount; i++)
         {
-            // Instantiate();
+            statElement_parent.GetChild(i).GetComponent<StatElementUpgrade_UI>().Set(files[i]);
         }
 
         background.SetActive(false);
