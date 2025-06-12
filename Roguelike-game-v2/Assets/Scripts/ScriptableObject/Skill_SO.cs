@@ -30,7 +30,7 @@ public class Skill_SO : ScriptableObject
     public float duration;
     public bool flipX = false;
     public bool flipY = false;
-    public bool projectile;
+    public bool isProjectile;
     public bool isMultiCast;
 
 #if UNITY_EDITOR

@@ -110,7 +110,7 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
 
         yield return new WaitUntil(() => baseAttack == null);
 
-        Managers.Game.inGameData.init.objectPool.DisableObject(gameObject);
+        Managers.Game.objectPool.DisableObject(gameObject);
     }
     private IEnumerator BaseAttacking()
     {

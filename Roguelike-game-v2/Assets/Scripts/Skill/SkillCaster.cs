@@ -40,7 +40,7 @@ public class SkillCaster
     }
     private IEnumerator Casting()
     {
-        so = Managers.Game.inGameData.init.objectPool.GetScriptableObject<Skill_SO>(attackType);
+        so = Managers.Game.objectPool.GetScriptableObject<Skill_SO>(attackType);
 
         yield return new WaitUntil(() => so != null);
 
@@ -52,7 +52,7 @@ public class SkillCaster
             {
                 yield return coolTime;
 
-                Managers.Game.inGameData.init.objectPool.ActiveObject(attackType);
+                Managers.Game.objectPool.ActiveObject(attackType);
             }
         }
         else
@@ -65,7 +65,7 @@ public class SkillCaster
 
                 for(i = 0; i < so.multiCast.count[level]; i++)
                 {
-                    Managers.Game.inGameData.init.objectPool.ActiveObject(attackType);
+                    Managers.Game.objectPool.ActiveObject(attackType);
 
                     yield return delay;
                 }

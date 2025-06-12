@@ -5,7 +5,10 @@ public class ExceptionMonster_A : BasicMonster
     {
         base.OnEnable();
 
-
+        StartCoroutine(TestA());
     }
-    //private IEnumerator 
+    private IEnumerator TestA()
+    {
+        yield return null;
+    }
 }

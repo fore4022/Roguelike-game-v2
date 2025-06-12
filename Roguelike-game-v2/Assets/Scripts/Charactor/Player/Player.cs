@@ -58,7 +58,7 @@ public class Player : MonoBehaviour, IDamageReceiver
     }
     private void Update()
     {
-        Health += Mathf.Min((Health + stat.healthRegenPerSec) * Time.deltaTime, MaxHealth);
+        Health = Mathf.Min(Health + stat.healthRegenPerSec * Time.deltaTime, MaxHealth);
     }
     public void TakeDamage(IDamage damage)
     {

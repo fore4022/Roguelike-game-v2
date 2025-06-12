@@ -10,7 +10,7 @@ public class SkillSO_Editor : Editor
 
     private void OnEnable()
     {
-        show_1 = serializedObject.FindProperty("projectile");
+        show_1 = serializedObject.FindProperty("isProjectile");
         value_1 = serializedObject.FindProperty("projectile_Info");
 
         show_2 = serializedObject.FindProperty("isMultiCast");
@@ -19,7 +19,6 @@ public class SkillSO_Editor : Editor
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
-
         DrawPropertiesExcluding(serializedObject, "projectile_Info", "multiCast");
 
         Show_1();

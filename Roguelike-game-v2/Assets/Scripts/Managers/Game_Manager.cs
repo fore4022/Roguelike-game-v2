@@ -3,16 +3,16 @@ using System.Collections;
 using UnityEngine;
 public class Game_Manager
 {
-    public SkillCasterManage skillCasterManage = null;
-    public InGameDataManage inGameData = null;
-    public DifficultyScaler difficultyScaler = null;
+    public SkillCasterManage skillCasterManage;
+    public InGameDataManage inGameData;
+    public DifficultyScaler difficultyScaler;
     public StageInformation_SO stageInformation;
     public InGameTimer inGameTimer;
     public MonsterSpawner monsterSpawner;
+    public ObjectPool objectPool;
     public Player player;
     public AudioSource _bgm;
     public Action onStageReset;
-
 
     private int userExp = 0;
     private bool isPlaying = false;
@@ -26,6 +26,7 @@ public class Game_Manager
         skillCasterManage = new();
         inGameData = new();
         difficultyScaler = new();
+        objectPool = new();
     }
     public void DataLoad()
     {
@@ -77,6 +78,7 @@ public class Game_Manager
         stageInformation = null;
         inGameTimer = null;
         monsterSpawner = null;
+        objectPool = null;
         userExp = 0;
     }
     private IEnumerator ReSetting()
@@ -89,7 +91,7 @@ public class Game_Manager
         Camera.main.orthographicSize = 6;
         Managers.Game.inGameData.player.Experience = 0;
 
-        inGameData.init.objectPool.ReSetting();
+        objectPool.ReSetting();
         player.Reset();
         inGameTimer.ReStart();
         Managers.UI.Hide<GameOver_UI>();

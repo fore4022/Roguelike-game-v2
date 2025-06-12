@@ -42,7 +42,7 @@ public class MonsterSpawner : MonoBehaviour
 
             if(!monsterStats.ContainsKey(soName))
             {
-                monsterStats.Add(soName, Managers.Game.inGameData.init.objectPool.GetScriptableObject<ScriptableObject>(soName));
+                monsterStats.Add(soName, Managers.Game.objectPool.GetScriptableObject<ScriptableObject>(soName));
             }
         }
     }
@@ -51,7 +51,7 @@ public class MonsterSpawner : MonoBehaviour
         int randomValue = Random.Range(0, 100);
         int arrayIndexValue = monsterSpawnProbabilityArray[randomValue];
 
-        Managers.Game.inGameData.init.objectPool.ActiveObject(spawnInformation.monsterInformation[arrayIndexValue].monster.name);
+        Managers.Game.objectPool.ActiveObject(spawnInformation.monsterInformation[arrayIndexValue].monster.name);
     }
     private IEnumerator SpawningSystem()
     {

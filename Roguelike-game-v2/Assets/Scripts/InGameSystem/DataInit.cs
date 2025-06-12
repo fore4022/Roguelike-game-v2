@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 public class DataInit
 {
-    public ObjectPool objectPool = null;
-
     private const string userLevelPath = "_Level";
     private const int defaultMonsterCount = 300;
     private const int defaultSkillCount = 20;
@@ -83,8 +81,6 @@ public class DataInit
         Managers.Game._bgm.clip = Managers.Game.stageInformation.bgm;
         Time.timeScale = 0;
 
-        objectPool = new();
-
         GetMonsterList(ref monsterList);
         LoadSkillList(ref skillList);
 
@@ -92,8 +88,8 @@ public class DataInit
 
         Managers.Game.monsterSpawner.monsterList = monsterList;
 
-        Managers.Game.inGameData.init.objectPool.Create(monsterList, ScriptableObjectType.Monster,defaultMonsterCount);
-        Managers.Game.inGameData.init.objectPool.Create(skillList, ScriptableObjectType.Skill, defaultSkillCount);
+        Managers.Game.objectPool.Create(monsterList, ScriptableObjectType.Monster,defaultMonsterCount);
+        Managers.Game.objectPool.Create(skillList, ScriptableObjectType.Skill, defaultSkillCount);
 
         int typeCount = monsterList.Count + skillList.Count;
 
@@ -101,9 +97,9 @@ public class DataInit
 
         yield return new WaitUntil(() => Managers.Game.inGameData.player.levelUpdate != null);
 
-        yield return new WaitUntil(() => typeCount == Managers.Game.inGameData.init.objectPool.PoolingObjectsCount);
+        yield return new WaitUntil(() => typeCount == Managers.Game.objectPool.PoolingObjectsCount);
 
-        yield return new WaitUntil(() => typeCount == Managers.Game.inGameData.init.objectPool.ScriptableObjectsCount);
+        yield return new WaitUntil(() => typeCount == Managers.Game.objectPool.ScriptableObjectsCount);
 
         yield return new WaitUntil(() => Managers.Game.player != null);
 
