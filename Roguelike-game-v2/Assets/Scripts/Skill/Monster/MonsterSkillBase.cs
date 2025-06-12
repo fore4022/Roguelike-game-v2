@@ -2,10 +2,9 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(AudioSource))]
-public class MonsterSkillBase : MonoBehaviour, IDamage
+public abstract class MonsterSkillBase : MonoBehaviour, IDamage
 {
     protected IDamage damage;
-    protected Collider2D col;
     protected SpriteRenderer render;
     protected Animator anime;
     protected AudioSource audioSource;
@@ -20,13 +19,27 @@ public class MonsterSkillBase : MonoBehaviour, IDamage
     }
     protected void OnEnable()
     {
-        
+        if(!isInit)
+        {
+            Init();
+
+            isInit = true;
+
+            SetActive(false);
+        }
+
+        Enable();
     }
-    private void Init()
+    protected virtual void SetActive(bool isActive)
+    {
+        render.enabled = isActive;
+        anime.speed = isActive ? 1 : 0;
+    }
+    protected virtual void Init()
     {
         render = GetComponent<SpriteRenderer>();
         anime = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
     }
-    //private void 
+    protected abstract void Enable();
 }

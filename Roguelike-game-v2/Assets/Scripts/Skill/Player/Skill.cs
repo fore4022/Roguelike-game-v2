@@ -104,9 +104,9 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
 
         skill.Set();
 
-        anime.speed = 1;
-        render.enabled = true;
         defaultCollider.enabled = enable;
+        render.enabled = true;
+        anime.speed = 1;
         baseCast = StartCoroutine(BaseCasting());
 
         yield return new WaitUntil(() => baseCast == null);
