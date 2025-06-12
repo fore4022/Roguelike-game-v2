@@ -17,7 +17,7 @@ public class ProjectileSkill : Skill
     }
     private void IsInvisible()
     {
-        if(baseAttack == null)
+        if(baseCast == null)
         {
             return; 
         }
@@ -39,6 +39,6 @@ public class ProjectileSkill : Skill
     {
         yield return delay;
 
-        baseAttack = null;
+        baseCast = null;
     }
 }

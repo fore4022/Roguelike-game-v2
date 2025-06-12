@@ -26,7 +26,6 @@ public class Game_Manager
         skillCasterManage = new();
         inGameData = new();
         difficultyScaler = new();
-        objectPool = new();
     }
     public void DataLoad()
     {

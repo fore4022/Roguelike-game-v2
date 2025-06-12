@@ -7,16 +7,17 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
 {
     [SerializeField]
     protected Collider2D defaultCollider = null;
+
     [SerializeField]
     protected bool enable;
 
-    protected ISkill attacker;
+    protected ISkill skill;
     protected Skill_SO so;
     protected SpriteRenderer render;
     protected Animator anime;
     protected AudioSource audioSource;
 
-    protected Coroutine baseAttack;
+    protected Coroutine baseCast;
     protected int level;
     protected bool isInit = false;
 
@@ -28,13 +29,13 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
     }
     protected void OnEnable()
     {
-        StartCoroutine(StartAttack());
+        StartCoroutine(CastSkill());
     }
     private void Init()
     {
-        if(TryGetComponent(out ISkill attacker))
+        if(TryGetComponent(out ISkill skill))
         {
-            this.attacker = attacker;
+            this.skill = skill;
         }
 
         if(defaultCollider == null)
@@ -63,10 +64,10 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
     {
         if(go.CompareTag("Monster"))
         {
-            attacker.Enter(go);
+            skill.Enter(go);
         }
     }
-    private IEnumerator StartAttack()
+    private IEnumerator CastSkill()
     {
         if(!isInit)
         {
@@ -101,24 +102,24 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
             }
         }
 
-        attacker.SetAttack();
+        skill.Set();
 
         anime.speed = 1;
         render.enabled = true;
         defaultCollider.enabled = enable;
-        baseAttack = StartCoroutine(BaseAttacking());
+        baseCast = StartCoroutine(BaseCasting());
 
-        yield return new WaitUntil(() => baseAttack == null);
+        yield return new WaitUntil(() => baseCast == null);
 
         Managers.Game.objectPool.DisableObject(gameObject);
     }
-    private IEnumerator BaseAttacking()
+    private IEnumerator BaseCasting()
     {
-        yield return new WaitUntil(() => attacker.Finished);
+        yield return new WaitUntil(() => skill.Finished);
 
         yield return new WaitUntil(() => anime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
 
-        baseAttack = null;
+        baseCast = null;
         render.enabled = false;
         defaultCollider.enabled = false;
         anime.speed = 0;

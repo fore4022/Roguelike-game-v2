@@ -19,7 +19,7 @@ public class Projectile_C : ProjectileSkill, IProjectile
     private int sign;
 
     public bool Finished { get { return moving == null; } }
-    public void SetAttack()
+    public void Set()
     {
         transform.position = Managers.Game.player.gameObject.transform.position;
         direction = Calculate.GetDirection(Calculate.GetRandomVector());

@@ -12,7 +12,7 @@ public class Skill_D : Skill, ISkill
     private string animationName;
 
     public bool Finished { get { return anime.GetCurrentAnimatorStateInfo(0).IsName(animationName); } }
-    public void SetAttack()
+    public void Set()
     {
         transform.position = Calculate.GetRandomVector();
 

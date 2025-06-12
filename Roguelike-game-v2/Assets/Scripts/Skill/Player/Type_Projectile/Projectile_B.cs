@@ -14,7 +14,7 @@ public class Projectile_B : ProjectileSkill, IProjectile
     private bool isExplosion = false;
 
     public bool Finished { get { return isExplosion && anime.GetCurrentAnimatorStateInfo(0).IsName(so.projectile_Info.animationName); } }
-    public void SetAttack()
+    public void Set()
     {
         transform.position = Managers.Game.player.gameObject.transform.position;
         direction = Calculate.GetDirection(EnemyDetection.GetNearestEnemyPosition());

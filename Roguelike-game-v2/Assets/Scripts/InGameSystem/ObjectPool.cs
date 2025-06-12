@@ -18,7 +18,7 @@ public class ObjectPool
     {
         GameObject go = GameObject.Find("@ObjectPool");
 
-        if (go == null)
+        if(go == null)
         {
             go = new GameObject { name = "@ObjectPool" };
 

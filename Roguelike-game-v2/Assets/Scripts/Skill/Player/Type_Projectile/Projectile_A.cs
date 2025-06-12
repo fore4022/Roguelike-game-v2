@@ -2,18 +2,21 @@ using System.Collections;
 using UnityEngine;
 /// <summary>
 /// <para>
-/// 원거리 범위 공격 : 점점 크기가 커진다.
+/// 원거리 공격 / 연속 타격 원거리 공격
 /// </para>
-/// 무작위 방향을 향해서 날아간다.
+/// 가장 가까운 적을 향해서 날아간다.
 /// </summary>
-public class Projectile_D : ProjectileSkill, IProjectile
+public class Projectile_A : ProjectileSkill, IProjectile
 {
+    private int penetration_count;
+
     public bool Finished { get { return moving == null; } }
-    public void SetAttack()
+    public void Set()
     {
         transform.position = Managers.Game.player.gameObject.transform.position;
-        direction = Calculate.GetRandomDirection();
-        transform.SetScale(5, 12);
+        direction = Calculate.GetDirection(EnemyDetection.GetNearestEnemyPosition());
+        transform.rotation = Calculate.GetQuaternion(direction - so.adjustmentRotation);
+        penetration_count = so.projectile_Info.penetration;
         moving = StartCoroutine(Moving());
     }
     public void Enter(GameObject go)
@@ -22,19 +25,19 @@ public class Projectile_D : ProjectileSkill, IProjectile
         {
             damageReceiver.TakeDamage(this);
         }
-    }
-    private void OnDisable()
-    {
-        if(isInit)
-        {
-            defaultCollider.enabled = false;
 
-            transform.Kill().SetScale(1);
+        penetration_count--;
+
+        if(penetration_count == 0)
+        {
+            StopCoroutine(moving);
+
+            moving = null;
         }
     }
     public IEnumerator Moving()
     {
-        while(true)
+        while (true)
         {
             transform.position += direction * so.projectile_Info.speed * Time.deltaTime;
 

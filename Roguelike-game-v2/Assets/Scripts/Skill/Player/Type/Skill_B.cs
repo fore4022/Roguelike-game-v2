@@ -8,7 +8,7 @@ using UnityEngine;
 public class Skill_B : Skill, ISkill
 {
     public bool Finished { get { return true; } }
-    public void SetAttack()
+    public void Set()
     {
         transform.position = EnemyDetection.GetLargestEnemyGroup() + so.adjustmentPosition;
     }

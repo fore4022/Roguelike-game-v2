@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 public class DataInit
 {
     private const string userLevelPath = "_Level";
@@ -51,6 +52,8 @@ public class DataInit
         yield return new WaitForEndOfFrame();
 
         yield return new WaitUntil(() => Managers.Scene.IsSceneLoadComplete);
+
+        Managers.Game.objectPool = new();
 
         Util.GetMonoBehaviour().StartCoroutine(DataLoading());
     }

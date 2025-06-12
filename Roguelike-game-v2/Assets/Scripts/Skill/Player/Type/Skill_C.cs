@@ -3,15 +3,19 @@ using UnityEngine;
 /// <para>
 /// 범위 공격
 /// </para>
-/// 가장 가까운 적을 공격한다.
+/// 화면에 보이는 무작위 적을 공격한다.
 /// </summary>
-public class Skill_A : Skill, ISkill
+public class Skill_C : Skill, ISkill
 {
     public bool Finished { get { return true; } }
-    public void SetAttack()
+    public void Set()
     {
-        gameObject.transform.position = EnemyDetection.GetNearestEnemyPosition();
-        gameObject.transform.rotation = Calculate.GetRandomQuaternion();
+        transform.position = EnemyDetection.GetRandomEnemyPosition();
+    }
+    public void SetCollider()
+    {
+        enable = !enable;
+        defaultCollider.enabled = enable;
     }
     public void Enter(GameObject go)
     {

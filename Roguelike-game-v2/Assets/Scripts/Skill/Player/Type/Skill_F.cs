@@ -18,7 +18,7 @@ public class Skill_F : Skill, ISkill
     private float targetTime = 0;
 
     public bool Finished { get { return so.duration <= totalTime; } }
-    public void SetAttack()
+    public void Set()
     {
         currentSpeed = speed;
         totalTime = 0;

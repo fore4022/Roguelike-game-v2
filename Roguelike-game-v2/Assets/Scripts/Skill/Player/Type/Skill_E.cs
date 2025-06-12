@@ -13,7 +13,7 @@ public class Skill_E : Skill, ISkill
     private int max_Index;
 
     public bool Finished { get { return true; } }
-    public void SetAttack()
+    public void Set()
     {
         int rand = Random.Range(min_Index, max_Index + 1);
 
