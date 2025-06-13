@@ -30,13 +30,13 @@ public class ObjectPool
     private int MaxWorkPerSec { get { return Mathf.Max(maxWorkPerSec / coroutineCount, 1); } }
     public void ActiveObject(string prefabName)
     {
-        GetActiveGameObject(prefabName).SetActive(true);
+        GetGameObject(prefabName).SetActive(true);
     }
     public void DisableObject(GameObject prefab)
     {
         prefab.SetActive(false);
     }
-    public GameObject GetActiveGameObject(string prefabName)
+    public GameObject GetGameObject(string prefabName)
     {
         foreach(GameObject instance in poolingObjects[prefabName])
         {
@@ -126,7 +126,7 @@ public class ObjectPool
             parent = new GameObject { name = prefab.name };
         }
 
-        yield return new WaitUntil(() =>parent != null);
+        yield return new WaitUntil(() => parent != null);
 
         int instanceCount = 0;
         int createCount;

@@ -23,13 +23,18 @@ public class ExceptionMonster_A : BasicMonster
     }
     private IEnumerator RepeatBehavior()
     {
+        GameObject go;
+
         while(true)
         {
             yield return delay;
 
             if(isVisible)
             {
-                Managers.Game.objectPool.ActiveObject(prefabKey);
+                go = Managers.Game.objectPool.GetGameObject(prefabKey);
+                go.transform.position = transform.position;
+
+                go.SetActive(true);
             }
         }
     }

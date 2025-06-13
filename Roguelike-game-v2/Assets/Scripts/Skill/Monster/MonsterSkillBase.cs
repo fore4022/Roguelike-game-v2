@@ -6,10 +6,13 @@ public abstract class MonsterSkillBase : MonoBehaviour, IDamage
 {
     protected IDamage damage;
     protected SpriteRenderer render;
-    protected Animator anime;
+    protected Animator animator;
     protected AudioSource audioSource;
+    protected Collider2D col;
 
     protected bool isInit = false;
+
+    private Plane[] planes = new Plane[6];
 
     public IDamage Damage { set { damage = value; } }
     public float DamageAmount { get { return damage.DamageAmount; } }
@@ -30,16 +33,38 @@ public abstract class MonsterSkillBase : MonoBehaviour, IDamage
 
         Enable();
     }
+    protected void FixedUpdate()
+    {
+        IsInvisible();
+    }
     protected virtual void SetActive(bool isActive)
     {
         render.enabled = isActive;
-        anime.speed = isActive ? 1 : 0;
+        animator.speed = isActive ? 1 : 0;
     }
     protected virtual void Init()
     {
         render = GetComponent<SpriteRenderer>();
-        anime = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+
+        if(col == null)
+        {
+            col = GetComponent<Collider2D>();
+        }
+    }
+    private void IsInvisible()
+    {
+        planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
+
+        if(GeometryUtility.TestPlanesAABB(planes, col.bounds))
+        {
+            animator.speed = 1;
+        }
+        else
+        {
+            animator.speed = 0;
+        }
     }
     protected abstract void Enable();
 }

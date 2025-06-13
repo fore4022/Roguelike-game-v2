@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8952052069093824855}
   - component: {fileID: 7508491722993714679}
   - component: {fileID: 2412804150082810574}
+  - component: {fileID: 2652986301947763094}
   m_Layer: 7
   m_Name: SnakeF
   m_TagString: Monster
@@ -189,7 +190,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7153624049575569044}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 852098dca7ae9034aa8dde4f944ef22e, type: 3}
   m_Name: 
@@ -290,3 +291,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2652986301947763094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7153624049575569044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e758d0b362c167f478c1fda2c68767dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 2.5
