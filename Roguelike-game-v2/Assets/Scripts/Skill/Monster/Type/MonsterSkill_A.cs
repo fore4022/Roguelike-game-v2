@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+[RequireComponent(typeof(BoxCollider2D))]
 public class MonsterSkill_A : MonsterSkillBase
 {
     [SerializeField]

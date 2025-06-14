@@ -30,7 +30,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 
         rigid.velocity = direction * stat.moveSpeed;
 
-        if (isVisible)
+        if(isVisible)
         {
             changeDirection();
         }

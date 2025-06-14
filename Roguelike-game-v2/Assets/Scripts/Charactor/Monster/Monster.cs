@@ -103,7 +103,6 @@ public class Monster : MonoBehaviour, IScriptableData
         stat = monsterSO.stat;
         user_Experience = monsterSO.user_Experience;
         inGame_Experience = monsterSO.inGame_Experience;
-        monsterSO = null;
 
         Set();
     }

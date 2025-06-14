@@ -1,11 +1,12 @@
-using System.Collections.Generic;
-using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
+using UnityEngine.InputSystem;
 public class ObjectPool
 {
     private Dictionary<string, ScriptableObject> scriptableObjects = new();
-    private Dictionary<string, List<GameObject>> poolingObjects = new();
+    public Dictionary<string, List<GameObject>> poolingObjects = new();
 
     private Transform root;
 
@@ -119,11 +120,13 @@ public class ObjectPool
     {
         GameObject[] array = new GameObject[count];
 
-        GameObject parent = GameObject.Find(prefab.name);
+        string key = prefab.name;
+
+        GameObject parent = GameObject.Find(key);
 
         if(parent == null)
         {
-            parent = new GameObject { name = prefab.name };
+            parent = new GameObject { name = key };
         }
 
         yield return new WaitUntil(() => parent != null);
@@ -150,12 +153,21 @@ public class ObjectPool
 
         if(type != ScriptableObjectType.None)
         {
-            CreateScriptableObject(type, prefab.name);
+            CreateScriptableObject(type, key);
+
+            yield return new WaitUntil(() => scriptableObjects.ContainsKey(key) == true);
+
+            Util.GetMonoBehaviour().StartCoroutine(SetInstance(array, key));
         }
 
-        yield return new WaitUntil(() => scriptableObjects.ContainsKey(prefab.name) == true);
-
-        Util.GetMonoBehaviour().StartCoroutine(SetInstance(array, prefab.name));
+        if(poolingObjects.ContainsKey(key))
+        {
+            poolingObjects[key].AddRange(array);
+        }
+        else
+        {
+            poolingObjects.Add(key, array.ToList());
+        }
     }
     private IEnumerator SetInstance(GameObject[] array, string key)
     {
@@ -184,14 +196,5 @@ public class ObjectPool
         }
 
         coroutineCount--;
-
-        if(poolingObjects.ContainsKey(key))
-        {
-            poolingObjects[key].AddRange(array);
-        }
-        else
-        {
-            poolingObjects.Add(key, array.ToList());
-        }
     }
 }

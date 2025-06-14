@@ -12,7 +12,7 @@ public class ExceptionMonster_A : BasicMonster
     {
         base.OnEnable();
 
-        StartCoroutine(RepeatBehavior());   
+        StartCoroutine(RepeatBehavior());
     }
     protected override void Init()
     {

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Pool;
 public class DataInit
 {
     private const string userLevelPath = "_Level";
@@ -100,9 +99,9 @@ public class DataInit
 
         yield return new WaitUntil(() => Managers.Game.inGameData.player.levelUpdate != null);
 
-        yield return new WaitUntil(() => typeCount == Managers.Game.objectPool.PoolingObjectsCount);
+        yield return new WaitUntil(() => typeCount <= Managers.Game.objectPool.PoolingObjectsCount);
 
-        yield return new WaitUntil(() => typeCount == Managers.Game.objectPool.ScriptableObjectsCount);
+        yield return new WaitUntil(() => typeCount <= Managers.Game.objectPool.ScriptableObjectsCount);
 
         yield return new WaitUntil(() => Managers.Game.player != null);
 
