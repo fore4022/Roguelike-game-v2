@@ -12,6 +12,10 @@ public class MonsterSkill_A : MonsterSkillBase
     {
         StartCoroutine(Casting());
     }
+    protected override void Enter()
+    {
+        Managers.Game.objectPool.DisableObject(gameObject);
+    }
     protected override void SetActive(bool isActive)
     {
         base.SetActive(isActive);

@@ -2,12 +2,14 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(Rigidbody2D))]
 public abstract class MonsterSkillBase : MonoBehaviour, IDamage
 {
     protected IDamage damage;
     protected SpriteRenderer render;
     protected Animator animator;
     protected AudioSource audioSource;
+    protected Rigidbody2D rigid;
     protected Collider2D col;
 
     protected bool isInit = false;
@@ -47,11 +49,29 @@ public abstract class MonsterSkillBase : MonoBehaviour, IDamage
         render = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        rigid = GetComponent<Rigidbody2D>();
+
+        rigid.gravityScale = 0;
 
         if(col == null)
         {
             col = GetComponent<Collider2D>();
         }
+    }
+    private void OnDisable()
+    {
+        if(isInit)
+        {
+            SetActive(false);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        OnEnter(collision.gameObject);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        OnEnter(collision.gameObject);
     }
     private void IsInvisible()
     {
@@ -66,5 +86,13 @@ public abstract class MonsterSkillBase : MonoBehaviour, IDamage
             animator.speed = 0;
         }
     }
+    private void OnEnter(GameObject go)
+    {
+        if(go.CompareTag("Player"))
+        {
+            Enter();
+        }
+    }
+    protected abstract void Enter();
     protected abstract void Enable();
 }

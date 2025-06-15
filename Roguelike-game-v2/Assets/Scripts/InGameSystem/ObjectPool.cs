@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.InputSystem;
 public class ObjectPool
 {
     private Dictionary<string, ScriptableObject> scriptableObjects = new();
-    public Dictionary<string, List<GameObject>> poolingObjects = new();
+    private Dictionary<string, List<GameObject>> poolingObjects = new();
 
     private Transform root;
 
