@@ -17,7 +17,5 @@ MonoBehaviour:
     damage: 1
     moveSpeed: 0.75
     healthRegenPerSec: 0
-  extraObject: {fileID: 3658431554873705821, guid: 75fea8036443486408b1c9ba66478f3d, type: 3}
   user_Experience: 1
   inGame_Experience: 1
-  hasExtraObject: 1

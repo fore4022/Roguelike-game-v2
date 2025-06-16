@@ -39,7 +39,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     {
         StartCoroutine(TakingDamage());
     }
-    private void Die()
+    protected virtual void Die()
     {
         Managers.Game.inGameData.player.Experience += user_Experience;
         Managers.Game.UserExp += inGame_Experience;

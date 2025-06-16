@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 public class ObjectPool
 {
-    private Dictionary<string, ScriptableObject> scriptableObjects = new();
+    public Dictionary<string, ScriptableObject> scriptableObjects = new();
     private Dictionary<string, List<GameObject>> poolingObjects = new();
 
     private Transform root;
@@ -107,7 +107,15 @@ public class ObjectPool
 
                     if(so is ExceptionMonsterStat_SO exceptionMonsterStatSO)
                     {
-                        Create_Additional(exceptionMonsterStatSO.extraObject, key, defaultObjectCount);
+                        if(exceptionMonsterStatSO.extraObject != null)
+                        {
+                            Create_Additional(exceptionMonsterStatSO.extraObject, key, defaultObjectCount);
+                        }
+
+                        if(exceptionMonsterStatSO.visualizer != null)
+                        {
+                            Create_Additional(exceptionMonsterStatSO.visualizer, null, defaultObjectCount);
+                        }
                     }
                     break;
                 case ScriptableObjectType.Skill:
@@ -162,14 +170,17 @@ public class ObjectPool
 
         if(type == ScriptableObjectType.None)
         {
-            Monster monster = GetGameObject(originalKey).GetComponent<Monster>();
-            MonsterSkillBase skillBaase;
-
-            foreach(GameObject go in array)
+            if(originalKey != null)
             {
-                skillBaase = go.GetComponent<MonsterSkillBase>();
+                Monster monster = GetGameObject(originalKey).GetComponent<Monster>();
+                MonsterSkillBase skillBaase;
 
-                skillBaase.Damage += monster.Damage;
+                foreach (GameObject go in array)
+                {
+                    skillBaase = go.GetComponent<MonsterSkillBase>();
+
+                    skillBaase.Damage += monster.Damage;
+                }
             }
         }
         else

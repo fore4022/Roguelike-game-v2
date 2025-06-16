@@ -17,11 +17,21 @@ public class DefaultStat
         this.moveSpeed = moveSpeed;
         this.healthRegenPerSec = healthRegenPerSec;
     }
-    public DefaultStat(DefaultStat stat)
+    public DefaultStat(DefaultStat stat, bool isPlayer = false)
     {
-        maxHealth = health = stat.health + Managers.UserData.data.Stat.IncreaseHealth;
-        damage = stat.damage + Managers.UserData.data.Stat.IncreaseDamage;
-        moveSpeed = stat.moveSpeed + Managers.UserData.data.Stat.MoveSpeed;
-        healthRegenPerSec = stat.healthRegenPerSec + Managers.UserData.data.Stat.HealthRegenPerSec;
+        if(isPlayer)
+        {
+            maxHealth = health = stat.health + Managers.UserData.data.Stat.IncreaseHealth;
+            damage = stat.damage + Managers.UserData.data.Stat.IncreaseDamage;
+            moveSpeed = stat.moveSpeed + Managers.UserData.data.Stat.MoveSpeed;
+            healthRegenPerSec = stat.healthRegenPerSec + Managers.UserData.data.Stat.HealthRegenPerSec;
+        }
+        else
+        {
+            maxHealth = health = stat.health;
+            damage = stat.damage;
+            moveSpeed = stat.moveSpeed;
+            healthRegenPerSec = stat.healthRegenPerSec;
+        }
     }
 }

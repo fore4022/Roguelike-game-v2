@@ -12,7 +12,7 @@ using UnityEngine;
 /// </summary>
 public class Monster : MonoBehaviour, IScriptableData
 {
-    protected ExceptionMonsterStat_SO monsterSO = null;
+    protected MonsterStat_SO monsterSO = null;
     protected DefaultStat stat;
     protected Rigidbody2D rigid;
     protected Animator animator;
@@ -23,6 +23,7 @@ public class Monster : MonoBehaviour, IScriptableData
     protected const float spawnRadius = 5;
 
     protected float health;
+    protected float maxHealth;
     protected float user_Experience;
     protected int inGame_Experience;
     protected bool isVisible = false;
@@ -31,7 +32,7 @@ public class Monster : MonoBehaviour, IScriptableData
 
     private bool didInit = false;
 
-    public ScriptableObject SO { set { monsterSO = value as ExceptionMonsterStat_SO; } }
+    public ScriptableObject SO { set { monsterSO = value as MonsterStat_SO; } }
     protected virtual void Awake()
     {
         render = GetComponent<SpriteRenderer>();
@@ -64,7 +65,7 @@ public class Monster : MonoBehaviour, IScriptableData
     }
     private void Update()
     {
-        health += Mathf.Min((health + stat.healthRegenPerSec) * Time.deltaTime, stat.maxHealth);
+        health = Mathf.Min(health + stat.healthRegenPerSec * Time.deltaTime, maxHealth);
     }
     protected virtual void FixedUpdate()
     {
@@ -91,7 +92,7 @@ public class Monster : MonoBehaviour, IScriptableData
     }
     protected virtual void Set()
     {
-        health = stat.health * Managers.Game.difficultyScaler.IncreaseStat;
+        maxHealth = health = stat.health * Managers.Game.difficultyScaler.IncreaseStat;
         animator.speed = 1;
     }
     protected virtual void Init()
@@ -100,11 +101,11 @@ public class Monster : MonoBehaviour, IScriptableData
         animator = GetComponent<Animator>();
         render = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
+        stat = new(monsterSO.stat);
 
         rigid.simulated = false;
         render.enabled = false;
         audioSource.playOnAwake = false;
-        stat = monsterSO.stat;
         user_Experience = monsterSO.user_Experience;
         inGame_Experience = monsterSO.inGame_Experience;
 

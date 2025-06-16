@@ -1,10 +1,11 @@
 using System.Collections;
 using UnityEngine;
-public class ExceptionMonster_A : BasicMonster
+public class ExceptionMonster_A : ExceptionMonster
 {
     [SerializeField]
     private float duration = 2.5f;
 
+    private Coroutine behavior = null;
     private WaitForSeconds delay;
     private string prefabKey;
 
@@ -12,14 +13,20 @@ public class ExceptionMonster_A : BasicMonster
     {
         base.OnEnable();
 
-        StartCoroutine(RepeatBehavior());
+        behavior = StartCoroutine(RepeatBehavior());
     }
     protected override void Init()
     {
         delay = new(duration);
-        prefabKey = (monsterSO as ExceptionMonsterStat_SO).extraObject.name;
+        prefabKey = monsterSO.extraObject.name;
 
         base.Init();
+    }
+    protected override void Die()
+    {
+        base.Die();
+
+        StopCoroutine(behavior);
     }
     private IEnumerator RepeatBehavior()
     {
