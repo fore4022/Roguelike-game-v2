@@ -31,6 +31,14 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
     {
         StartCoroutine(CastSkill());
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        OnEnter(collision.gameObject);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        OnEnter(collision.gameObject);
+    }
     private void Init()
     {
         if(TryGetComponent(out ISkill skill))
@@ -51,14 +59,6 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
         render.enabled = false;
         anime.speed = 0;
         isInit = true;
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        OnEnter(collision.gameObject);
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        OnEnter(collision.gameObject);
     }
     private void OnEnter(GameObject go)
     {

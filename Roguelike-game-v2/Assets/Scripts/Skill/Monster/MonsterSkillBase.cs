@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(SpriteRenderer))]
@@ -14,8 +15,12 @@ public abstract class MonsterSkillBase : MonoBehaviour, IDamage
 
     protected bool isInit = false;
 
+    private const float collectDelay = 3;
+
     private Func<float> damage = null;
     private Plane[] planes = new Plane[6];
+    private Coroutine collect;
+    private WaitForSeconds delay = new(collectDelay);
 
     public Func<float> Damage { get { return damage; } set { damage = value; } }
     public float DamageAmount { get { return damage.Invoke(); } }
@@ -74,25 +79,40 @@ public abstract class MonsterSkillBase : MonoBehaviour, IDamage
     {
         OnEnter(collision.gameObject);
     }
-    private void IsInvisible()
-    {
-        planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
-
-        if(GeometryUtility.TestPlanesAABB(planes, col.bounds))
-        {
-            animator.speed = 1;
-        }
-        else
-        {
-            animator.speed = 0;
-        }
-    }
     private void OnEnter(GameObject go)
     {
         if(go.CompareTag("Player"))
         {
             Enter(go);
         }
+    }
+    private void IsInvisible()
+    {
+        planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
+
+        if(GeometryUtility.TestPlanesAABB(planes, col.bounds))
+        {
+            if(collect != null)
+            {
+                StopCoroutine(collect);
+
+                collect = null;
+            }
+
+            animator.speed = 1;
+        }
+        else
+        {
+            collect = StartCoroutine(Collecting());
+
+            animator.speed = 0;
+        }
+    }
+    private IEnumerator Collecting()
+    {
+        yield return delay;
+
+        Managers.Game.objectPool.DisableObject(gameObject);
     }
     protected abstract void Enter(GameObject go);
     protected abstract void Enable();

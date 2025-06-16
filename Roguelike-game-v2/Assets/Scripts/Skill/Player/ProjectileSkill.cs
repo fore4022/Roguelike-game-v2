@@ -11,7 +11,7 @@ public class ProjectileSkill : Skill
     private Coroutine collect;
     private WaitForSeconds delay = new(collectDelay);
 
-    protected void Update()
+    protected void FixedUpdate()
     {
         IsInvisible();
     }
@@ -24,18 +24,21 @@ public class ProjectileSkill : Skill
 
         planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
 
-        if(!GeometryUtility.TestPlanesAABB(planes, defaultCollider.bounds))
+        if(GeometryUtility.TestPlanesAABB(planes, defaultCollider.bounds))
         {
-            collect = StartCoroutine(Collectting());
-        }
-        else if(collect != null)
-        {
-            StopCoroutine(collect);
+            if(collect != null)
+            {
+                StopCoroutine(collect);
 
-            collect = null;
+                collect = null;
+            }
+        }
+        else
+        {
+            collect = StartCoroutine(Collecting());
         }
     }
-    private IEnumerator Collectting()
+    private IEnumerator Collecting()
     {
         yield return delay;
 
