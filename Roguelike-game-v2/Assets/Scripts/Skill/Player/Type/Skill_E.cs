@@ -19,7 +19,7 @@ public class Skill_E : Skill, ISkill
 
         transform.position = EnemyDetection.GetLargestEnemyGroup();
 
-        anime.Play($"default_{rand}");
+        animator.Play($"default_{rand}");
     }
     public void SetCollider()
     {

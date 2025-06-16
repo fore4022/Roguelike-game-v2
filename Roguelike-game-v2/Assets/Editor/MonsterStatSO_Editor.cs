@@ -1,23 +1,26 @@
 using UnityEditor;
-[CustomEditor(typeof(MonsterStat_SO))]
+[CustomEditor(typeof(ExceptionMonsterStat_SO))]
 public class MonsterStatSO_Editor : Editor
 {
     private SerializedProperty show;
-    private SerializedProperty value;
+    private SerializedProperty value_1;
+    private SerializedProperty value_2;
 
     private void OnEnable()
     {
         show = serializedObject.FindProperty("hasExtraObject");
-        value = serializedObject.FindProperty("extraObject");
+        value_1 = serializedObject.FindProperty("extraObject");
+        value_2 = serializedObject.FindProperty("visualizer");
     }
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
-        DrawPropertiesExcluding(serializedObject, "extraObject");
+        DrawPropertiesExcluding(serializedObject, "extraObject", "visualizer");
 
         if(show.boolValue)
         {
-            EditorGUILayout.PropertyField(value);
+            EditorGUILayout.PropertyField(value_1);
+            EditorGUILayout.PropertyField(value_2);
         }
 
         serializedObject.ApplyModifiedProperties();

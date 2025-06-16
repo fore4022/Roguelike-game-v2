@@ -62,12 +62,12 @@ public class Projectile_C : ProjectileSkill, IProjectile
     }
     private IEnumerator AnimationManaging()
     {
-        yield return new WaitUntil(() => anime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
 
-        anime.Play("default");
+        animator.Play("default");
 
         yield return new WaitUntil(() => multiplier <= 0.1f);
         
-        anime.Play(so.projectile_Info.animationName);
+        animator.Play(so.projectile_Info.animationName);
     }
 }

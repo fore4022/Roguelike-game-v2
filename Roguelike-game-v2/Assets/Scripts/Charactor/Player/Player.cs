@@ -15,7 +15,7 @@ public class Player : MonoBehaviour, IDamageReceiver
     private PlayerInformation information = new();
     private DefaultStat stat = null;
 
-    private Animator anime;
+    private Animator animator;
 
     private readonly Vector3 diePosition = new Vector3(0, 0.5f);
     private readonly Vector3 dieRotation = new Vector3(0, 0, 370);
@@ -50,7 +50,7 @@ public class Player : MonoBehaviour, IDamageReceiver
     private void Awake()
     {
         move = GetComponent<PlayerMove>();
-        anime = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
     private void Start()
     {
@@ -79,13 +79,13 @@ public class Player : MonoBehaviour, IDamageReceiver
         StopCoroutine(die);
         maxHealthUpdate?.Invoke();
         healthUpdate?.Invoke();
-        anime.Play("idle");
+        animator.Play("idle");
 
         die = null;
     }
     public void AnimationPlay(string animationName)
     {
-        anime.Play(animationName);
+        animator.Play(animationName);
     }
     private void LoadPlayerStat()
     {
@@ -103,11 +103,11 @@ public class Player : MonoBehaviour, IDamageReceiver
 
         death = true;
 
-        anime.Play("death");
+        animator.Play("death");
 
         yield return new WaitForSeconds(duration);
 
-        yield return new WaitUntil(() => anime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
 
         Managers.Game.GameOver();
     }

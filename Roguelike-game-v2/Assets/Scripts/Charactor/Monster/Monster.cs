@@ -12,7 +12,7 @@ using UnityEngine;
 /// </summary>
 public class Monster : MonoBehaviour, IScriptableData
 {
-    protected MonsterStat_SO monsterSO = null;
+    protected ExceptionMonsterStat_SO monsterSO = null;
     protected DefaultStat stat;
     protected Rigidbody2D rigid;
     protected Animator animator;
@@ -31,7 +31,7 @@ public class Monster : MonoBehaviour, IScriptableData
 
     private bool didInit = false;
 
-    public ScriptableObject SO { set { monsterSO = value as MonsterStat_SO; } }
+    public ScriptableObject SO { set { monsterSO = value as ExceptionMonsterStat_SO; } }
     protected virtual void Awake()
     {
         render = GetComponent<SpriteRenderer>();

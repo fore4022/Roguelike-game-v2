@@ -13,7 +13,7 @@ public class Projectile_B : ProjectileSkill, IProjectile
 
     private bool isExplosion = false;
 
-    public bool Finished { get { return isExplosion && anime.GetCurrentAnimatorStateInfo(0).IsName(so.projectile_Info.animationName); } }
+    public bool Finished { get { return isExplosion && animator.GetCurrentAnimatorStateInfo(0).IsName(so.projectile_Info.animationName); } }
     public void Set()
     {
         transform.position = Managers.Game.player.gameObject.transform.position;
@@ -21,7 +21,7 @@ public class Projectile_B : ProjectileSkill, IProjectile
         transform.rotation = Calculate.GetQuaternion(direction, so.adjustmentRotation);
         moving = StartCoroutine(Moving());
 
-        anime.Play("default");
+        animator.Play("default");
     }
     public void SetCollider()
     {
@@ -45,7 +45,7 @@ public class Projectile_B : ProjectileSkill, IProjectile
 
         if(!isExplosion)
         {
-            anime.Play(so.projectile_Info.animationName);
+            animator.Play(so.projectile_Info.animationName);
             StopCoroutine(moving);
 
             moving = null;

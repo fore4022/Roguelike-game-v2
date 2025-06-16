@@ -14,7 +14,7 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
     protected ISkill skill;
     protected Skill_SO so;
     protected SpriteRenderer render;
-    protected Animator anime;
+    protected Animator animator;
     protected AudioSource audioSource;
 
     protected Coroutine baseCast;
@@ -52,12 +52,12 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
         }
 
         render = GetComponent<SpriteRenderer>();
-        anime = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
 
         defaultCollider.enabled = enable;
         render.enabled = false;
-        anime.speed = 0;
+        animator.speed = 0;
         isInit = true;
     }
     private void OnEnter(GameObject go)
@@ -106,7 +106,7 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
 
         defaultCollider.enabled = enable;
         render.enabled = true;
-        anime.speed = 1;
+        animator.speed = 1;
         baseCast = StartCoroutine(BaseCasting());
 
         yield return new WaitUntil(() => baseCast == null);
@@ -117,11 +117,11 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
     {
         yield return new WaitUntil(() => skill.Finished);
 
-        yield return new WaitUntil(() => anime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
 
         baseCast = null;
         render.enabled = false;
         defaultCollider.enabled = false;
-        anime.speed = 0;
+        animator.speed = 0;
     }
 }

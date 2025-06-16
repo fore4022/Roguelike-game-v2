@@ -79,6 +79,11 @@ public class ObjectPool
     }
     private void Create_Additional(GameObject prefab, string originalKey, int count)
     {
+        if(prefab == null)
+        {
+            return;
+        }
+
         Util.GetMonoBehaviour().StartCoroutine(CreatingInstance(prefab, count, ScriptableObjectType.None, originalKey));
     }
     private void CreateInstance(GameObject parent, GameObject prefab, int count, int instanceCount, ref GameObject[] array)
@@ -100,11 +105,9 @@ public class ObjectPool
                 case ScriptableObjectType.Monster:
                     so = Util.LoadingToPath<ScriptableObject>($"Assets/SO/Monster/{Managers.UserData.data.StageName}/{key}.asset");
 
-                    MonsterStat_SO monsterStatSO = so as MonsterStat_SO;
-
-                    if(monsterStatSO.hasExtraObject && monsterStatSO.extraObject != null)
+                    if(so is ExceptionMonsterStat_SO exceptionMonsterStatSO)
                     {
-                        Create_Additional(monsterStatSO.extraObject, key, defaultObjectCount);
+                        Create_Additional(exceptionMonsterStatSO.extraObject, key, defaultObjectCount);
                     }
                     break;
                 case ScriptableObjectType.Skill:

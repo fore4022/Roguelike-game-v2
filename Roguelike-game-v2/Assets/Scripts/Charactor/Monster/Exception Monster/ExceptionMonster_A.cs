@@ -17,7 +17,7 @@ public class ExceptionMonster_A : BasicMonster
     protected override void Init()
     {
         delay = new(duration);
-        prefabKey = monsterSO.extraObject.name;
+        prefabKey = (monsterSO as ExceptionMonsterStat_SO).extraObject.name;
 
         base.Init();
     }

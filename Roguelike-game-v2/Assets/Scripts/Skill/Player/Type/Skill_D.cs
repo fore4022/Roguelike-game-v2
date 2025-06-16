@@ -11,12 +11,12 @@ public class Skill_D : Skill, ISkill
     [SerializeField]
     private string animationName;
 
-    public bool Finished { get { return anime.GetCurrentAnimatorStateInfo(0).IsName(animationName); } }
+    public bool Finished { get { return animator.GetCurrentAnimatorStateInfo(0).IsName(animationName); } }
     public void Set()
     {
         transform.position = Calculate.GetRandomVector();
 
-        anime.Play("default", 0);
+        animator.Play("default", 0);
 
         StartCoroutine(Attacking());
     }
@@ -33,9 +33,9 @@ public class Skill_D : Skill, ISkill
     }
     public IEnumerator Attacking()
     {
-        yield return new WaitUntil(() => anime.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
 
         audioSource.Play();
-        anime.Play(animationName, 0);
+        animator.Play(animationName, 0);
     }
 }
