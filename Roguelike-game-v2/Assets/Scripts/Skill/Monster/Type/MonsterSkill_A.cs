@@ -12,8 +12,13 @@ public class MonsterSkill_A : MonsterSkillBase
     {
         StartCoroutine(Casting());
     }
-    protected override void Enter()
+    protected override void Enter(GameObject go)
     {
+        if(go.TryGetComponent(out IDamageReceiver damageReceiver))
+        {
+            damageReceiver.TakeDamage(this);
+        }
+
         Managers.Game.objectPool.DisableObject(gameObject);
     }
     protected override void SetActive(bool isActive)

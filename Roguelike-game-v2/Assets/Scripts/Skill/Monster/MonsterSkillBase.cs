@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(SpriteRenderer))]
@@ -5,7 +6,6 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public abstract class MonsterSkillBase : MonoBehaviour, IDamage
 {
-    protected IDamage damage;
     protected SpriteRenderer render;
     protected Animator animator;
     protected AudioSource audioSource;
@@ -14,10 +14,11 @@ public abstract class MonsterSkillBase : MonoBehaviour, IDamage
 
     protected bool isInit = false;
 
+    private Func<float> damage = null;
     private Plane[] planes = new Plane[6];
 
-    public IDamage Damage { set { damage = value; } }
-    public float DamageAmount { get { return damage.DamageAmount; } }
+    public Func<float> Damage { get { return damage; } set { damage = value; } }
+    public float DamageAmount { get { return damage.Invoke(); } }
     protected void Awake()
     {
         gameObject.SetActive(false);
@@ -90,9 +91,9 @@ public abstract class MonsterSkillBase : MonoBehaviour, IDamage
     {
         if(go.CompareTag("Player"))
         {
-            Enter();
+            Enter(go);
         }
     }
-    protected abstract void Enter();
+    protected abstract void Enter(GameObject go);
     protected abstract void Enable();
 }

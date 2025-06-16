@@ -70,6 +70,10 @@ public class Monster : MonoBehaviour, IScriptableData
     {
         IsInvisible();
     }
+    public float Damage()
+    {
+        return stat.damage * Managers.Game.difficultyScaler.IncreaseStat;
+    }
     private void IsInvisible()
     {
         planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
@@ -113,6 +117,7 @@ public class Monster : MonoBehaviour, IScriptableData
         float cameraHeight = Util.CameraHeight / 2 + spawnRadius;
         float x = Mathf.Cos(randomValue) * cameraWidth;
         float y = Mathf.Sin(randomValue) * cameraHeight;
+
         transform.position = new Vector2(x, y) + (Vector2)Managers.Game.player.gameObject.transform.position;
         render.enabled = true;
         rigid.simulated = true;

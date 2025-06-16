@@ -77,9 +77,9 @@ public class ObjectPool
             Util.GetMonoBehaviour().StartCoroutine(CreatingInstance(prefab, count, type));
         }
     }
-    public void Create(GameObject prefab, int count)
+    private void Create_Additional(GameObject prefab, string originalKey, int count)
     {
-        Util.GetMonoBehaviour().StartCoroutine(CreatingInstance(prefab, count));
+        Util.GetMonoBehaviour().StartCoroutine(CreatingInstance(prefab, count, ScriptableObjectType.None, originalKey));
     }
     private void CreateInstance(GameObject parent, GameObject prefab, int count, int instanceCount, ref GameObject[] array)
     {
@@ -104,7 +104,7 @@ public class ObjectPool
 
                     if(monsterStatSO.hasExtraObject && monsterStatSO.extraObject != null)
                     {
-                        Create(monsterStatSO.extraObject, defaultObjectCount);
+                        Create_Additional(monsterStatSO.extraObject, key, defaultObjectCount);
                     }
                     break;
                 case ScriptableObjectType.Skill:
@@ -115,7 +115,7 @@ public class ObjectPool
             scriptableObjects.Add(key, so);
         }
     }
-    private IEnumerator CreatingInstance(GameObject prefab, int count, ScriptableObjectType type = ScriptableObjectType.None)
+    private IEnumerator CreatingInstance(GameObject prefab, int count, ScriptableObjectType type = ScriptableObjectType.None, string originalKey = null)
     {
         GameObject[] array = new GameObject[count];
 
@@ -148,17 +148,6 @@ public class ObjectPool
             yield return null;
         }
 
-        coroutineCount--;
-
-        if(type != ScriptableObjectType.None)
-        {
-            CreateScriptableObject(type, key);
-
-            yield return new WaitUntil(() => scriptableObjects.ContainsKey(key) == true);
-
-            Util.GetMonoBehaviour().StartCoroutine(SetInstance(array, key));
-        }
-
         if(poolingObjects.ContainsKey(key))
         {
             poolingObjects[key].AddRange(array);
@@ -167,6 +156,29 @@ public class ObjectPool
         {
             poolingObjects.Add(key, array.ToList());
         }
+
+        if(type == ScriptableObjectType.None)
+        {
+            Monster monster = GetGameObject(originalKey).GetComponent<Monster>();
+            MonsterSkillBase skillBaase;
+
+            foreach(GameObject go in array)
+            {
+                skillBaase = go.GetComponent<MonsterSkillBase>();
+
+                skillBaase.Damage += monster.Damage;
+            }
+        }
+        else
+        {
+            CreateScriptableObject(type, key);
+
+            yield return new WaitUntil(() => scriptableObjects.ContainsKey(key) == true);
+
+            Util.GetMonoBehaviour().StartCoroutine(SetInstance(array, key));
+        }
+
+        coroutineCount--;
     }
     private IEnumerator SetInstance(GameObject[] array, string key)
     {
