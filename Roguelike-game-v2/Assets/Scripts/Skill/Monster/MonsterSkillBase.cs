@@ -21,7 +21,7 @@ public abstract class MonsterSkillBase : MonoBehaviour, IDamage
     private Plane[] planes = new Plane[6];
     private Coroutine collect;
     private WaitForSeconds delay = new(collectDelay);
-
+    
     public Func<float> Damage { get { return damage; } set { damage = value; } }
     public float DamageAmount { get { return damage.Invoke(); } }
     protected void Awake()
@@ -45,11 +45,6 @@ public abstract class MonsterSkillBase : MonoBehaviour, IDamage
     {
         IsInvisible();
     }
-    protected virtual void SetActive(bool isActive)
-    {
-        render.enabled = isActive;
-        animator.speed = isActive ? 1 : 0;
-    }
     protected virtual void Init()
     {
         render = GetComponent<SpriteRenderer>();
@@ -63,6 +58,11 @@ public abstract class MonsterSkillBase : MonoBehaviour, IDamage
         {
             col = GetComponent<Collider2D>();
         }
+    }
+    protected virtual void SetActive(bool isActive)
+    {
+        render.enabled = isActive;
+        animator.speed = isActive ? 1 : 0;
     }
     private void OnDisable()
     {

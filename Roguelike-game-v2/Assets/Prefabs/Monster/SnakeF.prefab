@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1798828967297446571}
   - component: {fileID: 8952052069093824855}
   - component: {fileID: 2412804150082810574}
-  - component: {fileID: -3473106569138833170}
+  - component: {fileID: 4289605512428303888}
   m_Layer: 7
   m_Name: SnakeF
   m_TagString: Monster
@@ -278,7 +278,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-3473106569138833170
+--- !u!114 &4289605512428303888
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -287,6 +287,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7153624049575569044}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 852098dca7ae9034aa8dde4f944ef22e, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d07cfccb9f98a14a8ff457f4b9aaa9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coolTime: 3

@@ -247,7 +247,7 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 991a51da771684c4687875d9902de211
+  - m_GUID: 89a8641dde1bd8b4c87e753490b80fac
     m_Address: Assets/SO/Monster/Prairie/SnakeF.asset
     m_ReadOnly: 0
     m_SerializedLabels: []

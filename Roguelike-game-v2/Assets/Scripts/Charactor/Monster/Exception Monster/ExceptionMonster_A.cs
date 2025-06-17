@@ -3,11 +3,11 @@ using UnityEngine;
 public class ExceptionMonster_A : ExceptionMonster
 {
     [SerializeField]
-    private float duration = 2.5f;
+    private float coolTime = 2.5f;
 
     private Coroutine behavior = null;
     private WaitForSeconds delay;
-    private string prefabKey;
+    private string skillKey;
 
     protected override void OnEnable()
     {
@@ -17,8 +17,8 @@ public class ExceptionMonster_A : ExceptionMonster
     }
     protected override void Init()
     {
-        delay = new(duration);
-        prefabKey = monsterSO.extraObject.name;
+        delay = new(coolTime);
+        skillKey = monsterSO.extraObject.name;
 
         base.Init();
     }
@@ -30,7 +30,7 @@ public class ExceptionMonster_A : ExceptionMonster
     }
     private IEnumerator RepeatBehavior()
     {
-        GameObject go;
+        GameObject skill;
 
         while(true)
         {
@@ -38,10 +38,10 @@ public class ExceptionMonster_A : ExceptionMonster
 
             if(isVisible)
             {
-                go = Managers.Game.objectPool.GetGameObject(prefabKey);
-                go.transform.position = transform.position;
+                skill = Managers.Game.objectPool.GetGameObject(skillKey);
+                skill.transform.position = transform.position;
 
-                go.SetActive(true);
+                skill.SetActive(true);
             }
         }
     }

@@ -23,9 +23,9 @@ public class MonsterSkill_A : MonsterSkillBase
     }
     protected override void SetActive(bool isActive)
     {
-        base.SetActive(isActive);
-
         col.enabled = isActive;
+
+        base.SetActive(isActive);
     }
     private IEnumerator Casting()
     {
