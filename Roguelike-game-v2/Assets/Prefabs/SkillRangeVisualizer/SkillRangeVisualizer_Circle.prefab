@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6913928263965732761}
   - component: {fileID: 5334163542268471439}
   - component: {fileID: 2368298043949422624}
+  - component: {fileID: -410028379075564853}
   m_Layer: 0
   m_Name: SkillRangeVisualizer_Circle
   m_TagString: Untagged
@@ -106,3 +107,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-410028379075564853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209035968615359215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3528a47f1a7b12b4b96eff5dced5f34b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

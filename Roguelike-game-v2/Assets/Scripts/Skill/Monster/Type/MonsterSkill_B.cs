@@ -1,8 +1,17 @@
 using System.Collections;
 using UnityEngine;
+[RequireComponent(typeof(BoxCollider2D))]
 public class MonsterSkill_B : MonsterSkillBase
 {
-    //private const Vector3 
+    [SerializeField, Min(0.5f)]
+    private float duration = 0.75f;
+
+    private readonly Vector3 baseOffset = new(0, 1.5f, 0);
+    private const float maxAlpha = 255;
+    private const float defaultAlpha = 100;
+    private const float preActionDelay = 0.1f;
+
+    private Vector3 targetPosition;
 
     protected override void Enable()
     {
@@ -17,34 +26,32 @@ public class MonsterSkill_B : MonsterSkillBase
 
         Managers.Game.objectPool.DisableObject(gameObject);
     }
-    protected override void Init()
-    {
-
-
-        base.Init();
-    }
-    protected override void SetActive(bool isActive)
-    {
-        col.enabled = isActive;
-
-        base.SetActive(isActive);
-    }
     private void OnDisable()
     {
         if(isInit)
         {
+            col.enabled = false;
+
             SetActive(false);
         }
     }
     private IEnumerator Casting()
     {
+        targetPosition = transform.position;
+        transform.position += baseOffset;
+
         SetActive(true);
 
-        while(true)
-        {
-            //
-            
-            yield return null;
-        }
+        transform.SetPosition(targetPosition, duration);
+
+        StartCoroutine(ColorLerp.ChangeAlpha(render, maxAlpha, defaultAlpha, duration));
+
+        yield return new WaitForSeconds(duration - preActionDelay);
+
+        col.enabled = true;
+
+        yield return new WaitForSeconds(preActionDelay);
+
+        Managers.Game.objectPool.DisableObject(gameObject);
     }
 }

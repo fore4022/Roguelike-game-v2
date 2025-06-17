@@ -20,7 +20,7 @@ public class ExceptionMonster_B : ExceptionMonster
     {
         delay = new(coolTime);
         visualizerKey = monsterSO.visualizer.name;
-        //skillKey = monsterSO.extraObject.name;
+        skillKey = monsterSO.extraObject.name;
 
         base.Init();
     }
@@ -50,6 +50,8 @@ public class ExceptionMonster_B : ExceptionMonster
 
                 go = Managers.Game.objectPool.GetGameObject(skillKey);
                 go.transform.position = Managers.Game.player.transform.position;
+
+                go.SetActive(true);
             }
         }
     }

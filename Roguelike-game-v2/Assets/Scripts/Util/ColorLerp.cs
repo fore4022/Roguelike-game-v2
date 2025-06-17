@@ -29,6 +29,16 @@ public static class ColorLerp
         Color color = render.color;
         float totalTime = 0;
 
+        if(targetValue > 1)
+        {
+            targetValue /= 255;
+        }
+
+        if(defaultValue > 1)
+        {
+            defaultValue /= 255;
+        }
+
         while(totalTime != duration)
         {
             totalTime += Time.deltaTime;

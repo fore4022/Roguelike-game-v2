@@ -7,6 +7,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public abstract class MonsterSkillBase : MonoBehaviour, IDamage
 {
+    [SerializeField, Min(0.01f)]
+    protected float animationSpeed = 1;
+
     protected SpriteRenderer render;
     protected Animator animator;
     protected AudioSource audioSource;
@@ -62,7 +65,7 @@ public abstract class MonsterSkillBase : MonoBehaviour, IDamage
     protected virtual void SetActive(bool isActive)
     {
         render.enabled = isActive;
-        animator.speed = isActive ? 1 : 0;
+        animator.speed = isActive ? animationSpeed : 0;
     }
     private void OnDisable()
     {
