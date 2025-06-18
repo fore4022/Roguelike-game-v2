@@ -1,18 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-public class test : MonoBehaviour
+public class test : MonoBehaviour, IFakeShadowSource
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public SpriteRenderer SpriteRender => render;
 
-    // Update is called once per frame
-    void Update()
+    public SpriteRenderer render;
+
+    public Vector3 TargetPosition => new(0, -4);
+
+    public Vector3 InitialPosition => new(0, 0);
+
+    public Vector3 CurrentPosition => transform.position;
+
+    private void Start()
     {
-        
+        transform.SetPosition(new(0, -4), 4, Ease.AcceleratedFall);
     }
 }

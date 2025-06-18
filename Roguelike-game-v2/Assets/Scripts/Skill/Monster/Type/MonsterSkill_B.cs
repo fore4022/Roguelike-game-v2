@@ -13,7 +13,6 @@ public class MonsterSkill_B : MonsterSkillBase, IFakeShadowSource
 
     private Vector3 targetPosition;
 
-    public ShadowMotionType motionType { get { return ShadowMotionType.AcceleratedFall; } }
     public SpriteRenderer SpriteRender { get { return render; } }
     public Vector3 TargetPosition { get { return targetPosition; } }
     public Vector3 InitialPosition { get { return targetPosition - baseOffset; } }

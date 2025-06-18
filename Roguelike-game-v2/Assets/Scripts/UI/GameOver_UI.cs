@@ -9,9 +9,9 @@ public class GameOver_UI : UserInterface
     private List<Image> imgList;
     private TextMeshProUGUI result;
 
-    private readonly WaitForSecondsRealtime waitRealSec = new(delay);
     private const string arrow = "->";
     private const float delay = 0.225f;
+    private readonly WaitForSecondsRealtime waitRealSec = new(delay);
 
     public override void SetUserInterface()
     {

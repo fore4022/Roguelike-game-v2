@@ -2,24 +2,15 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class FakeShadowRenderer : MonoBehaviour
 {
-    [SerializeField, Min(0)]
-    private float shadowOffsetY = 0;
-    [SerializeField, Range(1.1f, 2f)]
-    private float shadowScale = 1.1f;
-
+    private const float alphaMin = 155;
     private readonly float alphaRange = 255 - alphaMin;
-    private const float alphaMin = 100;
-    private const float _start = 0;
-    private const float _end = 1;
 
     private IFakeShadowSource source = null;
     private SpriteRenderer render;
 
     private Color alphaColor;
     private Vector3 shadowOffset;
-    private Vector3 vec;
-    private float value;
-    private float scale;
+    private float shadowOffsetY = 1.4f;
 
     private void Awake()
     {
@@ -33,72 +24,39 @@ public class FakeShadowRenderer : MonoBehaviour
     {
         render.sprite = source.SpriteRender.sprite;
 
-        Factor();
         AdjustmentPosition();
         AdjustmentScale();
         AdjustmentAlpha();
     }
     private void Init()
     {
-        transform.parent.TryGetComponent(out source);
         shadowOffset = new(0, shadowOffsetY);
 
-        if(source == null)
+        if(transform.parent != null)
+        {
+            transform.parent.TryGetComponent(out source);
+        }
+        else
         {
             gameObject.SetActive(false);
         }
     }
     private void AdjustmentPosition()
     {
-        if(source.motionType == ShadowMotionType.AcceleratedFall)
-        {
-            vec = source.CurrentPosition - shadowOffset * AcceleratedFall();
-        }
-        else
-        {
-            vec = source.CurrentPosition - shadowOffset * Parabola();
-        }
-
-        transform.position =  vec;
+        transform.position = source.CurrentPosition - shadowOffset * (1 - Factor());
     }
     private void AdjustmentScale()
     {
-        if(source.motionType == ShadowMotionType.AcceleratedFall)
-        {
-            scale = shadowScale - shadowScale * AcceleratedFall();
-        }
-        else
-        {
-            scale = shadowScale - shadowScale * Parabola();
-        }
-
-        transform.localScale = Calculate.GetVector(scale);
+        transform.localScale = Calculate.GetVector(0.65f + Factor() / 2);
     }
     private void AdjustmentAlpha()
     {
         alphaColor = render.color;
-
-        if(source.motionType == ShadowMotionType.AcceleratedFall)
-        {
-            alphaColor.a = alphaMin + alphaRange * AcceleratedFall();
-        }
-        else
-        {
-            alphaColor.a = alphaMin + alphaRange * Parabola();
-        }
-
+        alphaColor.a = ((alphaMin + alphaRange * Factor()) / 255);
         render.color = alphaColor;
     }
-    private void Factor()
+    private float Factor()
     {
-        value = Mathf.Lerp(source.TargetPosition.y, source.InitialPosition.y, source.CurrentPosition.y);
-    }
-    private float AcceleratedFall()
-    {
-        return Mathf.Lerp(_start, _end, value * value);
-    }
-    private float Parabola()
-    {
-        return _start + 4 * value * (1 - value);
+        return Mathf.Lerp(0, 1, source.CurrentPosition.y / source.TargetPosition.y);
     }
 }

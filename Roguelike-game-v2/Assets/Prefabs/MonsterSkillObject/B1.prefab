@@ -368,7 +368,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
-  m_Color: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 0.11764706}
+  m_Color: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -390,5 +390,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5881d5925b4a545bc1d4138f4f0e2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shadowOffsetY: 0.15
-  shadowScale: 1.3

@@ -107,9 +107,6 @@ public class Easing
             case Ease.AcceleratedFall:
                 del += AcceleratedFall;
                 break;
-            case Ease.Parabola:
-                del += Parabola;
-                break;
         }
 
         return del;
@@ -441,9 +438,5 @@ public class Easing
     private static float AcceleratedFall(float value)
     {
         return Mathf.Lerp(_start, _end, value * value);
-    }
-    private static float Parabola(float value)
-    {
-        return _start + 4 * value * (1 - value);
     }
 }
