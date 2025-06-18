@@ -104,6 +104,12 @@ public class Easing
             case Ease.InOutElastic:
                 del += InOutElastic;
                 break;
+            case Ease.AcceleratedFall:
+                del += AcceleratedFall;
+                break;
+            case Ease.Parabola:
+                del += Parabola;
+                break;
         }
 
         return del;
@@ -429,5 +435,15 @@ public class Easing
         }
 
         return a * Mathf.Pow(2, -10 * (value -= 1)) * Mathf.Sin((value * d - s) * (2 * Mathf.PI) / p) * 0.5f + _end + _start;
+    }
+
+    //Additional
+    private static float AcceleratedFall(float value)
+    {
+        return Mathf.Lerp(_start, _end, value * value);
+    }
+    private static float Parabola(float value)
+    {
+        return _start + 4 * value * (1 - value);
     }
 }

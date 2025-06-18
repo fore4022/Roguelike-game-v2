@@ -1,5 +1,5 @@
 public enum ShadowMotionType
 {
-    Fall,
-    ArcFall
+    AcceleratedFall,
+    Parabola
 }

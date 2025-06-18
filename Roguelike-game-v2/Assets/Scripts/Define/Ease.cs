@@ -30,5 +30,7 @@ public enum Ease
     InOutBack,
     InElastic,
     OutElastic,
-    InOutElastic
+    InOutElastic,
+    AcceleratedFall,
+    Parabola
 }

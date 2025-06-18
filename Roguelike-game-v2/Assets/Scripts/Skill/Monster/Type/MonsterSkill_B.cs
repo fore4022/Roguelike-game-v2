@@ -1,9 +1,9 @@
 using System.Collections;
 using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
-public class MonsterSkill_B : MonsterSkillBase
+public class MonsterSkill_B : MonsterSkillBase, IFakeShadowSource
 {
-    [SerializeField, Min(0.5f)]
+    [SerializeField, Min(0.2f)]
     private float duration = 0.75f;
 
     private readonly Vector3 baseOffset = new(0, 1.5f, 0);
@@ -13,6 +13,11 @@ public class MonsterSkill_B : MonsterSkillBase
 
     private Vector3 targetPosition;
 
+    public ShadowMotionType motionType { get { return ShadowMotionType.AcceleratedFall; } }
+    public SpriteRenderer SpriteRender { get { return render; } }
+    public Vector3 TargetPosition { get { return targetPosition; } }
+    public Vector3 InitialPosition { get { return targetPosition - baseOffset; } }
+    public Vector3 CurrentPosition { get { return transform.position; } }
     protected override void Enable()
     {
         StartCoroutine(Casting());
@@ -42,7 +47,7 @@ public class MonsterSkill_B : MonsterSkillBase
 
         SetActive(true);
 
-        transform.SetPosition(targetPosition, duration);
+        transform.SetPosition(targetPosition, duration, Ease.AcceleratedFall);
 
         StartCoroutine(ColorLerp.ChangeAlpha(render, maxAlpha, defaultAlpha, duration));
 
