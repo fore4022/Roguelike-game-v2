@@ -12,10 +12,11 @@ public class MonsterSkill_B : MonsterSkillBase, IFakeShadowSource
     private const float preActionDelay = 0.1f;
 
     private Vector3 targetPosition;
+    private Vector3 initialPosition;
 
     public SpriteRenderer SpriteRender { get { return render; } }
     public Vector3 TargetPosition { get { return targetPosition; } }
-    public Vector3 InitialPosition { get { return targetPosition - baseOffset; } }
+    public Vector3 InitialPosition { get { return initialPosition; } }
     public Vector3 CurrentPosition { get { return transform.position; } }
     protected override void Enable()
     {
@@ -42,7 +43,7 @@ public class MonsterSkill_B : MonsterSkillBase, IFakeShadowSource
     private IEnumerator Casting()
     {
         targetPosition = transform.position;
-        transform.position += baseOffset;
+        initialPosition = transform.position += baseOffset;
 
         SetActive(true);
 
