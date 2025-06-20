@@ -105,7 +105,7 @@ public class PlayerStat
     }
     public PlayerStat()
     {
-        defaultStat = new(10, 1, 1, 0);
+        defaultStat = new(9999999999, 1, 1, 0);//
     }
     public bool IsSceneMain()
     {

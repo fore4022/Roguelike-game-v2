@@ -47,11 +47,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 73398bfe46769594281cc34e507f64e9
-    m_Address: Assets/SO/Monster/Prairie/MothD.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ea0140a614e96404d9aeb2fca3887265
     m_Address: Assets/SO/Monster/Prairie/MaskA.asset
     m_ReadOnly: 0

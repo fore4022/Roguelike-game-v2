@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1776920966051428656}
   - component: {fileID: 7870449480292991233}
   - component: {fileID: 9188595483721950498}
-  - component: {fileID: -5262201303127598070}
+  - component: {fileID: 5307216118165484375}
   m_Layer: 7
   m_Name: MaskA
   m_TagString: Monster
@@ -268,7 +268,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-5262201303127598070
+--- !u!114 &5307216118165484375
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -277,7 +277,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 9081227401761573370}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e758d0b362c167f478c1fda2c68767dc, type: 3}
+  m_Script: {fileID: 11500000, guid: 852098dca7ae9034aa8dde4f944ef22e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 2.5
