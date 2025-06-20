@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-public class SkillRangeVisualizer_Circle : MonoBehaviour
+public class SkillRangeVisualizer : MonoBehaviour
 {
     private Animator _animator;
 

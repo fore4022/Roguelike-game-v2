@@ -3,8 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class MonsterSkill_A : MonsterSkillBase
 {
-    [SerializeField]
-    private float speed;
+    [SerializeField, Min(0.1f)]
+    private float speed = 1;
 
     private Vector3 direction;
 

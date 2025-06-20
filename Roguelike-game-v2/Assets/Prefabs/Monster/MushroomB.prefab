@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 5595763666380695373}
   - component: {fileID: 3477907585850562620}
   - component: {fileID: 4921773831791047218}
-  - component: {fileID: 4393135043777573137}
   - component: {fileID: 3616708117340783854}
+  - component: {fileID: -6250513940242646005}
   m_Layer: 7
   m_Name: MushroomB
   m_TagString: Monster
@@ -172,18 +172,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4393135043777573137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4404251792433351587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 852098dca7ae9034aa8dde4f944ef22e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &3616708117340783854
 AudioSource:
   m_ObjectHideFlags: 0
@@ -280,3 +268,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-6250513940242646005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4404251792433351587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e758d0b362c167f478c1fda2c68767dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coolTime: 2.5

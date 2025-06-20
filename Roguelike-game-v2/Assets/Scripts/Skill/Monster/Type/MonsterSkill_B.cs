@@ -5,11 +5,12 @@ public class MonsterSkill_B : MonsterSkillBase, IFakeShadowSource
 {
     [SerializeField, Min(0.2f)]
     private float duration = 0.75f;
+    [SerializeField]
+    private Vector3 baseOffset = new(0, 2.5f, 0);
 
-    private readonly Vector3 baseOffset = new(0, 1.5f, 0);
     private const float maxAlpha = 255;
     private const float defaultAlpha = 100;
-    private const float preActionDelay = 0.1f;
+    private const float preActionDelay = 0.035f;
 
     private Vector3 targetPosition;
     private Vector3 initialPosition;

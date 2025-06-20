@@ -13,7 +13,6 @@ public class FakeShadowRenderer : MonoBehaviour
     private Color alphaColor;
     private Vector3 vec = default;
     private float value;
-    private bool isInit = false;
 
     private void Awake()
     {
