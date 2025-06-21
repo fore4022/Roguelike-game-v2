@@ -5190,8 +5190,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2070983891
+  m_SortingLayer: 5
   m_SortingOrder: 10
   m_Sprite: {fileID: 1486824911, guid: 1e3fc22ab270fee45a1024bc1d654b7b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5417,7 +5417,7 @@ GameObject:
   - component: {fileID: 7624258119808129058}
   - component: {fileID: 3577859026224596279}
   - component: {fileID: 2042785019062179831}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}

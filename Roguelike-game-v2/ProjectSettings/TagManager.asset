@@ -10,10 +10,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - 
   - Water
   - UI
-  - Skill
+  - Skill_Player
+  - Player
+  - Skill_Monster_Hittable
+  - Skill_Monster_Unhittable
   - Monster
   - 
   - 
@@ -36,16 +39,28 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
   m_SortingLayers:
-  - name: Map
-    uniqueID: 481499211
-    locked: 0
-  - name: Monster
-    uniqueID: 3472609439
-    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 810281295
+    locked: 0
+  - name: Monster
+    uniqueID: 3977219149
+    locked: 0
+  - name: SkillRangeVisualizer
+    uniqueID: 1332363055
+    locked: 0
+  - name: Skill_Player
+    uniqueID: 481499211
+    locked: 0
+  - name: Player
+    uniqueID: 2223983405
+    locked: 0
+  - name: Shadow
+    uniqueID: 3472609439
+    locked: 0
+  - name: Skill_Monster
+    uniqueID: 3951451367
     locked: 0

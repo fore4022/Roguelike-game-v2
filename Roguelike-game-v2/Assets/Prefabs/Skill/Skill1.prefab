@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3193365541062141211}
   - component: {fileID: 1925132323937258582}
   - component: {fileID: 5455021280817266826}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Skill1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 481499211
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 495250313, guid: fa8d4204913e7864da2589f861d1b79c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

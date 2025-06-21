@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7833356100389680542}
   - component: {fileID: 2542904930034705678}
   - component: {fileID: 1279427459611517073}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: BatG
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -822357857
-  m_SortingLayer: -1
+  m_SortingLayerID: -317748147
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 13064b555c48d1d4eacd7a1a4eb4355e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
