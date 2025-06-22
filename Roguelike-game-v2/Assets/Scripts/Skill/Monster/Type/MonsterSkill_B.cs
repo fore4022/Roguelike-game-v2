@@ -14,6 +14,8 @@ public class MonsterSkill_B : MonsterSkillBase, IFakeShadowSource
 
     private Vector3 targetPosition;
     private Vector3 initialPosition;
+    private Vector3 initialScale;
+    private float scaleValue;
 
     public SpriteRenderer SpriteRender { get { return render; } }
     public Vector3 TargetPosition { get { return targetPosition; } }
@@ -22,6 +24,13 @@ public class MonsterSkill_B : MonsterSkillBase, IFakeShadowSource
     protected override void Enable()
     {
         StartCoroutine(Casting());
+    }
+    protected override void Init()
+    {
+        scaleValue = transform.localScale.x;
+        initialScale = Calculate.GetVector(scaleValue / 4 * 3);
+
+        base.Init();
     }
     protected override void Enter(GameObject go)
     {
@@ -45,10 +54,12 @@ public class MonsterSkill_B : MonsterSkillBase, IFakeShadowSource
     {
         targetPosition = transform.position;
         initialPosition = transform.position += baseOffset;
+        transform.localScale = initialScale;
 
         SetActive(true);
 
-        transform.SetPosition(targetPosition, duration, Ease.AcceleratedFall);
+        transform.SetScale(scaleValue, duration)
+            .SetPosition(targetPosition, duration, Ease.AcceleratedFall);
 
         StartCoroutine(ColorLerp.ChangeAlpha(render, maxAlpha, defaultAlpha, duration));
 

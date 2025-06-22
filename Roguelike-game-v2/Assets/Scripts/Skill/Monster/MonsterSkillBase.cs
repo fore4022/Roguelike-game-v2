@@ -56,6 +56,7 @@ public abstract class MonsterSkillBase : MonoBehaviour, IDamage
         rigid = GetComponent<Rigidbody2D>();
 
         rigid.gravityScale = 0;
+        rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         if(col == null)
         {
