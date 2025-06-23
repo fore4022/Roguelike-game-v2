@@ -21,6 +21,8 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
     protected int level;
     protected bool isInit = false;
 
+    private bool isMaxLevel = false;
+
     public ScriptableObject SO { set { so = value as Skill_SO; } }
     public float DamageAmount { get { return Managers.Game.player.Stat.damage * so.damageCoefficient[level]; } }
     protected void Awake()
@@ -77,6 +79,12 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
         yield return new WaitUntil(() => isInit);
 
         level = Managers.Game.inGameData.skill.GetLevel(so.typePath);
+
+        if(level == Skill_SO.maxLevel - 1 && !isMaxLevel)
+        {
+            render.color = so.maxLevelColor;
+            isMaxLevel = true;
+        }
 
         if(so.flipX)
         {

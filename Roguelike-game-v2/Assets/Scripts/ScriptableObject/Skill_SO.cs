@@ -24,6 +24,7 @@ public class Skill_SO : ScriptableObject
     public float[] damageCoefficient = new float[maxLevel];
     public float[] coolTime = new float[maxLevel];
 
+    public Color maxLevelColor = default;
     public Vector3 adjustmentRotation;
     public Vector2 adjustmentPosition;
     public string typePath;

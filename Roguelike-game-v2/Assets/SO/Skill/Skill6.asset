@@ -31,11 +31,12 @@ MonoBehaviour:
   - 1.1
   - 1.05
   - 1
+  maxLevelColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   adjustmentRotation: {x: 0, y: 0, z: 0}
   adjustmentPosition: {x: 0, y: 0}
   typePath: Skill6
   duration: 0
   flipX: 1
   flipY: 0
-  projectile: 0
+  isProjectile: 0
   isMultiCast: 0

@@ -6,7 +6,7 @@ public class PlayerStat
 
     private const string sceneName = "Main";
     private const float coef_MoveSpeed = 0.05f;
-    private const float coef_IncreaseHealth = 1.5f;
+    private const float coef_IncreaseHealth = 7.5f;
     private const float coef_IncreaseDamage = 0.6f;
     private const float coef_HealthRegenPerSec = 0.1f;
 

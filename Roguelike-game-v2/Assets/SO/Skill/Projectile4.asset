@@ -41,11 +41,12 @@ MonoBehaviour:
   - 2.5
   - 2.25
   - 2
+  maxLevelColor: {r: 1, g: 1, b: 0.6666667, a: 1}
   adjustmentRotation: {x: 0, y: 0, z: 0}
   adjustmentPosition: {x: 0, y: 0}
   typePath: Projectile4
   duration: 0
   flipX: 1
   flipY: 1
-  projectile: 1
+  isProjectile: 0
   isMultiCast: 1
