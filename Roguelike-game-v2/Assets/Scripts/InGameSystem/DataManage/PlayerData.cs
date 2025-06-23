@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using UnityEngine;
 public class PlayerData
 {
     public Action experienceUpdate = null;
@@ -6,12 +8,15 @@ public class PlayerData
 
     private PlayerInformation info = null;
 
-    private const float baseExperience = 5;
-    private const float experienceMultiplier = 0.35f;
+    private const float baseExperience = 1;//5;
 
     private int increaseValue;
+    private int maxLevel;
+    private int levelUpCount = 0;
 
     public int IncreaseValue { get { return increaseValue; } }
+    public int MaxLevel { get { return maxLevel; } set { maxLevel = value * Skill_SO.maxLevel; } }
+    public int LevelUpCount { get { return levelUpCount; } }
     public PlayerInformation Info
     {
         set
@@ -41,24 +46,17 @@ public class PlayerData
 
             if(Experience >= info.experienceForLevelUp)
             {
-                int count = 0;
-
-                while (Experience >= info.experienceForLevelUp)
+                while(Experience >= info.experienceForLevelUp)
                 {
                     info.experience -= info.experienceForLevelUp;
+                    levelUpCount++;
+                    Level++;
 
-                    count++;
-                }
-
-                for (int i = 0; i < count; i++)
-                {
                     SetRequiredExperience();
                 }
 
-                Level += count;
+                experienceUpdate?.Invoke();
             }
-
-            experienceUpdate?.Invoke();
         }
     }
     public float ExperienceForLevelUp
@@ -75,10 +73,36 @@ public class PlayerData
     }
     private void SetRequiredExperience()
     {
-        info.experienceForLevelUp += ExperienceForLevelUp * experienceMultiplier;
+        info.experienceForLevelUp += 0;//ExperienceForLevelUp * MathF.Max(0.85f - 0.055f * (Level - 1), 0.185f);
     }
     public void SetLevel()
     {
         Level = 1;
+    }
+    public IEnumerator LevelUp()
+    {
+        if(levelUpCount == 0)
+        {
+            Managers.UI.Show<SkillSelection_UI>();
+        }
+        else
+        {
+            while(levelUpCount > 0)
+            {
+                Debug.Log(levelUpCount);
+                    
+                //yield return new WaitUntil(() => !Managers.UI.Get<SkillSelection_UI>().gameObject.activeSelf);
+
+                levelUpCount--;
+
+                Managers.UI.Get<SkillSelection_UI>().Set();
+
+                yield return new WaitForSecondsRealtime(3);
+            }
+
+            Managers.UI.Hide<SkillSelection_UI>();
+        }
+
+        Debug.Log("aaa");
     }
 }

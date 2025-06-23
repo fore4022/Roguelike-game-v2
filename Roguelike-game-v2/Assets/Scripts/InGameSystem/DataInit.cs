@@ -89,6 +89,7 @@ public class DataInit
         yield return new WaitUntil(() => (skillList != null) && (monsterList != null));
 
         Managers.Game.monsterSpawner.monsterList = monsterList;
+        Managers.Game.inGameData.player.MaxLevel = skillList.Count;
 
         Managers.Game.objectPool.Create(monsterList, ScriptableObjectType.Monster,defaultMonsterCount);
         Managers.Game.objectPool.Create(skillList, ScriptableObjectType.Skill, defaultSkillCount);

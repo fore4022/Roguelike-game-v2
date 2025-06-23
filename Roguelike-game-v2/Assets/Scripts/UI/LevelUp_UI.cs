@@ -23,13 +23,18 @@ public class LevelUp_UI : UserInterface
 
         yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
 
-        Time.timeScale = 0;
-        Managers.Game.IsPlaying = false;
-
         InputActions.DisableInputAction<TouchControls>();
         Managers.UI.Hide<CharactorController_UI>();
         Managers.UI.Hide<HeadUpDisplay_UI>();
-        Managers.UI.Show<SkillSelection_UI>();
+
+        if(Managers.Game.inGameData.player.MaxLevel >= Managers.Game.inGameData.player.Level)
+        {
+            Time.timeScale = 0;
+            Managers.Game.IsPlaying = false;
+
+            Managers.UI.Show<SkillSelection_UI>();
+        }
+
         Managers.UI.Hide<LevelUp_UI>();
     }
 }

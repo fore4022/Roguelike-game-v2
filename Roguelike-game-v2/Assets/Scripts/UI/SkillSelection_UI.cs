@@ -19,16 +19,9 @@ public class SkillSelection_UI : UserInterface
     private const int spacingY = 75;
 
     private (int x, int y) cellSize = (700, 255);
-        
-    protected override void Enable()
-    {
-        if(skillOptionList.Count == 0)
-        {
-            return;
-        }
-
-        StartCoroutine(Set());
-    }
+    private Coroutine levelUp = null;
+    private bool isSelect = false;
+    
     public override void SetUserInterface()
     {
         gridLayoutGroup = GetComponent<GridLayoutGroup>();
@@ -45,6 +38,21 @@ public class SkillSelection_UI : UserInterface
 
         background.enabled = active;
     }
+    protected override void Enable()
+    {
+        Set();
+    }
+    public void Set()
+    {
+        if(skillOptionList.Count == 0)
+        {
+            return;
+        }
+
+        isSelect = false;
+
+        StartCoroutine(Setting());
+    }
     public void Selected()
     {
         foreach(SkillOption_UI attackOption in skillOptionList)
@@ -52,8 +60,17 @@ public class SkillSelection_UI : UserInterface
             attackOption.gameObject.SetActive(false);
         }
 
+        isSelect = true;
+
+        a++;
+
+        Debug.Log(a);
+        Debug.Log(Managers.Game.inGameData.player.Level);
+        Debug.Log("---");
+
         StartCoroutine(PadeIn());
     }
+    private int a = 0;
     private void AdjustGridLayout()
     {
         gridLayoutGroup.cellSize = new Vector2(cellSize.x, cellSize.y);
@@ -110,7 +127,7 @@ public class SkillSelection_UI : UserInterface
 
         gameObject.SetActive(false);
     }
-    private IEnumerator Set()
+    private IEnumerator Setting()
     {
         List<SkillContext> infoList = Managers.Game.inGameData.skill.GetAttackInformation();
 
@@ -130,15 +147,30 @@ public class SkillSelection_UI : UserInterface
     }
     private IEnumerator PadeIn()
     {
-        Managers.UI.Show<HeadUpDisplay_UI>();
-        UIElementUtility.SetImageAlpha(background, targetAlpha, duration);
+        if(Managers.Game.inGameData.player.LevelUpCount == 0)
+        {
+            Managers.UI.Show<HeadUpDisplay_UI>();
+            UIElementUtility.SetImageAlpha(background, targetAlpha, duration);
 
-        yield return new WaitForSecondsRealtime(duration);
+            yield return new WaitForSecondsRealtime(duration);
 
-        Time.timeScale = 1;
-        Managers.Game.IsPlaying = true;
+            Time.timeScale = 1;
+            Managers.Game.IsPlaying = true;
 
-        InputActions.EnableInputAction<TouchControls>();
-        Managers.UI.Hide<SkillSelection_UI>();
+            if(levelUp != null)
+            {
+                StopCoroutine(levelUp);
+            }
+
+            InputActions.EnableInputAction<TouchControls>();
+            Managers.UI.Hide<SkillSelection_UI>();
+        }
+        else
+        {
+            if(levelUp == null)
+            {
+                levelUp = StartCoroutine(Managers.Game.inGameData.player.LevelUp());
+            }
+        }
     }
 }
