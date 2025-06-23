@@ -4,14 +4,13 @@ using UnityEngine;
 public class MonsterSkill_B : MonsterSkillBase, IFakeShadowSource
 {
     [SerializeField, Min(0.2f)]
-    private float duration = 0.75f;
+    private float duration = 0.5f;
     [SerializeField]
-    private Vector3 baseOffset = new(0, 2.5f, 0);
+    private Vector3 baseOffset = new(0, 2f, 0);
 
-    private const float maxAlpha = 255;
-    private const float defaultAlpha = 100;
     private const float preActionDelay = 0.035f;
 
+    private Color defaultColor;
     private Vector3 targetPosition;
     private Vector3 initialPosition;
     private Vector3 initialScale;
@@ -27,10 +26,11 @@ public class MonsterSkill_B : MonsterSkillBase, IFakeShadowSource
     }
     protected override void Init()
     {
-        scaleValue = transform.localScale.x;
-        initialScale = Calculate.GetVector(scaleValue / 4 * 3);
-
         base.Init();
+
+        scaleValue = transform.localScale.x;
+        defaultColor = render.color;
+        initialScale = Calculate.GetVector(scaleValue / 4 * 3);
     }
     protected override void Enter(GameObject go)
     {
@@ -47,6 +47,7 @@ public class MonsterSkill_B : MonsterSkillBase, IFakeShadowSource
         {
             col.enabled = false;
 
+            transform.Kill();
             SetActive(false);
         }
     }
@@ -61,9 +62,9 @@ public class MonsterSkill_B : MonsterSkillBase, IFakeShadowSource
         transform.SetScale(scaleValue, duration)
             .SetPosition(targetPosition, duration, Ease.AcceleratedFall);
 
-        StartCoroutine(ColorLerp.ChangeAlpha(render, maxAlpha, defaultAlpha, duration));
+        StartCoroutine(ColorLerp.ChangeColor(render, Color.white, defaultColor, duration));
 
-        yield return new WaitForSeconds(duration - preActionDelay);
+        yield return new WaitForSeconds(duration - preActionDelay * 2);
 
         col.enabled = true;
 

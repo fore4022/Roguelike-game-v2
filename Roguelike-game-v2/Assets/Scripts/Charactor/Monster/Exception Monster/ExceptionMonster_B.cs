@@ -42,14 +42,14 @@ public class ExceptionMonster_B : ExceptionMonster
             if(isVisible)
             {
                 go = Managers.Game.objectPool.GetGameObject(visualizerKey);
-                position = go.transform.position = Managers.Game.player.transform.position;
+                position = go.transform.position = Managers.Game.player.transform.position + new Vector3(0, 1 / Managers.Game.player.transform.localScale.x);
 
                 go.SetActive(true);
 
                 yield return new WaitUntil(() => !go.activeSelf);
 
                 go = Managers.Game.objectPool.GetGameObject(skillKey);
-                go.transform.position = Managers.Game.player.transform.position;
+                go.transform.position = position;
 
                 go.SetActive(true);
             }

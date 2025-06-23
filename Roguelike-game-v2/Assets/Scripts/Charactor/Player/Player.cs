@@ -14,7 +14,7 @@ public class Player : MonoBehaviour, IDamageReceiver
 
     private PlayerInformation information = new();
     private DefaultStat stat = null;
-
+    private SpriteRenderer render;
     private Animator animator;
 
     private readonly Vector3 diePosition = new Vector3(0, 0.5f);
@@ -51,6 +51,7 @@ public class Player : MonoBehaviour, IDamageReceiver
     {
         move = GetComponent<PlayerMove>();
         animator = GetComponent<Animator>();
+        render = GetComponent<SpriteRenderer>();
     }
     private void Start()
     {
@@ -101,6 +102,7 @@ public class Player : MonoBehaviour, IDamageReceiver
             .SetPosition(transform.position + diePosition, duration)
             .SetRotation(dieRotation, duration);
 
+        render.sortingLayerID = SortingLayer.NameToID("Skill_Monster");
         death = true;
 
         animator.Play("death");

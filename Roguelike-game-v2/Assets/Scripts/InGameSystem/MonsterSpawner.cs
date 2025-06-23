@@ -95,7 +95,7 @@ public class MonsterSpawner : MonoBehaviour
 
             MonsterSpawn(spawnInformation);
 
-            yield return new WaitForSeconds(spawnDelay);
+            yield return new WaitForSeconds(1);
         }
 
         spawnGroup = null;
