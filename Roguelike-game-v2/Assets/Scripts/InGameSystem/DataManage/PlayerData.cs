@@ -10,13 +10,14 @@ public class PlayerData
 
     private const float baseExperience = 1;//5;
 
+    private Coroutine levelCalculation = null;
     private int increaseValue;
     private int maxLevel;
-    private int levelUpCount = 0;
+    private int levelUpCount = 1;
 
     public int IncreaseValue { get { return increaseValue; } }
     public int MaxLevel { get { return maxLevel; } set { maxLevel = value * Skill_SO.maxLevel; } }
-    public int LevelUpCount { get { return levelUpCount; } }
+    public int LevelUpCount { get { return levelUpCount; } set { levelUpCount = value; } }
     public PlayerInformation Info
     {
         set
@@ -55,7 +56,12 @@ public class PlayerData
                     SetRequiredExperience();
                 }
 
-                experienceUpdate?.Invoke();
+                if(levelCalculation != null)
+                {
+                    Util.GetMonoBehaviour().StopCoroutine(levelCalculation);
+                }
+
+                levelCalculation = Util.GetMonoBehaviour().StartCoroutine(WaitLevelCalculation());
             }
         }
     }
@@ -68,8 +74,6 @@ public class PlayerData
         info.experienceForLevelUp = baseExperience;
         info.experience = 0;
         info.level = 0;
-
-        levelUpdate += () => Managers.UI.Show<LevelUp_UI>();
     }
     private void SetRequiredExperience()
     {
@@ -78,31 +82,18 @@ public class PlayerData
     public void SetLevel()
     {
         Level = 1;
+
+        Managers.UI.Get<LevelText_InGame_UI>().LevelUpdate();
     }
-    public IEnumerator LevelUp()
+    private IEnumerator WaitLevelCalculation()
     {
-        if(levelUpCount == 0)
+        for(int i = 0; i < 2; i++)
         {
-            Managers.UI.Show<SkillSelection_UI>();
-        }
-        else
-        {
-            while(levelUpCount > 0)
-            {
-                Debug.Log(levelUpCount);
-                    
-                //yield return new WaitUntil(() => !Managers.UI.Get<SkillSelection_UI>().gameObject.activeSelf);
-
-                levelUpCount--;
-
-                Managers.UI.Get<SkillSelection_UI>().Set();
-
-                yield return new WaitForSecondsRealtime(3);
-            }
-
-            Managers.UI.Hide<SkillSelection_UI>();
+            yield return null;
         }
 
-        Debug.Log("aaa");
+        levelUpdate.Invoke();
+
+        levelCalculation = null;
     }
 }

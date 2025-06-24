@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-[RequireComponent(typeof(GridLayoutGroup))]
 public class SkillSelection_UI : UserInterface
 {
     private List<SkillOption_UI> skillOptionList = new();
@@ -19,13 +18,15 @@ public class SkillSelection_UI : UserInterface
     private const int spacingY = 75;
 
     private (int x, int y) cellSize = (700, 255);
-    private Coroutine levelUp = null;
-    private bool isSelect = false;
+    private bool isSelect = true;
     
+    public bool IsSelect { get { return isSelect; } set { isSelect = value; } }
     public override void SetUserInterface()
     {
-        gridLayoutGroup = GetComponent<GridLayoutGroup>();
+        gridLayoutGroup = Util.GetComponentInChildren<GridLayoutGroup>(transform);
         background = GetComponent<Image>();
+
+        Managers.Game.inGameData.player.levelUpdate += () => Managers.UI.Show<LevelUp_UI>();
 
         StartCoroutine(Init());
     }
@@ -40,16 +41,20 @@ public class SkillSelection_UI : UserInterface
     }
     protected override void Enable()
     {
+        Managers.UI.Show<SkillPoints_UI>();
+
         Set();
     }
     public void Set()
     {
+        Managers.UI.Get<SkillPoints_UI>().SkillPointsUpdate();
+
         if(skillOptionList.Count == 0)
         {
             return;
         }
 
-        isSelect = false;
+        IsSelect = false;
 
         StartCoroutine(Setting());
     }
@@ -60,17 +65,11 @@ public class SkillSelection_UI : UserInterface
             attackOption.gameObject.SetActive(false);
         }
 
+        Managers.Game.inGameData.player.LevelUpCount--;
         isSelect = true;
 
-        a++;
-
-        Debug.Log(a);
-        Debug.Log(Managers.Game.inGameData.player.Level);
-        Debug.Log("---");
-
-        StartCoroutine(PadeIn());
+        StartCoroutine(SkillListUpdate());
     }
-    private int a = 0;
     private void AdjustGridLayout()
     {
         gridLayoutGroup.cellSize = new Vector2(cellSize.x, cellSize.y);
@@ -99,11 +98,13 @@ public class SkillSelection_UI : UserInterface
     }
     private void CreateOptionUI()
     {
+        Transform trans = transform.GetChild(0);
+
         int count = Managers.Game.inGameData.OptionCount - skillOptionList.Count;
 
         for(int i = 0; i < count; i++)
         {
-            GameObject go = Instantiate(attackOption, transform);
+            GameObject go = Instantiate(attackOption, trans);
 
             skillOptionList.Add(go.GetComponent<SkillOption_UI>());
 
@@ -135,6 +136,8 @@ public class SkillSelection_UI : UserInterface
 
         UIElementUtility.SetImageAlpha(background, basicAlpha);
 
+        indexArray[0] = 3;
+
         yield return new WaitForEndOfFrame();
 
         for(int i = 0; i < indexArray.Count(); i++)
@@ -147,30 +150,26 @@ public class SkillSelection_UI : UserInterface
     }
     private IEnumerator PadeIn()
     {
-        if(Managers.Game.inGameData.player.LevelUpCount == 0)
+        Managers.UI.Show<HeadUpDisplay_UI>();
+        UIElementUtility.SetImageAlpha(background, targetAlpha, duration);
+
+        yield return new WaitForSecondsRealtime(duration);
+
+        Time.timeScale = 1;
+        Managers.Game.IsPlaying = true;
+
+        InputActions.EnableInputAction<TouchControls>();
+        Managers.UI.Hide<SkillSelection_UI>();
+    }
+    private IEnumerator SkillListUpdate()
+    {
+        while(Managers.Game.inGameData.player.LevelUpCount > 0)
         {
-            Managers.UI.Show<HeadUpDisplay_UI>();
-            UIElementUtility.SetImageAlpha(background, targetAlpha, duration);
+            Set();
 
-            yield return new WaitForSecondsRealtime(duration);
-
-            Time.timeScale = 1;
-            Managers.Game.IsPlaying = true;
-
-            if(levelUp != null)
-            {
-                StopCoroutine(levelUp);
-            }
-
-            InputActions.EnableInputAction<TouchControls>();
-            Managers.UI.Hide<SkillSelection_UI>();
+            yield return new WaitUntil(() => IsSelect);
         }
-        else
-        {
-            if(levelUp == null)
-            {
-                levelUp = StartCoroutine(Managers.Game.inGameData.player.LevelUp());
-            }
-        }
+
+        StartCoroutine(PadeIn());
     }
 }

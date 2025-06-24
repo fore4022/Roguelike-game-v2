@@ -8,6 +8,9 @@ public class LevelUp_UI : UserInterface
 
     protected override void Enable()
     {
+        Time.timeScale = 0;
+        Managers.Game.IsPlaying = false;
+
         StartCoroutine(AnimationPlaying());
     }
     public override void SetUserInterface()
@@ -17,10 +20,12 @@ public class LevelUp_UI : UserInterface
 
         gameObject.SetActive(false);
     }
-    private IEnumerator AnimationPlaying()
+    private void Update()
     {
         level.text = $"Lv.{Managers.Game.inGameData.player.Level}";
-
+    }
+    private IEnumerator AnimationPlaying()
+    {
         yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
 
         InputActions.DisableInputAction<TouchControls>();
@@ -29,9 +34,6 @@ public class LevelUp_UI : UserInterface
 
         if(Managers.Game.inGameData.player.MaxLevel >= Managers.Game.inGameData.player.Level)
         {
-            Time.timeScale = 0;
-            Managers.Game.IsPlaying = false;
-
             Managers.UI.Show<SkillSelection_UI>();
         }
 
