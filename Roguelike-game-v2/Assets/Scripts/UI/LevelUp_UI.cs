@@ -6,13 +6,6 @@ public class LevelUp_UI : UserInterface
     private TextMeshProUGUI level;
     private Animator animator;
 
-    protected override void Enable()
-    {
-        Time.timeScale = 0;
-        Managers.Game.IsPlaying = false;
-
-        StartCoroutine(AnimationPlaying());
-    }
     public override void SetUserInterface()
     {
         level = Util.GetComponentInChildren<TextMeshProUGUI>(transform, true);
@@ -20,20 +13,34 @@ public class LevelUp_UI : UserInterface
 
         gameObject.SetActive(false);
     }
+    protected override void Enable()
+    {
+        if(ShouldShowSkillSelection())
+        {
+            Time.timeScale = 0;
+            Managers.Game.IsPlaying = false;
+        }
+
+        StartCoroutine(AnimationPlaying());
+    }
     private void Update()
     {
         level.text = $"Lv.{Managers.Game.inGameData.player.Level}";
     }
+    private bool ShouldShowSkillSelection()
+    {
+        return (Managers.Game.inGameData.player.MaxLevel >= Managers.Game.inGameData.player.Level) || Managers.Game.inGameData.player.LevelUpCount != 0;
+    }    
     private IEnumerator AnimationPlaying()
     {
         yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
 
         InputActions.DisableInputAction<TouchControls>();
         Managers.UI.Hide<CharactorController_UI>();
-        Managers.UI.Hide<HeadUpDisplay_UI>();
 
-        if(Managers.Game.inGameData.player.MaxLevel >= Managers.Game.inGameData.player.Level)
+        if(ShouldShowSkillSelection())
         {
+            Managers.UI.Hide<HeadUpDisplay_UI>();
             Managers.UI.Show<SkillSelection_UI>();
         }
 

@@ -136,8 +136,6 @@ public class SkillSelection_UI : UserInterface
 
         UIElementUtility.SetImageAlpha(background, basicAlpha);
 
-        indexArray[0] = 3;
-
         yield return new WaitForEndOfFrame();
 
         for(int i = 0; i < indexArray.Count(); i++)
@@ -151,6 +149,7 @@ public class SkillSelection_UI : UserInterface
     private IEnumerator PadeIn()
     {
         Managers.UI.Show<HeadUpDisplay_UI>();
+        Managers.UI.Hide<SkillPoints_UI>();
         UIElementUtility.SetImageAlpha(background, targetAlpha, duration);
 
         yield return new WaitForSecondsRealtime(duration);

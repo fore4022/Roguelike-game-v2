@@ -49,10 +49,14 @@ public class PlayerData
             {
                 while(Experience >= info.experienceForLevelUp)
                 {
-                    info.experience -= info.experienceForLevelUp;
-                    levelUpCount++;
                     Level++;
-
+                    info.experience -= info.experienceForLevelUp;
+                    
+                    if(Level <= maxLevel)
+                    {
+                        levelUpCount++;
+                    }
+                 
                     SetRequiredExperience();
                 }
 
