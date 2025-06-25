@@ -5,7 +5,9 @@ using UnityEngine;
 /// </summary>
 public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 {
-    protected float speedMultiplier = 1;
+    protected const float speedMultiplierDefault = 1;
+
+    protected float speedMultiplier = speedMultiplierDefault;
 
     private const float death_AnimationDuration = 0.5f;
     private const float damagedDuration = 0.15f;
@@ -46,6 +48,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     {
         Managers.Game.inGameData.player.Experience += user_Experience;
         Managers.Game.UserExp += inGame_Experience;
+        speedMultiplier = speedMultiplierDefault;
 
         StopCoroutine(moveCoroutine);
 
