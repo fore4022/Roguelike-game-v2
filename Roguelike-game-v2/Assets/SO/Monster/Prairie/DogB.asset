@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: DogB
   m_EditorClassIdentifier: 
   stat:
-    health: 7
+    health: 9
     damage: 2
-    moveSpeed: 0.925
+    moveSpeed: 1.05
+    healthRegenPerSec: 0
   user_Experience: 1
   inGame_Experience: 1

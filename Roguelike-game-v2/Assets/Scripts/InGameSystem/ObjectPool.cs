@@ -10,7 +10,7 @@ public class ObjectPool
     private Transform root;
 
     private const int maxWorkPerSec = 120;
-    private const int defaultObjectCount = 50;
+    private const int defaultObjectCount = 500;
 
     private int coroutineCount = 0;
 
@@ -105,7 +105,7 @@ public class ObjectPool
                 case ScriptableObjectType.Monster:
                     so = Util.LoadingToPath<ScriptableObject>($"Assets/SO/Monster/{Managers.UserData.data.StageName}/{key}.asset");
 
-                    if(so is ExceptionMonsterStat_SO exceptionMonsterStatSO)
+                    if(so is MonsterStat_WithObject_SO exceptionMonsterStatSO)
                     {
                         if(exceptionMonsterStatSO.extraObject != null)
                         {

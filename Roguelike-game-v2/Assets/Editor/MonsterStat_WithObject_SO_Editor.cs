@@ -1,6 +1,6 @@
 using UnityEditor;
-[CustomEditor(typeof(ExceptionMonsterStat_SO))]
-public class ExceptionMonsterStatSO_Editor : Editor
+[CustomEditor(typeof(MonsterStat_WithObject_SO))]
+public class MonsterStat_WithObject_SO_Editor : Editor
 {
     private SerializedProperty show;
     private SerializedProperty value_1;

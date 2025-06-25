@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 3392255692854151219}
   - component: {fileID: 3165732899109303551}
   - component: {fileID: 3025864033930958750}
-  - component: {fileID: 9019925419457327031}
   - component: {fileID: 770386095828039889}
+  - component: {fileID: 2772062233181515819}
   m_Layer: 10
   m_Name: DogB
   m_TagString: Monster
@@ -182,18 +182,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &9019925419457327031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8106883834458166952}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 852098dca7ae9034aa8dde4f944ef22e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &770386095828039889
 AudioSource:
   m_ObjectHideFlags: 0
@@ -290,3 +278,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2772062233181515819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8106883834458166952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878a735d2e249ae418ab341290b9c1a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashSpeed: 2.85
+  dashDuration: 1.25
+  dashCooldown: 2.75

@@ -7,7 +7,9 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 {
     protected const float speedMultiplierDefault = 1;
 
+    protected Vector3 direction;
     protected float speedMultiplier = speedMultiplierDefault;
+    protected bool canSwitchDirection = true;
 
     private const float death_AnimationDuration = 0.5f;
     private const float damagedDuration = 0.15f;
@@ -15,7 +17,6 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     private Coroutine moveCoroutine = null;
     private WaitForSeconds damaged = new(damagedDuration);
     private Color defaultColor;
-    private Vector3 direction;
 
     public float SpeedAmount { get { return stat.moveSpeed * speedMultiplier; } }
     public float DamageAmount { get { return stat.damage * Managers.Game.difficultyScaler.IncreaseStat * Time.deltaTime; } }
@@ -30,15 +31,13 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     {
         if(!Managers.Game.IsGameOver)
         {
-            direction = Calculate.GetDirection(Managers.Game.player.gameObject.transform.position, transform.position);
+            if(canSwitchDirection)
+            {
+                direction = Calculate.GetDirection(Managers.Game.player.gameObject.transform.position, transform.position);
+            }
         }
 
         rigid.velocity = direction * SpeedAmount;
-
-        if(isVisible)
-        {
-            changeDirection();
-        }
     }
     protected virtual void Damaged()
     {
@@ -95,6 +94,11 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 
         while(true)
         {
+            if(isVisible)
+            {
+                changeDirection();
+            }
+
             OnMove();
 
             yield return null;

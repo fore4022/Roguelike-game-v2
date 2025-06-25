@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-public class ExceptionMonster_C : ExceptionMonster
+public class Monster_C : BasicMonster
 {
     [SerializeField]
     private float dashSpeed;
@@ -20,8 +20,6 @@ public class ExceptionMonster_C : ExceptionMonster
     private IEnumerator RepeatBehavior()
     {
         yield return new WaitForSeconds(Random.Range(0, dashCooldownMax));
-        
-        yield return new WaitUntil(() => isVisible);
         
         if(isVisible)
         {
@@ -77,7 +75,5 @@ public class ExceptionMonster_C : ExceptionMonster
         }
 
         StartCoroutine(RepeatBehavior());
-
-        yield break;
     }
 }

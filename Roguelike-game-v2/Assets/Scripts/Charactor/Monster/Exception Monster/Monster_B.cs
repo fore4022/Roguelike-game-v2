@@ -1,12 +1,13 @@
 using System.Collections;
 using UnityEngine;
-public class ExceptionMonster_A : ExceptionMonster
+public class Monster_B : Monster_WithObject
 {
     [SerializeField]
-    private float coolTime = 2.5f;
+    private float coolTime = 3f;
 
     private Coroutine behavior = null;
     private WaitForSeconds delay;
+    private string visualizerKey;
     private string skillKey;
 
     protected override void OnEnable()
@@ -18,6 +19,7 @@ public class ExceptionMonster_A : ExceptionMonster
     protected override void Init()
     {
         delay = new(coolTime);
+        visualizerKey = monsterSO.visualizer.name;
         skillKey = monsterSO.extraObject.name;
 
         base.Init();
@@ -30,7 +32,8 @@ public class ExceptionMonster_A : ExceptionMonster
     }
     private IEnumerator RepeatBehavior()
     {
-        GameObject skill;
+        GameObject go;
+        Vector3 position;
 
         while(true)
         {
@@ -38,10 +41,17 @@ public class ExceptionMonster_A : ExceptionMonster
 
             if(isVisible)
             {
-                skill = Managers.Game.objectPool.GetGameObject(skillKey);
-                skill.transform.position = transform.position;
+                go = Managers.Game.objectPool.GetGameObject(visualizerKey);
+                position = go.transform.position = Managers.Game.player.transform.position + new Vector3(0, 1 / Managers.Game.player.transform.localScale.x);
 
-                skill.SetActive(true);
+                go.SetActive(true);
+
+                yield return new WaitUntil(() => !go.activeSelf);
+
+                go = Managers.Game.objectPool.GetGameObject(skillKey);
+                go.transform.position = position;
+
+                go.SetActive(true);
             }
         }
     }

@@ -111,19 +111,19 @@ public class Easing
 
         return del;
     }
-    private static float Linear(float value)
+    public static float Linear(float value)
     {
         return Mathf.Lerp(_start, _end, value);
     }
-    private static float InQuad(float value)
+    public static float InQuad(float value)
     {
         return _end * value * value + _start;
     }
-    private static float OutQuad(float value)
+    public static float OutQuad(float value)
     {
         return -_end * value * (value - 2) + _start;
     }
-    private static float InOutQuad(float value)
+    public static float InOutQuad(float value)
     {
         value /= .5f;
 
@@ -136,17 +136,17 @@ public class Easing
 
         return -_end * 0.5f * (value * (value - 2) - 1) + _start;
     }
-    private static float InCubic(float value)
+    public static float InCubic(float value)
     {
         return _end * value * value * value + _start;
     }
-    private static float OutCubic(float value)
+    public static float OutCubic(float value)
     {
         value--;
 
         return _end * (value * value * value + 1) + _start;
     }
-    private static float InOutCubic(float value)
+    public static float InOutCubic(float value)
     {
         value /= 0.5f;
 
@@ -159,17 +159,17 @@ public class Easing
 
         return _end * 0.5f * (value * value * value + 2) + _start;
     }
-    private static float InQuart(float value)
+    public static float InQuart(float value)
     {
         return _end * value * value * value * value + _start;
     }
-    private static float OutQuart(float value)
+    public static float OutQuart(float value)
     {
         value--;
 
         return -_end * (value * value * value * value - 1) + _start;
     }
-    private static float InOutQuart(float value)
+    public static float InOutQuart(float value)
     {
         value /= .5f;
 
@@ -182,17 +182,17 @@ public class Easing
 
         return -_end * 0.5f * (value * value * value * value - 2) + _start;
     }
-    private static float InQuint(float value)
+    public static float InQuint(float value)
     {
         return _end * value * value * value * value * value + _start;
     }
-    private static float OutQuint(float value)
+    public static float OutQuint(float value)
     {
         value--;
 
         return _end * (value * value * value * value * value + 1) + _start;
     }
-    private static float InOutQuint(float value)
+    public static float InOutQuint(float value)
     {
         value /= 0.5f;
 
@@ -205,27 +205,27 @@ public class Easing
 
         return _end * 0.5f * (value * value * value * value * value + 2) + _start;
     }
-    private static float InSine(float value)
+    public static float InSine(float value)
     {
         return -_end * Mathf.Cos(value * (Mathf.PI * 0.5f)) + _end + _start;
     }
-    private static float OutSine(float value)
+    public static float OutSine(float value)
     {
         return _end * Mathf.Sin(value * (Mathf.PI * 0.5f)) + _start;
     }
-    private static float InOutSine(float value)
+    public static float InOutSine(float value)
     {
         return -_end * 0.5f * (Mathf.Cos(Mathf.PI * value) - 1) + _start;
     }
-    private static float InExpo(float value)
+    public static float InExpo(float value)
     {
         return _end * Mathf.Pow(2, 10 * (value - 1)) + _start;
     }
-    private static float OutExpo(float value)
+    public static float OutExpo(float value)
     {
         return _end * (-Mathf.Pow(2, -10 * value) + 1) + _start;
     }
-    private static float InOutExpo(float value)
+    public static float InOutExpo(float value)
     {
         value /= 0.5f;
 
@@ -238,17 +238,17 @@ public class Easing
 
         return _end * 0.5f * (-Mathf.Pow(2, -10 * value) + 2) + _start;
     }
-    private static float InCirc(float value)
+    public static float InCirc(float value)
     {
         return -_end * (Mathf.Sqrt(1 - value * value) - 1) + _start;
     }
-    private static float OutCirc(float value)
+    public static float OutCirc(float value)
     {
         value--;
 
         return _end * Mathf.Sqrt(1 - value * value) + _start;
     }
-    private static float InOutCirc(float value)
+    public static float InOutCirc(float value)
     {
         value /= .5f;
 
@@ -261,13 +261,13 @@ public class Easing
 
         return _end * 0.5f * (Mathf.Sqrt(1 - value * value) + 1) + _start;
     }
-    private static float InBounce(float value)
+    public static float InBounce(float value)
     {
         float d = 1f;
 
         return _end - OutBounce(d - value) + _start;
     }
-    private static float OutBounce(float value)
+    public static float OutBounce(float value)
     {
         value /= 1f;
 
@@ -294,7 +294,7 @@ public class Easing
             return _end * (7.5625f * (value) * value + .984375f) + _start;
         }
     }
-    private static float InOutBounce(float value)
+    public static float InOutBounce(float value)
     {
         float d = 1f;
 
@@ -307,7 +307,7 @@ public class Easing
             return OutBounce(value * 2 - d) * 0.5f + _end * 0.5f + _start;
         }
     }
-    private static float InBack(float value)
+    public static float InBack(float value)
     {
         float s = 1.70158f;
 
@@ -315,7 +315,7 @@ public class Easing
 
         return _end * (value) * value * ((s + 1) * value - s) + _start;
     }
-    private static float OutBack(float value)
+    public static float OutBack(float value)
     {
         float s = 1.70158f;
 
@@ -323,7 +323,7 @@ public class Easing
 
         return _end * ((value) * value * ((s + 1) * value + s) + 1) + _start;
     }
-    private static float InOutBack(float value)
+    public static float InOutBack(float value)
     {
         float s = 1.70158f;
 
@@ -341,7 +341,7 @@ public class Easing
 
         return _end * 0.5f * ((value) * value * (((s) + 1) * value + s) + 2) + _start;
     }
-    private static float InElastic(float value)
+    public static float InElastic(float value)
     {
         float d = 1f;
         float p = d * .3f;
@@ -370,7 +370,7 @@ public class Easing
 
         return -(a * Mathf.Pow(2, 10 * (value -= 1)) * Mathf.Sin((value * d - s) * (2 * Mathf.PI) / p)) + _start;
     }
-    private static float OutElastic(float value)
+    public static float OutElastic(float value)
     {
         float d = 1f;
         float p = d * .3f;
@@ -399,7 +399,7 @@ public class Easing
 
         return (a * Mathf.Pow(2, -10 * value) * Mathf.Sin((value * d - s) * (2 * Mathf.PI) / p) + _end + _start);
     }
-    private static float InOutElastic(float value)
+    public static float InOutElastic(float value)
     {
         float d = 1f;
         float p = d * .3f;
@@ -435,7 +435,7 @@ public class Easing
     }
 
     //Additional
-    private static float AcceleratedFall(float value)
+    public static float AcceleratedFall(float value)
     {
         return Mathf.Lerp(_start, _end, value * value);
     }
