@@ -228,7 +228,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 59f36923dcfdea145ad5243af075a703
-    m_Address: Assets/SO/UserLevel/Levels/8.asset
+    m_Address: 8_Level
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

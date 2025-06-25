@@ -15,6 +15,8 @@ public class Monster_C : BasicMonster
     {
         base.OnEnable();
 
+        speedMultiplier = speedMultiplierDefault;
+
         StartCoroutine(RepeatBehavior());
     }
     private IEnumerator RepeatBehavior()
