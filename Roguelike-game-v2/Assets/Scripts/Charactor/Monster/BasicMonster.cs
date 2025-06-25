@@ -5,6 +5,8 @@ using UnityEngine;
 /// </summary>
 public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 {
+    protected float speedMultiplier = 1;
+
     private const float death_AnimationDuration = 0.5f;
     private const float damagedDuration = 0.15f;
 
@@ -13,6 +15,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     private Color defaultColor;
     private Vector3 direction;
 
+    public float SpeedAmount { get { return stat.moveSpeed * speedMultiplier; } }
     public float DamageAmount { get { return stat.damage * Managers.Game.difficultyScaler.IncreaseStat * Time.deltaTime; } }
     protected override void OnEnable()
     {
@@ -28,7 +31,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
             direction = Calculate.GetDirection(Managers.Game.player.gameObject.transform.position, transform.position);
         }
 
-        rigid.velocity = direction * stat.moveSpeed;
+        rigid.velocity = direction * SpeedAmount;
 
         if(isVisible)
         {

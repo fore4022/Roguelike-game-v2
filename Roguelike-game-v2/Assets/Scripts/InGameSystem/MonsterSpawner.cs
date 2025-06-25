@@ -76,9 +76,9 @@ public class MonsterSpawner : MonoBehaviour
 
         spawnDelay = Managers.Game.difficultyScaler.SpawnDelay;
 
-        foreach (SpawnInformation spawnInfo in spawnInformation.monsterInformation)
+        foreach(SpawnInformation spawnInfo in spawnInformation.monsterInformation)
         {
-            for (int i = 0; i < spawnInfo.spawnProbability; i++)
+            for(int i = 0; i < spawnInfo.spawnProbability; i++)
             {
                 monsterSpawnProbabilityArray[i] = index;
             }
@@ -86,7 +86,7 @@ public class MonsterSpawner : MonoBehaviour
             index++;
         }
 
-        while (Managers.Game.inGameTimer.GetTotalMinutes < totalMinutes + spawnInformation.duration)
+        while(Managers.Game.inGameTimer.GetTotalMinutes < totalMinutes + spawnInformation.duration)
         {
             if(spawnDelay != minimumSpawnDelay)
             {
@@ -95,7 +95,7 @@ public class MonsterSpawner : MonoBehaviour
 
             MonsterSpawn(spawnInformation);
 
-            yield return new WaitForSeconds(0.1f);//spawnDelay
+            yield return new WaitForSeconds(0.175f);//spawnDelay
         }
 
         spawnGroup = null;

@@ -59,6 +59,17 @@ public class Player : MonoBehaviour, IDamageReceiver
     }
     private void Update()
     {
+        if(Managers.Game.inGameTimer != null)
+        {
+            if(Managers.Game.inGameTimer.GetMinutes > 7)
+            {
+                if(die == null)
+                {
+                    die = StartCoroutine(Dieing());
+                }
+            }
+        }
+
         Health = Mathf.Min(Health + stat.healthRegenPerSec * Time.deltaTime, MaxHealth);
     }
     public void TakeDamage(IDamage damage)

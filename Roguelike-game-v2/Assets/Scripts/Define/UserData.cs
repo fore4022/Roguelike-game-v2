@@ -48,6 +48,13 @@ public class UserData
 
         if(info != null)
         {
+            int index = stageClearInfos.IndexOf(info) + 1;
+
+            if(index < stageClearInfos.Count)
+            {
+                stageClearInfos[index].state = StageState.Unlocked;
+            }
+
             info.state = StageState.Cleared;
 
             Managers.UserData.Save();

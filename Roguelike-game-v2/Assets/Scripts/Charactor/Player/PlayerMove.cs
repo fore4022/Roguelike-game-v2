@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 /// InputSystem을 이용하여 구현하였다.
 /// 입력 이벤트에 따라서 CharactorController_UI를 제어한다. 
 /// </summary>
-public class PlayerMove : MonoBehaviour, IMoveable
+public class PlayerMove : MonoBehaviour
 {
     private TouchControls touchControl;
     private CharactorController_UI charactorController;
