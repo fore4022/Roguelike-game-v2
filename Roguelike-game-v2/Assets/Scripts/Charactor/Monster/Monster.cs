@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
@@ -20,7 +21,7 @@ public class Monster : MonoBehaviour, IScriptableData
     protected AudioSource audioSource;
     protected Collider2D col;
 
-    protected const float spawnRadius = 5;
+    protected const float spawnRadius = 15;
 
     protected float health;
     protected float maxHealth;
@@ -28,8 +29,11 @@ public class Monster : MonoBehaviour, IScriptableData
     protected int inGame_Experience;
     protected bool isVisible = false;
 
-    private Plane[] planes = new Plane[6];
+    private const float collectDelay = 20;
 
+    private Plane[] planes = new Plane[6];
+    private Coroutine collect = null;
+    private WaitForSeconds waitCollect = new(collectDelay);
     private bool didInit = false;
 
     public ScriptableObject SO { set { monsterSO = value as MonsterStat_SO; } }
@@ -81,11 +85,23 @@ public class Monster : MonoBehaviour, IScriptableData
         {
             animator.speed = 1;
             isVisible = true;
+
+            if(collect != null)
+            {
+                StopCoroutine(collect);
+
+                collect = null;
+            }
         }
         else
         {
             animator.speed = 0;
             isVisible = false;
+
+            if(collect == null)
+            {
+                collect = StartCoroutine(Collecting());
+            }
         }
     }
     protected virtual void Set()
@@ -134,5 +150,13 @@ public class Monster : MonoBehaviour, IScriptableData
                 transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
             }
         }
+    }
+    private IEnumerator Collecting()
+    {
+        yield return waitCollect;
+
+        collect = null;
+
+        gameObject.SetActive(false);
     }
 }

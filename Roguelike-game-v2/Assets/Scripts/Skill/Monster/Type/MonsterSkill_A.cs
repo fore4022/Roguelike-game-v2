@@ -19,7 +19,7 @@ public class MonsterSkill_A : MonsterSkillBase
             damageReceiver.TakeDamage(this);
         }
 
-        Managers.Game.objectPool.DisableObject(gameObject);
+        gameObject.SetActive(false);
     }
     protected override void SetActive(bool isActive)
     {

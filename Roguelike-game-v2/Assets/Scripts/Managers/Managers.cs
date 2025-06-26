@@ -47,17 +47,17 @@ public class Managers : MonoBehaviour
     }
     private void OnApplicationFocus(bool focus)
     {
-        if(Scene.CurrentSceneName.Equals(SceneName.InGame.ToString()))
+        if (Scene.CurrentSceneName.Equals(SceneName.InGame.ToString()))
         {
-            if(!game.IsGameOver)
+            if (!game.IsGameOver)
             {
-                if(focus)
+                if (focus)
                 {
                     UserData.Save();
                 }
                 else
                 {
-                    if(game.IsPlaying)
+                    if (game.IsPlaying)
                     {
                         Time.timeScale = 0;
 

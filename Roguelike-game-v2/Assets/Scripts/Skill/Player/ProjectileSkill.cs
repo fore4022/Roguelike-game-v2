@@ -8,7 +8,7 @@ public class ProjectileSkill : Skill
     private const float collectDelay = 3;
 
     private Plane[] planes = new Plane[6];
-    private Coroutine collect;
+    private Coroutine collect = null;
     private WaitForSeconds delay = new(collectDelay);
 
     protected void FixedUpdate()
@@ -35,13 +35,16 @@ public class ProjectileSkill : Skill
         }
         else
         {
-            collect = StartCoroutine(Collecting());
+            if(collect == null)
+            {
+                collect = StartCoroutine(Collecting());
+            }
         }
     }
     private IEnumerator Collecting()
     {
         yield return delay;
 
-        baseCast = null;
+        collect = baseCast = null;
     }
 }

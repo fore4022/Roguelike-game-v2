@@ -39,7 +39,7 @@ public class MonsterSkill_B : MonsterSkillBase, IFakeShadowSource
             damageReceiver.TakeDamage(this);
         }
 
-        Managers.Game.objectPool.DisableObject(gameObject);
+        gameObject.SetActive(false);
     }
     private void OnDisable()
     {
@@ -70,6 +70,6 @@ public class MonsterSkill_B : MonsterSkillBase, IFakeShadowSource
 
         yield return new WaitForSeconds(preActionDelay);
 
-        Managers.Game.objectPool.DisableObject(gameObject);
+        gameObject.SetActive(false);
     }
 }

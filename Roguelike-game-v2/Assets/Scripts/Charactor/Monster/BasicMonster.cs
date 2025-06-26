@@ -32,15 +32,21 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     }
     public void OnMove()
     {
+        rigid.velocity = direction * SpeedAmount;
+    }
+    protected virtual void SetDirection()
+    {
         if(!Managers.Game.IsGameOver)
         {
             if(canSwitchDirection)
             {
                 direction = Calculate.GetDirection(Managers.Game.player.gameObject.transform.position, transform.position);
             }
+            else
+            {
+                return;
+            }
         }
-
-        rigid.velocity = direction * SpeedAmount;
     }
     protected virtual void Damaged()
     {
@@ -102,6 +108,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
                 changeDirection();
             }
 
+            SetDirection();
             OnMove();
 
             yield return null;
@@ -129,6 +136,6 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 
         render.color = defaultColor;
 
-        Managers.Game.objectPool.DisableObject(gameObject);
+        gameObject.SetActive(false);
     }
 }

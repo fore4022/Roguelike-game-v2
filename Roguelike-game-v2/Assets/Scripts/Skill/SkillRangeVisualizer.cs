@@ -21,6 +21,6 @@ public class SkillRangeVisualizer : MonoBehaviour
     {
         yield return new WaitUntil(() => _animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1);
 
-        Managers.Game.objectPool.DisableObject(gameObject);
+        gameObject.SetActive(false);
     }
 }

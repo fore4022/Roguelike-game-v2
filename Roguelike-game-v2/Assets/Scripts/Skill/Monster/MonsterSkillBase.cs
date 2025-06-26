@@ -116,7 +116,7 @@ public abstract class MonsterSkillBase : MonoBehaviour, IDamage
     {
         yield return delay;
 
-        Managers.Game.objectPool.DisableObject(gameObject);
+        gameObject.SetActive(false);
     }
     protected abstract void Enter(GameObject go);
     protected abstract void Enable();

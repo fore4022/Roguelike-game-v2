@@ -32,10 +32,6 @@ public class ObjectPool
     {
         GetGameObject(prefabName).SetActive(true);
     }
-    public void DisableObject(GameObject prefab)
-    {
-        prefab.SetActive(false);
-    }
     public GameObject GetGameObject(string prefabName)
     {
         foreach(GameObject instance in poolingObjects[prefabName])

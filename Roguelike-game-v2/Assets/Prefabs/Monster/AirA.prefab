@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5138851939805840734}
   - component: {fileID: 183888476796134946}
   - component: {fileID: 8568097086123279627}
-  - component: {fileID: 2015756042043677595}
   - component: {fileID: 137643241594699132}
   - component: {fileID: 6024307346013167402}
+  - component: {fileID: -6368712278083765315}
   m_Layer: 10
   m_Name: AirA
   m_TagString: Monster
@@ -137,18 +137,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2015756042043677595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1228262649379594625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 852098dca7ae9034aa8dde4f944ef22e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &137643241594699132
 AudioSource:
   m_ObjectHideFlags: 0
@@ -280,3 +268,16 @@ CapsuleCollider2D:
   m_Offset: {x: 0.025, y: 0}
   m_Size: {x: 0.35, y: 0.475}
   m_Direction: 0
+--- !u!114 &-6368712278083765315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228262649379594625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dcbb33fe9fac1049b4eee1b0146a11a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooltime: 3

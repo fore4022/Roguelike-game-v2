@@ -119,7 +119,7 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
 
         yield return new WaitUntil(() => baseCast == null);
 
-        Managers.Game.objectPool.DisableObject(gameObject);
+        gameObject.SetActive(false);
     }
     private IEnumerator BaseCasting()
     {

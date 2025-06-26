@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63b01c0525c8b3343a197328e78fcf97, type: 3}
+  m_Script: {fileID: 11500000, guid: c4f064bec11f569408bc987706938bac, type: 3}
   m_Name: AirA
   m_EditorClassIdentifier: 
   stat:
@@ -17,7 +17,8 @@ MonoBehaviour:
     damage: 1.6
     moveSpeed: 0.95
     healthRegenPerSec: 0
-  extraObject: {fileID: 0}
   user_Experience: 1
   inGame_Experience: 1
-  hasExtraObject: 0
+  extraObject: {fileID: 3786313858373033599, guid: 19c7787e8f61a0742a6a051f74d1b11b, type: 3}
+  visualizer: {fileID: 0}
+  hasExtraObject: 1

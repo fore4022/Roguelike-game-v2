@@ -1,18 +1,56 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-public class Monster_E : MonoBehaviour
+public class Monster_E : Monster_WithObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private float cooltime = 3;
 
-    // Update is called once per frame
-    void Update()
+    private Coroutine behaviour;
+    private WaitForSeconds delay;
+    private string skillKey;
+
+    protected override void OnEnable()
     {
-        
+        base.OnEnable();
+
+        behaviour = StartCoroutine(RepeatBehaviour());
+
+        SetDirection();
+    }
+    protected override void Init()
+    {
+        delay = new(cooltime);
+        skillKey = monsterSO.extraObject.name;
+
+        base.Init();
+    }
+    protected override void SetDirection()
+    {
+        base.SetDirection();
+
+        canSwitchDirection = false;
+    }
+    protected override void Die()
+    {
+        base.Die();
+
+        StopCoroutine(behaviour);
+    }
+    private IEnumerator RepeatBehaviour()
+    {
+        GameObject skill;
+
+        while(true)
+        {
+            yield return delay;
+
+            if((Managers.Game.player.transform.position - transform.position).magnitude <= Util.CameraHeight / 2)
+            {
+                skill = Managers.Game.objectPool.GetGameObject(skillKey);
+                skill.transform.position = transform.position;
+
+                skill.SetActive(true);
+            }
+        }
     }
 }
