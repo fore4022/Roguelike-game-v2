@@ -39,7 +39,7 @@ public class Monster_B : Monster_WithObject
         {
             yield return delay;
 
-            if(isVisible)
+            if((Managers.Game.player.transform.position - transform.position).magnitude <= Util.CameraHeight / 2)
             {
                 go = Managers.Game.objectPool.GetGameObject(visualizerKey);
                 position = go.transform.position = Managers.Game.player.transform.position + new Vector3(0, 1 / Managers.Game.player.transform.localScale.x);

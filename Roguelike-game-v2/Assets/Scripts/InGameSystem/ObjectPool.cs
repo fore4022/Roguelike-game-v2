@@ -175,7 +175,7 @@ public class ObjectPool
                 Monster monster = GetGameObject(originalKey).GetComponent<Monster>();
                 MonsterSkillBase skillBaase;
 
-                foreach (GameObject go in array)
+                foreach(GameObject go in array)
                 {
                     skillBaase = go.GetComponent<MonsterSkillBase>();
 

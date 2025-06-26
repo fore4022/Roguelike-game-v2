@@ -35,7 +35,7 @@ public class Monster_D : BasicMonster
 
             canSwitchDirection = false;
 
-            while (totalTime != dashDuration)
+            while(totalTime != dashDuration)
             {
                 totalTime += Time.deltaTime;
 

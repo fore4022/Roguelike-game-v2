@@ -36,7 +36,7 @@ public class Monster_A : Monster_WithObject
         {
             yield return delay;
 
-            if(isVisible)
+            if((Managers.Game.player.transform.position - transform.position).magnitude <= Util.CameraHeight / 2)
             {
                 skill = Managers.Game.objectPool.GetGameObject(skillKey);
                 skill.transform.position = transform.position;

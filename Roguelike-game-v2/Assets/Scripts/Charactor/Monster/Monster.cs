@@ -60,9 +60,6 @@ public class Monster : MonoBehaviour, IScriptableData
         {
             Set();
         }
-
-        SetPosition();
-        changeDirection();
     }
     private void Update()
     {

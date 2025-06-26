@@ -24,6 +24,9 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     {
         base.OnEnable();
 
+        SetPosition();
+        changeDirection();
+
         render.color = defaultColor;
         moveCoroutine = StartCoroutine(Moving());
     }
