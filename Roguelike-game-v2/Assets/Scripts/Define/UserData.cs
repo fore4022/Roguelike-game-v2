@@ -52,7 +52,10 @@ public class UserData
 
             if(index < stageClearInfos.Count)
             {
-                stageClearInfos[index].state = StageState.Unlocked;
+                if(stageClearInfos[index].state == StageState.Locked)
+                {
+                    stageClearInfos[index].state = StageState.Unlocked;
+                }
             }
 
             info.state = StageState.Cleared;

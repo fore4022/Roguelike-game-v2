@@ -1,56 +1,44 @@
 using System.Collections;
 using UnityEngine;
-public class Monster_E : Monster_WithObject
+public class Monster_E : BasicMonster
 {
     [SerializeField]
-    private float cooltime = 3;
-
-    private Coroutine behaviour;
-    private WaitForSeconds delay;
-    private string skillKey;
+    private float rushSpeed = 3;
+    [SerializeField]
+    private float rushCastingTime = 0.75f;
 
     protected override void OnEnable()
     {
         base.OnEnable();
 
-        behaviour = StartCoroutine(RepeatBehaviour());
+        speedMultiplier = speedMultiplierDefault;
+        canSwitchDirection = true;
 
-        SetDirection();
+        StartCoroutine(RepeatBehavior());
     }
-    protected override void Init()
+    private IEnumerator RepeatBehavior()
     {
-        delay = new(cooltime);
-        skillKey = monsterSO.extraObject.name;
+        yield return new WaitUntil(() => isVisible);
 
-        base.Init();
-    }
-    protected override void SetDirection()
-    {
-        base.SetDirection();
+        yield return new WaitUntil(() => (Managers.Game.player.transform.position - transform.position).magnitude <= Util.CameraWidth / 2);
 
-        canSwitchDirection = false;
-    }
-    protected override void Die()
-    {
-        base.Die();
+        float totalTime = 0;
 
-        StopCoroutine(behaviour);
-    }
-    private IEnumerator RepeatBehaviour()
-    {
-        GameObject skill;
-
-        while(true)
+        while(totalTime != rushCastingTime)
         {
-            yield return delay;
+            totalTime += Time.deltaTime;
 
-            if((Managers.Game.player.transform.position - transform.position).magnitude <= Util.CameraHeight / 2)
+            if(totalTime > rushCastingTime)
             {
-                skill = Managers.Game.objectPool.GetGameObject(skillKey);
-                skill.transform.position = transform.position;
-
-                skill.SetActive(true);
+                totalTime = rushCastingTime;
             }
+
+            speedMultiplier = Mathf.Lerp(0, speedMultiplierDefault, totalTime / rushCastingTime);
+
+            yield return null;
         }
+
+        speedMultiplier = rushSpeed;
+        canSwitchDirection = false;
     }
 }

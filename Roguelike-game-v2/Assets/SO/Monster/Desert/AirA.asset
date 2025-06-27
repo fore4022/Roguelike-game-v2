@@ -21,4 +21,4 @@ MonoBehaviour:
   inGame_Experience: 1
   extraObject: {fileID: 3786313858373033599, guid: 19c7787e8f61a0742a6a051f74d1b11b, type: 3}
   visualizer: {fileID: 0}
-  hasExtraObject: 1
+  hasExtraObject: 0

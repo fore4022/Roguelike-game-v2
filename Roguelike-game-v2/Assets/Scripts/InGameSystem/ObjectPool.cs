@@ -105,12 +105,18 @@ public class ObjectPool
                     {
                         if(exceptionMonsterStatSO.extraObject != null)
                         {
-                            Create_Additional(exceptionMonsterStatSO.extraObject, key, defaultObjectCount);
+                            if(!poolingObjects.ContainsKey(exceptionMonsterStatSO.extraObject.name))
+                            {
+                                Create_Additional(exceptionMonsterStatSO.extraObject, key, defaultObjectCount);
+                            }
                         }
 
                         if(exceptionMonsterStatSO.visualizer != null)
                         {
-                            Create_Additional(exceptionMonsterStatSO.visualizer, null, defaultObjectCount);
+                            if(!poolingObjects.ContainsKey(exceptionMonsterStatSO.visualizer.name))
+                            {
+                                Create_Additional(exceptionMonsterStatSO.visualizer, null, defaultObjectCount);
+                            }
                         }
                     }
                     break;
