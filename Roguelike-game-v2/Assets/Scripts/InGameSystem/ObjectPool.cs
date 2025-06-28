@@ -28,11 +28,15 @@ public class ObjectPool
     public int ScriptableObjectsCount { get { return scriptableObjects.Count; } }
     public int PoolingObjectsCount { get { return poolingObjects.Count; } }
     private int MaxWorkPerSec { get { return Mathf.Max(maxWorkPerSec / coroutineCount, 1); } }
-    public void ActiveObject(string prefabName)
+    public GameObject ActiveObject(string prefabName)
     {
-        GetGameObject(prefabName).SetActive(true);
+        GameObject go = GetObject(prefabName);
+
+        go.SetActive(true);
+
+        return go;
     }
-    public GameObject GetGameObject(string prefabName)
+    public GameObject GetObject(string prefabName)
     {
         foreach(GameObject instance in poolingObjects[prefabName])
         {
@@ -174,7 +178,7 @@ public class ObjectPool
         {
             if(originalKey != null)
             {
-                Monster monster = GetGameObject(originalKey).GetComponent<Monster>();
+                Monster monster = GetObject(originalKey).GetComponent<Monster>();
                 MonsterSkillBase skillBaase;
 
                 foreach(GameObject go in array)

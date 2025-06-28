@@ -8,7 +8,7 @@ public class PlayerData
 
     private PlayerInformation info = null;
 
-    private const float baseExperience = 999999999;//5;
+    private const float baseExperience = 5;
 
     private Coroutine levelCalculation = null;
     private int increaseValue;
@@ -34,7 +34,7 @@ public class PlayerData
         {
             info.level = value;
             increaseValue = value;
-
+            
             levelUpdate?.Invoke();
         }
     }
@@ -67,6 +67,8 @@ public class PlayerData
 
                 levelCalculation = Util.GetMonoBehaviour().StartCoroutine(WaitLevelCalculation());
             }
+
+            experienceUpdate?.Invoke();
         }
     }
     public float ExperienceForLevelUp
@@ -81,7 +83,7 @@ public class PlayerData
     }
     private void SetRequiredExperience()
     {
-        info.experienceForLevelUp += 0;//ExperienceForLevelUp * MathF.Max(0.85f - 0.055f * (Level - 1), 0.185f);
+        info.experienceForLevelUp += ExperienceForLevelUp * MathF.Max(0.85f - 0.055f * (Level - 1), 0.185f);
     }
     public void SetLevel()
     {

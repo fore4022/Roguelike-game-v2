@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8581168200146417438}
   - component: {fileID: 6669494556174381950}
   - component: {fileID: 4358384064426307545}
-  - component: {fileID: 2923384855588590182}
   - component: {fileID: 9011654240778051710}
   - component: {fileID: 6225862159510585915}
+  - component: {fileID: -6691946204538039613}
   m_Layer: 10
   m_Name: SlimeSquareH
   m_TagString: Monster
@@ -137,18 +137,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2923384855588590182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4087729720634512069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 852098dca7ae9034aa8dde4f944ef22e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &9011654240778051710
 AudioSource:
   m_ObjectHideFlags: 0
@@ -280,3 +268,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.0275}
   serializedVersion: 2
   m_Radius: 0.25
+--- !u!114 &-6691946204538039613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4087729720634512069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 746b1d2f6105d474888c790727ed7f89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splitScale: 0.5

@@ -32,7 +32,7 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 25aa49d123e549d41a88c3059878bed6
+  - m_GUID: 3badb0b2c63fbd240b9f0d852dc41e23
     m_Address: Assets/SO/Monster/Desert/SlimeSquareH.asset
     m_ReadOnly: 0
     m_SerializedLabels: []

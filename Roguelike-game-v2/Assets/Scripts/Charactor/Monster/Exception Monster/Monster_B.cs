@@ -41,14 +41,14 @@ public class Monster_B : Monster_WithObject
 
             if((Managers.Game.player.transform.position - transform.position).magnitude <= Util.CameraHeight / 2)
             {
-                go = Managers.Game.objectPool.GetGameObject(visualizerKey);
+                go = Managers.Game.objectPool.GetObject(visualizerKey);
                 position = go.transform.position = Managers.Game.player.transform.position + new Vector3(0, 1 / Managers.Game.player.transform.localScale.x);
 
                 go.SetActive(true);
 
                 yield return new WaitUntil(() => !go.activeSelf);
 
-                go = Managers.Game.objectPool.GetGameObject(skillKey);
+                go = Managers.Game.objectPool.GetObject(skillKey);
                 go.transform.position = position;
 
                 go.SetActive(true);

@@ -38,7 +38,7 @@ public class Monster_A : Monster_WithObject
 
             if((Managers.Game.player.transform.position - transform.position).magnitude <= Util.CameraHeight / 2)
             {
-                skill = Managers.Game.objectPool.GetGameObject(skillKey);
+                skill = Managers.Game.objectPool.GetObject(skillKey);
                 skill.transform.position = transform.position;
 
                 skill.SetActive(true);
