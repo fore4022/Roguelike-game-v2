@@ -1,5 +1,4 @@
 using UnityEngine;
-public class Monster_F : BasicMonster
 public class Monster_F : Monster_WithObject
 {
     [SerializeField, Min(0.1f)]
@@ -27,16 +26,9 @@ public class Monster_F : Monster_WithObject
             {
                 go = Managers.Game.objectPool.ActiveObject(visualizerKey);
 
-                //go.transform.localScale = 
+                go.transform.localScale = new Vector2(splitScale, splitScale);
+                go.transform.position = transform.position;
             }
-
-            GameObject go1 = Managers.Game.objectPool.ActiveObject(visualizerKey);
-            GameObject go2 = Managers.Game.objectPool.ActiveObject(visualizerKey);
-
-            go1.transform.localScale = go2.transform.localScale = Calculate.GetVector(splitScale);
-            go1.transform.position = go2.transform.position = transform.position;
-
-            transform.localScale = Calculate.GetVector(defaultScale);
         }
 
         base.Die();

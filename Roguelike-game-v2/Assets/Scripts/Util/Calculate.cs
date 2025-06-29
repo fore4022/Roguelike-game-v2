@@ -46,10 +46,6 @@ public static class Calculate
             return (targetPosition - position);
         }
     }
-    public static Vector3 GetVector(float vec)
-    {
-        return new Vector3(vec, vec, 0);
-    }
     public static Vector3 GetRandomDirection()
     {
         return new Vector3(Random.Range(-360, 361), Random.Range(-360, 361), 0).normalized;

@@ -30,7 +30,7 @@ public class MonsterSkill_B : MonsterSkillBase, IFakeShadowSource
 
         scaleValue = transform.localScale.x;
         defaultColor = render.color;
-        initialScale = Calculate.GetVector(scaleValue / 4 * 3);
+        initialScale = new Vector2(scaleValue / 4 * 3, scaleValue / 4 * 3);
     }
     protected override void Enter(GameObject go)
     {

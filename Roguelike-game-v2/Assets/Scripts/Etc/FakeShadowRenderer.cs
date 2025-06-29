@@ -47,7 +47,7 @@ public class FakeShadowRenderer : MonoBehaviour
     }
     private void AdjustmentScale()
     {
-        transform.localScale = Calculate.GetVector(0.65f + value / 2);
+        transform.localScale = new Vector3(0.65f + value / 2, 0.65f + value / 2);
     }
     private void AdjustmentAlpha()
     {

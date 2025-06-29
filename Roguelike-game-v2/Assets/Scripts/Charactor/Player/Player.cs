@@ -83,7 +83,7 @@ public class Player : MonoBehaviour, IDamageReceiver
     }
     public void Reset()
     {
-        transform.localScale = Calculate.GetVector(3);
+        transform.localScale = new Vector2(3, 3);
         transform.rotation = Quaternion.Euler(Vector3.zero);
         death = false;
 

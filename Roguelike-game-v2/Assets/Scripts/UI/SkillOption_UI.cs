@@ -50,7 +50,7 @@ public class SkillOption_UI : Button_2
         }
         else
         {
-            imageRect.localScale = Calculate.GetVector(1);
+            imageRect.localScale = new Vector2(1, 1);
         }
         
         textList[0].text = $"{info.data.type}";

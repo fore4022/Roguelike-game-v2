@@ -167,11 +167,11 @@ public static class Tweening
     // Scale
     private static void Scale_tf(Transform transform, NumericValue initial, NumericValue target, float value)
     {
-        transform.localScale = Calculate.GetVector(Mathf.Lerp(initial.Float, target.Float, value));
+        transform.localScale = new Vector2(Mathf.Lerp(initial.Float, target.Float, value), Mathf.Lerp(initial.Float, target.Float, value));
     }
     private static void Scale_rt(Transform transform, NumericValue initial, NumericValue target, float value)
     {
-        (transform as RectTransform).localScale = Calculate.GetVector(Mathf.Lerp(initial.Float, target.Float, value));
+        (transform as RectTransform).localScale = new Vector2(Mathf.Lerp(initial.Float, target.Float, value), Mathf.Lerp(initial.Float, target.Float, value));
     }
 
     // Position
