@@ -30,7 +30,7 @@ public class MonsterSkill_B : MonsterSkillBase, IFakeShadowSource
 
         scaleValue = transform.localScale.x;
         defaultColor = render.color;
-        initialScale = new Vector2(scaleValue / 4 * 3, scaleValue / 4 * 3);
+        initialScale = new Vector2(scaleValue, scaleValue);
     }
     protected override void Enter(GameObject go)
     {
@@ -59,7 +59,7 @@ public class MonsterSkill_B : MonsterSkillBase, IFakeShadowSource
 
         SetActive(true);
 
-        transform.SetScale(scaleValue, duration)
+        transform.SetScale(scaleValue / 7 * 3, duration)
             .SetPosition(targetPosition, duration, Ease.AcceleratedFall);
 
         StartCoroutine(ColorLerp.ChangeColor(render, Color.white, defaultColor, duration));

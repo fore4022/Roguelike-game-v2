@@ -21,7 +21,7 @@ public class Monster : MonoBehaviour, IScriptableData
     protected AudioSource audioSource;
     protected Collider2D col;
 
-    protected const float spawnRadius = 15;
+    protected const float spawnRadius = 4f;
 
     protected float health;
     protected float maxHealth;
