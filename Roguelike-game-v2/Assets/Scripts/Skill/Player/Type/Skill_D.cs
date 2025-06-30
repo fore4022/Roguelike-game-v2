@@ -14,7 +14,7 @@ public class Skill_D : Skill, ISkill
     public bool Finished { get { return animator.GetCurrentAnimatorStateInfo(0).IsName(animationName); } }
     public void Set()
     {
-        transform.position = Calculate.GetRandomVector();
+        transform.position = EnemyDetection.GetRandomEnemyPosition();
 
         animator.Play("default", 0);
 
@@ -22,7 +22,7 @@ public class Skill_D : Skill, ISkill
     }
     public void SetCollider()
     {
-        defaultCollider.enabled = false;
+        defaultCollider.enabled = !defaultCollider.enabled;
     }
     public void Enter(GameObject go)
     {

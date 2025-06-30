@@ -11,7 +11,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     protected float speedMultiplier = speedMultiplierDefault;
     protected bool canSwitchDirection = true;
 
-    private const float death_AnimationDuration = 0.5f;
+    private const float death_AnimationDuration = 0.3f;
     private const float damagedDuration = 0.15f;
 
     private Coroutine moveCoroutine = null;
@@ -54,10 +54,6 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     }
     protected virtual void Die()
     {
-        Managers.Game.inGameData.player.Experience += user_Experience;
-        Managers.Game.UserExp += inGame_Experience;
-        speedMultiplier = speedMultiplierDefault;
-
         StopCoroutine(moveCoroutine);
 
         rigid.simulated = false;
@@ -129,6 +125,10 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
         StartCoroutine(ColorLerp.ChangeColor(render, Color.black, defaultColor, death_AnimationDuration / 2));
 
         yield return new WaitForSeconds(death_AnimationDuration / 2);
+
+        Managers.Game.inGameData.player.Experience += user_Experience;
+        Managers.Game.UserExp += inGame_Experience;
+        speedMultiplier = speedMultiplierDefault;
 
         StartCoroutine(ColorLerp.ChangeAlpha(render, 0, render.color.a, death_AnimationDuration));
 

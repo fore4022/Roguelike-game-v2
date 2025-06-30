@@ -23,12 +23,11 @@ public static class Calculate
     }
     public static Vector3 GetDirection(Vector3 targetPosition)
     {
-        if (targetPosition == null)
-        {
-            return GetRandomDirection();
-        }
-
         return (targetPosition - Managers.Game.player.gameObject.transform.position).normalized;
+    }
+    public static Vector3 GetDirection(Vector3 targetPosition, Vector3 currentPosition)
+    {
+        return (targetPosition - currentPosition).normalized;
     }
     public static Vector3 GetDirection(Vector3 targetPosition, Vector3 position, bool isNormalized = true)
     {
