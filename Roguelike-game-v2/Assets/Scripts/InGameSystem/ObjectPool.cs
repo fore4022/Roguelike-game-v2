@@ -4,8 +4,8 @@ using System.Linq;
 using UnityEngine;
 public class ObjectPool
 {
-    public Dictionary<string, ScriptableObject> scriptableObjects = new();
-    private Dictionary<string, List<GameObject>> poolingObjects = new();
+    private Dictionary<string, ScriptableObject> scriptableObjects = new();
+    private Dictionary<string, List<PoolingObject>> poolingObjects = new();
 
     private Transform root;
 
@@ -36,13 +36,23 @@ public class ObjectPool
 
         return go;
     }
-    public GameObject GetObject(string prefabName)
+    public void DisableObject(GameObject prefab, string key)
     {
-        foreach(GameObject instance in poolingObjects[prefabName])
+        poolingObjects.TryGetValue(key, out List<PoolingObject> objs);
+
+        objs.FirstOrDefault(o => o.go == prefab).isUsed = false;
+
+        prefab.SetActive(false);
+    }
+    public GameObject GetObject(string prefabName, bool isUsed = true)
+    {
+        foreach(PoolingObject obj in poolingObjects[prefabName])
         {
-            if(!instance.activeSelf)
+            if(!obj.go.activeSelf && !obj.isUsed)
             {
-                return instance;
+                obj.isUsed = true;
+
+                return obj.go;
             }
         }
 
@@ -59,13 +69,18 @@ public class ObjectPool
     }
     public void ReSetting()
     {
-        foreach(List<GameObject> objList in poolingObjects.Values)
+        foreach(List<PoolingObject> objList in poolingObjects.Values)
         {
-            foreach(GameObject obj in objList)
+            foreach(PoolingObject obj in objList)
             {
-                if(obj.activeSelf)
+                if(obj.go.activeSelf)
                 {
-                    obj.SetActive(false);
+                    obj.go.SetActive(false);
+                }
+
+                if(obj.isUsed)
+                {
+                    obj.isUsed = false;
                 }
             }
         }
@@ -165,16 +180,17 @@ public class ObjectPool
             yield return null;
         }
 
-        if(poolingObjects.ContainsKey(key))
+        if(!poolingObjects.ContainsKey(key))
         {
-            poolingObjects[key].AddRange(array);
-        }
-        else
-        {
-            poolingObjects.Add(key, array.ToList());
+            poolingObjects.Add(key, new());
         }
 
-        if(type == ScriptableObjectType.None)
+        for(int i = 0; i < array.Count(); i++)
+        {
+            poolingObjects[key].Add(new(array[i]));
+        }
+
+        if (type == ScriptableObjectType.None)
         {
             if(originalKey != null)
             {

@@ -136,6 +136,6 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 
         render.color = defaultColor;
 
-        gameObject.SetActive(false);
+        Managers.Game.objectPool.DisableObject(gameObject, monsterSO.name);
     }
 }
