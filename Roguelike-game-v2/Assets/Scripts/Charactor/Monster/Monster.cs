@@ -75,10 +75,6 @@ public class Monster : MonoBehaviour, IScriptableData
     }
     public float Damage()
     {
-        Debug.Log(didInit);
-        Debug.Log(gameObject.activeSelf);
-        Debug.Log(stat);
-
         return stat.damage * Managers.Game.difficultyScaler.IncreaseStat;
     }
     private void IsInvisible()
@@ -138,8 +134,6 @@ public class Monster : MonoBehaviour, IScriptableData
         float y = Mathf.Sin(randomValue) * cameraHeight;
 
         transform.position = new Vector2(x, y) + (Vector2)Managers.Game.player.gameObject.transform.position;
-        render.enabled = true;
-        rigid.simulated = true;
     }
     protected virtual void changeDirection()
     {

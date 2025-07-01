@@ -27,8 +27,10 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
         SetPosition();
         changeDirection();
 
-        render.color = defaultColor;
         moveCoroutine = StartCoroutine(Moving());
+        render.color = defaultColor;
+        render.enabled = true;
+        rigid.simulated = true;
     }
     public void OnMove()
     {
