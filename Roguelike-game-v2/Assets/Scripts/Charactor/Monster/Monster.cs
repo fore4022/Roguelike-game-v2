@@ -75,6 +75,10 @@ public class Monster : MonoBehaviour, IScriptableData
     }
     public float Damage()
     {
+        Debug.Log(didInit);
+        Debug.Log(gameObject.activeSelf);
+        Debug.Log(stat);
+
         return stat.damage * Managers.Game.difficultyScaler.IncreaseStat;
     }
     private void IsInvisible()

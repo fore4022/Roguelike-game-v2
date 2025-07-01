@@ -26,7 +26,8 @@ public abstract class MonsterSkillBase : MonoBehaviour, IDamage
     private WaitForSeconds delay = new(collectDelay);
     
     public Func<float> Damage { get { return damage; } set { damage = value; } }
-    public float DamageAmount { get { return damage.Invoke(); } }
+    public float DamageAmount { get { Debug.Log(damage.Invoke());
+            return damage.Invoke(); } }
     protected void Awake()
     {
         gameObject.SetActive(false);

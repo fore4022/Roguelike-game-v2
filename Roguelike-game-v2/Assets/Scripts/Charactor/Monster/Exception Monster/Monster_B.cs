@@ -32,7 +32,7 @@ public class Monster_B : Monster_WithObject
     }
     private IEnumerator RepeatBehavior()
     {
-        GameObject go;
+        PoolingObject go;
         Vector3 position;
 
         while(true)

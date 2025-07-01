@@ -20,14 +20,16 @@ public class Monster_F : Monster_WithObject
     {
         if(transform.localScale.x != splitScale)
         {
-            GameObject go;
+            PoolingObject go;
 
             for(int i = 0; i < splitInstanceCount; i++)
             {
-                go = Managers.Game.objectPool.ActiveObject(visualizerKey);
+                go = Managers.Game.objectPool.GetObject(visualizerKey);
 
                 go.transform.localScale = new Vector2(splitScale, splitScale);
                 go.transform.position = transform.position;
+
+                go.SetActive(true);
             }
         }
 

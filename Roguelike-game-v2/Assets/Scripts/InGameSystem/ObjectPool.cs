@@ -30,7 +30,7 @@ public class ObjectPool
     private int MaxWorkPerSec { get { return Mathf.Max(maxWorkPerSec / coroutineCount, 1); } }
     public GameObject ActiveObject(string prefabName)
     {
-        GameObject go = GetObject(prefabName);
+        GameObject go = GetObject(prefabName, false).go;
 
         go.SetActive(true);
 
@@ -44,15 +44,18 @@ public class ObjectPool
 
         prefab.SetActive(false);
     }
-    public GameObject GetObject(string prefabName, bool isUsed = true)
+    public PoolingObject GetObject(string prefabName, bool isUsed = true)
     {
         foreach(PoolingObject obj in poolingObjects[prefabName])
         {
             if(!obj.go.activeSelf && !obj.isUsed)
             {
-                obj.isUsed = true;
+                if(isUsed)
+                {
+                    obj.isUsed = true;
+                }
 
-                return obj.go;
+                return obj;
             }
         }
 
@@ -194,14 +197,13 @@ public class ObjectPool
         {
             if(originalKey != null)
             {
-                Monster monster = GetObject(originalKey).GetComponent<Monster>();
-                MonsterSkillBase skillBaase;
+                Monster monster = GetObject(originalKey, false).GetComponent<Monster>();
+                MonsterSkillBase skillBase;
 
                 foreach(GameObject go in array)
                 {
-                    skillBaase = go.GetComponent<MonsterSkillBase>();
-
-                    skillBaase.Damage += monster.Damage;
+                    skillBase = go.GetComponent<MonsterSkillBase>();
+                    skillBase.Damage += monster.Damage;
                 }
             }
         }
