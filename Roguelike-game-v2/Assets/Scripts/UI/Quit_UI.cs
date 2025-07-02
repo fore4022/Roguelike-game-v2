@@ -1,4 +1,4 @@
-public class Quit_UI : Button_1
+public class Quit_UI : Button_A
 {
     protected override void PointerClick()
     {

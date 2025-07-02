@@ -1,6 +1,6 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-public abstract class Button_1 : Button_Default, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
+public abstract class Button_A : Button_Default, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
 {
     protected float minScale = 1f;
     protected float maxScale = 1.075f;

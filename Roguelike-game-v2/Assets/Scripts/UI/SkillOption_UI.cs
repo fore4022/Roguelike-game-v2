@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-public class SkillOption_UI : Button_2
+public class SkillOption_UI : Button_B
 {
     private List<TextMeshProUGUI> textList = new();
     private SkillContext info = null;

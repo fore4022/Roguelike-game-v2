@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-public abstract class Button_2 : Button_Default, IPointerDownHandler, IPointerExitHandler
+public abstract class Button_B : Button_Default, IPointerDownHandler, IPointerExitHandler
 {
     protected Coroutine adjustmentScale = null;
     protected float minScale = 1;

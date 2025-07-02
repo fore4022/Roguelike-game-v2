@@ -125,7 +125,7 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
     {
         yield return new WaitUntil(() => skill.Finished);
 
-        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.975f);
 
         baseCast = null;
         render.enabled = false;
