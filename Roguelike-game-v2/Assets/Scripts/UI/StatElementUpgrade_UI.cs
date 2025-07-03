@@ -1,8 +1,17 @@
 using TMPro;
 using UnityEngine;
+[RequireComponent(typeof(AudioSource))]
 public class StatElementUpgrade_UI : UserInterface
 {
+    [SerializeField]
+    private AudioClip increaseSound;
+    [SerializeField]
+    private AudioClip decreaseSound;
+    [SerializeField]
+    private AudioClip blockedSound;
+
     public TextMeshProUGUI tmp;
+    public AudioSource audioSource;
     public GameObject inc;
     public GameObject dec;
 
@@ -14,6 +23,10 @@ public class StatElementUpgrade_UI : UserInterface
     public override void SetUserInterface()
     {
         tmp = Util.GetComponentInChildren<TextMeshProUGUI>(transform, true);
+        audioSource = GetComponent<AudioSource>();
+
+        audioSource.playOnAwake = false;
+        audioSource.loop = false;
     }
     public void Set(FileReference file)
     {

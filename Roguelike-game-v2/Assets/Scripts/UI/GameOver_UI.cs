@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+[RequireComponent(typeof(AudioSource))]
 public class GameOver_UI : UserInterface
 {
     private List<TextMeshProUGUI> tmpList;
     private List<Image> imgList;
     private TextMeshProUGUI result;
+    private AudioSource audioSource;
 
     private const string arrow = "->";
     private const float delay = 0.225f;
@@ -18,6 +20,7 @@ public class GameOver_UI : UserInterface
         tmpList = Util.GetComponentsInChildren<TextMeshProUGUI>(Util.GetChildren(transform, 1), true);
         imgList = Util.GetComponentsInChildren<Image>(Util.GetChildren(transform, 1));
         result = Util.GetComponentInChildren<TextMeshProUGUI>(transform);
+        audioSource = GetComponent<AudioSource>();
 
         Managers.UI.Hide<GameOver_UI>();
     }
