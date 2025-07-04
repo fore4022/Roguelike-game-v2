@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-[RequireComponent(typeof(AudioSource))]
 public class Setting_UI : UserInterface
 {
     [SerializeField]
@@ -12,6 +11,14 @@ public class Setting_UI : UserInterface
     private Image _Bgm;
     [SerializeField]
     private Image _Fx;
+    [SerializeField]
+    private AudioClip onToggleSound;
+    [SerializeField]
+    private AudioClip offToggleSound;
+    [SerializeField]
+    private AudioClip confirmSound;
+
+    private AudioSource audioSource;
 
     private const string _sceneName = "InGame";
 
@@ -19,6 +26,7 @@ public class Setting_UI : UserInterface
 
     public override void SetUserInterface()
     {
+        audioSource = transform.parent.GetComponent<AudioSource>();
         _isInGame = Managers.Scene.CurrentSceneName == _sceneName ? true : false;
 
         Managers.UI.Hide<Setting_UI>();
@@ -37,20 +45,24 @@ public class Setting_UI : UserInterface
     {
         Managers.Audio.SetGroup(SoundTypes.BGM);
         BgmUpdate();
+        audioSource.Play();
     }
     public void ToggleSFX()
     {
         Managers.Audio.SetGroup(SoundTypes.FX);
         SfxUpdate();
+        audioSource.Play();
     }
     private void BgmUpdate()
     {
         if(Managers.UserData.data.BGM)
         {
+            audioSource.clip = onToggleSound;
             _Bgm.sprite = _bgmSprite[0];
         }
         else
         {
+            audioSource.clip = offToggleSound;
             _Bgm.sprite = _bgmSprite[1];
         }
     }
@@ -58,10 +70,12 @@ public class Setting_UI : UserInterface
     {
         if(Managers.UserData.data.FX)
         {
+            audioSource.clip = onToggleSound;
             _Fx.sprite = _fxSprite[0];
         }
         else
         {
+            audioSource.clip = offToggleSound;
             _Fx.sprite = _fxSprite[1];
         }
     }
@@ -72,6 +86,9 @@ public class Setting_UI : UserInterface
             Managers.UI.Get<PauseMenu_UI>().ShowIcons();
         }
 
+        audioSource.clip = confirmSound;
+
+        audioSource.Play();
         Managers.UserData.Save();
         Managers.UI.Hide<Setting_UI>();
     }

@@ -48,11 +48,15 @@ public class StatElementUpgrade_UI : UserInterface
             inc.SetActive(true);
         }
 
+        if(sign != 0)
+        {
+            AudioPlay(sign);
+        }
+
         value += sign;
         tmp.text = $"+ {value}";
         Managers.UserData.data.StatPoint -= sign;
 
-        AudioPlay(sign);
         file.SetValue(value);
         Managers.UI.Get<StatUpgrade_UI>().TextUpdate();
 
