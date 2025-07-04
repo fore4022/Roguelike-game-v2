@@ -21,8 +21,11 @@ public abstract class Button_Default : MonoBehaviour
         audioSource.playOnAwake = false;
         audioSource.loop = false;
 
-        button.onClick.AddListener(() => { audioSource.Play(); });
-        button.onClick.AddListener(PointerClick);
+        button.onClick.AddListener(() =>
+        {
+            PointerClick();
+            audioSource.Play();
+        });
     }
     protected abstract void PointerClick();
 }

@@ -6,6 +6,12 @@ public class StatUpgrade_UI : UserInterface
 {
     [SerializeField]
     private Transform statElement_parent;
+    [SerializeField]
+    private AudioClip increaseSound;
+    [SerializeField]
+    private AudioClip decreaseSound;
+    [SerializeField]
+    private AudioClip actionUnavailableSound;
 
     public List<FileReference> files;
     public TextMeshProUGUI statPointText;
@@ -17,6 +23,9 @@ public class StatUpgrade_UI : UserInterface
 
     private bool toggle = false;
 
+    public AudioClip IncreaseSound { get { return increaseSound; } }
+    public AudioClip DecreaseSound { get { return decreaseSound; } }
+    public AudioClip ActionUnavailableSound { get { return actionUnavailableSound; } }
     public override void SetUserInterface()
     {
         statSelection = GetComponent<StatSelection>();

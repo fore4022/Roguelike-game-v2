@@ -3,13 +3,6 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class StatElementUpgrade_UI : UserInterface
 {
-    [SerializeField]
-    private AudioClip increaseSound;
-    [SerializeField]
-    private AudioClip decreaseSound;
-    [SerializeField]
-    private AudioClip blockedSound;
-
     public TextMeshProUGUI tmp;
     public AudioSource audioSource;
     public GameObject inc;
@@ -19,6 +12,8 @@ public class StatElementUpgrade_UI : UserInterface
 
     private const string log1 = "You are lacking stat points.";
     private const string log2 = "Stat points cannot be used.";
+
+    private float value;
 
     public override void SetUserInterface()
     {
@@ -31,26 +26,15 @@ public class StatElementUpgrade_UI : UserInterface
     public void Set(FileReference file)
     {
         this.file = file;
+        value = (float)file.GetValue();
 
         ChangeAmount(0);
     }
     public void ChangeAmount(int sign)
     {
-        int value = (int)file.GetValue();
-
-        if(Managers.UserData.data.StatPoint == 0)
+        if(!LacksStatPoints(sign) || !CanUseStatPoints(sign))
         {
-            if(sign == 1 || (sign == -1 && value == 0))
-            {
-                Managers.UI.ShowAndGet<ToastMessage_UI>().SetText(log1);
-
-                return;
-            }
-        }
-
-        if((value == 0 && sign == -1) || (value == StatSelection.maxLevel && sign == 1))
-        {
-            Managers.UI.ShowAndGet<ToastMessage_UI>().SetText(log2);
+            AudioPlay(0);
 
             return;
         }
@@ -68,6 +52,7 @@ public class StatElementUpgrade_UI : UserInterface
         tmp.text = $"+ {value}";
         Managers.UserData.data.StatPoint -= sign;
 
+        AudioPlay(sign);
         file.SetValue(value);
         Managers.UI.Get<StatUpgrade_UI>().TextUpdate();
 
@@ -79,5 +64,47 @@ public class StatElementUpgrade_UI : UserInterface
         {
             inc.SetActive(false);
         }
+    }
+    private bool LacksStatPoints(int sign)
+    {
+        if(Managers.UserData.data.StatPoint == 0)
+        {
+            if(sign == 1 || (sign == -1 && value == 0))
+            {
+                Managers.UI.ShowAndGet<ToastMessage_UI>().SetText(log1);
+
+                return false;
+            }
+        }
+
+        return true;
+    }
+    private bool CanUseStatPoints(int sign)
+    {
+        if((value == 0 && sign == -1) || (value == StatSelection.maxLevel && sign == 1))
+        {
+            Managers.UI.ShowAndGet<ToastMessage_UI>().SetText(log2);
+
+            return false;
+        }
+
+        return true;
+    }
+    private void AudioPlay(int sign)
+    {
+        if(sign == 0)
+        {
+            audioSource.clip = Managers.UI.Get<StatUpgrade_UI>().ActionUnavailableSound;
+        }
+        else if(sign == 1)
+        {
+            audioSource.clip = Managers.UI.Get<StatUpgrade_UI>().IncreaseSound;
+        }
+        else if(sign == -1)
+        {
+            audioSource.clip = Managers.UI.Get<StatUpgrade_UI>().DecreaseSound;
+        }
+
+        audioSource.Play();
     }
 }

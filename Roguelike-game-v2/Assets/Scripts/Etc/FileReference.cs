@@ -36,11 +36,25 @@ public class FileReference
 
         var field = targetObject.GetType().GetField(fieldName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
 
-        if(field != null && field.FieldType.IsAssignableFrom(value.GetType()))
+        if(field != null && CanConvert(value, field.GetValue(targetObject).GetType()))
         {
             field.SetValue(targetObject, value);
         }
 
+        field.FieldType.IsAssignableFrom(value.GetType());
         SetAction?.Invoke();
+    }
+    private bool CanConvert(object value, Type targetType)
+    {
+        try
+        {
+            var converted = Convert.ChangeType(value, targetType);
+
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
     }
 }
