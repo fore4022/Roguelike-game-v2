@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+[RequireComponent(typeof(AudioSource))]
 public class SkillSelection_UI : UserInterface
 {
     private List<SkillOption_UI> skillOptionList = new();
 
     private GridLayoutGroup gridLayoutGroup = null;
     private Image background;
+    private AudioSource audioSource;
     private GameObject attackOption = null;
 
     private const string path = "SkillOption";
@@ -25,6 +27,7 @@ public class SkillSelection_UI : UserInterface
     {
         gridLayoutGroup = Util.GetComponentInChildren<GridLayoutGroup>(transform);
         background = GetComponent<Image>();
+        audioSource = GetComponent<AudioSource>();
 
         Managers.Game.inGameData.player.levelUpdate += () => Managers.UI.Show<LevelUp_UI>();
 
@@ -106,7 +109,7 @@ public class SkillSelection_UI : UserInterface
         {
             GameObject go = Instantiate(attackOption, trans);
 
-            skillOptionList.Add(go.GetComponent<SkillOption_UI>());
+            skillOptionList.Add(Util.GetComponentInChildren<SkillOption_UI>(go.transform));
 
             go.SetActive(false);
         }

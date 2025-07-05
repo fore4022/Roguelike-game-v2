@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
-[RequireComponent(typeof(AudioSource))]
 public abstract class Button_Default : MonoBehaviour
 {
+    [SerializeField]
+    protected AudioSource audioSource;
+
     protected RectTransform rectTransform;
     protected Button button;
-    protected AudioSource audioSource;
 
     protected virtual void Awake()
     {
@@ -16,11 +17,19 @@ public abstract class Button_Default : MonoBehaviour
     {
         rectTransform = GetComponent<RectTransform>();
         button = GetComponent<Button>();
-        audioSource = GetComponent<AudioSource>();
+        
+        if(audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
 
         audioSource.playOnAwake = false;
         audioSource.loop = false;
 
+        AddButtonEvents();
+    }
+    protected virtual void AddButtonEvents()
+    {
         button.onClick.AddListener(() =>
         {
             PointerClick();
