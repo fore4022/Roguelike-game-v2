@@ -1,12 +1,11 @@
 using UnityEngine;
-public class Pause_UI : Button_A
+public class PauseButton_UI : Button_A
 {
     protected override void PointerClick()
     {
         Time.timeScale = 0;
 
         Managers.UI.Show<PauseMenu_UI>();
-        Managers.UI.Hide<UserInterface>();
     }
     protected override void Init()
     {

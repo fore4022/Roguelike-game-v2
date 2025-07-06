@@ -59,19 +59,12 @@ public class GameOver_UI : UserInterface
     }
     public void ReStart()
     {
-        StartCoroutine(ActiveHeadUpDisplay());
         Managers.Game.ReStart();
     }
     public void GoMain()
     {
         Managers.Game.Clear();
         Managers.Scene.LoadScene(SceneName.Main, false);
-    }
-    private IEnumerator ActiveHeadUpDisplay()
-    {
-        yield return new WaitForSecondsRealtime(SceneLoading_UI.limitTime);
-
-        Managers.UI.Show<HeadUpDisplay_UI>();
     }
     private IEnumerator ResultSequence()
     {

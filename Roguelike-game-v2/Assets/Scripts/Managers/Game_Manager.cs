@@ -43,6 +43,7 @@ public class Game_Manager
         inGameTimer.StartTimer();
         monsterSpawner.StartSpawn();
         inGameData.player.SetLevel();
+        Managers.UI.Show<HeadUpDisplay_UI>();
         Managers.UI.Show<LevelUp_UI>();
     }
     public void ReStart()
@@ -104,6 +105,7 @@ public class Game_Manager
         monsterSpawner.ReStart();
         inGameData.player.SetLevel();
         onStageReset.Invoke();
+        Managers.UI.Show<HeadUpDisplay_UI>();
         Managers.UI.Show<LevelUp_UI>();
         Managers.UI.Show<HpSlider_UI>();
     }

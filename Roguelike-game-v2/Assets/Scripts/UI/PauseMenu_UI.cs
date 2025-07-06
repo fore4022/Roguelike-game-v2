@@ -19,8 +19,6 @@ public class PauseMenu_UI : UserInterface
         {
             Managers.UI.Get<SkillSelection_UI>().SkillOptionToggle(false);
         }
-
-        Managers.UI.Hide<HeadUpDisplay_UI>();
     }
     public void ShowIcons()
     {

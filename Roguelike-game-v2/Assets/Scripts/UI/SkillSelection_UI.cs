@@ -10,7 +10,6 @@ public class SkillSelection_UI : UserInterface
 
     private GridLayoutGroup gridLayoutGroup = null;
     private Image background;
-    private AudioSource audioSource;
     private GameObject attackOption = null;
 
     private const string path = "SkillOption";
@@ -27,7 +26,6 @@ public class SkillSelection_UI : UserInterface
     {
         gridLayoutGroup = Util.GetComponentInChildren<GridLayoutGroup>(transform);
         background = GetComponent<Image>();
-        audioSource = GetComponent<AudioSource>();
 
         Managers.Game.inGameData.player.levelUpdate += () => Managers.UI.Show<LevelUp_UI>();
 
@@ -145,7 +143,7 @@ public class SkillSelection_UI : UserInterface
 
         for(int i = 0; i < indexArray.Count(); i++)
         {
-            skillOptionList[i].gameObject.SetActive(true);
+            skillOptionList[i].transform.parent.gameObject.SetActive(true);
             skillOptionList[i].InitOption(infoList[indexArray[i]]);
         }
 
@@ -153,7 +151,6 @@ public class SkillSelection_UI : UserInterface
     }
     private IEnumerator PadeIn()
     {
-        Managers.UI.Show<HeadUpDisplay_UI>();
         Managers.UI.Hide<SkillPoints_UI>();
         UIElementUtility.SetImageAlpha(background, targetAlpha, duration);
 

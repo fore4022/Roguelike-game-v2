@@ -40,7 +40,6 @@ public class LevelUp_UI : UserInterface
 
         if(ShouldShowSkillSelection())
         {
-            Managers.UI.Hide<HeadUpDisplay_UI>();
             Managers.UI.Show<SkillSelection_UI>();
         }
 
