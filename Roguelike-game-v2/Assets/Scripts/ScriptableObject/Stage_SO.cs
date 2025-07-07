@@ -3,15 +3,15 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Stage", menuName = "Create New SO/Create New Stage_SO")]
 public class Stage_SO : ScriptableObject
 {
-    public StageInformation_SO information = null;
-    public Icon_SO iconSprite = null;
-
     [HideInInspector]
     public string infoPath;
     [HideInInspector]
     public string iconPath;
     [HideInInspector]
     public string stagePath;
+
+    public StageInformation_SO information = null;
+    public Icon_SO iconSprite = null;
 
 #if UNITY_EDITOR
     public GameObject stage = null;

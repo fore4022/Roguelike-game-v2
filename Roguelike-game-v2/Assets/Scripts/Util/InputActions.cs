@@ -31,7 +31,7 @@ public static class InputActions
             Managers.Scene.loadScene += ClearActions;
         }
 
-        if (isInclude)
+        if(isInclude)
         {
             return (T)instance;
         }

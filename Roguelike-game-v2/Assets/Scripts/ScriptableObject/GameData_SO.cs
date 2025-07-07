@@ -5,10 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GameData", menuName = "Create New SO/Create New GameData_SO")]
 public class GameData_SO : ScriptableObject
 {
-    public List<Stage_SO> stages;
-
     [HideInInspector]
     public List<string> stageInfoPathList;
+
+    public List<Stage_SO> stages;
 
 #if UNITY_EDITOR
     private string path;

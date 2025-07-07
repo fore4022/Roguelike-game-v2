@@ -11,8 +11,8 @@ public class UserLevel_SO : ScriptableObject
     public List<SkillInformation_SO> skillInformationList;
 
     private string path;
-    private int count { get { return skillInformationList.Count; } }
 
+    private int count { get { return skillInformationList.Count; } }
     private void OnValidate()
     {
         ValidateUntilReady();

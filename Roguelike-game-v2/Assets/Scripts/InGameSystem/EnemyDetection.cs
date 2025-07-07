@@ -60,7 +60,7 @@ public static class EnemyDetection
         int maxIntCount = 0;
         int count;
 
-        foreach (GameObject go in gameObjectList)
+        foreach(GameObject go in gameObjectList)
         {
             colliderArray = Physics2D.OverlapCircleAll(go.transform.position, largeastRange);
             count = colliderArray.Length;
@@ -108,7 +108,7 @@ public static class EnemyDetection
     {
         GameObject target = FindNearestEnemy(range);
 
-        if (target == null)
+        if(target == null)
         {
             return GetRandomVector();
         }
@@ -167,7 +167,7 @@ public static class EnemyDetection
                 }
             }
 
-            foreach (GameObject target in targetList)
+            foreach(GameObject target in targetList)
             {
                 targetPositionList.Add(target.transform.position);
             }

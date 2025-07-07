@@ -56,8 +56,8 @@ public class ToastMessage_UI : UserInterface
         yield return new WaitForSeconds(delay + 0.5f);
 
         coroutine = null;
-
         toast.text = "";
+
         Managers.UI.Hide<ToastMessage_UI>();
     }
 }

@@ -1,11 +1,12 @@
 using UnityEngine;
 public class TweenData
 {
-    public Coroutine coroutine;
     public TweenType type;
-    public Transform trans;
-    public EaseDelegate easeDel;
     public NumericValue targetValue;
+    public EaseDelegate easeDel;
+    public Transform trans;
+
+    public Coroutine coroutine;
     public float duration;
 
     public TweenData() { }

@@ -12,6 +12,7 @@ public static class Tweening
         TweenDelegate del = null;
         NumericValue initialValue = new();
         TweenStatus status = null;
+
         float currentTime = 0;
         bool isRectTransform = transform.GetType() == _rectTransform;
 
@@ -25,7 +26,7 @@ public static class Tweening
         {
             while(currentTime < delay)
             {
-                if (status.flag)
+                if(status.flag)
                 {
                     currentTime += Time.deltaTime;
                 }
@@ -113,6 +114,7 @@ public static class Tweening
     {
         TweenDelegate del = null;
         NumericValue initialValue = new();
+
         bool isRectTransform = data.trans.GetType() == _rectTransform;
 
         if(isRectTransform)

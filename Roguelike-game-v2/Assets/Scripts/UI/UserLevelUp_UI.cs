@@ -25,7 +25,7 @@ public class UserLevelUp_UI : UserInterface, IPointerClickHandler
             return;
         }
 
-        for (int i = 0; i < maxCount; i++)
+        for(int i = 0; i < maxCount; i++)
         {
             particles[i].SetActive(false);
         }

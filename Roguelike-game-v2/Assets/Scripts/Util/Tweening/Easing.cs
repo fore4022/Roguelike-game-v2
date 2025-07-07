@@ -173,7 +173,7 @@ public class Easing
     {
         value /= .5f;
 
-        if (value < 1)
+        if(value < 1)
         {
             return _end * 0.5f * value * value * value * value + _start;
         }
@@ -271,17 +271,17 @@ public class Easing
     {
         value /= 1f;
 
-        if (value < (1 / 2.75f))
+        if(value < (1 / 2.75f))
         {
             return _end * (7.5625f * value * value) + _start;
         }
-        else if (value < (2 / 2.75f))
+        else if(value < (2 / 2.75f))
         {
             value -= (1.5f / 2.75f);
 
             return _end * (7.5625f * (value) * value + .75f) + _start;
         }
-        else if (value < (2.5 / 2.75))
+        else if(value < (2.5 / 2.75))
         {
             value -= (2.25f / 2.75f);
 
@@ -358,7 +358,7 @@ public class Easing
             return _start + _end;
         }
 
-        if (a == 0f || a < Mathf.Abs(_end))
+        if(a == 0f || a < Mathf.Abs(_end))
         {
             a = _end;
             s = p / 4;
@@ -387,7 +387,7 @@ public class Easing
             return _start + _end;
         }
 
-        if (a == 0f || a < Mathf.Abs(_end))
+        if(a == 0f || a < Mathf.Abs(_end))
         {
             a = _end;
             s = p * 0.25f;
@@ -416,7 +416,7 @@ public class Easing
             return _start + _end;
         }
 
-        if (a == 0f || a < Mathf.Abs(_end))
+        if(a == 0f || a < Mathf.Abs(_end))
         {
             a = _end;
             s = p / 4;

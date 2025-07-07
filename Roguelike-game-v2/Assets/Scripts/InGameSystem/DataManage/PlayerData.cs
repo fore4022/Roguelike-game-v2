@@ -71,10 +71,7 @@ public class PlayerData
             experienceUpdate?.Invoke();
         }
     }
-    public float ExperienceForLevelUp
-    {
-        get { return info.experienceForLevelUp; }
-    }
+    public float ExperienceForLevelUp { get { return info.experienceForLevelUp; } }
     private void Set()
     {
         info.experienceForLevelUp = baseExperience;

@@ -76,7 +76,7 @@ public static class Calculate
         int[] result;
         int index;
 
-        for (int i = 0; i < maxValue; i++)
+        for(int i = 0; i < maxValue; i++)
         {
             valueList.Add(i);
         }
@@ -85,7 +85,7 @@ public static class Calculate
         {
             result = new int[count];
 
-            for (int i = 0; i < count; i++)
+            for(int i = 0; i < count; i++)
             {
                 index = Random.Range(0, maxValue - i);
                 result[i] = valueList[index];
@@ -97,7 +97,7 @@ public static class Calculate
         {
             result = new int[maxValue];
 
-            for (int i = 0; i < maxValue; i++)
+            for(int i = 0; i < maxValue; i++)
             {
                 index = Random.Range(0, maxValue - i);
                 result[i] = valueList[index];

@@ -17,7 +17,6 @@ public class Skill_D : Skill, ISkill
         transform.position = EnemyDetection.GetRandomEnemyPosition();
 
         animator.Play("default", 0);
-
         StartCoroutine(Attacking());
     }
     public void SetCollider()

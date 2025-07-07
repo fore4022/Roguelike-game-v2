@@ -10,7 +10,7 @@ public class Title_Scene : MonoBehaviour
     [SerializeField]
     private AudioSource audioSource;
 
-    public string _gameDataPath = "GameData";
+    public const string _gameDataPath = "GameData";
 
     private void Start()
     {

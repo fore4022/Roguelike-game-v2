@@ -2,6 +2,7 @@
 public class StageClearInfo
 {
     public StageState state;
+
     public string name;
 
     public StageClearInfo(string name, StageState state)

@@ -2,14 +2,6 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerStat
 {
-    public DefaultStat defaultStat;
-
-    private const string sceneName = "Main";
-    private const float coef_MoveSpeed = 0.05f;
-    private const float coef_IncreaseHealth = 7.5f;
-    private const float coef_IncreaseDamage = 0.6f;
-    private const float coef_HealthRegenPerSec = 0.1f;
-
     [SerializeField]
     private int moveSpeed = 0;
     [SerializeField]
@@ -18,6 +10,14 @@ public class PlayerStat
     private int increaseDamage = 0;
     [SerializeField]
     private int healthRegenPerSec = 0;
+
+    public DefaultStat defaultStat;
+
+    private const string sceneName = "Main";
+    private const float coef_MoveSpeed = 0.05f;
+    private const float coef_IncreaseHealth = 7.5f;
+    private const float coef_IncreaseDamage = 0.6f;
+    private const float coef_HealthRegenPerSec = 0.1f;
 
     public float MoveSpeed
     {

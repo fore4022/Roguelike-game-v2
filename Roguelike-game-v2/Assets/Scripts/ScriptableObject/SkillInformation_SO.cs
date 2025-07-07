@@ -19,10 +19,10 @@ public class SkillInformation
 [CreateAssetMenu(fileName = "SkillInformation", menuName = "Create New SO/Create New SkillInformation_SO")]
 public class SkillInformation_SO : ScriptableObject
 {
-    public SkillInformation info;
-
     [HideInInspector]
     public string spritePath;
+
+    public SkillInformation info;
 
 #if UNITY_EDITOR
     public Sprite sprite;

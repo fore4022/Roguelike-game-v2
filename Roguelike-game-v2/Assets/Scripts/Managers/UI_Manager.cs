@@ -104,7 +104,7 @@ public class UI_Manager
     {
         string name = GetName<T>();
 
-        if (uiDictionary.ContainsKey(name))
+        if(uiDictionary.ContainsKey(name))
         {
             uiDictionary[name].gameObject.SetActive(true);
 

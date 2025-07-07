@@ -24,10 +24,10 @@ public abstract class UserInterface : MonoBehaviour
             Enable();
         }
     }
-    protected virtual void Enable() { }
     protected virtual void Start()
     {
         SetUI();
     }
+    protected virtual void Enable() { }
     public abstract void SetUserInterface();
 }

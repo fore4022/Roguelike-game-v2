@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 /// InputSystem을 이용하여 구현하였다.
 /// 입력 이벤트에 따라서 CharactorController_UI를 제어한다. 
 /// </summary>
-public class PlayerMove : MonoBehaviour
+public class PlayerMove : MonoBehaviour, IMoveable
 {
     private TouchControls touchControl;
     private CharactorController_UI charactorController;
@@ -22,6 +22,7 @@ public class PlayerMove : MonoBehaviour
     private bool didStartMove = false;
 
     public Vector2 Direction { get { return direction; } }
+    public float SpeedAmount { get { return Managers.Game.player.Stat.moveSpeed * Time.deltaTime; } }
     private void Awake()
     {
         render = GetComponent<SpriteRenderer>();
@@ -110,7 +111,7 @@ public class PlayerMove : MonoBehaviour
 
         while(true)
         {
-            Managers.Game.player.gameObject.transform.position += direction.normalized * Managers.Game.player.Stat.moveSpeed * Time.deltaTime;
+            Managers.Game.player.gameObject.transform.position += direction.normalized * SpeedAmount;
 
             if(direction.x > 0)
             {

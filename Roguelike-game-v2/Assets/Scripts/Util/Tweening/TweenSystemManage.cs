@@ -80,13 +80,13 @@ public static class TweenSystemManage
     }
     public static Component Kill(Component comp)
     {
-        if (GetTransform(comp, out Transform trans))
+        if(GetTransform(comp, out Transform trans))
         {
-            if (_schedule.TryGetValue(trans, out Sequence sequence))
+            if(_schedule.TryGetValue(trans, out Sequence sequence))
             {
-                foreach (TweenData data in sequence.Values()[0])
+                foreach(TweenData data in sequence.Values()[0])
                 {
-                    if (data.coroutine != null)
+                    if(data.coroutine != null)
                     {
                         Util.GetMonoBehaviour().StopCoroutine(data.coroutine);
                     }
@@ -125,7 +125,7 @@ public static class TweenSystemManage
                 List<TweenData> dataList = sequence.Peek();
                 int count = dataList.Count;
 
-                for (int i = 0; i < count; i++)
+                for(int i = 0; i < count; i++)
                 {
                     TweenData data = dataList[0];
 
@@ -157,11 +157,11 @@ public static class TweenSystemManage
     }
     public static void Reset()
     {
-        foreach (Sequence schedule in _schedule.Values)
+        foreach(Sequence schedule in _schedule.Values)
         {
-            foreach (List<TweenData> datas in schedule.Values())
+            foreach(List<TweenData> datas in schedule.Values())
             {
-                foreach (TweenData data in datas)
+                foreach(TweenData data in datas)
                 {
                     Util.GetMonoBehaviour().StopCoroutine(data.coroutine);
                 }
@@ -182,7 +182,7 @@ public static class TweenSystemManage
     }
     public static TweenStatus GetStatus(Component comp)
     {
-        if (_status.TryGetValue(comp, out TweenStatus value))
+        if(_status.TryGetValue(comp, out TweenStatus value))
         {
             return value;
         }

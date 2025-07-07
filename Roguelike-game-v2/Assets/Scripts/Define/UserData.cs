@@ -22,10 +22,7 @@ public class UserData
     public PlayerStat Stat { get { return _stat; } }
     public string StageName
     {
-        get
-        {
-            return current_StageName;
-        }
+        get { return current_StageName; }
         set 
         {
             current_StageName = value;
@@ -65,14 +62,10 @@ public class UserData
     }
     public bool SetBGM()
     {
-        _setting.BGM = !_setting.BGM;
-
-        return _setting.BGM;
+        return _setting.BGM = !_setting.BGM;
     }
     public bool SetFX()
-    {
-        _setting.FX = !_setting.FX;
-
-        return _setting.FX;
+    {        
+        return _setting.FX = !_setting.FX;
     }
 }
