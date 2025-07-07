@@ -136,8 +136,6 @@ public class SkillSelection_UI : UserInterface
 
         UIElementUtility.SetImageAlpha(background, basicAlpha);
 
-        indexArray[0] = 2;
-
         yield return new WaitForEndOfFrame();
 
         for(int i = 0; i < indexArray.Count(); i++)
