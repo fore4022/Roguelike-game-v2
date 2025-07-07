@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
-public class MonsterSkill_B : MonsterSkillBase, IFakeShadowSource
+public class MonsterSkill_B : MonsterSkill_Damage, IFakeShadowSource
 {
     [SerializeField, Min(0.2f)]
     private float duration = 0.5f;

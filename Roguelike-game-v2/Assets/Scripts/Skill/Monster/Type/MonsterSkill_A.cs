@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
-public class MonsterSkill_A : MonsterSkillBase
+public class MonsterSkill_A : MonsterSkill_Damage
 {
     [SerializeField, Min(0.1f)]
     private float speed = 1;

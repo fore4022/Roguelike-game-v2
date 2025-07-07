@@ -1,11 +1,10 @@
-using System;
 using System.Collections;
 using UnityEngine;
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(Rigidbody2D))]
-public abstract class MonsterSkillBase : MonoBehaviour, IDamage
+public abstract class MonsterSkill_Base : MonoBehaviour
 {
     [SerializeField, Min(0.01f)]
     protected float animationSpeed = 1;
@@ -20,13 +19,10 @@ public abstract class MonsterSkillBase : MonoBehaviour, IDamage
 
     private const float collectDelay = 3;
 
-    private Func<float> damage = null;
     private Plane[] planes = new Plane[6];
     private Coroutine collect;
     private WaitForSeconds delay = new(collectDelay);
     
-    public Func<float> Damage { get { return damage; } set { damage = value; } }
-    public float DamageAmount { get { return damage.Invoke(); } }
     protected void Awake()
     {
         gameObject.SetActive(false);
@@ -118,6 +114,6 @@ public abstract class MonsterSkillBase : MonoBehaviour, IDamage
 
         gameObject.SetActive(false);
     }
-    protected abstract void Enter(GameObject go);
+    protected virtual void Enter(GameObject go) { }
     protected abstract void Enable();
 }

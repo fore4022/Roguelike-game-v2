@@ -193,17 +193,21 @@ public class ObjectPool
             poolingObjects[key].Add(new(array[i]));
         }
 
-        if (type == ScriptableObjectType.None)
+        if(type == ScriptableObjectType.None)
         {
             if(originalKey != null)
             {
                 Monster monster = GetObject(originalKey, false).GetComponent<Monster>();
-                MonsterSkillBase skillBase;
 
-                foreach(GameObject go in array)
+                if(array[0].GetComponent<MonsterSkill_Damage>())
                 {
-                    skillBase = go.GetComponent<MonsterSkillBase>();
-                    skillBase.Damage += monster.Damage;
+                    MonsterSkill_Damage skillDamage;
+
+                    foreach(GameObject go in array)
+                    {
+                        skillDamage = go.GetComponent<MonsterSkill_Damage>();
+                        skillDamage.Damage += monster.Damage;
+                    }
                 }
             }
         }
