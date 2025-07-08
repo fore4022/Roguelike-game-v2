@@ -1,116 +1,9 @@
 using UnityEngine;
-public delegate float EaseDelegate(float f);
-public class Easing
+public static class Ease
 {
     private const float _start = 0;
     private const float _end = 1;
 
-    public static EaseDelegate Get(Ease ease)
-    {
-        EaseDelegate del = null;
-
-        switch (ease)
-        {
-            case Ease.Linear:
-                del += Linear;
-                break;
-            case Ease.InQuad:
-                del += InQuad;
-                break;
-            case Ease.OutQuad:
-                del += OutQuad;
-                break;
-            case Ease.InOutQuad:
-                del += InOutQuad;
-                break;
-            case Ease.InCubic:
-                del += InCubic;
-                break;
-            case Ease.OutCubic:
-                del += OutCubic;
-                break;
-            case Ease.InOutCubic:
-                del += InOutCubic;
-                break;
-            case Ease.InQuart:
-                del += InQuart;
-                break;
-            case Ease.OutQuart:
-                del += OutQuart;
-                break;
-            case Ease.InOutQuart:
-                del += InOutQuart;
-                break;
-            case Ease.InQuint:
-                del += InQuint;
-                break;
-            case Ease.OutQuint:
-                del += OutQuint;
-                break;
-            case Ease.InOutQuint:
-                del += InOutQuint;
-                break;
-            case Ease.InSine:
-                del += InSine;
-                break;
-            case Ease.OutSine:
-                del += OutSine;
-                break;
-            case Ease.InOutSine:
-                del += InOutSine;
-                break;
-            case Ease.InExpo:
-                del += InExpo;
-                break;
-            case Ease.OutExpo:
-                del += OutExpo;
-                break;
-            case Ease.InOutExpo:
-                del += InOutExpo;
-                break;
-            case Ease.InCirc:
-                del += InCirc;
-                break;
-            case Ease.OutCirc:
-                del += OutCirc;
-                break;
-            case Ease.InOutCirc:
-                del += InOutCirc;
-                break;
-            case Ease.InBounce:
-                del += InBounce;
-                break;
-            case Ease.OutBounce:
-                del += OutBounce;
-                break;
-            case Ease.InOutBounce:
-                del += InOutBounce;
-                break;
-            case Ease.InBack:
-                del += InBack;
-                break;
-            case Ease.OutBack:
-                del += OutBack;
-                break;
-            case Ease.InOutBack:
-                del += InOutBack;
-                break;
-            case Ease.InElastic:
-                del += InElastic;
-                break;
-            case Ease.OutElastic:
-                del += OutElastic;
-                break;
-            case Ease.InOutElastic:
-                del += InOutElastic;
-                break;
-            case Ease.AcceleratedFall:
-                del += AcceleratedFall;
-                break;
-        }
-
-        return del;
-    }
     public static float Linear(float value)
     {
         return Mathf.Lerp(_start, _end, value);
@@ -127,7 +20,7 @@ public class Easing
     {
         value /= .5f;
 
-        if(value < 1)
+        if (value < 1)
         {
             return _end * 0.5f * value * value + _start;
         }
@@ -150,7 +43,7 @@ public class Easing
     {
         value /= 0.5f;
 
-        if(value < 1)
+        if (value < 1)
         {
             return _end * 0.5f * value * value * value + _start;
         }
@@ -173,7 +66,7 @@ public class Easing
     {
         value /= .5f;
 
-        if(value < 1)
+        if (value < 1)
         {
             return _end * 0.5f * value * value * value * value + _start;
         }
@@ -196,11 +89,11 @@ public class Easing
     {
         value /= 0.5f;
 
-        if(value < 1)
+        if (value < 1)
         {
             return _end * 0.5f * value * value * value * value * value + _start;
         }
-        
+
         value -= 2;
 
         return _end * 0.5f * (value * value * value * value * value + 2) + _start;
@@ -229,7 +122,7 @@ public class Easing
     {
         value /= 0.5f;
 
-        if(value < 1)
+        if (value < 1)
         {
             return _end * 0.5f * Mathf.Pow(2, 10 * (value - 1)) + _start;
         }
@@ -252,7 +145,7 @@ public class Easing
     {
         value /= .5f;
 
-        if(value < 1)
+        if (value < 1)
         {
             return -_end * 0.5f * (Mathf.Sqrt(1 - value * value) - 1) + _start;
         }
@@ -271,17 +164,17 @@ public class Easing
     {
         value /= 1f;
 
-        if(value < (1 / 2.75f))
+        if (value < (1 / 2.75f))
         {
             return _end * (7.5625f * value * value) + _start;
         }
-        else if(value < (2 / 2.75f))
+        else if (value < (2 / 2.75f))
         {
             value -= (1.5f / 2.75f);
 
             return _end * (7.5625f * (value) * value + .75f) + _start;
         }
-        else if(value < (2.5 / 2.75))
+        else if (value < (2.5 / 2.75))
         {
             value -= (2.25f / 2.75f);
 
@@ -298,7 +191,7 @@ public class Easing
     {
         float d = 1f;
 
-        if(value < d * 0.5f)
+        if (value < d * 0.5f)
         {
             return InBounce(value * 2) * 0.5f + _start;
         }
@@ -329,7 +222,7 @@ public class Easing
 
         value /= 0.5f;
 
-        if((value) < 1)
+        if ((value) < 1)
         {
             s *= 1.525f;
 
@@ -348,17 +241,17 @@ public class Easing
         float s;
         float a = 0;
 
-        if(value == 0)
+        if (value == 0)
         {
             return _start;
         }
 
-        if((value /= d) == 1)
+        if ((value /= d) == 1)
         {
             return _start + _end;
         }
 
-        if(a == 0f || a < Mathf.Abs(_end))
+        if (a == 0f || a < Mathf.Abs(_end))
         {
             a = _end;
             s = p / 4;
@@ -377,17 +270,17 @@ public class Easing
         float s;
         float a = 0;
 
-        if(value == 0)
+        if (value == 0)
         {
             return _start;
         }
 
-        if((value /= d) == 1)
+        if ((value /= d) == 1)
         {
             return _start + _end;
         }
 
-        if(a == 0f || a < Mathf.Abs(_end))
+        if (a == 0f || a < Mathf.Abs(_end))
         {
             a = _end;
             s = p * 0.25f;
@@ -406,17 +299,17 @@ public class Easing
         float s;
         float a = 0;
 
-        if(value == 0)
+        if (value == 0)
         {
             return _start;
         }
 
-        if((value /= d * 0.5f) == 2)
+        if ((value /= d * 0.5f) == 2)
         {
             return _start + _end;
         }
 
-        if(a == 0f || a < Mathf.Abs(_end))
+        if (a == 0f || a < Mathf.Abs(_end))
         {
             a = _end;
             s = p / 4;
@@ -426,7 +319,7 @@ public class Easing
             s = p / (2 * Mathf.PI) * Mathf.Asin(_end / a);
         }
 
-        if(value < 1)
+        if (value < 1)
         {
             return -0.5f * (a * Mathf.Pow(2, 10 * (value -= 1)) * Mathf.Sin((value * d - s) * (2 * Mathf.PI) / p)) + _start;
         }

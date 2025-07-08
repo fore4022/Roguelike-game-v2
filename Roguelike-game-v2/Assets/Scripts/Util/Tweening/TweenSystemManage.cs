@@ -9,7 +9,7 @@ public static class TweenSystemManage
 
     private static readonly Type _transform = typeof(Transform);
 
-    public static Component Execute(Component comp, TweenOperation op, TweenType type, NumericValue numeric, float duration, Ease ease, float delay = 0)
+    public static Component Execute(Component comp, TweenOperation op, TweenType type, NumericValue numeric, float duration, EaseType ease, float delay = 0)
     {
         if(GetTransform(comp, out Transform trans))
         {
@@ -20,29 +20,29 @@ public static class TweenSystemManage
             switch(op)
             {
                 case TweenOperation.Append:
-                    data.Set(type, trans, Easing.Get(ease), numeric, duration);
+                    data.Set(type, trans, EaseProvider.Get(ease), numeric, duration);
 
                     if(!isContain)
                     {
-                        data.Set(Util.GetMonoBehaviour().StartCoroutine(Tweening.OverTime(type, data, trans, Easing.Get(ease), numeric, duration, delay)));
+                        data.Set(Util.GetMonoBehaviour().StartCoroutine(Tweening.OverTime(type, data, trans, EaseProvider.Get(ease), numeric, duration, delay)));
 
                         op = TweenOperation.Join;
                     }
                     break;
                 case TweenOperation.Insert:
-                    data.Set(Util.GetMonoBehaviour().StartCoroutine(Tweening.OverTime(type, data, trans, Easing.Get(ease), numeric, duration, delay)), type, trans, Easing.Get(ease), numeric, duration);
+                    data.Set(Util.GetMonoBehaviour().StartCoroutine(Tweening.OverTime(type, data, trans, EaseProvider.Get(ease), numeric, duration, delay)), type, trans, EaseProvider.Get(ease), numeric, duration);
                     break;
                 case TweenOperation.Join:
                     if(isContain)
                     {
                         if(schedule.Count() > 1)
                         {
-                            data.Set(type, trans, Easing.Get(ease), numeric, duration);
+                            data.Set(type, trans, EaseProvider.Get(ease), numeric, duration);
                             break;
                         }
                     }
 
-                    data.Set(Util.GetMonoBehaviour().StartCoroutine(Tweening.OverTime(type, data, trans, Easing.Get(ease), numeric, duration, delay)), type, trans, Easing.Get(ease), numeric, duration);
+                    data.Set(Util.GetMonoBehaviour().StartCoroutine(Tweening.OverTime(type, data, trans, EaseProvider.Get(ease), numeric, duration, delay)), type, trans, EaseProvider.Get(ease), numeric, duration);
                     break;
             }
 

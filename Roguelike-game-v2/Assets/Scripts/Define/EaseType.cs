@@ -1,4 +1,4 @@
-public enum Ease
+public enum EaseType
 {
     Linear,
     InQuad,

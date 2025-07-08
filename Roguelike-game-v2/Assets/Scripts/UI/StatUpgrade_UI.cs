@@ -54,11 +54,11 @@ public class StatUpgrade_UI : UserInterface
         
         if(toggle)
         {
-            transform.SetPosition(new(0, 40), duration, Ease.OutSine);
+            transform.SetPosition(new(0, 40), duration, EaseType.OutSine);
         }
         else
         {
-            transform.SetPosition(new(0, -1500), duration, Ease.OutSine);
+            transform.SetPosition(new(0, -1500), duration, EaseType.OutSine);
         }
     }
 }
