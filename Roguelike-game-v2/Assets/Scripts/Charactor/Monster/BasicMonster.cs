@@ -17,8 +17,10 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     private Coroutine moveCoroutine = null;
     private WaitForSeconds damaged = new(damagedDuration);
     private Color defaultColor;
+    private float slowDown = 0;
 
-    public float SpeedAmount { get { return stat.moveSpeed * speedMultiplier; } }
+    public float SpeedAmount { get { return stat.moveSpeed * speedMultiplier * slowDown; } }
+    public float SlowDownAmount { get { return slowDown; } }
     public float DamageAmount { get { return stat.damage * Managers.Game.difficultyScaler.IncreaseStat * Time.deltaTime; } }
     protected override void OnEnable()
     {
@@ -31,6 +33,10 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
         render.color = defaultColor;
         render.enabled = true;
         rigid.simulated = true;
+    }
+    public void SetSlowDown(float slowDown, float duration)
+    {
+        StartCoroutine(HandleSlow(slowDown, duration));
     }
     public void OnMove()
     {
@@ -94,6 +100,14 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
         {
             Managers.Game.player.TakeDamage(this);
         }
+    }
+    public IEnumerator HandleSlow(float slowDown, float duration)
+    {
+        this.slowDown += slowDown;
+
+        yield return new WaitForSeconds(duration);
+        
+        this.slowDown -= slowDown;
     }
     private IEnumerator Moving()
     {
