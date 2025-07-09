@@ -11,16 +11,17 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     protected float speedMultiplier = speedMultiplierDefault;
     protected bool canSwitchDirection = true;
 
+    private DefaultMoveable moveable = new();
+
     private const float death_AnimationDuration = 0.3f;
     private const float damagedDuration = 0.15f;
 
     private Coroutine moveCoroutine = null;
     private WaitForSeconds damaged = new(damagedDuration);
     private Color defaultColor;
-    private float slowDown = 0;
 
-    public float SpeedAmount { get { return stat.moveSpeed * speedMultiplier * slowDown; } }
-    public float SlowDownAmount { get { return slowDown; } }
+    public float SpeedAmount { get { return stat.moveSpeed * speedMultiplier * SlowDownAmount; } }
+    public float SlowDownAmount { get { return moveable.SlowDownAmount; } }
     public float DamageAmount { get { return stat.damage * Managers.Game.difficultyScaler.IncreaseStat * Time.deltaTime; } }
     protected override void OnEnable()
     {
@@ -36,7 +37,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     }
     public void SetSlowDown(float slowDown, float duration)
     {
-        StartCoroutine(HandleSlow(slowDown, duration));
+        moveable.SetSlowDown(slowDown, duration);
     }
     public void OnMove()
     {
@@ -100,14 +101,6 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
         {
             Managers.Game.player.TakeDamage(this);
         }
-    }
-    public IEnumerator HandleSlow(float slowDown, float duration)
-    {
-        this.slowDown += slowDown;
-
-        yield return new WaitForSeconds(duration);
-        
-        this.slowDown -= slowDown;
     }
     private IEnumerator Moving()
     {

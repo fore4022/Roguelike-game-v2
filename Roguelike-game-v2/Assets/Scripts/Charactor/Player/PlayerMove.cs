@@ -10,6 +10,7 @@ public class PlayerMove : MonoBehaviour, IMoveable
 {
     private TouchControls touchControl;
     private CharactorController_UI charactorController;
+    private DefaultMoveable moveable = new();
     private SpriteRenderer render;
 
     private InputAction.CallbackContext context;
@@ -17,14 +18,13 @@ public class PlayerMove : MonoBehaviour, IMoveable
     private Vector3 direction;
     private Vector2 enterTouchPosition;
     private Vector2 touchPosition;
-    private float slowDown = 0;
     private bool isPointerOverUI;
     private bool active = false;
     private bool didStartMove = false;
 
     public Vector2 Direction { get { return direction; } }
     public float SpeedAmount { get { return Managers.Game.player.Stat.moveSpeed * SlowDownAmount * Time.deltaTime; } }
-    public float SlowDownAmount { get { return slowDown; } }
+    public float SlowDownAmount { get { return moveable.SlowDownAmount; } }
     private void Awake()
     {
         render = GetComponent<SpriteRenderer>();
@@ -40,7 +40,7 @@ public class PlayerMove : MonoBehaviour, IMoveable
     }
     public void SetSlowDown(float slowDown, float duration)
     {
-        StartCoroutine(HandleSlow(slowDown, duration));
+        moveable.SetSlowDown(slowDown, duration);
     }
     private void CancelMove()
     {
@@ -56,14 +56,6 @@ public class PlayerMove : MonoBehaviour, IMoveable
         didStartMove = false;
 
         Managers.Game.player.AnimationPlay("idle");
-    }
-    public IEnumerator HandleSlow(float slowDown, float duration)
-    {
-        this.slowDown += slowDown;
-
-        yield return new WaitForSeconds(duration);
-
-        this.slowDown -= slowDown;
     }
     private void Update()
     {
