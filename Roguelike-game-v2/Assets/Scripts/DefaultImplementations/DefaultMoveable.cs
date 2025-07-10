@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 public class DefaultMoveable : IMoveable
 {
-    private MonoBehaviour mono = null;
+    private MonoBehaviour mono;
 
     private float slowDown = 0;
 
@@ -20,5 +20,9 @@ public class DefaultMoveable : IMoveable
         yield return new WaitForSeconds(duration);
 
         this.slowDown -= slowDown;
+    }
+    public DefaultMoveable(MonoBehaviour mono)
+    {
+        this.mono = mono;
     }
 }

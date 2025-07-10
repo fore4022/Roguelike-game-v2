@@ -8,9 +8,9 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class PlayerMove : MonoBehaviour, IMoveable
 {
+    private IMoveable moveable;
     private TouchControls touchControl;
     private CharactorController_UI charactorController;
-    private DefaultMoveable moveable = new();
     private SpriteRenderer render;
 
     private InputAction.CallbackContext context;

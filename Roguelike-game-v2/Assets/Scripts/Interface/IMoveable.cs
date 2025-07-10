@@ -1,5 +1,4 @@
-using System.Collections;
-public interface IMoveable
+public interface IMoveable : IDefaultImplementable
 {
     public float SpeedAmount { get; }
     public float SlowDownAmount { get; }

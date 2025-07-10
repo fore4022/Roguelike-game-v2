@@ -11,7 +11,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     protected float speedMultiplier = speedMultiplierDefault;
     protected bool canSwitchDirection = true;
 
-    private DefaultMoveable moveable = new();
+    private IMoveable moveable;
 
     private const float death_AnimationDuration = 0.3f;
     private const float damagedDuration = 0.15f;
