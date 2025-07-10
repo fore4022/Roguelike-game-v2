@@ -28,6 +28,7 @@ public class PlayerMove : MonoBehaviour, IMoveable
     private void Awake()
     {
         render = GetComponent<SpriteRenderer>();
+        moveable = Managers.Game.container.Get<DefaultMoveable>(transform);
     }
     public void Init()
     {

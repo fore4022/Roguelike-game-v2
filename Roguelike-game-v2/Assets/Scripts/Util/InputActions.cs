@@ -4,7 +4,7 @@ public static class InputActions
 {
     public static List<IInputActionCollection> inputActionList = new();
 
-    public static T CreateAndGetInputAction<T>() where T : IInputActionCollection, new ()
+    public static T CreateAndGetInputAction<T>() where T : IInputActionCollection, new()
     {
         if(GetInputAction(out T inputAction) != null)
         {

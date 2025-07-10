@@ -1,4 +1,4 @@
-public interface IMoveable : IDefaultImplementable
+public interface IMoveable
 {
     public float SpeedAmount { get; }
     public float SlowDownAmount { get; }

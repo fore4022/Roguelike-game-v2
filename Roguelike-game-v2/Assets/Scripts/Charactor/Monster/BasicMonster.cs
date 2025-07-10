@@ -23,6 +23,12 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     public float SpeedAmount { get { return stat.moveSpeed * speedMultiplier * SlowDownAmount; } }
     public float SlowDownAmount { get { return moveable.SlowDownAmount; } }
     public float DamageAmount { get { return stat.damage * Managers.Game.difficultyScaler.IncreaseStat * Time.deltaTime; } }
+    protected override void Awake()
+    {
+        moveable = Managers.Game.container.Get<DefaultMoveable>(transform);
+
+        base.Awake();
+    }
     protected override void OnEnable()
     {
         base.OnEnable();

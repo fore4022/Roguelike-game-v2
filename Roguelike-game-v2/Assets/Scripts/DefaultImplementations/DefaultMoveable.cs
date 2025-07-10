@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-public class DefaultMoveable : IMoveable
+public class DefaultMoveable : IMoveable, IDefaultImplementable
 {
     private MonoBehaviour mono;
 
@@ -8,6 +8,10 @@ public class DefaultMoveable : IMoveable
 
     public float SpeedAmount { get; }
     public float SlowDownAmount { get { return 1 - (slowDown / slowDown + 100); } }
+    public IDefaultImplementable Set(Transform transform)
+    {
+        return this;
+    }
     public void OnMove() { }
     public void SetSlowDown(float slowDown, float duration)
     {
@@ -20,9 +24,5 @@ public class DefaultMoveable : IMoveable
         yield return new WaitForSeconds(duration);
 
         this.slowDown -= slowDown;
-    }
-    public DefaultMoveable(MonoBehaviour mono)
-    {
-        this.mono = mono;
     }
 }

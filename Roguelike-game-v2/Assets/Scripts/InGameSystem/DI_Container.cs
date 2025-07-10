@@ -1,17 +1,12 @@
 using UnityEngine;
 public class DI_Container
 {
-    public IDefaultImplementable Get(DependencyType type, MonoBehaviour mono)
+    public T Get<T>(Transform transform) where T : IDefaultImplementable, new()
     {
-        IDefaultImplementable defaultImplementable = null;
+        T obj = new T();
 
-        switch(type)
-        {
-            case DependencyType.Move:
-                defaultImplementable = new DefaultMoveable(mono);
-                break;
-        }
+        obj.Set(transform);
 
-        return defaultImplementable;
+        return obj;
     }
 }
