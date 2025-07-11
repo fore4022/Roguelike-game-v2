@@ -7,9 +7,22 @@ public class DefaultMoveable : IMoveable, IDefaultImplementable
     private float slowDown = 0;
 
     public float SpeedAmount { get; }
-    public float SlowDownAmount { get { return 1 - (slowDown / slowDown + 100); } }
+    public float SlowDownAmount
+    {
+        get
+        {
+            if(slowDown == 0)
+            {
+                return 1;
+            }
+
+            return 1 - (slowDown / slowDown + 100);
+        }
+    }
     public IDefaultImplementable Set(Transform transform)
     {
+        mono = transform.GetComponent<MonoBehaviour>();
+
         return this;
     }
     public void OnMove() { }

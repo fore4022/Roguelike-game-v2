@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 253756876282813979}
   - component: {fileID: 6688758340750763330}
   - component: {fileID: 835560749303014101}
-  - component: {fileID: 6310413652330263309}
   - component: {fileID: 7045996677930668010}
   - component: {fileID: 8809940279811037520}
+  - component: {fileID: -6791228634445547848}
   m_Layer: 10
   m_Name: PotionI
   m_TagString: Monster
@@ -137,18 +137,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6310413652330263309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5653286829726684893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 852098dca7ae9034aa8dde4f944ef22e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &7045996677930668010
 AudioSource:
   m_ObjectHideFlags: 0
@@ -280,3 +268,15 @@ CapsuleCollider2D:
   m_Offset: {x: 0.015, y: 0}
   m_Size: {x: 0.275, y: 0.485}
   m_Direction: 0
+--- !u!114 &-6791228634445547848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5653286829726684893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae67dfe72593d244a43e891e7fccf5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

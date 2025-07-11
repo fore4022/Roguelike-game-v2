@@ -4,6 +4,6 @@ public class MonsterStat_SO : ScriptableObject
 {
     public DefaultStat stat;
 
-    public int user_Experience;
-    public int inGame_Experience;
+    public int user_Experience = 1;
+    public int inGame_Experience = 1;
 }

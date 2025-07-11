@@ -51,13 +51,13 @@ public abstract class MonsterSkill_Base : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         rigid = GetComponent<Rigidbody2D>();
 
-        rigid.gravityScale = 0;
-        rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
-
         if(col == null)
         {
             col = GetComponent<Collider2D>();
         }
+
+        rigid.gravityScale = 0;
+        rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
     protected virtual void SetActive(bool isActive)
     {

@@ -92,11 +92,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 336bf7f95ca64594fa0566332f71cbd7
-    m_Address: Assets/SO/Monster/Snowfield/PotionI.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7fe05310bb6b9664293d49984f4bae1c
     m_Address: Assets/SO/Monster/Snowfield/BatG.asset
     m_ReadOnly: 0
@@ -249,6 +244,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a323393860b819745bb485e9ecfc73e9
     m_Address: Assets/SO/Monster/Desert/AirA.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a76dd5afed406c0459d2c8a206ea8fe2
+    m_Address: Assets/SO/Monster/Snowfield/PotionI.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

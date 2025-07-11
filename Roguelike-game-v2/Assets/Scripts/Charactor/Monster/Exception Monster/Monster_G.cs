@@ -1,33 +1,21 @@
-using UnityEngine;
 public class Monster_G : Monster_WithObject
 {
-    [SerializeField, Range(1f, 100f)]
-    private float SpawnChance;
+    private string skillKey;
 
-    private string visualizerKey;
-
-    protected override void OnEnable()
-    {
-        base.OnEnable();
-
-        // position adjustment
-    }
     protected override void Init()
     {
-        visualizerKey = monsterSO.visualizer.name;
+        skillKey = monsterSO.extraObject.name;
 
         base.Init();
     }
-    protected override void SetPosition()
+    protected override void Die()
     {
-        if(Random.Range(1, 101) <= SpawnChance)
-        {
-            Vector3 position = Calculate.GetRandomVector();
-            GameObject go = Managers.Game.objectPool.ActiveObject(visualizerKey);
-        }
-        else
-        {
-            base.SetPosition();
-        }
+        PoolingObject go = Managers.Game.objectPool.GetObject(skillKey);
+
+        go.transform.position = transform.position;
+
+        go.SetActive(true);
+
+        base.Die();
     }
 }
