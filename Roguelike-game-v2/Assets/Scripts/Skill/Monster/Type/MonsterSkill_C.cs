@@ -12,8 +12,10 @@ public class MonsterSkill_C : MonsterSkill_Base
     [SerializeField]
     private float targetScale;
 
+    private const float triggerTime = 0.975f;
+
     private float defaultPositionY;
-    private float defaultScale;
+    private float defaultRadius;
 
     protected new CircleCollider2D col { get { return base.col as CircleCollider2D; } }
     protected override void Init()
@@ -21,7 +23,7 @@ public class MonsterSkill_C : MonsterSkill_Base
         base.Init();
 
         defaultPositionY = col.offset.y;
-        defaultScale = col.radius;
+        defaultRadius = col.radius;
     }
     protected override void Enable()
     {
@@ -34,13 +36,33 @@ public class MonsterSkill_C : MonsterSkill_Base
             Managers.Game.player.move.SetSlowDown(slowDown, slowDuration);
         }
     }
+    private void OnDisable()
+    {
+        if(isInit)
+        {
+            col.offset = new(0, defaultPositionY);
+            col.radius = defaultRadius;
+        }
+    }
+    private float GetVale()
+    {
+        return animator.GetCurrentAnimatorStateInfo(0).normalizedTime / triggerTime;
+    }
     private IEnumerator Casting()
     {
+        Vector2 lerpedOffset = new();
+        float lerpedScale;
+        float value;
+
         SetActive(true);
 
-        while(animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.975f)
+        while(animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= triggerTime)
         {
-            
+            value = GetVale();
+            lerpedOffset.y = Mathf.Lerp(targetPositionY, defaultPositionY, value);
+            lerpedScale = Mathf.Lerp(targetScale, defaultRadius, value);
+            col.offset = lerpedOffset;
+            col.radius = lerpedScale;
 
             yield return null;
         }

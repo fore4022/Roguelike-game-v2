@@ -45,7 +45,7 @@ public class UserData_Manager
                     }
                     else
                     {
-                        data.StageClearInfo.Add(new(so.stagePath, StageState.Locked));
+                        data.StageClearInfo.Add(new(so.stagePath, StageState.Unlocked));
                     }
                 }
             }
