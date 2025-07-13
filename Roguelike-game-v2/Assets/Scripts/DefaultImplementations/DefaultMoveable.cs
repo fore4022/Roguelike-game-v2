@@ -16,7 +16,7 @@ public class DefaultMoveable : IMoveable, IDefaultImplementable
                 return 1;
             }
 
-            return 1 - (slowDown / slowDown + 100);
+            return 1 - (slowDown / (slowDown + 100));
         }
     }
     public IDefaultImplementable Set(Transform transform)
