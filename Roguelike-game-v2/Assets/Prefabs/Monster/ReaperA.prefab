@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7651248344677971877}
   - component: {fileID: 7786409732128099870}
   - component: {fileID: 1740762360652423050}
-  - component: {fileID: 8829329080285034101}
   - component: {fileID: 8389627063729967040}
   - component: {fileID: 4594283375737512316}
+  - component: {fileID: 5684270755372304293}
   m_Layer: 10
   m_Name: ReaperA
   m_TagString: Monster
@@ -137,18 +137,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8829329080285034101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5848076756097831968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 852098dca7ae9034aa8dde4f944ef22e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &8389627063729967040
 AudioSource:
   m_ObjectHideFlags: 0
@@ -280,3 +268,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.235
+--- !u!114 &5684270755372304293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5848076756097831968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0672f720bf529c045a891712ea7a38a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillAnimation_Name: Skill
+  skillDuration: 1
+  skillCooldown: 3
+  skillCastChance: 25
+  skillDelay: 0.2

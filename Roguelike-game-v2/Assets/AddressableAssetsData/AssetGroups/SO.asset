@@ -97,7 +97,7 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0961351f8c7232c44a931ad9da42aa6a
+  - m_GUID: ffa96eb8bd4ac494d981e199097d9bca
     m_Address: Assets/SO/Monster/Volcano/ReaperA.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
