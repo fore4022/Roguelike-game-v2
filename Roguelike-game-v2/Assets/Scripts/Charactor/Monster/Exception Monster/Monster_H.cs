@@ -35,6 +35,8 @@ public class Monster_H : Monster_WithObject
     }
     private IEnumerator RepeatBehavior()
     {
+        animator.Play(defaultAnimation_Name);
+
         speedMultiplier = 1;
         canSwitchDirection = true;
 
@@ -58,6 +60,7 @@ public class Monster_H : Monster_WithObject
             animator.Play(skillAnimation_Name);
             go.SetActive(true);
 
+            speedMultiplier = 0;
             animator.speed = 1;
 
             yield return new WaitUntil(() => !go.activeSelf);
