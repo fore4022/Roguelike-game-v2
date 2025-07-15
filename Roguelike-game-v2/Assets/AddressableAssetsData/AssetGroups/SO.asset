@@ -17,11 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 09034957b2a2eca40bf8a02afaa6d243
   m_SerializeEntries:
-  - m_GUID: 775d79e3739f57049a49f93e975d5312
-    m_Address: Assets/SO/Monster/Desert/ScorpionC.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 51b34d8ed8adb7643a11727c00da09fb
     m_Address: Assets/SO/Monster/Desert/MummyA.asset
     m_ReadOnly: 0
