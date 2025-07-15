@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+[RequireComponent(typeof(CircleCollider2D))]
 public class MonsterSkill_D : MonsterSkill_Damage
 {
     private const float triggerTime = 0.975f;
@@ -19,8 +20,8 @@ public class MonsterSkill_D : MonsterSkill_Damage
     {
         SetActive(true);
 
-        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= triggerTime);
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= triggerTime);
 
-        SetActive(false);
+        gameObject.SetActive(false);
     }
 }

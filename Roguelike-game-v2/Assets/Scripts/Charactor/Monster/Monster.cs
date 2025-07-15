@@ -39,17 +39,6 @@ public class Monster : MonoBehaviour, IScriptableData
     public ScriptableObject SO { set { monsterSO = value as MonsterStat_SO; } }
     protected virtual void Awake()
     {
-        render = GetComponent<SpriteRenderer>();
-
-        if(TryGetComponent(out Collider2D col))
-        {
-            this.col = col;
-        }
-        else
-        {
-            gameObject.AddComponent<CircleCollider2D>();
-        }
-
         gameObject.SetActive(false);
     }
     protected virtual void OnEnable()
@@ -117,6 +106,16 @@ public class Monster : MonoBehaviour, IScriptableData
         audioSource = GetComponent<AudioSource>();
         stat = new(monsterSO.stat);
 
+        if(TryGetComponent(out Collider2D col))
+        {
+            this.col = col;
+        }
+        else
+        {
+            this.col = gameObject.AddComponent<BoxCollider2D>();
+        }
+
+        rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
         rigid.simulated = false;
         render.enabled = false;
         audioSource.playOnAwake = false;
@@ -139,14 +138,7 @@ public class Monster : MonoBehaviour, IScriptableData
     {
         if(transform.position.x != Managers.Game.player.transform.position.x)
         {
-            if(transform.position.x > Managers.Game.player.transform.position.x)
-            {
-                transform.rotation = Quaternion.Euler(Vector3.zero);
-            }
-            else
-            {
-                transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
-            }
+            render.flipX = !(transform.position.x > Managers.Game.player.transform.position.x);
         }
     }
     private IEnumerator Collecting()

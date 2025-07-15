@@ -57,10 +57,6 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
             {
                 direction = Calculate.GetDirection(Managers.Game.player.gameObject.transform.position, transform.position);
             }
-            else
-            {
-                return;
-            }
         }
     }
     protected virtual void Damaged()
@@ -77,11 +73,11 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     }
     protected void OnCollisionEnter2D(Collision2D collision)
     {
-        Attack(collision);
+        Enter(collision);
     }
     protected void OnCollisionStay2D(Collision2D collision)
     {
-        Attack(collision);
+        Enter(collision);
     }
     public void TakeDamage(IDamage damage)
     {
@@ -101,12 +97,16 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 
         defaultColor = render.color;
     }
-    private void Attack(Collision2D collision)
+    private void Enter(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            Managers.Game.player.TakeDamage(this);
+            Attack();
         }
+    }
+    protected virtual void Attack()
+    {
+        Managers.Game.player.TakeDamage(this);
     }
     private IEnumerator Moving()
     {

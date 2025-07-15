@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(SpriteRenderer))]
-[RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(Rigidbody2D))]
 public abstract class MonsterSkill_Base : MonoBehaviour
 {
@@ -48,7 +47,6 @@ public abstract class MonsterSkill_Base : MonoBehaviour
     {
         render = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
         rigid = GetComponent<Rigidbody2D>();
 
         if(col == null)
