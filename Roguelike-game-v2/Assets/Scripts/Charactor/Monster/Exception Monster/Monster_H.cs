@@ -85,19 +85,22 @@ public class Monster_H : Monster_WithObject
                 yield return null;
             }
 
-            PoolingObject go = Managers.Game.objectPool.GetObject(skillKey);
+            if(isVisible)
+            {
+                PoolingObject go = Managers.Game.objectPool.GetObject(skillKey);
 
-            float sign = render.flipX ? 1 : -1;
+                float sign = render.flipX ? 1 : -1;
 
-            animator.speed = 1;
-            speedMultiplier = 0;
-            go.transform.position = transform.position + skillPosition * sign;
-            go.transform.localScale = new(sign, 1, 1);
+                animator.speed = 1;
+                speedMultiplier = 0;
+                go.transform.position = transform.position + skillPosition * sign;
+                go.transform.localScale = new(sign, 1, 1);
 
-            go.SetActive(true);
-            animator.Play(skillAnimation_Name);
+                go.SetActive(true);
+                animator.Play(skillAnimation_Name);
 
-            yield return new WaitUntil(() => !go.activeSelf);
+                yield return new WaitUntil(() => !go.activeSelf);
+            }
         }
 
         StartCoroutine(RepeatBehavior());

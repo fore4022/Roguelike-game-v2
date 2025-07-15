@@ -108,7 +108,7 @@ public class SkillSelection_UI : UserInterface
 
             skillOptionList.Add(Util.GetComponentInChildren<SkillOption_UI>(go.transform));
 
-            go.SetActive(false);
+            go.transform.GetChild(0).gameObject.SetActive(false);
         }
     }
     private IEnumerator Init()
@@ -140,7 +140,7 @@ public class SkillSelection_UI : UserInterface
 
         for(int i = 0; i < indexArray.Count(); i++)
         {
-            skillOptionList[i].transform.parent.gameObject.SetActive(true);
+            skillOptionList[i].gameObject.SetActive(true);
             skillOptionList[i].InitOption(infoList[indexArray[i]]);
         }
 
