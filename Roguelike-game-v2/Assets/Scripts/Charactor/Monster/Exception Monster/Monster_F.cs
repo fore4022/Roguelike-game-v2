@@ -17,7 +17,7 @@ public class Monster_F : Monster_WithObject
     protected override void Init()
     {
         _defaultScale = new(defaultScale, defaultScale);
-        visualizerKey = monsterSO.extraObject.name;
+        visualizerKey = monsterSO.extraObjects[0].name;
         adjustmentScale = defaultScale / 20;
 
         if(!IsSplite)

@@ -18,7 +18,7 @@ public class Monster_A : Monster_WithObject
     protected override void Init()
     {
         delay = new(coolTime);
-        skillKey = monsterSO.extraObject.name;
+        skillKey = monsterSO.extraObjects[0].name;
 
         base.Init();
     }

@@ -125,19 +125,14 @@ public class ObjectPool
 
                     if(so is MonsterStat_WithObject_SO exceptionMonsterStatSO)
                     {
-                        if(exceptionMonsterStatSO.extraObject != null)
+                        if(exceptionMonsterStatSO.extraObjects != null)
                         {
-                            if(!poolingObjects.ContainsKey(exceptionMonsterStatSO.extraObject.name))
+                            foreach(GameObject go in exceptionMonsterStatSO.extraObjects)
                             {
-                                Create_Additional(exceptionMonsterStatSO.extraObject, key, defaultObjectCount);
-                            }
-                        }
-
-                        if(exceptionMonsterStatSO.visualizer != null)
-                        {
-                            if(!poolingObjects.ContainsKey(exceptionMonsterStatSO.visualizer.name))
-                            {
-                                Create_Additional(exceptionMonsterStatSO.visualizer, null, defaultObjectCount);
+                                if(!poolingObjects.ContainsKey(go.name))
+                                {
+                                    Create_Additional(go, key, defaultObjectCount);
+                                }
                             }
                         }
                     }

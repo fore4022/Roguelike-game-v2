@@ -3,24 +3,21 @@ using UnityEditor;
 public class MonsterStat_WithObject_SO_Editor : Editor
 {
     private SerializedProperty show;
-    private SerializedProperty value_1;
-    private SerializedProperty value_2;
+    private SerializedProperty value;
 
     private void OnEnable()
     {
         show = serializedObject.FindProperty("hasExtraObject");
-        value_1 = serializedObject.FindProperty("extraObject");
-        value_2 = serializedObject.FindProperty("visualizer");
+        value = serializedObject.FindProperty("extraObjects");
     }
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
-        DrawPropertiesExcluding(serializedObject, "extraObject", "visualizer");
+        DrawPropertiesExcluding(serializedObject, "extraObjects");
 
         if(show.boolValue)
         {
-            EditorGUILayout.PropertyField(value_1);
-            EditorGUILayout.PropertyField(value_2);
+            EditorGUILayout.PropertyField(value);
         }
 
         serializedObject.ApplyModifiedProperties();

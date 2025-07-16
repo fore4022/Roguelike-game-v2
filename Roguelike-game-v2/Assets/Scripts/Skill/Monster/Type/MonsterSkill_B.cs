@@ -59,7 +59,7 @@ public class MonsterSkill_B : MonsterSkill_Damage, IFakeShadowSource
 
         SetActive(true);
 
-        transform.SetScale(scaleValue / 7 * 3, duration)
+        transform.SetScale(scaleValue / 5 * 3, duration)
             .SetPosition(targetPosition, duration, EaseType.AcceleratedFall);
 
         StartCoroutine(ColorLerp.ChangeColor(render, Color.white, defaultColor, duration));

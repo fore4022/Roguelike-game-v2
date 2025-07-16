@@ -4,6 +4,8 @@ public class Monster_B : Monster_WithObject
 {
     [SerializeField]
     private float coolTime = 3f;
+    [SerializeField, Range(0, 100)]
+    private float skillCastChance;
 
     private Coroutine behavior = null;
     private WaitForSeconds delay;
@@ -19,8 +21,8 @@ public class Monster_B : Monster_WithObject
     protected override void Init()
     {
         delay = new(coolTime);
-        visualizerKey = monsterSO.visualizer.name;
-        skillKey = monsterSO.extraObject.name;
+        skillKey = monsterSO.extraObjects[0].name;
+        visualizerKey = monsterSO.extraObjects[1].name;
 
         base.Init();
     }
@@ -39,19 +41,22 @@ public class Monster_B : Monster_WithObject
         {
             yield return delay;
 
-            if((Managers.Game.player.transform.position - transform.position).magnitude <= Util.CameraHeight / 2)
+            if(Random.Range(0, 100) <= skillCastChance)
             {
-                go = Managers.Game.objectPool.GetObject(visualizerKey);
-                position = go.transform.position = Managers.Game.player.transform.position + new Vector3(0, 1 / Managers.Game.player.transform.localScale.x);
+                if((Managers.Game.player.transform.position - transform.position).magnitude <= Util.CameraHeight / 2)
+                {
+                    go = Managers.Game.objectPool.GetObject(visualizerKey);
+                    position = go.transform.position = EnemyDetection.GetRandomVector();
 
-                go.SetActive(true);
+                    go.SetActive(true);
 
-                yield return new WaitUntil(() => !go.activeSelf);
+                    yield return new WaitUntil(() => !go.activeSelf);
 
-                go = Managers.Game.objectPool.GetObject(skillKey);
-                go.transform.position = position;
+                    go = Managers.Game.objectPool.GetObject(skillKey);
+                    go.transform.position = position;
 
-                go.SetActive(true);
+                    go.SetActive(true);
+                }
             }
         }
     }

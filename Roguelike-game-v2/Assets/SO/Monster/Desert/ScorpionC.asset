@@ -19,6 +19,6 @@ MonoBehaviour:
     healthRegenPerSec: 0
   user_Experience: 1
   inGame_Experience: 1
-  extraObject: {fileID: 9167058647774963648, guid: a1020487cf28c784db9c46424799d014, type: 3}
-  visualizer: {fileID: 0}
+  extraObjects:
+  - {fileID: 9167058647774963648, guid: a1020487cf28c784db9c46424799d014, type: 3}
   hasExtraObject: 1

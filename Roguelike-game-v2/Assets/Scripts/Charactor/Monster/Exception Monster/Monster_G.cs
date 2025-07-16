@@ -4,7 +4,7 @@ public class Monster_G : Monster_WithObject
 
     protected override void Init()
     {
-        skillKey = monsterSO.extraObject.name;
+        skillKey = monsterSO.extraObjects[0].name;
 
         base.Init();
     }

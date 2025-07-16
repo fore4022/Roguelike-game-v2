@@ -246,6 +246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coolTime: 3
+  skillCastChance: 33.3
 --- !u!58 &4349981885834029338
 CircleCollider2D:
   m_ObjectHideFlags: 0

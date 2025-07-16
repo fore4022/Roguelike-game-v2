@@ -43,7 +43,7 @@ public class Monster_H : Monster_WithObject
         duration = new(skillDuration);
         cooldown = new(skillCooldown);
         delay = new(skillDelay);
-        skillKey = monsterSO.extraObject.name;
+        skillKey = monsterSO.extraObjects[0].name;
 
         base.Init();
     }
