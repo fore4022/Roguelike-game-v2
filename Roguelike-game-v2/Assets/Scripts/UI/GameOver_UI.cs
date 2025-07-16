@@ -44,6 +44,11 @@ public class GameOver_UI : UserInterface
     }
     private void OnDisable()
     {
+        foreach(Image img in imgList)
+        {
+            UIElementUtility.SetImageAlpha(img, 0);
+        }
+
         foreach(TextMeshProUGUI tmp in tmpList)
         {
             tmp.text = "";
@@ -52,6 +57,10 @@ public class GameOver_UI : UserInterface
         tmpList[0].gameObject.SetActive(true);
         tmpList[1].gameObject.SetActive(false);
         tmpList[2].gameObject.SetActive(false);
+
+        tmpList[0].rectTransform.anchoredPosition = new(-175, 260);
+        tmpList[1].rectTransform.anchoredPosition = new(175, 260);
+        tmpList[2].rectTransform.anchoredPosition = new(175, 260);
 
         result.text = "";
     }

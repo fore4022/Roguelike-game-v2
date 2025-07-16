@@ -312,9 +312,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0672f720bf529c045a891712ea7a38a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  castPoint: {fileID: 6719363059887881067}
   skillAnimation_Name: Skill
   skillDuration: 3
-  skillCooldown: 3
-  skillCastChance: 100
-  skillDelay: 0.5
+  skillCooldown: 2.25
+  skillCastChance: 50
+  skillDelay: 0.65
