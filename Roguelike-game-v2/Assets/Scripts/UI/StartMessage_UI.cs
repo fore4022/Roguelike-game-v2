@@ -14,7 +14,7 @@ public class StartMessage_UI : UserInterface
 
     public override void SetUserInterface()
     {
-        tmp = GetComponentInChildren<TextMeshProUGUI>();
+        tmp = GetComponent<TextMeshProUGUI>();
     }
     public void SetState()
     {
@@ -73,7 +73,6 @@ public class StartMessage_UI : UserInterface
         StopCoroutine(textAnimation);
 
         delay = new(duration);
-
         tmp.text = "PRESS TO START";
         blink = StartCoroutine(UIElementUtility.BlinkText(tmp, duration, false));
     }
