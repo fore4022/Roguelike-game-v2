@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 7356401449032261409}
   - component: {fileID: 3034033561904852524}
   - component: {fileID: 5384663198878261575}
-  - component: {fileID: 451215561264285187}
   - component: {fileID: 744641025679079808}
+  - component: {fileID: 5734416903908494316}
   m_Layer: 10
   m_Name: EarthB
   m_TagString: Monster
@@ -172,18 +172,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &451215561264285187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4134165368642501200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 852098dca7ae9034aa8dde4f944ef22e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &744641025679079808
 AudioSource:
   m_ObjectHideFlags: 0
@@ -280,3 +268,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5734416903908494316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4134165368642501200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae67dfe72593d244a43e891e7fccf5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillCastChance: 66.6

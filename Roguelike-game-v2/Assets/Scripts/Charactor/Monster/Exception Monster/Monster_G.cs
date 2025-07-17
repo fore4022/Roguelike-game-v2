@@ -1,8 +1,12 @@
+using UnityEngine;
 /// <summary>
-/// 사망시, 현재 위치에 스킬을 시전한다.
+/// 일정한 확률로 사망시, 현재 위치에 스킬을 시전한다.
 /// </summary>
 public class Monster_G : Monster_WithObject
 {
+    [SerializeField, Range(0, 100)]
+    private float skillCastChance;
+
     private string skillKey;
 
     protected override void Init()
@@ -13,12 +17,26 @@ public class Monster_G : Monster_WithObject
     }
     protected override void Die()
     {
+        if(skillCastChance == 100)
+        {
+            SkillCast();
+        }
+        else
+        {
+            if(Random.Range(0, 100) <= skillCastChance)
+            {
+                SkillCast();
+            }
+        }
+
+        base.Die();
+    }
+    private void SkillCast()
+    {
         PoolingObject go = Managers.Game.objectPool.GetObject(skillKey);
 
         go.transform.position = transform.position;
 
         go.SetActive(true);
-
-        base.Die();
     }
 }

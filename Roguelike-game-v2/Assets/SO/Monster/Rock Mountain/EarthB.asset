@@ -9,12 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63b01c0525c8b3343a197328e78fcf97, type: 3}
+  m_Script: {fileID: 11500000, guid: c4f064bec11f569408bc987706938bac, type: 3}
   m_Name: EarthB
   m_EditorClassIdentifier: 
   stat:
     health: 5
     damage: 1.2
     moveSpeed: 0.7
+    healthRegenPerSec: 0
   user_Experience: 1
   inGame_Experience: 1
+  extraObjects:
+  - {fileID: 3733676849096543848, guid: 67e13470d649a594099c61a799e93bf8, type: 3}
+  hasExtraObject: 1
