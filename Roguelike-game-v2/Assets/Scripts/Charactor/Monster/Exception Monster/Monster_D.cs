@@ -1,5 +1,8 @@
 using System.Collections;
 using UnityEngine;
+/// <summary>
+/// 주기적으로 플레이어의 방향을 구하고, 돌진한다,
+/// </summary>
 public class Monster_D : BasicMonster
 {
     [SerializeField]

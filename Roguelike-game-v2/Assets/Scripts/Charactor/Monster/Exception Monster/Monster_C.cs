@@ -1,5 +1,11 @@
 using System.Collections;
 using UnityEngine;
+/// <summary>
+/// <para>
+/// SnakeF 전용
+/// </para>
+/// 짧게 끊어서 돌진하는 이동 방식이다.
+/// </summary>
 public class Monster_C : BasicMonster
 {
     [SerializeField]

@@ -280,4 +280,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dcbb33fe9fac1049b4eee1b0146a11a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooltime: 3
+  rushSpeed: 3
+  rushCastingTime: 0.75

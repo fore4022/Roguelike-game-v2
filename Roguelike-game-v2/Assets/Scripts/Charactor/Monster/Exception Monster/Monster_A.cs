@@ -1,5 +1,8 @@
 using System.Collections;
 using UnityEngine;
+/// <summary>
+/// 플레이어에게 원거리 투사체를 발사한다.
+/// </summary>
 public class Monster_A : Monster_WithObject
 {
     [SerializeField]

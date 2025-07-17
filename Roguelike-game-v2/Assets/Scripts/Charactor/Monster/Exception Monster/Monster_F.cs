@@ -1,5 +1,11 @@
 using System.Collections;
 using UnityEngine;
+/// <summary>
+/// <para>
+/// SlimeSquareH 전용
+/// </para>
+/// 사망시, 자기 자신을 작아진 형태로 @개 소환한다. 작아진 형태가 사망할 경우에는 동작하지 않는다.
+/// </summary>
 public class Monster_F : Monster_WithObject
 {
     [SerializeField, Min(0.25f)]

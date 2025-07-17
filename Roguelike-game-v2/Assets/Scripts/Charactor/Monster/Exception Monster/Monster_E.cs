@@ -1,5 +1,8 @@
 using System.Collections;
 using UnityEngine;
+/// <summary>
+/// 잠시동안 빠른 속도로 플레이어를 추격한다. 이후, 현재 방향으로 계속 움직인다.
+/// </summary>
 public class Monster_E : BasicMonster
 {
     [SerializeField]
