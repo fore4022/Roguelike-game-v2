@@ -7,6 +7,7 @@ public class MonsterSkill_D : MonsterSkill_Damage
 
     protected override void Enable()
     {
+        SetActive(true);
         StartCoroutine(Casting());
     }
     protected override void Enter(GameObject go)
@@ -18,8 +19,6 @@ public class MonsterSkill_D : MonsterSkill_Damage
     }
     private IEnumerator Casting()
     {
-        SetActive(true);
-
         yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= triggerTime);
 
         gameObject.SetActive(false);

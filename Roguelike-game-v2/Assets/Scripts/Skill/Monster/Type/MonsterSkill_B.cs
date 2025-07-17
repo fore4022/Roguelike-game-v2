@@ -6,7 +6,7 @@ public class MonsterSkill_B : MonsterSkill_Damage, IFakeShadowSource
     [SerializeField, Min(0.2f)]
     private float duration = 0.5f;
     [SerializeField]
-    private Vector3 baseOffset = new(0, 2f, 0);
+    private Vector3 skillOffset;
 
     private const float preActionDelay = 0.035f;
 
@@ -22,6 +22,11 @@ public class MonsterSkill_B : MonsterSkill_Damage, IFakeShadowSource
     public Vector3 CurrentPosition { get { return transform.position; } }
     protected override void Enable()
     {
+        targetPosition = transform.position;
+        initialPosition = transform.position += skillOffset;
+        transform.localScale = initialScale;
+
+        SetActive(true);
         StartCoroutine(Casting());
     }
     protected override void Init()
@@ -41,24 +46,15 @@ public class MonsterSkill_B : MonsterSkill_Damage, IFakeShadowSource
 
         gameObject.SetActive(false);
     }
-    private void OnDisable()
+    protected override void Disable()
     {
-        if(isInit)
-        {
-            col.enabled = false;
+        col.enabled = false;
 
-            transform.Kill();
-            SetActive(false);
-        }
+        transform.Kill();
+        base.Disable();
     }
     private IEnumerator Casting()
     {
-        targetPosition = transform.position;
-        initialPosition = transform.position += baseOffset;
-        transform.localScale = initialScale;
-
-        SetActive(true);
-
         transform.SetScale(scaleValue / 5 * 3, duration)
             .SetPosition(targetPosition, duration, EaseType.AcceleratedFall);
 

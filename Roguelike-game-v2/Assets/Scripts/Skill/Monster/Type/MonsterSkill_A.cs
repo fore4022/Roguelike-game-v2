@@ -10,6 +10,10 @@ public class MonsterSkill_A : MonsterSkill_Damage
 
     protected override void Enable()
     {
+        direction = Calculate.GetDirection(Managers.Game.player.transform.position, transform.position);
+        transform.rotation = Calculate.GetQuaternion(direction);
+
+        SetActive(true);
         StartCoroutine(Casting());
     }
     protected override void Enter(GameObject go)
@@ -29,11 +33,6 @@ public class MonsterSkill_A : MonsterSkill_Damage
     }
     private IEnumerator Casting()
     {
-        direction = Calculate.GetDirection(Managers.Game.player.transform.position, transform.position);
-        transform.rotation = Calculate.GetQuaternion(direction);
-
-        SetActive(true);
-
         while(true)
         {
             transform.position += direction * speed * Time.deltaTime;

@@ -66,7 +66,7 @@ public abstract class MonsterSkill_Base : MonoBehaviour
     {
         if(isInit)
         {
-            SetActive(false);
+            Disable();
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -76,6 +76,10 @@ public abstract class MonsterSkill_Base : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         OnEnter(collision.gameObject);
+    }
+    protected virtual void Disable()
+    {
+        SetActive(false);
     }
     private void OnEnter(GameObject go)
     {

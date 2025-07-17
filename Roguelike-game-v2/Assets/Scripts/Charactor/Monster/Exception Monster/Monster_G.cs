@@ -9,6 +9,8 @@ public class Monster_G : Monster_WithObject
 
     private string skillKey;
 
+    // 0, 0.5f
+
     protected override void Init()
     {
         skillKey = monsterSO.extraObjects[0].name;

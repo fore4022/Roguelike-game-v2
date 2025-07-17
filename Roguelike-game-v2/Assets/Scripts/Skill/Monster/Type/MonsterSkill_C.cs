@@ -8,13 +8,13 @@ public class MonsterSkill_C : MonsterSkill_Base
     [SerializeField, Min(0.1f)]
     private float slowDuration;
     [SerializeField]
-    private float targetPositionY;
+    private float offsetY;
     [SerializeField]
     private float targetScale;
 
     private const float triggerTime = 0.975f;
 
-    private float defaultPositionY;
+    private float defaultOffsetY;
     private float defaultRadius;
 
     protected new CircleCollider2D col { get { return base.col as CircleCollider2D; } }
@@ -22,27 +22,24 @@ public class MonsterSkill_C : MonsterSkill_Base
     {
         base.Init();
 
-        defaultPositionY = col.offset.y;
+        defaultOffsetY = col.offset.y;
         defaultRadius = col.radius;
     }
     protected override void Enable()
     {
+        SetActive(true);
         StartCoroutine(Casting());
     }
     protected override void Enter(GameObject go)
     {
-        if(go.CompareTag("Player"))
-        {
-            Managers.Game.player.move.SetSlowDown(slowDown, slowDuration);
-        }
+        Managers.Game.player.move.SetSlowDown(slowDown, slowDuration);
     }
-    private void OnDisable()
+    protected override void Disable()
     {
-        if(isInit)
-        {
-            col.offset = new(0, defaultPositionY);
-            col.radius = defaultRadius;
-        }
+        col.offset = new(0, defaultOffsetY);
+        col.radius = defaultRadius;
+
+        base.Disable();
     }
     private float GetVale()
     {
@@ -54,12 +51,10 @@ public class MonsterSkill_C : MonsterSkill_Base
         float lerpedScale;
         float value;
 
-        SetActive(true);
-
         while(animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= triggerTime)
         {
             value = GetVale();
-            lerpedOffset.y = Mathf.Lerp(targetPositionY, defaultPositionY, value);
+            lerpedOffset.y = Mathf.Lerp(offsetY, defaultOffsetY, value);
             lerpedScale = Mathf.Lerp(targetScale, defaultRadius, value);
             col.offset = lerpedOffset;
             col.radius = lerpedScale;

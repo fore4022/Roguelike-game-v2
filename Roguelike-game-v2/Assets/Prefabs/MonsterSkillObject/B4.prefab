@@ -196,7 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationSpeed: 1
   duration: 2
-  baseOffset: {x: 0, y: 7, z: 0}
+  skillOffset: {x: 0, y: 2, z: 0}
 --- !u!1001 &2785181623803496047
 PrefabInstance:
   m_ObjectHideFlags: 0
