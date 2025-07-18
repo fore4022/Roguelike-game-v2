@@ -57,11 +57,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f75edefbe069cd04d9931893be858037
-    m_Address: Assets/SO/Monster/Rock Mountain/PuddleB.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6143b272d01b9774993d02d2682e701b
     m_Address: Assets/SO/Monster/Rock Mountain/BatSmallA.asset
     m_ReadOnly: 0
@@ -244,6 +239,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a76dd5afed406c0459d2c8a206ea8fe2
     m_Address: Assets/SO/Monster/Snowfield/PotionI.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 235713ab3bb77d3469b7e233061a34fc
+    m_Address: Assets/SO/Monster/Rock Mountain/PuddleB.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dce17fceeb153e844a875103e6be3d26
+    m_Address: Assets/SO/Monster/Rock Mountain/BugC.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
