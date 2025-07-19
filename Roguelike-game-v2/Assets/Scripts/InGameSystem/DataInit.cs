@@ -9,15 +9,26 @@ public class DataInit
 
     public void GetMonsterList(ref List<GameObject> monsterList)
     {
-        foreach(SpawnInformation_SO so in Managers.Game.stageInformation.spawnInformationList)
+        //foreach(SpawnInformation_SO so in Managers.Game.stageInformation.spawnInformationList)
+        //{
+        //    foreach(SpawnInformation info in so.monsterInformation)
+        //    {
+        //        if(!monsterList.Contains(info.monster))
+        //        {
+        //            Debug.Log(info.monster);
+
+        //            monsterList.Add(info.monster);
+        //        }
+        //    }
+        //}
+
+        Debug.Log("----------");
+
+        foreach(GameObject go in Managers.Game.stageInformation.spawnMonsterList.monsters)
         {
-            foreach(SpawnInformation info in so.monsterInformation)
-            {
-                if(!monsterList.Contains(info.monster))
-                {
-                    monsterList.Add(info.monster);
-                }
-            }
+            Debug.Log(go);
+
+            monsterList.Add(go);
         }
     }
     public void LoadSkillList(ref List<GameObject> skillList)
@@ -58,7 +69,7 @@ public class DataInit
     }
     private IEnumerator DataLoading()
     {
-        List<GameObject> monsterList = new();
+        List<GameObject> monsterList = new();//
         List<GameObject> skillList = new();
 
         GameObject gameSystem = GameObject.Find("GameSystem");
@@ -83,7 +94,7 @@ public class DataInit
         Managers.Game._bgm.clip = Managers.Game.stageInformation.bgm;
         Time.timeScale = 0;
 
-        GetMonsterList(ref monsterList);
+        GetMonsterList(ref monsterList);//
         LoadSkillList(ref skillList);
 
         yield return new WaitUntil(() => (skillList != null) && (monsterList != null));

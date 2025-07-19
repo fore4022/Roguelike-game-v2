@@ -4,6 +4,7 @@ using UnityEngine;
 public class StageInformation_SO : ScriptableObject
 {
     public List<SpawnInformation_SO> spawnInformationList;
+    public SpawnMonsterList_SO spawnMonsterList;
     public AudioClip bgm;
 
     public float difficulty = 1;

@@ -19,6 +19,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b6bd54e976faa9a488b388f567c401bb, type: 2}
   - {fileID: 11400000, guid: e53609ebb8aa9374ab6519e3300365e5, type: 2}
   - {fileID: 11400000, guid: e0f6237bfa9ed1648bdc70be377a22a3, type: 2}
+  spawnMonsterList: {fileID: 11400000, guid: 7eb10b58b7651f046a7eac8f3f0c8df8, type: 2}
   bgm: {fileID: 8300000, guid: 3eb3349832ee15c448a05bfcd3a8fbce, type: 3}
   difficulty: 4
   statScale: 1

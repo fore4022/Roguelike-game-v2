@@ -104,6 +104,10 @@ public class Monster : MonoBehaviour, IScriptableData
         animator = GetComponent<Animator>();
         render = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
+
+        Debug.Log(monsterSO == null);
+        Debug.Log(monsterSO.stat == null);
+
         stat = new(monsterSO.stat);
 
         if(TryGetComponent(out Collider2D col))
