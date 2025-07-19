@@ -16,14 +16,14 @@ public class Monster_F : Monster_WithObject
     private float splitInstanceCount;
 
     private Vector3 _defaultScale;
-    private string visualizerKey;
+    private string monsterKey;
     private float adjustmentScale;
 
     private bool IsSplite { get { return transform.localScale.x == splitScale; } }
     protected override void Init()
     {
         _defaultScale = new(defaultScale, defaultScale);
-        visualizerKey = monsterSO.extraObjects[0].name;
+        monsterKey = monsterSO.extraObjects[0].name;
         adjustmentScale = defaultScale / 20;
 
         if(!IsSplite)
@@ -63,7 +63,7 @@ public class Monster_F : Monster_WithObject
 
         for(int i = 0; i < splitInstanceCount; i++)
         {
-            go = Managers.Game.objectPool.GetObject(visualizerKey);
+            go = Managers.Game.objectPool.GetObject(monsterKey);
             go.transform.localScale = new Vector2(splitScale, splitScale);
             go.transform.position = transform.position + new Vector3(adjustmentScale * Random.Range(-1, 2), adjustmentScale * Random.Range(-1, 2));
 

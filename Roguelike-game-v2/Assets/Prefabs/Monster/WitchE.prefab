@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3240685597900310359}
   - component: {fileID: 4217804270261974682}
   - component: {fileID: 6663215676422192808}
-  - component: {fileID: 4699341745943492401}
   - component: {fileID: 2406290649586420068}
   - component: {fileID: 8248482065532080033}
+  - component: {fileID: 3427561310124093451}
   m_Layer: 10
   m_Name: WitchE
   m_TagString: Monster
@@ -137,18 +137,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4699341745943492401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1683486651122447605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 852098dca7ae9034aa8dde4f944ef22e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &2406290649586420068
 AudioSource:
   m_ObjectHideFlags: 0
@@ -279,4 +267,23 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.015}
   serializedVersion: 2
-  m_Radius: 0.225
+  m_Radius: 0.245
+--- !u!114 &3427561310124093451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683486651122447605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d3ed54854ed3f247879028aa56462cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillOffset:
+  - {x: 0.3, y: 0.3, z: 0}
+  - {x: 0.3, y: -0.3, z: 0}
+  - {x: -0.3, y: 0.3, z: 0}
+  - {x: -0.3, y: -0.3, z: 0}
+  coolTime: 1
+  monsterCount: 4

@@ -37,9 +37,6 @@ public class Monster_B : Monster_WithObject
     }
     private IEnumerator RepeatBehavior()
     {
-        PoolingObject go;
-        Vector3 position;
-
         while(true)
         {
             yield return delay;
@@ -48,19 +45,23 @@ public class Monster_B : Monster_WithObject
             {
                 if((Managers.Game.player.transform.position - transform.position).magnitude <= Util.CameraHeight / 2)
                 {
-                    go = Managers.Game.objectPool.GetObject(visualizerKey);
-                    position = go.transform.position = EnemyDetection.GetRandomVector();
-
-                    go.SetActive(true);
-
-                    yield return new WaitUntil(() => !go.activeSelf);
-
-                    go = Managers.Game.objectPool.GetObject(skillKey);
-                    go.transform.position = position;
-
-                    go.SetActive(true);
+                    Util.GetMonoBehaviour().StartCoroutine(SkillCasting());
                 }
             }
         }
+    }
+    private IEnumerator SkillCasting()
+    {
+        PoolingObject go = Managers.Game.objectPool.GetObject(visualizerKey);
+        Vector3 position = go.transform.position = EnemyDetection.GetRandomVector();
+
+        go.SetActive(true);
+
+        yield return new WaitUntil(() => !go.activeSelf);
+
+        go = Managers.Game.objectPool.GetObject(skillKey);
+        go.transform.position = position;
+
+        go.SetActive(true);
     }
 }
