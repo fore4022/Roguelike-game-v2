@@ -35,6 +35,11 @@ public class Monster_I : Monster_WithObject
     }
     private IEnumerator RepeatBehavior()
     {
+        if(Random.Range(0, 2) == 1)
+        {
+            yield return delay;
+        }
+
         PoolingObject go;
 
         while(true)
@@ -43,6 +48,9 @@ public class Monster_I : Monster_WithObject
             {
                 go = Managers.Game.objectPool.GetObject(monsterKey);
                 go.transform.position = transform.position + skillOffset[i];
+
+                Debug.Log(transform.position);
+                Debug.Log(go.transform.position);
 
                 go.SetActive(true);
             }

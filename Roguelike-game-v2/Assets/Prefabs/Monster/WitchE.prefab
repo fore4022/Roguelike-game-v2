@@ -285,5 +285,5 @@ MonoBehaviour:
   - {x: 0.3, y: -0.3, z: 0}
   - {x: -0.3, y: 0.3, z: 0}
   - {x: -0.3, y: -0.3, z: 0}
-  coolTime: 1
+  coolTime: 5
   monsterCount: 4

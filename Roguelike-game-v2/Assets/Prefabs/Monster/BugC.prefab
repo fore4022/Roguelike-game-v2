@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -6313739327552268289}
   - component: {fileID: -333423242159457408}
   - component: {fileID: 5428932798466639627}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BugC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -317748147
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -20191255, guid: 493903d0c73444743af1e77d26b92136, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -244,4 +244,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbbc9c517baff104c929b622a8bd4eaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 3
+  duration: 7

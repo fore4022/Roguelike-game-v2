@@ -17,5 +17,5 @@ MonoBehaviour:
     damage: 1
     moveSpeed: 1.6
     healthRegenPerSec: 0
-  user_Experience: 1
-  inGame_Experience: 1
+  user_Experience: 0
+  inGame_Experience: 0
