@@ -14,9 +14,9 @@ public class Monster_D : BasicMonster
 
     private WaitForSeconds cooldown;
 
-    protected override void OnEnable()
+    protected override void Enable()
     {
-        base.OnEnable();
+        base.Enable();
 
         StartCoroutine(RepeatBehavior());
     }

@@ -10,9 +10,9 @@ public class Monster_E : BasicMonster
     [SerializeField]
     private float rushCastingTime = 0.75f;
 
-    protected override void OnEnable()
+    protected override void Enable()
     {
-        base.OnEnable();
+        base.Enable();
 
         speedMultiplier = speedMultiplierDefault;
         canSwitchDirection = true;

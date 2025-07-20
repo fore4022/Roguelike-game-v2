@@ -12,9 +12,9 @@ public class Monster_A : Monster_WithObject
     private WaitForSeconds delay;
     private string skillKey;
 
-    protected override void OnEnable()
+    protected override void Enable()
     {
-        base.OnEnable();
+        base.Enable();
 
         behavior = StartCoroutine(RepeatBehavior());
     }

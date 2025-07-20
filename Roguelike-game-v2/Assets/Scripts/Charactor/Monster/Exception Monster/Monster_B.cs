@@ -15,9 +15,9 @@ public class Monster_B : Monster_WithObject
     private string visualizerKey;
     private string skillKey;
 
-    protected override void OnEnable()
+    protected override void Enable()
     {
-        base.OnEnable();
+        base.Enable();
 
         behavior = StartCoroutine(RepeatBehavior());
     }

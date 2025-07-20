@@ -17,9 +17,9 @@ public class Monster_C : BasicMonster
     [SerializeField]
     private float dashCastingTime;
 
-    protected override void OnEnable()
+    protected override void Enable()
     {
-        base.OnEnable();
+        base.Enable();
 
         speedMultiplier = speedMultiplierDefault;
 

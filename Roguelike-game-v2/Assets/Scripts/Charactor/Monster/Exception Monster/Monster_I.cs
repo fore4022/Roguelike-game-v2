@@ -21,9 +21,9 @@ public class Monster_I : Monster_WithObject
 
         base.Init();
     }
-    protected override void OnEnable()
+    protected override void Enable()
     {
-        base.OnEnable();
+        base.Enable();
 
         behavior = StartCoroutine(RepeatBehavior());
     }
@@ -48,10 +48,7 @@ public class Monster_I : Monster_WithObject
             {
                 go = Managers.Game.objectPool.GetObject(monsterKey);
                 go.transform.position = transform.position + skillOffset[i];
-
-                Debug.Log(transform.position);
-                Debug.Log(go.transform.position);
-
+                
                 go.SetActive(true);
             }
 

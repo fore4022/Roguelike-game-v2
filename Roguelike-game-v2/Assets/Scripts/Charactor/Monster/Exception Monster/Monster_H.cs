@@ -25,9 +25,9 @@ public class Monster_H : Monster_WithObject
     private string skillKey;
     private bool isEnterPlayer = false;
 
-    protected override void OnEnable()
+    protected override void Enable()
     {
-        base.OnEnable();
+        base.Enable();
 
         StartCoroutine(RepeatBehavior());
     }

@@ -51,7 +51,7 @@ public class Monster : MonoBehaviour, IScriptableData
         }
         else
         {
-            Set();
+            Reset();
         }
     }
     private void Update()
@@ -93,7 +93,7 @@ public class Monster : MonoBehaviour, IScriptableData
             }
         }
     }
-    protected virtual void Set()
+    protected virtual void Reset()
     {
         maxHealth = health = stat.health * Managers.Game.difficultyScaler.IncreaseStat;
         animator.speed = 1;
@@ -123,7 +123,7 @@ public class Monster : MonoBehaviour, IScriptableData
         user_Experience = monsterSO.user_Experience;
         inGame_Experience = monsterSO.inGame_Experience;
 
-        Set();
+        Reset();
     }
     protected virtual void SetPosition()
     {

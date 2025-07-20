@@ -6,6 +6,7 @@ using UnityEngine;
 public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 {
     protected const float speedMultiplierDefault = 1;
+    protected const float death_AnimationDuration = 0.3f;
 
     protected Vector3 direction;
     protected float speedMultiplier = speedMultiplierDefault;
@@ -13,9 +14,8 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 
     private IMoveable moveable;
 
-    private const float death_AnimationDuration = 0.3f;
     private const float damagedDuration = 0.15f;
-
+    
     private Coroutine moveCoroutine = null;
     private WaitForSeconds damaged = new(damagedDuration);
     private Color defaultColor;
@@ -33,9 +33,16 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     {
         base.OnEnable();
 
+        Enable();
+    }
+    protected virtual void Enable()
+    {
         SetPosition();
         changeDirection();
-
+        Set();
+    }
+    protected virtual void Set()
+    {
         moveCoroutine = StartCoroutine(Moving());
         render.color = defaultColor;
         render.enabled = true;
@@ -65,11 +72,9 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     }
     protected virtual void Die()
     {
-        StopCoroutine(moveCoroutine);
-
         rigid.simulated = false;
 
-        StartCoroutine(Dieing());
+        StopCoroutine(moveCoroutine);
     }
     protected void OnCollisionEnter2D(Collision2D collision)
     {
@@ -89,6 +94,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
         if(health <= 0)
         {
             Die();
+            StartCoroutine(Dieing());
         }
     }
     protected override void Init()
@@ -125,15 +131,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
             yield return null;
         }
     }
-    private IEnumerator TakingDamage()
-    {
-        render.material.SetFloat("_Float", 1);
-
-        yield return damaged;
-
-        render.material.SetFloat("_Float", 0);
-    }
-    private IEnumerator Dieing()
+    protected virtual IEnumerator Dieing()
     {
         animator.speed = 0;
 
@@ -152,5 +150,13 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
         render.color = defaultColor;
 
         Managers.Game.objectPool.DisableObject(gameObject, monsterSO.name);
+    }
+    private IEnumerator TakingDamage()
+    {
+        render.material.SetFloat("_Float", 1);
+
+        yield return damaged;
+
+        render.material.SetFloat("_Float", 0);
     }
 }
