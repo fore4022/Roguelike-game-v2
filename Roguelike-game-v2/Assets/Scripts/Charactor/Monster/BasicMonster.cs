@@ -6,10 +6,12 @@ using UnityEngine;
 public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 {
     protected const float speedMultiplierDefault = 1;
+    protected const float directionMultiplierDefault = 1;
     protected const float death_AnimationDuration = 0.3f;
 
     protected Vector3 direction;
     protected float speedMultiplier = speedMultiplierDefault;
+    protected float directionMultiplier = directionMultiplierDefault;
     protected bool canSwitchDirection = true;
 
     private IMoveable moveable;
@@ -35,18 +37,20 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 
         Enable();
     }
+    protected override void Set()
+    {
+        base.Set();
+
+        moveCoroutine = StartCoroutine(Moving());
+        render.color = defaultColor;
+        render.enabled = true;
+        rigid.simulated = true;
+    }
     protected virtual void Enable()
     {
         SetPosition();
         changeDirection();
         Set();
-    }
-    protected virtual void Set()
-    {
-        moveCoroutine = StartCoroutine(Moving());
-        render.color = defaultColor;
-        render.enabled = true;
-        rigid.simulated = true;
     }
     public void SetSlowDown(float slowDown, float duration)
     {
@@ -63,6 +67,11 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
             if(canSwitchDirection)
             {
                 direction = Calculate.GetDirection(Managers.Game.player.gameObject.transform.position, transform.position);
+
+                if(directionMultiplier != directionMultiplierDefault)
+                {
+                    direction -= (direction * Mathf.Max((1 - directionMultiplier), 0.1f));
+                }
             }
         }
     }
@@ -142,6 +151,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
         Managers.Game.inGameData.player.Experience += user_Experience;
         Managers.Game.UserExp += inGame_Experience;
         speedMultiplier = speedMultiplierDefault;
+        directionMultiplier = directionMultiplierDefault;
 
         StartCoroutine(ColorLerp.ChangeAlpha(render, 0, render.color.a, death_AnimationDuration));
 

@@ -15,12 +15,6 @@ public class Monster_B : Monster_WithObject
     private string visualizerKey;
     private string skillKey;
 
-    protected override void Enable()
-    {
-        base.Enable();
-
-        behavior = StartCoroutine(RepeatBehavior());
-    }
     protected override void Init()
     {
         delay = new(coolTime);
@@ -28,6 +22,12 @@ public class Monster_B : Monster_WithObject
         visualizerKey = monsterSO.extraObjects[1].name;
 
         base.Init();
+    }
+    protected override void Enable()
+    {
+        base.Enable();
+
+        behavior = StartCoroutine(RepeatBehavior());
     }
     protected override void Die()
     {

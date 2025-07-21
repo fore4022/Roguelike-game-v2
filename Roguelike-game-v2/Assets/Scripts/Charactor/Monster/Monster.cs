@@ -49,10 +49,6 @@ public class Monster : MonoBehaviour, IScriptableData
 
             didInit = true;
         }
-        else
-        {
-            Reset();
-        }
     }
     private void Update()
     {
@@ -66,34 +62,7 @@ public class Monster : MonoBehaviour, IScriptableData
     {
         return stat.damage * Managers.Game.difficultyScaler.IncreaseStat;
     }
-    private void IsInvisible()
-    {
-        planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
-
-        if(GeometryUtility.TestPlanesAABB(planes, col.bounds))
-        {
-            animator.speed = 1;
-            isVisible = true;
-
-            if(collect != null)
-            {
-                StopCoroutine(collect);
-
-                collect = null;
-            }
-        }
-        else
-        {
-            animator.speed = 0;
-            isVisible = false;
-
-            if(collect == null)
-            {
-                collect = StartCoroutine(Collecting());
-            }
-        }
-    }
-    protected virtual void Reset()
+    protected virtual void Set()
     {
         maxHealth = health = stat.health * Managers.Game.difficultyScaler.IncreaseStat;
         animator.speed = 1;
@@ -122,8 +91,33 @@ public class Monster : MonoBehaviour, IScriptableData
         audioSource.playOnAwake = false;
         user_Experience = monsterSO.user_Experience;
         inGame_Experience = monsterSO.inGame_Experience;
+    }
+    private void IsInvisible()
+    {
+        planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
 
-        Reset();
+        if(GeometryUtility.TestPlanesAABB(planes, col.bounds))
+        {
+            animator.speed = 1;
+            isVisible = true;
+
+            if(collect != null)
+            {
+                StopCoroutine(collect);
+
+                collect = null;
+            }
+        }
+        else
+        {
+            animator.speed = 0;
+            isVisible = false;
+
+            if(collect == null)
+            {
+                collect = StartCoroutine(Collecting());
+            }
+        }
     }
     protected virtual void SetPosition()
     {

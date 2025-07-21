@@ -12,18 +12,18 @@ public class Monster_A : Monster_WithObject
     private WaitForSeconds delay;
     private string skillKey;
 
-    protected override void Enable()
-    {
-        base.Enable();
-
-        behavior = StartCoroutine(RepeatBehavior());
-    }
     protected override void Init()
     {
         delay = new(coolTime);
         skillKey = monsterSO.extraObjects[0].name;
 
         base.Init();
+    }
+    protected override void Enable()
+    {
+        base.Enable();
+
+        behavior = StartCoroutine(RepeatBehavior());
     }
     protected override void Die()
     {

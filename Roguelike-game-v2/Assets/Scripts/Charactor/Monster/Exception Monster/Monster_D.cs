@@ -14,17 +14,17 @@ public class Monster_D : BasicMonster
 
     private WaitForSeconds cooldown;
 
-    protected override void Enable()
-    {
-        base.Enable();
-
-        StartCoroutine(RepeatBehavior());
-    }
     protected override void Init()
     {
         cooldown = new(dashCooldown);
 
         base.Init();
+    }
+    protected override void Enable()
+    {
+        base.Enable();
+
+        StartCoroutine(RepeatBehavior());
     }
     private IEnumerator RepeatBehavior()
     {

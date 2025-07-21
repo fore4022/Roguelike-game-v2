@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7540955822626167611}
   - component: {fileID: 4664255756374416074}
   - component: {fileID: 1276716752701452350}
-  - component: {fileID: 6754334293828728054}
   - component: {fileID: 5446794102643468363}
   - component: {fileID: 4326468892987243954}
+  - component: {fileID: 8657457344353827850}
   m_Layer: 10
   m_Name: GolemA
   m_TagString: Monster
@@ -137,18 +137,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6754334293828728054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7767052936863152840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 852098dca7ae9034aa8dde4f944ef22e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &5446794102643468363
 AudioSource:
   m_ObjectHideFlags: 0
@@ -280,3 +268,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.425, y: 0.485}
   m_Direction: 0
+--- !u!114 &8657457344353827850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7767052936863152840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e76b9d34166d1594d8e976ae0d6e0311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashSpeed: 3
+  dashDuration: 3
+  dashCooldown: 2
