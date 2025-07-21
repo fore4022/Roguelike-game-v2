@@ -9,7 +9,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     protected const float directionMultiplierDefault = 1;
     protected const float death_AnimationDuration = 0.3f;
 
-    protected Vector3 direction;
+    protected Vector3 direction = default;
     protected float speedMultiplier = speedMultiplierDefault;
     protected float directionMultiplier = directionMultiplierDefault;
     protected bool canSwitchDirection = true;
@@ -66,11 +66,18 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
         {
             if(canSwitchDirection)
             {
-                direction = Calculate.GetDirection(Managers.Game.player.gameObject.transform.position, transform.position);
-
-                if(directionMultiplier != directionMultiplierDefault)
+                if(direction == default)
                 {
-                    direction -= (direction * Mathf.Max((1 - directionMultiplier), 0.1f));
+                    direction = Calculate.GetDirection(Managers.Game.player.gameObject.transform.position, transform.position);
+                }
+                else
+                {
+                    if(directionMultiplier == 0)
+                    {
+                        return;
+                    }
+
+                    direction = Vector3.Slerp(direction, Calculate.GetDirection(Managers.Game.player.gameObject.transform.position, transform.position), directionMultiplier).normalized;
                 }
             }
         }

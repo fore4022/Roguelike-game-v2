@@ -77,7 +77,7 @@ public class DataInit
         Managers.Game._bgm.clip = Managers.Game.stageInformation.bgm;
         Time.timeScale = 0;
 
-        GetMonsterList(ref monsterList);//
+        GetMonsterList(ref monsterList);
         LoadSkillList(ref skillList);
 
         yield return new WaitUntil(() => (skillList != null) && (monsterList != null));
