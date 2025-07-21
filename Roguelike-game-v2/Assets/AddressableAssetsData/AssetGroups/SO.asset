@@ -102,7 +102,7 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 44bc664cac53c05468f2578b4daed454
+  - m_GUID: afcf4199383ce2d4e8c9b426722d7ad7
     m_Address: Assets/SO/Monster/Volcano/FireSmallA.asset
     m_ReadOnly: 0
     m_SerializedLabels: []

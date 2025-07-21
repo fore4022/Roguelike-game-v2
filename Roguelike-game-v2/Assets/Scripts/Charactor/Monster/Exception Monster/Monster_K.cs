@@ -1,5 +1,8 @@
 using System.Collections;
 using UnityEngine;
+/// <summary>
+/// 빠른 속도로 플레이어를 향해서 돌진한다. 점차 방향 전환에 제약을 받는다.
+/// </summary>
 public class Monster_K : BasicMonster
 {
     [SerializeField]

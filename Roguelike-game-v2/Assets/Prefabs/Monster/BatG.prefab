@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1309036282395722814}
   - component: {fileID: 3160215999603494020}
   - component: {fileID: 7833356100389680542}
-  - component: {fileID: 2542904930034705678}
   - component: {fileID: 1279427459611517073}
   - component: {fileID: 1972375219942505221}
+  - component: {fileID: 4505849023136258742}
   m_Layer: 10
   m_Name: BatG
   m_TagString: Monster
@@ -137,18 +137,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2542904930034705678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 649328983438073373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 852098dca7ae9034aa8dde4f944ef22e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &1279427459611517073
 AudioSource:
   m_ObjectHideFlags: 0
@@ -280,3 +268,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.015}
   serializedVersion: 2
   m_Radius: 0.25
+--- !u!114 &4505849023136258742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649328983438073373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40157765e4e4eff4d9b36180a11ea4cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  directionMultiplierDefault: 0.025

@@ -7,7 +7,7 @@ public class Monster_G : Monster_WithObject
     [SerializeField, Range(0, 100)]
     private float skillCastChance;
 
-    private string skillKey;
+    protected string skillKey;
 
     protected override void Init()
     {
@@ -31,7 +31,7 @@ public class Monster_G : Monster_WithObject
 
         base.Die();
     }
-    private void SkillCast()
+    protected virtual void SkillCast()
     {
         PoolingObject go = Managers.Game.objectPool.GetObject(skillKey);
 

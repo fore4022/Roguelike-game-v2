@@ -281,6 +281,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashSpeedMultiplier: 3.75
-  dashDuration: 7.5
+  dashDuration: 7.25
   dashCooldown: 3.25
-  targetDirectionMultiplier: 0.025
+  targetDirectionMultiplier: 0.3

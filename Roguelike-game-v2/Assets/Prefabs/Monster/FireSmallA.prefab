@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 2516699761923599382}
   - component: {fileID: 4775201705220269081}
   - component: {fileID: 5778584078953973014}
-  - component: {fileID: 7422891183622624865}
   - component: {fileID: 1952868007806937122}
+  - component: {fileID: 2103920475020924549}
   m_Layer: 10
   m_Name: FireSmallA
   m_TagString: Monster
@@ -172,18 +172,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7422891183622624865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3891743006178786391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 852098dca7ae9034aa8dde4f944ef22e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &1952868007806937122
 AudioSource:
   m_ObjectHideFlags: 0
@@ -280,3 +268,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2103920475020924549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3891743006178786391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6caa2ab6c897f8e46821c2d0fd8dd9b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillCastChance: 66.6
+  colors:
+  - {r: 1, g: 0.6784314, b: 0.6784314, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 1, g: 0.9411765, b: 0, a: 1}
+  - {r: 0.9647059, g: 0.5529412, b: 0.93333334, a: 1}
+  - {r: 0.33333334, g: 0.96862745, b: 1, a: 1}
+  - {r: 0.19607843, g: 1, b: 0.59607846, a: 1}
+  - {r: 0.60784316, g: 0.90588236, b: 0.1764706, a: 1}
+  scaleValue_Min: 0.8
+  scaleValue_Max: 2.5

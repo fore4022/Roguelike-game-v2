@@ -15,7 +15,7 @@ MonoBehaviour:
   stat:
     health: 11
     damage: 1.5
-    moveSpeed: 0.385
+    moveSpeed: 0.6
     healthRegenPerSec: 0
   user_Experience: 1
   inGame_Experience: 1

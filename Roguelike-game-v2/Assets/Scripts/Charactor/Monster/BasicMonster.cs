@@ -9,7 +9,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     protected const float directionMultiplierDefault = 1;
     protected const float death_AnimationDuration = 0.3f;
 
-    protected Vector3 direction = default;
+    protected Vector2 direction = default;
     protected float speedMultiplier = speedMultiplierDefault;
     protected float directionMultiplier = directionMultiplierDefault;
     protected bool canSwitchDirection = true;
@@ -56,7 +56,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     {
         moveable.SetSlowDown(slowDown, duration);
     }
-    public void OnMove()
+    public virtual void OnMove()
     {
         rigid.velocity = direction * SpeedAmount;
     }
