@@ -24,9 +24,9 @@ public class Monster_M : Monster_G
         PoolingObject go = Managers.Game.objectPool.GetObject(skillKey);
 
         value /= 3;
-        go.transform.position = transform.position;
-        go.transform.localScale = new(value, value);
-        go.render.color = render.color;
+        go.Transform.position = transform.position;
+        go.Transform.localScale = new(value, value);
+        go.SpriteRenderer.color = render.color;
 
         go.SetActive(true);
     }

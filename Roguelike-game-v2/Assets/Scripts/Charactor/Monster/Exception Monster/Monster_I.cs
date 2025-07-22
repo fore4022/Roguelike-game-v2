@@ -50,7 +50,7 @@ public class Monster_I : Monster_WithObject
             for(int i = 0; i < monsterCount; i++)
             {
                 go = Managers.Game.objectPool.GetObject(monsterKey);
-                go.transform.position = transform.position + skillOffset[i];
+                go.Transform.position = transform.position + skillOffset[i];
                 
                 go.SetActive(true);
             }

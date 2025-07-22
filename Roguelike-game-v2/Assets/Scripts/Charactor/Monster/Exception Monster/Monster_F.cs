@@ -64,8 +64,8 @@ public class Monster_F : Monster_WithObject
         for(int i = 0; i < splitInstanceCount; i++)
         {
             go = Managers.Game.objectPool.GetObject(monsterKey);
-            go.transform.localScale = new Vector2(splitScale, splitScale);
-            go.transform.position = transform.position + new Vector3(adjustmentScale * Random.Range(-1, 2), adjustmentScale * Random.Range(-1, 2));
+            go.Transform.localScale = new Vector2(splitScale, splitScale);
+            go.Transform.position = transform.position + new Vector3(adjustmentScale * Random.Range(-1, 2), adjustmentScale * Random.Range(-1, 2));
 
             go.SetActive(true);
 

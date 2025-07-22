@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 3850510482930476394}
   - component: {fileID: 4642853428078486204}
   - component: {fileID: 5179431038912078581}
-  - component: {fileID: 4175808310151082312}
   - component: {fileID: 8840844272333914013}
+  - component: {fileID: 7409550442090222956}
   m_Layer: 10
   m_Name: SwordA
   m_TagString: Monster
@@ -172,18 +172,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4175808310151082312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1075172792233400579}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 852098dca7ae9034aa8dde4f944ef22e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &8840844272333914013
 AudioSource:
   m_ObjectHideFlags: 0
@@ -280,3 +268,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7409550442090222956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075172792233400579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bdd22e4e3035ef46b3c172651593419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillPosition: {x: 0, y: 0, z: 90}
+  skillDuration: 0
+  skillRange: 0
+  skillCooldown: 0

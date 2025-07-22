@@ -312,6 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0672f720bf529c045a891712ea7a38a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillPosition: {x: 0.215, y: 0, z: 0}
   skillAnimation_Name: Skill
   skillDuration: 3
   skillCooldown: 2.25

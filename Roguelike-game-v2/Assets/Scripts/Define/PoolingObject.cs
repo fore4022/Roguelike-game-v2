@@ -1,21 +1,36 @@
 using UnityEngine;
 public class PoolingObject
 {
-    public GameObject go;
-    public SpriteRenderer _render = null;
     public bool isUsed = false;
 
-    public Transform transform { get { return go.transform; } }
-    public SpriteRenderer render
+    private GameObject go;
+    private Animator animator;
+    private SpriteRenderer render = null;
+
+    public GameObject PoolingGameObject { get { return go; } }
+    public Transform Transform { get { return go.transform; } }
+    public Animator Animator
     {
         get
         {
-            if(_render == null)
+            if(animator == null)
             {
-                _render = go.GetComponent<SpriteRenderer>();
+                animator = go.GetComponent<Animator>();
             }
 
-            return _render;
+            return animator;
+        }
+    }
+    public SpriteRenderer SpriteRenderer
+    {
+        get
+        {
+            if(render == null)
+            {
+                render = go.GetComponent<SpriteRenderer>();
+            }
+
+            return render;
         }
     }
     public bool activeSelf { get { return go.activeSelf; } }
@@ -29,7 +44,7 @@ public class PoolingObject
     }
     public void SetActive(bool active)
     {
-        isUsed = false;
+        isUsed = active;
 
         go.SetActive(active);
     }

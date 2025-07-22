@@ -42,7 +42,7 @@ public class Monster_A : Monster_WithObject
             if((Managers.Game.player.transform.position - transform.position).magnitude <= Util.CameraHeight / 2)
             {
                 go = Managers.Game.objectPool.GetObject(skillKey);
-                go.transform.position = transform.position;
+                go.Transform.position = transform.position;
 
                 go.SetActive(true);
             }

@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-[RequireComponent(typeof(CircleCollider2D))]
 public class MonsterSkill_D : MonsterSkill_Damage
 {
     private const float triggerTime = 0.975f;

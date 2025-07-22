@@ -35,7 +35,7 @@ public class Monster_G : Monster_WithObject
     {
         PoolingObject go = Managers.Game.objectPool.GetObject(skillKey);
 
-        go.transform.position = transform.position;
+        go.Transform.position = transform.position;
 
         go.SetActive(true);
     }

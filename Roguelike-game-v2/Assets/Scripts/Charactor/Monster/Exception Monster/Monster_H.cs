@@ -6,6 +6,8 @@ using UnityEngine;
 public class Monster_H : Monster_WithObject
 {
     [SerializeField]
+    private Vector3 skillPosition;
+    [SerializeField]
     private string skillAnimation_Name;
     [SerializeField]
     private float skillDuration;
@@ -17,7 +19,6 @@ public class Monster_H : Monster_WithObject
     private float skillDelay;
 
     private const string defaultAnimation_Name = "Walk";
-    private readonly Vector3 skillPosition = new(0.215f, 0);
 
     private WaitForSeconds duration;
     private WaitForSeconds cooldown;
@@ -96,8 +97,8 @@ public class Monster_H : Monster_WithObject
 
                 animator.speed = 1;
                 speedMultiplier = 0;
-                go.transform.position = transform.position + skillPosition * sign;
-                go.transform.localScale = new(sign, 1, 1);
+                go.Transform.position = transform.position + skillPosition * sign;
+                go.Transform.localScale = new(sign, 1, 1);
 
                 go.SetActive(true);
                 animator.Play(skillAnimation_Name);

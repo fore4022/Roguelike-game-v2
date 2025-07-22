@@ -30,7 +30,7 @@ public class ObjectPool
     private int MaxWorkPerSec { get { return Mathf.Max(maxWorkPerSec / coroutineCount, 1); } }
     public GameObject ActiveObject(string prefabName)
     {
-        GameObject go = GetObject(prefabName, false).go;
+        GameObject go = GetObject(prefabName, false).PoolingGameObject;
 
         go.SetActive(true);
 
@@ -40,7 +40,7 @@ public class ObjectPool
     {
         poolingObjects.TryGetValue(key, out List<PoolingObject> objs);
 
-        objs.FirstOrDefault(o => o.go == prefab).isUsed = false;
+        objs.FirstOrDefault(o => o.PoolingGameObject == prefab).isUsed = false;
 
         prefab.SetActive(false);
     }
@@ -48,7 +48,7 @@ public class ObjectPool
     {
         foreach(PoolingObject obj in poolingObjects[prefabName])
         {
-            if(!obj.go.activeSelf && !obj.isUsed)
+            if(!obj.PoolingGameObject.activeSelf && !obj.isUsed)
             {
                 if(isUsed)
                 {
@@ -76,9 +76,9 @@ public class ObjectPool
         {
             foreach(PoolingObject obj in objList)
             {
-                if(obj.go.activeSelf)
+                if(obj.PoolingGameObject.activeSelf)
                 {
-                    obj.go.SetActive(false);
+                    obj.PoolingGameObject.SetActive(false);
                 }
 
                 if(obj.isUsed)
