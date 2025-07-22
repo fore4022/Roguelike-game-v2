@@ -9,6 +9,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     protected const float directionMultiplierDefault = 1;
     protected const float death_AnimationDuration = 0.3f;
 
+    protected Color defaultColor;
     protected Vector2 direction = default;
     protected float speedMultiplier = speedMultiplierDefault;
     protected float directionMultiplier = directionMultiplierDefault;
@@ -20,7 +21,6 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     
     private Coroutine moveCoroutine = null;
     private WaitForSeconds damaged = new(damagedDuration);
-    private Color defaultColor;
 
     public float SpeedAmount { get { return stat.moveSpeed * speedMultiplier * SlowDownAmount; } }
     public float SlowDownAmount { get { return moveable.SlowDownAmount; } }

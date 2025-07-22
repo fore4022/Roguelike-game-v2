@@ -20,5 +20,5 @@ MonoBehaviour:
   user_Experience: 1
   inGame_Experience: 1
   extraObjects:
-  - {fileID: 0}
+  - {fileID: 5925539851558113288, guid: 55f21fb378ed17042a4212821258e794, type: 3}
   hasExtraObject: 1

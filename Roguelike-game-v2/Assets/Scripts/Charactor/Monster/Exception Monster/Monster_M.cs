@@ -9,20 +9,24 @@ public class Monster_M : Monster_G
     [SerializeField]
     private float scaleValue_Max;
 
+    private float value;
+
     protected override void Enable()
     {
-        render.color = colors[Random.Range(0, colors.Count)];
-
+        value = Random.Range(scaleValue_Min, scaleValue_Max + 1);
+        transform.localScale = new(value, value);
+        defaultColor = colors[Random.Range(0, colors.Count)];
+     
         base.Enable();
     }
     protected override void SkillCast()
     {
         PoolingObject go = Managers.Game.objectPool.GetObject(skillKey);
 
-        float value = Random.Range(scaleValue_Min, scaleValue_Max + 1);
-
+        value /= 3;
         go.transform.position = transform.position;
         go.transform.localScale = new(value, value);
+        go.render.color = render.color;
 
         go.SetActive(true);
     }

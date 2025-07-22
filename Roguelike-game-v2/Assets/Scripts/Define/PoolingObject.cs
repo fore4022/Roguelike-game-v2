@@ -2,9 +2,22 @@ using UnityEngine;
 public class PoolingObject
 {
     public GameObject go;
+    public SpriteRenderer _render = null;
     public bool isUsed = false;
 
     public Transform transform { get { return go.transform; } }
+    public SpriteRenderer render
+    {
+        get
+        {
+            if(_render == null)
+            {
+                _render = go.GetComponent<SpriteRenderer>();
+            }
+
+            return _render;
+        }
+    }
     public bool activeSelf { get { return go.activeSelf; } }
     public PoolingObject(GameObject go)
     {

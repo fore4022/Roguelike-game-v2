@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6caa2ab6c897f8e46821c2d0fd8dd9b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillCastChance: 66.6
+  skillCastChance: 100
   colors:
   - {r: 1, g: 0.6784314, b: 0.6784314, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
