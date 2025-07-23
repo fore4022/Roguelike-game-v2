@@ -1,9 +1,6 @@
 public delegate float EaseDelegate(float f);
 public class EaseProvider
 {
-    private const float _start = 0;
-    private const float _end = 1;
-
     public static EaseDelegate Get(EaseType type)
     {
         EaseDelegate del = null;

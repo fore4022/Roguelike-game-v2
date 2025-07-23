@@ -1,6 +1,6 @@
 using UnityEditor;
 using UnityEngine;
-[CreateAssetMenu(fileName = "Stage", menuName = "Create New SO/Create New Stage_SO")]
+[CreateAssetMenu(fileName = "Stage", menuName = "Create New SO/Game Stage/Create New Stage_SO")]
 public class Stage_SO : ScriptableObject
 {
     [HideInInspector]

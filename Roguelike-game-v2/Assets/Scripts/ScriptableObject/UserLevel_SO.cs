@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-[CreateAssetMenu(fileName = "UserLevel", menuName = "Create New SO/Create New UserLevel_SO")]
+[CreateAssetMenu(fileName = "UserLevel", menuName = "Create New SO/User Level/Create New UserLevel_SO")]
 public class UserLevel_SO : ScriptableObject
 {
     [HideInInspector]

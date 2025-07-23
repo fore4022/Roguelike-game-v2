@@ -25,6 +25,7 @@ public class MonsterSkill_B : MonsterSkill_Damage, IFakeShadowSource
         targetPosition = transform.position;
         initialPosition = transform.position += skillOffset;
         transform.localScale = initialScale;
+        col.enabled = false;
 
         SetActive(true);
         StartCoroutine(Casting());
@@ -48,15 +49,13 @@ public class MonsterSkill_B : MonsterSkill_Damage, IFakeShadowSource
     }
     protected override void Disable()
     {
-        col.enabled = false;
-
         transform.Kill();
         base.Disable();
     }
     private IEnumerator Casting()
     {
         transform.SetScale(scaleValue / 5 * 3, duration)
-            .SetPosition(targetPosition, duration, EaseType.AcceleratedFall);
+            .SetPosition(targetPosition, duration, EaseType.InQuad);
 
         StartCoroutine(ColorLerp.ChangeColor(render, Color.white, defaultColor, duration));
 

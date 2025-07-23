@@ -6805,18 +6805,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2042785019062179831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6650755138784680031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3dd2f487a277254f8f5fe603fed7ca2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2132690186186131548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7095,7 +7083,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c70908de8a01ed49b654ed412729610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: {fileID: 0}
 --- !u!1 &3912011118272727121
 GameObject:
   m_ObjectHideFlags: 0
@@ -7288,7 +7275,6 @@ GameObject:
   - component: {fileID: 7624258119808129057}
   - component: {fileID: 7624258119808129058}
   - component: {fileID: 3577859026224596279}
-  - component: {fileID: 2042785019062179831}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player

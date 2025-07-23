@@ -1,5 +1,5 @@
 using UnityEngine;
-[CreateAssetMenu(fileName = "BasicMonsterStat", menuName = "Create New SO/Create New BasicMonsterStat_SO")]
+[CreateAssetMenu(fileName = "BasicMonsterStat", menuName = "Create New SO/Monster/Create New BasicMonsterStat_SO")]
 public class MonsterStat_SO : ScriptableObject
 {
     public DefaultStat stat;

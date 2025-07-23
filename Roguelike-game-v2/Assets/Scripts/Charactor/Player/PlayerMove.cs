@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 /// InputSystem을 이용하여 구현하였다.
 /// 입력 이벤트에 따라서 CharactorController_UI를 제어한다. 
 /// </summary>
-public class PlayerMove : MonoBehaviour, IMoveable
+public class PlayerMove : IMoveable
 {
     private IMoveable moveable;
     private TouchControls touchControl;
@@ -25,14 +25,9 @@ public class PlayerMove : MonoBehaviour, IMoveable
     public Vector2 Direction { get { return direction; } }
     public float SpeedAmount { get { return Managers.Game.player.Stat.moveSpeed * SlowDownAmount * Time.deltaTime; } }
     public float SlowDownAmount { get { return moveable.SlowDownAmount; } }
-    private void Awake()
-    {
-        render = GetComponent<SpriteRenderer>();
-        moveable = Managers.Game.container.Get<DefaultMoveable>(transform);
-    }
     public void Init()
     {
-        StartCoroutine(Initalization());
+        Util.GetMonoBehaviour().StartCoroutine(Initalization());
     }
     public void OnMove()
     {
@@ -49,7 +44,7 @@ public class PlayerMove : MonoBehaviour, IMoveable
 
         if(moving != null)
         {
-            StopCoroutine(moving);
+            Util.GetMonoBehaviour().StopCoroutine(moving);
         }
 
         moving = null;
@@ -108,7 +103,12 @@ public class PlayerMove : MonoBehaviour, IMoveable
 
         enterTouchPosition = context.ReadValue<Vector2>();
         charactorController.EnterPosition = enterTouchPosition;
-        moving = StartCoroutine(Moving());
+        moving = Util.GetMonoBehaviour().StartCoroutine(Moving());
+    }
+    public PlayerMove(SpriteRenderer render, DefaultMoveable moveable)
+    {
+        this.render = render;
+        this.moveable = moveable;
     }
     private IEnumerator Moving()
     {

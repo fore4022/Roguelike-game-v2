@@ -5,6 +5,4 @@ public class Effects
         Sum,
         Product
     }
-
-    public Types type;
 }

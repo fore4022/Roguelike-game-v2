@@ -1,5 +1,5 @@
 using UnityEngine;
-[CreateAssetMenu(fileName = "IconSprite", menuName = "Create New SO/Create New IconSprite_SO")]
+[CreateAssetMenu(fileName = "IconSprite", menuName = "Create New SO/Game Stage/Create New IconSprite_SO")]
 public class Icon_SO : ScriptableObject
 {
     public Sprite ground;

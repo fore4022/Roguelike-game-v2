@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-[CreateAssetMenu(fileName = "GameData", menuName = "Create New SO/Create New GameData_SO")]
+[CreateAssetMenu(fileName = "GameData", menuName = "Create New SO/Game Stage/Create New GameData_SO")]
 public class GameData_SO : ScriptableObject
 {
     [HideInInspector]

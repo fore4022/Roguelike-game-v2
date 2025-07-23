@@ -1,19 +1,5 @@
 using UnityEngine;
-using System;
-[Serializable]
-public class ProjectileInfo
-{
-    public string animationName = "";
-    public float speed;
-    public int penetration = 0;
-}
-[Serializable]
-public class MultiCast
-{
-    public float[] delay;
-    public float[] count;
-}
-[CreateAssetMenu(fileName = "Skill", menuName = "Create New SO/Create New Skill_SO")]
+[CreateAssetMenu(fileName = "Skill", menuName = "Create New SO/Skill/Create New Skill_SO")]
 public class Skill_SO : ScriptableObject
 {
     public const int maxLevel = 5;
