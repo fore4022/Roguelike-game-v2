@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 /// <summary>
@@ -6,12 +7,16 @@ using UnityEngine;
 public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 {
     protected const float speedMultiplierDefault = 1;
+    protected const float damageMultiplierDefault = 1;
     protected const float directionMultiplierDefault = 1;
     protected const float death_AnimationDuration = 0.3f;
 
+    protected Action onDamaged = null;
+    
     protected Color defaultColor;
     protected Vector2 direction = default;
     protected float speedMultiplier = speedMultiplierDefault;
+    protected float damageMultiplier = damageMultiplierDefault;
     protected float directionMultiplier = directionMultiplierDefault;
     protected bool canSwitchDirection = true;
 
@@ -24,7 +29,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 
     public float SpeedAmount { get { return stat.moveSpeed * speedMultiplier * SlowDownAmount; } }
     public float SlowDownAmount { get { return moveable.SlowDownAmount; } }
-    public float DamageAmount { get { return stat.damage * Managers.Game.difficultyScaler.IncreaseStat * Time.deltaTime; } }
+    public float DamageAmount { get { return stat.damage * damageMultiplier * Managers.Game.difficultyScaler.IncreaseStat * Time.deltaTime; } }
     protected override void Awake()
     {
         moveable = Managers.Game.container.Get<DefaultMoveable>(transform);
@@ -104,8 +109,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     {
         health -= damage.DamageAmount;
 
-        audioSource.Play();
-        Damaged();
+        onDamaged.Invoke();
 
         if(health <= 0)
         {
@@ -117,6 +121,8 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     {
         base.Init();
 
+        onDamaged += audioSource.Play;
+        onDamaged += Damaged;
         defaultColor = render.color;
     }
     private void Enter(Collision2D collision)
@@ -158,6 +164,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
         Managers.Game.inGameData.player.Experience += user_Experience;
         Managers.Game.UserExp += inGame_Experience;
         speedMultiplier = speedMultiplierDefault;
+        damageMultiplier = damageMultiplierDefault;
         directionMultiplier = directionMultiplierDefault;
 
         StartCoroutine(ColorLerp.ChangeAlpha(render, 0, render.color.a, death_AnimationDuration));

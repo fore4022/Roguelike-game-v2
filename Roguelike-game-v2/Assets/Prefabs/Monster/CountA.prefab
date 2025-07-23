@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3875766395902552171}
   - component: {fileID: 5188243532110010586}
   - component: {fileID: 2246682387283522242}
-  - component: {fileID: 1955592165200533312}
   - component: {fileID: 9193797202148410037}
   - component: {fileID: 3024143240915035674}
+  - component: {fileID: -1288932482990542131}
   m_Layer: 10
   m_Name: CountA
   m_TagString: Monster
@@ -137,18 +137,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1955592165200533312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3251678293858357659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 852098dca7ae9034aa8dde4f944ef22e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &9193797202148410037
 AudioSource:
   m_ObjectHideFlags: 0
@@ -280,3 +268,17 @@ CapsuleCollider2D:
   m_Offset: {x: -0.015, y: 0}
   m_Size: {x: 0.325, y: 0.465}
   m_Direction: 0
+--- !u!114 &-1288932482990542131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3251678293858357659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93bf911beb284454d8ccdf84e6502ac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetColor: {r: 1, g: 0.49019608, b: 0.49019608, a: 1}
+  multiplier: 2.5
