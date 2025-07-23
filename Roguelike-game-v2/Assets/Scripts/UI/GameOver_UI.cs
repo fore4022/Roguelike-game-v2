@@ -28,7 +28,7 @@ public class GameOver_UI : UserInterface
 
         Managers.UI.Hide<HeadUpDisplay_UI>();
 
-        if(Managers.Game.inGameTimer.GetMinutes > Managers.Game.stageInformation.requiredTime || Managers.Game.inGameTimer.GetHours > 0)
+        if(Managers.Game.inGameTimer.GetMinutes >= Managers.Game.stageInformation.requiredTime || Managers.Game.inGameTimer.GetHours > 0)
         {
             result = "Stage\nClear";
 

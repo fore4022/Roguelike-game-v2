@@ -24,4 +24,4 @@ MonoBehaviour:
   difficulty: 4
   statScale: 1
   spawnDelay: 1
-  requiredTime: 2
+  requiredTime: 1
