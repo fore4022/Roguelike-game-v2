@@ -280,7 +280,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bdd22e4e3035ef46b3c172651593419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillPosition: {x: 0, y: 0, z: 90}
-  skillDuration: 0
-  skillRange: 0
-  skillCooldown: 0
+  skillRotation: {x: 0, y: 0, z: 90}
+  skillPositionX: 0.125
+  skillPositionY: 0.05
+  skillDuration: 0.075
+  skillRange: 0.4
+  skillCooldown: 3

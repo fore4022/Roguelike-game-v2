@@ -97,11 +97,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d1238ca13b6987447aff63022153705c
-    m_Address: Assets/SO/Monster/Volcano/SwordA.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: afcf4199383ce2d4e8c9b426722d7ad7
     m_Address: Assets/SO/Monster/Volcano/FireSmallA.asset
     m_ReadOnly: 0
@@ -249,6 +244,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1e5eb1842326c7442b7cfacfced09df0
     m_Address: Assets/SO/Monster/Snowfield/WitchE.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 45bb404ba59467a42ab3a750a9950064
+    m_Address: Assets/SO/Monster/Volcano/SwordA.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

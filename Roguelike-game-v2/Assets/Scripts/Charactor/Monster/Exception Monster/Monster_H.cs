@@ -26,6 +26,15 @@ public class Monster_H : Monster_WithObject
     private string skillKey;
     private bool isEnterPlayer = false;
 
+    protected override void Init()
+    {
+        duration = new(skillDuration);
+        cooldown = new(skillCooldown);
+        delay = new(skillDelay);
+        skillKey = monsterSO.extraObjects[0].name;
+
+        base.Init();
+    }
     protected override void Enable()
     {
         base.Enable();
@@ -41,15 +50,6 @@ public class Monster_H : Monster_WithObject
     private void OnCollisionExit2D(Collision2D collision)
     {
         isEnterPlayer = false;
-    }
-    protected override void Init()
-    {
-        duration = new(skillDuration);
-        cooldown = new(skillCooldown);
-        delay = new(skillDelay);
-        skillKey = monsterSO.extraObjects[0].name;
-
-        base.Init();
     }
     private IEnumerator RepeatBehavior()
     {

@@ -5,34 +5,12 @@ public class PoolingObject
 
     private GameObject go;
     private Animator animator;
-    private SpriteRenderer render = null;
+    private SpriteRenderer spriteRenderer = null;
 
     public GameObject PoolingGameObject { get { return go; } }
     public Transform Transform { get { return go.transform; } }
-    public Animator Animator
-    {
-        get
-        {
-            if(animator == null)
-            {
-                animator = go.GetComponent<Animator>();
-            }
-
-            return animator;
-        }
-    }
-    public SpriteRenderer SpriteRenderer
-    {
-        get
-        {
-            if(render == null)
-            {
-                render = go.GetComponent<SpriteRenderer>();
-            }
-
-            return render;
-        }
-    }
+    public Animator Animator { get { return GetType(ref animator); } }
+    public SpriteRenderer SpriteRenderer { get { return GetType(ref spriteRenderer); } }
     public bool activeSelf { get { return go.activeSelf; } }
     public PoolingObject(GameObject go)
     {
@@ -47,5 +25,9 @@ public class PoolingObject
         isUsed = active;
 
         go.SetActive(active);
+    }
+    private T GetType<T>(ref T variable)
+    {
+        return variable = go.GetComponent<T>();
     }
 }
