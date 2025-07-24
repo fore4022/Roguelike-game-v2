@@ -3,6 +3,12 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(AudioSource))]
+/// <summary>
+/// <para>
+/// 플레이어 스킬에 대한 기본 구현이다.
+/// </para>
+/// 생성 이후, 처음으로 사용되는 시점에 초기화가 이루어진다.
+/// </summary>
 public class Skill : MonoBehaviour, IScriptableData, IDamage
 {
     [SerializeField]

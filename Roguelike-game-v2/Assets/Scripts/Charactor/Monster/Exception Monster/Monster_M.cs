@@ -1,5 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
+/// <summary>
+/// 지정된 색상들과 범위 내에서 크기를 바뀐다. 죽을 때 스킬을 시전한다.
+/// </summary>
 public class Monster_M : Monster_G
 {
     [SerializeField]

@@ -1,5 +1,11 @@
 using System.Collections;
 using UnityEngine;
+/// <summary>
+/// <para>
+/// 투사체 형식의 스킬의 기본 구현이다.
+/// </para>
+/// ObjectPool로 회하는 것을 구현하였다.
+/// </summary>
 public class ProjectileSkill : Skill
 {
     protected Coroutine moving = null;

@@ -1,5 +1,8 @@
 using System.Collections;
 using UnityEngine;
+/// <summary>
+/// 쿨타임마다 현재 위치에서 스킬을 시전한다.
+/// </summary>
 public class Monster_N : Monster_WithObject
 {
     [SerializeField]

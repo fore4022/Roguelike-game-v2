@@ -1,4 +1,7 @@
 using UnityEngine;
+/// <summary>
+/// 잃은 체력에 비해서 능력치가 상승한다.
+/// </summary>
 public class Monster_O : BasicMonster
 {
     [SerializeField]
