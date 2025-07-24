@@ -11,7 +11,21 @@ public class PoolingObject
     public Transform Transform { get { return go.transform; } }
     public Animator Animator { get { return GetType(ref animator); } }
     public SpriteRenderer SpriteRenderer { get { return GetType(ref spriteRenderer); } }
-    public bool activeSelf { get { return go.activeSelf; } }
+    public bool activeSelf 
+    {
+        get 
+        {
+            if(ReferenceEquals(go, null))
+            {
+                return false;
+            }
+            else
+            {
+                return go.activeSelf;
+            }
+
+        } 
+    }
     public PoolingObject(GameObject go)
     {
         this.go = go;
