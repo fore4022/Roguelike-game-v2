@@ -7,6 +7,7 @@ public class Game_Manager
     public InGameDataManage inGameData;
     public DifficultyScaler difficultyScaler;
     public DI_Container container;
+    public GameEndEffect endEffect;
     public StageInformation_SO stageInformation;
     public InGameTimer inGameTimer;
     public MonsterSpawner monsterSpawner;
@@ -22,7 +23,7 @@ public class Game_Manager
 
     public int UserExp { get { return userExp; } set { userExp = value; } }
     public bool IsPlaying { get { return isPlaying; } set { isPlaying = value; } }
-    public bool StageClear { get { return stageClear; } }
+    public bool IsStageClear { get { return stageClear; } }
     public bool IsGameOver { get { return gameOver; } }
     private void Set()
     {
@@ -65,7 +66,6 @@ public class Game_Manager
     }
     public void GameOver()
     {
-        Time.timeScale = 0;
         isPlaying = false;
         gameOver = true;
 

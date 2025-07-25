@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 public class StageExitConfirm_UI : UserInterface
 {
@@ -7,6 +8,11 @@ public class StageExitConfirm_UI : UserInterface
     private AudioClip giveUpStage_Sound;
     [SerializeField]
     private AudioClip cancelStageExit_Sound;
+    [SerializeField]
+    private TextMeshProUGUI tmp;
+
+    private const string exitAfterClearMessage = "Stage cleared.\nYour progress has been saved.";
+    private const string exitWithoutClearWarning = "No rewards or XP will be given.";
 
     public override void SetUserInterface()
     {
@@ -14,6 +20,15 @@ public class StageExitConfirm_UI : UserInterface
     }
     protected override void Enable()
     {
+        if(Managers.Game.IsStageClear)
+        {
+            tmp.text = exitAfterClearMessage;
+        }
+        else
+        {
+            tmp.text = exitWithoutClearWarning;
+        }
+
         Managers.UI.Get<PauseMenu_UI>().HideIcons();
     }
     public void OnGiveUpStage()

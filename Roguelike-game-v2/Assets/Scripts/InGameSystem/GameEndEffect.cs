@@ -2,8 +2,18 @@ using System.Collections;
 using UnityEngine;
 public class GameEndEffect : MonoBehaviour
 {
-    private const float effectDuration = 0.4f;
+    private const float duration = 0.4f;
 
+    private WaitForSeconds delay;
+
+    private void Awake()
+    {
+        Managers.Game.endEffect = this;
+    }
+    private void Start()
+    {
+        delay = new(duration);
+    }
     public void GameOverEffect()
     {
         StartCoroutine(GameOverEffecting());
@@ -17,17 +27,12 @@ public class GameEndEffect : MonoBehaviour
         InputActions.DisableInputAction<TouchControls>();
         Managers.UI.Hide<HpSlider_UI>();
 
-        float totalTime = 0;
+        yield return delay;
 
-        while(totalTime > effectDuration)
-        {
-            yield return null;
-        }
+        Managers.Game.GameOver();
     }
     private IEnumerator StageClearEffecting()
     {
-        float totalTime = 0;
-
         yield return null;
     }
 }

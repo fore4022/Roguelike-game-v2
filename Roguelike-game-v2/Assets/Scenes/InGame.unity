@@ -6091,10 +6091,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1888160968}
+  - component: {fileID: 1888160970}
   - component: {fileID: 1888160966}
   - component: {fileID: 1888160969}
   - component: {fileID: 1888160971}
-  - component: {fileID: 1888160970}
+  - component: {fileID: 1888160972}
   m_Layer: 0
   m_Name: GameSystem
   m_TagString: Untagged
@@ -6248,6 +6249,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 978eee627166bd64991b0a944ebec549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1888160972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888160965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67cf775daac327c41b4d5ef784467346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1971938051
@@ -6479,6 +6492,7 @@ MonoBehaviour:
   audioSource: {fileID: 1617872428}
   giveUpStage_Sound: {fileID: 8300000, guid: 5fdb13d3756c84fecac96f5a2d124370, type: 3}
   cancelStageExit_Sound: {fileID: 8300000, guid: 724131bc8a7f34041bb9f1701f0cb58d, type: 3}
+  tmp: {fileID: 2047490501}
 --- !u!1 &2012233085
 GameObject:
   m_ObjectHideFlags: 0
@@ -6558,7 +6572,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 35}
+  m_AnchoredPosition: {x: 0, y: 30}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2047490501
@@ -6616,7 +6630,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0

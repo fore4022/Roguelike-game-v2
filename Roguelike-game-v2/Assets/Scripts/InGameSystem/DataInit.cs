@@ -64,6 +64,7 @@ public class DataInit
             Managers.Game._bgm = gameSystem.AddComponent<AudioSource>();
             Managers.Game.monsterSpawner = gameSystem.AddComponent<MonsterSpawner>();
             Managers.Game.inGameTimer = gameSystem.AddComponent<InGameTimer>();
+            Managers.Game.endEffect = gameSystem.AddComponent<GameEndEffect>();
 
             Managers.Game._bgm.playOnAwake = true;
 

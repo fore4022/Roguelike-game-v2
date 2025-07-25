@@ -12,17 +12,13 @@ public class Player : MonoBehaviour, IDamageReceiver
     public Action maxHealthUpdate = null;
     public Action healthUpdate = null;
 
+    private const float duration = 0.4f;
+
     private PlayerInformation information = new();
     private DefaultStat stat = null;
     private SpriteRenderer render;
     private Animator animator;
 
-    private readonly Vector3 diePosition = new Vector3(0, 0.5f);
-    private readonly Vector3 dieRotation = new Vector3(0, 0, 370);
-    private const float targetScale = 10f;
-    private const float duration = 0.4f;
-
-    private Coroutine die = null;
     private bool death = false;
 
     public DefaultStat Stat { get { return stat; } }
@@ -66,9 +62,11 @@ public class Player : MonoBehaviour, IDamageReceiver
     {
         Health -= damage.DamageAmount;
         
-        if(information.stat.health <= 0 && die == null)
+        if(information.stat.health <= 0 && !death)
         {
-            die = StartCoroutine(Dieing());
+            death = true;
+
+            Die();
         }
     }
     public void Reset()
@@ -78,12 +76,9 @@ public class Player : MonoBehaviour, IDamageReceiver
         death = false;
 
         LoadPlayerStat();
-        StopCoroutine(die);
         maxHealthUpdate?.Invoke();
         healthUpdate?.Invoke();
         animator.Play("idle");
-
-        die = null;
     }
     public void AnimationPlay(string animationName)
     {
@@ -93,26 +88,16 @@ public class Player : MonoBehaviour, IDamageReceiver
     {
         stat = information.stat = new(Managers.UserData.data.Stat.defaultStat, true);
     }
-    public IEnumerator Dieing()
+    private void Die()
     {
-        InputActions.DisableInputAction<TouchControls>();
-        Managers.UI.Hide<HpSlider_UI>();
+        render.sortingLayerID = SortingLayer.NameToID("AboveEffect");
 
-        transform.SetRotation(new(0, 0, 0))
-            .SetScale(targetScale, duration)
-            .SetPosition(transform.position + diePosition, duration)
-            .SetRotation(dieRotation, duration);
-
-        render.sortingLayerID = SortingLayer.NameToID("Skill_Monster");
-        death = true;
-
+        Managers.Game.endEffect.GameOverEffect();
         animator.Play("death");
-
-        yield return new WaitForSeconds(duration);
-
-        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
-
-        Managers.Game.GameOver();
+        transform.SetRotation(new(0, 0, 0))
+            .SetScale(10, duration)
+            .SetPosition(transform.position + new Vector3(0, 0.5f), duration)
+            .SetRotation(new(0, 0, 370), duration);
     }
     private IEnumerator Init()
     {

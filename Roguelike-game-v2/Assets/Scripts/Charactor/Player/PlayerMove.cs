@@ -39,6 +39,17 @@ public class PlayerMove : IMoveable
     {
         moveable.SetSlowDown(slowDown, duration);
     }
+    public void SetDirection()
+    {
+        if(direction.x > 0)
+        {
+            render.flipX = false;
+        }
+        else if(direction.x < 0)
+        {
+            render.flipX = true;
+        }
+    }
     private void CancelMove()
     {
         Managers.UI.Hide<CharactorController_UI>();
@@ -117,15 +128,7 @@ public class PlayerMove : IMoveable
         {
             Managers.Game.player.gameObject.transform.position += direction.normalized * SpeedAmount;
 
-            if(direction.x > 0)
-            {
-                render.flipX = false;
-            }
-            else if(direction.x < 0)
-            {
-                render.flipX = true;
-            }
-
+            SetDirection();
             charactorController.SetJoyStick();
 
             yield return null;

@@ -64,3 +64,6 @@ TagManager:
   - name: Skill_Monster
     uniqueID: 3951451367
     locked: 0
+  - name: AboveEffect
+    uniqueID: 693152455
+    locked: 0

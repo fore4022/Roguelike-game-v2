@@ -26,6 +26,8 @@ public class GameOver_UI : UserInterface
     {
         string result;
 
+        Time.timeScale = 0;
+
         Managers.UI.Hide<HeadUpDisplay_UI>();
 
         if(Managers.Game.inGameTimer.GetMinutes >= Managers.Game.stageInformation.requiredTime || Managers.Game.inGameTimer.GetHours > 0)
@@ -119,5 +121,7 @@ public class GameOver_UI : UserInterface
         {
             UIElementUtility.SetImageAlpha(img, 255, delay, true);
         }
+
+        Time.timeScale = 0;
     }
 }
