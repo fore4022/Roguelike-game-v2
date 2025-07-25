@@ -66,6 +66,7 @@ public class Game_Manager
     }
     public void GameOver()
     {
+        userExp = 0;
         isPlaying = false;
         gameOver = true;
 
@@ -115,6 +116,7 @@ public class Game_Manager
 
         yield return new WaitUntil(() => Managers.UI.Get<SceneLoading_UI>() == null);
 
+        userExp = 0;
         Time.timeScale = 1;
         stageClear = false;
         isPlaying = true;

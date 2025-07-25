@@ -66,6 +66,12 @@ public class GameOver_UI : UserInterface
 
         result.text = "";
     }
+    public void Play()
+    {
+        Time.timeScale = 1;
+
+        Managers.UI.Hide<GameOver_UI>();
+    }
     public void ReStart()
     {
         Managers.Game.ReStart();
@@ -83,7 +89,6 @@ public class GameOver_UI : UserInterface
         string gainExp = $"Experience\n\n+ {Managers.Game.UserExp:N0} EXP";
 
         Managers.UserData.data.Exp += Managers.Game.UserExp;
-        Managers.Game.UserExp = 0;
 
         yield return waitRealSec;
 
@@ -116,6 +121,17 @@ public class GameOver_UI : UserInterface
         yield return Typing.TypeEffectAndWaiting(tmpList[3], gainExp, coroutine, delay);
 
         yield return waitRealSec;
+
+        if(Managers.Game.IsStageClear)
+        {
+            imgList[0].gameObject.SetActive(true);
+            imgList[1].gameObject.SetActive(false);
+        }
+        else
+        {
+            imgList[0].gameObject.SetActive(false);
+            imgList[1].gameObject.SetActive(true);
+        }
 
         foreach(Image img in imgList)
         {

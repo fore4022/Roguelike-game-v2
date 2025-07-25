@@ -11,8 +11,8 @@ public class StageExitConfirm_UI : UserInterface
     [SerializeField]
     private TextMeshProUGUI tmp;
 
-    private const string exitAfterClearMessage = "Stage cleared.\nYour progress has been saved.";
-    private const string exitWithoutClearWarning = "No rewards or XP will be given.";
+    private const string exitAfterClearMessage = "The stage has been cleared.";
+    private const string exitWithoutClearWarning = "The stage was not cleared.";
 
     public override void SetUserInterface()
     {
