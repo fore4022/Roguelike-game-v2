@@ -40,7 +40,7 @@ public class Timer_UI : UserInterface
 
             beforeSecond = Managers.Game.inGameTimer.GetSeconds;
 
-            if (Managers.Game.inGameTimer.GetHours == 0)
+            if(Managers.Game.inGameTimer.GetHours == 0)
             {
                 timer.text = $"{Managers.Game.inGameTimer.GetMinutes:D2} : {Managers.Game.inGameTimer.GetSeconds:D2}";
             }

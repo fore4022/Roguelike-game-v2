@@ -25,6 +25,7 @@ public class PlayerMove : IMoveable
     public Vector2 Direction { get { return direction; } }
     public float SpeedAmount { get { return Managers.Game.player.Stat.moveSpeed * SlowDownAmount * Time.deltaTime; } }
     public float SlowDownAmount { get { return moveable.SlowDownAmount; } }
+    public bool IsPointerOverUI { set { isPointerOverUI = value; } }
     public void Init()
     {
         Util.GetMonoBehaviour().StartCoroutine(Initalization());
@@ -52,10 +53,6 @@ public class PlayerMove : IMoveable
         didStartMove = false;
 
         Managers.Game.player.AnimationPlay("idle");
-    }
-    private void Update()
-    {
-        isPointerOverUI = EventSystem.current.IsPointerOverGameObject();
     }
     private IEnumerator Initalization()
     {

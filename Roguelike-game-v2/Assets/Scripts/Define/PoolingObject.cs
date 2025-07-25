@@ -23,7 +23,6 @@ public class PoolingObject
             {
                 return go.activeSelf;
             }
-
         } 
     }
     public PoolingObject(GameObject go)

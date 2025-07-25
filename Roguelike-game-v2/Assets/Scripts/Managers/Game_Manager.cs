@@ -16,11 +16,13 @@ public class Game_Manager
     public Action onStageReset;
 
     private int userExp = 0;
+    private bool stageClear = false;
     private bool isPlaying = false;
     private bool gameOver = false;
 
     public int UserExp { get { return userExp; } set { userExp = value; } }
     public bool IsPlaying { get { return isPlaying; } set { isPlaying = value; } }
+    public bool StageClear { get { return stageClear; } }
     public bool IsGameOver { get { return gameOver; } }
     private void Set()
     {
@@ -84,6 +86,17 @@ public class Game_Manager
         objectPool = null;
         userExp = 0;
     }
+    public void IsStageCleared(float minutes)
+    {
+        if(minutes >= stageInformation.requiredTime)
+        {
+            stageClear = true;
+            isPlaying = false;
+            Managers.Game.inGameTimer.minuteUpdate -= IsStageCleared;
+
+            GameOver();
+        }
+    }
     private IEnumerator ReSetting()
     {
         Managers.UI.Show<SceneLoading_UI>();
@@ -103,6 +116,7 @@ public class Game_Manager
         yield return new WaitUntil(() => Managers.UI.Get<SceneLoading_UI>() == null);
 
         Time.timeScale = 1;
+        stageClear = false;
         isPlaying = true;
 
         monsterSpawner.ReStart();
