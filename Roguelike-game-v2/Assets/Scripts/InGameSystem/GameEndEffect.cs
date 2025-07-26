@@ -33,6 +33,28 @@ public class GameEndEffect : MonoBehaviour
     }
     private IEnumerator StageClearEffecting()
     {
-        yield return null;
+        Transform cam = Camera.main.transform;
+
+        float totalTime = 0;
+
+        cam.SetPosition(cam.position + new Vector3(0, -0.3f), duration);
+
+        while(totalTime != duration)
+        {
+            totalTime += Time.deltaTime;
+
+            if(totalTime >= duration)
+            {
+                totalTime = duration;
+            }
+
+            Camera.main.orthographicSize = Mathf.Lerp(6, 1.25f, totalTime / duration);
+
+            yield return null;
+        }
+
+        yield return delay;
+
+        Managers.Game.GameOver();
     }
 }

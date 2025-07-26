@@ -95,7 +95,7 @@ public class Game_Manager
             isPlaying = false;
             Managers.Game.inGameTimer.minuteUpdate -= IsStageCleared;
 
-            GameOver();
+            endEffect.StageClearEffect();
         }
     }
     private IEnumerator ReSetting()
