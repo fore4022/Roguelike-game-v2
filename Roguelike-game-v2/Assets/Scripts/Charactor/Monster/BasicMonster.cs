@@ -67,7 +67,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     }
     protected virtual void SetDirection()
     {
-        if(!Managers.Game.IsGameOver)
+        if(!Managers.Game.GameOver)
         {
             if(canSwitchDirection)
             {

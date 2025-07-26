@@ -18,7 +18,7 @@ public class LevelUp_UI : UserInterface
         if(ShouldShowSkillSelection())
         {
             Time.timeScale = 0;
-            Managers.Game.IsPlaying = false;
+            Managers.Game.Playing = false;
         }
 
         StartCoroutine(AnimationPlaying());

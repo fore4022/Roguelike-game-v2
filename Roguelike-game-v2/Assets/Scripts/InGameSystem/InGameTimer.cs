@@ -33,7 +33,7 @@ public class InGameTimer : MonoBehaviour
     }
     private IEnumerator Timer()
     {
-        while(!Managers.Game.IsGameOver)
+        while(!Managers.Game.GameOver)
         {
             seconds += Time.deltaTime;
 

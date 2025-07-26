@@ -29,7 +29,9 @@ public class GameEndEffect : MonoBehaviour
 
         yield return delay;
 
-        Managers.Game.GameOver();
+        Managers.Game.GameOver = true;
+
+        Managers.Game.Over();
     }
     private IEnumerator StageClearEffecting()
     {
@@ -55,6 +57,14 @@ public class GameEndEffect : MonoBehaviour
 
         yield return delay;
 
-        Managers.Game.GameOver();
+        Managers.Game.Over();
+
+        Debug.Log("a");
+
+        yield return new WaitUntil(() => !Managers.UI.Get<GameOver_UI>().enabled);
+
+        Debug.Log("b");
+
+        cam.SetPosition(cam.position + new Vector3(0, 0.3f), duration);
     }
 }

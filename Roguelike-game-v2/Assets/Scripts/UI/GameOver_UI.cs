@@ -69,7 +69,9 @@ public class GameOver_UI : UserInterface
     public void Play()
     {
         Time.timeScale = 1;
+        Managers.Game.Playing = true;
 
+        Managers.UI.Show<HeadUpDisplay_UI>();
         Managers.UI.Hide<GameOver_UI>();
     }
     public void ReStart()

@@ -9,7 +9,7 @@ public class AppLifecycleHandler : MonoBehaviour
     {
         if(Managers.Scene.CurrentSceneName.Equals(SceneName.InGame.ToString()))
         {
-            if(!Managers.Game.IsGameOver)
+            if(!Managers.Game.GameOver)
             {
                 if(focus)
                 {
@@ -17,7 +17,7 @@ public class AppLifecycleHandler : MonoBehaviour
                 }
                 else
                 {
-                    if(Managers.Game.IsPlaying)
+                    if(Managers.Game.Playing)
                     {
                         Time.timeScale = 0;
 

@@ -38,7 +38,7 @@ public class DataInit
     public IEnumerator Initializing()
     {
         Time.timeScale = 0;
-        Managers.Game.IsPlaying = false;
+        Managers.Game.Playing = false;
 
         Managers.Scene.LoadScene(SceneName.InGame);
 

@@ -17,14 +17,14 @@ public class Game_Manager
     public Action onStageReset;
 
     private int userExp = 0;
-    private bool stageClear = false;
     private bool isPlaying = false;
     private bool gameOver = false;
+    private bool stageClear = false;
 
     public int UserExp { get { return userExp; } set { userExp = value; } }
-    public bool IsPlaying { get { return isPlaying; } set { isPlaying = value; } }
+    public bool Playing { get { return isPlaying; } set { isPlaying = value; } }
+    public bool GameOver { get { return gameOver; } set { gameOver = value; } }
     public bool IsStageClear { get { return stageClear; } }
-    public bool IsGameOver { get { return gameOver; } }
     private void Set()
     {
         skillCasterManage = new();
@@ -64,11 +64,10 @@ public class Game_Manager
 
         Util.GetMonoBehaviour().StartCoroutine(ReSetting());
     }
-    public void GameOver()
+    public void Over()
     {
         userExp = 0;
         isPlaying = false;
-        gameOver = true;
 
         Managers.UI.Hide<LevelUp_UI>();
         Managers.UI.Show<GameOver_UI>();

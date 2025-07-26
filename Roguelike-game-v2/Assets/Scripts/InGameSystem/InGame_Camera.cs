@@ -30,7 +30,7 @@ public class InGame_Camera : MonoBehaviour
 
         if(!Managers.Game.player.Death)
         {
-            if(Managers.Game.IsPlaying)
+            if(Managers.Game.Playing)
             {
                 transform.position = new Vector3(player.transform.position.x, player.transform.position.y, zpos);
             }
@@ -48,8 +48,6 @@ public class InGame_Camera : MonoBehaviour
     {
         float totalTime = 0;
         float currentCameraSize = Camera.main.orthographicSize;
-
-        Debug.Log(currentCameraSize);
 
         while(totalTime != duration)
         {
