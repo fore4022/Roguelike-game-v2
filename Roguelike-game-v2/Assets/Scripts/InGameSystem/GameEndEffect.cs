@@ -16,17 +16,20 @@ public class GameEndEffect : MonoBehaviour
     }
     public void GameOverEffect()
     {
+        InputActions.DisableInputAction<TouchControls>();
+        Managers.UI.Hide<HpSlider_UI>();
+
         StartCoroutine(GameOverEffecting());
     }
     public void StageClearEffect()
     {
+        InputActions.DisableInputAction<TouchControls>();
+        Managers.UI.Hide<HpSlider_UI>();
+
         StartCoroutine(StageClearEffecting());
     }
     private IEnumerator GameOverEffecting()
     {
-        InputActions.DisableInputAction<TouchControls>();
-        Managers.UI.Hide<HpSlider_UI>();
-
         yield return delay;
 
         Managers.Game.GameOver = true;
@@ -59,12 +62,27 @@ public class GameEndEffect : MonoBehaviour
 
         Managers.Game.Over();
 
-        Debug.Log("a");
+        yield return new WaitUntil(() => !Managers.UI.Get<GameOver_UI>().gameObject.activeSelf);
 
-        yield return new WaitUntil(() => !Managers.UI.Get<GameOver_UI>().enabled);
-
-        Debug.Log("b");
+        totalTime = 0;
 
         cam.SetPosition(cam.position + new Vector3(0, 0.3f), duration);
+
+        while(totalTime != duration)
+        {
+            totalTime += Time.deltaTime;
+
+            if(totalTime >= duration)
+            {
+                totalTime = duration;
+            }
+
+            Camera.main.orthographicSize = Mathf.Lerp(1.25f, 6, totalTime / duration);
+
+            yield return null;
+        }
+
+        InputActions.EnableInputAction<TouchControls>();
+        Managers.UI.Show<HpSlider_UI>();
     }
 }

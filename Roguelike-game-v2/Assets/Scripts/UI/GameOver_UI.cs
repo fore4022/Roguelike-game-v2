@@ -30,7 +30,7 @@ public class GameOver_UI : UserInterface
 
         Managers.UI.Hide<HeadUpDisplay_UI>();
 
-        if(Managers.Game.inGameTimer.GetMinutes >= Managers.Game.stageInformation.requiredTime || Managers.Game.inGameTimer.GetHours > 0)
+        if(Managers.Game.IsStageClear || Managers.Game.inGameTimer.GetHours > 0)
         {
             result = "Stage\nClear";
 
@@ -70,6 +70,7 @@ public class GameOver_UI : UserInterface
     {
         Time.timeScale = 1;
         Managers.Game.Playing = true;
+        Managers.Game.player.Health = 200;//
 
         Managers.UI.Show<HeadUpDisplay_UI>();
         Managers.UI.Hide<GameOver_UI>();
@@ -124,7 +125,7 @@ public class GameOver_UI : UserInterface
 
         yield return waitRealSec;
 
-        if(Managers.Game.IsStageClear)
+        if(Managers.Game.IsStageClear && !Managers.Game.GameOver)
         {
             imgList[0].gameObject.SetActive(true);
             imgList[1].gameObject.SetActive(false);

@@ -15,7 +15,7 @@ public class PoolingObject
     {
         get 
         {
-            if(ReferenceEquals(go, null))
+            if(ReferenceEquals(go, null) || Managers.Game.GameOver)
             {
                 return false;
             }
