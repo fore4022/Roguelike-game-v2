@@ -91,9 +91,7 @@ public class UI_Manager
     }
     public void Add(UserInterface ui)
     {
-        string name = ui.GetType().ToString();
-
-        name = name.Replace("_UI", "");
+        string name = ui.GetType().ToString().Replace("_UI", "");
 
         if(!uiDictionary.ContainsKey(name))
         {
@@ -119,11 +117,7 @@ public class UI_Manager
     }
     private string GetName<T>() where T : UserInterface
     {
-        string name = typeof(T).ToString();
-
-        name = name.Replace("_UI", "");
-
-        return name;
+        return typeof(T).ToString().Replace("_UI", "");
     }
     private void Load(string uiName)
     {

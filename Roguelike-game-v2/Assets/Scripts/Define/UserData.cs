@@ -39,6 +39,14 @@ public class UserData
     {
         return stageClearInfos.Find(info => info.name == current_StageName).state;
     }
+    public bool SetBGM()
+    {
+        return _setting.BGM = !_setting.BGM;
+    }
+    public bool SetFX()
+    {        
+        return _setting.FX = !_setting.FX;
+    }
     public void Clear(string stageName)
     {
         StageClearInfo info = stageClearInfos.Find(o => o.name == stageName);
@@ -59,13 +67,5 @@ public class UserData
 
             Managers.UserData.Save();
         }
-    }
-    public bool SetBGM()
-    {
-        return _setting.BGM = !_setting.BGM;
-    }
-    public bool SetFX()
-    {        
-        return _setting.FX = !_setting.FX;
     }
 }

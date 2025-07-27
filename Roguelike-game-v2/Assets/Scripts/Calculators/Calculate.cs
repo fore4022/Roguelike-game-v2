@@ -5,7 +5,6 @@ public static class Calculate
     public static float width = Util.CameraWidth / 2 - offset;
     public static float height = Util.CameraHeight / 2 - offset;
 
-    private static Vector3 vec = new();
     private static float offset = 0.5f;
 
     public static float GetParabolicY(float size, float peakValue, float value)
@@ -51,10 +50,10 @@ public static class Calculate
     }
     public static Vector2 GetRandomVector()
     {
-        vec.x = Random.Range(-width, width);
-        vec.y = Random.Range(-height, height);
+        float x = Random.Range(-width, width);
+        float y = Random.Range(-height, height);
 
-        return vec;
+        return new(x, y);
     }
     public static Quaternion GetQuaternion(Vector3 direction)
     {

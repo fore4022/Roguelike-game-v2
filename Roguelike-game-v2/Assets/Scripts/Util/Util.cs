@@ -7,11 +7,11 @@ using Object = UnityEngine.Object;
 public class Util
 {
     public static List<AsyncOperationHandle> handleList = new();
-
-    private static MonoScript monoScript = null;
     public static Type type_GameObject = typeof(GameObject);
     public static Type type_ScriptableObject = typeof(ScriptableObject);
     public static Type type_Sprite = typeof(Sprite);
+
+    private static MonoScript monoScript = null;
 
     public static float CameraHeight { get { return Camera.main.orthographicSize * 2; } }
     public static float CameraWidth { get { return CameraHeight * Camera.main.aspect; } }

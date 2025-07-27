@@ -25,10 +25,6 @@ public class PoolingObject
             }
         } 
     }
-    public PoolingObject(GameObject go)
-    {
-        this.go = go;
-    }
     public T GetComponent<T>()
     {
         return go.GetComponent<T>();
@@ -42,5 +38,9 @@ public class PoolingObject
     private T GetType<T>(ref T variable)
     {
         return variable = go.GetComponent<T>();
+    }
+    public PoolingObject(GameObject go)
+    {
+        this.go = go;
     }
 }

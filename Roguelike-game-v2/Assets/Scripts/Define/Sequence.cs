@@ -4,10 +4,6 @@ public class Sequence
 {
     private Queue<List<TweenData>> tweenQueue = new();
 
-    public int Count()
-    {
-        return tweenQueue.Count;
-    }
     public List<TweenData>[] Values()
     {
         return tweenQueue.ToArray();
@@ -24,6 +20,10 @@ public class Sequence
         }
 
         return tweenQueue.Peek();
+    }
+    public int Count()
+    {
+        return tweenQueue.Count;
     }
     public void Enqueue(List<TweenData> list)
     {

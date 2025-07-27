@@ -9,7 +9,6 @@ public class TweenData
     public Coroutine coroutine;
     public float duration;
 
-    public TweenData() { }
     public void Set(Coroutine coroutine, TweenType type, Transform trans, EaseDelegate easeDel, NumericValue targetValue, float duration)
     {
         this.coroutine = coroutine;

@@ -103,12 +103,12 @@ public class PlayerStat
             }
         }
     }
-    public PlayerStat()
-    {
-        defaultStat = new(100, 1, 2, 0);
-    }
     public bool IsSceneMain()
     {
         return Managers.Scene.CurrentSceneName == sceneName;
+    }
+    public PlayerStat()
+    {
+        defaultStat = new(100, 1, 2, 0);
     }
 }

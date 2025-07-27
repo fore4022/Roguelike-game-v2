@@ -18,9 +18,9 @@ public static class Ease
     }
     public static float InOutQuad(float value)
     {
-        value /= .5f;
+        value /= 0.5f;
 
-        if (value < 1)
+        if(value < 1)
         {
             return _end * 0.5f * value * value + _start;
         }
@@ -43,7 +43,7 @@ public static class Ease
     {
         value /= 0.5f;
 
-        if (value < 1)
+        if(value < 1)
         {
             return _end * 0.5f * value * value * value + _start;
         }
@@ -64,9 +64,9 @@ public static class Ease
     }
     public static float InOutQuart(float value)
     {
-        value /= .5f;
+        value /= 0.5f;
 
-        if (value < 1)
+        if(value < 1)
         {
             return _end * 0.5f * value * value * value * value + _start;
         }
@@ -89,7 +89,7 @@ public static class Ease
     {
         value /= 0.5f;
 
-        if (value < 1)
+        if(value < 1)
         {
             return _end * 0.5f * value * value * value * value * value + _start;
         }
@@ -122,7 +122,7 @@ public static class Ease
     {
         value /= 0.5f;
 
-        if (value < 1)
+        if(value < 1)
         {
             return _end * 0.5f * Mathf.Pow(2, 10 * (value - 1)) + _start;
         }
@@ -143,9 +143,9 @@ public static class Ease
     }
     public static float InOutCirc(float value)
     {
-        value /= .5f;
+        value /= 0.5f;
 
-        if (value < 1)
+        if(value < 1)
         {
             return -_end * 0.5f * (Mathf.Sqrt(1 - value * value) - 1) + _start;
         }
@@ -162,19 +162,17 @@ public static class Ease
     }
     public static float OutBounce(float value)
     {
-        value /= 1f;
-
-        if (value < (1 / 2.75f))
+        if(value < (1 / 2.75f))
         {
             return _end * (7.5625f * value * value) + _start;
         }
-        else if (value < (2 / 2.75f))
+        else if(value < (2 / 2.75f))
         {
             value -= (1.5f / 2.75f);
 
             return _end * (7.5625f * (value) * value + .75f) + _start;
         }
-        else if (value < (2.5 / 2.75))
+        else if(value < (2.5 / 2.75))
         {
             value -= (2.25f / 2.75f);
 
@@ -191,7 +189,7 @@ public static class Ease
     {
         float d = 1f;
 
-        if (value < d * 0.5f)
+        if(value < d * 0.5f)
         {
             return InBounce(value * 2) * 0.5f + _start;
         }
@@ -222,7 +220,7 @@ public static class Ease
 
         value /= 0.5f;
 
-        if ((value) < 1)
+        if((value) < 1)
         {
             s *= 1.525f;
 
@@ -241,17 +239,17 @@ public static class Ease
         float s;
         float a = 0;
 
-        if (value == 0)
+        if(value == 0)
         {
             return _start;
         }
 
-        if ((value /= d) == 1)
+        if((value /= d) == 1)
         {
             return _start + _end;
         }
 
-        if (a == 0f || a < Mathf.Abs(_end))
+        if(a == 0f || a < Mathf.Abs(_end))
         {
             a = _end;
             s = p / 4;
@@ -270,17 +268,17 @@ public static class Ease
         float s;
         float a = 0;
 
-        if (value == 0)
+        if(value == 0)
         {
             return _start;
         }
 
-        if ((value /= d) == 1)
+        if((value /= d) == 1)
         {
             return _start + _end;
         }
 
-        if (a == 0f || a < Mathf.Abs(_end))
+        if(a == 0f || a < Mathf.Abs(_end))
         {
             a = _end;
             s = p * 0.25f;
@@ -295,21 +293,21 @@ public static class Ease
     public static float InOutElastic(float value)
     {
         float d = 1f;
-        float p = d * .3f;
+        float p = d * 0.3f;
         float s;
         float a = 0;
 
-        if (value == 0)
+        if(value == 0)
         {
             return _start;
         }
 
-        if ((value /= d * 0.5f) == 2)
+        if((value /= d * 0.5f) == 2)
         {
             return _start + _end;
         }
 
-        if (a == 0f || a < Mathf.Abs(_end))
+        if(a == 0f || a < Mathf.Abs(_end))
         {
             a = _end;
             s = p / 4;
@@ -319,7 +317,7 @@ public static class Ease
             s = p / (2 * Mathf.PI) * Mathf.Asin(_end / a);
         }
 
-        if (value < 1)
+        if(value < 1)
         {
             return -0.5f * (a * Mathf.Pow(2, 10 * (value -= 1)) * Mathf.Sin((value * d - s) * (2 * Mathf.PI) / p)) + _start;
         }

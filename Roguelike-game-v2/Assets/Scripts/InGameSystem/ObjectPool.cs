@@ -97,12 +97,10 @@ public class ObjectPool
     }
     private void Create_Additional(GameObject prefab, string originalKey, int count)
     {
-        if(prefab == null)
+        if(prefab != null)
         {
-            return;
+            Util.GetMonoBehaviour().StartCoroutine(CreatingInstance(prefab, count, ScriptableObjectType.None, originalKey));
         }
-
-        Util.GetMonoBehaviour().StartCoroutine(CreatingInstance(prefab, count, ScriptableObjectType.None, originalKey));
     }
     private void CreateInstance(GameObject parent, GameObject prefab, int count, int instanceCount, ref GameObject[] array)
     {

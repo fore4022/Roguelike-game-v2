@@ -1,17 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-public class SkillContext
-{
-    public SkillInformation data;
-    public SkillCaster caster = null;
-    
-    public int level = 0;
-
-    public SkillContext(SkillInformation_SO dataSO)
-    {
-        data = new(dataSO);
-    }
-}
 public class SkillData
 {
     private Dictionary<string, SkillContext> infos = new();

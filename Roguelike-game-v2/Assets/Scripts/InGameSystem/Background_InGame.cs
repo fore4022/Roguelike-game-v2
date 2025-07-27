@@ -35,7 +35,7 @@ public class Background_InGame : MonoBehaviour
 
         if(yPos % height < 0.33f)
         {
-            if (Mathf.Abs((int)(yPos / height) % 2) == 1)
+            if(Mathf.Abs((int)(yPos / height) % 2) == 1)
             {
                 increasePos.y += Mathf.Sign(direction.y) * height * 8;
             }
