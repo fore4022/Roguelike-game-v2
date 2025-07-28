@@ -17,8 +17,18 @@ MonoBehaviour:
     speed: 4.5
     penetration: 1
   multiCast:
-    delay: []
-    count: []
+    delay:
+    - 0.125
+    - 0.125
+    - 0.125
+    - 0.125
+    - 0.125
+    count:
+    - 3
+    - 3
+    - 3
+    - 3
+    - 5
   damageCoefficient:
   - 1
   - 1.15
@@ -26,11 +36,11 @@ MonoBehaviour:
   - 1.45
   - 1.5
   coolTime:
-  - 1.05
-  - 1
-  - 0.95
-  - 0.9
-  - 0.85
+  - 2.05
+  - 2
+  - 1.95
+  - 1.9
+  - 1.85
   maxLevelColor: {r: 1, g: 1, b: 1, a: 1}
   adjustmentRotation: {x: 0, y: 0, z: 0}
   adjustmentPosition: {x: 0, y: 0}
@@ -39,4 +49,4 @@ MonoBehaviour:
   flipX: 0
   flipY: 1
   isProjectile: 0
-  isMultiCast: 0
+  isMultiCast: 1

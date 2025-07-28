@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ec6efdbd2a82040bb65451859f8197, type: 3}
   m_Name: Info1-P
   m_EditorClassIdentifier: 
+  spritePath: Assets/Sprites/Icon/Skills/HolyProjectile.png
   info:
     icon: {fileID: 0}
     type: Projectile1
     explanation: 
-  spritePath: Assets/Sprites/Icon/Skills/HolyProjectile.png
   sprite: {fileID: 21300000, guid: b4fcd567f9b1211468aee6414f4be3c7, type: 3}
