@@ -19,7 +19,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4fd27505bcb47e144b686070d6ae3049, type: 2}
   - {fileID: 11400000, guid: 21ad94ef126562c4eb137845a2a783ac, type: 2}
   - {fileID: 11400000, guid: 16b8c54cc2a390e43b6832344f579fee, type: 2}
-  spawnMonsterList: {fileID: 0}
+  - {fileID: 11400000, guid: b2863155243e28d48b9809374e14e6c6, type: 2}
+  - {fileID: 11400000, guid: 4c0dcc82dde9d094683eaa1416590390, type: 2}
+  - {fileID: 11400000, guid: d8abd3c3e6f97aa429ab0190b27b9c6e, type: 2}
+  - {fileID: 11400000, guid: ca47557cf121ee24ebdb11327171cdf1, type: 2}
+  spawnMonsterList: {fileID: 11400000, guid: 086592c522a14f54b8034d9fcd51735c, type: 2}
   bgm: {fileID: 8300000, guid: 0e3b57fe9497c4a4cb25a0414d430a2c, type: 3}
   difficulty: 2
   statScale: 1

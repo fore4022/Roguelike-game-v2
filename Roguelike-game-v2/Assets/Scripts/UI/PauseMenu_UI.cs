@@ -42,7 +42,7 @@ public class PauseMenu_UI : UserInterface
         }
         else
         {
-            Time.timeScale = 1;
+            Time.timeScale = 3.5f;
         }
     }
 }

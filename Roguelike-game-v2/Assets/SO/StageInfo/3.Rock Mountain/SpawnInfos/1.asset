@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: 1
   m_EditorClassIdentifier: 
   monsterInformation:
-  - monster: {fileID: 3251678293858357659, guid: e0dfb140067933341958dbb76ebbd706, type: 3}
+  - monster: {fileID: 4134165368642501200, guid: 57bd8de6215ca954db36f72fa8f8ae2f, type: 3}
     spawnProbability: 100
   duration: 1

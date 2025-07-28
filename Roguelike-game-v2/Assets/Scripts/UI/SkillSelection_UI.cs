@@ -153,7 +153,7 @@ public class SkillSelection_UI : UserInterface
 
         yield return new WaitForSecondsRealtime(duration);
 
-        Time.timeScale = 1;
+        Time.timeScale = 3.5f;
         Managers.Game.Playing = true;
 
         InputActions.EnableInputAction<TouchControls>();

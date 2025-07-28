@@ -162,11 +162,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 06b1c037f02032e4abe99c26ad71ec7a
-    m_Address: Assets/SO/StageInfo/Stage_1/Stage_1.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ea59041157cfc684aa1948e2de00a6fe
     m_Address: 2_Level
     m_ReadOnly: 0

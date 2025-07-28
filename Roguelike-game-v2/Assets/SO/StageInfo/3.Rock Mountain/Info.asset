@@ -13,15 +13,19 @@ MonoBehaviour:
   m_Name: Info
   m_EditorClassIdentifier: 
   spawnInformationList:
-  - {fileID: 11400000, guid: 0ce034171e0512a4ba44e9c3bd9999ad, type: 2}
-  - {fileID: 11400000, guid: fc53be0fa5925ca4983ea8d12dfa3c9a, type: 2}
-  - {fileID: 11400000, guid: 2533385c537f65f4d8cddd118e192e47, type: 2}
-  - {fileID: 11400000, guid: c564fbd8b394ba341907dd4322b8ed65, type: 2}
-  - {fileID: 11400000, guid: e838c6d62339ce244a3de9d97fef9e51, type: 2}
-  - {fileID: 11400000, guid: 3bc0eb98d536b9d49a3d54e61d68b76f, type: 2}
-  spawnMonsterList: {fileID: 11400000, guid: 1936f2e6bec779e46972475e2ad54d7e, type: 2}
-  bgm: {fileID: 8300000, guid: 42eca95eca33c464b93c6797d20a673c, type: 3}
-  difficulty: 5
+  - {fileID: 11400000, guid: 42103843e2423874fb9270c57f5874a4, type: 2}
+  - {fileID: 11400000, guid: cfda70585eb100c468d0d5233ba12c4b, type: 2}
+  - {fileID: 11400000, guid: f8fb712f6453c9047b994761868a8fd4, type: 2}
+  - {fileID: 11400000, guid: c492d504963395548b8dc9121f82a4ff, type: 2}
+  - {fileID: 11400000, guid: 235e7edefa7f10048a2e18257ecc9910, type: 2}
+  - {fileID: 11400000, guid: e4c4b50fc864fb6468a97309fac8224b, type: 2}
+  - {fileID: 11400000, guid: 11e4036cedf5ada41b547f036fe164ba, type: 2}
+  - {fileID: 11400000, guid: 51802bbe740775b40a7df619db23555d, type: 2}
+  - {fileID: 11400000, guid: 573e8c76c61d03a42873f07110830696, type: 2}
+  - {fileID: 11400000, guid: 7e1bac46b2029bf4fb7ebdf79e55e53c, type: 2}
+  spawnMonsterList: {fileID: 11400000, guid: 12b07dcf1e7305a4f9c0c682f69e3149, type: 2}
+  bgm: {fileID: 8300000, guid: 67b2c9de31a741c409c8e3fa5d05221a, type: 3}
+  difficulty: 3
   statScale: 1
   spawnDelay: 1
   requiredTime: 10

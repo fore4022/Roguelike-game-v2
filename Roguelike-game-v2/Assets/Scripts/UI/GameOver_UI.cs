@@ -70,7 +70,6 @@ public class GameOver_UI : UserInterface
     {
         Time.timeScale = 1;
         Managers.Game.Playing = true;
-        Managers.Game.player.Health = 200;//
 
         Managers.UI.Show<HeadUpDisplay_UI>();
         Managers.UI.Hide<GameOver_UI>();

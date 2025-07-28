@@ -42,7 +42,7 @@ public class InGameTimer : MonoBehaviour
                 seconds -= 60;
                 minutes++;
 
-                minuteUpdate.Invoke(minutes);
+                minuteUpdate?.Invoke(minutes);
 
                 if(minutes >= 60)
                 {
