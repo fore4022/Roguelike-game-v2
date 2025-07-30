@@ -20,6 +20,17 @@ public class PauseMenu_UI : UserInterface
             Managers.UI.Get<SkillSelection_UI>().SkillOptionToggle(false);
         }
     }
+    private void OnDisable()
+    {
+        if(attackSelectionActive)
+        {
+            Managers.UI.Get<SkillSelection_UI>().SkillOptionToggle(true);
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+    }
     public void ShowIcons()
     {
         foreach(Image icon in icons)
@@ -32,17 +43,6 @@ public class PauseMenu_UI : UserInterface
         foreach(Image icon in icons)
         {
             icon.gameObject.SetActive(false);
-        }
-    }
-    private void OnDisable()
-    {
-        if(attackSelectionActive)
-        {
-            Managers.UI.Get<SkillSelection_UI>().SkillOptionToggle(true);
-        }
-        else
-        {
-            Time.timeScale = 3.5f;
         }
     }
 }

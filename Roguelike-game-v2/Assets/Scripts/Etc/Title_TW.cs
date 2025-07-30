@@ -19,7 +19,7 @@ public class Title_TW : MonoBehaviour
 
         // Moth
         tweens[1].SetScale(3, 0.6f, 0.15f, EaseType.OutExpo)
-            .SetPosition(new(-2f, -3.55f), 0.5f, 0.2f, EaseType.OutSine)
+            .SetPosition(new(-2f, -5f), 0.5f, 0.2f, EaseType.OutSine)
             .SetRotation(new(0, 0, -20), 1f, 0.2f, EaseType.OutExpo);
 
         // Cloud
