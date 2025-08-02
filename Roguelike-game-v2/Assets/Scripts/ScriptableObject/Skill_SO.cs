@@ -7,19 +7,20 @@ public class Skill_SO : ScriptableObject
     public ProjectileInfo projectile_Info;
     public MultiCast multiCast;
 
-    public float[] damageCoefficient = new float[maxLevel];
-    public float[] coolTime = new float[maxLevel];
+    public GameObject go;
 
     public Color maxLevelColor = default;
     public Vector3 adjustmentRotation;
     public Vector2 adjustmentPosition;
-    public string typePath;
+    public float[] damageCoefficient = new float[maxLevel];
+    public float[] coolTime = new float[maxLevel];
     public float duration;
     public bool flipX = false;
     public bool flipY = false;
     public bool isProjectile;
     public bool isMultiCast;
 
+    public string typePath { get { return go.name; } }
 #if UNITY_EDITOR
     private void OnValidate()
     {

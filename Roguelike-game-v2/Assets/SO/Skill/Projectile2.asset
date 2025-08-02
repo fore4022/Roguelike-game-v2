@@ -29,6 +29,10 @@ MonoBehaviour:
     - 3
     - 3
     - 5
+  go: {fileID: 1647761571587782042, guid: dad7072185bdcba4e87e4ee089ccc09c, type: 3}
+  maxLevelColor: {r: 1, g: 1, b: 1, a: 1}
+  adjustmentRotation: {x: 0, y: 0, z: 0}
+  adjustmentPosition: {x: 0, y: 0}
   damageCoefficient:
   - 1
   - 1.15
@@ -41,10 +45,6 @@ MonoBehaviour:
   - 1.95
   - 1.9
   - 1.85
-  maxLevelColor: {r: 1, g: 1, b: 1, a: 1}
-  adjustmentRotation: {x: 0, y: 0, z: 0}
-  adjustmentPosition: {x: 0, y: 0}
-  typePath: Projectile2
   duration: 0
   flipX: 0
   flipY: 1

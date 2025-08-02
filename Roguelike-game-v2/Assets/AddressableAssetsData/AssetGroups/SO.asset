@@ -127,11 +127,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9a17c648fedd6ab45b6643590c7085fc
-    m_Address: Assets/SO/Skill/Projectile2.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1a35818287b0bc2459f4a9ec48006041
     m_Address: Assets/SO/Skill/Skill1.asset
     m_ReadOnly: 0

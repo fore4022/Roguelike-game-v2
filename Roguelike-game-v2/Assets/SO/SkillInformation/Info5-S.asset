@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ec6efdbd2a82040bb65451859f8197, type: 3}
   m_Name: Info5-S
   m_EditorClassIdentifier: 
+  spritePath: Assets/Sprites/Icon/Skills/FireBall.png
   info:
     icon: {fileID: 0}
-    type: Skill5
-    explanation: 
-  spritePath: Assets/Sprites/Icon/Skills/FireBall.png
+    go: {fileID: 3597558578671974726, guid: e5a0a40cb1424dd419a25cb208cf8ae6, type: 3}
+    explanation: iiii
   sprite: {fileID: 21300000, guid: bb47c03c20052f2429478fe4cfa1bac5, type: 3}

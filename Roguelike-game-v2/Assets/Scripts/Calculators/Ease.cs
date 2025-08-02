@@ -264,7 +264,7 @@ public static class Ease
     public static float OutElastic(float value)
     {
         float d = 1f;
-        float p = d * .3f;
+        float p = d * 0.3f;
         float s;
         float a = 0;
 

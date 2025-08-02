@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ec6efdbd2a82040bb65451859f8197, type: 3}
   m_Name: Info4-P
   m_EditorClassIdentifier: 
+  spritePath: Assets/Sprites/Icon/Skills/spark.png
   info:
     icon: {fileID: 0}
-    type: Projectile4
-    explanation: 
-  spritePath: Assets/Sprites/Icon/Skills/spark.png
+    go: {fileID: 104679271344969195, guid: ef6ba6ee638952347a6ad03dd0f041b7, type: 3}
+    explanation: gggg
   sprite: {fileID: 21300000, guid: 392457ac3a17e2543b72c50fe43a2efb, type: 3}

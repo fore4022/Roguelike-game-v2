@@ -30,7 +30,6 @@ public class DataInit
                 skill = Util.LoadingToPath<GameObject>(so.info.type);
                 
                 skillList.Add(skill);
-
                 Managers.Game.inGameData.skill.SetDictionaryItem(so);
             }
         }

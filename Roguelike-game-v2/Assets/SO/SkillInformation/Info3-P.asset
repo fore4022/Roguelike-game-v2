@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ec6efdbd2a82040bb65451859f8197, type: 3}
   m_Name: Info3-P
   m_EditorClassIdentifier: 
+  spritePath: Assets/Sprites/Icon/Skills/VoidBlackHole.png
   info:
     icon: {fileID: 0}
-    type: Projectile3
-    explanation: 
-  spritePath: Assets/Sprites/Icon/Skills/VoidBlackHole.png
+    go: {fileID: 6458013873426487770, guid: b5c533eae9db16a438e0f1058eab48d0, type: 3}
+    explanation: eeee
   sprite: {fileID: 21300000, guid: 8c723446d189f764d8dd18fb21a81cf0, type: 3}

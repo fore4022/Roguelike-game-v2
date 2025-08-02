@@ -19,16 +19,20 @@ MonoBehaviour:
   multiCast:
     delay:
     - 0.05
-    - 0.05
-    - 0.05
-    - 0.05
-    - 0.05
+    - 0.045
+    - 0.04
+    - 0.035
+    - 0.03
     count:
-    - 2
-    - 3
-    - 4
-    - 5
     - 6
+    - 8
+    - 10
+    - 12
+    - 14
+  go: {fileID: 104679271344969195, guid: ef6ba6ee638952347a6ad03dd0f041b7, type: 3}
+  maxLevelColor: {r: 1, g: 1, b: 0.6666667, a: 1}
+  adjustmentRotation: {x: 0, y: 0, z: 0}
+  adjustmentPosition: {x: 0, y: 0}
   damageCoefficient:
   - 0.8
   - 0.9
@@ -41,10 +45,6 @@ MonoBehaviour:
   - 2.5
   - 2.25
   - 2
-  maxLevelColor: {r: 1, g: 1, b: 0.6666667, a: 1}
-  adjustmentRotation: {x: 0, y: 0, z: 0}
-  adjustmentPosition: {x: 0, y: 0}
-  typePath: Projectile4
   duration: 0
   flipX: 1
   flipY: 1

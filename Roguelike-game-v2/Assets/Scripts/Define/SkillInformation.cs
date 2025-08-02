@@ -5,13 +5,15 @@ public class SkillInformation
     [HideInInspector]
     public Sprite icon;
 
-    public string type;
+    public GameObject go;
+
     public string explanation;
 
     public SkillInformation(SkillInformation_SO so)
     {
         icon = Util.LoadingToPath<Sprite>(so.spritePath);
-        type = so.info.type;
+        go = so.info.go;
         explanation = so.info.explanation;
     }
+    public string type { get { return go.name; } }
 }

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ec6efdbd2a82040bb65451859f8197, type: 3}
   m_Name: Info6-S
   m_EditorClassIdentifier: 
+  spritePath: Assets/Sprites/Icon/Skills/Holy VFX 02.png
   info:
     icon: {fileID: 0}
-    type: Skill6
-    explanation: 
-  spritePath: Assets/Sprites/Icon/Skills/Holy VFX 02.png
+    go: {fileID: 4019139698218218091, guid: b71dacf8395e2754290f9b1c9ae4e664, type: 3}
+    explanation: jjjj
   sprite: {fileID: 21300000, guid: 59b864a5bc8866441a8d8490980d41c4, type: 3}

@@ -19,6 +19,10 @@ MonoBehaviour:
   multiCast:
     delay: []
     count: []
+  go: {fileID: 4019139698218218091, guid: b71dacf8395e2754290f9b1c9ae4e664, type: 3}
+  maxLevelColor: {r: 1, g: 0.78431374, b: 0, a: 1}
+  adjustmentRotation: {x: 0, y: 0, z: 0}
+  adjustmentPosition: {x: 0, y: 0}
   damageCoefficient:
   - 0.8
   - 0.9
@@ -31,10 +35,6 @@ MonoBehaviour:
   - 1.1
   - 1.05
   - 1
-  maxLevelColor: {r: 1, g: 0.78431374, b: 0, a: 1}
-  adjustmentRotation: {x: 0, y: 0, z: 0}
-  adjustmentPosition: {x: 0, y: 0}
-  typePath: Skill6
   duration: 0
   flipX: 1
   flipY: 0

@@ -4,11 +4,10 @@ public class Background_InGame : MonoBehaviour
 {
     private const float width = 4.5f;
     private const float height = 8;
-    private const float positionTolerance = 0.25f;
+    private const float positionTolerance = 0.375f;
 
     private Vector3 increasePos = new();
     private Vector2 direction;
-    private Vector2 player;
     private float xPos;
     private float yPos;
 
@@ -21,9 +20,8 @@ public class Background_InGame : MonoBehaviour
 
         increasePos = new();
         direction = Managers.Game.player.move.Direction;
-        player = Managers.Game.player.gameObject.transform.position;
-        xPos = Mathf.Round(player.x * 10) / 10;
-        yPos = Mathf.Round(player.y * 10) / 10;
+        xPos = Managers.Game.player.gameObject.transform.position.x;
+        yPos = Managers.Game.player.gameObject.transform.position.y;
 
         if(Mathf.Abs(Mathf.Abs(xPos - transform.localPosition.x) - width * 5) < positionTolerance)
         {

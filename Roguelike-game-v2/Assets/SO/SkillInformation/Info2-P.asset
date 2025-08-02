@@ -15,6 +15,6 @@ MonoBehaviour:
   spritePath: Assets/Sprites/Icon/Skills/Ice VFX 1 192x192.png
   info:
     icon: {fileID: 0}
-    type: Projectile2
-    explanation: 
+    go: {fileID: 1647761571587782042, guid: dad7072185bdcba4e87e4ee089ccc09c, type: 3}
+    explanation: cccc
   sprite: {fileID: 21300000, guid: 3d68c71f9f8b92345bd999b736eb06db, type: 3}
