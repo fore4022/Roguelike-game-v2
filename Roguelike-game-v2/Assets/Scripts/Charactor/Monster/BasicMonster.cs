@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 /// <summary>
-/// ´Ü¼øÈ÷ ÇÃ·¹ÀÌ¾î¸¦ ÇâÇØ ÀÌµ¿ÇÏ´Â ±âº» ¸ó½ºÅÍÀÌ´Ù.
+/// ï¿½Ü¼ï¿½ï¿½ï¿½ ï¿½Ã·ï¿½ï¿½Ì¾î¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Ï´ï¿½ ï¿½âº» ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½.
 /// </summary>
 public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 {
@@ -63,7 +63,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     }
     public virtual void OnMove()
     {
-        rigid.velocity = direction * SpeedAmount;
+        rigid.linearVelocity = direction * SpeedAmount;
     }
     protected virtual void SetDirection()
     {

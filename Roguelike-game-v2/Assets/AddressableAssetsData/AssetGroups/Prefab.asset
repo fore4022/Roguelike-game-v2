@@ -13,132 +13,10 @@ MonoBehaviour:
   m_Name: Prefab
   m_EditorClassIdentifier: 
   m_GroupName: Prefab
-  m_Data:
-    m_SerializedData: []
   m_GUID: 27db53741aa770c4caa7ad6349b30c65
   m_SerializeEntries:
-  - m_GUID: 88e274bc4f7f38e47bc5c549f68450c1
-    m_Address: Desert
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 5c88a951c7b3b8945b63863aae11a409
-    m_Address: Prairie
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4be93441fcb7a83459386f42587740ba
-    m_Address: Rock Mountain
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f00a1dcc5a570fc4b8af3a6315f925ba
-    m_Address: Snowfield
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1d603d12d61bc334ab5c1de99766f677
-    m_Address: Volcano
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 696f8387994f3db4b9de2878be0ccb70
-    m_Address: Projectile1
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: dad7072185bdcba4e87e4ee089ccc09c
-    m_Address: Projectile2
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b5c533eae9db16a438e0f1058eab48d0
-    m_Address: Projectile3
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ef6ba6ee638952347a6ad03dd0f041b7
-    m_Address: Projectile4
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: af7b6faf43f40d642a6afeacf4aacceb
-    m_Address: Skill1
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2fbe63f67cb607b4084c4bdbb60400cc
-    m_Address: Skill2
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6904d22a6f5a1104bbf905417668a1d6
-    m_Address: Skill3
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9771f44209f895c42b14bbb144967ef2
-    m_Address: Skill4
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e5a0a40cb1424dd419a25cb208cf8ae6
-    m_Address: Skill5
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b71dacf8395e2754290f9b1c9ae4e664
-    m_Address: Skill6
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3009c6642ad6233419c0f3a68e7dd6c7
-    m_Address: Assets/Prefabs/Monster/AirA.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: fdca6392a509fe949bb06071164a7d5c
-    m_Address: Assets/Prefabs/Monster/BatG.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 010696c59575c7041b559c322fff4104
     m_Address: Assets/Prefabs/Monster/BatSmallA.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4e2f3518a7d6c104daf14041e8025e60
-    m_Address: Assets/Prefabs/Monster/ChestA.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d35fd89ad0720794e8a7714dc3218823
-    m_Address: Assets/Prefabs/Monster/CloudD.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e0dfb140067933341958dbb76ebbd706
-    m_Address: Assets/Prefabs/Monster/CountA.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: fb39af7bb3245fc43a4d987b5cae4976
-    m_Address: Assets/Prefabs/Monster/DogB.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 57bd8de6215ca954db36f72fa8f8ae2f
-    m_Address: Assets/Prefabs/Monster/EarthB.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b5f4ba66c8cfd5542b2c73ad19ba5770
-    m_Address: Assets/Prefabs/Monster/FactoryB.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f04a7fc341921d44ba5b19d0387c932e
-    m_Address: Assets/Prefabs/Monster/FireSmallA.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -147,68 +25,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d0f85c07683bbea4799770ef72e2df75
-    m_Address: Assets/Prefabs/Monster/GolemA.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1590442ec0b70fd4ab06981b60ac65a2
     m_Address: Assets/Prefabs/Monster/MaskA.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 74365fde0ef158749ac170f60d5667e0
-    m_Address: Assets/Prefabs/Monster/MothD.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: eaf1313671fe52e43acab67a1749ed5b
-    m_Address: Assets/Prefabs/Monster/MummyA.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d9e8eb521dfa4b34487ebac28c6c5573
-    m_Address: Assets/Prefabs/Monster/MushroomB.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: aee5cbd67f1bcd7449b1d08d1160cd01
-    m_Address: Assets/Prefabs/Monster/PotionI.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 462ff59d0a0bccd48af2d001d2b3c423
-    m_Address: Assets/Prefabs/Monster/PuddleB.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 807535b291306e14db7483d4171680ff
-    m_Address: Assets/Prefabs/Monster/ReaperA.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e15db4a042b2331419bc4dfa022e66a6
-    m_Address: Assets/Prefabs/Monster/ScorpionC.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 345271f3229701945a9264c9d5683a99
-    m_Address: Assets/Prefabs/Monster/SkullFlamingB.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 246f736825c98b049bb477eb319e2ee6
-    m_Address: Assets/Prefabs/Monster/SlimeSquareH.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 69fba6b6ffb2b5d4da7d809658819155
-    m_Address: Assets/Prefabs/Monster/SnakeF.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 29c203311a3d08b49bd6f491ac30c3b4
-    m_Address: Assets/Prefabs/Monster/SwordA.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -217,13 +35,193 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1d603d12d61bc334ab5c1de99766f677
+    m_Address: Volcano
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 246f736825c98b049bb477eb319e2ee6
+    m_Address: Assets/Prefabs/Monster/SlimeSquareH.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 29c203311a3d08b49bd6f491ac30c3b4
+    m_Address: Assets/Prefabs/Monster/SwordA.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2fbe63f67cb607b4084c4bdbb60400cc
+    m_Address: Skill2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3009c6642ad6233419c0f3a68e7dd6c7
+    m_Address: Assets/Prefabs/Monster/AirA.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 345271f3229701945a9264c9d5683a99
+    m_Address: Assets/Prefabs/Monster/SkullFlamingB.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 462ff59d0a0bccd48af2d001d2b3c423
+    m_Address: Assets/Prefabs/Monster/PuddleB.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4b56a1b8a87c47f4290ca5802303451a
     m_Address: Assets/SO/Monster/Desert/ScorpionC.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4be93441fcb7a83459386f42587740ba
+    m_Address: Rock Mountain
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4e2f3518a7d6c104daf14041e8025e60
+    m_Address: Assets/Prefabs/Monster/ChestA.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 57bd8de6215ca954db36f72fa8f8ae2f
+    m_Address: Assets/Prefabs/Monster/EarthB.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5c88a951c7b3b8945b63863aae11a409
+    m_Address: Prairie
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6904d22a6f5a1104bbf905417668a1d6
+    m_Address: Skill3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 696f8387994f3db4b9de2878be0ccb70
+    m_Address: Projectile1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 69fba6b6ffb2b5d4da7d809658819155
+    m_Address: Assets/Prefabs/Monster/SnakeF.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 74365fde0ef158749ac170f60d5667e0
+    m_Address: Assets/Prefabs/Monster/MothD.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 807535b291306e14db7483d4171680ff
+    m_Address: Assets/Prefabs/Monster/ReaperA.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 88e274bc4f7f38e47bc5c549f68450c1
+    m_Address: Desert
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9771f44209f895c42b14bbb144967ef2
+    m_Address: Skill4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9a17c648fedd6ab45b6643590c7085fc
     m_Address: Assets/SO/Skill/Projectile2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aee5cbd67f1bcd7449b1d08d1160cd01
+    m_Address: Assets/Prefabs/Monster/PotionI.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: af7b6faf43f40d642a6afeacf4aacceb
+    m_Address: Skill1
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b5c533eae9db16a438e0f1058eab48d0
+    m_Address: Projectile3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b5f4ba66c8cfd5542b2c73ad19ba5770
+    m_Address: Assets/Prefabs/Monster/FactoryB.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b71dacf8395e2754290f9b1c9ae4e664
+    m_Address: Skill6
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d0f85c07683bbea4799770ef72e2df75
+    m_Address: Assets/Prefabs/Monster/GolemA.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d35fd89ad0720794e8a7714dc3218823
+    m_Address: Assets/Prefabs/Monster/CloudD.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d9e8eb521dfa4b34487ebac28c6c5573
+    m_Address: Assets/Prefabs/Monster/MushroomB.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dad7072185bdcba4e87e4ee089ccc09c
+    m_Address: Projectile2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e0dfb140067933341958dbb76ebbd706
+    m_Address: Assets/Prefabs/Monster/CountA.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e15db4a042b2331419bc4dfa022e66a6
+    m_Address: Assets/Prefabs/Monster/ScorpionC.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e5a0a40cb1424dd419a25cb208cf8ae6
+    m_Address: Skill5
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eaf1313671fe52e43acab67a1749ed5b
+    m_Address: Assets/Prefabs/Monster/MummyA.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ef6ba6ee638952347a6ad03dd0f041b7
+    m_Address: Projectile4
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f00a1dcc5a570fc4b8af3a6315f925ba
+    m_Address: Snowfield
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f04a7fc341921d44ba5b19d0387c932e
+    m_Address: Assets/Prefabs/Monster/FireSmallA.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fb39af7bb3245fc43a4d987b5cae4976
+    m_Address: Assets/Prefabs/Monster/DogB.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fdca6392a509fe949bb06071164a7d5c
+    m_Address: Assets/Prefabs/Monster/BatG.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
