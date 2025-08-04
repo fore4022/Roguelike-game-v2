@@ -18,7 +18,7 @@ public class Audio_Manager
     }
     public void InitializedAudio()
     {
-        GameObject[] objs = GameObject.FindObjectsOfType<GameObject>();
+        GameObject[] objs = Object.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
 
         foreach(GameObject obj in objs)
         {
