@@ -13,57 +13,10 @@ MonoBehaviour:
   m_Name: SO
   m_EditorClassIdentifier: 
   m_GroupName: SO
-  m_Data:
-    m_SerializedData: []
   m_GUID: 09034957b2a2eca40bf8a02afaa6d243
   m_SerializeEntries:
-  - m_GUID: 51b34d8ed8adb7643a11727c00da09fb
-    m_Address: Assets/SO/Monster/Desert/MummyA.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1419c237bbb0db54c988e5c1f70b4377
-    m_Address: Assets/SO/Monster/Desert/FactoryB.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3badb0b2c63fbd240b9f0d852dc41e23
-    m_Address: Assets/SO/Monster/Desert/SlimeSquareH.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 900f8e609503d264fa9bbcd4461bfc28
-    m_Address: Assets/SO/Monster/Prairie/MothD.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ea0140a614e96404d9aeb2fca3887265
-    m_Address: Assets/SO/Monster/Prairie/MaskA.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f0013bc2094d7084a853897783e1e01d
-    m_Address: Assets/SO/Monster/Prairie/DogB.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2f1fcb1acf1c6bf47bac3aaaec7e702b
-    m_Address: Assets/SO/Monster/Rock Mountain/EarthB.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1a77236cdedf7404a92bbae2701a2ba0
-    m_Address: Assets/SO/Monster/Rock Mountain/GolemA.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6143b272d01b9774993d02d2682e701b
-    m_Address: Assets/SO/Monster/Rock Mountain/BatSmallA.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c808a70369b844343872868eada4e138
-    m_Address: Assets/SO/Monster/Rock Mountain/ChestA.asset
+  - m_GUID: 0117c6dc04d98b449af7c105c2f6d2a4
+    m_Address: Assets/SO/Skill/Projectile3.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -72,58 +25,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 861a3b0b111c63b4e9fe4f5f99afe07d
-    m_Address: Assets/SO/Monster/Snowfield/CountA.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7fe05310bb6b9664293d49984f4bae1c
-    m_Address: Assets/SO/Monster/Snowfield/BatG.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ffa96eb8bd4ac494d981e199097d9bca
-    m_Address: Assets/SO/Monster/Volcano/ReaperA.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 41f042ed3b0c4834f9007aa44707d466
-    m_Address: Assets/SO/Monster/Volcano/SkullFlamingB.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 13facda5a7a778a4f93a3f0a02529199
     m_Address: Assets/SO/Monster/Volcano/GhastC.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: afcf4199383ce2d4e8c9b426722d7ad7
-    m_Address: Assets/SO/Monster/Volcano/FireSmallA.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2e6ba11cb8e5dd748bd15cfcb5795250
-    m_Address: Assets/SO/Skill/Skill4.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: dc562fa984c5c124ab5467bf0e283356
-    m_Address: Assets/SO/Skill/Skill2.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0117c6dc04d98b449af7c105c2f6d2a4
-    m_Address: Assets/SO/Skill/Projectile3.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 54d1164d43d21ac45898685023de9794
-    m_Address: Assets/SO/Skill/Projectile1.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 645acf28d92d7ad46b026bcde5cc5345
-    m_Address: Assets/SO/Skill/Projectile4.asset
+  - m_GUID: 1419c237bbb0db54c988e5c1f70b4377
+    m_Address: Assets/SO/Monster/Desert/FactoryB.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -132,18 +40,28 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 705e2b58b9dfec14fa045dbe021b2876
-    m_Address: Assets/SO/Skill/Skill5.asset
+  - m_GUID: 1a77236cdedf7404a92bbae2701a2ba0
+    m_Address: Assets/SO/Monster/Rock_Mountain/GolemA.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3b87993d9bd8c8242aedae1c07544eb2
-    m_Address: Assets/SO/Skill/Skill6.asset
+  - m_GUID: 1e5eb1842326c7442b7cfacfced09df0
+    m_Address: Assets/SO/Monster/Snowfield/WitchE.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e540e19fa49ae6047ae03c6f559c8e90
-    m_Address: Assets/SO/Skill/Skill3.asset
+  - m_GUID: 235713ab3bb77d3469b7e233061a34fc
+    m_Address: Assets/SO/Monster/Rock_Mountain/PuddleB.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2e6ba11cb8e5dd748bd15cfcb5795250
+    m_Address: Assets/SO/Skill/Skill4.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2f1fcb1acf1c6bf47bac3aaaec7e702b
+    m_Address: Assets/SO/Monster/Rock_Mountain/EarthB.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -152,18 +70,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f7a166059084acc49ad2e50ebea7165c
-    m_Address: UserLevelInfo_SO
+  - m_GUID: 3b87993d9bd8c8242aedae1c07544eb2
+    m_Address: Assets/SO/Skill/Skill6.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: ea59041157cfc684aa1948e2de00a6fe
-    m_Address: 2_Level
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 5cd5812a37f5105458c469318932c51e
-    m_Address: 3_Level
+  - m_GUID: 3badb0b2c63fbd240b9f0d852dc41e23
+    m_Address: Assets/SO/Monster/Desert/SlimeSquareH.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -172,28 +85,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7c5b5c7eeadc4a442a3ae53a01280958
-    m_Address: 5_Level
+  - m_GUID: 41f042ed3b0c4834f9007aa44707d466
+    m_Address: Assets/SO/Monster/Volcano/SkullFlamingB.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 509d6cb8c7cc6084984281c1ba38bf5e
-    m_Address: 6_Level
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f463f48768966914a8d5b72f67c5251e
-    m_Address: 7_Level
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 59f36923dcfdea145ad5243af075a703
-    m_Address: 8_Level
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: eb8ff128b83628a4190ed8e57449abca
-    m_Address: 9_Level
+  - m_GUID: 45bb404ba59467a42ab3a750a9950064
+    m_Address: Assets/SO/Monster/Volcano/SwordA.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -202,13 +100,63 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: bb2545f5f15469d40b8abd1a6979e306
-    m_Address: Assets/SO/Monster/Prairie/SnakeF.asset
+  - m_GUID: 509d6cb8c7cc6084984281c1ba38bf5e
+    m_Address: 6_Level
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e05109a366efe0f4caf59b92e222daa5
-    m_Address: Assets/SO/Monster/Prairie/MushroomB.asset
+  - m_GUID: 51b34d8ed8adb7643a11727c00da09fb
+    m_Address: Assets/SO/Monster/Desert/MummyA.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 54d1164d43d21ac45898685023de9794
+    m_Address: Assets/SO/Skill/Projectile1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 59f36923dcfdea145ad5243af075a703
+    m_Address: 8_Level
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5cd5812a37f5105458c469318932c51e
+    m_Address: 3_Level
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6143b272d01b9774993d02d2682e701b
+    m_Address: Assets/SO/Monster/Rock_Mountain/BatSmallA.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 645acf28d92d7ad46b026bcde5cc5345
+    m_Address: Assets/SO/Skill/Projectile4.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 705e2b58b9dfec14fa045dbe021b2876
+    m_Address: Assets/SO/Skill/Skill5.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7c5b5c7eeadc4a442a3ae53a01280958
+    m_Address: 5_Level
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7fe05310bb6b9664293d49984f4bae1c
+    m_Address: Assets/SO/Monster/Snowfield/BatG.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 861a3b0b111c63b4e9fe4f5f99afe07d
+    m_Address: Assets/SO/Monster/Snowfield/CountA.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 900f8e609503d264fa9bbcd4461bfc28
+    m_Address: Assets/SO/Monster/Prairie/MothD.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -222,8 +170,23 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 235713ab3bb77d3469b7e233061a34fc
-    m_Address: Assets/SO/Monster/Rock Mountain/PuddleB.asset
+  - m_GUID: afcf4199383ce2d4e8c9b426722d7ad7
+    m_Address: Assets/SO/Monster/Volcano/FireSmallA.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bb2545f5f15469d40b8abd1a6979e306
+    m_Address: Assets/SO/Monster/Prairie/SnakeF.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c808a70369b844343872868eada4e138
+    m_Address: Assets/SO/Monster/Rock_Mountain/ChestA.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dc562fa984c5c124ab5467bf0e283356
+    m_Address: Assets/SO/Skill/Skill2.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -232,18 +195,53 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1e5eb1842326c7442b7cfacfced09df0
-    m_Address: Assets/SO/Monster/Snowfield/WitchE.asset
+  - m_GUID: e05109a366efe0f4caf59b92e222daa5
+    m_Address: Assets/SO/Monster/Prairie/MushroomB.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 45bb404ba59467a42ab3a750a9950064
-    m_Address: Assets/SO/Monster/Volcano/SwordA.asset
+  - m_GUID: e540e19fa49ae6047ae03c6f559c8e90
+    m_Address: Assets/SO/Skill/Skill3.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ea0140a614e96404d9aeb2fca3887265
+    m_Address: Assets/SO/Monster/Prairie/MaskA.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ea59041157cfc684aa1948e2de00a6fe
+    m_Address: 2_Level
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eb8ff128b83628a4190ed8e57449abca
+    m_Address: 9_Level
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f0013bc2094d7084a853897783e1e01d
+    m_Address: Assets/SO/Monster/Prairie/DogB.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f463f48768966914a8d5b72f67c5251e
+    m_Address: 7_Level
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f7a166059084acc49ad2e50ebea7165c
+    m_Address: UserLevelInfo_SO
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ffa96eb8bd4ac494d981e199097d9bca
+    m_Address: Assets/SO/Monster/Volcano/ReaperA.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
-  m_Settings: {fileID: 11400000, guid: 0f0f1efd53420e34ba93e0637d25113c, type: 2}
+  m_Settings: {fileID: 11400000, guid: 70daab9f499d9c6459b70956139bdb11, type: 2}
   m_SchemaSet:
     m_Schemas:
     - {fileID: 11400000, guid: 13081662189c72f4f93a76ed4e6152bb, type: 2}

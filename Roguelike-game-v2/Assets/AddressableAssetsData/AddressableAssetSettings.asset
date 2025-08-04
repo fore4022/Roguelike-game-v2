@@ -15,9 +15,9 @@ MonoBehaviour:
   m_DefaultGroup: 27db53741aa770c4caa7ad6349b30c65
   m_currentHash:
     serializedVersion: 2
-    Hash: 00000000000000000000000000000000
+    Hash: 2a7fdf92e8bfbd48ec82eab418832163
   m_OptimizeCatalogSize: 0
-  m_BuildRemoteCatalog: 0
+  m_BuildRemoteCatalog: 1
   m_CatalogRequestsTimeout: 0
   m_DisableCatalogUpdateOnStart: 0
   m_InternalIdNamingMode: 0
@@ -50,10 +50,10 @@ MonoBehaviour:
   m_CheckForContentUpdateRestrictionsOption: 0
   m_MonoScriptBundleCustomNaming: 
   m_RemoteCatalogBuildPath:
-    m_Id: 
+    m_Id: 2fea925327b924b4fbc3860511584740
   m_RemoteCatalogLoadPath:
-    m_Id: 
-  m_ContentStateBuildPathProfileVariableName: 
+    m_Id: eaca54d6a84c89a4f9eadc126332b61a
+  m_ContentStateBuildPathProfileVariableName: <default settings path>
   m_CustomContentStateBuildPath: 
   m_ContentStateBuildPath: 
   m_BuildAddressablesWithPlayerBuild: 0
@@ -65,7 +65,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4d58466aef95bad4e9bd22933d413716, type: 2}
   - {fileID: 11400000, guid: 4d8d131d0a62f7045bf441efe91e7eaa, type: 2}
   - {fileID: 11400000, guid: 5ffdd2508c167ba48b7fa41301acb069, type: 2}
-  - {fileID: 11400000, guid: f47826e54590bb94aaa5634bd991bacc, type: 2}
   m_BuildSettings:
     m_LogResourceManagerExceptions: 1
     m_BundleBuildPath: Temp/com.unity.addressables/AssetBundles
@@ -80,7 +79,7 @@ MonoBehaviour:
       - m_Id: 355398a0bba37034ab1addd1472e7c4f
         m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
       - m_Id: b2185987edf46a44bb71825bf9b9ca4c
-        m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget] '
+        m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
       - m_Id: d4dbcc32a74caa543a24ae477da74184
         m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
       - m_Id: eaca54d6a84c89a4f9eadc126332b61a

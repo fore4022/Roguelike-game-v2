@@ -13,37 +13,10 @@ MonoBehaviour:
   m_Name: Sprite
   m_EditorClassIdentifier: 
   m_GroupName: Sprite
-  m_Data:
-    m_SerializedData: []
   m_GUID: da87016f52317cf468ed229095f589fa
   m_SerializeEntries:
-  - m_GUID: fb68e2ce3d491ce4b9a4eec1413047a5
-    m_Address: Assets/Sprites/Icon/Skills/ElectricLighting2.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b4fcd567f9b1211468aee6414f4be3c7
-    m_Address: Assets/Sprites/Icon/Skills/HolyProjectile.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3d68c71f9f8b92345bd999b736eb06db
-    m_Address: Assets/Sprites/Icon/Skills/Ice VFX 1 192x192.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 392457ac3a17e2543b72c50fe43a2efb
-    m_Address: Assets/Sprites/Icon/Skills/spark.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 59b864a5bc8866441a8d8490980d41c4
-    m_Address: Assets/Sprites/Icon/Skills/Holy VFX 02.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3ac79a1a29b4c8547a5a4a815a33cee2
-    m_Address: Assets/Sprites/Icon/Skills/Slash_attack_006.png
+  - m_GUID: 0c5d01f030f902d4f915b3373e0e4cde
+    m_Address: Assets/Sprites/Icon/Skills/FireTornado.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -52,8 +25,33 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 392457ac3a17e2543b72c50fe43a2efb
+    m_Address: Assets/Sprites/Icon/Skills/spark.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3ac79a1a29b4c8547a5a4a815a33cee2
+    m_Address: Assets/Sprites/Icon/Skills/Slash_attack_006.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3d68c71f9f8b92345bd999b736eb06db
+    m_Address: Assets/Sprites/Icon/Skills/Ice_VFX_1_192x192.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 59b864a5bc8866441a8d8490980d41c4
+    m_Address: Assets/Sprites/Icon/Skills/Holy_VFX_02.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8c723446d189f764d8dd18fb21a81cf0
     m_Address: Assets/Sprites/Icon/Skills/VoidBlackHole.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b4fcd567f9b1211468aee6414f4be3c7
+    m_Address: Assets/Sprites/Icon/Skills/HolyProjectile.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -62,13 +60,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0c5d01f030f902d4f915b3373e0e4cde
-    m_Address: Assets/Sprites/Icon/Skills/FireTornado.png
+  - m_GUID: fb68e2ce3d491ce4b9a4eec1413047a5
+    m_Address: Assets/Sprites/Icon/Skills/ElectricLighting2.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
-  m_Settings: {fileID: 11400000, guid: 0f0f1efd53420e34ba93e0637d25113c, type: 2}
+  m_Settings: {fileID: 11400000, guid: 70daab9f499d9c6459b70956139bdb11, type: 2}
   m_SchemaSet:
     m_Schemas:
     - {fileID: 11400000, guid: bbc56da4a719bcd45897a61606aace51, type: 2}

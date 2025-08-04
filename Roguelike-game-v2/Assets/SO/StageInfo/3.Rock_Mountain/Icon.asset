@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e82460b40f8a9fc4097f243073bcfe3a, type: 3}
+  m_Name: Icon
+  m_EditorClassIdentifier: 
+  ground: {fileID: 6836142153017594085, guid: a900c4ad42184f62a6eb273a60e6f50e, type: 3}
+  cover: {fileID: 0}
+  banner: {fileID: -911788121, guid: 5bd989fecb5450e4cbba2937e9a62b34, type: 3}
+  monster: {fileID: 21300000, guid: d6f4ffa3ff78bbb41b95f4a397d28269, type: 3}
