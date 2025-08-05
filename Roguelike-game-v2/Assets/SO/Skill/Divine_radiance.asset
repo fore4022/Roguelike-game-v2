@@ -10,43 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73ca3fa60cacd8349afc667de9942f53, type: 3}
-  m_Name: Projectile2
+  m_Name: Divine_radiance
   m_EditorClassIdentifier: 
   projectile_Info:
-    animationName: explosion
-    speed: 4.5
-    penetration: 1
+    animationName: 
+    speed: 0
+    penetration: 0
   multiCast:
-    delay:
-    - 0.125
-    - 0.125
-    - 0.125
-    - 0.125
-    - 0.125
-    count:
-    - 3
-    - 3
-    - 3
-    - 3
-    - 5
-  go: {fileID: 1647761571587782042, guid: dad7072185bdcba4e87e4ee089ccc09c, type: 3}
-  maxLevelColor: {r: 1, g: 1, b: 1, a: 1}
+    delay: []
+    count: []
+  go: {fileID: 4019139698218218091, guid: b71dacf8395e2754290f9b1c9ae4e664, type: 3}
+  maxLevelColor: {r: 1, g: 0.78431374, b: 0, a: 1}
   adjustmentRotation: {x: 0, y: 0, z: 0}
   adjustmentPosition: {x: 0, y: 0}
   damageCoefficient:
+  - 0.8
+  - 0.9
   - 1
-  - 1.15
-  - 1.3
-  - 1.45
-  - 1.5
+  - 1.1
+  - 1.2
   coolTime:
-  - 2.05
-  - 2
-  - 1.95
-  - 1.9
-  - 1.85
+  - 1.2
+  - 1.15
+  - 1.1
+  - 1.05
+  - 1
   duration: 0
-  flipX: 0
-  flipY: 1
+  flipX: 1
+  flipY: 0
   isProjectile: 0
-  isMultiCast: 1
+  isMultiCast: 0

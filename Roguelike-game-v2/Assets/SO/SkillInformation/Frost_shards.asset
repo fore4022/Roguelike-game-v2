@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92ec6efdbd2a82040bb65451859f8197, type: 3}
-  m_Name: Info6-S
+  m_Name: Frost_shards
   m_EditorClassIdentifier: 
-  spritePath: Assets/Sprites/Icon/Skills/Holy VFX 02.png
+  spritePath: Assets/Sprites/Icon/Skills/Ice_VFX_1_192x192.png
   info:
     icon: {fileID: 0}
-    go: {fileID: 4019139698218218091, guid: b71dacf8395e2754290f9b1c9ae4e664, type: 3}
-    explanation: jjjj
-  sprite: {fileID: 21300000, guid: 59b864a5bc8866441a8d8490980d41c4, type: 3}
+    go: {fileID: 1647761571587782042, guid: dad7072185bdcba4e87e4ee089ccc09c, type: 3}
+    explanation: Sharp ice shards fly toward the nearest enemies in sequence. Upon
+      impact, the ice shatters into pieces, dealing damage.
+  sprite: {fileID: 21300000, guid: 3d68c71f9f8b92345bd999b736eb06db, type: 3}

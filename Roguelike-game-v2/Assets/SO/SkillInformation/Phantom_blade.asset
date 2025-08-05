@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92ec6efdbd2a82040bb65451859f8197, type: 3}
-  m_Name: Info2-S
+  m_Name: Phantom_blade
   m_EditorClassIdentifier: 
-  spritePath: Assets/Sprites/Icon/Skills/VoidExplosion1.png
+  spritePath: Assets/Sprites/Icon/Skills/Slash_attack_006.png
   info:
     icon: {fileID: 0}
-    go: {fileID: 8179025814334315390, guid: 2fbe63f67cb607b4084c4bdbb60400cc, type: 3}
-    explanation: dddd
-  sprite: {fileID: 21300000, guid: 2f86942ea6c1b7f41a800dbf3715f236, type: 3}
+    go: {fileID: 648660626092197636, guid: af7b6faf43f40d642a6afeacf4aacceb, type: 3}
+    explanation: Cuts down a random enemy on the screen.
+  sprite: {fileID: 21300000, guid: 3ac79a1a29b4c8547a5a4a815a33cee2, type: 3}

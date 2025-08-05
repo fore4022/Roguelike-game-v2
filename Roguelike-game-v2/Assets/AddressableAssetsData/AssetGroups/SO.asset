@@ -16,7 +16,7 @@ MonoBehaviour:
   m_GUID: 09034957b2a2eca40bf8a02afaa6d243
   m_SerializeEntries:
   - m_GUID: 0117c6dc04d98b449af7c105c2f6d2a4
-    m_Address: Assets/SO/Skill/Projectile3.asset
+    m_Address: Assets/SO/Skill/Void_vortex.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -36,7 +36,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1a35818287b0bc2459f4a9ec48006041
-    m_Address: Assets/SO/Skill/Skill1.asset
+    m_Address: Assets/SO/Skill/Phantom_blade.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -55,13 +55,23 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 248f3c23e8b94d841a974e60f00ddec9
+    m_Address: Assets/SO/SkillInformation/Pulse_burst.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2e6ba11cb8e5dd748bd15cfcb5795250
-    m_Address: Assets/SO/Skill/Skill4.asset
+    m_Address: Assets/SO/Skill/Flame_tempest.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2f1fcb1acf1c6bf47bac3aaaec7e702b
     m_Address: Assets/SO/Monster/Rock_Mountain/EarthB.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 36915492acc929c4290a91b7b9db0b3b
+    m_Address: Assets/SO/SkillInformation/Flame_tempest.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -71,7 +81,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3b87993d9bd8c8242aedae1c07544eb2
-    m_Address: Assets/SO/Skill/Skill6.asset
+    m_Address: Assets/SO/Skill/Divine_radiance.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -111,7 +121,12 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 54d1164d43d21ac45898685023de9794
-    m_Address: Assets/SO/Skill/Projectile1.asset
+    m_Address: Assets/SO/Skill/Holy_cruciform.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 582c875a28dca284c8c2f7158f881662
+    m_Address: Assets/SO/SkillInformation/Void_Burst.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -130,13 +145,33 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 61cc9ccac9c405b45a49cb7e36f89ff9
+    m_Address: Assets/SO/SkillInformation/Void_vortex.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 638614d3c143b3a43becca58456eb848
+    m_Address: Assets/SO/SkillInformation/Divine_radiance.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 645acf28d92d7ad46b026bcde5cc5345
-    m_Address: Assets/SO/Skill/Projectile4.asset
+    m_Address: Assets/SO/Skill/Pulse_burst.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 705e2b58b9dfec14fa045dbe021b2876
-    m_Address: Assets/SO/Skill/Skill5.asset
+    m_Address: Assets/SO/Skill/Arcane_blaze.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 70ac5aa45abfc9846b7829777b718f86
+    m_Address: Assets/SO/SkillInformation/Phantom_blade.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7944311dac1751c4c9f5385866517a52
+    m_Address: Assets/SO/SkillInformation/Thunderstroke.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -157,6 +192,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 900f8e609503d264fa9bbcd4461bfc28
     m_Address: Assets/SO/Monster/Prairie/MothD.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9a17c648fedd6ab45b6643590c7085fc
+    m_Address: Assets/SO/Skill/Frost_shards.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -185,8 +225,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d677659c5a1e8f640be66bdf143494dc
+    m_Address: Assets/SO/SkillInformation/Holy_cruciform.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d88a84974f5dff84a8423fd3091b2aab
+    m_Address: Assets/SO/SkillInformation/Arcane_blaze.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dc562fa984c5c124ab5467bf0e283356
-    m_Address: Assets/SO/Skill/Skill2.asset
+    m_Address: Assets/SO/Skill/Void_Burst.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -201,7 +251,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e540e19fa49ae6047ae03c6f559c8e90
-    m_Address: Assets/SO/Skill/Skill3.asset
+    m_Address: Assets/SO/Skill/Thunderstroke.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -217,6 +267,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: eb8ff128b83628a4190ed8e57449abca
     m_Address: 9_Level
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ec600e2dded5e3246ac1162222bff279
+    m_Address: Assets/SO/SkillInformation/Frost_shards.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

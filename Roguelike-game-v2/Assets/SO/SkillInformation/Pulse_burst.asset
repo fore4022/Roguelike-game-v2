@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92ec6efdbd2a82040bb65451859f8197, type: 3}
-  m_Name: Info5-S
+  m_Name: Pulse_burst
   m_EditorClassIdentifier: 
-  spritePath: Assets/Sprites/Icon/Skills/FireBall.png
+  spritePath: Assets/Sprites/Icon/Skills/spark.png
   info:
     icon: {fileID: 0}
-    go: {fileID: 3597558578671974726, guid: e5a0a40cb1424dd419a25cb208cf8ae6, type: 3}
-    explanation: iiii
-  sprite: {fileID: 21300000, guid: bb47c03c20052f2429478fe4cfa1bac5, type: 3}
+    go: {fileID: 104679271344969195, guid: ef6ba6ee638952347a6ad03dd0f041b7, type: 3}
+    explanation: Scatters electric orbs that slow down over time, dealing damage
+      and knockback on hit.
+  sprite: {fileID: 21300000, guid: 392457ac3a17e2543b72c50fe43a2efb, type: 3}

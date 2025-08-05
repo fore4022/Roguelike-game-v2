@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92ec6efdbd2a82040bb65451859f8197, type: 3}
-  m_Name: Info4-P
+  m_Name: Divine_radiance
   m_EditorClassIdentifier: 
-  spritePath: Assets/Sprites/Icon/Skills/spark.png
+  spritePath: Assets/Sprites/Icon/Skills/Holy_VFX_02.png
   info:
     icon: {fileID: 0}
-    go: {fileID: 104679271344969195, guid: ef6ba6ee638952347a6ad03dd0f041b7, type: 3}
-    explanation: gggg
-  sprite: {fileID: 21300000, guid: 392457ac3a17e2543b72c50fe43a2efb, type: 3}
+    go: {fileID: 4019139698218218091, guid: b71dacf8395e2754290f9b1c9ae4e664, type: 3}
+    explanation: Calls down holy light on random enemies, dealing damage.
+  sprite: {fileID: 21300000, guid: 59b864a5bc8866441a8d8490980d41c4, type: 3}

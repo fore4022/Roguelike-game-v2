@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92ec6efdbd2a82040bb65451859f8197, type: 3}
-  m_Name: Info4-S
+  m_Name: Arcane_blaze
   m_EditorClassIdentifier: 
-  spritePath: Assets/Sprites/Icon/Skills/FireTornado.png
+  spritePath: Assets/Sprites/Icon/Skills/FireBall.png
   info:
     icon: {fileID: 0}
-    go: {fileID: 2446887242956231448, guid: 9771f44209f895c42b14bbb144967ef2, type: 3}
-    explanation: hhhh
-  sprite: {fileID: 21300000, guid: 0c5d01f030f902d4f915b3373e0e4cde, type: 3}
+    go: {fileID: 3597558578671974726, guid: e5a0a40cb1424dd419a25cb208cf8ae6, type: 3}
+    explanation: Flame spin, then explode to deal damage.
+  sprite: {fileID: 21300000, guid: bb47c03c20052f2429478fe4cfa1bac5, type: 3}

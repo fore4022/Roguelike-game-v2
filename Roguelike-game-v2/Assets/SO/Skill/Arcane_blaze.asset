@@ -10,43 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73ca3fa60cacd8349afc667de9942f53, type: 3}
-  m_Name: Skill1
+  m_Name: Arcane_blaze
   m_EditorClassIdentifier: 
   projectile_Info:
     animationName: 
     speed: 0
     penetration: 0
   multiCast:
-    delay:
-    - 0.05
-    - 0.05
-    - 0.05
-    - 0.05
-    - 0.05
-    count:
-    - 1
-    - 2
-    - 3
-    - 4
-    - 5
-  go: {fileID: 648660626092197636, guid: af7b6faf43f40d642a6afeacf4aacceb, type: 3}
-  maxLevelColor: {r: 1, g: 0.60784316, b: 0.60784316, a: 1}
+    delay: []
+    count: []
+  go: {fileID: 3597558578671974726, guid: e5a0a40cb1424dd419a25cb208cf8ae6, type: 3}
+  maxLevelColor: {r: 0, g: 1, b: 1, a: 1}
   adjustmentRotation: {x: 0, y: 0, z: 0}
   adjustmentPosition: {x: 0, y: 0}
   damageCoefficient:
-  - 1.25
-  - 1.35
-  - 1.45
-  - 1.55
-  - 1.65
+  - 2
+  - 2.2
+  - 2.4
+  - 2.6
+  - 2.8
   coolTime:
-  - 1.6
-  - 1.5
-  - 1.4
-  - 1.3
-  - 1.2
+  - 0.7
+  - 0.625
+  - 0.55
+  - 0.425
+  - 0.35
   duration: 0
   flipX: 1
   flipY: 1
   isProjectile: 0
-  isMultiCast: 1
+  isMultiCast: 0

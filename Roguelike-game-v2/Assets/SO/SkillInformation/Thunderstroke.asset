@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92ec6efdbd2a82040bb65451859f8197, type: 3}
-  m_Name: Info2-P
+  m_Name: Thunderstroke
   m_EditorClassIdentifier: 
-  spritePath: Assets/Sprites/Icon/Skills/Ice VFX 1 192x192.png
+  spritePath: Assets/Sprites/Icon/Skills/ElectricLighting2.png
   info:
     icon: {fileID: 0}
-    go: {fileID: 1647761571587782042, guid: dad7072185bdcba4e87e4ee089ccc09c, type: 3}
-    explanation: cccc
-  sprite: {fileID: 21300000, guid: 3d68c71f9f8b92345bd999b736eb06db, type: 3}
+    go: {fileID: 6967527459479230250, guid: 6904d22a6f5a1104bbf905417668a1d6, type: 3}
+    explanation: Strikes random enemies with multiple lightning bolts.
+  sprite: {fileID: 21300000, guid: fb68e2ce3d491ce4b9a4eec1413047a5, type: 3}

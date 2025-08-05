@@ -10,33 +10,43 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73ca3fa60cacd8349afc667de9942f53, type: 3}
-  m_Name: Skill2
+  m_Name: Pulse_burst
   m_EditorClassIdentifier: 
   projectile_Info:
-    animationName: 
-    speed: 0
+    animationName: destroy
+    speed: 0.75
     penetration: 0
   multiCast:
-    delay: []
-    count: []
-  go: {fileID: 8179025814334315390, guid: 2fbe63f67cb607b4084c4bdbb60400cc, type: 3}
-  maxLevelColor: {r: 1, g: 0.9019608, b: 0.5882353, a: 1}
+    delay:
+    - 0.05
+    - 0.045
+    - 0.04
+    - 0.035
+    - 0.03
+    count:
+    - 6
+    - 8
+    - 10
+    - 12
+    - 14
+  go: {fileID: 104679271344969195, guid: ef6ba6ee638952347a6ad03dd0f041b7, type: 3}
+  maxLevelColor: {r: 1, g: 1, b: 0.6666667, a: 1}
   adjustmentRotation: {x: 0, y: 0, z: 0}
   adjustmentPosition: {x: 0, y: 0}
   damageCoefficient:
-  - 1.3
-  - 1.6
-  - 1.9
-  - 2.2
-  - 2.5
+  - 0.8
+  - 0.9
+  - 1
+  - 1.1
+  - 1.2
   coolTime:
-  - 1.8
-  - 1.7
-  - 1.6
-  - 1.5
-  - 1.4
+  - 3
+  - 2.75
+  - 2.5
+  - 2.25
+  - 2
   duration: 0
   flipX: 1
-  flipY: 0
+  flipY: 1
   isProjectile: 0
-  isMultiCast: 0
+  isMultiCast: 1
