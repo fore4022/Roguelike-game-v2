@@ -14,12 +14,11 @@ public class SkillSelection_UI : UserInterface
     private const string path = "SkillOption";
     private const float duration = 0.75f;
     private const float basicAlpha = 180;
-    private const float targetAlpha = 0;
-    private const int spacingY = 75;
+    private const int targetAlpha = 0;
 
-    private (int x, int y) cellSize = (700, 255);
     private bool isSelect = true;
-    
+
+    public int RequireOptionCount { get { return Managers.Game.inGameData.OptionCount - skillOptionList.Count; } }
     public bool IsSelect { get { return isSelect; } set { isSelect = value; } }
     public override void SetUserInterface()
     {
@@ -70,11 +69,6 @@ public class SkillSelection_UI : UserInterface
 
         StartCoroutine(SkillListUpdate());
     }
-    private void AdjustGridLayout()
-    {
-        gridLayoutGroup.cellSize = new Vector2(cellSize.x, cellSize.y);
-        gridLayoutGroup.spacing = new Vector2(0, spacingY);
-    }
     private void OnDisable()
     {
         foreach(SkillOption_UI attackOption in skillOptionList)
@@ -99,12 +93,13 @@ public class SkillSelection_UI : UserInterface
     private void CreateOptionUI()
     {
         Transform trans = transform.GetChild(0);
+        GameObject go;
 
-        int count = Managers.Game.inGameData.OptionCount - skillOptionList.Count;
+        int count = RequireOptionCount;
 
-        for(int i = 0; i < count; i++)
+        for (int i = 0; i < count; i++)
         {
-            GameObject go = Instantiate(attackOption, trans);
+            go = Instantiate(attackOption, trans);
 
             skillOptionList.Add(Util.GetComponentInChildren<SkillOption_UI>(go.transform));
 
@@ -114,7 +109,6 @@ public class SkillSelection_UI : UserInterface
     private IEnumerator Init()
     {
         LoadAttackOption();
-        AdjustGridLayout();
 
         background.enabled = false;
 

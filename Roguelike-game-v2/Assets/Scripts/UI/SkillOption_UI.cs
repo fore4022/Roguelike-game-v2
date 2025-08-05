@@ -54,15 +54,16 @@ public class SkillOption_UI : Button_B
         }
         
         textList[0].text = $"{info.data.type}";
-        textList[1].text = $"{info.data.explanation}";
 
         if(info.caster == null)
         {
-            textList[2].text = "New";
+            textList[1].text = "New";
         }
         else
         {
-            textList[2].text = $"Lv. {info.level + 1}";
+            textList[1].text = $"Lv. {info.level + 1}";
         }
+
+        textList[2].text = $"{info.data.explanation}";
     }
 }
