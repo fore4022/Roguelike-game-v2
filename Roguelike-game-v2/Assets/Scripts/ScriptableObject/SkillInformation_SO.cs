@@ -8,6 +8,8 @@ public class SkillInformation_SO : ScriptableObject
 
     public SkillInformation info;
 
+    public new string name;
+
 #if UNITY_EDITOR
     public Sprite sprite;
 

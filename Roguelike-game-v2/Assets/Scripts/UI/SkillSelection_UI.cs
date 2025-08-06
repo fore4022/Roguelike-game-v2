@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class SkillSelection_UI : UserInterface
 {
     private List<SkillOption_UI> skillOptionList = new();
-
-    private GridLayoutGroup gridLayoutGroup = null;
     private Image background;
     private GameObject attackOption = null;
 
@@ -22,7 +20,6 @@ public class SkillSelection_UI : UserInterface
     public bool IsSelect { get { return isSelect; } set { isSelect = value; } }
     public override void SetUserInterface()
     {
-        gridLayoutGroup = Util.GetComponentInChildren<GridLayoutGroup>(transform);
         background = GetComponent<Image>();
 
         Managers.Game.inGameData.player.levelUpdate += () => Managers.UI.Show<LevelUp_UI>();

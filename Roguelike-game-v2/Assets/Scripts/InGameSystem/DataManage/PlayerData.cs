@@ -8,7 +8,7 @@ public class PlayerData
 
     private PlayerInformation info = null;
 
-    private const float baseExperience = 999;// 5
+    private const float baseExperience = 5;
 
     private Coroutine levelCalculation = null;
     private int increaseValue;

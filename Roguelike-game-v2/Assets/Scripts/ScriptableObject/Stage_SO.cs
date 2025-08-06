@@ -13,6 +13,8 @@ public class Stage_SO : ScriptableObject
     public StageInformation_SO information = null;
     public Icon_SO iconSprite = null;
 
+    public new string name;
+
 #if UNITY_EDITOR
     public GameObject stage = null;
 
