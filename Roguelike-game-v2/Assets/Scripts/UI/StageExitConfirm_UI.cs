@@ -11,8 +11,8 @@ public class StageExitConfirm_UI : UserInterface
     [SerializeField]
     private TextMeshProUGUI tmp;
 
-    private const string exitAfterClearMessage = "The stage has been cleared.";
-    private const string exitWithoutClearWarning = "The stage was not cleared.";
+    private const string exitAfterClearMessage = "스테이지가 클리어 되었습니다.";
+    private const string exitWithoutClearWarning = "스테이지가 클리어 되지 않았습니다.";
 
     public override void SetUserInterface()
     {
