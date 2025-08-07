@@ -14,39 +14,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile_Info:
     animationName: explosion
-    speed: 4.5
+    speed: 3.85
     penetration: 1
   multiCast:
     delay:
     - 0.125
     - 0.125
-    - 0.125
-    - 0.125
-    - 0.125
+    - 0.1
+    - 0.1
+    - 0.85
     count:
     - 3
-    - 3
-    - 3
-    - 3
+    - 4
     - 5
+    - 6
+    - 8
   go: {fileID: 1647761571587782042, guid: dad7072185bdcba4e87e4ee089ccc09c, type: 3}
   maxLevelColor: {r: 1, g: 1, b: 1, a: 1}
   adjustmentRotation: {x: 0, y: 0, z: 0}
   adjustmentPosition: {x: 0, y: 0}
   damageCoefficient:
   - 1
-  - 1.15
-  - 1.3
-  - 1.45
-  - 1.5
-  coolTime:
-  - 2.05
-  - 2
-  - 1.95
-  - 1.9
+  - 1.2
+  - 1.4
+  - 1.6
   - 1.85
+  coolTime:
+  - 2.45
+  - 2.3
+  - 2.15
+  - 2
+  - 1.8
   duration: 0
   flipX: 0
   flipY: 1
-  isProjectile: 0
+  isProjectile: 1
   isMultiCast: 1

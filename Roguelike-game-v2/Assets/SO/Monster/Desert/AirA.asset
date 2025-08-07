@@ -13,12 +13,11 @@ MonoBehaviour:
   m_Name: AirA
   m_EditorClassIdentifier: 
   stat:
-    health: 9
-    damage: 1.6
-    moveSpeed: 0.95
+    health: 10.5
+    damage: 1.75
+    moveSpeed: 1.125
     healthRegenPerSec: 0
   user_Experience: 1
   inGame_Experience: 1
-  extraObject: {fileID: 3786313858373033599, guid: 19c7787e8f61a0742a6a051f74d1b11b, type: 3}
-  visualizer: {fileID: 0}
+  extraObjects: []
   hasExtraObject: 0

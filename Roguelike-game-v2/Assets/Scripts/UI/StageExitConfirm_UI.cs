@@ -12,7 +12,7 @@ public class StageExitConfirm_UI : UserInterface
     private TextMeshProUGUI tmp;
 
     private const string exitAfterClearMessage = "스테이지가 클리어 되었습니다.";
-    private const string exitWithoutClearWarning = "스테이지가 클리어하지 못했습니다.";
+    private const string exitWithoutClearWarning = "스테이지가 클리어하지 못했습니다.\n경험치를 휙득할 수 없습니다.";
 
     public override void SetUserInterface()
     {
@@ -33,6 +33,7 @@ public class StageExitConfirm_UI : UserInterface
     }
     public void OnGiveUpStage()
     {
+        Managers.UserData.data.Exp += Managers.Game.UserExp;
         audioSource.clip = giveUpStage_Sound;
 
         audioSource.Play();

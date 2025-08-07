@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: ScorpionC
   m_EditorClassIdentifier: 
   stat:
-    health: 4
-    damage: 1.6
-    moveSpeed: 0.85
+    health: 4.75
+    damage: 1.7
+    moveSpeed: 1.025
     healthRegenPerSec: 0
   user_Experience: 1
   inGame_Experience: 1

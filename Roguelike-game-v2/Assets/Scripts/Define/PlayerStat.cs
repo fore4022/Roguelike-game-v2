@@ -19,6 +19,10 @@ public class PlayerStat
     private const float coef_IncreaseDamage = 0.6f;
     private const float coef_HealthRegenPerSec = 0.1f;
 
+    public PlayerStat()
+    {
+        defaultStat = new(50, 1, 2, 0);
+    }
     public float MoveSpeed
     {
         get
@@ -106,9 +110,5 @@ public class PlayerStat
     public bool IsSceneMain()
     {
         return Managers.Scene.CurrentSceneName == sceneName;
-    }
-    public PlayerStat()
-    {
-        defaultStat = new(100, 1, 2, 0);
     }
 }

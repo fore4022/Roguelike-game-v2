@@ -74,8 +74,6 @@ public class Monster : MonoBehaviour, IScriptableData
         render = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
 
-        stat = new(monsterSO.stat);
-
         if(TryGetComponent(out Collider2D col))
         {
             this.col = col;
@@ -85,6 +83,7 @@ public class Monster : MonoBehaviour, IScriptableData
             this.col = gameObject.AddComponent<BoxCollider2D>();
         }
 
+        stat = new(monsterSO.stat);
         rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
         rigid.simulated = false;
         render.enabled = false;
@@ -122,10 +121,8 @@ public class Monster : MonoBehaviour, IScriptableData
     protected virtual void SetPosition()
     {
         float randomValue = Random.Range(0, 360);
-        float cameraWidth = Util.CameraWidth / 2 + spawnRadius;
-        float cameraHeight = Util.CameraHeight / 2 + spawnRadius;
-        float x = Mathf.Cos(randomValue) * cameraWidth;
-        float y = Mathf.Sin(randomValue) * cameraHeight;
+        float x = Mathf.Cos(randomValue) * Util.CameraWidth / 2 + spawnRadius;
+        float y = Mathf.Sin(randomValue) * Util.CameraHeight / 2 + spawnRadius;
 
         transform.position = new Vector2(x, y) + (Vector2)Managers.Game.player.gameObject.transform.position;
     }

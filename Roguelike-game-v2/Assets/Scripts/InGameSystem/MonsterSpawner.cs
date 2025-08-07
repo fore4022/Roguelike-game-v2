@@ -8,12 +8,11 @@ public class MonsterSpawner : MonoBehaviour
 
     private Dictionary<string, ScriptableObject> monsterStats = new();
 
-    private const float minimumSpawnDelay = 0.075f;
-
-    private int[] monsterSpawnProbabilityArray = new int[100];
+    private const float minimumSpawnDelay = 0.05f;
 
     private Coroutine monsterSpawn = null;
     private Coroutine spawnGroup = null;
+    private int[] monsterSpawnProbabilityArray = new int[100];
     private float spawnDelay = 0;
 
     private void Awake()
@@ -48,8 +47,7 @@ public class MonsterSpawner : MonoBehaviour
     }
     private void MonsterSpawn(SpawnInformation_SO spawnInformation) 
     {
-        int randomValue = Random.Range(0, 100);
-        int arrayIndexValue = monsterSpawnProbabilityArray[randomValue];
+        int arrayIndexValue = monsterSpawnProbabilityArray[Random.Range(0, 100)];
 
         Managers.Game.objectPool.ActiveObject(spawnInformation.monsterInformation[arrayIndexValue].monster.name);
     }
@@ -74,8 +72,6 @@ public class MonsterSpawner : MonoBehaviour
         int totalMinutes = Managers.Game.inGameTimer.GetTotalMinutes;
         int index = 0;
 
-        spawnDelay = Managers.Game.difficultyScaler.SpawnDelay;
-
         foreach(SpawnInformation spawnInfo in spawnInformation.monsterInformation)
         {
             for(int i = 0; i < spawnInfo.spawnProbability; i++)
@@ -85,6 +81,8 @@ public class MonsterSpawner : MonoBehaviour
 
             index++;
         }
+
+        spawnDelay = Managers.Game.difficultyScaler.SpawnDelay;
 
         while(Managers.Game.inGameTimer.GetTotalMinutes < totalMinutes + spawnInformation.duration)
         {

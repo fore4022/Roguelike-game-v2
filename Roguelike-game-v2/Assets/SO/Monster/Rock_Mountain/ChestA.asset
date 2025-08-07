@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: ChestA
   m_EditorClassIdentifier: 
   stat:
-    health: 8
-    damage: 1.25
-    moveSpeed: 1.025
+    health: 10
+    damage: 1.4
+    moveSpeed: 1.375
+    healthRegenPerSec: 0
   user_Experience: 1
   inGame_Experience: 1

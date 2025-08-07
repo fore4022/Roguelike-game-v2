@@ -14,7 +14,7 @@ public class Title_TW : MonoBehaviour
 
         // Wisp
         tweens[0].SetScale(23, 1.2f, 0.1f, EaseType.OutExpo)
-            .SetPosition(new(-0.15f, 0.55f), 0.5f, 0.075f, EaseType.OutCirc)
+            .SetPosition(new(-0.15f, 0.675f), 0.5f, 0.075f, EaseType.OutCirc)
             .SetRotation(new(0, 0, 727.5f), 1.1f, 0.035f, EaseType.OutQuint);
 
         // Moth

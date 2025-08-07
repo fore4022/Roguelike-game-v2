@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: FireSmallA
   m_EditorClassIdentifier: 
   stat:
-    health: 6
-    damage: 1.2
-    moveSpeed: 1.2
+    health: 8
+    damage: 1.3
+    moveSpeed: 1.375
     healthRegenPerSec: 0
   user_Experience: 1
   inGame_Experience: 1

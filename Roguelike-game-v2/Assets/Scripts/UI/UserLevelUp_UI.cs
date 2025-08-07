@@ -30,6 +30,7 @@ public class UserLevelUp_UI : UserInterface, IPointerClickHandler
             particles[i].SetActive(false);
         }
 
+        Managers.UI.Get<StatUpgrade_UI>().TextUpdate();
         gameObject.SetActive(false);
     }
     public override void SetUserInterface()

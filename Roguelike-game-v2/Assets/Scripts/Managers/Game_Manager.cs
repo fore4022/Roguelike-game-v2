@@ -66,7 +66,7 @@ public class Game_Manager
     }
     public void Over()
     {
-        userExp = 0;
+        Managers.UserData.data.Exp += userExp;
         isPlaying = false;
 
         Managers.UI.Hide<LevelUp_UI>();
@@ -106,6 +106,7 @@ public class Game_Manager
         Managers.UI.Get<SceneLoading_UI>().Wait = false;
         Camera.main.orthographicSize = 6;
         Managers.Game.inGameData.player.Experience = 0;
+        isPlaying = true;
 
         objectPool.ReSetting();
         player.Reset();
@@ -115,10 +116,9 @@ public class Game_Manager
 
         yield return new WaitUntil(() => Managers.UI.Get<SceneLoading_UI>() == null);
 
-        userExp = 0;
         Time.timeScale = 1;
+        userExp = 0;
         stageClear = false;
-        isPlaying = true;
 
         monsterSpawner.ReStart();
         inGameData.player.SetLevel();

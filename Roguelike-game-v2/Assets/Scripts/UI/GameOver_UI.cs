@@ -90,8 +90,6 @@ public class GameOver_UI : UserInterface
         string survival = $"생존 시간\n\n{Managers.Game.inGameTimer.GetHours:D2} : {Managers.Game.inGameTimer.GetMinutes:D2} : {Managers.Game.inGameTimer.GetSeconds:D2}";
         string gainExp = $"Experience\n\n+ {Managers.Game.UserExp:N0} EXP";
 
-        Managers.UserData.data.Exp += Managers.Game.UserExp;
-
         yield return waitRealSec;
 
         yield return Typing.TypeEffectAndWaiting(tmpList[0], required, coroutine, delay);

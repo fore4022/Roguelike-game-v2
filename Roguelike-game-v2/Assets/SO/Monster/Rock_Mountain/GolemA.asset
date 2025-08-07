@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: GolemA
   m_EditorClassIdentifier: 
   stat:
-    health: 11
-    damage: 1.5
-    moveSpeed: 0.6
+    health: 14
+    damage: 1.65
+    moveSpeed: 0.95
     healthRegenPerSec: 0
   user_Experience: 1
   inGame_Experience: 1
