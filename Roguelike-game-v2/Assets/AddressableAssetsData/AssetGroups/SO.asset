@@ -16,7 +16,7 @@ MonoBehaviour:
   m_GUID: 09034957b2a2eca40bf8a02afaa6d243
   m_SerializeEntries:
   - m_GUID: 0117c6dc04d98b449af7c105c2f6d2a4
-    m_Address: Assets/SO/Skill/Void_vortex.asset
+    m_Address: Assets/SO/Skill/Void_Vortex.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -36,7 +36,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1a35818287b0bc2459f4a9ec48006041
-    m_Address: Assets/SO/Skill/Phantom_blade.asset
+    m_Address: Assets/SO/Skill/Phantom_Blade.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -56,12 +56,12 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 248f3c23e8b94d841a974e60f00ddec9
-    m_Address: Assets/SO/SkillInformation/Pulse_burst.asset
+    m_Address: Assets/SO/SkillInformation/Pulse_Burst.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2e6ba11cb8e5dd748bd15cfcb5795250
-    m_Address: Assets/SO/Skill/Flame_tempest.asset
+    m_Address: Assets/SO/Skill/Flame_Tempest.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -71,7 +71,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 36915492acc929c4290a91b7b9db0b3b
-    m_Address: Assets/SO/SkillInformation/Flame_tempest.asset
+    m_Address: Assets/SO/SkillInformation/Flame_Tempest.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -81,7 +81,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3b87993d9bd8c8242aedae1c07544eb2
-    m_Address: Assets/SO/Skill/Divine_radiance.asset
+    m_Address: Assets/SO/Skill/Divine_Radiance.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 54d1164d43d21ac45898685023de9794
-    m_Address: Assets/SO/Skill/Holy_cruciform.asset
+    m_Address: Assets/SO/Skill/Purifying_Cross.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -146,27 +146,27 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 61cc9ccac9c405b45a49cb7e36f89ff9
-    m_Address: Assets/SO/SkillInformation/Void_vortex.asset
+    m_Address: Assets/SO/SkillInformation/Void_Vortex.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 638614d3c143b3a43becca58456eb848
-    m_Address: Assets/SO/SkillInformation/Divine_radiance.asset
+    m_Address: Assets/SO/SkillInformation/Divine_Radiance.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 645acf28d92d7ad46b026bcde5cc5345
-    m_Address: Assets/SO/Skill/Pulse_burst.asset
+    m_Address: Assets/SO/Skill/Pulse_Burst.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 705e2b58b9dfec14fa045dbe021b2876
-    m_Address: Assets/SO/Skill/Arcane_blaze.asset
+    m_Address: Assets/SO/Skill/Arcane_Blaze.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 70ac5aa45abfc9846b7829777b718f86
-    m_Address: Assets/SO/SkillInformation/Phantom_blade.asset
+    m_Address: Assets/SO/SkillInformation/Phantom_Blade.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -196,7 +196,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9a17c648fedd6ab45b6643590c7085fc
-    m_Address: Assets/SO/Skill/Frost_shards.asset
+    m_Address: Assets/SO/Skill/Frost_Shards.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -226,12 +226,12 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d677659c5a1e8f640be66bdf143494dc
-    m_Address: Assets/SO/SkillInformation/Holy_cruciform.asset
+    m_Address: Assets/SO/SkillInformation/Purifying_Cross.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d88a84974f5dff84a8423fd3091b2aab
-    m_Address: Assets/SO/SkillInformation/Arcane_blaze.asset
+    m_Address: Assets/SO/SkillInformation/Arcane_Blaze.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -271,7 +271,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ec600e2dded5e3246ac1162222bff279
-    m_Address: Assets/SO/SkillInformation/Frost_shards.asset
+    m_Address: Assets/SO/SkillInformation/Frost_Shards.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

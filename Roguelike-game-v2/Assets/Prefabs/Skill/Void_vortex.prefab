@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4049993973401501520}
   - component: {fileID: 5649048220930642644}
   m_Layer: 6
-  m_Name: Void_vortex
+  m_Name: Void_Vortex
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

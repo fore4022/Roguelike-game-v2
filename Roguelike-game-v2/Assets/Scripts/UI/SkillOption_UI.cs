@@ -53,7 +53,7 @@ public class SkillOption_UI : Button_B
             imageRect.localScale = new Vector2(1, 1);
         }
         
-        textList[0].text = $"{info.data.type}";
+        textList[0].text = $"{info.data.name}";
 
         if(info.caster == null)
         {

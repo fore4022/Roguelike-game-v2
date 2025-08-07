@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1925132323937258582}
   - component: {fileID: 5455021280817266826}
   m_Layer: 6
-  m_Name: Phantom_blade
+  m_Name: Phantom_Blade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

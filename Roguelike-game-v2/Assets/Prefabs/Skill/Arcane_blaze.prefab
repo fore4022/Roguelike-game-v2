@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 831343073753335492}
   - component: {fileID: 1109580404756747556}
   m_Layer: 6
-  m_Name: Arcane_blaze
+  m_Name: Arcane_Blaze
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

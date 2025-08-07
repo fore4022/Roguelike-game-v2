@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4793440712667177571}
   - component: {fileID: 1596958875086985627}
   m_Layer: 6
-  m_Name: Flame_tempest
+  m_Name: Flame_Tempest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -101,7 +101,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 696f8387994f3db4b9de2878be0ccb70
-    m_Address: Holy_cruciform
+    m_Address: Purifying_Cross
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9771f44209f895c42b14bbb144967ef2
-    m_Address: Flame_tempest
+    m_Address: Flame_Tempest
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -136,12 +136,12 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: af7b6faf43f40d642a6afeacf4aacceb
-    m_Address: Phantom_blade
+    m_Address: Phantom_Blade
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b5c533eae9db16a438e0f1058eab48d0
-    m_Address: Void_vortex
+    m_Address: Void_Vortex
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -151,7 +151,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b71dacf8395e2754290f9b1c9ae4e664
-    m_Address: Divine_radiance
+    m_Address: Divine_Radiance
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -171,7 +171,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dad7072185bdcba4e87e4ee089ccc09c
-    m_Address: Frost_shards
+    m_Address: Frost_Shards
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -186,7 +186,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e5a0a40cb1424dd419a25cb208cf8ae6
-    m_Address: Arcane_blaze
+    m_Address: Arcane_Blaze
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -196,7 +196,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ef6ba6ee638952347a6ad03dd0f041b7
-    m_Address: Pulse_burst
+    m_Address: Pulse_Burst
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

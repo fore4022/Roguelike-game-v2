@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3766289747978773827}
   - component: {fileID: 5966405219061039224}
   m_Layer: 6
-  m_Name: Frost_shards
+  m_Name: Frost_Shards
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

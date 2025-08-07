@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4899781708264788404}
   - component: {fileID: 433829638882945673}
   m_Layer: 6
-  m_Name: Pulse_burst
+  m_Name: Pulse_Burst
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -12,7 +12,7 @@ public class StageExitConfirm_UI : UserInterface
     private TextMeshProUGUI tmp;
 
     private const string exitAfterClearMessage = "스테이지가 클리어 되었습니다.";
-    private const string exitWithoutClearWarning = "스테이지가 클리어 되지 않았습니다.";
+    private const string exitWithoutClearWarning = "스테이지가 클리어하지 못했습니다.";
 
     public override void SetUserInterface()
     {

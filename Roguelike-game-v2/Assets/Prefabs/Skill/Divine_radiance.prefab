@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5933348029201062590}
   - component: {fileID: 599285677814184151}
   m_Layer: 6
-  m_Name: Divine_radiance
+  m_Name: Divine_Radiance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

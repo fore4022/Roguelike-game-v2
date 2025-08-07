@@ -28,7 +28,7 @@ public class PauseMenu_UI : UserInterface
         }
         else
         {
-            Time.timeScale = 3.5f;
+            Time.timeScale = 1f;
         }
     }
     public void ShowIcons()
