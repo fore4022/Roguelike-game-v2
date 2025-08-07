@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15c42b0b75fa6a14db3375d1155e331f, type: 3}
-  m_Name: Stage
+  m_Name: Desert
   m_EditorClassIdentifier: 
-  infoPath: Info_3
-  iconPath: Icon_3
-  stagePath: Rock Mountain
-  information: {fileID: 11400000, guid: f74b935582a11b84b87c4f444ebbafea, type: 2}
-  iconSprite: {fileID: 11400000, guid: ed2edd7c4fd5af747bd7a232cfbcb4a8, type: 2}
-  stage: {fileID: 8714857401625141123, guid: 4be93441fcb7a83459386f42587740ba, type: 3}
+  infoPath: Info
+  iconPath: Icon
+  stagePath: Desert
+  information: {fileID: 11400000, guid: d2a68a420fb28fe4e8164fc0811a47c9, type: 2}
+  iconSprite: {fileID: 11400000, guid: d09f7bf8476970f4c8fe235bb381376c, type: 2}
+  name: "\uC0AC\uB9C9"
+  stage: {fileID: 8714857401625141123, guid: 88e274bc4f7f38e47bc5c549f68450c1, type: 3}

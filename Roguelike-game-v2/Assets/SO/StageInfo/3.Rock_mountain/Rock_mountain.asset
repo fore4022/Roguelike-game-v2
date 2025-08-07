@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15c42b0b75fa6a14db3375d1155e331f, type: 3}
-  m_Name: Stage
+  m_Name: Rock_mountain
   m_EditorClassIdentifier: 
-  information: {fileID: 11400000, guid: 85e1e97897d30044187726885e73b8ba, type: 2}
-  iconSprite: {fileID: 11400000, guid: 5adffb6ff640bb54fb8fe8b13019a208, type: 2}
-  infoPath: Info_5
-  iconPath: Icon_5
-  stagePath: Snowfield
-  stage: {fileID: 8714857401625141123, guid: f00a1dcc5a570fc4b8af3a6315f925ba, type: 3}
+  infoPath: Info
+  iconPath: Icon
+  stagePath: Rock_mountain
+  information: {fileID: 11400000, guid: f74b935582a11b84b87c4f444ebbafea, type: 2}
+  iconSprite: {fileID: 11400000, guid: ed2edd7c4fd5af747bd7a232cfbcb4a8, type: 2}
+  name: "\uBC14\uC704\uC0B0"
+  stage: {fileID: 8714857401625141123, guid: 4be93441fcb7a83459386f42587740ba, type: 3}

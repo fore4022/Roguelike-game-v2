@@ -24127,7 +24127,7 @@ GameObject:
   - component: {fileID: 561844175597851635}
   - component: {fileID: 8792840740645128725}
   m_Layer: 0
-  m_Name: Rock_Mountain
+  m_Name: Rock_mountain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

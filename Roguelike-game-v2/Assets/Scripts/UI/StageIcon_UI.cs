@@ -53,7 +53,7 @@ public class StageIcon_UI : UserInterface
         }
         else
         {
-            themaName.text = so.stagePath;
+            themaName.text = so.name;
             cover.color = Color.white;
             ground.color = Color.white;
             monster.color = Color.white;

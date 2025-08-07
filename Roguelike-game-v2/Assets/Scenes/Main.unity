@@ -30440,7 +30440,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC5B8\uB355"
+  m_text: Rock Mountain
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3a2015b9d55fbda4e85f51ef67b9a24d, type: 2}
   m_sharedMaterial: {fileID: -7670451789832199650, guid: 3a2015b9d55fbda4e85f51ef67b9a24d, type: 2}
@@ -30467,8 +30467,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 120
-  m_fontSizeBase: 120
+  m_fontSize: 110
+  m_fontSizeBase: 110
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

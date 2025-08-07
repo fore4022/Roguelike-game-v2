@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15c42b0b75fa6a14db3375d1155e331f, type: 3}
-  m_Name: Stage
+  m_Name: Prairie
   m_EditorClassIdentifier: 
+  infoPath: Info
+  iconPath: Icon
+  stagePath: Prairie
   information: {fileID: 11400000, guid: 2c4fa5fad6ea1d24c8b1b4b5c7e87f44, type: 2}
   iconSprite: {fileID: 11400000, guid: e562d4a9a1ef32048a52b314503e5e49, type: 2}
-  infoPath: Info_1
-  iconPath: Icon_1
-  stagePath: Prairie
+  name: "\uCD08\uC6D0"
   stage: {fileID: 8714857401625141123, guid: 5c88a951c7b3b8945b63863aae11a409, type: 3}
