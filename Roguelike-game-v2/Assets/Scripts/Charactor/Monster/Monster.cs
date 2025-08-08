@@ -121,8 +121,8 @@ public class Monster : MonoBehaviour, IScriptableData
     protected virtual void SetPosition()
     {
         float randomValue = Random.Range(0, 360);
-        float x = Mathf.Cos(randomValue) * Util.CameraWidth / 2 + spawnRadius;
-        float y = Mathf.Sin(randomValue) * Util.CameraHeight / 2 + spawnRadius;
+        float x = Mathf.Cos(randomValue) * (Util.CameraWidth / 2 + spawnRadius);
+        float y = Mathf.Sin(randomValue) * (Util.CameraHeight / 2 + spawnRadius);
 
         transform.position = new Vector2(x, y) + (Vector2)Managers.Game.player.gameObject.transform.position;
     }

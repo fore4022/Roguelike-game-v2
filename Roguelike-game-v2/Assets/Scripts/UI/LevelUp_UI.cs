@@ -25,7 +25,7 @@ public class LevelUp_UI : UserInterface
     }
     private void Update()
     {
-        level.text = $"Lv.{Managers.Game.inGameData.player.Level}aaa";
+        level.text = $"Lv.{Managers.Game.inGameData.player.Level}";
     }
     private bool ShouldShowSkillSelection()
     {
