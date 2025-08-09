@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile_Info:
     animationName: 
-    speed: 2.15
+    speed: 2.325
     penetration: 0
   multiCast:
     delay: []
@@ -24,11 +24,11 @@ MonoBehaviour:
   adjustmentRotation: {x: 0, y: 0, z: 0}
   adjustmentPosition: {x: 0, y: 0}
   damageCoefficient:
-  - 0.4
-  - 0.55
-  - 0.7
-  - 0.85
-  - 1.15
+  - 0.375
+  - 0.525
+  - 0.675
+  - 0.825
+  - 1.05
   coolTime:
   - 1.5
   - 1.4

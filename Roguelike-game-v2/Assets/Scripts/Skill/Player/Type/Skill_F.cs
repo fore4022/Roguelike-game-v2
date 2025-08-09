@@ -23,7 +23,7 @@ public class Skill_F : Skill, ISkill
         currentSpeed = speed;
         totalTime = 0;
         targetTime = Mathf.Lerp(totalTime, so.duration, Random.Range(1, so.duration) / so.duration);
-        transform.position = Calculate.GetRandomVector();
+        transform.position = Managers.Game.player.gameObject.transform.position + (Vector3)Calculate.GetRandomVector();
         direction = Calculate.GetDirection(EnemyDetection.GetNearestEnemyPosition(), transform.position);
 
         StartCoroutine(Attacking());

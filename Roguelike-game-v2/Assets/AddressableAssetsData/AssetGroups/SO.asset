@@ -41,7 +41,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1a77236cdedf7404a92bbae2701a2ba0
-    m_Address: Assets/SO/Monster/Rock_Mountain/GolemA.asset
+    m_Address: Assets/SO/Monster/Rock_mountain/GolemA.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -51,7 +51,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 235713ab3bb77d3469b7e233061a34fc
-    m_Address: Assets/SO/Monster/Rock_Mountain/PuddleB.asset
+    m_Address: Assets/SO/Monster/Rock_mountain/PuddleB.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 2f1fcb1acf1c6bf47bac3aaaec7e702b
-    m_Address: Assets/SO/Monster/Rock_Mountain/EarthB.asset
+    m_Address: Assets/SO/Monster/Rock_mountain/EarthB.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -141,7 +141,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6143b272d01b9774993d02d2682e701b
-    m_Address: Assets/SO/Monster/Rock_Mountain/BatSmallA.asset
+    m_Address: Assets/SO/Monster/Rock_mountain/BatSmallA.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -221,7 +221,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c808a70369b844343872868eada4e138
-    m_Address: Assets/SO/Monster/Rock_Mountain/ChestA.asset
+    m_Address: Assets/SO/Monster/Rock_mountain/ChestA.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
