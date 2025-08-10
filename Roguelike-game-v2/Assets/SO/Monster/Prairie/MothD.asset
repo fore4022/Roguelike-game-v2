@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MothD
   m_EditorClassIdentifier: 
   stat:
-    health: 5
+    health: 4.75
     damage: 1.85
     moveSpeed: 1.15
     healthRegenPerSec: 0

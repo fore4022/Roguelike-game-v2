@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EarthB
   m_EditorClassIdentifier: 
   stat:
-    health: 6.25
+    health: 6.05
     damage: 1.3
     moveSpeed: 1.05
     healthRegenPerSec: 0

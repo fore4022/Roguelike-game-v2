@@ -44,6 +44,7 @@ public class Game_Manager
         Time.timeScale = 1;
         isPlaying = true;
         gameOver = false;
+        stageClear = false;
 
         inGameTimer.StartTimer();
         monsterSpawner.StartSpawn();

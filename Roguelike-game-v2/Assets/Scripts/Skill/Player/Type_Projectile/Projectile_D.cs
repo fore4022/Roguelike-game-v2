@@ -36,7 +36,7 @@ public class Projectile_D : ProjectileSkill, IProjectile
     {
         while(true)
         {
-            transform.position += direction * so.projectile_Info.speed * Time.deltaTime;
+            transform.position += direction * (Managers.Game.player.Stat.moveSpeed + so.projectile_Info.speed) * Time.deltaTime;
 
             yield return null;
         }

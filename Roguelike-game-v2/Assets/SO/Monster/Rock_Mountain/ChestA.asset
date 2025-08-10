@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ChestA
   m_EditorClassIdentifier: 
   stat:
-    health: 10
+    health: 9.35
     damage: 1.4
     moveSpeed: 1.375
     healthRegenPerSec: 0

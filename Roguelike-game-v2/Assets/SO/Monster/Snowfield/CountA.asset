@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CountA
   m_EditorClassIdentifier: 
   stat:
-    health: 13.5
+    health: 12.25
     damage: 1.8
     moveSpeed: 1.4
     healthRegenPerSec: 0
