@@ -22,7 +22,7 @@ public class Projectile_C : ProjectileSkill, IProjectile
     public void Set()
     {
         transform.position = Managers.Game.player.gameObject.transform.position;
-        direction = Calculate.GetDirection(Calculate.GetRandomVector());
+        direction = Calculate.GetDirection(Managers.Game.player.transform.position + (Vector3)Calculate.GetRandomVector());
         multiplier = Random.Range(min_Index, max_Index + 1) * range + range;
         sign = Random.Range(0, 2);
         moving = StartCoroutine(Moving());
