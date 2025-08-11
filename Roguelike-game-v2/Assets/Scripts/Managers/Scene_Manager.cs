@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 public class Scene_Manager
 {
     public Action loadScene = null;
+    public Action loadComplete = null;
 
-    private string sceneName = "title";
+    private string sceneName = "Title";
     private bool isLoad = false;
     private bool hasInitialization;
 
@@ -39,7 +40,7 @@ public class Scene_Manager
 
         yield return new WaitUntil(() => SceneManager.GetActiveScene().name == sceneName);
 
-        Managers.Audio.InitializedAudio();
+        loadComplete?.Invoke();
 
         isLoad = false;
 

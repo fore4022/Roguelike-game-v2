@@ -6,6 +6,8 @@ public class GameEndEffect : MonoBehaviour
 
     private WaitForSeconds delay;
 
+    private float MaxOrthographicSize { get { return 6 * CameraSizeScale.OrthographicSizeScale; } }
+    private float MinOrthographicSize { get { return 1.25f * CameraSizeScale.OrthographicSizeScale; } }
     private void Awake()
     {
         Managers.Game.endEffect = this;
@@ -53,7 +55,7 @@ public class GameEndEffect : MonoBehaviour
                 totalTime = duration;
             }
 
-            Camera.main.orthographicSize = Mathf.Lerp(6, 1.25f, totalTime / duration);
+            Camera.main.orthographicSize = Mathf.Lerp(MaxOrthographicSize, MinOrthographicSize, totalTime / duration);
 
             yield return null;
         }
@@ -77,7 +79,7 @@ public class GameEndEffect : MonoBehaviour
                 totalTime = duration;
             }
 
-            Camera.main.orthographicSize = Mathf.Lerp(1.25f, 6, totalTime / duration);
+            Camera.main.orthographicSize = Mathf.Lerp(MinOrthographicSize, MaxOrthographicSize, totalTime / duration);
 
             yield return null;
         }

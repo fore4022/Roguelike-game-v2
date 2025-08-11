@@ -5,11 +5,11 @@ public class InGame_Camera : MonoBehaviour
     private GameObject player = null;
 
     private const float duration = 0.5f;
-    private const float targetCameraSize = 1.25f;
     private const float zpos = -10;
 
     private Coroutine cameraScale = null;
 
+    private float targetCameraSize { get { return 1.25f * CameraSizeScale.OrthographicSizeScale; } }
     public void Start()
     {
         Managers.Game.onStageReset += Reset;

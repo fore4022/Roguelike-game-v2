@@ -6,6 +6,8 @@ public class Title_Scene : MonoBehaviour
     [SerializeField]
     private EnterMainScene enterMainScene;
     [SerializeField]
+    private CameraSizeScale cameraSizeScale;
+    [SerializeField]
     private AudioMixer audioMixer;
     [SerializeField]
     private AudioSource audioSource;
@@ -16,6 +18,8 @@ public class Title_Scene : MonoBehaviour
     {
         Managers.Main.GameData.SO = Util.LoadingToPath<GameData_SO>(_gameDataPath, false);
         Managers.Audio.Mixer = audioMixer;
+
+        Managers.Scene.loadComplete += Managers.Audio.InitializedAudio;
 
         StartCoroutine(Initializing());
     }
