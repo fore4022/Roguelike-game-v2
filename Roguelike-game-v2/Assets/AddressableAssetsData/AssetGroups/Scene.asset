@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Scene
   m_GUID: 99fcda9ef5a1b644dac371b646b6bbd0
   m_SerializeEntries:
+  - m_GUID: 6c52739d02586cc4d877ff2caaa4b695
+    m_Address: Main
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6f5836baf98c34a4b98048231d1e5269
     m_Address: 1_Level
     m_ReadOnly: 0
@@ -22,11 +27,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 72262ff1cfe024f4f9e9d280c1669fc1
     m_Address: InGame
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9baaa93e1a9df0a4787a77e1d996cadd
-    m_Address: Main
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
