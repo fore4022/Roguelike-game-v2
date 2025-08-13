@@ -27,7 +27,9 @@ public class Monster_E : BasicMonster
 
         float totalTime = 0;
 
-        while(totalTime != rushCastingTime)
+        canSwitchDirection = false;
+
+        while (totalTime != rushCastingTime)
         {
             totalTime += Time.deltaTime;
 
@@ -42,6 +44,5 @@ public class Monster_E : BasicMonster
         }
 
         speedMultiplier = rushSpeed;
-        canSwitchDirection = false;
     }
 }

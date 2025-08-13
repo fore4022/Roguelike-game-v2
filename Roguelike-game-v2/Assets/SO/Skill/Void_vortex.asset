@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile_Info:
     animationName: 
-    speed: 0.325
+    speed: 0.255
     penetration: 0
   multiCast:
     delay: []

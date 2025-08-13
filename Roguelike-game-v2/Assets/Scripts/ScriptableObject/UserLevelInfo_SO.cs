@@ -4,10 +4,10 @@ public class UserLevelInfo_SO : ScriptableObject
 {
     public static int maxLevel = 10;
 
-    public int[] requiredEXP = new int[maxLevel];
+    public int[] requiredEXP = new int[maxLevel - 1];
 
     private void OnValidate()
     {
-        Util.ResizeArray(ref requiredEXP, maxLevel);
+        Util.ResizeArray(ref requiredEXP, maxLevel - 1);
     }
 }

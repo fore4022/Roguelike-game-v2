@@ -8,7 +8,7 @@ public class CharactorController_UI : UserInterface
     private InputAction.CallbackContext? touchStart;
     private Vector2 enterPosition;
 
-    private const int maxLength = 100;
+    private const int maxLength = 85;
 
     public Vector2 EnterPosition
     {

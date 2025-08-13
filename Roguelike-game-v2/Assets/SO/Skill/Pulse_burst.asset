@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile_Info:
     animationName: destroy
-    speed: 0.875
+    speed: 0.825
     penetration: 0
   multiCast:
     delay:
@@ -30,21 +30,21 @@ MonoBehaviour:
     - 11
     - 13
   go: {fileID: 104679271344969195, guid: ef6ba6ee638952347a6ad03dd0f041b7, type: 3}
-  maxLevelColor: {r: 1, g: 1, b: 0.6666667, a: 1}
+  maxLevelColor: {r: 0, g: 1, b: 0.6862745, a: 1}
   adjustmentRotation: {x: 0, y: 0, z: 0}
   adjustmentPosition: {x: 0, y: 0}
   damageCoefficient:
-  - 0.65
-  - 0.75
-  - 0.85
-  - 0.95
-  - 1.15
+  - 0.6
+  - 0.7
+  - 0.8
+  - 0.9
+  - 1.125
   coolTime:
-  - 4.15
-  - 4.025
-  - 3.9
-  - 3.775
-  - 3.5
+  - 4.4
+  - 4.2
+  - 4
+  - 3.8
+  - 3.45
   duration: 0
   flipX: 1
   flipY: 1

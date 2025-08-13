@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: MushroomB
   m_EditorClassIdentifier: 
   stat:
-    health: 3.85
-    damage: 1.15
-    moveSpeed: 0.975
+    health: 3.95
+    damage: 1.225
+    moveSpeed: 0.925
     healthRegenPerSec: 0
   user_Experience: 1
   inGame_Experience: 1

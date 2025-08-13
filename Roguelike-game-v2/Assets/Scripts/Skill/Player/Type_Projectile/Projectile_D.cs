@@ -8,12 +8,26 @@ using UnityEngine;
 /// </summary>
 public class Projectile_D : ProjectileSkill, IProjectile
 {
+    [SerializeField, Range(0, 100)]
+    private float probability;
+
     public bool Finished { get { return moving == null; } }
     public void Set()
     {
         transform.position = Managers.Game.player.gameObject.transform.position;
         direction = Calculate.GetRandomDirection();
+
         transform.SetScale(5, 12);
+        
+        if(Random.Range(0, 100) <= probability)
+        {
+            direction = Calculate.GetDirection(EnemyDetection.GetNearestEnemyPosition());
+        }
+        else
+        {
+            direction = Calculate.GetRandomDirection();
+        }
+
         moving = StartCoroutine(Moving());
     }
     public void Enter(GameObject go)

@@ -14,6 +14,8 @@ public class Monster_F : Monster_WithObject
     private float splitScale;
     [SerializeField, Min(2)]
     private float splitInstanceCount;
+    [SerializeField, Range(0, 100)]
+    private float skillCastChance;
 
     private Vector3 _defaultScale;
     private string monsterKey;
@@ -44,12 +46,21 @@ public class Monster_F : Monster_WithObject
     {
         if(!IsSplite)
         {
-            StartCoroutine(RepeatBehavior());
+            if(Random.Range(0, 100) <= skillCastChance)
+            {
+                user_Experience = monsterSO.user_Experience;
+
+                StartCoroutine(RepeatBehavior());
+
+                return;
+            }
         }
         else
         {
-            base.Die();
+            user_Experience = 0;
         }
+
+        base.Die();
     }
     private void OnDisable()
     {

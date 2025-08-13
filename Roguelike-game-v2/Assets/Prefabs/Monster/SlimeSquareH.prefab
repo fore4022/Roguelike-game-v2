@@ -289,3 +289,4 @@ MonoBehaviour:
   defaultScale: 1
   splitScale: 0.6
   splitInstanceCount: 2
+  skillCastChance: 40

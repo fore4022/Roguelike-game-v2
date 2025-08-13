@@ -3,11 +3,11 @@ public class Camera_SizeScale : MonoBehaviour
 {
     public static readonly float deviceScale = (float)Screen.width / Screen.height;
     
-    private InGame_Camera inGameCamera;
+    private const float defaultScale = (float)1080 / 1920;
 
     private static bool isDeviceScaleSmaller;
 
-    private const float defaultScale = (float)1080 / 1920;
+    private InGame_Camera inGameCamera;
 
     public static float OrthographicSizeScale { get { return isDeviceScaleSmaller ? defaultScale / deviceScale : 1; } }
     private void Awake()

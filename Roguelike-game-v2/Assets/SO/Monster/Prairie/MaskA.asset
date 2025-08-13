@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: MaskA
   m_EditorClassIdentifier: 
   stat:
-    health: 7
-    damage: 1.9
-    moveSpeed: 0.965
+    health: 8.75
+    damage: 1.85
+    moveSpeed: 0.975
     healthRegenPerSec: 0
   user_Experience: 1
   inGame_Experience: 1

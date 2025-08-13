@@ -34,17 +34,17 @@ MonoBehaviour:
   adjustmentRotation: {x: 0, y: 0, z: 0}
   adjustmentPosition: {x: 0, y: 0}
   damageCoefficient:
-  - 0.95
-  - 1.075
-  - 1.375
-  - 1.575
-  - 1.95
+  - 1.1
+  - 1.225
+  - 1.525
+  - 1.725
+  - 2.175
   coolTime:
-  - 2.3
-  - 2.15
-  - 2
-  - 1.85
-  - 1.625
+  - 2.25
+  - 2.1
+  - 1.95
+  - 1.8
+  - 1.575
   duration: 0
   flipX: 1
   flipY: 1

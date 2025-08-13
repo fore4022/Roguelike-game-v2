@@ -18,11 +18,11 @@ MonoBehaviour:
     penetration: 0
   multiCast:
     delay:
-    - 0.1
-    - 0.095
     - 0.09
     - 0.085
     - 0.08
+    - 0.075
+    - 0.07
     count:
     - 4
     - 5
@@ -34,11 +34,11 @@ MonoBehaviour:
   adjustmentRotation: {x: 0, y: 0, z: 0}
   adjustmentPosition: {x: 0, y: 0}
   damageCoefficient:
-  - 0.55
-  - 0.7
-  - 0.85
+  - 0.8
   - 1
-  - 1.35
+  - 1.2
+  - 1.4
+  - 1.825
   coolTime:
   - 1.2
   - 1.1

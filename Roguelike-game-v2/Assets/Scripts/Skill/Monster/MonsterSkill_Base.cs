@@ -18,9 +18,9 @@ public abstract class MonsterSkill_Base : MonoBehaviour
 
     private const float collectDelay = 3;
 
-    private Plane[] planes = new Plane[6];
     private Coroutine collect;
     private WaitForSeconds delay = new(collectDelay);
+    private Plane[] planes = new Plane[6];
     
     protected void Awake()
     {

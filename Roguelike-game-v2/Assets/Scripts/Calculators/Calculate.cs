@@ -107,17 +107,4 @@ public static class Calculate
 
         return peakValue * (Mathf.Pow((value - size / 2), 2) / Mathf.Pow(size / 2, 2));
     }
-    public static int GCD(int i, int j)
-    {
-        int temp;
-
-        while(j != 0)
-        {
-            temp = j;
-            j = i % j;
-            i = temp;
-        }
-
-        return i;
-    }
 }

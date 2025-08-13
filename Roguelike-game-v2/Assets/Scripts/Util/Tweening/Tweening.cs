@@ -10,8 +10,8 @@ public static class Tweening
     public static IEnumerator OverTime(TweenType type, TweenData data, Transform transform, EaseDelegate easeDel, NumericValue targetValue, float duration, float delay = 0)
     {
         TweenDelegate del = null;
-        NumericValue initialValue = new();
         TweenStatus status = null;
+        NumericValue initialValue = new();
 
         float currentTime = 0;
         bool isRectTransform = transform.GetType() == _rectTransform;

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: ReaperA
   m_EditorClassIdentifier: 
   stat:
-    health: 18
-    damage: 2.5
-    moveSpeed: 1.2
+    health: 11
+    damage: 2.55
+    moveSpeed: 1.265
     healthRegenPerSec: 0
   user_Experience: 1
   inGame_Experience: 1

@@ -13,6 +13,8 @@ public static class Util
 
     private static MonoScript monoScript = null;
 
+    public const float triggerTime = 0.9425f;
+
     public static float CameraHeight { get { return Camera.main.orthographicSize * 2; } }
     public static float CameraWidth { get { return CameraHeight * Camera.main.aspect; } }
     public static void LoadingScene(string path)
