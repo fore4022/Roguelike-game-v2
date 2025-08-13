@@ -6,7 +6,7 @@ public class Title_Scene : MonoBehaviour
     [SerializeField]
     private EnterMainScene enterMainScene;
     [SerializeField]
-    private CameraSizeScale cameraSizeScale;
+    private Camera_SizeScale cameraSizeScale;
     [SerializeField]
     private AudioMixer audioMixer;
     [SerializeField]

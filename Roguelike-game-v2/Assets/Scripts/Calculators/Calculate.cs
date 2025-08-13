@@ -7,15 +7,6 @@ public static class Calculate
 
     private static float offset = 0.5f;
 
-    public static float GetParabolicY(float size, float peakValue, float value)
-    {
-        if(peakValue == 0 || size == 0)
-        {
-            return 0;
-        }
-
-        return peakValue * (Mathf.Pow((value - size / 2), 2) / Mathf.Pow(size / 2, 2));
-    }
     public static Vector3 GetAttackPosition(Vector3 direction, float attackRange)
     {
         return direction * attackRange + Managers.Game.player.transform.position;
@@ -106,5 +97,27 @@ public static class Calculate
         }
 
         return result;
+    }
+    public static float GetParabolicY(float size, float peakValue, float value)
+    {
+        if(peakValue == 0 || size == 0)
+        {
+            return 0;
+        }
+
+        return peakValue * (Mathf.Pow((value - size / 2), 2) / Mathf.Pow(size / 2, 2));
+    }
+    public static int GCD(int i, int j)
+    {
+        int temp;
+
+        while(j != 0)
+        {
+            temp = j;
+            j = i % j;
+            i = temp;
+        }
+
+        return i;
     }
 }

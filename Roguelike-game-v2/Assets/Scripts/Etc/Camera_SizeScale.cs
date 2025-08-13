@@ -1,12 +1,13 @@
 using UnityEngine;
-public class CameraSizeScale : MonoBehaviour
+public class Camera_SizeScale : MonoBehaviour
 {
+    public static readonly float deviceScale = (float)Screen.width / Screen.height;
+    
     private InGame_Camera inGameCamera;
 
-    private const float defaultScale = (float)9 / 16;
-    private static readonly float deviceScale = (float)Screen.width / Screen.height;
-
     private static bool isDeviceScaleSmaller;
+
+    private const float defaultScale = (float)1080 / 1920;
 
     public static float OrthographicSizeScale { get { return isDeviceScaleSmaller ? defaultScale / deviceScale : 1; } }
     private void Awake()
@@ -18,18 +19,14 @@ public class CameraSizeScale : MonoBehaviour
     private void Start()
     {
         Managers.Scene.loadComplete += OrthographicsSizeUpdate;
-        isDeviceScaleSmaller = deviceScale < defaultScale;
+
+        isDeviceScaleSmaller = deviceScale <= defaultScale;
 
         OrthographicsSizeUpdate();
     }
     public void OrthographicsSizeUpdate()
     {
-        if(isDeviceScaleSmaller)
-        {
-            return;
-        }
-
-        switch (Managers.Scene.CurrentSceneName)
+        switch(Managers.Scene.CurrentSceneName)
         {
             case "Title":
             case "Main":

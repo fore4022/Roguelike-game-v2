@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using Object = UnityEngine.Object;
-public class Util
+public static class Util
 {
     public static List<AsyncOperationHandle> handleList = new();
     public static Type type_GameObject = typeof(GameObject);
@@ -28,7 +28,7 @@ public class Util
         {
             Type type = typeof(T);
 
-            if (type == type_GameObject || type == type_ScriptableObject || type == type_Sprite)
+            if(type == type_GameObject || type == type_ScriptableObject || type == type_Sprite)
             {
                 handleList.Add(handle);
             }
@@ -42,7 +42,7 @@ public class Util
     }
     public static void AddressableResourcesRelease()
     {
-        foreach (AsyncOperationHandle handle in handleList)
+        foreach(AsyncOperationHandle handle in handleList)
         {
             Addressables.Release(handle);
         }
@@ -112,9 +112,9 @@ public class Util
         }
         else
         {
-            for (int index = 0; index < transform.childCount; index++)
+            for(int index = 0; index < transform.childCount; index++)
             {
-                if (transform.GetChild(index).TryGetComponent(out T component))
+                if(transform.GetChild(index).TryGetComponent(out T component))
                 {
                     return component;
                 }
