@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PotionI
   m_EditorClassIdentifier: 
   stat:
-    health: 15.5
+    health: 16.75
     damage: 3.75
     moveSpeed: 1.55
     healthRegenPerSec: 0

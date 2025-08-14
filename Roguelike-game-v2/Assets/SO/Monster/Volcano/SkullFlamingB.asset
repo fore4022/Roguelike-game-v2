@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SkullFlamingB
   m_EditorClassIdentifier: 
   stat:
-    health: 6.75
+    health: 7.45
     damage: 1.5
     moveSpeed: 0.985
     healthRegenPerSec: 0

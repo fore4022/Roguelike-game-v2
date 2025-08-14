@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SlimeSquareH
   m_EditorClassIdentifier: 
   stat:
-    health: 6
+    health: 6.35
     damage: 1.7
     moveSpeed: 1.025
     healthRegenPerSec: 0

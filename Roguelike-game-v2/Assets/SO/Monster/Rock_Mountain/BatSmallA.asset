@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BatSmallA
   m_EditorClassIdentifier: 
   stat:
-    health: 4
+    health: 4.25
     damage: 0.675
     moveSpeed: 1.45
     healthRegenPerSec: 0

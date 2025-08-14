@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GhastC
   m_EditorClassIdentifier: 
   stat:
-    health: 10.5
+    health: 11.25
     damage: 2.4
     moveSpeed: 1.6
     healthRegenPerSec: 0
