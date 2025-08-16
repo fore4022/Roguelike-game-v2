@@ -35,7 +35,7 @@ public class Skill_F : Skill, ISkill
             damageReceiver.TakeDamage(this);
         }
     }
-    public IEnumerator Attacking()
+    private IEnumerator Attacking()
     {
         while(totalTime < so.duration)
         {

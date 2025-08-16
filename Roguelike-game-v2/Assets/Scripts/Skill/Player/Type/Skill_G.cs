@@ -1,16 +1,46 @@
+using System.Collections;
 using UnityEngine;
-
-public class Skill_G : MonoBehaviour
+/// <summary>
+/// <para>
+/// 
+/// </para>
+/// 
+/// </summary>
+public class Skill_G : Skill
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private float duration;
 
-    // Update is called once per frame
-    void Update()
+    public bool Finished { get { return true; } }
+    public void Set()
     {
-        
+        gameObject.transform.position = EnemyDetection.GetRandomEnemyPosition();
+
+        StartCoroutine(Attacking());
+    }
+    public void Enter(GameObject go)
+    {
+        if(go.TryGetComponent(out IDamageReceiver damageReceiver))
+        {
+            damageReceiver.TakeDamage(this);
+        }
+    }
+    public IEnumerator Attacking()
+    {
+        float totalTime = 0;
+
+        while(totalTime == duration) // 
+        {
+            if(totalTime > duration)
+            {
+                totalTime = duration;
+            }
+
+            totalTime += Time.deltaTime;
+
+            yield return true;
+        }
+
+
     }
 }

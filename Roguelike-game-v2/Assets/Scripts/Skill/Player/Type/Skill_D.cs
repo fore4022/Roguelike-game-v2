@@ -30,7 +30,7 @@ public class Skill_D : Skill, ISkill
             damageReceiver.TakeDamage(this);
         }
     }
-    public IEnumerator Attacking()
+    private IEnumerator Attacking()
     {
         yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
 
