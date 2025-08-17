@@ -1,22 +1,26 @@
-using System.Collections;
 using UnityEngine;
 /// <summary>
 /// <para>
-/// 
+/// 범위 공격
 /// </para>
-/// 
+/// 플레이어 주변 반경에서 가장 가까운 적을 향해서 생성된다.
 /// </summary>
 public class Skill_G : Skill
 {
     [SerializeField]
-    private float duration;
+    private float skillRange;
 
     public bool Finished { get { return true; } }
     public void Set()
     {
-        gameObject.transform.position = EnemyDetection.GetRandomEnemyPosition();
+        Vector3 target = EnemyDetection.GetNearestEnemyPosition();
 
-        StartCoroutine(Attacking());
+        transform.rotation = Calculate.GetDirection();
+        transform.position = EnemyDetection.GetRandomEnemyPosition();
+    }
+    public void SetCollider()
+    {
+        defaultCollider.enabled = !defaultCollider.enabled;
     }
     public void Enter(GameObject go)
     {
@@ -24,23 +28,5 @@ public class Skill_G : Skill
         {
             damageReceiver.TakeDamage(this);
         }
-    }
-    public IEnumerator Attacking()
-    {
-        float totalTime = 0;
-
-        while(totalTime == duration) // 
-        {
-            if(totalTime > duration)
-            {
-                totalTime = duration;
-            }
-
-            totalTime += Time.deltaTime;
-
-            yield return true;
-        }
-
-
     }
 }

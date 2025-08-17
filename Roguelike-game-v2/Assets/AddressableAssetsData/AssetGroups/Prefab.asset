@@ -210,6 +210,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f733c0db64732174f86b78f26d2ba10c
+    m_Address: Sonic_Boom
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fb39af7bb3245fc43a4d987b5cae4976
     m_Address: Assets/Prefabs/Monster/DogB.prefab
     m_ReadOnly: 0

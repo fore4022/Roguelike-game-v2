@@ -190,6 +190,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8e7b2d922fd006e42b8e863b040fddb1
+    m_Address: Assets/SO/Skill/Sonic_Boom.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 900f8e609503d264fa9bbcd4461bfc28
     m_Address: Assets/SO/Monster/Prairie/MothD.asset
     m_ReadOnly: 0
