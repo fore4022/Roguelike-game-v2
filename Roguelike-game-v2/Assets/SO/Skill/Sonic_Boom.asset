@@ -19,7 +19,7 @@ MonoBehaviour:
   multiCast:
     delay: []
     count: []
-  go: {fileID: 0}
+  go: {fileID: 5443455852523921931, guid: f733c0db64732174f86b78f26d2ba10c, type: 3}
   maxLevelColor: {r: 1, g: 0.98039216, b: 0, a: 1}
   adjustmentRotation: {x: 0, y: 0, z: 0}
   adjustmentPosition: {x: 0, y: 0}

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4460398978080861304}
   - component: {fileID: -1500255937513185754}
   - component: {fileID: -1641645443518295891}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sonic_Boom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,8 +77,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 481499211
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -8931572146811203989, guid: 541c4d412a2332b419fe76f060faaaf7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -168,9 +168,9 @@ AudioSource:
   m_GameObject: {fileID: 5443455852523921931}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 6650388381906554065, guid: 8197a9bb3246ca64786a5316d0a2ccae, type: 2}
+  m_audioClip: {fileID: 8300000, guid: d8f45a8413577084faa9ef2b534a81f1, type: 3}
+  m_Resource: {fileID: 8300000, guid: d8f45a8413577084faa9ef2b534a81f1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -270,3 +270,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultCollider: {fileID: 0}
   enable: 0
+  skillRange: 0.5

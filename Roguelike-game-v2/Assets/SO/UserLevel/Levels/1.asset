@@ -23,6 +23,7 @@ MonoBehaviour:
   - Assets/SO/SkillInformation/Thunderstroke.asset
   - Assets/SO/SkillInformation/Void_Burst.asset
   - Assets/SO/SkillInformation/Void_Vortex.asset
+  - Assets/SO/SkillInformation/Sonic_Boom.asset
   skillInformationList:
   - {fileID: 11400000, guid: d88a84974f5dff84a8423fd3091b2aab, type: 2}
   - {fileID: 11400000, guid: 638614d3c143b3a43becca58456eb848, type: 2}
@@ -34,3 +35,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7944311dac1751c4c9f5385866517a52, type: 2}
   - {fileID: 11400000, guid: 582c875a28dca284c8c2f7158f881662, type: 2}
   - {fileID: 11400000, guid: 61cc9ccac9c405b45a49cb7e36f89ff9, type: 2}
+  - {fileID: 11400000, guid: 94da6d8c283b35045bec8df52016ed7a, type: 2}

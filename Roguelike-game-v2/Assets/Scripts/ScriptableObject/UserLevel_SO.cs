@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "UserLevel", menuName = "Create New SO/User Level/Create New UserLevel_SO")]
 public class UserLevel_SO : ScriptableObject
 {
-    [HideInInspector]
+    [ReadOnly]
     public List<string> pathList;
 
 #if UNITY_EDITOR
