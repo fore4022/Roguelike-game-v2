@@ -10,7 +10,7 @@ public class InGame_Camera : MonoBehaviour
     private Coroutine cameraScale = null;
 
     private float targetCameraSize { get { return 1.25f * Camera_SizeScale.OrthographicSizeScale; } }
-    public void Start()
+    private void Start()
     {
         Managers.Game.onStageReset += Reset;
     }

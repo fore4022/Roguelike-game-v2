@@ -172,7 +172,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultCollider: {fileID: 0}
-  enable: 0
+  playAnimationOnEnable: 1
+  playColliderOnEnable: 0
   min_Index: 0
   max_Index: 1
 --- !u!82 &599285677814184151

@@ -4,7 +4,7 @@ using UnityEngine;
 public class DataInit
 {
     private const string userLevelPath = "_Level";
-    private const int defaultMonsterCount = 350;
+    private const int defaultMonsterCount = 325;
     private const int defaultSkillCount = 40;
 
     public void GetMonsterList(ref List<GameObject> monsterList)

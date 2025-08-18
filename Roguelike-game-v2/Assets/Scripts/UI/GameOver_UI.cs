@@ -6,6 +6,15 @@ using UnityEngine.UI;
 [RequireComponent(typeof(AudioSource))]
 public class GameOver_UI : UserInterface
 {
+    [SerializeField]
+    private AudioSource audioSource;
+    [SerializeField]
+    private AudioClip clear;
+    [SerializeField]
+    private AudioClip failed;
+    [SerializeField]
+    private AudioClip buttonClickSfx;
+
     private List<TextMeshProUGUI> tmpList;
     private List<Image> imgList;
     private TextMeshProUGUI result;
@@ -16,6 +25,7 @@ public class GameOver_UI : UserInterface
 
     public override void SetUserInterface()
     {
+        audioSource = GetComponent<AudioSource>();
         tmpList = Util.GetComponentsInChildren<TextMeshProUGUI>(Util.GetChildren(transform, 1), true);
         imgList = Util.GetComponentsInChildren<Image>(Util.GetChildren(transform, 1));
         result = Util.GetComponentInChildren<TextMeshProUGUI>(transform);
@@ -32,15 +42,18 @@ public class GameOver_UI : UserInterface
 
         if(Managers.Game.IsStageClear || Managers.Game.inGameTimer.GetHours > 0)
         {
+            audioSource.clip = clear;
             result = "Stage\nClear";
 
             Managers.UserData.data.Clear(Managers.UserData.data.StageName);
         }
         else
         {
+            audioSource.clip = failed;
             result = "Stage\nFailed";
         }
 
+        audioSource.Play();
         StartCoroutine(Typing.TypeEffecting(this.result, result, true));
         StartCoroutine(ResultSequence());
     }
@@ -49,6 +62,7 @@ public class GameOver_UI : UserInterface
         foreach(Image img in imgList)
         {
             UIElementUtility.SetImageAlpha(img, 0);
+            img.gameObject.SetActive(false);
         }
 
         foreach(TextMeshProUGUI tmp in tmpList)
@@ -71,15 +85,18 @@ public class GameOver_UI : UserInterface
         Time.timeScale = 1;
         Managers.Game.Playing = true;
 
+        audioSource.Play();
         Managers.UI.Show<HeadUpDisplay_UI>();
         Managers.UI.Hide<GameOver_UI>();
     }
     public void ReStart()
     {
+        audioSource.Play();
         Managers.Game.ReStart();
     }
     public void GoMain()
     {
+        audioSource.Play();
         Managers.Game.Clear();
         Managers.Scene.LoadScene(SceneName.Main, false);
     }
@@ -122,6 +139,8 @@ public class GameOver_UI : UserInterface
 
         yield return waitRealSec;
 
+        audioSource.clip = buttonClickSfx;
+
         if(Managers.Game.IsStageClear && !Managers.Game.GameOver)
         {
             imgList[0].gameObject.SetActive(true);
@@ -132,6 +151,8 @@ public class GameOver_UI : UserInterface
             imgList[0].gameObject.SetActive(false);
             imgList[1].gameObject.SetActive(true);
         }
+
+        imgList[2].gameObject.SetActive(true);
 
         foreach(Image img in imgList)
         {

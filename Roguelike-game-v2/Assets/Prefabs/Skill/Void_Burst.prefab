@@ -172,7 +172,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultCollider: {fileID: 0}
-  enable: 1
+  playAnimationOnEnable: 1
+  playColliderOnEnable: 0
 --- !u!82 &3123672649372588524
 AudioSource:
   m_ObjectHideFlags: 0

@@ -15,7 +15,9 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
     protected Collider2D defaultCollider = null;
 
     [SerializeField]
-    protected bool enable;
+    protected bool playAnimationOnEnable = true;
+    [SerializeField]
+    protected bool playColliderOnEnable = true;
 
     protected ISkill skill;
     protected Skill_SO so;
@@ -63,7 +65,7 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
 
-        defaultCollider.enabled = enable;
+        defaultCollider.enabled = playColliderOnEnable;
         render.enabled = false;
         animator.speed = 0;
         isInit = true;
@@ -118,9 +120,9 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
 
         skill.Set();
 
-        defaultCollider.enabled = enable;
+        defaultCollider.enabled = playColliderOnEnable;
         render.enabled = true;
-        animator.speed = 1;
+        animator.speed = playAnimationOnEnable ? 1 : 0;
         baseCast = StartCoroutine(BaseCasting());
 
         yield return new WaitUntil(() => baseCast == null);

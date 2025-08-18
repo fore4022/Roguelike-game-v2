@@ -41,6 +41,8 @@ public class Game_Manager
     }
     public void GameStart()
     {
+        onStageReset.Invoke();
+
         Time.timeScale = 1;
         isPlaying = true;
         gameOver = false;
@@ -57,6 +59,7 @@ public class Game_Manager
         isPlaying = false;
         gameOver = false;
         
+        onStageReset.Invoke();
         skillCasterManage.StopAllCaster();
         inGameData.skill.Reset();
 
