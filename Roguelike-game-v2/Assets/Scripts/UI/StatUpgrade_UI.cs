@@ -58,7 +58,7 @@ public class StatUpgrade_UI : UserInterface
         }
         else
         {
-            transform.SetPosition(new(0, -1500), duration, EaseType.OutSine);
+            transform.SetPosition(new(0, -1125), duration, EaseType.OutSine);
         }
     }
 }

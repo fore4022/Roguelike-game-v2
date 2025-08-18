@@ -15,7 +15,7 @@ public class SkillData
     {
         if(!infos.ContainsKey(so.info.type))
         {
-            infos.Add(so.info.type, new SkillContext(so));//
+            infos.Add(so.info.type, new SkillContext(so));
         }
     }
     public void SetValue(string key, int levelDelta = 1)

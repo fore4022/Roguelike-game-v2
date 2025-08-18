@@ -60,9 +60,9 @@ public class GameOver_UI : UserInterface
         tmpList[1].gameObject.SetActive(false);
         tmpList[2].gameObject.SetActive(false);
 
-        tmpList[0].rectTransform.anchoredPosition = new(-175, 260);
-        tmpList[1].rectTransform.anchoredPosition = new(175, 260);
-        tmpList[2].rectTransform.anchoredPosition = new(175, 260);
+        tmpList[0].rectTransform.anchoredPosition = new(-175, 195);
+        tmpList[1].rectTransform.anchoredPosition = new(175, 195);
+        tmpList[2].rectTransform.anchoredPosition = new(175, 195);
 
         result.text = "";
     }
@@ -94,12 +94,12 @@ public class GameOver_UI : UserInterface
 
         yield return Typing.TypeEffectAndWaiting(tmpList[0], required, coroutine, delay);
 
-        tmpList[0].SetPosition(new(-175, 260), delay);
+        tmpList[0].SetPosition(new(-175, 195), delay);
         tmpList[1].gameObject.SetActive(true);
 
         yield return Typing.TypeEffectAndWaiting(tmpList[1], arrow, coroutine);
 
-        tmpList[1].SetPosition(new(-175, 260), delay);
+        tmpList[1].SetPosition(new(-175, 195), delay);
 
         StartCoroutine(Typing.EraseEffecting(tmpList[0], delay));
 
@@ -110,7 +110,7 @@ public class GameOver_UI : UserInterface
 
         yield return Typing.TypeEffectAndWaiting(tmpList[2], survival, coroutine);
 
-        tmpList[2].SetPosition(new(0, 260), delay);
+        tmpList[2].SetPosition(new(0, 195), delay);
 
         StartCoroutine(Typing.EraseEffecting(tmpList[1], delay));
 
