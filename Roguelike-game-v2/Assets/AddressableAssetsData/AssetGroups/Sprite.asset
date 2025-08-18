@@ -65,6 +65,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c5f5672b4cfbd924ca6f2174686bf4d1
+    m_Address: Assets/Sprites/Icon/Skills/Energy_Spear.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fb68e2ce3d491ce4b9a4eec1413047a5
     m_Address: Assets/Sprites/Icon/Skills/Thunderstroke.png
     m_ReadOnly: 0

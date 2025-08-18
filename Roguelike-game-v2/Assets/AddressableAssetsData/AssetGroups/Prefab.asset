@@ -140,6 +140,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b2e8de6296e7d6541b8618a0d80b1620
+    m_Address: Energy_Spear
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b5c533eae9db16a438e0f1058eab48d0
     m_Address: Void_Vortex
     m_ReadOnly: 0

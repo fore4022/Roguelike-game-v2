@@ -160,6 +160,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 680e425e9e013b64bba02f7fbd1e0937
+    m_Address: Assets/SO/Skill/Energy_Spear.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 705e2b58b9dfec14fa045dbe021b2876
     m_Address: Assets/SO/Skill/Arcane_Blaze.asset
     m_ReadOnly: 0
@@ -257,6 +262,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e05109a366efe0f4caf59b92e222daa5
     m_Address: Assets/SO/Monster/Prairie/MushroomB.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e207603d1090f534b9cabf930648f453
+    m_Address: Assets/SO/SkillInformation/Energy_Spear.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
