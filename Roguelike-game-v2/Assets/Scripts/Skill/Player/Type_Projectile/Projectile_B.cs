@@ -16,12 +16,12 @@ public class Projectile_B : ProjectileSkill, IProjectile
     public bool Finished { get { return isExplosion && animator.GetCurrentAnimatorStateInfo(0).IsName(so.projectile_Info.animationName); } }
     public void Set()
     {
+        animator.Play("default");
+
         transform.position = Managers.Game.player.gameObject.transform.position;
         direction = Calculate.GetDirection(EnemyDetection.GetNearestEnemyPosition());
         transform.rotation = Calculate.GetQuaternion(direction, so.adjustmentRotation);
         moving = StartCoroutine(Moving());
-
-        animator.Play("default");
     }
     public void SetCollider()
     {

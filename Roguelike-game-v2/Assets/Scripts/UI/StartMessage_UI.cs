@@ -5,7 +5,7 @@ public class StartMessage_UI : UserInterface
 {
     private TextMeshProUGUI tmp;
 
-    private const float duration = 1.5f;
+    private const float duration = 1.2f;
 
     private Coroutine textAnimation;
     private Coroutine blink;

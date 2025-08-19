@@ -4,7 +4,7 @@ using UnityEngine;
 /// <para>
 /// 투사체 형식의 스킬의 기본 구현이다.
 /// </para>
-/// ObjectPool로 회하는 것을 구현하였다.
+/// ObjectPool로 회수하는 것을 구현하였다.
 /// </summary>
 public class ProjectileSkill : Skill
 {
@@ -25,7 +25,7 @@ public class ProjectileSkill : Skill
     {
         if(baseCast == null)
         {
-            return; 
+            return;
         }
 
         planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);

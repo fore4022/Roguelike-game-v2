@@ -72,9 +72,9 @@ public static class UIElementUtility
 
         return coroutine;
     }
-    public static IEnumerator BlinkText(TextMeshProUGUI tmp, float duration, bool recursive = true, int minAlpha = 215, int maxAlpha = 255)
+    public static IEnumerator BlinkText(TextMeshProUGUI tmp, float duration, bool recursive = true, int minAlpha = 225, int maxAlpha = 255)
     {
-        WaitForSeconds delay = new(duration + 0.35f);
+        WaitForSeconds delay = new(duration);
 
         while(true)
         {
