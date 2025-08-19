@@ -271,4 +271,4 @@ MonoBehaviour:
   defaultCollider: {fileID: 0}
   playAnimationOnEnable: 1
   playColliderOnEnable: 0
-  skillRange: 1.5
+  skillRange: 1.25

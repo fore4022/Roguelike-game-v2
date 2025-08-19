@@ -18,11 +18,11 @@ MonoBehaviour:
     penetration: 1
   multiCast:
     delay:
-    - 0.135
-    - 0.125
-    - 0.115
-    - 0.105
-    - 0.09
+    - 0.175
+    - 0.17
+    - 0.165
+    - 0.16
+    - 0.1485
     count:
     - 4
     - 5

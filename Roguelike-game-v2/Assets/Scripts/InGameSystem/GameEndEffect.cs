@@ -6,8 +6,8 @@ public class GameEndEffect : MonoBehaviour
 
     private WaitForSeconds delay;
 
-    private float MaxOrthographicSize { get { return 6 * Camera_SizeScale.OrthographicSizeScale; } }
-    private float MinOrthographicSize { get { return 1.25f * Camera_SizeScale.OrthographicSizeScale; } }
+    private float MaxOrthographicSize { get { return 6 * Camera_SizeScale.orthographicSizeScale; } }
+    private float MinOrthographicSize { get { return 1.25f * Camera_SizeScale.orthographicSizeScale; } }
     private void Awake()
     {
         Managers.Game.endEffect = this;

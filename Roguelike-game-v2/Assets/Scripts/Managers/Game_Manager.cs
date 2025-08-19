@@ -108,7 +108,7 @@ public class Game_Manager
         yield return new WaitForSecondsRealtime(SceneLoading_UI.limitTime);
 
         Managers.UI.Get<SceneLoading_UI>().Wait = false;
-        Camera.main.orthographicSize = CameraSizes.inGame * Camera_SizeScale.OrthographicSizeScale;
+        Camera.main.orthographicSize = CameraSizes.inGame * Camera_SizeScale.orthographicSizeScale;
         Managers.Game.inGameData.player.Experience = 0;
         isPlaying = true;
 

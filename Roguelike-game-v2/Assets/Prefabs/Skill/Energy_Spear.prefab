@@ -227,8 +227,8 @@ MonoBehaviour:
   playAnimationOnEnable: 0
   playColliderOnEnable: 0
   effectCollider: {fileID: 4386130135592016057}
-  castPosition: {x: 0, y: 0.55}
-  castRange: {x: 0.75, y: 0.75}
+  castRange: {x: 1.25, y: 1.25}
+  probability: 66.6
   castDelay: 0.085
 --- !u!61 &4200316118562607662
 BoxCollider2D:

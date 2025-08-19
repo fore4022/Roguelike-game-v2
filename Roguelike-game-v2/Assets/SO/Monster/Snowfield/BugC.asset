@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BugC
   m_EditorClassIdentifier: 
   stat:
-    health: 0.5
+    health: 0.1
     damage: 1
     moveSpeed: 1.8
     healthRegenPerSec: 0

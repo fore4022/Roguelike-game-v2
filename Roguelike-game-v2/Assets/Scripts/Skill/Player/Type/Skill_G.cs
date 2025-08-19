@@ -13,10 +13,10 @@ public class Skill_G : Skill, ISkill
     public bool Finished { get { return true; } }
     public void Set()
     {
-        Vector3 direction = EnemyDetection.GetNearestEnemyPosition().normalized;
+        Vector3 direction = Calculate.GetDirection(EnemyDetection.GetNearestEnemyPosition());
 
         transform.rotation = Calculate.GetQuaternion(direction);
-        transform.position = direction * skillRange;
+        transform.position = Managers.Game.player.transform.position + direction * skillRange;
     }
     public void SetCollider()
     {

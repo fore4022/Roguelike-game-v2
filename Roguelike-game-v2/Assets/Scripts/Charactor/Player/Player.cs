@@ -55,7 +55,7 @@ public class Player : MonoBehaviour, IDamageReceiver
     }
     private void Update()
     {
-        Health = Mathf.Min(Health + stat.healthRegenPerSec * Time.deltaTime, MaxHealth);
+        Health = Mathf.Min(Health + (stat.healthRegenPerSec + ((MaxHealth - 50) % 20 / 200)) * Time.deltaTime, MaxHealth);
         move.IsPointerOverUI = EventSystem.current.IsPointerOverGameObject();
     }
     public void TakeDamage(IDamage damage)

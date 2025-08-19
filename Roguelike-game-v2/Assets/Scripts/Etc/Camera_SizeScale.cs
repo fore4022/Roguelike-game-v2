@@ -9,7 +9,7 @@ public class Camera_SizeScale : MonoBehaviour
 
     private InGame_Camera inGameCamera;
 
-    public static float OrthographicSizeScale { get { return isDeviceScaleSmaller ? defaultScale / deviceScale : 1; } }
+    public static float orthographicSizeScale { get { return isDeviceScaleSmaller ? defaultScale / deviceScale : 1; } }
     private void Awake()
     {
         inGameCamera = GetComponent<InGame_Camera>();
@@ -21,6 +21,10 @@ public class Camera_SizeScale : MonoBehaviour
         Managers.Scene.loadComplete += OrthographicsSizeUpdate;
 
         isDeviceScaleSmaller = deviceScale <= defaultScale;
+
+#if UNITY_EDITOR
+        isDeviceScaleSmaller = false;
+#endif
 
         OrthographicsSizeUpdate();
     }
@@ -47,6 +51,6 @@ public class Camera_SizeScale : MonoBehaviour
     }
     private void ResizeOrthographicSize(float size)
     {
-        Camera.main.orthographicSize = size * (defaultScale / deviceScale);
+        Camera.main.orthographicSize = size * orthographicSizeScale;
     }
 }

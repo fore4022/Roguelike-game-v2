@@ -126,6 +126,7 @@ public class SkillSelection_UI : UserInterface
         int[] indexArray = Calculate.GetRandomValues(infoList.Count, Mathf.Min(Managers.Game.inGameData.OptionCount, infoList.Count));
 
         indexArray[0] = 11;
+        indexArray[1] = 10;
 
         UIElementUtility.SetImageAlpha(background, basicAlpha);
 
