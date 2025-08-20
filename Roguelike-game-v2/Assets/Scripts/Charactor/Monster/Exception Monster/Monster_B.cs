@@ -53,7 +53,7 @@ public class Monster_B : Monster_WithObject
     private IEnumerator SkillCasting()
     {
         PoolingObject go = Managers.Game.objectPool.GetObject(visualizerKey);
-        Vector3 position = go.Transform.position = EnemyDetection.GetRandomVector();
+        Vector3 position = go.Transform.position = EnemyDetection.GetRandomVector(); // 
 
         go.SetActive(true);
 

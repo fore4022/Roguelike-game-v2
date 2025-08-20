@@ -30,11 +30,9 @@ public class Projectile_E : ProjectileSkill, ISkill
     {
         animator.Play("default");
 
-        targetPosition = EnemyDetection.GetNearestEnemyPosition();
         castingPosition = so.adjustmentPosition + new Vector2(Random.Range(-castRange.x / 2, castRange.x / 2), Random.Range(-castRange.y / 2, castRange.y / 2));
         transform.position = Managers.Game.player.transform.position;
-        transform.rotation = Calculate.GetQuaternion(Calculate.GetDirection(targetPosition));
-        direction = Calculate.GetDirection(targetPosition, (Vector2)Managers.Game.player.transform.position + castingPosition);
+        transform.rotation = Calculate.GetQuaternion(Calculate.GetRandomVector());
 
         StartCoroutine(Attacking());
     }
@@ -60,6 +58,8 @@ public class Projectile_E : ProjectileSkill, ISkill
     }
     private void OnDisable()
     {
+        transform.Kill();
+
         transform.rotation = Quaternion.identity;
         effectCollider.enabled = false;
         isExplosion = false;
@@ -84,8 +84,11 @@ public class Projectile_E : ProjectileSkill, ISkill
             yield return null;
         }
 
+        targetPosition = EnemyDetection.GetNearestEnemyPosition(transform);
+
         yield return new WaitForSeconds(castDelay);
 
+        direction = Calculate.GetDirection(targetPosition, (Vector2)Managers.Game.player.transform.position + castingPosition);
         sign_Angle = Random.Range(0, 2) == 1 ? -1 : 1;
 
         transform.SetRotation(Calculate.GetQuaternion(direction).eulerAngles + new Vector3(0, 0, (360 + animation_Angle * sign_Angle) - transform.rotation.eulerAngles.z % 360), castDelay, EaseType.OutCirc)

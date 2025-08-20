@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -5,108 +6,11 @@ public static class EnemyDetection
 {
     public static float largeastRange = 2.5f;
 
-    private static Vector3 vec = new();
+    private static Vector2 vec = new();
 
-    public static GameObject FindRandomEnemy()
+    public static Vector2 GetNearestEnemyPosition(Transform transform = null)
     {
-        List<GameObject> gameObjectList = FindEnemiesOnScreen();
-
-        if(gameObjectList.Count == 0)
-        {
-            return null;
-        }
-
-        int index = Random.Range(0, gameObjectList.Count);
-
-        return gameObjectList[index];
-    }
-    public static GameObject FindNearestEnemy(float? range = null)
-    {
-        List<GameObject> gameObjectList = FindEnemiesOnScreen(range);
-
-        GameObject targetObject = null;
-
-        float minDistance = 0;
-
-        foreach(GameObject go in gameObjectList)
-        {
-            if(targetObject == null)
-            {
-                GetDistance(go, out minDistance);
-
-                targetObject = go;
-            }
-            else if(minDistance > GetDistance(go, out float distance))
-            {
-                minDistance = distance;
-                targetObject = go;
-            }
-        }
-
-        if(minDistance == 0)
-        {
-            return null;
-        }
-
-        return targetObject;
-    }
-    public static GameObject FindLargestEnemyGroup()
-    {
-        List<GameObject> gameObjectList = FindEnemiesOnScreen();
-        Collider2D[] colliderArray;
-
-        GameObject targetObject = null;
-
-        int maxIntCount = 0;
-        int count;
-
-        foreach(GameObject go in gameObjectList)
-        {
-            colliderArray = Physics2D.OverlapCircleAll(go.transform.position, largeastRange);
-            count = colliderArray.Length;
-
-            if(maxIntCount < count)
-            {
-                maxIntCount = count;
-                targetObject = go;
-            }
-        }
-
-        if(maxIntCount == 0)
-        {
-            return null;
-        }
-
-        return targetObject;
-    }
-    public static List<GameObject> FindLargestEnemyGroup(int count)
-    {
-        List<(GameObject obj, int enemyCount) > targetObjectList = new List<(GameObject obj, int enemyCount)>();
-        List<GameObject> gameObjectList = FindEnemiesOnScreen();
-
-        int enemyCount;
-
-        foreach(GameObject go in gameObjectList)
-        {
-            enemyCount = Physics2D.OverlapCircleAll(go.transform.position, largeastRange).Count();
-
-            targetObjectList.Add((go, enemyCount));
-        }
-
-        targetObjectList.OrderByDescending(tuple => tuple.enemyCount).ToList();
-
-        gameObjectList = new List<GameObject>();
-
-        foreach((GameObject obj, int enemyCount) value in targetObjectList)
-        {
-            gameObjectList.Add(value.obj);
-        }
-
-        return gameObjectList.Take(count).ToList();
-    }
-    public static Vector3 GetNearestEnemyPosition(float? range = null)
-    {
-        GameObject target = FindNearestEnemy(range);
+        GameObject target = FindNearestEnemy(transform);
 
         if(target == null)
         {
@@ -117,7 +21,7 @@ public static class EnemyDetection
             return target.transform.position;
         }
     }
-    public static Vector3 GetRandomEnemyPosition()
+    public static Vector2 GetRandomEnemyPosition()
     {
         GameObject target = FindRandomEnemy();
 
@@ -175,7 +79,39 @@ public static class EnemyDetection
 
         return targetPositionList;
     }
-    public static List<GameObject> FindEnemiesOnScreen(float? range = null)
+    public static Vector2 GetRandomVector()
+    {
+        vec.x = Random.Range(-Calculate.width, Calculate.width);
+        vec.y = Random.Range(-Calculate.height, Calculate.height);
+
+        return vec + (Vector2)Managers.Game.player.gameObject.transform.position;
+    }
+    private static List<GameObject> FindLargestEnemyGroup(int count)
+    {
+        List<(GameObject obj, int enemyCount) > targetObjectList = new List<(GameObject obj, int enemyCount)>();
+        List<GameObject> gameObjectList = FindEnemiesOnScreen();
+
+        int enemyCount;
+
+        foreach(GameObject go in gameObjectList)
+        {
+            enemyCount = Physics2D.OverlapCircleAll(go.transform.position, largeastRange).Count();
+
+            targetObjectList.Add((go, enemyCount));
+        }
+
+        targetObjectList.OrderByDescending(tuple => tuple.enemyCount).ToList();
+
+        gameObjectList = new List<GameObject>();
+
+        foreach((GameObject obj, int enemyCount) value in targetObjectList)
+        {
+            gameObjectList.Add(value.obj);
+        }
+
+        return gameObjectList.Take(count).ToList();
+    }
+    private static List<GameObject> FindEnemiesOnScreen(float? range = null)
     {
         List<GameObject> resultList = new List<GameObject>();
         Collider2D[] colliderArray;
@@ -203,17 +139,91 @@ public static class EnemyDetection
 
         return resultList;
     }
-    public static float GetDistance(GameObject go, out float result)
+    private static GameObject FindRandomEnemy()
     {
-        float distance = (go.transform.position - Managers.Game.player.gameObject.transform.position).magnitude;
+        List<GameObject> gameObjectList = FindEnemiesOnScreen();
+
+        if(gameObjectList.Count == 0)
+        {
+            return null;
+        }
+
+        int index = Random.Range(0, gameObjectList.Count);
+
+        return gameObjectList[index];
+    }
+    private static GameObject FindNearestEnemy(Transform transform = null)
+    {
+        List<GameObject> gameObjectList = FindEnemiesOnScreen();
+
+        GameObject targetObject = null;
+
+        float minDistance = 0;
+
+        foreach(GameObject go in gameObjectList)
+        {
+            if(targetObject == null)
+            {
+                GetDistance(go, out minDistance, transform);
+
+                targetObject = go;
+            }
+            else if(minDistance > GetDistance(go, out float distance, transform))
+            {
+                minDistance = distance;
+                targetObject = go;
+            }
+        }
+
+        if(minDistance == 0)
+        {
+            return null;
+        }
+
+        return targetObject;
+    }
+    private static GameObject FindLargestEnemyGroup()
+    {
+        List<GameObject> gameObjectList = FindEnemiesOnScreen();
+        Collider2D[] colliderArray;
+
+        GameObject targetObject = null;
+
+        int maxIntCount = 0;
+        int count;
+
+        foreach(GameObject go in gameObjectList)
+        {
+            colliderArray = Physics2D.OverlapCircleAll(go.transform.position, largeastRange);
+            count = colliderArray.Length;
+
+            if(maxIntCount < count)
+            {
+                maxIntCount = count;
+                targetObject = go;
+            }
+        }
+
+        if(maxIntCount == 0)
+        {
+            return null;
+        }
+
+        return targetObject;
+    }
+    private static float GetDistance(GameObject go, out float result, Transform transform = null)
+    {
+        float distance = 0;
+
+        if(transform == null)
+        {
+            distance = (go.transform.position - Managers.Game.player.gameObject.transform.position).magnitude;
+        }
+        else
+        {
+            distance = (go.transform.position - transform.position).magnitude;
+        }
 
         return result = distance;
-    }
-    public static Vector2 GetRandomVector()
-    {
-        vec.x = Random.Range(-Calculate.width, Calculate.width);
-        vec.y = Random.Range(-Calculate.height, Calculate.height);
-
-        return vec + Managers.Game.player.gameObject.transform.position;
     }
 }
