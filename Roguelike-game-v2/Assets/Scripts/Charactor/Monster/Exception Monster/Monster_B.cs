@@ -52,16 +52,18 @@ public class Monster_B : Monster_WithObject
     }
     private IEnumerator SkillCasting()
     {
-        PoolingObject go = Managers.Game.objectPool.GetObject(visualizerKey);
-        Vector3 position = go.Transform.position = EnemyDetection.GetRandomVector(); // 
+        PoolingObject visualizer = Managers.Game.objectPool.GetObject(visualizerKey);
+        PoolingObject skill = Managers.Game.objectPool.GetObject(skillKey);
+        Vector3 position = EnemyDetection.GetRandomVector();
 
-        go.SetActive(true);
+        visualizer.Transform.position = position;
+        skill.Transform.position = position;
 
-        yield return new WaitUntil(() => !go.activeSelf);
+        visualizer.SetActive(true);
+        skill.SetActive(true);
 
-        go = Managers.Game.objectPool.GetObject(skillKey);
-        go.Transform.position = position;
+        yield return new WaitUntil(() => !skill.activeSelf);
 
-        go.SetActive(true);
+        visualizer.SetActive(false);
     }
 }

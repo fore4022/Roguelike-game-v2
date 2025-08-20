@@ -71,7 +71,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaThreshold: 0
-    - _Angle: 45
+    - _Angle: 80
     - _BumpScale: 1
     - _ConnectedAlpha: 0
     - _Cutoff: 0.5
@@ -91,7 +91,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Thickness: 0.25
+    - _Thickness: 0.6
     - _TileMode: 0
     - _UVSec: 0
     - _Weight: 0.5
@@ -102,5 +102,6 @@ Material:
     - _GradientOutline1: {r: 1, g: 1, b: 1, a: 1}
     - _GradientOutline2: {r: 1, g: 1, b: 1, a: 1}
     - _ImageOutline: {r: 1, g: 1, b: 1, a: 1}
-    - _SolidOutline: {r: 0, g: 0, b: 0, a: 1}
+    - _SolidOutline: {r: 1, g: 0.19607843, b: 0.19607839, a: 1}
   m_BuildTextureStacks: []
+  m_AllowLocking: 1

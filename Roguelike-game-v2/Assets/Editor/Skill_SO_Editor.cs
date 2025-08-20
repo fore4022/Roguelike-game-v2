@@ -1,6 +1,6 @@
 using UnityEditor;
 [CustomEditor(typeof(Skill_SO))]
-public class SkillSO_Editor : Editor
+public class Skill_SO_Editor : Editor
 {
     private SerializedProperty show_1;
     private SerializedProperty value_1;
@@ -21,23 +21,16 @@ public class SkillSO_Editor : Editor
         serializedObject.Update();
         DrawPropertiesExcluding(serializedObject, "projectile_Info", "multiCast");
 
-        Show_1();
-        Show_2();
-
-        serializedObject.ApplyModifiedProperties();
-    }
-    private void Show_1()
-    {
         if(show_1.boolValue)
         {
             EditorGUILayout.PropertyField(value_1);
         }
-    }
-    private void Show_2()
-    {
+
         if(show_2.boolValue)
         {
             EditorGUILayout.PropertyField(value_2);
         }
+
+        serializedObject.ApplyModifiedProperties();
     }
 }

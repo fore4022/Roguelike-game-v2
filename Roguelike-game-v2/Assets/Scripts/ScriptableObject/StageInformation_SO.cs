@@ -7,9 +7,22 @@ public class StageInformation_SO : ScriptableObject
     public SpawnMonsterList_SO spawnMonsterList;
     public AudioClip bgm;
 
+    public Color skillRangeVisualizerColor = new(255, 50, 50);
     public float difficulty = 1;
     public float statScale = 1;
     public float spawnDelay;
     [Tooltip("Minute")]
     public int requiredTime;
+    [Tooltip("Skill Range VisualizerColor")]
+    public bool isDefaultColor;
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        if(isDefaultColor)
+        {
+            skillRangeVisualizerColor = new Color32(255, 50, 50, 255);
+        }
+    }
+#endif
 }

@@ -1,26 +1,16 @@
-using System.Collections;
 using UnityEngine;
 public class SkillRangeVisualizer : MonoBehaviour
 {
-    private Animator _animator;
+    private SpriteRenderer render;
 
     private void Awake()
     {
-        Init();
+        render = GetComponent<SpriteRenderer>();
+
         gameObject.SetActive(false);
     }
     private void OnEnable()
     {
-        StartCoroutine(WarnBeforeCast());
-    }
-    private void Init()
-    {
-        _animator = GetComponent<Animator>();
-    }
-    private IEnumerator WarnBeforeCast()
-    {
-        yield return new WaitUntil(() => _animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1);
-
-        gameObject.SetActive(false);
+        render.material.SetColor("Outline Color Base", Color.blue);
     }
 }

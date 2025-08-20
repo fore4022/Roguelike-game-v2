@@ -50,6 +50,7 @@ public class MonsterSkill_B : MonsterSkill_Damage, IFakeShadowSource
     protected override void Disable()
     {
         transform.Kill();
+
         base.Disable();
     }
     private IEnumerator Casting()
