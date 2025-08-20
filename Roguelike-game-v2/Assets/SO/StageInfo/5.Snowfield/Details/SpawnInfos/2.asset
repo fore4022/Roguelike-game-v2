@@ -15,6 +15,6 @@ MonoBehaviour:
   monsterInformation:
   - monster: {fileID: 649328983438073373, guid: fdca6392a509fe949bb06071164a7d5c, type: 3}
     spawnProbability: 60
-  - monster: {fileID: 3251678293858357659, guid: e0dfb140067933341958dbb76ebbd706, type: 3}
+  - monster: {fileID: 1163835194674455662, guid: d35fd89ad0720794e8a7714dc3218823, type: 3}
     spawnProbability: 40
   duration: 1

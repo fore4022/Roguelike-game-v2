@@ -6,15 +6,13 @@ using UnityEngine;
 /// </para>
 /// 화면의 무작위 위치를 향해 날아간다. 적을 밀어내지 않는다.
 /// </summary>
-public class Projectile_E : ProjectileSkill, IProjectile
+public class Projectile_E : ProjectileSkill, ISkill
 {
     [SerializeField]
     private Collider2D effectCollider;
 
     [SerializeField]
     private Vector2 castRange;
-    [SerializeField, Range(0, 100)]
-    private float probability;
     [SerializeField, Min(0.01f)]
     private float castDelay;
 
@@ -32,18 +30,11 @@ public class Projectile_E : ProjectileSkill, IProjectile
     {
         animator.Play("default");
 
-        if(Random.Range(0, 100) <= probability)
-        {
-            targetPosition = Calculate.GetDirection(EnemyDetection.GetNearestEnemyPosition());
-        }
-        else
-        {
-            targetPosition = (Vector2)Managers.Game.player.transform.position + EnemyDetection.GetRandomVector();
-        }
-
+        targetPosition = EnemyDetection.GetNearestEnemyPosition();
         castingPosition = so.adjustmentPosition + new Vector2(Random.Range(-castRange.x / 2, castRange.x / 2), Random.Range(-castRange.y / 2, castRange.y / 2));
         transform.position = Managers.Game.player.transform.position;
-        transform.rotation = Calculate.GetQuaternion(targetPosition);
+        transform.rotation = Calculate.GetQuaternion(Calculate.GetDirection(targetPosition));
+        direction = Calculate.GetDirection(targetPosition, (Vector2)Managers.Game.player.transform.position + castingPosition);
 
         StartCoroutine(Attacking());
     }
@@ -73,31 +64,11 @@ public class Projectile_E : ProjectileSkill, IProjectile
         effectCollider.enabled = false;
         isExplosion = false;
     }
-    public IEnumerator Moving()
-    {
-        float totalTime = 0;
-
-        while(totalTime != castDelay * 5)
-        {
-            totalTime += Time.deltaTime;
-
-            if(totalTime > castDelay * 5)
-            {
-                totalTime = castDelay * 5;
-            }
-
-            transform.position = (Vector2)Managers.Game.player.transform.position + castingPosition;
-
-            yield return null;
-        }
-
-        moving = null;
-    }
     private IEnumerator Attacking()
     {
         float totalTime = 0;
         
-        transform.SetRotation(new(0, 0, Random.Range(initialRotationAngle_Min, initialRotationAngle_Max)), castDelay, EaseType.OutCubic);
+        transform.SetRotation(new(0, 0, Random.Range(initialRotationAngle_Min, initialRotationAngle_Max)), castDelay * 2, EaseType.OutCubic);
 
         while(totalTime != castDelay)
         {
@@ -113,37 +84,37 @@ public class Projectile_E : ProjectileSkill, IProjectile
             yield return null;
         }
 
-        direction = Calculate.GetDirection(targetPosition, (Vector2)Managers.Game.player.transform.position + castingPosition);
+        yield return new WaitForSeconds(castDelay);
+
+        sign_Angle = Random.Range(0, 2) == 1 ? -1 : 1;
 
         transform.SetRotation(Calculate.GetQuaternion(direction).eulerAngles + new Vector3(0, 0, (360 + animation_Angle * sign_Angle) - transform.rotation.eulerAngles.z % 360), castDelay, EaseType.OutCirc)
-            .SetRotation(new(0, 0, animation_Angle), castDelay * 5, TweenOperation.Append);
+            .SetRotation(new(0, 0, animation_Angle * -sign_Angle), castDelay * 2, EaseType.OutCubic, TweenOperation.Append);
 
-        moving = StartCoroutine(Moving());
+        yield return new WaitForSeconds(castDelay * 3);
 
-        yield return new WaitForEndOfFrame();
-
-        yield return new WaitUntil(() => moving == null);
-
-        transform.SkipToEnd();
-
+        Vector3 remainingDistance = targetPosition - (transform.position + direction * so.projectile_Info.speed * Time.deltaTime);
         Vector3 afterPosition = new();
 
         totalTime = 0;
         animator.speed = 1;
         defaultCollider.enabled = true;
 
-        while(transform.position.x != targetPosition.x)
+        while(true)
         {
             totalTime += Time.deltaTime;
             afterPosition = transform.position + direction * so.projectile_Info.speed * Time.deltaTime;
 
-            if(afterPosition.magnitude > targetPosition.magnitude)
+            if(remainingDistance.sqrMagnitude >= (targetPosition - afterPosition).sqrMagnitude)
             {
-                transform.position = targetPosition;
+                remainingDistance = targetPosition - afterPosition;
+                transform.position = afterPosition;
             }
             else
             {
-                transform.position = afterPosition;
+                transform.position = targetPosition;
+
+                break;
             }
 
             yield return null;
@@ -153,4 +124,4 @@ public class Projectile_E : ProjectileSkill, IProjectile
 
         isExplosion = true;
     }
-} // (Vector2)Managers.Game.player.transform.position + 
+}

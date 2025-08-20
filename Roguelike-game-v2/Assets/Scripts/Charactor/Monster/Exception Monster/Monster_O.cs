@@ -25,6 +25,6 @@ public class Monster_O : BasicMonster
     private void HealthLossRatioUpdate()
     {
         healthLossRatio = 1 - (health / maxHealth);
-        damageMultiplier = speedMultiplier = multiplier * healthLossRatio;
+        damageMultiplier = speedMultiplier = Mathf.Max(1, multiplier * healthLossRatio);
     }
 }

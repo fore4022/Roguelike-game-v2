@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stat:
     health: 8.15
-    damage: 1.3
-    moveSpeed: 2.75
+    damage: 1.175
+    moveSpeed: 2.375
     healthRegenPerSec: 0
   user_Experience: 1
   inGame_Experience: 1
