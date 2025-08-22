@@ -21,7 +21,7 @@ public class Projectile_D : ProjectileSkill, IProjectile
         transform.position = Managers.Game.player.gameObject.transform.position;
         direction = Calculate.GetRandomDirection();
 
-        transform.SetScale(5, duration);
+        transform.SetScale(5.5f, duration, EaseType.OutCubic);
         
         if(Random.Range(0, 100) <= probability)
         {
