@@ -25,7 +25,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2cfa97933e1f3894fba2a1565c65f683, type: 2}
   spawnMonsterList: {fileID: 11400000, guid: 1936f2e6bec779e46972475e2ad54d7e, type: 2}
   bgm: {fileID: 8300000, guid: 42eca95eca33c464b93c6797d20a673c, type: 3}
+  skillRangeVisualizerColor: {r: 1, g: 0.19607843, b: 0.19607843, a: 0.78431374}
   difficulty: 5
   statScale: 1
   spawnDelay: 1
   requiredTime: 10
+  isDefaultColor: 1

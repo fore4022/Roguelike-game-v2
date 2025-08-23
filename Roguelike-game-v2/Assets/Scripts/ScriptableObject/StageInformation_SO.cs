@@ -14,14 +14,20 @@ public class StageInformation_SO : ScriptableObject
     [Tooltip("Minute")]
     public int requiredTime;
     [Tooltip("Skill Range VisualizerColor")]
-    public bool isDefaultColor;
+    public bool isDefaultColor = true;
 
 #if UNITY_EDITOR
+    private int defaultAlpha = 200;
+
     private void OnValidate()
     {
         if(isDefaultColor)
         {
-            skillRangeVisualizerColor = new Color32(255, 50, 50, 255);
+            skillRangeVisualizerColor = new Color32(255, 50, 50, (byte)defaultAlpha);
+        }
+        else
+        {
+            skillRangeVisualizerColor = new(skillRangeVisualizerColor.r, skillRangeVisualizerColor.g, skillRangeVisualizerColor.b, defaultAlpha / 255f);
         }
     }
 #endif

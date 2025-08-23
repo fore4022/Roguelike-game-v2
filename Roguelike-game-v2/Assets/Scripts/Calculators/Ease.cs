@@ -10,11 +10,11 @@ public static class Ease
     }
     public static float InQuad(float value)
     {
-        return _end * value * value;
+        return value * value;
     }
     public static float OutQuad(float value)
     {
-        return -_end * value * (value - 2);
+        return -value * (value - 2);
     }
     public static float InOutQuad(float value)
     {
@@ -22,22 +22,22 @@ public static class Ease
 
         if(value < 1)
         {
-            return _end * 0.5f * value * value;
+            return 0.5f * value * value;
         }
 
         value--;
 
-        return -_end * 0.5f * (value * (value - 2) - 1);
+        return -0.5f * (value * (value - 2) - 1);
     }
     public static float InCubic(float value)
     {
-        return _end * value * value * value;
+        return value * value * value;
     }
     public static float OutCubic(float value)
     {
         value--;
 
-        return _end * (value * value * value + 1);
+        return (value * value * value + 1);
     }
     public static float InOutCubic(float value)
     {
@@ -45,22 +45,22 @@ public static class Ease
 
         if(value < 1)
         {
-            return _end * 0.5f * value * value * value;
+            return 0.5f * value * value * value;
         }
 
         value -= 2;
 
-        return _end * 0.5f * (value * value * value + 2);
+        return 0.5f * (value * value * value + 2);
     }
     public static float InQuart(float value)
     {
-        return _end * value * value * value * value;
+        return value * value * value * value;
     }
     public static float OutQuart(float value)
     {
         value--;
 
-        return -_end * (value * value * value * value - 1);
+        return -(value * value * value * value - 1);
     }
     public static float InOutQuart(float value)
     {
@@ -68,22 +68,22 @@ public static class Ease
 
         if(value < 1)
         {
-            return _end * 0.5f * value * value * value * value;
+            return 0.5f * value * value * value * value;
         }
 
         value -= 2;
 
-        return -_end * 0.5f * (value * value * value * value - 2);
+        return -0.5f * (value * value * value * value - 2);
     }
     public static float InQuint(float value)
     {
-        return _end * value * value * value * value * value;
+        return value * value * value * value * value;
     }
     public static float OutQuint(float value)
     {
         value--;
 
-        return _end * (value * value * value * value * value + 1);
+        return (value * value * value * value * value + 1);
     }
     public static float InOutQuint(float value)
     {
@@ -91,32 +91,32 @@ public static class Ease
 
         if(value < 1)
         {
-            return _end * 0.5f * value * value * value * value * value;
+            return 0.5f * value * value * value * value * value;
         }
 
         value -= 2;
 
-        return _end * 0.5f * (value * value * value * value * value + 2);
+        return 0.5f * (value * value * value * value * value + 2);
     }
     public static float InSine(float value)
     {
-        return -_end * Mathf.Cos(value * (Mathf.PI * 0.5f)) + _end;
+        return -Mathf.Cos(value * (Mathf.PI * 0.5f)) + _end;
     }
     public static float OutSine(float value)
     {
-        return _end * Mathf.Sin(value * (Mathf.PI * 0.5f));
+        return Mathf.Sin(value * (Mathf.PI * 0.5f));
     }
     public static float InOutSine(float value)
     {
-        return -_end * 0.5f * (Mathf.Cos(Mathf.PI * value) - 1);
+        return -0.5f * (Mathf.Cos(Mathf.PI * value) - 1);
     }
     public static float InExpo(float value)
     {
-        return _end * Mathf.Pow(2, 10 * (value - 1));
+        return Mathf.Pow(2, 10 * (value - 1));
     }
     public static float OutExpo(float value)
     {
-        return _end * (-Mathf.Pow(2, -10 * value) + 1);
+        return (-Mathf.Pow(2, -10 * value) + 1);
     }
     public static float InOutExpo(float value)
     {
@@ -124,22 +124,22 @@ public static class Ease
 
         if(value < 1)
         {
-            return _end * 0.5f * Mathf.Pow(2, 10 * (value - 1));
+            return 0.5f * Mathf.Pow(2, 10 * (value - 1));
         }
 
         value--;
 
-        return _end * 0.5f * (-Mathf.Pow(2, -10 * value) + 2);
+        return 0.5f * (-Mathf.Pow(2, -10 * value) + 2);
     }
     public static float InCirc(float value)
     {
-        return -_end * (Mathf.Sqrt(1 - value * value) - 1);
+        return -(Mathf.Sqrt(1 - value * value) - 1);
     }
     public static float OutCirc(float value)
     {
         value--;
 
-        return _end * Mathf.Sqrt(1 - value * value);
+        return Mathf.Sqrt(1 - value * value);
     }
     public static float InOutCirc(float value)
     {
@@ -147,12 +147,12 @@ public static class Ease
 
         if(value < 1)
         {
-            return -_end * 0.5f * (Mathf.Sqrt(1 - value * value) - 1);
+            return -0.5f * (Mathf.Sqrt(1 - value * value) - 1);
         }
 
         value -= 2;
 
-        return _end * 0.5f * (Mathf.Sqrt(1 - value * value) + 1);
+        return 0.5f * (Mathf.Sqrt(1 - value * value) + 1);
     }
     public static float InBounce(float value)
     {
@@ -164,25 +164,25 @@ public static class Ease
     {
         if(value < (1 / 2.75f))
         {
-            return _end * (7.5625f * value * value);
+            return (7.5625f * value * value);
         }
         else if(value < (2 / 2.75f))
         {
             value -= (1.5f / 2.75f);
 
-            return _end * (7.5625f * (value) * value + .75f);
+            return (7.5625f * (value) * value + .75f);
         }
         else if(value < (2.5 / 2.75))
         {
             value -= (2.25f / 2.75f);
 
-            return _end * (7.5625f * (value) * value + .9375f);
+            return (7.5625f * (value) * value + .9375f);
         }
         else
         {
             value -= (2.625f / 2.75f);
 
-            return _end * (7.5625f * (value) * value + .984375f);
+            return (7.5625f * (value) * value + .984375f);
         }
     }
     public static float InOutBounce(float value)
@@ -195,7 +195,7 @@ public static class Ease
         }
         else
         {
-            return OutBounce(value * 2 - d) * 0.5f + _end * 0.5f;
+            return OutBounce(value * 2 - d) * 0.5f + 0.5f;
         }
     }
     public static float InBack(float value)
@@ -204,7 +204,7 @@ public static class Ease
 
         value /= 1;
 
-        return _end * (value) * value * ((s + 1) * value - s);
+        return (value) * value * ((s + 1) * value - s);
     }
     public static float OutBack(float value)
     {
@@ -212,7 +212,7 @@ public static class Ease
 
         value = (value) - 1;
 
-        return _end * ((value) * value * ((s + 1) * value + s) + 1);
+        return ((value) * value * ((s + 1) * value + s) + 1);
     }
     public static float InOutBack(float value)
     {
@@ -224,13 +224,13 @@ public static class Ease
         {
             s *= 1.525f;
 
-            return _end * 0.5f * (value * value * (((s) + 1) * value - s));
+            return 0.5f * (value * value * (((s) + 1) * value - s));
         }
 
         value -= 2;
         s *= 1.525f;
 
-        return _end * 0.5f * ((value) * value * (((s) + 1) * value + s) + 2);
+        return 0.5f * ((value) * value * (((s) + 1) * value + s) + 2);
     }
     public static float InElastic(float value)
     {
