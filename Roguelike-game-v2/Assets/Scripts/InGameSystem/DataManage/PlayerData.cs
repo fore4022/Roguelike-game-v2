@@ -80,7 +80,7 @@ public class PlayerData
     }
     private void SetRequiredExperience()
     {
-        info.experienceForLevelUp += ExperienceForLevelUp * MathF.Max(0.75f - 0.145f * (Level - 1), 0.155f);
+        info.experienceForLevelUp += ExperienceForLevelUp * MathF.Max(0.75f - 0.195f * (Level - 1), 0.115f);
     }
     public void SetLevel()
     {

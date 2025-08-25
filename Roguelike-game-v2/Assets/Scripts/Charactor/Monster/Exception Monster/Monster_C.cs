@@ -28,58 +28,55 @@ public class Monster_C : BasicMonster
     private IEnumerator RepeatBehavior()
     {
         yield return new WaitForSeconds(Random.Range(0, dashCooldownMax));
-        
-        if(isVisible)
+
+        float totalTime = 0;
+
+        while(totalTime != dashCastingTime)
         {
-            float totalTime = 0;
+            totalTime += Time.deltaTime;
 
-            while(totalTime != dashCastingTime)
+            if(totalTime > dashCastingTime)
             {
-                totalTime += Time.deltaTime;
-
-                if(totalTime > dashCastingTime)
-                {
-                    totalTime = dashCastingTime;
-                }
-
-                speedMultiplier = Mathf.Lerp(0, speedMultiplierDefault, totalTime / dashCastingTime);
-
-                yield return null;
+                totalTime = dashCastingTime;
             }
 
-            totalTime = 0;
+            speedMultiplier = Mathf.Lerp(0, speedMultiplierDefault, totalTime / dashCastingTime);
 
-            yield return new WaitForSeconds(dashCastingTime / 4);
+            yield return null;
+        }
 
-            while(totalTime != dashDuration)
+        totalTime = 0;
+
+        yield return new WaitForSeconds(dashCastingTime / 4);
+
+        while(totalTime != dashDuration)
+        {
+            totalTime += Time.deltaTime;
+
+            if(totalTime > dashDuration)
             {
-                totalTime += Time.deltaTime;
-
-                if(totalTime > dashDuration)
-                {
-                    totalTime = dashDuration;
-                }
-
-                speedMultiplier = Mathf.Lerp(dashSpeed, 0, totalTime / dashDuration);
-
-                yield return null;
+                totalTime = dashDuration;
             }
 
-            totalTime = 0;
+            speedMultiplier = Mathf.Lerp(dashSpeed, 0, totalTime / dashDuration);
 
-            while(totalTime != dashCastingTime)
+            yield return null;
+        }
+
+        totalTime = 0;
+
+        while(totalTime != dashCastingTime)
+        {
+            totalTime += Time.deltaTime;
+
+            if(totalTime > dashCastingTime)
             {
-                totalTime += Time.deltaTime;
-
-                if(totalTime > dashCastingTime)
-                {
-                    totalTime = dashCastingTime;
-                }
-
-                speedMultiplier = Mathf.Lerp(speedMultiplierDefault, 0, totalTime / dashCastingTime);
-
-                yield return null;
+                totalTime = dashCastingTime;
             }
+
+            speedMultiplier = Mathf.Lerp(speedMultiplierDefault, 0, totalTime / dashCastingTime);
+
+            yield return null;
         }
 
         StartCoroutine(RepeatBehavior());
