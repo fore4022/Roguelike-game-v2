@@ -215,10 +215,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 'New Text
+
+    asdfasdf'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3a2015b9d55fbda4e85f51ef67b9a24d, type: 2}
-  m_sharedMaterial: {fileID: -7670451789832199650, guid: 3a2015b9d55fbda4e85f51ef67b9a24d, type: 2}
+  m_sharedMaterial: {fileID: 6932859180261657902, guid: 3a2015b9d55fbda4e85f51ef67b9a24d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -242,8 +244,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.5
-  m_fontSizeBase: 22.5
+  m_fontSize: 19.5
+  m_fontSizeBase: 19.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -699,7 +701,7 @@ MonoBehaviour:
   m_text: New Text
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3a2015b9d55fbda4e85f51ef67b9a24d, type: 2}
-  m_sharedMaterial: {fileID: -7670451789832199650, guid: 3a2015b9d55fbda4e85f51ef67b9a24d, type: 2}
+  m_sharedMaterial: {fileID: 6932859180261657902, guid: 3a2015b9d55fbda4e85f51ef67b9a24d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
