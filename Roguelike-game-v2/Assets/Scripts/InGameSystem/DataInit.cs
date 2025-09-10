@@ -28,7 +28,7 @@ public class DataInit
             {
                 so = Util.LoadingToPath<SkillInformation_SO>(path);
                 skill = Util.LoadingToPath<GameObject>(so.info.type);
-                
+
                 skillList.Add(skill);
                 Managers.Game.inGameData.skill.SetDictionaryItem(so);
             }
