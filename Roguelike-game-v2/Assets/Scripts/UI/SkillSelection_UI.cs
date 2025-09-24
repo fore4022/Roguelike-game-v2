@@ -125,9 +125,6 @@ public class SkillSelection_UI : UserInterface
 
         int[] indexArray = Calculate.GetRandomValues(infoList.Count, Mathf.Min(Managers.Game.inGameData.OptionCount, infoList.Count));
 
-        indexArray[0] = 4; //
-        indexArray[1] = 6; //
-
         UIElementUtility.SetImageAlpha(background, basicAlpha);
 
         yield return new WaitForEndOfFrame();
