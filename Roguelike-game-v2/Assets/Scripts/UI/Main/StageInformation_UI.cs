@@ -1,10 +1,16 @@
-using TMPro;
-public class StageInformation_UI : UserInterface
+using UnityEngine;
+
+public class StageInformation_UI : MonoBehaviour
 {
-    public TextMeshProUGUI clearCondition;
-
-    public override void SetUserInterface()
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
     {
+        
+    }
 
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }

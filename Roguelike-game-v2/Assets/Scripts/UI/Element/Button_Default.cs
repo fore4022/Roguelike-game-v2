@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
-public abstract class Button_Default : MonoBehaviour
+public abstract class Button_Default : UserInterface
 {
     [SerializeField]
     protected AudioSource audioSource;
@@ -9,7 +9,7 @@ public abstract class Button_Default : MonoBehaviour
     protected RectTransform rectTransform;
     protected Button button;
 
-    protected virtual void Awake()
+    public override void SetUserInterface()
     {
         Init();
     }
