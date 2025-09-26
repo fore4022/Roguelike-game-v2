@@ -1,5 +1,5 @@
 using TMPro;
-public class LevelText_Main_UI : UserInterface
+public class UserLevelText_UI : UserInterface
 {
     private TextMeshProUGUI _levelText;
 

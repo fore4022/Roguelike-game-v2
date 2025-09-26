@@ -86,7 +86,7 @@ public class PlayerData
     {
         Level = 1;
 
-        Managers.UI.Get<LevelText_InGame_UI>().LevelUpdate();
+        Managers.UI.Get<LevelText_UI>().LevelUpdate();
     }
     private IEnumerator WaitLevelCalculation()
     {

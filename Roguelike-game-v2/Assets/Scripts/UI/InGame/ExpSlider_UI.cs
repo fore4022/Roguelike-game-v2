@@ -1,5 +1,5 @@
 using UnityEngine.UI;
-public class ExpSlider_InGame_UI : UserInterface
+public class ExpSlider_UI : UserInterface
 {
     private Slider expSlider;
 

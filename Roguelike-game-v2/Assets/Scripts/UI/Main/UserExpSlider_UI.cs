@@ -1,6 +1,6 @@
 using TMPro;
 using UnityEngine.UI;
-public class ExpSlider_Main_UI : UserInterface
+public class UserExpSlider_UI : UserInterface
 {
     private Slider expSlider;
     private TextMeshProUGUI expText;
