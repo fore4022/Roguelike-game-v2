@@ -3,14 +3,15 @@ using System.Collections;
 using UnityEngine;
 public class InGameTimer : MonoBehaviour
 {
-    public Action<float> minuteUpdate = null;
+    public Action<int> minuteUpdate = null;
+    public Action timerUpdate = null;
 
     private Coroutine inGameTimer;
-    private float seconds = 0;
+    private int seconds = 0;
     private int minutes = 0;
     private int hours = 0;
 
-    public int GetSeconds { get { return (int)seconds; } }
+    public int GetSeconds { get { return seconds; } }
     public int GetMinutes { get { return minutes; } }
     public int GetHours { get { return hours; } }
     public int GetTotalMinutes { get { return GetMinutes + GetHours * 60; } }
@@ -35,23 +36,25 @@ public class InGameTimer : MonoBehaviour
     {
         while(!Managers.Game.GameOver)
         {
-            seconds += Time.deltaTime;
+            seconds++;
 
-            if(seconds >= 60)
+            timerUpdate?.Invoke();
+
+            if(seconds == 60)
             {
-                seconds -= 60;
+                seconds = 0;
                 minutes++;
 
                 minuteUpdate?.Invoke(minutes);
 
-                if(minutes >= 60)
+                if(minutes == 60)
                 {
-                    minutes -= 60;
+                    minutes = 0;
                     hours++;
                 }
             }
 
-            yield return null;
+            yield return new WaitForSeconds(1);
         }
     }
 }

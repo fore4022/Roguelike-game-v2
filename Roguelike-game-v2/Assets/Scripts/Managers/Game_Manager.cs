@@ -90,7 +90,7 @@ public class Game_Manager
         objectPool = null;
         userExp = 0;
     }
-    public void IsStageCleared(float minutes)
+    public void IsStageCleared(int minutes)
     {
         if(minutes >= stageInformation.requiredTime)
         {
