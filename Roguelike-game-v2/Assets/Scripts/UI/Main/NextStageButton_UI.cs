@@ -10,16 +10,16 @@ public class NextStageButton_UI : Button_Default
 
         if(Managers.UserData.data.GetStageState() == StageState.Locked)
         {
-            Managers.UI.Hide<StageInformationButton_UI>();
+            //Managers.UI.Hide<StageInformationButton_UI>();
         }
         else
         {
-            if(!Managers.UI.Get<StageInformationButton_UI>().gameObject.activeSelf)
-            {
-                Managers.UI.Show<StageInformationButton_UI>();
-            }
+            //if(!Managers.UI.Get<StageInformationButton_UI>().gameObject.activeSelf)
+            //{
+            //    Managers.UI.Show<StageInformationButton_UI>();
+            //}
 
-            Managers.UI.Get<StageInformationButton_UI>().InformationUpdate();
+            //Managers.UI.Get<StageInformationButton_UI>().InformationUpdate();
         }
     }
 }
