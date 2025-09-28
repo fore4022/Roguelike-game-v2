@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
-public abstract class Button_Default : MonoBehaviour
+public abstract class Button_Default : MonoBehaviour // UserInterface
 {
     [SerializeField]
     protected AudioSource audioSource;
