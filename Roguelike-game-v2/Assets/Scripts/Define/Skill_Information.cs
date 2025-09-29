@@ -1,6 +1,9 @@
 using UnityEngine;
+/// <summary>
+/// 플레이어 스킬의 정보 타입
+/// </summary>
 [System.Serializable]
-public class SkillInformation
+public class Skill_Information
 {
     [HideInInspector]
     public Sprite icon;
@@ -10,7 +13,7 @@ public class SkillInformation
     public string name;
     public string explanation;
 
-    public SkillInformation(SkillInformation_SO so)
+    public Skill_Information(SkillInformation_SO so)
     {
         icon = Util.LoadingToPath<Sprite>(so.spritePath);
         go = so.info.go;

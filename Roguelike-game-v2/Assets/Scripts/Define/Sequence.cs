@@ -1,5 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
+/// <summary>
+/// 하나의 객체가 가지는 Tween 정보를 관리하는 타입
+/// </summary>
 public class Sequence
 {
     private Queue<List<TweenData>> tweenQueue = new();

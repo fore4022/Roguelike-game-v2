@@ -4,7 +4,7 @@ public class Skill_SO : ScriptableObject
 {
     public const int maxLevel = 5;
 
-    public ProjectileInfo projectile_Info;
+    public Projectile_Information projectile_Info;
     public MultiCast multiCast;
 
     public GameObject go;

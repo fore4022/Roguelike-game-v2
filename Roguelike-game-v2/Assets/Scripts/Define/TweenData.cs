@@ -1,4 +1,10 @@
 using UnityEngine;
+/// <summary>
+/// <para>
+/// Tween에 대한 정보를 담은 타입
+/// </para>
+/// Ease 타입, Ease를 담은 Delegate, Tween의 대상이 되는 transform, 코루틴, 지속시간이 있다.
+/// </summary>
 public class TweenData
 {
     public TweenType type;

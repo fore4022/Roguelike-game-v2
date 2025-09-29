@@ -1,4 +1,7 @@
 using UnityEngine;
+/// <summary>
+/// Tween 구현에 사용되는 Vector와 float를 모두 포함하는 타입
+/// </summary>
 public struct NumericValue
 {
     private Vector3? _vec;

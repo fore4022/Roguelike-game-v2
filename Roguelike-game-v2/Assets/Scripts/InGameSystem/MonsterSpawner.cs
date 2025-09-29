@@ -72,7 +72,7 @@ public class MonsterSpawner : MonoBehaviour
         int totalMinutes = Managers.Game.inGameTimer.GetTotalMinutes;
         int index = 0;
 
-        foreach(SpawnInformation spawnInfo in spawnInformation.monsterInformation)
+        foreach(Spawn_Information spawnInfo in spawnInformation.monsterInformation)
         {
             for(int i = 0; i < spawnInfo.spawnProbability; i++)
             {

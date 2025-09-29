@@ -1,4 +1,7 @@
 using UnityEngine;
+/// <summary>
+/// 플레이어 스탯 비율과 레벨
+/// </summary>
 [System.Serializable]
 public class PlayerStat
 {

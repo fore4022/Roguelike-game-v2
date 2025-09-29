@@ -6,7 +6,7 @@ public class PlayerData
     public Action experienceUpdate = null;
     public Action levelUpdate = null;
 
-    private PlayerInformation info = null;
+    private Player_Information info = null;
 
     private const float baseExperience = 5;
 
@@ -18,7 +18,7 @@ public class PlayerData
     public int IncreaseValue { get { return increaseValue; } }
     public int MaxLevel { get { return maxLevel; } set { maxLevel = value * Skill_SO.maxLevel; } }
     public int LevelUpCount { get { return levelUpCount; } set { levelUpCount = value; } }
-    public PlayerInformation Info
+    public Player_Information Info
     {
         set
         {

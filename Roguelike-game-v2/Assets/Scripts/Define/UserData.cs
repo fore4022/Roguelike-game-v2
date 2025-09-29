@@ -3,9 +3,9 @@ using UnityEngine;
 public class UserData
 {
     [SerializeField]
-    private List<StageClearInfo> stageClearInfos = new();
+    private List<StageClear_Information> stageClearInfos = new();
     [SerializeField]
-    private SettingInformation _setting = new();
+    private Setting_Information _setting = new();
     [SerializeField]
     private PlayerStat _stat = new();
 
@@ -18,7 +18,7 @@ public class UserData
     [SerializeField]
     private int statPoint = 1;
 
-    public List<StageClearInfo> StageClearInfo { get { return stageClearInfos; } set { stageClearInfos = value; } }
+    public List<StageClear_Information> StageClearInfo { get { return stageClearInfos; } set { stageClearInfos = value; } }
     public PlayerStat Stat { get { return _stat; } }
     public string StageName
     {
@@ -49,7 +49,7 @@ public class UserData
     }
     public void Clear(string stageName)
     {
-        StageClearInfo info = stageClearInfos.Find(o => o.name == stageName);
+        StageClear_Information info = stageClearInfos.Find(o => o.name == stageName);
 
         if(info != null)
         {

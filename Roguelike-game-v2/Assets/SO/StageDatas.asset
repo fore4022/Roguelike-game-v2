@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af7ff4c782f3b324c91fa6b6fc689146, type: 3}
-  m_Name: GameData
+  m_Name: StageDatas
   m_EditorClassIdentifier: 
   stageInfoPathList: []
   stages:

@@ -6,7 +6,7 @@ public class SkillInformation_SO : ScriptableObject
     [ReadOnly]
     public string spritePath;
 
-    public SkillInformation info;
+    public Skill_Information info;
 
 #if UNITY_EDITOR
     public Sprite sprite;

@@ -1,5 +1,8 @@
 using System.Collections.Generic;
-public class PlayerInformation
+/// <summary>
+/// 플레이어 정보
+/// </summary>
+public class Player_Information
 {
     public Dictionary<string, int> acquiredSkills = new();
 

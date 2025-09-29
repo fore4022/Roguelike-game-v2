@@ -1,4 +1,10 @@
 using UnityEngine;
+/// <summary>
+/// <para>
+/// 오브젝트 풀로 생성된 오브젝트를 담는 타입
+/// </para>
+/// Transform, Animator, SpriteRenderer, activeSelf, GetComponent, SetActive, GetType을 사용할 수 있다.
+/// </summary>
 public class PoolingObject
 {
     public bool isUsed = false;

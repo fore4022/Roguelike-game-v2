@@ -1,5 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
+/// <summary>
+/// <para>
+/// 모든 스테이지를 담는 타입
+/// </para>
+/// 이어지는 스테이지를 반환한다.
+/// </summary>
 [System.Serializable]
 public class StageDatas
 {
