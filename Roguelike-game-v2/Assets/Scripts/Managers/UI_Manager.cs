@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
-public class UI_Manager //
+public class UI_Manager
 {
     private Dictionary<string, UserInterface> uiDictionary = new();
     

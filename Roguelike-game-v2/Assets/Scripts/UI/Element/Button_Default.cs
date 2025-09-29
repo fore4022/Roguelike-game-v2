@@ -1,7 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
-public abstract class Button_Default : MonoBehaviour // UserInterface
+/// <summary>
+/// <para>
+/// UI 요소의 Button에 대한 구현이다.
+/// </para>
+/// UserInterface가 아닌 하나의 요소인 Button이다.
+/// </summary>
+public abstract class Button_Default : MonoBehaviour
 {
     [SerializeField]
     protected AudioSource audioSource;

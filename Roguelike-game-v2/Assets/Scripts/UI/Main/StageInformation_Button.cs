@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-public class StageInformationButton_UI : Button_Default
+public class StageInformation_Button : Button_Default
 {
     [SerializeField]
     private Color visible;
@@ -36,10 +36,14 @@ public class StageInformationButton_UI : Button_Default
     }
     public void Show_StageInformation()
     {
-        image.color = visible;
+        image.color = invisible;
+
+        Managers.UI.Show<StageInformation_UI>();
     }
     public void Hide_StageInformation()
     {
-        image.color = invisible;
+        image.color = visible;
+
+        Managers.UI.Hide<StageInformation_UI>();
     }
 }

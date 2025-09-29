@@ -1,4 +1,4 @@
-public class SettingButton_UI : Button_A
+public class Setting_Button : Button_A
 {
     protected override void PointerClick()
     {

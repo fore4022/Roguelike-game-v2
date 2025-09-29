@@ -1,4 +1,4 @@
-public class StatUpgradeButton_UI : Button_A
+public class StatUpgrade_Button : Button_A
 {
     protected override void PointerClick()
     {
