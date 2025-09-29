@@ -1,4 +1,7 @@
 using UnityEngine;
+/// <summary>
+/// Tweening에 사용되는 Ease그래프의 식들이 구현되어 있습니다.
+/// </summary>
 public static class Ease
 {
     private const float _start = 0;

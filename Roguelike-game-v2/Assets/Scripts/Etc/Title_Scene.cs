@@ -16,7 +16,7 @@ public class Title_Scene : MonoBehaviour
 
     private void Start()
     {
-        Managers.Main.GameData.SO = Util.LoadingToPath<GameData_SO>(_gameDataPath, false);
+        Managers.Main.GameData.SO = Util.LoadingToPath<StageDatas_SO>(_gameDataPath, false);
         Managers.Audio.Mixer = audioMixer;
 
         Managers.Scene.loadComplete += Managers.Audio.InitializedAudio;

@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// 자신의 주변에 몬스터를 생성한다.
 /// </summary>
-public class Monster_I : Monster_WithObject
+public class Monster_I : BasicMonster_WithObject
 {
     [SerializeField]
     private List<Vector3> skillOffset;

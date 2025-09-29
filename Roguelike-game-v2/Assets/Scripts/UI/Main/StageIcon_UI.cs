@@ -4,8 +4,6 @@ using UnityEngine.UI;
 public class StageIcon_UI : UserInterface
 {
     [SerializeField]
-    private StageInformation_Button stageInformationButton;
-    [SerializeField]
     private TextMeshProUGUI themaName;
     [SerializeField]
     private Image ground;

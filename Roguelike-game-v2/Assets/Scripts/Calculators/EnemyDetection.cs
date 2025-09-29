@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+/// <summary>
+/// 플레이어의 스킬이 향할 대상을 구하는 식들이 구현되어 있습니다.
+/// </summary>
 public static class EnemyDetection
 {
     public static float largeastRange = 2.5f;

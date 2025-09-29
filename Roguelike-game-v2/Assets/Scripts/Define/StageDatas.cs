@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 [System.Serializable]
-public class GameData
+public class StageDatas
 {
     private List<Stage_SO> stages;
-    private GameData_SO so;
+    private StageDatas_SO so;
 
-    public GameData_SO SO
+    public StageDatas_SO SO
     {
         set
         {

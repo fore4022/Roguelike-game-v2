@@ -1,5 +1,8 @@
 using System.Collections;
 using UnityEngine;
+/// <summary>
+/// 의존성 주입에 사용되는 IMoveable의 구현입니다.
+/// </summary>
 public class DefaultMoveable : IMoveable, IDefaultImplementable
 {
     private MonoBehaviour mono;

@@ -1,5 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
+/// <summary>
+/// 여러 기능들을 구현하는데 사용할 수 있는 연산에 관한 부분을 모아서 구현하였습니다.
+/// </summary>
 public static class Calculate
 {
     public static float width = Util.CameraWidth / 2 - offset;
@@ -7,10 +10,6 @@ public static class Calculate
 
     private static float offset = 0.5f;
 
-    public static Vector3 GetAttackPosition(Vector3 direction, float attackRange)
-    {
-        return direction * attackRange + Managers.Game.player.transform.position;
-    }
     public static Vector3 GetDirection(Vector3 targetPosition)
     {
         return (targetPosition - Managers.Game.player.gameObject.transform.position).normalized;

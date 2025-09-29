@@ -1,3 +1,6 @@
+/// <summary>
+/// Tween 효과를 구현할 때, 식 이름을 통해서 구현 가능하게 하는 Enum입니다.
+/// </summary>
 public enum EaseType
 {
     Linear,

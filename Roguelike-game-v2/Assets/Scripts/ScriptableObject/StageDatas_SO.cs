@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-[CreateAssetMenu(fileName = "GameData", menuName = "Create New SO/Game Stage/Create New GameData_SO")]
-public class GameData_SO : ScriptableObject
+[CreateAssetMenu(fileName = "StageDatas", menuName = "Create New SO/Game Stage/Create New StageDatas_SO")]
+public class StageDatas_SO : ScriptableObject
 {
     [HideInInspector]
     public List<string> stageInfoPathList;
