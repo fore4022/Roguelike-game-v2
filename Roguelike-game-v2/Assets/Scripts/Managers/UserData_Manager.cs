@@ -13,7 +13,7 @@ public class UserData_Manager
     public UserLevelInfo_SO UserLevelInfo { get { return userLevelInfo; } }
     public async void Load()
     {
-        userLevelInfo = Util.LoadingToPath<UserLevelInfo_SO>(userLevelInfoPath);
+        userLevelInfo = await Util.LoadingToPath<UserLevelInfo_SO>(userLevelInfoPath);
 
         if(filePath == string.Empty)
         {

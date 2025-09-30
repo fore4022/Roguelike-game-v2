@@ -17,13 +17,9 @@ public class Title_Scene : MonoBehaviour
 
     public const string _gameDataPath = "StageDatas";
 
-    private void Awake()
+    private async void Start()
     {
-        Debug.Log("abc");
-    }
-    private void Start()
-    {
-        Managers.Main.GameData.SO = Util.LoadingToPath<StageDatas_SO>(_gameDataPath, false);
+        Managers.Main.GameData.SO = await Util.LoadingToPath<StageDatas_SO>(_gameDataPath, false);
         Managers.Audio.Mixer = audioMixer;
 
         Managers.Scene.loadComplete += Managers.Audio.InitializedAudio;
@@ -40,8 +36,6 @@ public class Title_Scene : MonoBehaviour
     }
     private IEnumerator UserDataLoading()
     {
-        Managers.UI.Get<StartMessage_UI>().SetState();
-
         yield return new WaitUntil(() => Managers.UserData.data != null);
 
         Managers.Audio.Init();

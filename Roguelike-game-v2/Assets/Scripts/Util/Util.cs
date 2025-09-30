@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -21,10 +22,13 @@ public static class Util
     {
         Addressables.LoadSceneAsync(path, UnityEngine.SceneManagement.LoadSceneMode.Single).WaitForCompletion();
     }
-    public static T LoadingToPath<T>(string path, bool releasable = true) where T : Object
+    public static async Task<T> LoadingToPath<T>(string path, bool releasable = true) where T : Object
     {
         AsyncOperationHandle<T> handle = Addressables.LoadAssetAsync<T>(path);
-        T result = handle.WaitForCompletion();
+
+        await handle.Task;
+
+        T result = handle.Result;
 
         if(releasable)
         {

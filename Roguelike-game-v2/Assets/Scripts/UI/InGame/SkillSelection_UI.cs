@@ -18,9 +18,10 @@ public class SkillSelection_UI : UserInterface
 
     public int RequireOptionCount { get { return Managers.Game.inGameData.OptionCount - skillOptionList.Count; } }
     public bool IsSelect { get { return isSelect; } set { isSelect = value; } }
-    public override void SetUserInterface()
+    public override async void SetUserInterface()
     {
         background = GetComponent<Image>();
+        attackOption = await Util.LoadingToPath<GameObject>(path);
 
         Managers.Game.inGameData.player.levelUpdate += () => Managers.UI.Show<LevelUp_UI>();
 
@@ -83,10 +84,6 @@ public class SkillSelection_UI : UserInterface
 
         InputActions.EnableInputAction<TouchControls>();
     }
-    private void LoadAttackOption()
-    {
-        attackOption = Util.LoadingToPath<GameObject>(path);
-    }
     private void CreateOptionUI()
     {
         Transform trans = transform.GetChild(0);
@@ -105,8 +102,6 @@ public class SkillSelection_UI : UserInterface
     }
     private IEnumerator Init()
     {
-        LoadAttackOption();
-
         background.enabled = false;
 
         yield return new WaitUntil(() => Managers.Game.inGameData != null);

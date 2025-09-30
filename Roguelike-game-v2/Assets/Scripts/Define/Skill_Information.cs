@@ -15,7 +15,7 @@ public class Skill_Information
 
     public Skill_Information(SkillInformation_SO so)
     {
-        icon = Util.LoadingToPath<Sprite>(so.spritePath);
+        icon = so.sprite;
         go = so.info.go;
         name = so.info.name;
         explanation = so.info.explanation;

@@ -3,7 +3,7 @@ using UnityEngine;
 /// <para>
 /// 오브젝트 풀로 생성된 오브젝트를 담는 타입
 /// </para>
-/// Transform, Animator, SpriteRenderer, activeSelf, GetComponent, SetActive, GetType을 사용할 수 있다.
+/// Transform, Animator, SpriteRenderer, activeSelf, GetComponent, SetActive, GetType, StopAllCoroutines를 사용할 수 있다.
 /// </summary>
 public class PoolingObject
 {
@@ -21,7 +21,7 @@ public class PoolingObject
     {
         get 
         {
-            if(ReferenceEquals(go, null) || Managers.Game.GameOver)
+            if(go == null || Managers.Game.GameOver)
             {
                 return false;
             }
@@ -37,9 +37,18 @@ public class PoolingObject
     }
     public void SetActive(bool active)
     {
+        if(go == null || Managers.Game.GameOver)
+        {
+            return;
+        }
+
         isUsed = active;
 
         go.SetActive(active);
+    }
+    public void StopAllCoroutines()
+    {
+        go.GetComponent<MonoBehaviour>().StopAllCoroutines();
     }
     private T GetType<T>(ref T variable)
     {

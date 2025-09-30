@@ -74,9 +74,10 @@ public class Game_Manager
         Managers.UI.Hide<LevelUp_UI>();
         Managers.UI.Show<GameOver_UI>();
     }
-    public void Clear()
+    public void GoMain()
     {
         skillCasterManage.StopAllCaster();
+        objectPool.StopAllActions();
 
         skillCasterManage = null;
         inGameData = null;
@@ -86,6 +87,8 @@ public class Game_Manager
         monsterSpawner = null;
         objectPool = null;
         userExp = 0;
+
+        Managers.Scene.LoadScene(SceneName.Main, false);
     }
     public void IsStageCleared(int minutes)
     {

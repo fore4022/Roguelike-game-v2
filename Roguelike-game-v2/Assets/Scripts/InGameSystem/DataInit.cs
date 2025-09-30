@@ -1,23 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 /// <summary>
 /// 게임 정보 불러오기 및 시스템 초기화
 /// </summary>
 public class DataInit
 {
+    private List<GameObject> skillList = new();
+
     private const string userLevelPath = "_Level";
     private const int defaultMonsterCount = 325;
     private const int defaultSkillCount = 40;
 
-    public void GetMonsterList(ref List<GameObject> monsterList)
-    {
-        foreach(GameObject go in Managers.Game.stageInformation.spawnMonsterList.monsters)
-        {
-            monsterList.Add(go);
-        }
-    }
-    public void LoadSkillList(ref List<GameObject> skillList)
+    private async Task LoadSkillList()
     {
         UserLevel_SO userLevel;
         SkillInformation_SO so;
@@ -25,17 +21,21 @@ public class DataInit
 
         for(int i = 1; i <= Managers.UserData.data.Level; i++)
         {
-            userLevel = Util.LoadingToPath<UserLevel_SO>($"{i}{userLevelPath}");
+            userLevel = await Util.LoadingToPath<UserLevel_SO>($"{i}{userLevelPath}");
 
             foreach(string path in userLevel.pathList)
             {
-                so = Util.LoadingToPath<SkillInformation_SO>(path);
-                skill = Util.LoadingToPath<GameObject>(so.info.type);
+                so = await Util.LoadingToPath<SkillInformation_SO>(path);
+                skill = await Util.LoadingToPath<GameObject>(so.info.type);
 
                 skillList.Add(skill);
                 Managers.Game.inGameData.skill.SetDictionaryItem(so);
             }
         }
+    }
+    private async Task CreateStage()
+    {
+        Object.Instantiate(await Util.LoadingToPath<GameObject>(Managers.Main.GetCurrentStage().stagePath));
     }
     public IEnumerator Initializing()
     {
@@ -54,8 +54,7 @@ public class DataInit
     }
     private IEnumerator DataLoading()
     {
-        List<GameObject> monsterList = new();
-        List<GameObject> skillList = new();
+        List<GameObject> monsterList;
 
         GameObject gameSystem = GameObject.Find("GameSystem");
 
@@ -79,11 +78,12 @@ public class DataInit
 
         Managers.Game._bgm.clip = Managers.Game.stageInformation.bgm;
         Time.timeScale = 0;
+        monsterList = Managers.Game.stageInformation.spawnMonsterList.monsters;
 
-        GetMonsterList(ref monsterList);
-        LoadSkillList(ref skillList);
+        Task createStage = CreateStage();
+        Task loadSkill =  LoadSkillList();
 
-        yield return new WaitUntil(() => (skillList != null) && (monsterList != null));
+        yield return new WaitUntil(() => createStage.IsCompleted && loadSkill.IsCompleted);
 
         Managers.Game.monsterSpawner.monsterList = monsterList;
         Managers.Game.inGameData.player.MaxLevel = skillList.Count;
@@ -102,8 +102,6 @@ public class DataInit
         yield return new WaitUntil(() => typeCount <= Managers.Game.objectPool.ScriptableObjectsCount);
 
         yield return new WaitUntil(() => Managers.Game.player != null);
-
-        Object.Instantiate(Util.LoadingToPath<GameObject>(Managers.Main.GetCurrentStage().stagePath));
 
         Managers.UI.Get<SceneLoading_UI>().Wait = false;
 

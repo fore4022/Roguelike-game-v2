@@ -39,14 +39,6 @@ public class SkillOption_UI : Button_B
     {
         Vector2 size;
 
-        Debug.Log(image);
-        Debug.Log(image.sprite);
-        Debug.Log(info);
-        Debug.Log(info.data);
-        Debug.Log(info.data.icon);
-
-        Debug.Log("---");
-
         image.sprite = info.data.icon;
         size = image.sprite.bounds.size;
 

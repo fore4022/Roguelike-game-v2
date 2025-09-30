@@ -101,6 +101,20 @@ public class ObjectPool
             Util.GetMonoBehaviour().StartCoroutine(CreatingInstance(prefab, count, type));
         }
     }
+    public void StopAllActions()
+    {
+        foreach(List<PoolingObject> objs in poolingObjects.Values)
+        {
+            foreach(PoolingObject obj in objs)
+            {
+                if(obj.activeSelf)
+                {
+                    obj.StopAllCoroutines();
+                }
+            }
+        }
+        Debug.Log("aaa");
+    }
     private void Create_Additional(GameObject prefab, string originalKey, int count)
     {
         if(prefab != null)
@@ -116,7 +130,7 @@ public class ObjectPool
             array[instanceCount + i].SetActive(false);
         }
     }
-    private void CreateScriptableObject(ScriptableObjectType type, string key)
+    private async void CreateScriptableObject(ScriptableObjectType type, string key)
     {
         if(!scriptableObjects.ContainsKey(key))
         {
@@ -125,7 +139,7 @@ public class ObjectPool
             switch(type)
             {
                 case ScriptableObjectType.Monster:
-                    so = Util.LoadingToPath<ScriptableObject>($"Assets/SO/Monster/{Managers.UserData.data.StageName}/{key}.asset");
+                    so = await Util.LoadingToPath<ScriptableObject>($"Assets/SO/Monster/{Managers.UserData.data.StageName}/{key}.asset");
 
                     if(so is MonsterStat_WithObject_SO exceptionMonsterStatSO)
                     {
@@ -142,10 +156,10 @@ public class ObjectPool
                     }
                     break;
                 case ScriptableObjectType.Skill:
-                    so = Util.LoadingToPath<ScriptableObject>($"Assets/SO/Skill/{key}.asset");
+                    so = await Util.LoadingToPath<ScriptableObject>($"Assets/SO/Skill/{key}.asset");
                     break;
             }
-            
+
             scriptableObjects.Add(key, so);
         }
     }

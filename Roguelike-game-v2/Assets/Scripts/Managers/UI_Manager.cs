@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -46,7 +47,7 @@ public class UI_Manager
         }
         else
         {
-            Creating(name, true);
+            Util.GetMonoBehaviour().StartCoroutine(Creating(name, true));
         }
     }
     public void Hide<T>() where T : UserInterface
@@ -119,20 +120,22 @@ public class UI_Manager
     {
         return typeof(T).ToString().Replace("_UI", "");
     }
-    private void Load(string uiName)
+    private async void Load(string uiName)
     {
-        GameObject go = Util.LoadingToPath<GameObject>(uiName);
+        GameObject go = await Util.LoadingToPath<GameObject>(uiName);
 
         if(!uiDictionary.ContainsKey(uiName))
         {
             uiDictionary.Add(uiName, go.GetComponent<UserInterface>());
         }
     }
-    private void Creating(string uiName, bool isActive)
+    private IEnumerator Creating(string uiName, bool isActive)
     {
         UserInterface ui;
         
         Load(uiName);
+
+        yield return new WaitUntil(() => uiDictionary.ContainsKey(uiName));
 
         ui = uiDictionary[uiName];
 

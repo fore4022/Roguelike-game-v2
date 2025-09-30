@@ -1,37 +1,7 @@
-using UnityEditor;
 using UnityEngine;
 [CreateAssetMenu(fileName = "SkillInformation", menuName = "Create New SO/Skill/Create New SkillInformation_SO")]
 public class SkillInformation_SO : ScriptableObject
 {
-    [ReadOnly]
-    public string spritePath;
-
     public Skill_Information info;
-
-#if UNITY_EDITOR
     public Sprite sprite;
-
-    public void OnValidate()
-    {
-        ValidateUntilReady();
-    }
-    private void ValidateUntilReady()
-    {
-        EditorApplication.delayCall += () =>
-        {
-            if(sprite == null)
-            {
-                ValidateUntilReady();
-            }
-            else
-            {
-                Validate();
-            }
-        };
-    }
-    public void Validate()
-    {
-        spritePath = $"Assets/Sprites/Icon/Skills/{sprite.name}.png";
-    }
-#endif
 }
