@@ -43,7 +43,7 @@ public class StatElementUpgrade_UI : UserInterface
         {
             dec.SetActive(true);
         }
-        else if(value == StatSelection.maxLevel && sign == -1)
+        else if(value == Stat_Manage.maxLevel && sign == -1)
         {
             inc.SetActive(true);
         }
@@ -64,7 +64,7 @@ public class StatElementUpgrade_UI : UserInterface
         {
             dec.SetActive(false);
         }
-        else if(value == StatSelection.maxLevel)
+        else if(value == Stat_Manage.maxLevel)
         {
             inc.SetActive(false);
         }
@@ -85,7 +85,7 @@ public class StatElementUpgrade_UI : UserInterface
     }
     private bool CanUseStatPoints(int sign)
     {
-        if((value == 0 && sign == -1) || (value == StatSelection.maxLevel && sign == 1))
+        if((value == 0 && sign == -1) || (value == Stat_Manage.maxLevel && sign == 1))
         {
             Managers.UI.ShowAndGet<ToastMessage_UI>().SetText(log2);
 

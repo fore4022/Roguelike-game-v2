@@ -32,7 +32,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     public float DamageAmount { get { return stat.damage * damageMultiplier * Managers.Game.difficultyScaler.IncreaseStat * Time.deltaTime; } }
     protected override void Awake()
     {
-        moveable = Managers.Game.container.Get<DefaultMoveable>(transform);
+        moveable = new DefaultMoveable();
 
         base.Awake();
     }

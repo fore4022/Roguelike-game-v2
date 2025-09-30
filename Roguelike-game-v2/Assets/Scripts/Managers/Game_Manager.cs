@@ -4,10 +4,9 @@ using UnityEngine;
 public class Game_Manager
 {
     public SkillCasterManage skillCasterManage;
-    public InGameDataManage inGameData;
+    public InGameData_Manage inGameData;
     public DifficultyScaler difficultyScaler;
-    public DI_Container container;
-    public GameEndEffect endEffect;
+    public GameOverEffect endEffect;
     public StageInformation_SO stageInformation;
     public InGameTimer inGameTimer;
     public MonsterSpawner monsterSpawner;
@@ -30,7 +29,6 @@ public class Game_Manager
         skillCasterManage = new();
         inGameData = new();
         difficultyScaler = new();
-        container = new();
     }
     public void DataLoad()
     {
@@ -83,7 +81,6 @@ public class Game_Manager
         skillCasterManage = null;
         inGameData = null;
         difficultyScaler = null;
-        container = null;
         stageInformation = null;
         inGameTimer = null;
         monsterSpawner = null;

@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+/// <summary>
+/// <para>
+/// 오브젝트 풀
+/// </para>
+/// 프리팹의 인스턴스에 대한 생성과 제어
+/// </summary>
 public class ObjectPool
 {
     private Dictionary<string, ScriptableObject> scriptableObjects = new();

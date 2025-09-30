@@ -1,6 +1,9 @@
 using System.Collections;
 using UnityEngine;
-public class GameEndEffect : MonoBehaviour
+/// <summary>
+/// GameOver ø¨√‚
+/// </summary>
+public class GameOverEffect : MonoBehaviour
 {
     private const float duration = 0.4f;
 
@@ -16,7 +19,7 @@ public class GameEndEffect : MonoBehaviour
     {
         delay = new(duration);
     }
-    public void GameOverEffect()
+    public void EffectPlay()
     {
         InputActions.DisableInputAction<TouchControls>();
         Managers.UI.Hide<HpSlider_UI>();

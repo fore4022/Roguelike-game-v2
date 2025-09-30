@@ -1,4 +1,7 @@
 using UnityEngine;
+/// <summary>
+/// 인게임 무한 맵
+/// </summary>
 [RequireComponent(typeof(BoxCollider2D))]
 public class Background_InGame : MonoBehaviour
 {

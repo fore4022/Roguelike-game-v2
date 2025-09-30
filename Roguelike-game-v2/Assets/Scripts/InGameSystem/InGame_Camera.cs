@@ -1,5 +1,11 @@
 using System.Collections;
 using UnityEngine;
+/// <summary>
+/// <para>
+/// InGame Camera 구현
+/// </para>
+/// 플레이어를 따라서 이동, GameOver 카메라 연출
+/// </summary>
 public class InGame_Camera : MonoBehaviour
 {
     private GameObject player = null;

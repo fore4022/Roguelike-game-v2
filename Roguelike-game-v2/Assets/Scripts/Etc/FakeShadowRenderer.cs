@@ -1,6 +1,12 @@
 using System.Collections;
 using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
+/// <summary>
+/// <para>
+/// 그림자 렌더러
+/// </para>
+/// IFakeShadowSource를 가진 대상의 자식에 위치해서, 가진 대상의 그림자를 그린다.
+/// </summary>
 public class FakeShadowRenderer : MonoBehaviour
 {
     private const float alphaMin = 155;
@@ -63,7 +69,10 @@ public class FakeShadowRenderer : MonoBehaviour
     {
         while(true)
         {
-            sprite = render.sprite = source.SpriteRender.sprite;
+            if(render.sprite != source.SpriteRender.sprite)
+            {
+                sprite = render.sprite = source.SpriteRender.sprite;
+            }
 
             Factor();
             AdjustmentPosition();

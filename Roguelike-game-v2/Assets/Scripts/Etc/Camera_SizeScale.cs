@@ -1,4 +1,7 @@
 using UnityEngine;
+/// <summary>
+/// 현재 씬에 맞춰서 카메라의 orthographic size scale을 조정한다.
+/// </summary>
 public class Camera_SizeScale : MonoBehaviour
 {
     public static readonly float deviceScale = (float)Screen.width / Screen.height;

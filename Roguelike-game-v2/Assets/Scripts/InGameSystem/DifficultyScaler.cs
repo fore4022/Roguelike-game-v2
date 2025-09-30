@@ -1,4 +1,7 @@
 using UnityEngine;
+/// <summary>
+/// 시간에 따른 난이도를 조절하는 시스템
+/// </summary>
 public class DifficultyScaler
 {
     private const float increaseRate = 0.085f;

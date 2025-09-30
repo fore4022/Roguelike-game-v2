@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+/// <summary>
+/// 몬스터를 주기적으로 생성한다.
+/// </summary>
 public class MonsterSpawner : MonoBehaviour
 {
     [HideInInspector]

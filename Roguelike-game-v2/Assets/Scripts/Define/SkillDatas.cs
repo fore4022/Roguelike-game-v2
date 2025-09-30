@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
-public class SkillData
+/// <summary>
+/// 스킬의 정보를 관리하는 역할을 가진다.
+/// </summary>
+public class SkillDatas
 {
     private Dictionary<string, SkillContext> infos = new();
 

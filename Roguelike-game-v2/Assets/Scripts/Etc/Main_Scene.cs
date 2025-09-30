@@ -1,5 +1,8 @@
 using System.Collections;
 using UnityEngine;
+/// <summary>
+/// 메인 Scene 초기화
+/// </summary>
 public class Main_Scene : MonoBehaviour
 {
     private void Awake()

@@ -1,6 +1,9 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
+/// <summary>
+/// 유저 정보 불러오기 및, 소리 설정 적용
+/// </summary>
 public class Title_Scene : MonoBehaviour
 {
     [SerializeField]
@@ -12,8 +15,12 @@ public class Title_Scene : MonoBehaviour
     [SerializeField]
     private AudioSource audioSource;
 
-    public const string _gameDataPath = "GameData";
+    public const string _gameDataPath = "StageDatas";
 
+    private void Awake()
+    {
+        Debug.Log("abc");
+    }
     private void Start()
     {
         Managers.Main.GameData.SO = Util.LoadingToPath<StageDatas_SO>(_gameDataPath, false);

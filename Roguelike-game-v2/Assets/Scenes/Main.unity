@@ -37047,7 +37047,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5afce326b4ba74f9a916cb7bc35d0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageInformationButton: {fileID: 0}
   themaName: {fileID: 1864489721}
   ground: {fileID: 1961826939}
   cover: {fileID: 280520628}

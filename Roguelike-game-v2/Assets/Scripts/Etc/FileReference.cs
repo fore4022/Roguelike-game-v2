@@ -1,6 +1,9 @@
 using System;
 using System.Reflection;
 using UnityEngine;
+/// <summary>
+/// 컴포넌트에서 클래스 인스턴스의 필드 값 수정할 수 있게 해주는 타입이다.
+/// </summary>
 [Serializable]
 public class FileReference
 {

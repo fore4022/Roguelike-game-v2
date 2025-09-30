@@ -115,7 +115,7 @@ public class SkillSelection_UI : UserInterface
 
         CreateOptionUI();
 
-        Managers.Game.inGameData.optionCountUpdate += CreateOptionUI;
+        Managers.Game.inGameData.skillOptionCount_Update += CreateOptionUI;
 
         gameObject.SetActive(false);
     }

@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+/// <summary>
+/// 게임 정보 불러오기 및 시스템 초기화
+/// </summary>
 public class DataInit
 {
     private const string userLevelPath = "_Level";
@@ -63,7 +66,7 @@ public class DataInit
             Managers.Game._bgm = gameSystem.AddComponent<AudioSource>();
             Managers.Game.monsterSpawner = gameSystem.AddComponent<MonsterSpawner>();
             Managers.Game.inGameTimer = gameSystem.AddComponent<InGameTimer>();
-            Managers.Game.endEffect = gameSystem.AddComponent<GameEndEffect>();
+            Managers.Game.endEffect = gameSystem.AddComponent<GameOverEffect>();
 
             Managers.Game._bgm.playOnAwake = true;
 

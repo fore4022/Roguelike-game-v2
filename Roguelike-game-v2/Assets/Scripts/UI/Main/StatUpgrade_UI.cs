@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-[RequireComponent(typeof(StatSelection))]
+[RequireComponent(typeof(Stat_Manage))]
 public class StatUpgrade_UI : UserInterface
 {
     [SerializeField]
@@ -17,7 +17,7 @@ public class StatUpgrade_UI : UserInterface
     public TextMeshProUGUI statPointText;
     public GameObject background;
 
-    private StatSelection statSelection;
+    private Stat_Manage statSelection;
 
     private const float duration = 0.2f;
 
@@ -28,7 +28,7 @@ public class StatUpgrade_UI : UserInterface
     public AudioClip ActionUnavailableSound { get { return actionUnavailableSound; } }
     public override void SetUserInterface()
     {
-        statSelection = GetComponent<StatSelection>();
+        statSelection = GetComponent<Stat_Manage>();
         statPointText = Util.GetComponentInChildren<TextMeshProUGUI>(transform);
 
         statSelection.Set(Managers.UserData.data.Stat);

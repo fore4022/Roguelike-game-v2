@@ -1,10 +1,13 @@
 using System;
 using UnityEngine;
-public class InGameDataManage
+/// <summary>
+/// skill option 개수 업데이트 action와 Player, Skill 정보 및 초기화
+/// </summary>
+public class InGameData_Manage
 {
-    public Action optionCountUpdate = null;
+    public Action skillOptionCount_Update = null;
     public PlayerData player = new();
-    public SkillData skill = new();
+    public SkillDatas skill = new();
     public DataInit init = new();
 
     private const int maxOptionCount = 5;
@@ -18,9 +21,9 @@ public class InGameDataManage
         {
             optionCount = value;
 
-            if(optionCountUpdate != null)
+            if(skillOptionCount_Update != null)
             {
-                optionCountUpdate.Invoke();
+                skillOptionCount_Update.Invoke();
             }
         }
     }

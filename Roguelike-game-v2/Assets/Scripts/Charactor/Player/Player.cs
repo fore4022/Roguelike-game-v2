@@ -47,7 +47,7 @@ public class Player : MonoBehaviour, IDamageReceiver
     {
         animator = GetComponent<Animator>();
         render = GetComponent<SpriteRenderer>();
-        move = new(render, Managers.Game.container.Get<DefaultMoveable>(transform));
+        move = new(render, new DefaultMoveable());
     }
     private void Start()
     {
@@ -92,7 +92,7 @@ public class Player : MonoBehaviour, IDamageReceiver
     {
         render.sortingLayerID = SortingLayer.NameToID("AboveEffect");
 
-        Managers.Game.endEffect.GameOverEffect();
+        Managers.Game.endEffect.EffectPlay();
         animator.Play("death");
         transform.SetRotation(new(0, 0, 0))
             .SetScale(10, duration)
