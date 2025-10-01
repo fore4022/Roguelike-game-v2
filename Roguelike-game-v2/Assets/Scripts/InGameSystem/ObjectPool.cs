@@ -113,7 +113,6 @@ public class ObjectPool
                 }
             }
         }
-        Debug.Log("aaa");
     }
     private void Create_Additional(GameObject prefab, string originalKey, int count)
     {

@@ -1,5 +1,5 @@
 # ninja log v5
-7	500	7808138838948283	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	482d84a04f5b4825
-501	1196	7808138845812508	C:/Users/user/Desktop/Roguelike-game-v2/Roguelike-game-v2/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/4r4l82f6/obj/arm64-v8a/libswappywrapper.so	30f1ad5cb1647b1d
-7	554	7808496950341678	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	482d84a04f5b4825
-556	1190	7808496956702943	C:/Users/user/Desktop/Roguelike-game-v2/Roguelike-game-v2/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/4r4l82f6/obj/arm64-v8a/libswappywrapper.so	30f1ad5cb1647b1d
+3	583	7809789891436868	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	482d84a04f5b4825
+584	1289	7809789898503790	C:/Users/user/Desktop/Roguelike-game-v2/Roguelike-game-v2/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/4r4l82f6/obj/arm64-v8a/libswappywrapper.so	30f1ad5cb1647b1d
+7	406	7809806858722333	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	482d84a04f5b4825
+408	1015	7809806864788220	C:/Users/user/Desktop/Roguelike-game-v2/Roguelike-game-v2/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/4r4l82f6/obj/arm64-v8a/libswappywrapper.so	30f1ad5cb1647b1d

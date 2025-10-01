@@ -94,6 +94,7 @@ public class Player : MonoBehaviour, IDamageReceiver
 
         Managers.Game.endEffect.EffectPlay();
         animator.Play("death");
+        render.flipX = false;
         transform.SetRotation(new(0, 0, 0))
             .SetScale(10, duration)
             .SetPosition(transform.position + new Vector3(0, 0.5f), duration)
