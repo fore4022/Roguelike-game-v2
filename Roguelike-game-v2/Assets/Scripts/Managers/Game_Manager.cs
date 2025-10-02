@@ -3,13 +3,14 @@ using System.Collections;
 using UnityEngine;
 public class Game_Manager
 {
-    public SkillCasterManage skillCasterManage;
+    public SkillCaster_Manage skillCasterManage;
     public InGameData_Manage inGameData;
     public DifficultyScaler difficultyScaler;
     public GameOverEffect endEffect;
     public StageInformation_SO stageInformation;
     public InGameTimer inGameTimer;
     public MonsterSpawner monsterSpawner;
+    public DamageText_Manage damageText_Creator;
     public ObjectPool objectPool;
     public Player player;
     public AudioSource _bgm;

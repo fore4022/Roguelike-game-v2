@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-public class SkillCasterManage
+public class SkillCaster_Manage
 {
     private Dictionary<string, SkillCaster> Casters = new();
 

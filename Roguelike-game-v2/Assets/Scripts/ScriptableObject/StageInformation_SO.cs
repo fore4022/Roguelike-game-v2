@@ -13,6 +13,8 @@ public class StageInformation_SO : ScriptableObject
     public float spawnDelay;
     [Tooltip("Minute")]
     public int requiredTime;
+    [Tooltip("Damage Text")]
+    public Color damageTextColor = new(255, 255, 255, 255);
     [Tooltip("Skill Range VisualizerColor")]
     public bool isDefaultColor = true;
 

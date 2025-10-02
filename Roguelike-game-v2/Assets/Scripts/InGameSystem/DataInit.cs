@@ -90,6 +90,7 @@ public class DataInit
 
         Managers.Game.objectPool.Create(monsterList, ScriptableObjectType.Monster,defaultMonsterCount);
         Managers.Game.objectPool.Create(skillList, ScriptableObjectType.Skill, defaultSkillCount);
+        Managers.Game.objectPool.Create(Managers.Game.damageText_Creator.damageText, ScriptableObjectType.None);
 
         int typeCount = monsterList.Count + skillList.Count;
 
@@ -97,7 +98,7 @@ public class DataInit
 
         yield return new WaitUntil(() => Managers.Game.inGameData.player.levelUpdate != null);
 
-        yield return new WaitUntil(() => typeCount <= Managers.Game.objectPool.PoolingObjectsCount);
+        yield return new WaitUntil(() => typeCount + 1 <= Managers.Game.objectPool.PoolingObjectsCount);
 
         yield return new WaitUntil(() => typeCount <= Managers.Game.objectPool.ScriptableObjectsCount);
 

@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags:
   - Monster
   - View
@@ -67,3 +67,8 @@ TagManager:
   - name: AboveEffect
     uniqueID: 693152455
     locked: 0
+  - name: Canvas - World Space
+    uniqueID: 318867855
+    locked: 0
+  m_RenderingLayers:
+  - Default

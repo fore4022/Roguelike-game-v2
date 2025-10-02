@@ -15,7 +15,7 @@ public class ObjectPool
 
     private Transform root;
 
-    private const int maxWorkPerSec = 120;
+    private const int maxWorkPerSec = 180;
     private const int defaultObjectCount = 500;
 
     private int coroutineCount = 0;
@@ -27,9 +27,9 @@ public class ObjectPool
         if(go == null)
         {
             go = new GameObject { name = "@ObjectPool" };
-
-            root = go.transform;
         }
+
+        root = go.transform;
     }
     public int ScriptableObjectsCount { get { return scriptableObjects.Count; } }
     public int PoolingObjectsCount { get { return poolingObjects.Count; } }
@@ -94,7 +94,11 @@ public class ObjectPool
             }
         }
     }
-    public void Create(List<GameObject> prefabs, ScriptableObjectType type, int count)
+    public void Create(GameObject prefab, ScriptableObjectType type, int count = defaultObjectCount)
+    {
+        Util.GetMonoBehaviour().StartCoroutine(CreatingInstance(prefab, count, ScriptableObjectType.None));
+    }
+    public void Create(List<GameObject> prefabs, ScriptableObjectType type, int count = defaultObjectCount)
     {
         foreach(GameObject prefab in prefabs)
         {
