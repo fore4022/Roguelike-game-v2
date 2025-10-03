@@ -7,10 +7,10 @@ public class LevelText_UI : UserInterface
     {
         _levelText = GetComponent<TextMeshProUGUI>();
 
-        Managers.Game.inGameData.player.levelUpdate += LevelUpdate;
+        Managers.Game.inGameData_Manage.player.levelUpdate += LevelUpdate;
     }
     public void LevelUpdate()
     {
-        _levelText.text = $"Lv. {Managers.Game.inGameData.player.Level}";
+        _levelText.text = $"Lv. {Managers.Game.inGameData_Manage.player.Level}";
     }
 }

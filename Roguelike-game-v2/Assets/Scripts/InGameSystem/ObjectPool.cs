@@ -15,7 +15,7 @@ public class ObjectPool
 
     private Transform root;
 
-    private const int maxWorkPerSec = 180;
+    private const int maxWorkPerSec = 240;
     private const int defaultObjectCount = 500;
 
     private int coroutineCount = 0;
@@ -67,6 +67,15 @@ public class ObjectPool
 
         return null;
     }
+    public List<PoolingObject> GetObjects(string prefabName)
+    {
+        if(poolingObjects.ContainsKey(prefabName))
+        {
+            return poolingObjects[prefabName];
+        }
+
+        return null;
+    }
     public T GetScriptableObject<T>(string type) where T : ScriptableObject
     {
         if(scriptableObjects.ContainsKey(type))
@@ -96,7 +105,7 @@ public class ObjectPool
     }
     public void Create(GameObject prefab, ScriptableObjectType type, int count = defaultObjectCount)
     {
-        Util.GetMonoBehaviour().StartCoroutine(CreatingInstance(prefab, count, ScriptableObjectType.None));
+        Util.GetMonoBehaviour().StartCoroutine(CreatingInstance(prefab, count, ScriptableObjectType.None, null, false));
     }
     public void Create(List<GameObject> prefabs, ScriptableObjectType type, int count = defaultObjectCount)
     {
@@ -166,7 +175,7 @@ public class ObjectPool
             scriptableObjects.Add(key, so);
         }
     }
-    private IEnumerator CreatingInstance(GameObject prefab, int count, ScriptableObjectType type = ScriptableObjectType.None, string originalKey = null)
+    private IEnumerator CreatingInstance(GameObject prefab, int count, ScriptableObjectType type = ScriptableObjectType.None, string originalKey = null, bool isSetRoot = true)
     {
         GameObject[] array = new GameObject[count];
 
@@ -184,7 +193,10 @@ public class ObjectPool
         int instanceCount = 0;
         int createCount;
 
-        parent.transform.parent = root;
+        if(isSetRoot)
+        {
+            parent.transform.parent = root;
+        }
 
         coroutineCount++;
 

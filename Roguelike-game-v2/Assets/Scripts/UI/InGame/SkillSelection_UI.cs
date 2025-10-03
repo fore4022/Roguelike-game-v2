@@ -16,14 +16,14 @@ public class SkillSelection_UI : UserInterface
 
     private bool isSelect = true;
 
-    public int RequireOptionCount { get { return Managers.Game.inGameData.OptionCount - skillOptionList.Count; } }
+    public int RequireOptionCount { get { return Managers.Game.inGameData_Manage.OptionCount - skillOptionList.Count; } }
     public bool IsSelect { get { return isSelect; } set { isSelect = value; } }
     public override async void SetUserInterface()
     {
         background = GetComponent<Image>();
         attackOption = await Util.LoadingToPath<GameObject>(path);
 
-        Managers.Game.inGameData.player.levelUpdate += () => Managers.UI.Show<LevelUp_UI>();
+        Managers.Game.inGameData_Manage.player.levelUpdate += () => Managers.UI.Show<LevelUp_UI>();
 
         StartCoroutine(Init());
     }
@@ -62,7 +62,7 @@ public class SkillSelection_UI : UserInterface
             attackOption.gameObject.SetActive(false);
         }
 
-        Managers.Game.inGameData.player.LevelUpCount--;
+        Managers.Game.inGameData_Manage.player.LevelUpCount--;
         isSelect = true;
 
         StartCoroutine(SkillListUpdate());
@@ -104,21 +104,21 @@ public class SkillSelection_UI : UserInterface
     {
         background.enabled = false;
 
-        yield return new WaitUntil(() => Managers.Game.inGameData != null);
+        yield return new WaitUntil(() => Managers.Game.inGameData_Manage != null);
         
         yield return new WaitUntil(() => attackOption != null);
 
         CreateOptionUI();
 
-        Managers.Game.inGameData.skillOptionCount_Update += CreateOptionUI;
+        Managers.Game.inGameData_Manage.skillOptionCount_Update += CreateOptionUI;
 
         gameObject.SetActive(false);
     }
     private IEnumerator Setting()
     {
-        List<SkillContext> infoList = Managers.Game.inGameData.skill.GetAttackInformation();
+        List<SkillContext> infoList = Managers.Game.inGameData_Manage.skill.GetAttackInformation();
 
-        int[] indexArray = Calculate.GetRandomValues(infoList.Count, Mathf.Min(Managers.Game.inGameData.OptionCount, infoList.Count));
+        int[] indexArray = Calculate.GetRandomValues(infoList.Count, Mathf.Min(Managers.Game.inGameData_Manage.OptionCount, infoList.Count));
 
         UIElementUtility.SetImageAlpha(background, basicAlpha);
 
@@ -147,7 +147,7 @@ public class SkillSelection_UI : UserInterface
     }
     private IEnumerator SkillListUpdate()
     {
-        while(Managers.Game.inGameData.player.LevelUpCount > 0)
+        while(Managers.Game.inGameData_Manage.player.LevelUpCount > 0)
         {
             Set();
 

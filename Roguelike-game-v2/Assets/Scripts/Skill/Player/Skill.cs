@@ -86,7 +86,7 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
 
         yield return new WaitUntil(() => isInit);
 
-        level = Managers.Game.inGameData.skill.GetLevel(so.typePath);
+        level = Managers.Game.inGameData_Manage.skill.GetLevel(so.typePath);
 
         if(level == Skill_SO.maxLevel - 1 && !isMaxLevel)
         {

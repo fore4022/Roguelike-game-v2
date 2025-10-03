@@ -15,6 +15,6 @@ public class SkillPoints_UI : UserInterface
     }
     public void SkillPointsUpdate()
     {
-        skillPoints.text = $"Skill Points : {Managers.Game.inGameData.player.LevelUpCount}";
+        skillPoints.text = $"Skill Points : {Managers.Game.inGameData_Manage.player.LevelUpCount}";
     }
 }

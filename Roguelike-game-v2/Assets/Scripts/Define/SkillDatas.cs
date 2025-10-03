@@ -27,14 +27,14 @@ public class SkillDatas
         {
             if(info.caster == null)
             {
-                info.caster = Managers.Game.skillCasterManage.CreateAndGetCaster(key);
+                info.caster = Managers.Game.skillCaster_Manage.CreateAndGetCaster(key);
                 info.caster.Level = levelDelta - 1;
             }
             else
             {
                 info.level += levelDelta;
 
-                Managers.Game.skillCasterManage.UpdateCasterLevel(key, info.level);
+                Managers.Game.skillCaster_Manage.UpdateCasterLevel(key, info.level);
             }
         }
     }

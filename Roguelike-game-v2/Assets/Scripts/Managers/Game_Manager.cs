@@ -3,17 +3,18 @@ using System.Collections;
 using UnityEngine;
 public class Game_Manager
 {
-    public SkillCaster_Manage skillCasterManage;
-    public InGameData_Manage inGameData;
+    public SkillCaster_Manage skillCaster_Manage;
+    public InGameData_Manage inGameData_Manage;
+    public DamageLog_Manage damageLog_Manage;
     public DifficultyScaler difficultyScaler;
     public GameOverEffect endEffect;
     public StageInformation_SO stageInformation;
     public InGameTimer inGameTimer;
     public MonsterSpawner monsterSpawner;
-    public DamageText_Manage damageText_Creator;
     public ObjectPool objectPool;
     public Player player;
     public AudioSource _bgm;
+
     public Action onStageReset;
 
     private int userExp = 0;
@@ -27,8 +28,9 @@ public class Game_Manager
     public bool IsStageClear { get { return stageClear; } }
     private void Set()
     {
-        skillCasterManage = new();
-        inGameData = new();
+        skillCaster_Manage = new();
+        inGameData_Manage = new();
+        damageLog_Manage = new();
         difficultyScaler = new();
     }
     public void DataLoad()
@@ -36,7 +38,7 @@ public class Game_Manager
         stageInformation = Managers.Main.GetCurrentStage().information;
 
         Set();
-        Util.GetMonoBehaviour().StartCoroutine(inGameData.init.Initializing());
+        Util.GetMonoBehaviour().StartCoroutine(inGameData_Manage.init.Initializing());
     }
     public void GameStart()
     {
@@ -49,7 +51,7 @@ public class Game_Manager
 
         inGameTimer.StartTimer();
         monsterSpawner.StartSpawn();
-        inGameData.player.SetLevel();
+        inGameData_Manage.player.SetLevel();
         Managers.UI.Show<HeadUpDisplay_UI>();
         Managers.UI.Show<LevelUp_UI>();
     }
@@ -59,10 +61,10 @@ public class Game_Manager
         gameOver = false;
         
         onStageReset.Invoke();
-        skillCasterManage.StopAllCaster();
-        inGameData.skill.Reset();
+        skillCaster_Manage.StopAllCaster();
+        inGameData_Manage.skill.Reset();
 
-        skillCasterManage = new();
+        skillCaster_Manage = new();
         difficultyScaler = new();
 
         Util.GetMonoBehaviour().StartCoroutine(ReSetting());
@@ -77,11 +79,12 @@ public class Game_Manager
     }
     public void GoMain()
     {
-        skillCasterManage.StopAllCaster();
+        skillCaster_Manage.StopAllCaster();
         objectPool.StopAllActions();
 
-        skillCasterManage = null;
-        inGameData = null;
+        skillCaster_Manage = null;
+        inGameData_Manage = null;
+        damageLog_Manage = null;
         difficultyScaler = null;
         stageInformation = null;
         inGameTimer = null;
@@ -110,7 +113,7 @@ public class Game_Manager
 
         Managers.UI.Get<SceneLoading_UI>().Wait = false;
         Camera.main.orthographicSize = CameraSizes.inGame * Camera_SizeScale.orthographicSizeScale;
-        Managers.Game.inGameData.player.Experience = 0;
+        Managers.Game.inGameData_Manage.player.Experience = 0;
         isPlaying = true;
 
         objectPool.ReSetting();
@@ -126,7 +129,7 @@ public class Game_Manager
         stageClear = false;
 
         monsterSpawner.ReStart();
-        inGameData.player.SetLevel();
+        inGameData_Manage.player.SetLevel();
         onStageReset.Invoke();
         Managers.UI.Show<HeadUpDisplay_UI>();
         Managers.UI.Show<LevelUp_UI>();

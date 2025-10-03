@@ -109,6 +109,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     {
         health -= damage.DamageAmount;
 
+        Managers.Game.damageLog_Manage.Show(transform.position, damage.DamageAmount);
         onDamaged.Invoke();
 
         if(health <= 0)
@@ -161,7 +162,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 
         yield return new WaitForSeconds(death_AnimationDuration / 2);
 
-        Managers.Game.inGameData.player.Experience += user_Experience;
+        Managers.Game.inGameData_Manage.player.Experience += user_Experience;
         Managers.Game.UserExp += inGame_Experience;
         speedMultiplier = speedMultiplierDefault;
         damageMultiplier = damageMultiplierDefault;

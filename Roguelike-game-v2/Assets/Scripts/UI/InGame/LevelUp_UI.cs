@@ -25,11 +25,11 @@ public class LevelUp_UI : UserInterface
     }
     private void Update()
     {
-        level.text = $"Lv.{Managers.Game.inGameData.player.Level}";
+        level.text = $"Lv.{Managers.Game.inGameData_Manage.player.Level}";
     }
     private bool ShouldShowSkillSelection()
     {
-        return (Managers.Game.inGameData.player.MaxLevel >= Managers.Game.inGameData.player.Level) || Managers.Game.inGameData.player.LevelUpCount != 0;
+        return (Managers.Game.inGameData_Manage.player.MaxLevel >= Managers.Game.inGameData_Manage.player.Level) || Managers.Game.inGameData_Manage.player.LevelUpCount != 0;
     }    
     private IEnumerator AnimationPlaying()
     {

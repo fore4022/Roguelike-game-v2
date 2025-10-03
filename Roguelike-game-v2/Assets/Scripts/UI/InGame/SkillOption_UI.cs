@@ -11,7 +11,7 @@ public class SkillOption_UI : Button_B
 
     protected override void PointerClick()
     {
-        Managers.Game.inGameData.skill.SetValue(info.data.type);
+        Managers.Game.inGameData_Manage.skill.SetValue(info.data.type);
         Managers.UI.Get<SkillSelection_UI>().Selected();
     }
     protected override void Init()
