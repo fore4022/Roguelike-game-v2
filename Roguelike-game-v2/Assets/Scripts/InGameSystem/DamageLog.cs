@@ -5,11 +5,13 @@ public class DamageLog : MonoBehaviour
 {
     private TextMeshProUGUI log;
 
+    private readonly Vector3 adjustmentPosition = new(0, adjustmentYPos, 0);
+    private readonly Vector3 defaultScale = new(defaultScaleSize, defaultScaleSize);
     private const float defaultFontSize = 36;
     private const float duration = 0.2f;
     private const float targetScale = 0.003f;
-    private const float defaultScale = 0.005f;
-    private const float targetYPos = 0.075f;
+    private const float defaultScaleSize = 0.005f;
+    private const float adjustmentYPos = 0.075f;
 
     private void Awake()
     {
@@ -42,10 +44,14 @@ public class DamageLog : MonoBehaviour
     }
     private IEnumerator Effecting()
     {
-        Vector3 currentPosition = transform.position;
+        Vector3 targetPosition = transform.position + adjustmentPosition;
+
+        transform.localScale = defaultScale;
 
         UIElementUtility.SetTextAlpha(log, 255);
-        transform.SetPosition(currentPosition, currentPosition, duration);
+        UIElementUtility.SetTextAlpha(log, 150, duration);
+        transform.SetPosition(targetPosition, duration).
+            SetScale(targetScale, duration);
 
         log.enabled = true;
 
