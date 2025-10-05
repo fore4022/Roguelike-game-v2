@@ -32,7 +32,7 @@ public class StageInformation_UI : UserInterface
     }
     public void Set()
     {
-        so = Managers.Main.GetCurrentStage(0).information;
+        so = Managers.Main.GetCurrentStageSO(0).information;
 
         requiredTime.text = $"Required Time\n {so.requiredTime} : 00";
         difficulty.text = $"Difficulty\n{so.difficulty}";

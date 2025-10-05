@@ -35,7 +35,7 @@ public class Game_Manager
     }
     public void DataLoad()
     {
-        stageInformation = Managers.Main.GetCurrentStage().information;
+        stageInformation = Managers.Main.GetCurrentStageSO().information;
 
         Set();
         Util.GetMonoBehaviour().StartCoroutine(inGameData_Manage.init.Initializing());

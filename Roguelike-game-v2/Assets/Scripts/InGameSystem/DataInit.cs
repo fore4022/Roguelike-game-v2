@@ -41,7 +41,7 @@ public class DataInit
     }
     private async Task LoadStage()
     {
-        stage = await Util.LoadingToPath<GameObject>(Managers.Main.GetCurrentStage().stagePath);
+        stage = await Util.LoadingToPath<GameObject>(Managers.Main.GetCurrentStageSO().stagePath);
     }
     public IEnumerator Initializing()
     {

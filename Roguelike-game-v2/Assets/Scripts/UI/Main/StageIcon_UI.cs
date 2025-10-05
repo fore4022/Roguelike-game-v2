@@ -28,7 +28,7 @@ public class StageIcon_UI : UserInterface
     }
     public void UpdateUI(int sign)
     {
-        so = Managers.Main.GetCurrentStage(sign);
+        so = Managers.Main.GetCurrentStageSO(sign);
 
         Set();
     }
