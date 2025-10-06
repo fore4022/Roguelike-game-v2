@@ -1,10 +1,10 @@
 public class MainScene_Manager
 {
-    private StageDatas gameData;
+    private StageDatas stageDatas;
 
-    public StageDatas GameData { get { return gameData; } set { gameData = value; } }
+    public StageDatas StageDatas { get { return stageDatas; } set { stageDatas = value; } }
     public Stage_SO GetCurrentStageSO(int sign = 0)
     {
-        return Managers.Main.gameData.GetStageSO(Managers.UserData.data.StageName, sign);
+        return Managers.Main.stageDatas.GetSO(Managers.UserData.data.StageName, sign);
     }
 }

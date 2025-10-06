@@ -21,7 +21,7 @@ public class StageDatas
         }
     }
     public List<Stage_SO> Stages { get { return stages; } }
-    public Stage_SO GetStageSO(string stageName, int sign)
+    public Stage_SO GetSO(string stageName, int sign)
     {
         int index = 0;
 
