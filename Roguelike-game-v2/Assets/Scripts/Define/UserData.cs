@@ -18,6 +18,8 @@ public class UserData
     [SerializeField]
     private int statPoint = 1;
 
+    // tutorial
+
     public List<StageClear_Information> StageClearInfo { get { return stageClearInfos; } set { stageClearInfos = value; } }
     public PlayerStat Stat { get { return _stat; } }
     public string StageName

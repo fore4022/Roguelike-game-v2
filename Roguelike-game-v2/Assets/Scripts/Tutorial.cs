@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 public class Tutorial : MonoBehaviour
@@ -8,16 +7,20 @@ public class Tutorial : MonoBehaviour
     [SerializeField]
     private GameObject panel;
     private TextMeshProUGUI text;
+
+    private float step_Index = 0;
             
     private void Awake()
     {
-        // Set Management
-    }
-    private IEnumerator Initialzing()
-    {
-        yield return new WaitUntil(() => Managers.Main.StageDatas != null);
+        // if user data == null
 
-        
+        StartCoroutine(Initializing());
+    }
+    public void PlayTutorial()
+    {
+        step_Index = 0;
+
+        StartCoroutine(PlayingTutorial());
     }
     private void Step_1()
     {
@@ -38,5 +41,35 @@ public class Tutorial : MonoBehaviour
     private void Step_5()
     {
 
+    }
+    private IEnumerator Initializing()
+    {
+        yield return new WaitUntil(() => Managers.Main.StageDatas != null);
+
+        // == true
+
+        PlayTutorial();
+    }
+    private IEnumerator PlayingTutorial()
+    {
+        Step_1();
+
+        yield return null;
+
+        Step_2();
+
+        yield return null;
+
+        Step_3();
+
+        yield return null;
+
+        Step_4();
+
+        yield return null;
+
+        Step_5();
+
+        yield return null;
     }
 }
