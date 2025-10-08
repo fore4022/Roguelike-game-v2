@@ -12,7 +12,7 @@ public class Tutorial : MonoBehaviour
             
     private void Awake()
     {
-        // if user data == null
+        // if user data == null - init
 
         StartCoroutine(Initializing());
     }
@@ -54,22 +54,22 @@ public class Tutorial : MonoBehaviour
     {
         Step_1();
 
-        yield return null;
+        yield return null; // enter touch
 
-        Step_2();
+        //Step_2();
 
-        yield return null;
+        //yield return null;
 
-        Step_3();
+        //Step_3();
 
-        yield return null;
+        //yield return null;
 
-        Step_4();
+        //Step_4();
 
-        yield return null;
+        //yield return null;
 
-        Step_5();
+        //Step_5();
 
-        yield return null;
+        //yield return null;
     }
 }
