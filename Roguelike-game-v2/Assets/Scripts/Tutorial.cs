@@ -1,12 +1,13 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 public class Tutorial : MonoBehaviour
 {
     [Header("Step_1")]
     [SerializeField]
-    private GameObject panel;
-    private TextMeshProUGUI text;
+    private List<GameObject> panelList_1;
+    private List<TextMeshProUGUI> textList_1;
 
     private float step_Index = 0;
             
@@ -22,26 +23,15 @@ public class Tutorial : MonoBehaviour
 
         StartCoroutine(PlayingTutorial());
     }
-    private void Step_1()
+    private void Step_1()// Enable
     {
-
+        foreach(GameObject panel in panelList_1)
+        {
+            panel.SetActive(true);
+        }
     }
-    private void Step_2()
-    {
 
-    }
-    private void Step_3()
-    {
-
-    }
-    private void Step_4()
-    {
-
-    }
-    private void Step_5()
-    {
-
-    }
+    //Disable
     private IEnumerator Initializing()
     {
         yield return new WaitUntil(() => Managers.Main.StageDatas != null);
