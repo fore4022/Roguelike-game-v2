@@ -4,10 +4,9 @@ using TMPro;
 using UnityEngine;
 public class Tutorial : MonoBehaviour
 {
-    [Header("Step_1")]
     [SerializeField]
-    private List<GameObject> panelList_1;
-    private List<TextMeshProUGUI> textList_1;
+    private List<List<GameObject>> panelList;
+    private List<List<TextMeshProUGUI>> textList;
 
     private float step_Index = 0;
             
@@ -23,15 +22,6 @@ public class Tutorial : MonoBehaviour
 
         StartCoroutine(PlayingTutorial());
     }
-    private void Step_1()// Enable
-    {
-        foreach(GameObject panel in panelList_1)
-        {
-            panel.SetActive(true);
-        }
-    }
-
-    //Disable
     private IEnumerator Initializing()
     {
         yield return new WaitUntil(() => Managers.Main.StageDatas != null);
@@ -42,24 +32,16 @@ public class Tutorial : MonoBehaviour
     }
     private IEnumerator PlayingTutorial()
     {
-        Step_1();
+        for(int i = 0; i < 0; i++) // 0 <- count
+        {
+            //foreach() panel, text
+            //{
 
-        yield return null; // enter touch
+            //}
 
-        //Step_2();
+            yield return null; // enter touch
+        }
 
-        //yield return null;
-
-        //Step_3();
-
-        //yield return null;
-
-        //Step_4();
-
-        //yield return null;
-
-        //Step_5();
-
-        //yield return null;
+        // set tutorial value
     }
 }
