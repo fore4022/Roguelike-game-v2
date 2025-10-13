@@ -8,7 +8,7 @@ public class Managers : MonoBehaviour
     public UI_Manager ui = new();
     public UserData_Manager userData = new();
     public Scene_Manager scene = new();
-    public MainScene_Manager main = new();
+    public Main_Manager main = new();
 
     public static Managers Instance
     {
@@ -24,7 +24,7 @@ public class Managers : MonoBehaviour
     public static UI_Manager UI { get { return Instance.ui; } }
     public static UserData_Manager UserData { get { return Instance.userData; } }
     public static Scene_Manager Scene { get { return Instance.scene; } }
-    public static MainScene_Manager Main { get { return Instance.main; } }
+    public static Main_Manager Main { get { return Instance.main; } }
     public static void Init()
     {
         if(managers == null)

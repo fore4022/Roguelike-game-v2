@@ -1,35 +1,40 @@
 using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Audio;
 /// <summary>
 /// 유저 정보 불러오기 및, 소리 설정 적용
 /// </summary>
-public class Title_Scene : MonoBehaviour
+public class SetGame : MonoBehaviour
 {
     [SerializeField]
     private EnterMainScene enterMainScene;
-    [SerializeField]
-    private Camera_SizeScale cameraSizeScale;
     [SerializeField]
     private AudioMixer audioMixer;
     [SerializeField]
     private AudioSource audioSource;
 
-    public const string _gameDataPath = "StageDatas";
+    private const string _stageDataPath = "StageDatas";
 
-    private async void Start()
+    private void Start()
     {
-        Managers.Main.StageDatas.SO = await Util.LoadingToPath<StageDatas_SO>(_gameDataPath, false);
         Managers.Audio.Mixer = audioMixer;
 
         Managers.Scene.loadComplete += Managers.Audio.InitializedAudio;
 
         StartCoroutine(Initializing());
     }
+    private async Task LoadStageDatas()
+    {
+        Managers.Main.StageDatas.SO = await Util.LoadingToPath<StageDatas_SO>(_stageDataPath, false);
+    }
     private IEnumerator Initializing()
     {
+        Task loadStageDatas = LoadStageDatas();
+
         Managers.UserData.Load();
 
+        yield return new WaitUntil(() => loadStageDatas.IsCompleted);
         yield return new WaitUntil(() => Managers.UI.IsInitalized);
 
         StartCoroutine(UserDataLoading());

@@ -1,4 +1,4 @@
-public class MainScene_Manager
+public class Main_Manager
 {
     private StageDatas stageDatas;
 
