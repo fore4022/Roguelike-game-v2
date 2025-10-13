@@ -13,7 +13,7 @@ public class Skill_G : Skill, ISkill
     public bool Finished { get { return true; } }
     public void Set()
     {
-        Vector3 direction = Calculate.GetDirection(EnemyDetection.GetNearestEnemyPosition());
+        Vector3 direction = Calculate.GetDirection(MonsterDetection.GetNearestMonsterPosition());
 
         transform.rotation = Calculate.GetQuaternion(direction);
         transform.position = Managers.Game.player.transform.position + direction * skillRange;

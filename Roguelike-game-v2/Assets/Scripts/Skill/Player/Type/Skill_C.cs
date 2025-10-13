@@ -10,7 +10,7 @@ public class Skill_C : Skill, ISkill
     public bool Finished { get { return true; } }
     public void Set()
     {
-        transform.position = EnemyDetection.GetRandomEnemyPosition();
+        transform.position = MonsterDetection.GetRandomMonsterPosition();
     }
     public void SetCollider()
     {

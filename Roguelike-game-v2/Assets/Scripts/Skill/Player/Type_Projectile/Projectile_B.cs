@@ -19,7 +19,7 @@ public class Projectile_B : ProjectileSkill, IProjectile
         animator.Play("default");
 
         transform.position = Managers.Game.player.gameObject.transform.position;
-        direction = Calculate.GetDirection(EnemyDetection.GetNearestEnemyPosition());
+        direction = Calculate.GetDirection(MonsterDetection.GetNearestMonsterPosition());
         transform.rotation = Calculate.GetQuaternion(direction);
         moving = StartCoroutine(Moving());
     }

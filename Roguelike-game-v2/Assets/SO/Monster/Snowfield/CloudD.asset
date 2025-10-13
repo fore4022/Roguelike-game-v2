@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CloudD
   m_EditorClassIdentifier: 
   stat:
-    health: 11.25
+    health: 112.5
     damage: 2
     moveSpeed: 1.825
     healthRegenPerSec: 0

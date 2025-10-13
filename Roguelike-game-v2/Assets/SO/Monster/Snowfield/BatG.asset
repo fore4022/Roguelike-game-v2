@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BatG
   m_EditorClassIdentifier: 
   stat:
-    health: 8.15
+    health: 81.5
     damage: 1.175
     moveSpeed: 2.375
     healthRegenPerSec: 0

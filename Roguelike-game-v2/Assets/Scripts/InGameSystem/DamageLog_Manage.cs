@@ -4,7 +4,7 @@ public class DamageLog_Manage
 {
     public Dictionary<PoolingObject, DamageLog> damageLogs = new();
 
-    public readonly string prefabName = "DamageLog";
+    public const string prefabName = "DamageLog";
 
     public bool isSet = false;
 

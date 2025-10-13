@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WitchE
   m_EditorClassIdentifier: 
   stat:
-    health: 17.75
+    health: 177.5
     damage: 2.65
     moveSpeed: 1.025
     healthRegenPerSec: 0

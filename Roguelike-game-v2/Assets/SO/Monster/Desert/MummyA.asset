@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MummyA
   m_EditorClassIdentifier: 
   stat:
-    health: 8.75
+    health: 87.5
     damage: 1.325
     moveSpeed: 1.225
     healthRegenPerSec: 0

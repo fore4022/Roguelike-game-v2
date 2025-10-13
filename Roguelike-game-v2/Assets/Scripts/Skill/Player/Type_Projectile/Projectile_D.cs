@@ -25,7 +25,7 @@ public class Projectile_D : ProjectileSkill, IProjectile
         
         if(Random.Range(0, 100) <= probability)
         {
-            direction = Calculate.GetDirection(EnemyDetection.GetNearestEnemyPosition());
+            direction = Calculate.GetDirection(MonsterDetection.GetNearestMonsterPosition());
         }
         else
         {

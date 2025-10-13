@@ -14,7 +14,7 @@ public class Skill_D : Skill, ISkill
     public bool Finished { get { return animator.GetCurrentAnimatorStateInfo(0).IsName(animationName); } }
     public void Set()
     {
-        transform.position = EnemyDetection.GetRandomEnemyPosition();
+        transform.position = MonsterDetection.GetRandomMonsterPosition();
 
         animator.Play("default", 0);
         StartCoroutine(Attacking());

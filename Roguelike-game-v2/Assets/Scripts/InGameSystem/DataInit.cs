@@ -37,7 +37,7 @@ public class DataInit
     }
     private async Task LoadDamageText()
     {
-        damageText = await Util.LoadingToPath<GameObject>(Managers.Game.damageLog_Manage.prefabName);
+        damageText = await Util.LoadingToPath<GameObject>(DamageLog_Manage.prefabName);
     }
     private async Task LoadStage()
     {

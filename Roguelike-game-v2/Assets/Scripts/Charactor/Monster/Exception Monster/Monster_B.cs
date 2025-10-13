@@ -54,7 +54,7 @@ public class Monster_B : BasicMonster_WithObject
     {
         PoolingObject visualizer = Managers.Game.objectPool.GetObject(visualizerKey);
         PoolingObject skill = Managers.Game.objectPool.GetObject(skillKey);
-        Vector3 position = EnemyDetection.GetRandomVector();
+        Vector3 position = MonsterDetection.GetRandomVector();
 
         visualizer.Transform.position = position;
         skill.Transform.position = position;

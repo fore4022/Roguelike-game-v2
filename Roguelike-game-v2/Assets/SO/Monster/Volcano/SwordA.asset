@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SwordA
   m_EditorClassIdentifier: 
   stat:
-    health: 10.65
+    health: 106.5
     damage: 1.75
     moveSpeed: 0.975
     healthRegenPerSec: 0

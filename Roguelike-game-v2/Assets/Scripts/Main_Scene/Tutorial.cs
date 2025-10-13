@@ -24,7 +24,9 @@ public class Tutorial : MonoBehaviour
     }
     private IEnumerator Initializing()
     {
-        yield return new WaitUntil(() => Managers.Main.StageDatas != null);
+        //yield return new WaitUntil(() => Managers.Main.stageDatas != null);
+
+        yield return null;
 
         // == true
 

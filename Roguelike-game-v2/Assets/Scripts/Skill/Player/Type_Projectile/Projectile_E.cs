@@ -84,7 +84,7 @@ public class Projectile_E : ProjectileSkill, ISkill
             yield return null;
         }
 
-        targetPosition = EnemyDetection.GetNearestEnemyPosition(transform);
+        targetPosition = MonsterDetection.GetNearestMonsterPosition(transform);
 
         yield return new WaitForSeconds(castDelay);
 

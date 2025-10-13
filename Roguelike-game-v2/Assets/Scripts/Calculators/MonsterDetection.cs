@@ -4,15 +4,15 @@ using UnityEngine;
 /// <summary>
 /// 플레이어의 스킬이 향할 대상을 구하는 식들이 구현되어 있습니다.
 /// </summary>
-public static class EnemyDetection
+public static class MonsterDetection
 {
-    public static float largeastRange = 2.5f;
+    public static float largeastRange = 1.15f;
 
     private static Vector2 vec = new();
 
-    public static Vector2 GetNearestEnemyPosition(Transform transform = null)
+    public static Vector2 GetNearestMonsterPosition(Transform transform = null)
     {
-        GameObject target = FindNearestEnemy(transform);
+        GameObject target = FindNearestMonster(transform);
 
         if(target == null)
         {
@@ -23,9 +23,9 @@ public static class EnemyDetection
             return target.transform.position;
         }
     }
-    public static Vector2 GetRandomEnemyPosition()
+    public static Vector2 GetRandomMonsterPosition()
     {
-        GameObject target = FindRandomEnemy();
+        GameObject target = FindRandomMonster();
 
         if(target == null)
         {
@@ -36,9 +36,9 @@ public static class EnemyDetection
             return target.transform.position;
         }
     }
-    public static Vector2 GetLargestEnemyGroup()
+    public static Vector2 GetLargestMonsterGroup()
     {
-        GameObject target = FindLargestEnemyGroup();
+        GameObject target = FindLargestMonsterGroup();
 
         if(target == null)
         {
@@ -49,9 +49,9 @@ public static class EnemyDetection
             return target.transform.position;
         }
     }
-    public static List<Vector2> GetLargestEnemyGroup(int count)
+    public static List<Vector2> GetLargestMonsterGroup(int count)
     {
-        List<GameObject> targetList = FindLargestEnemyGroup(count);
+        List<GameObject> targetList = FindLargestMonsterGroup(count);
         List<Vector2> targetPositionList = new List<Vector2>();
 
         if(targetList.Count == 0)
@@ -88,10 +88,10 @@ public static class EnemyDetection
 
         return vec + (Vector2)Managers.Game.player.gameObject.transform.position;
     }
-    private static List<GameObject> FindLargestEnemyGroup(int count)
+    private static List<GameObject> FindLargestMonsterGroup(int count)
     {
         List<(GameObject obj, int enemyCount) > targetObjectList = new List<(GameObject obj, int enemyCount)>();
-        List<GameObject> gameObjectList = FindEnemiesOnScreen();
+        List<GameObject> gameObjectList = FindMonstersOnScreen();
 
         int enemyCount;
 
@@ -113,7 +113,7 @@ public static class EnemyDetection
 
         return gameObjectList.Take(count).ToList();
     }
-    private static List<GameObject> FindEnemiesOnScreen(float? range = null)
+    private static List<GameObject> FindMonstersOnScreen(float? range = null)
     {
         List<GameObject> resultList = new List<GameObject>();
         Collider2D[] colliderArray;
@@ -141,9 +141,9 @@ public static class EnemyDetection
 
         return resultList;
     }
-    private static GameObject FindRandomEnemy()
+    private static GameObject FindRandomMonster()
     {
-        List<GameObject> gameObjectList = FindEnemiesOnScreen();
+        List<GameObject> gameObjectList = FindMonstersOnScreen();
 
         if(gameObjectList.Count == 0)
         {
@@ -154,9 +154,9 @@ public static class EnemyDetection
 
         return gameObjectList[index];
     }
-    private static GameObject FindNearestEnemy(Transform transform = null)
+    private static GameObject FindNearestMonster(Transform transform = null)
     {
-        List<GameObject> gameObjectList = FindEnemiesOnScreen();
+        List<GameObject> gameObjectList = FindMonstersOnScreen();
 
         GameObject targetObject = null;
 
@@ -184,9 +184,9 @@ public static class EnemyDetection
 
         return targetObject;
     }
-    private static GameObject FindLargestEnemyGroup()
+    private static GameObject FindLargestMonsterGroup()
     {
-        List<GameObject> gameObjectList = FindEnemiesOnScreen();
+        List<GameObject> gameObjectList = FindMonstersOnScreen();
         Collider2D[] colliderArray;
 
         GameObject targetObject = null;

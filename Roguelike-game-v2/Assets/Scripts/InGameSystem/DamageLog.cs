@@ -8,7 +8,7 @@ public class DamageLog : MonoBehaviour
     private readonly Vector3 adjustmentPosition = new(0, adjustmentYPos, 0);
     private readonly Vector3 defaultScale = new(defaultScaleSize, defaultScaleSize);
     private const float defaultFontSize = 36;
-    private const float duration = 0.2f;
+    private const float duration = 0.35f;
     private const float targetScale = 0.003f;
     private const float defaultScaleSize = 0.005f;
     private const float adjustmentYPos = 0.075f;
@@ -20,6 +20,10 @@ public class DamageLog : MonoBehaviour
         log.enabled = false;
 
         gameObject.SetActive(false);
+    }
+    private void OnEnable()
+    {
+        StartCoroutine(Effecting());
     }
     public void SetInformation(Vector3 position, float damage)
     {
@@ -39,8 +43,6 @@ public class DamageLog : MonoBehaviour
         }
 
         log.fontSize = defaultFontSize + adjustmentFontSize;
-
-        StartCoroutine(Effecting());
     }
     private IEnumerator Effecting()
     {
@@ -59,6 +61,6 @@ public class DamageLog : MonoBehaviour
 
         log.enabled = false;
 
-        gameObject.SetActive(false);
+        Managers.Game.objectPool.DisableObject(gameObject, DamageLog_Manage.prefabName);
     }
 }

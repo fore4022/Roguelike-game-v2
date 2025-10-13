@@ -26,15 +26,16 @@ public class SetGame : MonoBehaviour
     }
     private async Task LoadStageDatas()
     {
-        Managers.Main.StageDatas.SO = await Util.LoadingToPath<StageDatas_SO>(_stageDataPath, false);
+        Managers.Main.stageDatas.SO = await Util.LoadingToPath<StageDatas_SO>(_stageDataPath, false);
     }
     private IEnumerator Initializing()
     {
         Task loadStageDatas = LoadStageDatas();
 
+        yield return new WaitUntil(() => loadStageDatas.IsCompleted);
+
         Managers.UserData.Load();
 
-        yield return new WaitUntil(() => loadStageDatas.IsCompleted);
         yield return new WaitUntil(() => Managers.UI.IsInitalized);
 
         StartCoroutine(UserDataLoading());

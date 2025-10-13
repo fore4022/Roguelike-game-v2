@@ -10,11 +10,11 @@ public class Skill_B : Skill, ISkill
     public bool Finished { get { return true; } }
     public void Set()
     {
-        transform.position = EnemyDetection.GetLargestEnemyGroup() + so.adjustmentPosition;
+        transform.position = MonsterDetection.GetLargestMonsterGroup() + so.adjustmentPosition;
     }
     public void SetCollider()
     {
-        defaultCollider.enabled = false;
+        defaultCollider.enabled = true;
     }
     public void Enter(GameObject go)
     {

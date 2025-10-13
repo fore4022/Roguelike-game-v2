@@ -17,7 +17,7 @@ public class Skill_E : Skill, ISkill
     {
         int rand = Random.Range(min_Index, max_Index + 1);
 
-        transform.position = EnemyDetection.GetLargestEnemyGroup();
+        transform.position = MonsterDetection.GetLargestMonsterGroup();
 
         animator.Play($"default_{rand}");
     }

@@ -24,7 +24,7 @@ public class Skill_F : Skill, ISkill
         totalTime = 0;
         targetTime = Mathf.Lerp(totalTime, so.duration, Random.Range(1, so.duration) / so.duration);
         transform.position = Managers.Game.player.gameObject.transform.position + (Vector3)Calculate.GetRandomVector();
-        direction = Calculate.GetDirection(EnemyDetection.GetNearestEnemyPosition(), transform.position);
+        direction = Calculate.GetDirection(MonsterDetection.GetNearestMonsterPosition(), transform.position);
 
         StartCoroutine(Attacking());
     }
@@ -44,7 +44,7 @@ public class Skill_F : Skill, ISkill
                 if(totalTime < so.duration - 1)
                 {
                     targetTime = Mathf.Lerp(totalTime, so.duration, Random.Range(1, so.duration) / so.duration);
-                    direction = Calculate.GetDirection(EnemyDetection.GetNearestEnemyPosition(), transform.position);
+                    direction = Calculate.GetDirection(MonsterDetection.GetNearestMonsterPosition(), transform.position);
                 }
             }
 

@@ -10,7 +10,7 @@ public class Skill_A : Skill, ISkill
     public bool Finished { get { return true; } }
     public void Set()
     {
-        transform.position = EnemyDetection.GetNearestEnemyPosition();
+        transform.position = MonsterDetection.GetNearestMonsterPosition();
         transform.rotation = Calculate.GetRandomQuaternion();
     }
     public void Enter(GameObject go)
