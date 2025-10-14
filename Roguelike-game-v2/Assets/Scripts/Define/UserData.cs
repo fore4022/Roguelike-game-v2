@@ -17,9 +17,9 @@ public class UserData
     private int exp = 0;
     [SerializeField]
     private int statPoint = 1;
-
-    // private float tutorial
-
+    [SerializeField]
+    private bool tutorial = true; //
+    
     public List<StageClear_Information> StageClearInfo { get { return stageClearInfos; } set { stageClearInfos = value; } }
     public PlayerStat Stat { get { return _stat; } }
     public string StageName
@@ -46,7 +46,7 @@ public class UserData
         return _setting.BGM = !_setting.BGM;
     }
     public bool SetFX()
-    {        
+    {
         return _setting.FX = !_setting.FX;
     }
     public void Clear(string stageName)
