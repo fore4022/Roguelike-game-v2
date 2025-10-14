@@ -86,7 +86,7 @@ public class Player : MonoBehaviour, IDamageReceiver
     }
     private void LoadPlayerStat()
     {
-        stat = information.stat = new(Managers.UserData.data.Stat.defaultStat, true);
+        stat = information.stat = new(Managers.Data.data.Stat.defaultStat, true);
     }
     private void Die()
     {

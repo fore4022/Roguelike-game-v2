@@ -4,6 +4,6 @@ public class Main_Manager
 
     public Stage_SO GetCurrentStageSO(int sign = 0)
     {
-        return Managers.Main.stageDatas.GetSO(Managers.UserData.data.StageName, sign);
+        return Managers.Main.stageDatas.GetSO(Managers.Data.data.StageName, sign);
     }
 }

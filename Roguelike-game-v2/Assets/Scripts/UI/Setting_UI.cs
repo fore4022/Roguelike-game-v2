@@ -55,7 +55,7 @@ public class Setting_UI : UserInterface
     }
     private void BgmUpdate()
     {
-        if(Managers.UserData.data.BGM)
+        if(Managers.Data.data.BGM)
         {
             audioSource.clip = onToggleSound;
             _Bgm.sprite = _bgmSprite[0];
@@ -68,7 +68,7 @@ public class Setting_UI : UserInterface
     }
     private void SfxUpdate()
     {
-        if(Managers.UserData.data.FX)
+        if(Managers.Data.data.FX)
         {
             audioSource.clip = onToggleSound;
             _Fx.sprite = _fxSprite[0];
@@ -89,7 +89,7 @@ public class Setting_UI : UserInterface
         audioSource.clip = confirmSound;
 
         audioSource.Play();
-        Managers.UserData.Save();
+        Managers.Data.Save();
         Managers.UI.Hide<Setting_UI>();
     }
 }

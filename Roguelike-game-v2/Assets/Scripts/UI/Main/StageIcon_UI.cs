@@ -34,7 +34,7 @@ public class StageIcon_UI : UserInterface
     }
     private void Set()
     {
-        StageState state = Managers.UserData.data.GetStageState();
+        StageState state = Managers.Data.data.GetStageState();
         Icon_SO icon = so.iconSprite;
 
         ground.sprite = icon.ground;

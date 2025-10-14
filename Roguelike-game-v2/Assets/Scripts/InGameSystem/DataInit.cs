@@ -21,7 +21,7 @@ public class DataInit
         SkillInformation_SO so;
         GameObject skill;
 
-        for(int i = 1; i <= Managers.UserData.data.Level; i++)
+        for(int i = 1; i <= Managers.Data.data.Level; i++)
         {
             userLevel = await Util.LoadingToPath<UserLevel_SO>($"{i}{userLevelPath}");
 

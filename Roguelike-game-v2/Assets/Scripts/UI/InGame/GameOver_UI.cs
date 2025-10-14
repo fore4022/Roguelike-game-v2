@@ -45,7 +45,7 @@ public class GameOver_UI : UserInterface
             audioSource.clip = clear;
             result = "Stage\nClear";
 
-            Managers.UserData.data.Clear(Managers.UserData.data.StageName);
+            Managers.Data.data.Clear(Managers.Data.data.StageName);
         }
         else
         {

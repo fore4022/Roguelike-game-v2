@@ -1,19 +1,19 @@
 using System.IO;
 using UnityEngine;
-public class UserData_Manager
+public class Data_Manager
 {
     public UserData data = null;
 
-    private UserLevelInfo_SO userLevelInfo;
+    private UserLevelData_SO userLevelInfo;
 
     private const string userLevelInfoPath = "UserLevelInfo_SO";
 
     private string filePath = "";
     
-    public UserLevelInfo_SO UserLevelInfo { get { return userLevelInfo; } }
+    public UserLevelData_SO UserLevelInfo { get { return userLevelInfo; } }
     public async void Load()
     {
-        userLevelInfo = await Util.LoadingToPath<UserLevelInfo_SO>(userLevelInfoPath);
+        userLevelInfo = await Util.LoadingToPath<UserLevelData_SO>(userLevelInfoPath);
 
         if(filePath == string.Empty)
         {
@@ -37,7 +37,7 @@ public class UserData_Manager
 
             foreach(Stage_SO so in Managers.Main.stageDatas.Stages)
             {
-                if(Managers.UserData.data.StageClearInfo.Find(info => info.name == so.stagePath) == null)
+                if(Managers.Data.data.StageClearInfo.Find(info => info.name == so.stagePath) == null)
                 {
                     if(data.StageClearInfo.Count == 0)
                     {

@@ -48,14 +48,14 @@ public class UserLevelUp_UI : UserInterface, IPointerClickHandler
     }
     private IEnumerator LevelTextEffecting(int levelUpCount)
     {
-        string str = $"Lv. {Managers.UserData.data.Level - levelUpCount}";
+        string str = $"Lv. {Managers.Data.data.Level - levelUpCount}";
         int length = str.Length;
 
         log.text = str;
 
         yield return delay;
 
-        str = $"Lv. {Managers.UserData.data.Level}";
+        str = $"Lv. {Managers.Data.data.Level}";
 
         StartCoroutine(Typing.TypeEffecting(log, " -> " + str));
 

@@ -34,7 +34,7 @@ public class SetGame : MonoBehaviour
 
         yield return new WaitUntil(() => loadStageDatas.IsCompleted);
 
-        Managers.UserData.Load();
+        Managers.Data.Load();
 
         yield return new WaitUntil(() => Managers.UI.IsInitalized);
 
@@ -42,7 +42,7 @@ public class SetGame : MonoBehaviour
     }
     private IEnumerator UserDataLoading()
     {
-        yield return new WaitUntil(() => Managers.UserData.data != null);
+        yield return new WaitUntil(() => Managers.Data.data != null);
 
         Managers.Audio.Init();
         Managers.Audio.InitializedAudio();

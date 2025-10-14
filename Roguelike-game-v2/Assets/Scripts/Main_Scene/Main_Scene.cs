@@ -19,14 +19,14 @@ public class Main_Scene : MonoBehaviour
 
         yield return new WaitUntil(() => Managers.UI.IsInitalized);
 
-        while(Managers.UserData.data.Exp >= Managers.UserData.UserLevelInfo.requiredEXP[Managers.UserData.data.Level - 1])
+        while(Managers.Data.data.Exp >= Managers.Data.UserLevelInfo.requiredEXP[Managers.Data.data.Level - 1])
         {
-            Managers.UserData.data.Exp -= Managers.UserData.UserLevelInfo.requiredEXP[Managers.UserData.data.Level - 1];
-            Managers.UserData.data.Level++;
+            Managers.Data.data.Exp -= Managers.Data.UserLevelInfo.requiredEXP[Managers.Data.data.Level - 1];
+            Managers.Data.data.Level++;
 
             levelUpCount++;
 
-            if(Managers.UserData.data.Level == UserLevelInfo_SO.maxLevel)
+            if(Managers.Data.data.Level == UserLevelData_SO.maxLevel)
             {
                 break;
             }
@@ -34,12 +34,12 @@ public class Main_Scene : MonoBehaviour
 
         if(levelUpCount != 0)
         {
-            Managers.UserData.data.StatPoint += levelUpCount;
+            Managers.Data.data.StatPoint += levelUpCount;
 
             Managers.UI.ShowAndGet<UserLevelUp_UI>().PlayEffect(levelUpCount);
             Managers.UI.Get<UserExpSlider_UI>().UpdateExp();
             Managers.UI.Get<UserLevelText_UI>().LevelUpdate();
-            Managers.UserData.Save();
+            Managers.Data.Save();
         }
     }
 }

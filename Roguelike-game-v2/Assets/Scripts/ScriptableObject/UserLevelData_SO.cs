@@ -1,6 +1,6 @@
 using UnityEngine;
-[CreateAssetMenu(fileName = "UserLevelInfo", menuName = "Create New SO/User Level/Create New UserLevelInfo_SO")]
-public class UserLevelInfo_SO : ScriptableObject
+[CreateAssetMenu(fileName = "UserLevelData", menuName = "Create New SO/User Level/Create New UserLevelData_SO")]
+public class UserLevelData_SO : ScriptableObject
 {
     public static int maxLevel = 10;
 

@@ -55,7 +55,7 @@ public class StatElementUpgrade_UI : UserInterface
 
         value += sign;
         tmp.text = $"+ {value}";
-        Managers.UserData.data.StatPoint -= sign;
+        Managers.Data.data.StatPoint -= sign;
 
         file.SetValue(value);
         Managers.UI.Get<StatUpgrade_UI>().TextUpdate();
@@ -71,7 +71,7 @@ public class StatElementUpgrade_UI : UserInterface
     }
     private bool LacksStatPoints(int sign)
     {
-        if(Managers.UserData.data.StatPoint == 0)
+        if(Managers.Data.data.StatPoint == 0)
         {
             if(sign == 1 || (sign == -1 && value == 0))
             {

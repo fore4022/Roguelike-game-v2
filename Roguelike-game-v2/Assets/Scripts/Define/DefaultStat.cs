@@ -24,10 +24,10 @@ public class DefaultStat
     {
         if(isPlayer)
         {
-            maxHealth = health = stat.health + Managers.UserData.data.Stat.IncreaseHealth;
-            damage = stat.damage + Managers.UserData.data.Stat.IncreaseDamage;
-            moveSpeed = stat.moveSpeed + Managers.UserData.data.Stat.MoveSpeed;
-            healthRegenPerSec = stat.healthRegenPerSec + Managers.UserData.data.Stat.HealthRegenPerSec;
+            maxHealth = health = stat.health + Managers.Data.data.Stat.IncreaseHealth;
+            damage = stat.damage + Managers.Data.data.Stat.IncreaseDamage;
+            moveSpeed = stat.moveSpeed + Managers.Data.data.Stat.MoveSpeed;
+            healthRegenPerSec = stat.healthRegenPerSec + Managers.Data.data.Stat.HealthRegenPerSec;
         }
         else
         {

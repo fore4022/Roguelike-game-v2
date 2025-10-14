@@ -6,7 +6,7 @@ public class Managers : MonoBehaviour
     public new Audio_Manager audio = new();
     public Game_Manager game = new();
     public UI_Manager ui = new();
-    public UserData_Manager userData = new();
+    public Data_Manager data = new();
     public Scene_Manager scene = new();
     public Main_Manager main = new();
 
@@ -22,7 +22,7 @@ public class Managers : MonoBehaviour
     public static Audio_Manager Audio { get { return Instance.audio; } }
     public static Game_Manager Game { get { return Instance.game; } }
     public static UI_Manager UI { get { return Instance.ui; } }
-    public static UserData_Manager UserData { get { return Instance.userData; } }
+    public static Data_Manager Data { get { return Instance.data; } }
     public static Scene_Manager Scene { get { return Instance.scene; } }
     public static Main_Manager Main { get { return Instance.main; } }
     public static void Init()

@@ -6,7 +6,7 @@ public class AppLifecycleHandler : MonoBehaviour
 {
     private void OnApplicationQuit()
     {
-        Managers.UserData.Save();
+        Managers.Data.Save();
     }
     private void OnApplicationFocus(bool focus)
     {
@@ -16,7 +16,7 @@ public class AppLifecycleHandler : MonoBehaviour
             {
                 if(focus)
                 {
-                    Managers.UserData.Save();
+                    Managers.Data.Save();
                 }
                 else
                 {

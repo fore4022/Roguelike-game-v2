@@ -18,7 +18,7 @@ public class UserData
     [SerializeField]
     private int statPoint = 1;
     [SerializeField]
-    private bool tutorial = true; //
+    private bool tutorial = false;
     
     public List<StageClear_Information> StageClearInfo { get { return stageClearInfos; } set { stageClearInfos = value; } }
     public PlayerStat Stat { get { return _stat; } }
@@ -29,12 +29,13 @@ public class UserData
         {
             current_StageName = value;
 
-            Managers.UserData.Save();
+            Managers.Data.Save();
         }
     }
     public int Level { get { return level; } set { level = value; } }
     public int Exp { get { return exp; } set { exp = value; } }
     public int StatPoint { get { return statPoint; } set { statPoint = value; } }
+    public bool Tutorial { get { return tutorial; } set { tutorial = value; } }
     public bool BGM { get { return _setting.BGM; } }
     public bool FX { get { return _setting.FX; } }
     public StageState GetStageState()
@@ -67,7 +68,7 @@ public class UserData
 
             info.state = StageState.Cleared;
 
-            Managers.UserData.Save();
+            Managers.Data.Save();
         }
     }
 }

@@ -2,48 +2,84 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 public class Tutorial : MonoBehaviour
 {
+    [Header("Step_1")]
     [SerializeField]
-    private List<List<GameObject>> panelList;
-    private List<List<TextMeshProUGUI>> textList;
+    private List<TextMeshProUGUI> textList;
+    [SerializeField]
+    private GameObject target;
 
-    private float step_Index = 0;
-            
-    private void Awake()
+    [SerializeField]
+    private Image maskImage;
+
+    private const float duration = 0.2f;
+    private const float targetAlpha = 165;
+
+    private bool nnn = false;
+    private int stepCount = 0;
+
+    private void Start()
     {
-        // if user data == null - init
-
         StartCoroutine(Initializing());
     }
-    public void PlayTutorial()
+    private void Step_1() // ? courotine
     {
-        step_Index = 0;
+        nnn = false;
 
-        StartCoroutine(PlayingTutorial());
+        //
+
+        nnn = true;
+    }
+    private void Step_2()
+    {
+
+    }
+    private void Step_3()
+    {
+
     }
     private IEnumerator Initializing()
     {
-        //yield return new WaitUntil(() => Managers.Main.stageDatas != null);
+        yield return new WaitUntil(() => Managers.Data.data != null);
 
-        yield return null;
-
-        // == true
-
-        PlayTutorial();
+        if(!Managers.Data.data.Tutorial)
+        {
+            StartCoroutine(PlayingTutorial());
+        }
     }
     private IEnumerator PlayingTutorial()
     {
-        for(int i = 0; i < 0; i++) // 0 <- count
+        UIElementUtility.SetImageAlpha(maskImage, targetAlpha, duration);
+
+        yield return new WaitForSeconds(duration);
+
+        Step_1();
+
+        while(true)
         {
-            //foreach() panel, text
-            //{
+            switch(stepCount)
+            {
+                case 0:
+                    Step_1();
+                    break;
+                case 1:
 
-            //}
+                    break;
+                case 2:
 
-            yield return null; // enter touch
+                    break;
+                case 3:
+
+                    break;
+            }
+
+            yield return null;
         }
 
-        // set tutorial value
+        //maskImage.gameObject.SetActive(false);
+
+        //Managers.Data.data.Tutorial = true;
     }
 }
