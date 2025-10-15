@@ -6,18 +6,17 @@ public static class Typing
 {
     private static WaitForSecondsRealtime waitRealSec = new(0.03f);
 
-    public static WaitForSecondsRealtime TypeEffectAndWaiting(TextMeshProUGUI tmp, string str, Coroutine coroutine = null, float delay = 0, bool recursive = false, string currentStr = "")
+    public static WaitForSecondsRealtime GetTypeEffectAndWaiting(TextMeshProUGUI tmp, string str, float delay = 0, bool recursive = false, string currentStr = "")
     {
-        if(coroutine == null)
-        {
-            Util.GetMonoBehaviour().StartCoroutine(TypeEffecting(tmp, str, recursive, currentStr));
-        }
-        else
-        {
-            coroutine = Util.GetMonoBehaviour().StartCoroutine(TypeEffecting(tmp, str, recursive, currentStr));
-        }
+        Util.GetMonoBehaviour().StartCoroutine(TypeEffecting(tmp, str, recursive, currentStr));
 
         return new(waitRealSec.waitTime * str.Length + delay);
+    }
+    public static (Coroutine, WaitForSecondsRealtime) GetTypeEffect(TextMeshProUGUI tmp, string str, float delay = 0, bool recursive = false, string currentStr = "")
+    {
+        Coroutine coroutine = Util.GetMonoBehaviour().StartCoroutine(TypeEffecting(tmp, str, recursive, currentStr));
+
+        return (coroutine, new(waitRealSec.waitTime * str.Length + delay));
     }
     public static IEnumerator TypeEffecting(TextMeshProUGUI tmp, string str, bool recursive = false, string currentStr = "")
     {

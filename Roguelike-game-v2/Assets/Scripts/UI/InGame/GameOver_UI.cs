@@ -101,19 +101,18 @@ public class GameOver_UI : UserInterface
     }
     private IEnumerator ResultSequence()
     {
-        Coroutine coroutine = null;
         string required = $"목표 시간\n\n{(Managers.Game.stageInformation.requiredTime / 60):D2} : {Managers.Game.stageInformation.requiredTime:D2} : 00";
         string survival = $"생존 시간\n\n{Managers.Game.inGameTimer.GetHours:D2} : {Managers.Game.inGameTimer.GetMinutes:D2} : {Managers.Game.inGameTimer.GetSeconds:D2}";
         string gainExp = $"Experience\n\n+ {Managers.Game.UserExp:N0} EXP";
 
         yield return waitRealSec;
 
-        yield return Typing.TypeEffectAndWaiting(tmpList[0], required, coroutine, delay);
+        yield return Typing.GetTypeEffectAndWaiting(tmpList[0], required, delay);
 
         tmpList[0].SetPosition(new(-175, 195), delay);
         tmpList[1].gameObject.SetActive(true);
 
-        yield return Typing.TypeEffectAndWaiting(tmpList[1], arrow, coroutine);
+        yield return Typing.GetTypeEffectAndWaiting(tmpList[1], arrow);
 
         tmpList[1].SetPosition(new(-175, 195), delay);
 
@@ -124,7 +123,7 @@ public class GameOver_UI : UserInterface
         tmpList[0].gameObject.SetActive(false);
         tmpList[2].gameObject.SetActive(true);
 
-        yield return Typing.TypeEffectAndWaiting(tmpList[2], survival, coroutine);
+        yield return Typing.GetTypeEffectAndWaiting(tmpList[2], survival);
 
         tmpList[2].SetPosition(new(0, 195), delay);
 
@@ -134,7 +133,7 @@ public class GameOver_UI : UserInterface
 
         tmpList[1].gameObject.SetActive(false);
 
-        yield return Typing.TypeEffectAndWaiting(tmpList[3], gainExp, coroutine, delay);
+        yield return Typing.GetTypeEffectAndWaiting(tmpList[3], gainExp, delay);
 
         yield return waitRealSec;
 
