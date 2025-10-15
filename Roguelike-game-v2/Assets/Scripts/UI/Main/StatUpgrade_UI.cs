@@ -31,7 +31,7 @@ public class StatUpgrade_UI : UserInterface
         statSelection = GetComponent<Stat_Manage>();
         statPointText = Util.GetComponentInChildren<TextMeshProUGUI>(transform);
 
-        statSelection.Set(Managers.Data.data.Stat);
+        statSelection.Set(Managers.Data.user.Stat);
 
         for(int i = 0; i < statElement_parent.childCount; i++)
         {
@@ -44,7 +44,7 @@ public class StatUpgrade_UI : UserInterface
     }
     public void TextUpdate()
     {
-        statPointText.text = $"Stat Point : {Managers.Data.data.StatPoint}";
+        statPointText.text = $"Stat Point : {Managers.Data.user.StatPoint}";
     }
     public void ToggleUI()
     {

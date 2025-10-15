@@ -10,7 +10,7 @@ public class Start_UI : Button_Default
 
     protected override void PointerClick()
     {
-        if(Managers.Data.data.GetStageState() != StageState.Locked)
+        if(Managers.Data.user.GetStageState() != StageState.Locked)
         {
             audioSource.clip = actionAvailableSound;
             button.interactable = false;

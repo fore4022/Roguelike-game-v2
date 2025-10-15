@@ -71,7 +71,7 @@ public class Game_Manager
     }
     public void Over()
     {
-        Managers.Data.data.Exp += userExp;
+        Managers.Data.user.Exp += userExp;
         isPlaying = false;
 
         Managers.UI.Hide<LevelUp_UI>();

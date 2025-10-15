@@ -8,9 +8,9 @@ public class Tutorial : MonoBehaviour
     }
     private IEnumerator Initializing()
     {
-        yield return new WaitUntil(() => Managers.Data.data != null);
+        yield return new WaitUntil(() => Managers.Data.user != null);
 
-        if(!Managers.Data.data.Tutorial)
+        if(!Managers.Data.user.Tutorial)
         {
             StartCoroutine(PlayingTutorial());
         }
@@ -19,8 +19,5 @@ public class Tutorial : MonoBehaviour
     {
         yield return new WaitUntil(() => true);
 
-        //Managers.Data.data.Tutorial = true;
-
-        Managers.UI.Hide<Tutorial_MaskImage_UI>();
     }
 }

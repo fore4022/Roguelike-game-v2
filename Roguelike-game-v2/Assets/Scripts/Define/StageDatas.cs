@@ -44,7 +44,7 @@ public class StageDatas
             index = stages.Count() - 1;
         }
 
-        Managers.Data.data.StageName = stages[index].stagePath;
+        Managers.Data.user.StageName = stages[index].stagePath;
 
         return stages[index];
     }

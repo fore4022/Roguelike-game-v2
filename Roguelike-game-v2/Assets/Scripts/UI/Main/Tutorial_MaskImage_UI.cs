@@ -8,26 +8,18 @@ public class Tutorial_MaskImage_UI : UserInterface, IPointerEnterHandler
 {
     [SerializeField]
     private List<Transform> targetList;
-    [Header("Step_0")]
     [SerializeField]
-    private TextMeshProUGUI text_0;
-    [Header("Step_1")]
-    [SerializeField]
-    private TextMeshProUGUI text_1;
-    [Header("Step_2")]
-    [SerializeField]
-    private TextMeshProUGUI text_2;
+    private List<TextMeshProUGUI> textList;
 
     private Image maskImage;
 
     private const string stepName = "Step_";
-    private const float duration = 0.3f;
     private const float targetAlpha = 165;
 
     private Coroutine step = null;
     private Coroutine typing = null;
     private string targetStr =  "";
-    private int targetIndex = 0;
+    private int stepIndex = 0;
 
     public override void SetUserInterface()
     {
@@ -37,18 +29,18 @@ public class Tutorial_MaskImage_UI : UserInterface, IPointerEnterHandler
     {
         if(step == null)
         {
-            StartCoroutine($"{stepName}{targetIndex}");
+            StartCoroutine($"{stepName}{stepIndex}");
 
-            targetIndex++;
+            stepIndex++;
         }
         else
         {
-
+            StopCoroutine(typing);
         }
     }
     protected override void Enable()
     {
-        targetIndex = 0;
+        stepIndex = 0;
 
         UIElementUtility.SetImageAlpha(maskImage, 0);
 
@@ -56,11 +48,18 @@ public class Tutorial_MaskImage_UI : UserInterface, IPointerEnterHandler
     }
     private IEnumerator Step_0()
     {
+        // parent SetAsLastbinding
+
+        transform.SetParent(targetList[stepIndex]);
+
         targetStr = "아래 플레이 버튼으로\n게임을 시작할 수 있습니다.";
-        typing = StartCoroutine(Typing.TypeEffecting(text_0, targetStr));
+        typing = StartCoroutine(Typing.TypeEffecting(textList[0], targetStr));
 
         yield return null;
 
         step = null;
     }
 }
+
+//Managers.UI.Hide<Tutorial_MaskImage_UI>();
+//Managers.Data.data.Tutorial = true;

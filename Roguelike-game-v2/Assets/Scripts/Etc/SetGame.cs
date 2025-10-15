@@ -42,7 +42,7 @@ public class SetGame : MonoBehaviour
     }
     private IEnumerator UserDataLoading()
     {
-        yield return new WaitUntil(() => Managers.Data.data != null);
+        yield return new WaitUntil(() => Managers.Data.user != null);
 
         Managers.Audio.Init();
         Managers.Audio.InitializedAudio();

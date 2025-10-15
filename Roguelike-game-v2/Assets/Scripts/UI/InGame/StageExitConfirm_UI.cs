@@ -33,7 +33,7 @@ public class StageExitConfirm_UI : UserInterface
     }
     public void OnGiveUpStage()
     {
-        Managers.Data.data.Exp += Managers.Game.UserExp;
+        Managers.Data.user.Exp += Managers.Game.UserExp;
         audioSource.clip = giveUpStage_Sound;
 
         audioSource.Play();

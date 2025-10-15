@@ -55,7 +55,7 @@ public class Setting_UI : UserInterface
     }
     private void BgmUpdate()
     {
-        if(Managers.Data.data.BGM)
+        if(Managers.Data.user.BGM)
         {
             audioSource.clip = onToggleSound;
             _Bgm.sprite = _bgmSprite[0];
@@ -68,7 +68,7 @@ public class Setting_UI : UserInterface
     }
     private void SfxUpdate()
     {
-        if(Managers.Data.data.FX)
+        if(Managers.Data.user.FX)
         {
             audioSource.clip = onToggleSound;
             _Fx.sprite = _fxSprite[0];

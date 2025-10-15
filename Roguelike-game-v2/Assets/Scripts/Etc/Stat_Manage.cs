@@ -20,10 +20,10 @@ public class Stat_Manage : MonoBehaviour
     }
     public void Save()
     {
-        Managers.Data.data.Stat.MoveSpeed = moveSpeed;
-        Managers.Data.data.Stat.IncreaseHealth = increaseHealth;
-        Managers.Data.data.Stat.IncreaseDamage = increaseDamage;
-        Managers.Data.data.Stat.HealthRegenPerSec = healthRegenPerSec;
+        Managers.Data.user.Stat.MoveSpeed = moveSpeed;
+        Managers.Data.user.Stat.IncreaseHealth = increaseHealth;
+        Managers.Data.user.Stat.IncreaseDamage = increaseDamage;
+        Managers.Data.user.Stat.HealthRegenPerSec = healthRegenPerSec;
 
         Managers.Data.Save();
     }

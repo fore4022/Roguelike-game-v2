@@ -13,8 +13,8 @@ public class Audio_Manager
     public AudioMixer Mixer { get { return _audioMixer; } set { _audioMixer = value; } }
     public void Init()
     {
-        SetGroup(SoundTypes.BGM, Managers.Data.data.BGM);
-        SetGroup(SoundTypes.FX, Managers.Data.data.FX);
+        SetGroup(SoundTypes.BGM, Managers.Data.user.BGM);
+        SetGroup(SoundTypes.FX, Managers.Data.user.FX);
     }
     public void InitializedAudio()
     {
@@ -43,11 +43,11 @@ public class Audio_Manager
     {
         if(type == _fx)
         {
-            SetGroup(type, Managers.Data.data.SetFX());
+            SetGroup(type, Managers.Data.user.SetFX());
         }
         else
         {
-            SetGroup(type, Managers.Data.data.SetBGM());
+            SetGroup(type, Managers.Data.user.SetBGM());
         }
     }
     private void SetGroup(SoundTypes type, bool isActive)
