@@ -151,7 +151,7 @@ public class ObjectPool
             switch(type)
             {
                 case ScriptableObjectType.Monster:
-                    so = await Util.LoadingToPath<ScriptableObject>($"Assets/SO/Monster/{Managers.Data.user.StageName}/{key}.asset");
+                    so = await Addressable_Helper.LoadingToPath<ScriptableObject>($"Assets/SO/Monster/{Managers.Data.user.StageName}/{key}.asset");
 
                     if(so is MonsterStat_WithObject_SO exceptionMonsterStatSO)
                     {
@@ -168,7 +168,7 @@ public class ObjectPool
                     }
                     break;
                 case ScriptableObjectType.Skill:
-                    so = await Util.LoadingToPath<ScriptableObject>($"Assets/SO/Skill/{key}.asset");
+                    so = await Addressable_Helper.LoadingToPath<ScriptableObject>($"Assets/SO/Skill/{key}.asset");
                     break;
             }
 

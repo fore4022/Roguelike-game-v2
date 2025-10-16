@@ -16,9 +16,9 @@ public static class Tweening
         float currentTime = 0;
         bool isRectTransform = transform.GetType() == _rectTransform;
 
-        yield return new WaitUntil(() => TweenSystemManage.GetStatus(transform) != null);
+        yield return new WaitUntil(() => Tween_Manage.GetStatus(transform) != null);
 
-        status = TweenSystemManage.GetStatus(transform);
+        status = Tween_Manage.GetStatus(transform);
 
         yield return new WaitForEndOfFrame();
 
@@ -103,7 +103,7 @@ public static class Tweening
                 yield return null;
             }
 
-            TweenSystemManage.Release(transform, data);
+            Tween_Manage.Release(transform, data);
         }
         else
         {
@@ -163,7 +163,7 @@ public static class Tweening
             del(data.trans, initialValue, data.targetValue, data.easeDel(1));
         }
 
-        TweenSystemManage.Release(data.trans, data);
+        Tween_Manage.Release(data.trans, data);
     }
 
     // Scale

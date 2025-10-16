@@ -122,7 +122,7 @@ public class UI_Manager
     }
     private async void Load(string uiName)
     {
-        GameObject go = await Util.LoadingToPath<GameObject>(uiName);
+        GameObject go = await Addressable_Helper.LoadingToPath<GameObject>(uiName);
 
         if(!uiDictionary.ContainsKey(uiName))
         {

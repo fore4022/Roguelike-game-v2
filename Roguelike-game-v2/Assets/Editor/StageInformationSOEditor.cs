@@ -1,21 +1,21 @@
 using UnityEditor;
-[CustomEditor(typeof(MonsterStat_WithObject_SO))]
-public class MonsterStat_WithObject_SO_Editor : Editor
+[CustomEditor(typeof(StageInformation_SO))]
+public class StageInformationSOEditor : Editor
 {
     private SerializedProperty show;
     private SerializedProperty value;
 
     private void OnEnable()
     {
-        show = serializedObject.FindProperty("hasExtraObject");
-        value = serializedObject.FindProperty("extraObjects");
+        show = serializedObject.FindProperty("isDefaultColor");
+        value = serializedObject.FindProperty("skillRangeVisualizerColor");
     }
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
-        DrawPropertiesExcluding(serializedObject, "extraObjects");
+        DrawPropertiesExcluding(serializedObject, "skillRangeVisualizerColor");
 
-        if(show.boolValue)
+        if(!show.boolValue)
         {
             EditorGUILayout.PropertyField(value);
         }

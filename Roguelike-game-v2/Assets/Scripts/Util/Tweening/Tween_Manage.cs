@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-public static class TweenSystemManage
+public static class Tween_Manage
 {
     private static Dictionary<Component, Sequence> _schedule = new();
     private static Dictionary<Component, TweenStatus> _status = new();

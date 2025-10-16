@@ -15,9 +15,9 @@ public class EnterMainScene : MonoBehaviour, IPointerClickHandler
     {
         if(isLoad)
         {
-            if(TweenSystemManage.IsTweenActive())
+            if(Tween_Manage.IsTweenActive())
             {
-                TweenSystemManage.AllSkipToEnd();
+                Tween_Manage.AllSkipToEnd();
 
                 return;
             }

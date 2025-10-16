@@ -306,7 +306,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f7a166059084acc49ad2e50ebea7165c
-    m_Address: UserLevelInfo_SO
+    m_Address: UserExpTable
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

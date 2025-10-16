@@ -23,12 +23,12 @@ public class DataInit
 
         for(int i = 1; i <= Managers.Data.user.Level; i++)
         {
-            userLevel = await Util.LoadingToPath<UserLevel_SO>($"{i}{userLevelPath}");
+            userLevel = await Addressable_Helper.LoadingToPath<UserLevel_SO>($"{i}{userLevelPath}");
 
             foreach(string path in userLevel.pathList)
             {
-                so = await Util.LoadingToPath<SkillInformation_SO>(path);
-                skill = await Util.LoadingToPath<GameObject>(so.info.type);
+                so = await Addressable_Helper.LoadingToPath<SkillInformation_SO>(path);
+                skill = await Addressable_Helper.LoadingToPath<GameObject>(so.info.type);
 
                 skillList.Add(skill);
                 Managers.Game.inGameData_Manage.skill.SetDictionaryItem(so);
@@ -37,11 +37,11 @@ public class DataInit
     }
     private async Task LoadDamageText()
     {
-        damageText = await Util.LoadingToPath<GameObject>(DamageLog_Manage.prefabName);
+        damageText = await Addressable_Helper.LoadingToPath<GameObject>(DamageLog_Manage.prefabName);
     }
     private async Task LoadStage()
     {
-        stage = await Util.LoadingToPath<GameObject>(Managers.Main.GetCurrentStageSO().stagePath);
+        stage = await Addressable_Helper.LoadingToPath<GameObject>(Managers.Main.GetCurrentStageSO().stagePath);
     }
     public IEnumerator Initializing()
     {

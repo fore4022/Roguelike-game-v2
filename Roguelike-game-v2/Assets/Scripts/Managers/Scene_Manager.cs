@@ -36,7 +36,7 @@ public class Scene_Manager
             yield break;
         }
 
-        Util.LoadingScene(sceneName.ToString());
+        Addressable_Helper.LoadingScene(sceneName.ToString());
 
         yield return new WaitUntil(() => SceneManager.GetActiveScene().name == sceneName);
 

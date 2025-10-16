@@ -31,13 +31,13 @@ public class SceneLoading_UI : UserInterface
 
         if(!Managers.Scene.IsSceneLoadComplete)
         {
-            Util.AddressableResourcesRelease();
+            Addressable_Helper.AddressableResourcesRelease();
             StartCoroutine(Managers.Scene.SceneSetting());
         }
 
         yield return new WaitUntil(() => Managers.Scene.IsSceneLoadComplete);
 
-        TweenSystemManage.Reset();
+        Tween_Manage.Reset();
 
         yield return new WaitUntil(() => !wait);
 

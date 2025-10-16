@@ -26,7 +26,7 @@ public class Main_Scene : MonoBehaviour
 
             levelUpCount++;
 
-            if(Managers.Data.user.Level == UserLevelData_SO.maxLevel)
+            if(Managers.Data.user.Level == UserExpTable_SO.maxLevel)
             {
                 break;
             }
@@ -42,20 +42,20 @@ public class Main_Scene : MonoBehaviour
             Managers.Data.Save();
         }
 
-        if(!Managers.Data.user.Tutorial)
-        {
-            if(levelUpCount != 0)
-            {
-                yield return new WaitUntil(() => !Managers.UI.Get<UserLevelUp_UI>().gameObject.activeSelf);
-            }
+        //if(!Managers.Data.user.Tutorial)
+        //{
+        //    if(levelUpCount != 0)
+        //    {
+        //        yield return new WaitUntil(() => !Managers.UI.Get<UserLevelUp_UI>().gameObject.activeSelf);
+        //    }
 
-            Managers.UI.Show<Tutorial_MaskImage_UI>();
+        //    Managers.UI.Show<Tutorial_MaskImage_UI>();
 
-            yield return null;
+        //    yield return null;
 
-            yield return new WaitUntil(() => !Managers.UI.Get<UserLevelUp_UI>());
+        //    yield return new WaitUntil(() => !Managers.UI.Get<UserLevelUp_UI>());
 
-            Managers.UI.Show<Tutorial_MaskImage_UI>();
-        }
+        //    Managers.UI.Show<Tutorial_MaskImage_UI>();
+        //}
     }
 }

@@ -42,7 +42,7 @@ public class Sequence
 
             if(tweenQueue.Count == 0)
             {
-                TweenSystemManage.Clear(transform);
+                Tween_Manage.Clear(transform);
             }
             else
             {
