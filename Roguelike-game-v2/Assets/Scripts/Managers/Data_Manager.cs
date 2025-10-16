@@ -4,16 +4,16 @@ public class Data_Manager
 {
     public UserData user = null;
 
-    private UserExpTable_SO userLevelInfo;
+    private UserExpTable_SO userExpTable;
 
     private const string userExpTablePath = "UserExpTable";
 
     private string filePath = "";
     
-    public UserExpTable_SO UserLevelInfo { get { return userLevelInfo; } }
+    public UserExpTable_SO UserExpTable { get { return userExpTable; } }
     public async void Load()
     {
-        userLevelInfo = await Addressable_Helper.LoadingToPath<UserExpTable_SO>(userExpTablePath);
+        userExpTable = await Addressable_Helper.LoadingToPath<UserExpTable_SO>(userExpTablePath);
 
         if(filePath == string.Empty)
         {

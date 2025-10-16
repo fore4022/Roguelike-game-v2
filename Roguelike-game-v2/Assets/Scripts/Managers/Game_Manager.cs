@@ -3,19 +3,22 @@ using System.Collections;
 using UnityEngine;
 public class Game_Manager
 {
-    public SkillCaster_Manage skillCaster_Manage;
-    public InGameData_Manage inGameData_Manage;
-    public DamageLog_Manage damageLog_Manage;
-    public DifficultyScaler difficultyScaler;
-    public GameOverEffect endEffect;
-    public StageInformation_SO stageInformation;
-    public InGameTimer inGameTimer;
-    public MonsterSpawner monsterSpawner;
-    public ObjectPool objectPool;
-    public Player player;
-    public AudioSource _bgm;
+    public SkillCaster_Manage skillCaster_Manage; // 1
+    public InGameData_Manage inGameData_Manage; // 1
+    public DamageLog_Manage damageLog_Manage; // 1
+    public DifficultyScaler difficultyScaler; // 1
+    public GameOverEffect endEffect; // -> GameOverUI
+    public StageInformation_SO stageInformation; //OK
+    public InGameTimer inGameTimer; // 0
+    public MonsterSpawner monsterSpawner; // 0
+    public ObjectPool objectPool; // 1
+    public Player player; // 1
+    //public AudioSource _bgm;
 
     public Action onStageReset;
+    public Action start;
+    public Action restart;
+    public Action over;
 
     private int userExp = 0;
     private bool isPlaying = false;

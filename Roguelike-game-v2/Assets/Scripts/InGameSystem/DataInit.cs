@@ -68,21 +68,21 @@ public class DataInit
         {
             gameSystem = new GameObject { name = "GameSystem" };
 
-            Managers.Game._bgm = gameSystem.AddComponent<AudioSource>();
+            //Managers.Game._bgm = gameSystem.AddComponent<AudioSource>();
             Managers.Game.monsterSpawner = gameSystem.AddComponent<MonsterSpawner>();
             Managers.Game.inGameTimer = gameSystem.AddComponent<InGameTimer>();
             Managers.Game.endEffect = gameSystem.AddComponent<GameOverEffect>();
 
-            Managers.Game._bgm.playOnAwake = true;
+            //Managers.Game._bgm.playOnAwake = true;
 
-            Managers.Audio.Registration(Managers.Game._bgm, SoundTypes.BGM);
+            //Managers.Audio.Registration(Managers.Game._bgm, SoundTypes.BGM);
         }
         else
         {
-            Managers.Game._bgm = gameSystem.GetComponent<AudioSource>();
+            //Managers.Game._bgm = gameSystem.GetComponent<AudioSource>();
         }
 
-        Managers.Game._bgm.clip = Managers.Game.stageInformation.bgm;
+        //Managers.Game._bgm.clip = Managers.Game.stageInformation.bgm;
         Time.timeScale = 0;
         monsterList = Managers.Game.stageInformation.spawnMonsterList.monsters;
 
@@ -121,7 +121,7 @@ public class DataInit
 
         yield return new WaitUntil(() => Managers.UI.Get<SceneLoading_UI>() == null);
 
-        Managers.Game._bgm.Play();
+        //Managers.Game._bgm.Play();
         Managers.Game.GameStart();
     }
 }

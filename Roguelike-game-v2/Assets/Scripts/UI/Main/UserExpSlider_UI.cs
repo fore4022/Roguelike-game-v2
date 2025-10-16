@@ -16,8 +16,8 @@ public class UserExpSlider_UI : UserInterface
     {
         if(Managers.Data.user.Level != UserExpTable_SO.maxLevel)
         {
-            expSlider.value = (float)Managers.Data.user.Exp / Managers.Data.UserLevelInfo.requiredEXP[Managers.Data.user.Level - 1];
-            expText.text = $"{Managers.Data.user.Exp:N0} / {Managers.Data.UserLevelInfo.requiredEXP[Managers.Data.user.Level - 1]:N0}";
+            expSlider.value = (float)Managers.Data.user.Exp / Managers.Data.UserExpTable.requiredEXP[Managers.Data.user.Level - 1];
+            expText.text = $"{Managers.Data.user.Exp:N0} / {Managers.Data.UserExpTable.requiredEXP[Managers.Data.user.Level - 1]:N0}";
         }
         else
         {

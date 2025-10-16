@@ -11,7 +11,7 @@ public class PoolingObject
 
     private GameObject go;
     private Animator animator;
-    private SpriteRenderer spriteRenderer = null;
+    private SpriteRenderer spriteRenderer;
 
     public GameObject PoolingGameObject { get { return go; } }
     public Transform Transform { get { return go.transform; } }
@@ -52,6 +52,11 @@ public class PoolingObject
     }
     private T GetType<T>(ref T variable)
     {
+        if(variable != null)
+        {
+            return variable;
+        }
+
         return variable = go.GetComponent<T>();
     }
     public PoolingObject(GameObject go)

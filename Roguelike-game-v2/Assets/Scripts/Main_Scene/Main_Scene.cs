@@ -19,9 +19,9 @@ public class Main_Scene : MonoBehaviour
 
         yield return new WaitUntil(() => Managers.UI.IsInitalized);
 
-        while(Managers.Data.user.Exp >= Managers.Data.UserLevelInfo.requiredEXP[Managers.Data.user.Level - 1])
+        while(Managers.Data.user.Exp >= Managers.Data.UserExpTable.requiredEXP[Managers.Data.user.Level - 1])
         {
-            Managers.Data.user.Exp -= Managers.Data.UserLevelInfo.requiredEXP[Managers.Data.user.Level - 1];
+            Managers.Data.user.Exp -= Managers.Data.UserExpTable.requiredEXP[Managers.Data.user.Level - 1];
             Managers.Data.user.Level++;
 
             levelUpCount++;
