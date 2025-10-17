@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// 몬스터를 주기적으로 생성한다.
 /// </summary>
-public class MonsterSpawner : MonoBehaviour
+public class MonsterSpawner
 {
     [HideInInspector]
     public List<GameObject> monsterList = new();
@@ -18,22 +18,26 @@ public class MonsterSpawner : MonoBehaviour
     private int[] monsterSpawnProbabilityArray = new int[100];
     private float spawnDelay = 0;
 
-    private void Awake()
+    public MonsterSpawner()
     {
         Managers.Game.monsterSpawner = this;
     }
     public void StartSpawn()
     {
-        monsterSpawn = StartCoroutine(SpawningSystem());
+        monsterSpawn = Util.GetMonoBehaviour().StartCoroutine(SpawningSystem());
+    }
+    public void StopSpawn()
+    {
+        Util.GetMonoBehaviour().StopCoroutine(spawnGroup);
     }
     public void ReStart()
     {
         if(spawnGroup != null)
         {
-            StopCoroutine(spawnGroup);
+            Util.GetMonoBehaviour().StopCoroutine(spawnGroup);
         }
 
-        StopCoroutine(monsterSpawn);
+        Util.GetMonoBehaviour().StopCoroutine(monsterSpawn);
         StartSpawn();
     }
     private void LoadInformation()
@@ -62,13 +66,13 @@ public class MonsterSpawner : MonoBehaviour
         {
             foreach(SpawnInformation_SO spawnInformation in Managers.Game.stageInformation.spawnInformationList)
             {
-                spawnGroup = StartCoroutine(MonsterSpawning(spawnInformation));
+                spawnGroup = Util.GetMonoBehaviour().StartCoroutine(MonsterSpawning(spawnInformation));
 
                 yield return new WaitUntil(() => spawnGroup == null);
             }
         }
 
-        StopCoroutine(spawnGroup);
+        Util.GetMonoBehaviour().StopCoroutine(spawnGroup);
     }
     private IEnumerator MonsterSpawning(SpawnInformation_SO spawnInformation)
     {

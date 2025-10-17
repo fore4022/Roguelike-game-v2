@@ -23,19 +23,19 @@ public class SceneLoading_UI : UserInterface
     }
     private IEnumerator Loading()
     {
-        yield return new WaitUntil(() => Managers.UI.IsInitalized);
+        yield return new WaitUntil(() => Managers.UI.IsInitalized());
 
         UIElementUtility.SetImageAlpha(background, maxAlpha, limitTime, false);
 
         yield return new WaitForSecondsRealtime(limitTime);
 
-        if(!Managers.Scene.IsSceneLoadComplete)
+        if(!Managers.Scene.IsLoading)
         {
             Addressable_Helper.AddressableResourcesRelease();
             StartCoroutine(Managers.Scene.SceneSetting());
         }
 
-        yield return new WaitUntil(() => Managers.Scene.IsSceneLoadComplete);
+        yield return new WaitUntil(() => Managers.Scene.IsLoading);
 
         Tween_Manage.Reset();
 

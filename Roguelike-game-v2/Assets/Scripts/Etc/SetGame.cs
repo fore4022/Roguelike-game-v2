@@ -36,7 +36,7 @@ public class SetGame : MonoBehaviour
 
         Managers.Data.Load();
 
-        yield return new WaitUntil(() => Managers.UI.IsInitalized);
+        yield return new WaitUntil(() => Managers.UI.IsInitalized());
 
         StartCoroutine(UserDataLoading());
     }

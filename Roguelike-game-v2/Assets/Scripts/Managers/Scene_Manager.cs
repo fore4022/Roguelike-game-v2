@@ -8,14 +8,14 @@ public class Scene_Manager
     public Action loadComplete = null;
 
     private string sceneName = "Title";
-    private bool isLoad = false;
+    private bool isLoading = false;
     private bool hasInitialization;
 
     public string CurrentSceneName { get { return sceneName; } }
-    public bool IsSceneLoadComplete { get { return !isLoad; } }
+    public bool IsLoading { get { return !isLoading; } }
     public void LoadScene(SceneName sceneName, bool hasInitialization = true)
     {
-        isLoad = true;
+        isLoading = true;
         this.hasInitialization = hasInitialization;
         this.sceneName = sceneName.ToString();
 
@@ -31,7 +31,7 @@ public class Scene_Manager
     }
     public IEnumerator SceneSetting()
     {
-        if(!isLoad)
+        if(!isLoading)
         {
             yield break;
         }
@@ -42,7 +42,7 @@ public class Scene_Manager
 
         loadComplete?.Invoke();
 
-        isLoad = false;
+        isLoading = false;
 
         if(!hasInitialization)
         {

@@ -1,41 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using Object = UnityEngine.Object;
 public class UI_Manager
 {
     private Dictionary<string, UserInterface> uiDictionary = new();
+
+    private Transform root;
     
-    public bool IsInitalized
-    {
-        get
-        {
-            foreach(UserInterface ui in uiDictionary.Values)
-            {
-                if(!ui.IsInitalized)
-                {
-                    ui.SetUI();
-
-                    return false;
-                }
-            }
-
-            return true;
-        }
-    }
     private Transform Transform
     {
         get 
         {
-            GameObject go = GameObject.Find("UI");
-
-            if(go == null)
+            if(root == null)
             {
-                go = new GameObject { name = "UI" };
+                GameObject go = GameObject.Find("UI");
+
+                if(go == null)
+                {
+                    go = new GameObject { name = "UI" };
+                }
+
+                root = go.transform;
             }
 
-            return go.transform;
+            return root;
         }
+    }
+    public bool IsInitalized()
+    {
+        foreach(UserInterface ui in uiDictionary.Values)
+        {
+            if(!ui.IsInitalized)
+            {
+                ui.SetUI();
+
+                return false;
+            }
+        }
+
+        return true;
     }
     public void Show<T>() where T : UserInterface
     {
@@ -120,7 +125,7 @@ public class UI_Manager
     {
         return typeof(T).ToString().Replace("_UI", "");
     }
-    private async void Load(string uiName)
+    private async Task Load(string uiName)
     {
         GameObject go = await Addressable_Helper.LoadingToPath<GameObject>(uiName);
 
@@ -133,9 +138,9 @@ public class UI_Manager
     {
         UserInterface ui;
         
-        Load(uiName);
+        Task loadUI = Load(uiName);
 
-        yield return new WaitUntil(() => uiDictionary.ContainsKey(uiName));
+        yield return new WaitUntil(() => loadUI.IsCompleted);
 
         ui = uiDictionary[uiName];
 

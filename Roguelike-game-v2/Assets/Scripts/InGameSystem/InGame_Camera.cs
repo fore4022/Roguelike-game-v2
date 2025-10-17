@@ -18,7 +18,8 @@ public class InGame_Camera : MonoBehaviour
     private float targetCameraSize { get { return 1.25f * Camera_SizeScale.orthographicSizeScale; } }
     private void Start()
     {
-        Managers.Game.onStageReset += Reset;
+        Managers.Game.start += Reset;
+        Managers.Game.restart += Reset;
     }
     private void Update()
     {

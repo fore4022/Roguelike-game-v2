@@ -3,19 +3,17 @@ using System.Collections;
 using UnityEngine;
 public class Game_Manager
 {
-    public SkillCaster_Manage skillCaster_Manage; // 1
-    public InGameData_Manage inGameData_Manage; // 1
-    public DamageLog_Manage damageLog_Manage; // 1
-    public DifficultyScaler difficultyScaler; // 1
-    public GameOverEffect endEffect; // -> GameOverUI
-    public StageInformation_SO stageInformation; //OK
-    public InGameTimer inGameTimer; // 0
-    public MonsterSpawner monsterSpawner; // 0
-    public ObjectPool objectPool; // 1
-    public Player player; // 1
-    //public AudioSource _bgm;
+    public SkillCaster_Manage skillCaster_Manage;
+    public InGameData_Manage inGameData_Manage;
+    public DamageLog_Manage damageLog_Manage;
+    public DifficultyScaler difficultyScaler;
+    public MonsterSpawner monsterSpawner;
+    public GameOverEffect endEffect;
+    public InGameTimer inGameTimer;
+    public ObjectPool objectPool;
+    public Player player;
+    public StageInformation_SO stageInformation = null;
 
-    public Action onStageReset;
     public Action start;
     public Action restart;
     public Action over;
@@ -29,32 +27,45 @@ public class Game_Manager
     public bool Playing { get { return isPlaying; } set { isPlaying = value; } }
     public bool GameOver { get { return gameOver; } set { gameOver = value; } }
     public bool IsStageClear { get { return stageClear; } }
-    private void Set()
+    private void Init()
     {
         skillCaster_Manage = new();
         inGameData_Manage = new();
         damageLog_Manage = new();
         difficultyScaler = new();
+        monsterSpawner = new();
+        endEffect = new();
+        inGameTimer = new();
+        objectPool = new();
+
+        Set();
+    }
+    private void Set()
+    {
+        // start
+        start += inGameTimer.StartTimer;
+        start += monsterSpawner.StartSpawn;
+        start += inGameData_Manage.player.SetLevel;
+        // restart
+        restart += skillCaster_Manage.StopAllCaster;
+        restart += inGameData_Manage.skill.Reset;
+        restart += skillCaster_Manage.Reset;
     }
     public void DataLoad()
     {
         stageInformation = Managers.Main.GetCurrentStageSO().information;
 
-        Set();
+        Init();
         Util.GetMonoBehaviour().StartCoroutine(inGameData_Manage.init.Initializing());
     }
     public void GameStart()
     {
-        onStageReset.Invoke();
+        start.Invoke();
 
-        Time.timeScale = 1;
         isPlaying = true;
         gameOver = false;
         stageClear = false;
 
-        inGameTimer.StartTimer();
-        monsterSpawner.StartSpawn();
-        inGameData_Manage.player.SetLevel();
         Managers.UI.Show<HeadUpDisplay_UI>();
         Managers.UI.Show<LevelUp_UI>();
     }
@@ -63,13 +74,7 @@ public class Game_Manager
         isPlaying = false;
         gameOver = false;
         
-        onStageReset.Invoke();
-        skillCaster_Manage.StopAllCaster();
-        inGameData_Manage.skill.Reset();
-
-        skillCaster_Manage = new();
-        difficultyScaler = new();
-
+        restart.Invoke();
         Util.GetMonoBehaviour().StartCoroutine(ReSetting());
     }
     public void Over()
@@ -83,6 +88,8 @@ public class Game_Manager
     public void GoMain()
     {
         skillCaster_Manage.StopAllCaster();
+        inGameTimer.StopTimer();
+        monsterSpawner.StopSpawn();
         objectPool.StopAllActions();
 
         skillCaster_Manage = null;
@@ -93,6 +100,7 @@ public class Game_Manager
         inGameTimer = null;
         monsterSpawner = null;
         objectPool = null;
+        stageInformation = null;
         userExp = 0;
 
         Managers.Scene.LoadScene(SceneName.Main, false);
@@ -133,7 +141,6 @@ public class Game_Manager
 
         monsterSpawner.ReStart();
         inGameData_Manage.player.SetLevel();
-        onStageReset.Invoke();
         Managers.UI.Show<HeadUpDisplay_UI>();
         Managers.UI.Show<LevelUp_UI>();
         Managers.UI.Show<HpSlider_UI>();

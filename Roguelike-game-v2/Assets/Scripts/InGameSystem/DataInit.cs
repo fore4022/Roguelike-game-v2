@@ -52,7 +52,7 @@ public class DataInit
 
         yield return new WaitForEndOfFrame();
 
-        yield return new WaitUntil(() => Managers.Scene.IsSceneLoadComplete);
+        yield return new WaitUntil(() => Managers.Scene.IsLoading);
 
         Managers.Game.objectPool = new();
 
@@ -62,27 +62,6 @@ public class DataInit
     {
         List<GameObject> monsterList;
 
-        GameObject gameSystem = GameObject.Find("GameSystem");
-
-        if(gameSystem == null)
-        {
-            gameSystem = new GameObject { name = "GameSystem" };
-
-            //Managers.Game._bgm = gameSystem.AddComponent<AudioSource>();
-            Managers.Game.monsterSpawner = gameSystem.AddComponent<MonsterSpawner>();
-            Managers.Game.inGameTimer = gameSystem.AddComponent<InGameTimer>();
-            Managers.Game.endEffect = gameSystem.AddComponent<GameOverEffect>();
-
-            //Managers.Game._bgm.playOnAwake = true;
-
-            //Managers.Audio.Registration(Managers.Game._bgm, SoundTypes.BGM);
-        }
-        else
-        {
-            //Managers.Game._bgm = gameSystem.GetComponent<AudioSource>();
-        }
-
-        //Managers.Game._bgm.clip = Managers.Game.stageInformation.bgm;
         Time.timeScale = 0;
         monsterList = Managers.Game.stageInformation.spawnMonsterList.monsters;
 
@@ -103,7 +82,7 @@ public class DataInit
 
         int typeCount = monsterList.Count + skillList.Count;
 
-        yield return new WaitUntil(() => Managers.UI.IsInitalized);
+        yield return new WaitUntil(() => Managers.UI.IsInitalized());
 
         yield return new WaitUntil(() => Managers.Game.inGameData_Manage.player.levelUpdate != null);
 
@@ -121,7 +100,6 @@ public class DataInit
 
         yield return new WaitUntil(() => Managers.UI.Get<SceneLoading_UI>() == null);
 
-        //Managers.Game._bgm.Play();
         Managers.Game.GameStart();
     }
 }

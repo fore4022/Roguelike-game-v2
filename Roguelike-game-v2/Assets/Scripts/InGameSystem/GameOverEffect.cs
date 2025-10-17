@@ -3,35 +3,26 @@ using UnityEngine;
 /// <summary>
 /// GameOver ø¨√‚
 /// </summary>
-public class GameOverEffect : MonoBehaviour
+public class GameOverEffect
 {
+    private readonly WaitForSeconds delay = new(duration);
     private const float duration = 0.4f;
-
-    private WaitForSeconds delay;
 
     private float MaxOrthographicSize { get { return 6 * Camera_SizeScale.orthographicSizeScale; } }
     private float MinOrthographicSize { get { return 1.25f * Camera_SizeScale.orthographicSizeScale; } }
-    private void Awake()
-    {
-        Managers.Game.endEffect = this;
-    }
-    private void Start()
-    {
-        delay = new(duration);
-    }
     public void EffectPlay()
     {
         InputActions.DisableInputAction<TouchControls>();
         Managers.UI.Hide<HpSlider_UI>();
 
-        StartCoroutine(GameOverEffecting());
+        Util.GetMonoBehaviour().StartCoroutine(GameOverEffecting());
     }
     public void StageClearEffect()
     {
         InputActions.DisableInputAction<TouchControls>();
         Managers.UI.Hide<HpSlider_UI>();
 
-        StartCoroutine(StageClearEffecting());
+        Util.GetMonoBehaviour().StartCoroutine(StageClearEffecting());
     }
     private IEnumerator GameOverEffecting()
     {
