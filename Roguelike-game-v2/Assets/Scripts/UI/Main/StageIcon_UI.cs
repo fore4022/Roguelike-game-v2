@@ -22,7 +22,7 @@ public class StageIcon_UI : UserInterface
 
     public override void SetUserInterface()
     {
-        themaName = Util.GetComponentInChildren<TextMeshProUGUI>(transform);
+        themaName = transform.GetComponentInChildren<TextMeshProUGUI>();
 
         UpdateUI(0);
     }

@@ -26,9 +26,9 @@ public class GameOver_UI : UserInterface
     public override void SetUserInterface()
     {
         audioSource = GetComponent<AudioSource>();
-        tmpList = Util.GetComponentsInChildren<TextMeshProUGUI>(Util.GetChildren(transform, 1), true);
-        imgList = Util.GetComponentsInChildren<Image>(Util.GetChildren(transform, 1));
-        result = Util.GetComponentInChildren<TextMeshProUGUI>(transform);
+        tmpList = transform.GetChild(1).GetComponentsInChild<TextMeshProUGUI>(true);
+        imgList = transform.GetChild(1).GetComponentsInChild<Image>();
+        result = transform.GetComponentInChildren<TextMeshProUGUI>(transform);
 
         Managers.UI.Hide<GameOver_UI>();
     }
@@ -107,12 +107,12 @@ public class GameOver_UI : UserInterface
 
         yield return waitRealSec;
 
-        yield return Typing.GetTypeEffectAndWaiting(tmpList[0], required, delay);
+        yield return Typing.EffectAndGetWaiting(tmpList[0], required, delay);
 
         tmpList[0].SetPosition(new(-175, 195), delay);
         tmpList[1].gameObject.SetActive(true);
 
-        yield return Typing.GetTypeEffectAndWaiting(tmpList[1], arrow);
+        yield return Typing.EffectAndGetWaiting(tmpList[1], arrow);
 
         tmpList[1].SetPosition(new(-175, 195), delay);
 
@@ -123,7 +123,7 @@ public class GameOver_UI : UserInterface
         tmpList[0].gameObject.SetActive(false);
         tmpList[2].gameObject.SetActive(true);
 
-        yield return Typing.GetTypeEffectAndWaiting(tmpList[2], survival);
+        yield return Typing.EffectAndGetWaiting(tmpList[2], survival);
 
         tmpList[2].SetPosition(new(0, 195), delay);
 
@@ -133,7 +133,7 @@ public class GameOver_UI : UserInterface
 
         tmpList[1].gameObject.SetActive(false);
 
-        yield return Typing.GetTypeEffectAndWaiting(tmpList[3], gainExp, delay);
+        yield return Typing.EffectAndGetWaiting(tmpList[3], gainExp, delay);
 
         yield return waitRealSec;
 

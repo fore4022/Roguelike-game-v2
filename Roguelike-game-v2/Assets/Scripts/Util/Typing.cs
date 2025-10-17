@@ -6,13 +6,13 @@ public static class Typing
 {
     private static WaitForSecondsRealtime waitRealSec = new(0.03f);
 
-    public static WaitForSecondsRealtime GetTypeEffectAndWaiting(TextMeshProUGUI tmp, string str, float delay = 0, bool recursive = false, string currentStr = "")
+    public static WaitForSecondsRealtime EffectAndGetWaiting(TextMeshProUGUI tmp, string str, float delay = 0, bool recursive = false, string currentStr = "")
     {
         Util.GetMonoBehaviour().StartCoroutine(TypeEffecting(tmp, str, recursive, currentStr));
 
         return new(waitRealSec.waitTime * str.Length + delay);
     }
-    public static (Coroutine, WaitForSecondsRealtime) GetTypeEffect(TextMeshProUGUI tmp, string str, float delay = 0, bool recursive = false, string currentStr = "")
+    public static (Coroutine, WaitForSecondsRealtime) GetEffectAndWaiting(TextMeshProUGUI tmp, string str, float delay = 0, bool recursive = false, string currentStr = "")
     {
         Coroutine coroutine = Util.GetMonoBehaviour().StartCoroutine(TypeEffecting(tmp, str, recursive, currentStr));
 
@@ -21,6 +21,7 @@ public static class Typing
     public static IEnumerator TypeEffecting(TextMeshProUGUI tmp, string str, bool recursive = false, string currentStr = "")
     {
         StringBuilder builder = new();
+        string text;
 
         if(currentStr == "")
         {
@@ -41,9 +42,11 @@ public static class Typing
 
                 builder.Append(str[i]);
 
-                foreach(TextMeshProUGUI _tmp in tmpArray)
+                text = builder.ToString();
+
+                foreach (TextMeshProUGUI _tmp in tmpArray)
                 {
-                    _tmp.text = builder.ToString();
+                    _tmp.text = text;
                 }
             }
         }

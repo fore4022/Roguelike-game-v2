@@ -1,4 +1,3 @@
-public delegate float EaseDelegate(float f);
 public class EaseProvider
 {
     public static EaseDelegate Get(EaseType type)

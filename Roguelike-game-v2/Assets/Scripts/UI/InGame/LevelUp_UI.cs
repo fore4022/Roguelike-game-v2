@@ -8,8 +8,8 @@ public class LevelUp_UI : UserInterface
 
     public override void SetUserInterface()
     {
-        level = Util.GetComponentInChildren<TextMeshProUGUI>(transform, true);
-        animator = Util.GetComponentInChildren<Animator>(transform, true);
+        level = transform.GetComponentInChild<TextMeshProUGUI>(true);
+        animator = transform.GetComponentInChild<Animator>(true);
 
         gameObject.SetActive(false);
     }
