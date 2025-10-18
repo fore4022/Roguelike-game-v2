@@ -95,7 +95,7 @@ public class SkillSelection_UI : UserInterface
         {
             go = Instantiate(attackOption, trans);
 
-            skillOptionList.Add(Util.GetComponentInChildren<SkillOption_UI>(go.transform));
+            skillOptionList.Add(go.transform.GetComponentInChild<SkillOption_UI>());
 
             go.transform.GetChild(0).gameObject.SetActive(false);
         }

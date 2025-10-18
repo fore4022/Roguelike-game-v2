@@ -8,7 +8,7 @@ public class UserExpSlider_UI : UserInterface
     public override void SetUserInterface()
     {
         expSlider = GetComponent<Slider>();
-        expText = Util.GetComponentInChildren<TextMeshProUGUI>(transform);
+        expText = transform.GetComponentInChild<TextMeshProUGUI>();
 
         UpdateExp();
     }

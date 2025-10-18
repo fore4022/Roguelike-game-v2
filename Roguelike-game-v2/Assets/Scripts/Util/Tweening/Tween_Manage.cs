@@ -24,13 +24,13 @@ public static class Tween_Manage
 
                     if(!isContain)
                     {
-                        data.Set(Util.GetMonoBehaviour().StartCoroutine(Tweening.OverTime(type, data, trans, EaseProvider.Get(ease), numeric, duration, delay)));
+                        data.Set(CoroutineHelper.StartCoroutine(Tweening.OverTime(type, data, trans, EaseProvider.Get(ease), numeric, duration, delay)));
 
                         op = TweenOperation.Join;
                     }
                     break;
                 case TweenOperation.Insert:
-                    data.Set(Util.GetMonoBehaviour().StartCoroutine(Tweening.OverTime(type, data, trans, EaseProvider.Get(ease), numeric, duration, delay)), type, trans, EaseProvider.Get(ease), numeric, duration);
+                    data.Set(CoroutineHelper.StartCoroutine(Tweening.OverTime(type, data, trans, EaseProvider.Get(ease), numeric, duration, delay)), type, trans, EaseProvider.Get(ease), numeric, duration);
                     break;
                 case TweenOperation.Join:
                     if(isContain)
@@ -42,7 +42,7 @@ public static class Tween_Manage
                         }
                     }
 
-                    data.Set(Util.GetMonoBehaviour().StartCoroutine(Tweening.OverTime(type, data, trans, EaseProvider.Get(ease), numeric, duration, delay)), type, trans, EaseProvider.Get(ease), numeric, duration);
+                    data.Set(CoroutineHelper.StartCoroutine(Tweening.OverTime(type, data, trans, EaseProvider.Get(ease), numeric, duration, delay)), type, trans, EaseProvider.Get(ease), numeric, duration);
                     break;
             }
 
@@ -88,7 +88,7 @@ public static class Tween_Manage
                 {
                     if(data.coroutine != null)
                     {
-                        Util.GetMonoBehaviour().StopCoroutine(data.coroutine);
+                        CoroutineHelper.StopCoroutine(data.coroutine);
                     }
                 }
 
@@ -129,7 +129,7 @@ public static class Tween_Manage
                 {
                     TweenData data = dataList[0];
 
-                    Util.GetMonoBehaviour().StopCoroutine(data.coroutine);
+                    CoroutineHelper.StopCoroutine(data.coroutine);
                     Tweening.ToEnd(data);
                 }
             }
@@ -163,7 +163,7 @@ public static class Tween_Manage
             {
                 foreach(TweenData data in datas)
                 {
-                    Util.GetMonoBehaviour().StopCoroutine(data.coroutine);
+                    CoroutineHelper.StopCoroutine(data.coroutine);
                 }
             }
         }

@@ -15,7 +15,7 @@ public class SceneLoading_UI : UserInterface
     public bool Wait { set { wait = value; } }
     public override void SetUserInterface()
     {
-        background = Util.GetComponentInChildren<Image>(transform);
+        background = transform.GetComponentInChild<Image>();
 
         transform.SetParent(null, false);
         DontDestroyOnLoad(gameObject);

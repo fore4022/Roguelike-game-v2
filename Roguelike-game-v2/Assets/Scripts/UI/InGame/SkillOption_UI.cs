@@ -18,8 +18,8 @@ public class SkillOption_UI : Button_B
     {
         base.Init();
 
-        image = Util.GetComponentInChildren<Image>(transform);
-        textList = Util.GetComponentsInChildren<TextMeshProUGUI>(transform);
+        image = transform.GetComponentInChild<Image>();
+        textList = transform.GetComponentsInChild<TextMeshProUGUI>();
         imageRect = image.gameObject.GetComponent<RectTransform>();
 
         Managers.Audio.Registration(audioSource);

@@ -29,7 +29,7 @@ public class StatUpgrade_UI : UserInterface
     public override void SetUserInterface()
     {
         statSelection = GetComponent<Stat_Manage>();
-        statPointText = Util.GetComponentInChildren<TextMeshProUGUI>(transform);
+        statPointText = transform.GetComponentInChild<TextMeshProUGUI>();
 
         statSelection.Set(Managers.Data.user.Stat);
 

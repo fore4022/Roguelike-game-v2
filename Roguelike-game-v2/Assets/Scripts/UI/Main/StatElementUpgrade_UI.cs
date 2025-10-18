@@ -17,7 +17,7 @@ public class StatElementUpgrade_UI : UserInterface
 
     public override void SetUserInterface()
     {
-        tmp = Util.GetComponentInChildren<TextMeshProUGUI>(transform, true);
+        tmp = transform.GetComponentInChild<TextMeshProUGUI>(true);
         audioSource = GetComponent<AudioSource>();
 
         audioSource.playOnAwake = false;

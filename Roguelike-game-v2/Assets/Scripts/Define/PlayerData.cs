@@ -65,10 +65,10 @@ public class PlayerData
 
                 if(levelCalculation != null)
                 {
-                    Util.GetMonoBehaviour().StopCoroutine(levelCalculation);
+                    CoroutineHelper.StopCoroutine(levelCalculation);
                 }
 
-                levelCalculation = Util.GetMonoBehaviour().StartCoroutine(WaitLevelCalculation());
+                levelCalculation = CoroutineHelper.StartCoroutine(WaitLevelCalculation());
             }
 
             experienceUpdate?.Invoke();

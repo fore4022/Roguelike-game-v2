@@ -16,7 +16,7 @@ public class ToastMessage_UI : UserInterface
     public override void SetUserInterface()
     {
         img = GetComponent<Image>();
-        toast = Util.GetComponentInChildren<TextMeshProUGUI>(transform);
+        toast = transform.GetComponentInChild<TextMeshProUGUI>();
 
         Managers.UI.Hide<ToastMessage_UI>();
     }
@@ -34,8 +34,8 @@ public class ToastMessage_UI : UserInterface
         {
             if(coroutine_img != null)
             {
-                Util.StopCoroutine(coroutine_img);
-                Util.StopCoroutine(coroutine_text);
+                CoroutineHelper.StopCoroutine(coroutine_img);
+                CoroutineHelper.StopCoroutine(coroutine_text);
             }
 
             coroutine = null;
