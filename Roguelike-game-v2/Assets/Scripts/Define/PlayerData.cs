@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 /// <summary>
-/// 플레이어의 레벨, 경험치, 정보를 관리하는 역할을 가진다.
+/// 플레이어의 레벨, 경험치, 정보를 관리하는 역할
 /// </summary>
 public class PlayerData
 {

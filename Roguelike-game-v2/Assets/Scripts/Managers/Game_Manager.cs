@@ -30,6 +30,7 @@ public class Game_Manager
     public bool Playing { get { return isPlaying; } set { isPlaying = value; } }
     public bool GameOver { get { return gameOver; } set { gameOver = value; } }
     public bool IsStageClear { get { return stageClear; } }
+    // 서브 매니저 초기화
     private void Init()
     {
         skillCaster_Manage = new();
@@ -41,9 +42,10 @@ public class Game_Manager
         inGameTimer = new();
         objectPool = new();
 
-        Set();
+        SetEvent();
     }
-    private void Set()
+    // 이벤트 등록
+    private void SetEvent()
     {
         // start
         start += inGameTimer.StartTimer;
@@ -54,7 +56,8 @@ public class Game_Manager
         restart += inGameData_Manage.skill.Reset;
         restart += skillCaster_Manage.Reset;
     }
-    public void DataLoad()
+    // 게임 
+    public void SetGame()
     {
         stageInformation = Managers.Main.GetCurrentStageSO().information;
 

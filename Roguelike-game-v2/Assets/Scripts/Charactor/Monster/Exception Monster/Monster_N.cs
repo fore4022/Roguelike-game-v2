@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 /// <summary>
-/// 쿨타임마다 현재 위치에서 스킬을 시전한다.
+/// 쿨타임마다 현재 위치에서 스킬 시전
 /// </summary>
 public class Monster_N : BasicMonster_WithObject
 {

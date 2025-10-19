@@ -1,6 +1,6 @@
 using UnityEngine;
 /// <summary>
-/// 일정한 확률로 사망시, 현재 위치에 스킬을 시전한다.
+/// 일정한 확률로 사망시, 현재 위치에 공격 시전
 /// </summary>
 public class Monster_G : BasicMonster_WithObject
 {

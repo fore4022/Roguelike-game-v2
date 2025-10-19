@@ -2,8 +2,8 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 /// <summary>
-/// InputSystem을 이용하여 구현하였다.
-/// 입력 이벤트에 따라서 CharactorController_UI를 제어한다. 
+/// InputSystem을 이용하여 구현
+/// 입력 이벤트에 따라서 CharactorController_UI를 제어
 /// </summary>
 public class PlayerMove : IMoveable
 {

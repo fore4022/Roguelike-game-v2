@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 /// <summary>
-/// 빠른 속도로 플레이어를 향해서 돌진한다. 점차 방향 전환에 제약을 받는다.
+/// 빠른 속도로 플레이어를 향해서 이동, 유효 회전 제한
 /// </summary>
 public class Monster_K : BasicMonster
 {

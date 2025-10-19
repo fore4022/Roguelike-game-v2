@@ -4,7 +4,7 @@ using UnityEngine;
 /// <para>
 /// SlimeSquareH 전용
 /// </para>
-/// 사망시, 자기 자신을 작아진 형태로 @개 소환한다. 작아진 형태가 사망할 경우에는 동작하지 않는다.
+/// 사망할 경우 작아진 객체로 분열하며, 분열된 객체는 추가 분열되지 않음
 /// </summary>
 public class Monster_F : BasicMonster_WithObject
 {

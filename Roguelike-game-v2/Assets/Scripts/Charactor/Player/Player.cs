@@ -3,8 +3,8 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 /// <summary>
-/// 게임 플레이 준비 완료 후에 초기화 작업을 진행한다.
-/// 플레이어가 움직이는 기능은 PlayerMove.cs로 나누어 구현하였다.
+/// 게임 플레이 준비 완료 후에 초기화 작업을 진행
+/// 플레이어가 움직이는 기능은 PlayerMove.cs로 나누어 구현
 /// </summary>
 public class Player : MonoBehaviour, IDamageReceiver
 {

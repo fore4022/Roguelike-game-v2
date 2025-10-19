@@ -15,7 +15,7 @@ public class Start_UI : Button_Default
             audioSource.clip = actionAvailableSound;
             button.interactable = false;
             
-            Managers.Game.DataLoad();
+            Managers.Game.SetGame();
         }
         else
         {

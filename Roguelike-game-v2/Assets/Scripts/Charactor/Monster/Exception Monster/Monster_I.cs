@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
-/// 자신의 주변에 몬스터를 생성한다.
+/// 자신의 주변에 몬스터를 소환
 /// </summary>
 public class Monster_I : BasicMonster_WithObject
 {

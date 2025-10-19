@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 /// <summary>
-/// 스킬의 정보를 관리하는 역할을 가진다.
+/// 스킬의 정보를 관리하는 역할
 /// </summary>
 public class SkillDatas
 {

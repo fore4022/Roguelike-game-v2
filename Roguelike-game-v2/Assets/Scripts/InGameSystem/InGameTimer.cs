@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 /// <summary>
-/// InGame Timer으로 시간 변화에 따른 Action이 있다.
+/// InGame Timer으로 시간 변화에 따른 이벤트
 /// </summary>
 public class InGameTimer
 {

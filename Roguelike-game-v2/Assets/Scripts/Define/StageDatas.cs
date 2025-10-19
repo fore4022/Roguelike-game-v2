@@ -4,7 +4,7 @@ using System.Linq;
 /// <para>
 /// 모든 스테이지를 담는 타입
 /// </para>
-/// 이어지는 스테이지를 반환한다.
+/// 이어지는 스테이지를 반환
 /// </summary>
 [System.Serializable]
 public class StageDatas

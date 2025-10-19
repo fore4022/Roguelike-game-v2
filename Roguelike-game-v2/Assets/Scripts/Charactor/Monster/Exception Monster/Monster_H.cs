@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 /// <summary>
-/// 일정한 확률로 플레이어에게 돌진한다. 돌진이 끝난 후, 현재 위치에서 스킬을 시전한다.
+/// 일정 확률로 플레이어에게 돌진하며, 돌진이 끝난 후, 현재 위치에서 스킬 시전
 /// </summary>
 public class Monster_H : BasicMonster_WithObject
 {

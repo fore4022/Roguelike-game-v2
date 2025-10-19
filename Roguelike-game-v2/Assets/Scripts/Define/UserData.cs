@@ -1,5 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
+/// <summary>
+/// <para>
+/// 유저 정보
+/// </para>
+/// 스테이지 클리어 정보, 설정, 능력치, 마지막으로 플레이한 스테이지, 튜토리얼 플레이 여부를 포함
+/// </summary>
 public class UserData
 {
     [SerializeField]

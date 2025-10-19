@@ -5,7 +5,7 @@ using UnityEngine;
 /// <para>
 /// 그림자 렌더러
 /// </para>
-/// IFakeShadowSource를 가진 대상의 자식에 위치해서, 가진 대상의 그림자를 그린다.
+/// IFakeShadowSource를 가진 대상의 자식에 위치를 통해 그림자를 구현
 /// </summary>
 public class FakeShadowRenderer : MonoBehaviour
 {

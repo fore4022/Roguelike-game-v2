@@ -1,5 +1,8 @@
 using System.Collections;
 using UnityEngine;
+/// <summary>
+/// 인게임 배경음악 초기 설정
+/// </summary>
 public class Background_Music : MonoBehaviour
 {
     private AudioSource audioSource;

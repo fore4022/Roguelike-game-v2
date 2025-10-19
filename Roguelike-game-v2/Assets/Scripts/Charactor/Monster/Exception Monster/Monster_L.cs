@@ -1,6 +1,6 @@
 using UnityEngine;
 /// <summary>
-/// 방향 전환이 잘 안되는 몬스터이다.
+/// 유효 회전 제한
 /// </summary>
 public class Monster_L : BasicMonster
 {
