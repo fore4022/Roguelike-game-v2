@@ -39,7 +39,7 @@ public class Monster_A : BasicMonster_WithObject
         {
             yield return delay;
 
-            if((Managers.Game.player.transform.position - transform.position).magnitude <= Util.CameraHeight / 2)
+            if((Managers.Game.player.transform.position - transform.position).magnitude <= CameraUtil.CameraHeight / 2)
             {
                 go = Managers.Game.objectPool.GetObject(skillKey);
                 go.Transform.position = transform.position;

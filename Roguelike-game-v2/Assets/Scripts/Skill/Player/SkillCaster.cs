@@ -23,7 +23,7 @@ public class SkillCaster
     {
         this.attackType = attackType;
 
-        cast = Util.GetMonoBehaviour().StartCoroutine(Casting());
+        cast = CoroutineHelper.StartCoroutine(Casting());
     }
     private void Set()
     {
@@ -36,7 +36,7 @@ public class SkillCaster
     }
     public void CastingStop()
     {
-        Util.GetMonoBehaviour().StopCoroutine(cast);
+        CoroutineHelper.StopCoroutine(cast);
     }
     private IEnumerator Casting()
     {

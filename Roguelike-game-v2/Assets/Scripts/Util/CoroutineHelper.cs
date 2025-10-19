@@ -20,7 +20,7 @@ public class CoroutineHelper : ScriptableObject
 
             monoScript = go.AddComponent<MonoScript>();
 
-            Object.DontDestroyOnLoad(go);
+            DontDestroyOnLoad(go);
         }
 
         return monoScript;

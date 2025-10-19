@@ -8,6 +8,6 @@ public class UserExpTable_SO : ScriptableObject
 
     private void OnValidate()
     {
-        Util.ResizeArray(ref requiredEXP, maxLevel - 1);
+        ArrayUtil.ResizeArray(ref requiredEXP, maxLevel - 1);
     }
 }

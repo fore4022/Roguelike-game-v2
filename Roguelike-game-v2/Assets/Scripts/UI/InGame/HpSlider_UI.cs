@@ -9,7 +9,7 @@ public class HpSlider_UI : UserInterface
     {
         hpSlider = GetComponent<Slider>();
 
-        Util.GetMonoBehaviour().StartCoroutine(WaitPlayerStatInit());
+        CoroutineHelper.StartCoroutine(WaitPlayerStatInit());
     }
     private void Init()
     {

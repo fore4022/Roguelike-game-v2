@@ -19,8 +19,6 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
     [SerializeField]
     protected bool playColliderOnEnable = true;
 
-    public static float triggerTime = 0.9425f;
-
     protected ISkill skill;
     protected Skill_SO so;
     protected SpriteRenderer render;
@@ -135,7 +133,7 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
     {
         yield return new WaitUntil(() => skill.Finished);
 
-        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= triggerTime);
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= GameUtil.animationEndTime);
 
         baseCast = null;
         render.enabled = false;

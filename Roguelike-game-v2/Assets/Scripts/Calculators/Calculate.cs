@@ -5,8 +5,8 @@ using UnityEngine;
 /// </summary>
 public static class Calculate
 {
-    public static float width = Util.CameraWidth / 2 - offset;
-    public static float height = Util.CameraHeight / 2 - offset;
+    public static float width = CameraUtil.CameraWidth / 2 - offset;
+    public static float height = CameraUtil.CameraHeight / 2 - offset;
 
     private static float offset = 0.5f;
 

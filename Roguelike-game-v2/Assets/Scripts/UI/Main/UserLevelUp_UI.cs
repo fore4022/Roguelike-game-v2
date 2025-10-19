@@ -39,7 +39,7 @@ public class UserLevelUp_UI : UserInterface, IPointerClickHandler
     }
     public void OnValidate()
     {
-        Util.ResizeArray(ref particles, maxCount);
+        ArrayUtil.ResizeArray(ref particles, maxCount);
     }
     public void PlayEffect(int levelUpCount)
     {

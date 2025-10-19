@@ -24,7 +24,7 @@ public class Scene_Manager
 
         if(!hasInitialization)
         {
-            Util.GetMonoBehaviour().StartCoroutine(SetSceneLoading());
+            CoroutineHelper.StartCoroutine(SetSceneLoading());
         }
 
         loadScene?.Invoke();

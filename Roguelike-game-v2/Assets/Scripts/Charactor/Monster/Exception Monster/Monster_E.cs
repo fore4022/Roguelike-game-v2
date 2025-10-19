@@ -23,7 +23,7 @@ public class Monster_E : BasicMonster
     {
         yield return new WaitUntil(() => isVisible);
 
-        yield return new WaitUntil(() => (Managers.Game.player.transform.position - transform.position).magnitude <= Util.CameraWidth / 2);
+        yield return new WaitUntil(() => (Managers.Game.player.transform.position - transform.position).magnitude <= CameraUtil.CameraWidth / 2);
 
         float totalTime = 0;
 

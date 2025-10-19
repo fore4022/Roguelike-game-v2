@@ -43,7 +43,7 @@ public class Monster_B : BasicMonster_WithObject
 
             if(Random.Range(0, 100) <= skillCastChance)
             {
-                if((Managers.Game.player.transform.position - transform.position).magnitude <= Util.CameraHeight / 2)
+                if((Managers.Game.player.transform.position - transform.position).magnitude <= CameraUtil.CameraHeight / 2)
                 {
                     CoroutineHelper.StartCoroutine(SkillCasting());
                 }

@@ -56,7 +56,7 @@ public class Game_Manager
         stageInformation = Managers.Main.GetCurrentStageSO().information;
 
         Init();
-        Util.GetMonoBehaviour().StartCoroutine(inGameData_Manage.init.Initializing());
+        CoroutineHelper.StartCoroutine(inGameData_Manage.init.Initializing());
     }
     public void GameStart()
     {
@@ -75,7 +75,7 @@ public class Game_Manager
         gameOver = false;
         
         restart.Invoke();
-        Util.GetMonoBehaviour().StartCoroutine(ReSetting());
+        CoroutineHelper.StartCoroutine(ReSetting());
     }
     public void Over()
     {

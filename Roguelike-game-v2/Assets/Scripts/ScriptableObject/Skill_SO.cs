@@ -24,13 +24,13 @@ public class Skill_SO : ScriptableObject
 #if UNITY_EDITOR
     private void OnValidate()
     {
-        Util.ResizeArray(ref damageCoefficient, maxLevel);
-        Util.ResizeArray(ref coolTime, maxLevel);
+        ArrayUtil.ResizeArray(ref damageCoefficient, maxLevel);
+        ArrayUtil.ResizeArray(ref coolTime, maxLevel);
 
         if(isMultiCast)
         {
-            Util.ResizeArray(ref multiCast.delay, maxLevel);
-            Util.ResizeArray(ref multiCast.count, maxLevel);
+            ArrayUtil.ResizeArray(ref multiCast.delay, maxLevel);
+            ArrayUtil.ResizeArray(ref multiCast.count, maxLevel);
         }
     }
 #endif
