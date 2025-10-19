@@ -1,6 +1,6 @@
 using UnityEngine;
 /// <summary>
-/// Tweening에 사용되는 Ease그래프의 식들이 구현되어 있습니다.
+/// Tweening에 사용되는 Ease그래프의 식 구현
 /// </summary>
 public static class Ease
 {

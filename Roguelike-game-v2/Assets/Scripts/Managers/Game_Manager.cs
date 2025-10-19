@@ -1,6 +1,9 @@
 using System;
 using System.Collections;
 using UnityEngine;
+/// <summary>
+/// 
+/// </summary>
 public class Game_Manager
 {
     public SkillCaster_Manage skillCaster_Manage;

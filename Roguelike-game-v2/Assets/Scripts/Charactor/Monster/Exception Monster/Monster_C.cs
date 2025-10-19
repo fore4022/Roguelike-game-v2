@@ -4,7 +4,7 @@ using UnityEngine;
 /// <para>
 /// SnakeF 전용
 /// </para>
-/// 짧게 끊어서 돌진하는 이동 방식이다.
+/// 짧게 끊어서 플레이어를 향해 돌진
 /// </summary>
 public class Monster_C : BasicMonster
 {

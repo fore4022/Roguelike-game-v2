@@ -1,4 +1,10 @@
 using UnityEngine;
+/// <summary>
+/// <para>
+/// 주요 매니저를 담는 스크립트
+/// </para>
+/// 싱글톤으로 구현
+/// </summary>
 public class Managers : MonoBehaviour
 {
     public static Managers managers;

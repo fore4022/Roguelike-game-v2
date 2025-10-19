@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 /// <summary>
-/// 플레이어에게 원거리 투사체를 발사한다.
+/// 플레이어에게 원거리 투사체를 발사
 /// </summary>
 public class Monster_A : BasicMonster_WithObject
 {

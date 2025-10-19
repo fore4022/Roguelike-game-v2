@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
-/// 여러 기능들을 구현하는데 사용할 수 있는 연산에 관한 부분을 모아서 구현하였습니다.
+/// 여러가지 기능 구현에 필요한 연산 구현
 /// </summary>
 public static class Calculate
 {

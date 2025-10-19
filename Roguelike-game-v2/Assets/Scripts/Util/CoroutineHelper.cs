@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-public class CoroutineHelper : ScriptableObject
+public static class CoroutineHelper
 {
     private static MonoScript monoScript = null;
 
@@ -20,7 +20,7 @@ public class CoroutineHelper : ScriptableObject
 
             monoScript = go.AddComponent<MonoScript>();
 
-            DontDestroyOnLoad(go);
+            Object.DontDestroyOnLoad(go);
         }
 
         return monoScript;
