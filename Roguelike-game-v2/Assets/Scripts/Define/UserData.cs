@@ -44,18 +44,22 @@ public class UserData
     public bool Tutorial { get { return tutorial; } set { tutorial = value; } }
     public bool BGM { get { return _setting.BGM; } }
     public bool FX { get { return _setting.FX; } }
+    // 현재 스테이지 상태(잠김, 해제, 클리어)
     public StageState GetStageState()
     {
         return stageClearInfos.Find(info => info.name == current_StageName).state;
     }
+    // BGM 토글
     public bool SetBGM()
     {
         return _setting.BGM = !_setting.BGM;
     }
+    // FX 토글
     public bool SetFX()
     {
         return _setting.FX = !_setting.FX;
     }
+    // 스테이지 상태를 클리어로 변경, 다음 스테이지가 존재하는 경우에 해당 스테이지의 상태를 해제로 변경
     public void Clear(string stageName)
     {
         StageClear_Information info = stageClearInfos.Find(o => o.name == stageName);

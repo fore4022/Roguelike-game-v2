@@ -37,7 +37,7 @@ public class Monster : MonoBehaviour, IScriptableData
     private bool didInit = false;
 
     public ScriptableObject SO { set { monsterSO = value as MonsterStat_SO; } }
-    // 오브젝트 풀로 사용되기 때문에 초기화되지 않도록 객체 비활성화
+    // OnEnable로 넘어가면서 초기화 작업을 하지 못하도록 비활성화
     protected virtual void Awake()
     {
         gameObject.SetActive(false);

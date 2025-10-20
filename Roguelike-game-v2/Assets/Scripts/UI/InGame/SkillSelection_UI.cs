@@ -21,7 +21,7 @@ public class SkillSelection_UI : UserInterface
     public override async void SetUserInterface()
     {
         background = GetComponent<Image>();
-        attackOption = await Addressable_Helper.LoadingToPath<GameObject>(path);
+        attackOption = await AddressableHelper.LoadingToPath<GameObject>(path);
 
         Managers.Game.inGameData_Manage.player.levelUpdate += () => Managers.UI.Show<LevelUp_UI>();
 

@@ -62,7 +62,7 @@ public class UI_Manager
         }
         else
         {
-            Coroutine_Helper.StartCoroutine(Creating(name, true));
+            CoroutineHelper.StartCoroutine(Creating(name, true));
         }
     }
     // 타입에 해당하는 UI를 비활성화
@@ -146,7 +146,7 @@ public class UI_Manager
     // Addressable로 UI 프리팹 불러오기
     private async Task LoadUI(string uiName)
     {
-        GameObject go = await Addressable_Helper.LoadingToPath<GameObject>(uiName);
+        GameObject go = await AddressableHelper.LoadingToPath<GameObject>(uiName);
 
         if(!uiDictionary.ContainsKey(uiName))
         {

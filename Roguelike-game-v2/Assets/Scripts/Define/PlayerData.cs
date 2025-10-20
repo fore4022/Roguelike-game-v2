@@ -65,10 +65,10 @@ public class PlayerData
 
                 if(levelCalculation != null)
                 {
-                    Coroutine_Helper.StopCoroutine(levelCalculation);
+                    CoroutineHelper.StopCoroutine(levelCalculation);
                 }
 
-                levelCalculation = Coroutine_Helper.StartCoroutine(WaitLevelCalculation());
+                levelCalculation = CoroutineHelper.StartCoroutine(WaitLevelCalculation());
             }
 
             experienceUpdate?.Invoke();

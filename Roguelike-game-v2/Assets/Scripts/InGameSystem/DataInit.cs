@@ -23,12 +23,12 @@ public class DataInit
 
         for(int i = 1; i <= Managers.Data.user.Level; i++)
         {
-            userLevel = await Addressable_Helper.LoadingToPath<UserLevel_SO>($"{i}{userLevelPath}");
+            userLevel = await AddressableHelper.LoadingToPath<UserLevel_SO>($"{i}{userLevelPath}");
 
             foreach(string path in userLevel.pathList)
             {
-                so = await Addressable_Helper.LoadingToPath<SkillInformation_SO>(path);
-                skill = await Addressable_Helper.LoadingToPath<GameObject>(so.info.type);
+                so = await AddressableHelper.LoadingToPath<SkillInformation_SO>(path);
+                skill = await AddressableHelper.LoadingToPath<GameObject>(so.info.type);
 
                 skillList.Add(skill);
                 Managers.Game.inGameData_Manage.skill.SetDictionaryItem(so);
@@ -37,11 +37,11 @@ public class DataInit
     }
     private async Task LoadDamageText()
     {
-        damageText = await Addressable_Helper.LoadingToPath<GameObject>(DamageLog_Manage.prefabName);
+        damageText = await AddressableHelper.LoadingToPath<GameObject>(DamageLog_Manage.prefabName);
     }
     private async Task LoadStage()
     {
-        stage = await Addressable_Helper.LoadingToPath<GameObject>(Managers.Main.GetCurrentStageSO().stagePath);
+        stage = await AddressableHelper.LoadingToPath<GameObject>(Managers.Main.GetCurrentStageSO().stagePath);
     }
     public IEnumerator Initializing()
     {
@@ -56,7 +56,7 @@ public class DataInit
 
         Managers.Game.objectPool = new();
 
-        Coroutine_Helper.StartCoroutine(DataLoading());
+        CoroutineHelper.StartCoroutine(DataLoading());
     }
     private IEnumerator DataLoading()
     {
@@ -78,7 +78,7 @@ public class DataInit
 
         Managers.Game.objectPool.Create(monsterList, ScriptableObjectType.Monster,defaultMonsterCount);
         Managers.Game.objectPool.Create(skillList, ScriptableObjectType.Skill, defaultSkillCount);
-        Managers.Game.objectPool.Create(damageText, ScriptableObjectType.None);
+        Managers.Game.objectPool.Create(damageText);
 
         int typeCount = monsterList.Count + skillList.Count;
 

@@ -26,7 +26,7 @@ public class SetGame : MonoBehaviour
     }
     private async Task LoadStageDatas()
     {
-        Managers.Main.stageDatas.SO = await Addressable_Helper.LoadingToPath<StageDatas_SO>(_stageDataPath, false);
+        Managers.Main.stageDatas.SO = await AddressableHelper.LoadingToPath<StageDatas_SO>(_stageDataPath, false);
     }
     private IEnumerator Initializing()
     {

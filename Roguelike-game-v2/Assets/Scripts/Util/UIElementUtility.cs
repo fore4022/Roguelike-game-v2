@@ -34,7 +34,7 @@ public static class UIElementUtility
         }
         else
         {
-            coroutine = Coroutine_Helper.StartCoroutine(SetTextAlpha(tmpList, color, targetAlphaValue, duration));
+            coroutine = CoroutineHelper.StartCoroutine(SetTextAlpha(tmpList, color, targetAlphaValue, duration));
         }
 
         return coroutine;
@@ -67,7 +67,7 @@ public static class UIElementUtility
         }
         else
         {
-            coroutine = Coroutine_Helper.StartCoroutine(SetImageAlpha(imgList, color, targetAlphaValue, duration));
+            coroutine = CoroutineHelper.StartCoroutine(SetImageAlpha(imgList, color, targetAlphaValue, duration));
         }
 
         return coroutine;

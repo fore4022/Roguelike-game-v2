@@ -31,7 +31,7 @@ public class Scene_Manager
 
         if(!hasInitialization)
         {
-            Coroutine_Helper.StartCoroutine(SetSceneLoading());
+            CoroutineHelper.StartCoroutine(SetSceneLoading());
         }
 
         loadScene?.Invoke();
@@ -44,7 +44,7 @@ public class Scene_Manager
             yield break;
         }
 
-        Addressable_Helper.LoadingScene(sceneName.ToString());
+        AddressableHelper.LoadingScene(sceneName.ToString());
 
         yield return new WaitUntil(() => SceneManager.GetActiveScene().name == sceneName);
 

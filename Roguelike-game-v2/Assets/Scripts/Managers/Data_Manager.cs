@@ -1,5 +1,11 @@
 using System.IO;
 using UnityEngine;
+/// <summary>
+/// <para>
+/// 유저의 데이터를 생성, 수정, 저장, 불러오기 기능 제공
+/// </para>
+/// 데이터는 JSON 형식으로 기기 환경의 저장 공간에 위치
+/// </summary>
 public class Data_Manager
 {
     public UserData user = null;
@@ -11,9 +17,10 @@ public class Data_Manager
     private string filePath = "";
     
     public UserExpTable_SO UserExpTable { get { return userExpTable; } }
+    // 유저 정보와 경험치 표를 불러오며, 유저 정보가 없을 경우 생성
     public async void Load()
     {
-        userExpTable = await Addressable_Helper.LoadingToPath<UserExpTable_SO>(userExpTablePath);
+        userExpTable = await AddressableHelper.LoadingToPath<UserExpTable_SO>(userExpTablePath);
 
         if(filePath == string.Empty)
         {
@@ -29,6 +36,7 @@ public class Data_Manager
 
         user = JsonUtility.FromJson<UserData>(await File.ReadAllTextAsync(filePath));
     }
+    // 정보가 없을 경우 기본 상태로 저장
     public async void Save()
     {
         if(user == null)

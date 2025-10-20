@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-public static class Coroutine_Helper
+public static class CoroutineHelper
 {
     private static MonoScript monoScript = null;
 

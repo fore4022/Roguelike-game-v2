@@ -63,7 +63,7 @@ public class Game_Manager
         stageInformation = Managers.Main.GetCurrentStageSO().information;
 
         Init();
-        Coroutine_Helper.StartCoroutine(inGameData_Manage.init.Initializing());
+        CoroutineHelper.StartCoroutine(inGameData_Manage.init.Initializing());
     }
     // 이벤트 호출 및 UI 활성화
     public void GameStart()
@@ -84,7 +84,7 @@ public class Game_Manager
         gameOver = false;
         
         restart.Invoke();
-        Coroutine_Helper.StartCoroutine(ReStarting());
+        CoroutineHelper.StartCoroutine(ReStarting());
     }
     // 이벤트 호출, 결과 표시
     public void Over()
@@ -131,7 +131,7 @@ public class Game_Manager
     // 게임 재설정 대기 이후 재시작
     private IEnumerator ReStarting()
     {
-        reSetting = Coroutine_Helper.StartCoroutine(ReSetting());
+        reSetting = CoroutineHelper.StartCoroutine(ReSetting());
 
         yield return null;
 

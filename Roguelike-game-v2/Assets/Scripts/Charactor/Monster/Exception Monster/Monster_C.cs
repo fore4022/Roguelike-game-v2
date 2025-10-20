@@ -17,6 +17,7 @@ public class Monster_C : BasicMonster
     [SerializeField]
     private float dashCastingTime;
 
+    // 이동 속도 배율 재설정 및 행동 코루틴 호출
     protected override void Enable()
     {
         base.Enable();
@@ -25,6 +26,7 @@ public class Monster_C : BasicMonster
 
         StartCoroutine(RepeatBehavior());
     }
+    // 일정 시간 간격으로 속도 배율 조절을 통해서 돌진
     private IEnumerator RepeatBehavior()
     {
         yield return new WaitForSeconds(Random.Range(0, dashCooldownMax));

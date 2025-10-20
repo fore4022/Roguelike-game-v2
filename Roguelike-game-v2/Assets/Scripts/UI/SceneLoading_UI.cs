@@ -31,7 +31,7 @@ public class SceneLoading_UI : UserInterface
 
         if(!Managers.Scene.IsLoading)
         {
-            Addressable_Helper.AddressableResourcesRelease();
+            AddressableHelper.AddressableResourcesRelease();
             StartCoroutine(Managers.Scene.SceneSetting());
         }
 

@@ -34,8 +34,8 @@ public class ToastMessage_UI : UserInterface
         {
             if(coroutine_img != null)
             {
-                Coroutine_Helper.StopCoroutine(coroutine_img);
-                Coroutine_Helper.StopCoroutine(coroutine_text);
+                CoroutineHelper.StopCoroutine(coroutine_img);
+                CoroutineHelper.StopCoroutine(coroutine_text);
             }
 
             coroutine = null;

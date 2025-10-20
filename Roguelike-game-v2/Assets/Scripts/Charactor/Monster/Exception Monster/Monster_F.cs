@@ -5,6 +5,7 @@ using UnityEngine;
 /// SlimeSquareH 전용
 /// </para>
 /// 사망할 경우 작아진 객체로 분열하며, 분열된 객체는 추가 분열되지 않음
+/// 분열된 객체는 경험치를 지급하지 않음
 /// </summary>
 public class Monster_F : BasicMonster_WithObject
 {
@@ -22,19 +23,16 @@ public class Monster_F : BasicMonster_WithObject
     private float adjustmentScale;
 
     private bool IsSplite { get { return transform.localScale.x == splitScale; } }
+    // 크기 값 및 몬스터 키 초기화
     protected override void Init()
     {
-        _defaultScale = new(defaultScale, defaultScale);
+        transform.localScale = _defaultScale = new(defaultScale, defaultScale);
         monsterKey = monsterSO.extraObjects[0].name;
         adjustmentScale = defaultScale / 20;
 
-        if(!IsSplite)
-        {
-            transform.localScale = _defaultScale;
-        }
-
         base.Init();
     }
+    // 분열되지 않은 객체 위치 설정
     protected override void SetPosition()
     {
         if(!IsSplite)
@@ -42,11 +40,17 @@ public class Monster_F : BasicMonster_WithObject
             base.SetPosition();
         }
     }
+    // 분열된 객체일 경우 FlipX 실행
     protected override void Enable()
     {
-        FlipX();
+        if(IsSplite)
+        {
+            FlipX();
+        }
+
         base.Enable();
     }
+    // 분열되지 않은 객체 사망시, 확률적으로 분열
     protected override void Die()
     {
         if(!IsSplite)
@@ -67,10 +71,12 @@ public class Monster_F : BasicMonster_WithObject
 
         base.Die();
     }
+    // 분열과 상관 없이 기본 크기로 설정
     private void OnDisable()
     {
         transform.localScale = _defaultScale;
     }
+    // 사망 효과의 특정 시점까지 대기, 몬스터 키를 통해서 크기와 경험치를 재설정한 분열된 객체 생성
     private IEnumerator RepeatBehavior()
     {
         yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f);

@@ -20,6 +20,7 @@ public class ObjectPool
 
     private int coroutineCount = 0;
 
+    // 오브젝트 풀이 생성될 때, 풀링 되는 객체들이 위치할 root 
     public ObjectPool()
     {
         GameObject go = GameObject.Find("@ObjectPool");
@@ -33,26 +34,30 @@ public class ObjectPool
     }
     public int ScriptableObjectsCount { get { return scriptableObjects.Count; } }
     public int PoolingObjectsCount { get { return poolingObjects.Count; } }
+    // 초당 작업량 반환
     private int MaxWorkPerSec { get { return Mathf.Max(maxWorkPerSec / coroutineCount, 1); } }
-    public GameObject ActiveObject(string prefabName)
+    // 키에 해당하는 오브젝트 활성화
+    public GameObject ActiveObject(string prefabKey)
     {
-        GameObject go = GetObject(prefabName, false).PoolingGameObject;
+        GameObject go = GetObject(prefabKey, false).PoolingGameObject;
 
         go.SetActive(true);
 
         return go;
     }
+    // 키에 해당하는 리스트에서, 입력 받은 오브젝트를 가지는 PoolingObject isUsed와 오브젝트 비활성화
     public void DisableObject(GameObject prefab, string key)
     {
         poolingObjects.TryGetValue(key, out List<PoolingObject> objs);
 
-        objs.FirstOrDefault(o => o.PoolingGameObject == prefab).isUsed = false;
+        objs.Find(o => o.PoolingGameObject == prefab).isUsed = false;
 
         prefab.SetActive(false);
     }
-    public PoolingObject GetObject(string prefabName, bool isUsed = true)
+    // 키에 해당하는 오브젝트 반환, 활성화 여부 지정 가능
+    public PoolingObject GetObject(string prefabKey, bool isUsed = true)
     {
-        foreach(PoolingObject obj in poolingObjects[prefabName])
+        foreach(PoolingObject obj in poolingObjects[prefabKey])
         {
             if(!obj.PoolingGameObject.activeSelf && !obj.isUsed)
             {
@@ -67,24 +72,27 @@ public class ObjectPool
 
         return null;
     }
-    public List<PoolingObject> GetObjects(string prefabName)
+    // 키에 해당하는 오브젝트 전부 반환
+    public List<PoolingObject> GetObjects(string prefabKey)
     {
-        if(poolingObjects.ContainsKey(prefabName))
+        if(poolingObjects.ContainsKey(prefabKey))
         {
-            return poolingObjects[prefabName];
+            return poolingObjects[prefabKey];
         }
 
         return null;
     }
-    public T GetScriptableObject<T>(string type) where T : ScriptableObject
+    // 키에 해당하는 ScriptableObject 반환
+    public T GetScriptableObject<T>(string key) where T : ScriptableObject
     {
-        if(scriptableObjects.ContainsKey(type))
+        if(scriptableObjects.ContainsKey(key))
         {
-            return (T)scriptableObjects[type];
+            return (T)scriptableObjects[key];
         }
 
         return null;
     }
+    // 모든 PoolingObject를 초기 상태로 설정,isUsed와 오브젝트 비활성화
     public void ReSetting()
     {
         foreach(List<PoolingObject> objList in poolingObjects.Values)
@@ -103,17 +111,20 @@ public class ObjectPool
             }
         }
     }
-    public void Create(GameObject prefab, ScriptableObjectType type, int count = defaultObjectCount)
+    // 프리팹을 개수만큼 생성
+    public void Create(GameObject prefab, int count = defaultObjectCount)
     {
-        Coroutine_Helper.StartCoroutine(CreatingInstance(prefab, count, ScriptableObjectType.None, null, false));
+        CoroutineHelper.StartCoroutine(CreatingInstance(prefab, count, ScriptableObjectType.None, null, false));
     }
+    // 프리팹 항목들을 개수만큼 생성, ScriptableObjectType에 따라서 프리팹 항목들에 해당하는 ScriptableObject 불러오기
     public void Create(List<GameObject> prefabs, ScriptableObjectType type, int count = defaultObjectCount)
     {
         foreach(GameObject prefab in prefabs)
         {
-            Coroutine_Helper.StartCoroutine(CreatingInstance(prefab, count, type));
+            CoroutineHelper.StartCoroutine(CreatingInstance(prefab, count, type));
         }
     }
+    // 오브젝트 풀로 생성된 오든 오브젝트의 코루틴 중단
     public void StopAllActions()
     {
         foreach(List<PoolingObject> objs in poolingObjects.Values)
@@ -127,21 +138,24 @@ public class ObjectPool
             }
         }
     }
+    // 키에 해당하는 리스트에 프리팹을 개수만큼 추가 생성
     private void Create_Additional(GameObject prefab, string originalKey, int count)
     {
         if(prefab != null)
         {
-            Coroutine_Helper.StartCoroutine(CreatingInstance(prefab, count, ScriptableObjectType.None, originalKey));
+            CoroutineHelper.StartCoroutine(CreatingInstance(prefab, count, ScriptableObjectType.None, originalKey));
         }
     }
-    private void CreateInstance(GameObject parent, GameObject prefab, int count, int instanceCount, ref GameObject[] array)
+    // 프리팹을 _root의 자식으로 개수만큼 생성
+    private void CreateInstance(Transform _root, GameObject prefab, int count, int instanceCount, ref GameObject[] array)
     {
         for(int i = 0; i < count; i++)
         {
-            array[instanceCount + i] = Object.Instantiate(prefab, parent.transform);
+            array[instanceCount + i] = Object.Instantiate(prefab, _root);
             array[instanceCount + i].SetActive(false);
         }
     }
+    // 해당 키의 SO 불러오기, ScriptableObjectType에 따라서 ScriptableObject가 가지는 추가 오브젝트 생성
     private async void CreateScriptableObject(ScriptableObjectType type, string key)
     {
         if(!scriptableObjects.ContainsKey(key))
@@ -151,7 +165,7 @@ public class ObjectPool
             switch(type)
             {
                 case ScriptableObjectType.Monster:
-                    so = await Addressable_Helper.LoadingToPath<ScriptableObject>($"Assets/SO/Monster/{Managers.Data.user.StageName}/{key}.asset");
+                    so = await AddressableHelper.LoadingToPath<ScriptableObject>($"Assets/SO/Monster/{Managers.Data.user.StageName}/{key}.asset");
 
                     if(so is MonsterStat_WithObject_SO exceptionMonsterStatSO)
                     {
@@ -168,13 +182,14 @@ public class ObjectPool
                     }
                     break;
                 case ScriptableObjectType.Skill:
-                    so = await Addressable_Helper.LoadingToPath<ScriptableObject>($"Assets/SO/Skill/{key}.asset");
+                    so = await AddressableHelper.LoadingToPath<ScriptableObject>($"Assets/SO/Skill/{key}.asset");
                     break;
             }
 
             scriptableObjects.Add(key, so);
         }
     }
+    // 프레임마다 프리팹 인스턴스 생성, 목표 개수만큼 생성된 이후, ScriptableObjectType에 따라서 ScriptableObject를 할당해준다.
     private IEnumerator CreatingInstance(GameObject prefab, int count, ScriptableObjectType type = ScriptableObjectType.None, string originalKey = null, bool isSetRoot = true)
     {
         GameObject[] array = new GameObject[count];
@@ -182,10 +197,15 @@ public class ObjectPool
         string key = prefab.name;
 
         GameObject parent = GameObject.Find(key);
+        Transform transform;
 
         if(parent == null)
         {
-            parent = new GameObject { name = key };
+            transform = new GameObject { name = key }.transform;
+        }
+        else
+        {
+            transform = parent.transform;
         }
 
         yield return new WaitUntil(() => parent != null);
@@ -204,7 +224,7 @@ public class ObjectPool
         {
             createCount = Mathf.Min(MaxWorkPerSec, count - instanceCount);
 
-            CreateInstance(parent, prefab, createCount, instanceCount, ref array);
+            CreateInstance(transform, prefab, createCount, instanceCount, ref array);
 
             instanceCount += createCount;
 
@@ -245,12 +265,13 @@ public class ObjectPool
 
             yield return new WaitUntil(() => scriptableObjects.ContainsKey(key) == true);
 
-            Coroutine_Helper.StartCoroutine(SetInstance(array, key));
+            CoroutineHelper.StartCoroutine(SetScriptableObject(array, key));
         }
 
         coroutineCount--;
     }
-    private IEnumerator SetInstance(GameObject[] array, string key)
+    // 입력 받은 배열의 모든 오브젝트에 키에 해당하는 ScriptableObject를 할당
+    private IEnumerator SetScriptableObject(GameObject[] array, string key)
     {
         ScriptableObject so;
 
