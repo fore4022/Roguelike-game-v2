@@ -105,13 +105,13 @@ public class ObjectPool
     }
     public void Create(GameObject prefab, ScriptableObjectType type, int count = defaultObjectCount)
     {
-        CoroutineHelper.StartCoroutine(CreatingInstance(prefab, count, ScriptableObjectType.None, null, false));
+        Coroutine_Helper.StartCoroutine(CreatingInstance(prefab, count, ScriptableObjectType.None, null, false));
     }
     public void Create(List<GameObject> prefabs, ScriptableObjectType type, int count = defaultObjectCount)
     {
         foreach(GameObject prefab in prefabs)
         {
-            CoroutineHelper.StartCoroutine(CreatingInstance(prefab, count, type));
+            Coroutine_Helper.StartCoroutine(CreatingInstance(prefab, count, type));
         }
     }
     public void StopAllActions()
@@ -131,7 +131,7 @@ public class ObjectPool
     {
         if(prefab != null)
         {
-            CoroutineHelper.StartCoroutine(CreatingInstance(prefab, count, ScriptableObjectType.None, originalKey));
+            Coroutine_Helper.StartCoroutine(CreatingInstance(prefab, count, ScriptableObjectType.None, originalKey));
         }
     }
     private void CreateInstance(GameObject parent, GameObject prefab, int count, int instanceCount, ref GameObject[] array)
@@ -245,7 +245,7 @@ public class ObjectPool
 
             yield return new WaitUntil(() => scriptableObjects.ContainsKey(key) == true);
 
-            CoroutineHelper.StartCoroutine(SetInstance(array, key));
+            Coroutine_Helper.StartCoroutine(SetInstance(array, key));
         }
 
         coroutineCount--;

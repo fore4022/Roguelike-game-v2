@@ -25,19 +25,19 @@ public class InGameTimer
     }
     public void StartTimer()
     {
-        inGameTimer = CoroutineHelper.StartCoroutine(Timer());
+        inGameTimer = Coroutine_Helper.StartCoroutine(Timer());
     }
     public void StopTimer()
     {
-        CoroutineHelper.StopCoroutine(inGameTimer);
+        Coroutine_Helper.StopCoroutine(inGameTimer);
     }
     public void ReStart()
     {
         seconds = minutes = hours = 0;
 
-        CoroutineHelper.StopCoroutine(inGameTimer);
+        Coroutine_Helper.StopCoroutine(inGameTimer);
 
-        inGameTimer = CoroutineHelper.StartCoroutine(Timer());
+        inGameTimer = Coroutine_Helper.StartCoroutine(Timer());
     }
     private IEnumerator Timer()
     {

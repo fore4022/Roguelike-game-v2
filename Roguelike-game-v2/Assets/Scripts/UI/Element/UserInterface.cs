@@ -1,9 +1,9 @@
 using UnityEngine;
 /// <summary>
 /// <para>
-/// 모든 UserInterface의 기본 구현이다.
+/// 모든 UserInterface의 기본 구현
 /// </para>
-/// UserInterface를 상속받은 클래스들은 Managers.UI를 통해서 접근할 수 있다.
+/// UserInterface를 상속받은 클래스들은 UI_Manager를 통해서 접근 가능
 /// </summary>
 public abstract class UserInterface : MonoBehaviour
 {

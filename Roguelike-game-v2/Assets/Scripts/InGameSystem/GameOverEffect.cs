@@ -15,14 +15,14 @@ public class GameOverEffect
         InputActions.DisableInputAction<TouchControls>();
         Managers.UI.Hide<HpSlider_UI>();
 
-        CoroutineHelper.StartCoroutine(GameOverEffecting());
+        Coroutine_Helper.StartCoroutine(GameOverEffecting());
     }
     public void StageClearEffect()
     {
         InputActions.DisableInputAction<TouchControls>();
         Managers.UI.Hide<HpSlider_UI>();
 
-        CoroutineHelper.StartCoroutine(StageClearEffecting());
+        Coroutine_Helper.StartCoroutine(StageClearEffecting());
     }
     private IEnumerator GameOverEffecting()
     {

@@ -38,7 +38,8 @@ public class StageExitConfirm_UI : UserInterface
 
         audioSource.Play();
         Managers.UI.Hide<HeadUpDisplay_UI>();
-        Managers.Game.GoMain();
+        Managers.Game.Clear();
+        Managers.Scene.LoadScene(SceneName.Main, false);
     }
     public void OnCancelStageExit()
     {

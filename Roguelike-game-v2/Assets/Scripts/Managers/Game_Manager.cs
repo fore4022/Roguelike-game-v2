@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 /// <summary>
-/// 
+/// 서브 매니저 접근 제공 및 게임의 흐름과 상태를 제어
 /// </summary>
 public class Game_Manager
 {
@@ -21,6 +21,7 @@ public class Game_Manager
     public Action restart;
     public Action over;
 
+    private Coroutine reSetting = null;
     private int userExp = 0;
     private bool isPlaying = false;
     private bool gameOver = false;
@@ -56,14 +57,15 @@ public class Game_Manager
         restart += inGameData_Manage.skill.Reset;
         restart += skillCaster_Manage.Reset;
     }
-    // 게임 
+    // 게임 정보 불러오기 및 초기화
     public void SetGame()
     {
         stageInformation = Managers.Main.GetCurrentStageSO().information;
 
         Init();
-        CoroutineHelper.StartCoroutine(inGameData_Manage.init.Initializing());
+        Coroutine_Helper.StartCoroutine(inGameData_Manage.init.Initializing());
     }
+    // 이벤트 호출 및 UI 활성화
     public void GameStart()
     {
         start.Invoke();
@@ -75,23 +77,28 @@ public class Game_Manager
         Managers.UI.Show<HeadUpDisplay_UI>();
         Managers.UI.Show<LevelUp_UI>();
     }
+    // 이벤트 호출, 게임 상태 및 정보 재설정
     public void ReStart()
     {
         isPlaying = false;
         gameOver = false;
         
         restart.Invoke();
-        CoroutineHelper.StartCoroutine(ReSetting());
+        Coroutine_Helper.StartCoroutine(ReStarting());
     }
+    // 이벤트 호출, 결과 표시
     public void Over()
     {
         Managers.Data.user.Exp += userExp;
         isPlaying = false;
 
+        over.Invoke();
+
         Managers.UI.Hide<LevelUp_UI>();
         Managers.UI.Show<GameOver_UI>();
     }
-    public void GoMain()
+    // 서브 매니저 실행 중단, 서브 매니저 해제
+    public void Clear()
     {
         skillCaster_Manage.StopAllCaster();
         inGameTimer.StopTimer();
@@ -108,9 +115,8 @@ public class Game_Manager
         objectPool = null;
         stageInformation = null;
         userExp = 0;
-
-        Managers.Scene.LoadScene(SceneName.Main, false);
     }
+    // 스테이지 클리어 여부 확인
     public void IsStageCleared(int minutes)
     {
         if(minutes >= stageInformation.requiredTime)
@@ -122,6 +128,26 @@ public class Game_Manager
             endEffect.StageClearEffect();
         }
     }
+    // 게임 재설정 대기 이후 재시작
+    private IEnumerator ReStarting()
+    {
+        reSetting = Coroutine_Helper.StartCoroutine(ReSetting());
+
+        yield return null;
+
+        yield return new WaitUntil(() => reSetting == null);
+
+        Time.timeScale = 1;
+        userExp = 0;
+        stageClear = false;
+
+        monsterSpawner.ReStart();
+        inGameData_Manage.player.SetLevel();
+        Managers.UI.Show<HeadUpDisplay_UI>();
+        Managers.UI.Show<LevelUp_UI>();
+        Managers.UI.Show<HpSlider_UI>();
+    }
+    // 서브 매니저, UI, 정보 초기화
     private IEnumerator ReSetting()
     {
         Managers.UI.Show<SceneLoading_UI>();
@@ -139,16 +165,6 @@ public class Game_Manager
         Managers.UI.Hide<GameOver_UI>();
         InputActions.EnableInputAction<TouchControls>();
 
-        yield return new WaitUntil(() => Managers.UI.Get<SceneLoading_UI>() == null);
-
-        Time.timeScale = 1;
-        userExp = 0;
-        stageClear = false;
-
-        monsterSpawner.ReStart();
-        inGameData_Manage.player.SetLevel();
-        Managers.UI.Show<HeadUpDisplay_UI>();
-        Managers.UI.Show<LevelUp_UI>();
-        Managers.UI.Show<HpSlider_UI>();
+        reSetting = null;
     }
 }

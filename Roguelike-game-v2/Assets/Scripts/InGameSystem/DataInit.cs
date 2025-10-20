@@ -56,7 +56,7 @@ public class DataInit
 
         Managers.Game.objectPool = new();
 
-        CoroutineHelper.StartCoroutine(DataLoading());
+        Coroutine_Helper.StartCoroutine(DataLoading());
     }
     private IEnumerator DataLoading()
     {

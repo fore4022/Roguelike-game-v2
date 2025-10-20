@@ -97,7 +97,8 @@ public class GameOver_UI : UserInterface
     public void GoMain()
     {
         audioSource.Play();
-        Managers.Game.GoMain();
+        Managers.Game.Clear();
+        Managers.Scene.LoadScene(SceneName.Main, false);
     }
     private IEnumerator ResultSequence()
     {

@@ -8,13 +8,13 @@ public static class Typing
 
     public static WaitForSecondsRealtime EffectAndGetWaiting(TextMeshProUGUI tmp, string str, float delay = 0, bool recursive = false, string currentStr = "")
     {
-        CoroutineHelper.StartCoroutine(TypeEffecting(tmp, str, recursive, currentStr));
+        Coroutine_Helper.StartCoroutine(TypeEffecting(tmp, str, recursive, currentStr));
 
         return new(waitRealSec.waitTime * str.Length + delay);
     }
     public static (Coroutine, WaitForSecondsRealtime) GetEffectAndWaiting(TextMeshProUGUI tmp, string str, float delay = 0, bool recursive = false, string currentStr = "")
     {
-        Coroutine coroutine = CoroutineHelper.StartCoroutine(TypeEffecting(tmp, str, recursive, currentStr));
+        Coroutine coroutine = Coroutine_Helper.StartCoroutine(TypeEffecting(tmp, str, recursive, currentStr));
 
         return (coroutine, new(waitRealSec.waitTime * str.Length + delay));
     }
