@@ -1,4 +1,10 @@
 using UnityEngine;
+/// <summary>
+/// <para>
+/// Component를 통해서 접근 가능한 트윈의 확장
+/// </para>
+/// 트윈 생성 및 관리 기능을 제공
+/// </summary>
 public static class TweenSystem
 {
     // Scale

@@ -42,6 +42,11 @@ public class Monster_F : BasicMonster_WithObject
             base.SetPosition();
         }
     }
+    protected override void Enable()
+    {
+        FlipX();
+        base.Enable();
+    }
     protected override void Die()
     {
         if(!IsSplite)

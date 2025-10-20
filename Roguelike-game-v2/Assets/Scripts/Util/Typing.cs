@@ -2,22 +2,31 @@ using System.Collections;
 using System.Text;
 using TMPro;
 using UnityEngine;
+/// <summary>
+/// <para>
+/// 타이핑 및 삭제 효과 제공
+/// </para>
+/// Text에 대한 효과는 구현되지 않음
+/// </summary>
 public static class Typing
 {
     private static WaitForSecondsRealtime waitRealSec = new(0.03f);
 
+    // 타이핑 실행 및 소요 시간 반환
     public static WaitForSecondsRealtime EffectAndGetWaiting(TextMeshProUGUI tmp, string str, float delay = 0, bool recursive = false, string currentStr = "")
     {
         Coroutine_Helper.StartCoroutine(TypeEffecting(tmp, str, recursive, currentStr));
 
         return new(waitRealSec.waitTime * str.Length + delay);
     }
+    // 타이핑 실행 및 코루틴과 소요 시간 반환
     public static (Coroutine, WaitForSecondsRealtime) GetEffectAndWaiting(TextMeshProUGUI tmp, string str, float delay = 0, bool recursive = false, string currentStr = "")
     {
         Coroutine coroutine = Coroutine_Helper.StartCoroutine(TypeEffecting(tmp, str, recursive, currentStr));
 
         return (coroutine, new(waitRealSec.waitTime * str.Length + delay));
     }
+    // 타이핑 효과, 하위 텍스트까지 적용 가능, 기존 문자열에 더해서 사용 가능
     public static IEnumerator TypeEffecting(TextMeshProUGUI tmp, string str, bool recursive = false, string currentStr = "")
     {
         StringBuilder builder = new();
@@ -62,6 +71,7 @@ public static class Typing
             }
         }
     }
+    // 전체 텍스트 제거 효과
     public static IEnumerator EraseEffecting(TextMeshProUGUI tmp, float duration)
     {
         WaitForSecondsRealtime waitRealSec;
@@ -91,6 +101,7 @@ public static class Typing
             tmp.text = builder.ToString();
         }
     }
+    // 지정한 개수의 텍스트 제거 효과
     public static IEnumerator EraseEffecting(TextMeshProUGUI tmp, int targetCount = 0)
     {
         StringBuilder builder = new();
@@ -108,6 +119,7 @@ public static class Typing
             tmp.text = builder.ToString();
         }
     }
+    // 개행 문자 제거, 텍스트 제거 효과의 문자열이 의도대로 실행되기 위해서 사용
     private static void IsNewLineStart(ref StringBuilder builder)
     {
         if(builder[0] == '\r' || builder[0] == '\n')

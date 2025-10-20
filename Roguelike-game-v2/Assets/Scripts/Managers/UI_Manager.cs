@@ -36,14 +36,14 @@ public class UI_Manager
             return root;
         }
     }
-    // 
+    // 모든 UI의 초기화 여부를 확인, 초기화되지 않은 UI의 초기화를 실행
     public bool IsInitalized()
     {
         foreach(UserInterface ui in uiDictionary.Values)
         {
             if(!ui.IsInitalized)
             {
-                ui.SetUI();
+                ui.InitUI();
 
                 return false;
             }
@@ -51,7 +51,7 @@ public class UI_Manager
 
         return true;
     }
-    // 
+    // 타입에 해당하는 UI를 활성화, 해당하는 UI가 없다면 생성한 이후 활성화
     public void Show<T>() where T : UserInterface
     {
         string name = GetName<T>();
@@ -65,7 +65,7 @@ public class UI_Manager
             Coroutine_Helper.StartCoroutine(Creating(name, true));
         }
     }
-    // 
+    // 타입에 해당하는 UI를 비활성화
     public void Hide<T>() where T : UserInterface
     {
         string name = GetName<T>();
@@ -75,7 +75,7 @@ public class UI_Manager
             ui.gameObject.SetActive(false);
         }
     }
-    // 
+    // 타입에 해당하는 UI가 존재하지 않을 경우 생성, 생성 이후 활성화 여부 지정 가능
     public void Create<T>(bool isActive = false) where T : UserInterface
     {
         string name = GetName<T>();
@@ -85,7 +85,7 @@ public class UI_Manager
             Creating(name, isActive);
         }
     }
-    // 
+    // 타입에 해당하는 UI 인스턴스를 반환
     public T Get<T>() where T : UserInterface
     {
         string name = GetName<T>();
@@ -97,7 +97,7 @@ public class UI_Manager
 
         return null;
     }
-    // 
+    // 타입에 해당하는 UI가 존재한다면 제거
     public void Destroy<T>() where T : UserInterface
     {
         string name = GetName<T>();
@@ -109,7 +109,7 @@ public class UI_Manager
             uiDictionary.Remove(name);
         }
     }
-    // 
+    // UI 등록
     public void Add(UserInterface ui)
     {
         string name = ui.GetType().ToString().Replace("_UI", "");
@@ -119,7 +119,7 @@ public class UI_Manager
             uiDictionary.Add(name, ui);
         }
     }
-    // 
+    // 타입에 해당하는 UI 활성화 및 인스턴스 반환
     public T ShowAndGet<T>() where T : UserInterface
     {
         string name = GetName<T>();
@@ -133,18 +133,18 @@ public class UI_Manager
 
         return null;
     }
-    // 
+    // UI 등록 초기화
     public void ClearDictionary()
     {
         uiDictionary = new();
     }
-    // 
+    // 타입을 통해서 UI 딕셔너리 키 반환
     private string GetName<T>() where T : UserInterface
     {
         return typeof(T).ToString().Replace("_UI", "");
     }
-    // 
-    private async Task Load(string uiName)
+    // Addressable로 UI 프리팹 불러오기
+    private async Task LoadUI(string uiName)
     {
         GameObject go = await Addressable_Helper.LoadingToPath<GameObject>(uiName);
 
@@ -153,12 +153,12 @@ public class UI_Manager
             uiDictionary.Add(uiName, go.GetComponent<UserInterface>());
         }
     }
-    // 
+    // 입력받은 키의 UI 로드 대기 이후 생성 및 활성화 상태 설정
     private IEnumerator Creating(string uiName, bool isActive)
     {
         UserInterface ui;
         
-        Task loadUI = Load(uiName);
+        Task loadUI = LoadUI(uiName);
 
         yield return new WaitUntil(() => loadUI.IsCompleted);
 
@@ -176,7 +176,7 @@ public class UI_Manager
 
             if(isActive)
             {
-                ui.SetUI();
+                ui.InitUI();
             }
         }
     }

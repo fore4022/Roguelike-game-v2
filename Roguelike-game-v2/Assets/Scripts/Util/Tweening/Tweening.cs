@@ -1,12 +1,20 @@
 using System;
 using System.Collections;
 using UnityEngine;
+/// <summary>
+/// <para>
+/// Transform 단위로 트윈을 순차적으로 실행
+/// </para>
+/// 크기, 위치, 회전에 대한 트윈 애니메이션 구현
+/// 이어지는 트윈 실행
+/// </summary>
 public static class Tweening
 {
     private delegate void TweenDelegate(Transform transform, NumericValue initial, NumericValue target, float value);
 
     private static readonly Type _rectTransform = typeof(RectTransform);
 
+    // 트윈 타입에 맞추어서 Transform을 변경
     public static IEnumerator OverTime(TweenType type, TweenData data, Transform transform, EaseDelegate easeDel, NumericValue targetValue, float duration, float delay = 0)
     {
         TweenDelegate del = null;
@@ -110,6 +118,7 @@ public static class Tweening
             ToEnd(data);
         }
     }
+    // 현재 트윈의 완료 상태로 Transform 변경
     public static void ToEnd(TweenData data)
     {
         TweenDelegate del = null;
@@ -166,7 +175,13 @@ public static class Tweening
         Tween_Manage.Release(data.trans, data);
     }
 
-    // Scale
+    /// <summary>
+    /// 객체 크기 변경 트윈 애니메이션
+    /// </summary>
+    /// <param name="transform"></param>
+    /// <param name="initial"></param>
+    /// <param name="target"></param>
+    /// <param name="value"></param>
     private static void Scale_tf(Transform transform, NumericValue initial, NumericValue target, float value)
     {
         transform.localScale = new Vector2(Mathf.Lerp(initial.Float, target.Float, value), Mathf.Lerp(initial.Float, target.Float, value));
@@ -176,7 +191,13 @@ public static class Tweening
         (transform as RectTransform).localScale = new Vector2(Mathf.Lerp(initial.Float, target.Float, value), Mathf.Lerp(initial.Float, target.Float, value));
     }
 
-    // Position
+    /// <summary>
+    /// 객체 위치 변경 트윈 애니메이션
+    /// </summary>
+    /// <param name="transform"></param>
+    /// <param name="initial"></param>
+    /// <param name="target"></param>
+    /// <param name="value"></param>
     private static void Position_tf(Transform transform, NumericValue initial, NumericValue target, float value)
     {
         transform.position = Vector3.Lerp(initial.Vector, target.Vector, value);
@@ -186,7 +207,13 @@ public static class Tweening
         (transform as RectTransform).anchoredPosition = Vector3.Lerp(initial.Vector, target.Vector, value);
     }
 
-    // Rotation
+    /// <summary>
+    /// 객체 회전 트윈 애니메이션
+    /// </summary>
+    /// <param name="transform"></param>
+    /// <param name="initial"></param>
+    /// <param name="target"></param>
+    /// <param name="value"></param>
     private static void Rotation_tf(Transform transform, NumericValue initial, NumericValue target, float value)
     {
         transform.localRotation = Quaternion.Euler(initial.Vector + target.Vector * value);

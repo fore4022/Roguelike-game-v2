@@ -33,13 +33,13 @@ public class Monster_N : BasicMonster_WithObject
 
         base.Init();
     }
-    protected override void OnEnable()
+    protected override void Enable()
     {
-        base.OnEnable();
-
         speedMultiplier = 1;
         canSwitchDirection = true;
         behavior = StartCoroutine(RepeatBehavior());
+
+        base.Enable();
     }
     protected override void Die()
     {

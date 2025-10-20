@@ -10,15 +10,7 @@ public abstract class UserInterface : MonoBehaviour
     protected bool isInitalized = false;
 
     public bool IsInitalized { get { return isInitalized; } }
-    public void SetUI()
-    {
-        if(!isInitalized)
-        {
-            isInitalized = true;
-
-            SetUserInterface();
-        }
-    }
+    // 초기화 되지 않았을 경우 UI_Manager에 등록, 이후 활성화되는 경우 Enable 실행
     protected void OnEnable()
     {
         if(!isInitalized)
@@ -30,10 +22,23 @@ public abstract class UserInterface : MonoBehaviour
             Enable();
         }
     }
+    // UI 초기화 호출
     protected virtual void Start()
     {
-        SetUI();
+        InitUI();
     }
+    // 초기화 이후 UI가 활성화 시점의 동작 구현
     protected virtual void Enable() { }
+    // UI 초기화, UI_Manager에 접근하도록 별도 메서드 생성
+    public void InitUI()
+    {
+        if(!isInitalized)
+        {
+            isInitalized = true;
+
+            SetUserInterface();
+        }
+    }
+    // 초기화 구현
     public abstract void SetUserInterface();
 }

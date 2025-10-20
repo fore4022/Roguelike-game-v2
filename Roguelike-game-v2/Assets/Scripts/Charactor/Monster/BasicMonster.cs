@@ -2,7 +2,10 @@ using System;
 using System.Collections;
 using UnityEngine;
 /// <summary>
-/// 플레이어를 향해서 이동
+/// <para>
+/// 플레이어를 향해서 이동하는 기본 몬스터
+/// </para>
+/// IDamage, IDamageReceiver, IMoveable을 구현
 /// </summary>
 public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 {
@@ -30,6 +33,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     public float SpeedAmount { get { return stat.moveSpeed * speedMultiplier * SlowDownAmount; } }
     public float SlowDownAmount { get { return moveable.SlowDownAmount; } }
     public float DamageAmount { get { return stat.damage * damageMultiplier * Managers.Game.difficultyScaler.IncreaseStat * Time.deltaTime; } }
+    // IMoveable 구현
     protected override void Awake()
     {
         moveable = new DefaultMoveable();
@@ -42,29 +46,35 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 
         Enable();
     }
+    // 컴포넌트 설정
     protected override void Set()
     {
         base.Set();
 
-        moveCoroutine = StartCoroutine(Moving());
         render.color = defaultColor;
         render.enabled = true;
         rigid.simulated = true;
     }
+    // 위치 조정 및 이동 코루틴 실행
     protected virtual void Enable()
     {
         SetPosition();
-        changeDirection();
         Set();
+        animator.Play(0, 0);
+
+        moveCoroutine = StartCoroutine(Moving());
     }
+    // 이동 속도 감소
     public void SetSlowDown(float slowDown, float duration)
     {
         moveable.SetSlowDown(slowDown, duration);
     }
+    // 이동 처리
     public virtual void OnMove()
     {
         rigid.linearVelocity = direction * SpeedAmount;
     }
+    // 자기 자신의 위치를 기준으로 플레이어로 향하는 방향 구하기, 배율에 따른 유효 회전 제한
     protected virtual void SetDirection()
     {
         if(!Managers.Game.GameOver)
@@ -87,24 +97,29 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
             }
         }
     }
+    // 피격 효과 재생
     protected virtual void Damaged()
     {
         StartCoroutine(TakingDamage());
     }
+    // 충돌 비활성화, 이동 중지
     protected virtual void Die()
     {
         rigid.simulated = false;
 
         StopCoroutine(moveCoroutine);
     }
+    // 충돌 : Collision
     protected void OnCollisionEnter2D(Collision2D collision)
     {
         Enter(collision);
     }
+    // 충돌 : Trigger
     protected void OnCollisionStay2D(Collision2D collision)
     {
         Enter(collision);
     }
+    // 이벤트 호출, 데미지 로그 출력, 사망 확인
     public void TakeDamage(IDamage damage)
     {
         health -= damage.DamageAmount;
@@ -118,14 +133,17 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
             StartCoroutine(Dieing());
         }
     }
+    // 이벤트 등록 및 초기화
     protected override void Init()
     {
         base.Init();
 
         onDamaged += audioSource.Play;
         onDamaged += Damaged;
+
         defaultColor = render.color;
     }
+    // 충돌 대상 확인, 플레이어일 경우 공격 수행
     private void Enter(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Player"))
@@ -133,19 +151,19 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
             Attack();
         }
     }
+    // 플레이어 공격
     protected virtual void Attack()
     {
         Managers.Game.player.TakeDamage(this);
     }
+    // 이동 및 방향 전환 코루틴, 카메라 영역에 보이는 경우 FlipX 실행
     private IEnumerator Moving()
     {
-        animator.Play(0, 0);
-
         while(true)
         {
             if(isVisible)
             {
-                changeDirection();
+                FlipX();
             }
 
             SetDirection();
@@ -154,6 +172,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
             yield return null;
         }
     }
+    // 사망 효과, 경험치 지급, 오브젝트 풀 반환
     protected virtual IEnumerator Dieing()
     {
         animator.speed = 0;
@@ -176,6 +195,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
 
         Managers.Game.objectPool.DisableObject(gameObject, monsterSO.name);
     }
+    // 피격 효과
     private IEnumerator TakingDamage()
     {
         render.material.SetFloat("_Float", 1);

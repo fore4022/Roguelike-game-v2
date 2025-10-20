@@ -21,8 +21,7 @@ public class Monster_J : BasicMonster
     {
         speedMultiplier = speedMultiplierDefault;
 
-        changeDirection();
-        Set();
+        base.Enable();
         StartCoroutine(RepeatBehavior());
     }
     protected override void Die()
