@@ -37515,13 +37515,13 @@ MonoBehaviour:
   decreaseSound: {fileID: 8300000, guid: b99da9a57308d4ba1bee1cf1d9038376, type: 3}
   actionUnavailableSound: {fileID: 8300000, guid: dc6614beca09347ec9b258f12d154bdd, type: 3}
   files:
-  - targetObject: {fileID: 1955663530}
+  - component: {fileID: 1955663530}
     fieldName: increaseDamage
-  - targetObject: {fileID: 1955663530}
+  - component: {fileID: 1955663530}
     fieldName: increaseHealth
-  - targetObject: {fileID: 1955663530}
+  - component: {fileID: 1955663530}
     fieldName: healthRegenPerSec
-  - targetObject: {fileID: 1955663530}
+  - component: {fileID: 1955663530}
     fieldName: moveSpeed
   statPointText: {fileID: 0}
   background: {fileID: 1949203715}

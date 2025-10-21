@@ -15,7 +15,7 @@ public class ObjectPool
 
     private Transform root;
 
-    private const int maxWorkPerSec = 240;
+    private const int maxWorkPerFrame = 360;
     private const int defaultObjectCount = 500;
 
     private int coroutineCount = 0;
@@ -34,8 +34,8 @@ public class ObjectPool
     }
     public int ScriptableObjectsCount { get { return scriptableObjects.Count; } }
     public int PoolingObjectsCount { get { return poolingObjects.Count; } }
-    // 초당 작업량 반환
-    private int MaxWorkPerSec { get { return Mathf.Max(maxWorkPerSec / coroutineCount, 1); } }
+    // 프레임당 생성량 반환
+    private int MaxWorkPerSec { get { return Mathf.Max(maxWorkPerFrame / coroutineCount, 1); } }
     // 키에 해당하는 오브젝트 활성화
     public GameObject ActiveObject(string prefabKey)
     {
@@ -197,7 +197,7 @@ public class ObjectPool
         string key = prefab.name;
 
         GameObject parent = GameObject.Find(key);
-        Transform transform;
+        Transform transform = null;
 
         if(parent == null)
         {
@@ -208,14 +208,14 @@ public class ObjectPool
             transform = parent.transform;
         }
 
-        yield return new WaitUntil(() => parent != null);
+        yield return new WaitUntil(() => transform != null);
 
         int instanceCount = 0;
         int createCount;
 
         if(isSetRoot)
         {
-            parent.transform.parent = root;
+            transform.SetParent(root);
         }
 
         coroutineCount++;

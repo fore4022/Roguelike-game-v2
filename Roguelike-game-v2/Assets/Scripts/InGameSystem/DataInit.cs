@@ -87,11 +87,11 @@ public class DataInit
         yield return new WaitUntil(() => Managers.Game.inGameData_Manage.player.levelUpdate != null);
 
         yield return new WaitUntil(() => typeCount + 1 <= Managers.Game.objectPool.PoolingObjectsCount);
-
+        
         Managers.Game.damageLog_Manage.Set();
 
         yield return new WaitUntil(() => typeCount <= Managers.Game.objectPool.ScriptableObjectsCount);
-
+        
         yield return new WaitUntil(() => Managers.Game.damageLog_Manage.isSet);
 
         yield return new WaitUntil(() => Managers.Game.player != null);
