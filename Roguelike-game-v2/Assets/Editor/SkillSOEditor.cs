@@ -1,4 +1,10 @@
 using UnityEditor;
+/// <summary>
+/// <para>
+/// 필드를 토글 방식으로 표시/숨기는 것이 가능
+/// </para>
+/// Skill_SO의 필드 이름이 변경 사항이 똑같이 적용되어야 함
+/// </summary>
 [CustomEditor(typeof(Skill_SO))]
 public class SkillSOEditor : Editor
 {
