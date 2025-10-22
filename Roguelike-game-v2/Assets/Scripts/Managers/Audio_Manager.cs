@@ -4,8 +4,9 @@ using UnityEngine.Audio;
 public class Audio_Manager
 {
     private AudioMixer _audioMixer;
+    private AudioMixerGroup fx;
+    private AudioMixerGroup bgm;
 
-    private const SoundTypes _fx = SoundTypes.FX;
     private const float _maxValue_BGM = -5;
     private const float _maxValue_FX = 2.5f;
     private const float _minValue = -80;
@@ -13,8 +14,10 @@ public class Audio_Manager
     public AudioMixer Mixer { get { return _audioMixer; } set { _audioMixer = value; } }
     public void Init()
     {
-        SetGroup(SoundTypes.BGM, Managers.Data.user.BGM);
+        
+
         SetGroup(SoundTypes.FX, Managers.Data.user.FX);
+        SetGroup(SoundTypes.BGM, Managers.Data.user.BGM);
     }
     public void InitializedAudio()
     {
@@ -41,26 +44,26 @@ public class Audio_Manager
     }
     public void SetGroup(SoundTypes type)
     {
-        if(type == _fx)
+        if(type == SoundTypes.FX)
         {
             SetGroup(type, Managers.Data.user.SetFX());
         }
-        else
+        else if(type == SoundTypes.BGM)
         {
             SetGroup(type, Managers.Data.user.SetBGM());
         }
     }
     private void SetGroup(SoundTypes type, bool isActive)
     {
-        float value;
+        float value = default;
 
         if(isActive)
         {
-            if(type == _fx)
+            if(type == SoundTypes.FX)
             {
                 value = _maxValue_FX;
             }
-            else
+            else if(type == SoundTypes.BGM)
             {
                 value = _maxValue_BGM;
             }
@@ -74,11 +77,11 @@ public class Audio_Manager
     }
     public void SetOutputMixerGroup(AudioSource source, SoundTypes? type = null)
     {
-        if(source.outputAudioMixerGroup.ToString() == _fx.ToString() || type == _fx)
+        if(type == SoundTypes.FX)
         {
             source.outputAudioMixerGroup = _audioMixer.FindMatchingGroups("Master/FX")[0];
         }
-        else
+        else if(type == SoundTypes.BGM)
         {
             source.outputAudioMixerGroup = _audioMixer.FindMatchingGroups("Master/BGM")[0];
         }
@@ -94,6 +97,6 @@ public class Audio_Manager
 
         yield return new WaitUntil(() => _audioMixer != null);
 
-        SetOutputMixerGroup(source);
+        SetOutputMixerGroup(source, type);
     }
 }

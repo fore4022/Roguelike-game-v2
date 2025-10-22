@@ -1,0 +1,5 @@
+C:/Users/user/Desktop/Roguelike-game-v2/Roguelike-game-v2/.utmp/RelWithDebInfo/3v29152z/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/user/Desktop/Roguelike-game-v2/Roguelike-game-v2/.utmp/RelWithDebInfo/3v29152z/arm64-v8a/CMakeFiles/rebuild_cache.dir
+C:/Users/user/Desktop/Roguelike-game-v2/Roguelike-game-v2/.utmp/RelWithDebInfo/3v29152z/arm64-v8a/FramePacing/CMakeFiles/swappywrapper.dir
+C:/Users/user/Desktop/Roguelike-game-v2/Roguelike-game-v2/.utmp/RelWithDebInfo/3v29152z/arm64-v8a/FramePacing/CMakeFiles/edit_cache.dir
+C:/Users/user/Desktop/Roguelike-game-v2/Roguelike-game-v2/.utmp/RelWithDebInfo/3v29152z/arm64-v8a/FramePacing/CMakeFiles/rebuild_cache.dir
