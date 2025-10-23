@@ -4,18 +4,14 @@ using UnityEngine.Audio;
 public class Audio_Manager
 {
     private AudioMixer _audioMixer;
-    private AudioMixerGroup fx;
-    private AudioMixerGroup bgm;
 
     private const float _maxValue_BGM = -5;
     private const float _maxValue_FX = 2.5f;
     private const float _minValue = -80;
-    
+
     public AudioMixer Mixer { get { return _audioMixer; } set { _audioMixer = value; } }
     public void Init()
     {
-        
-
         SetGroup(SoundTypes.FX, Managers.Data.user.FX);
         SetGroup(SoundTypes.BGM, Managers.Data.user.BGM);
     }
@@ -31,15 +27,15 @@ public class Audio_Manager
             }
         }
     }
-    public void Registration(AudioSource source, SoundTypes? type = null)
+    public void Registration(AudioSource source)
     {
         if(_audioMixer == null)
         {
-            CoroutineHelper.StartCoroutine(WaitForAudioMixer(source, type));
+            CoroutineHelper.StartCoroutine(WaitForAudioMixer(source));
         }
         else
         {
-            SetOutputMixerGroup(source, type);
+            SetOutputMixerGroup(source);
         }
     }
     public void SetGroup(SoundTypes type)
@@ -75,15 +71,22 @@ public class Audio_Manager
 
         _audioMixer.SetFloat(type.ToString(), value);
     }
-    public void SetOutputMixerGroup(AudioSource source, SoundTypes? type = null)
+    public void SetOutputMixerGroup(AudioSource source)
     {
-        if(type == SoundTypes.FX)
+        if(source.outputAudioMixerGroup == null)
         {
             source.outputAudioMixerGroup = _audioMixer.FindMatchingGroups("Master/FX")[0];
         }
-        else if(type == SoundTypes.BGM)
+        else
         {
-            source.outputAudioMixerGroup = _audioMixer.FindMatchingGroups("Master/BGM")[0];
+            if(source.outputAudioMixerGroup.name == "FX")
+            {
+                source.outputAudioMixerGroup = _audioMixer.FindMatchingGroups("Master/FX")[0];
+            }
+            else if(source.outputAudioMixerGroup.name == "BGM")
+            {
+                source.outputAudioMixerGroup = _audioMixer.FindMatchingGroups("Master/BGM")[0];
+            }
         }
 
         if(source.playOnAwake)
@@ -91,12 +94,12 @@ public class Audio_Manager
             source.Play();
         }
     }
-    private IEnumerator WaitForAudioMixer(AudioSource source, SoundTypes? type = null)
+    private IEnumerator WaitForAudioMixer(AudioSource source)
     {
         source.Stop();
 
         yield return new WaitUntil(() => _audioMixer != null);
 
-        SetOutputMixerGroup(source, type);
+        SetOutputMixerGroup(source);
     }
 }

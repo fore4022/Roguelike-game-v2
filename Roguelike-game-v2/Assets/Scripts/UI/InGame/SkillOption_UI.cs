@@ -22,7 +22,7 @@ public class SkillOption_UI : Button_B
         textList = transform.GetComponentsInChild<TextMeshProUGUI>();
         imageRect = image.gameObject.GetComponent<RectTransform>();
 
-        Managers.Audio.Registration(audioSource, SoundTypes.FX);
+        Managers.Audio.Registration(audioSource);
     }
     public void Reset()
     {
