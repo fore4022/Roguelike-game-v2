@@ -94,6 +94,8 @@ public class DataInit
         
         yield return new WaitUntil(() => Managers.Game.damageLog_Manage.isSet);
 
+        Managers.Audio.InitializedAudio();
+
         yield return new WaitUntil(() => Managers.Game.player != null);
 
         Managers.UI.Get<SceneLoading_UI>().Wait = false;

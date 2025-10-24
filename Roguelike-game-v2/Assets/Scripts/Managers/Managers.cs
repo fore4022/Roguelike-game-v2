@@ -42,7 +42,15 @@ public class Managers : MonoBehaviour
                 go = new GameObject { name = "@Managers" };
             }
 
-            managers = go.AddComponent<Managers>();
+            if(!go.TryGetComponent(out managers))
+            {
+                managers = go.AddComponent<Managers>();
+            }
+
+            if(!go.GetComponent<ManagerInitializer>())
+            {
+                go.AddComponent<ManagerInitializer>();
+            }
 
             DontDestroyOnLoad(go);
         }

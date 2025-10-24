@@ -17,9 +17,9 @@ public class Audio_Manager
     }
     public void InitializedAudio()
     {
-        GameObject[] objs = Object.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
+        GameObject[] objs = Object.FindObjectsByType<GameObject>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 
-        foreach(GameObject obj in objs)
+        foreach (GameObject obj in objs)
         {
             if(obj.TryGetComponent(out AudioSource audio))
             {
@@ -71,27 +71,27 @@ public class Audio_Manager
 
         _audioMixer.SetFloat(type.ToString(), value);
     }
-    public void SetOutputMixerGroup(AudioSource source)
+    public void SetOutputMixerGroup(AudioSource audio)
     {
-        if(source.outputAudioMixerGroup == null)
+        if(audio.outputAudioMixerGroup == null)
         {
-            source.outputAudioMixerGroup = _audioMixer.FindMatchingGroups("Master/FX")[0];
+            audio.outputAudioMixerGroup = _audioMixer.FindMatchingGroups("Master/FX")[0];
         }
         else
         {
-            if(source.outputAudioMixerGroup.name == "FX")
+            if(audio.outputAudioMixerGroup.name == "FX")
             {
-                source.outputAudioMixerGroup = _audioMixer.FindMatchingGroups("Master/FX")[0];
+                audio.outputAudioMixerGroup = _audioMixer.FindMatchingGroups("Master/FX")[0];
             }
-            else if(source.outputAudioMixerGroup.name == "BGM")
+            else if(audio.outputAudioMixerGroup.name == "BGM")
             {
-                source.outputAudioMixerGroup = _audioMixer.FindMatchingGroups("Master/BGM")[0];
+                audio.outputAudioMixerGroup = _audioMixer.FindMatchingGroups("Master/BGM")[0];
             }
         }
 
-        if(source.playOnAwake)
+        if(audio.playOnAwake)
         {
-            source.Play();
+            audio.Play();
         }
     }
     private IEnumerator WaitForAudioMixer(AudioSource source)

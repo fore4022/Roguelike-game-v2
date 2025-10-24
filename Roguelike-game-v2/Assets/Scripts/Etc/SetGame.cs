@@ -10,18 +10,12 @@ public class SetGame : MonoBehaviour
     [SerializeField]
     private EnterMainScene enterMainScene;
     [SerializeField]
-    private AudioMixer audioMixer;
-    [SerializeField]
     private AudioSource audioSource;
 
     private const string _stageDataPath = "StageDatas";
 
     private void Start()
     {
-        Managers.Audio.Mixer = audioMixer;
-
-        Managers.Scene.loadComplete += Managers.Audio.InitializedAudio;
-
         StartCoroutine(Initializing());
     }
     private async Task LoadStageDatas()
@@ -37,6 +31,8 @@ public class SetGame : MonoBehaviour
         Managers.Data.Load();
 
         yield return new WaitUntil(() => Managers.UI.IsInitalized());
+
+        yield return new WaitUntil(() => Managers.Audio.Mixer != null);
 
         StartCoroutine(UserDataLoading());
     }

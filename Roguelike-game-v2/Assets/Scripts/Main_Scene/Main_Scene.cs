@@ -11,6 +11,7 @@ public class Main_Scene : MonoBehaviour
     }
     private void Start()
     {
+        Managers.Audio.InitializedAudio();
         StartCoroutine(Initalizing());
     }
     private IEnumerator Initalizing()
