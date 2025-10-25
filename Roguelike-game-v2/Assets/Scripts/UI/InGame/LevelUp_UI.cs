@@ -35,7 +35,7 @@ public class LevelUp_UI : UserInterface
     {
         yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f);
 
-        InputActions.DisableInputAction<TouchControls>();
+        Input_Manage.DisableInputAction<TouchControls>();
         Managers.UI.Hide<CharactorController_UI>();
 
         if(ShouldShowSkillSelection())

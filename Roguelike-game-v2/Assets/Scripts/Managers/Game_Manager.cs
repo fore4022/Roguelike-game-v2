@@ -163,7 +163,7 @@ public class Game_Manager
         player.Reset();
         inGameTimer.ReStart();
         Managers.UI.Hide<GameOver_UI>();
-        InputActions.EnableInputAction<TouchControls>();
+        Input_Manage.EnableInputAction<TouchControls>();
 
         reSetting = null;
     }

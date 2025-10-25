@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
-public static class InputActions
+public static class Input_Manage
 {
     public static List<IInputActionCollection> inputActionList = new();
 

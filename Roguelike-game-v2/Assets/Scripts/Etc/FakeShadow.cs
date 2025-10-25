@@ -7,7 +7,7 @@ using UnityEngine;
 /// </para>
 /// IFakeShadowSource를 가진 대상의 자식에 위치를 통해 그림자를 구현
 /// </summary>
-public class FakeShadowRenderer : MonoBehaviour
+public class FakeShadow : MonoBehaviour
 {
     private const float alphaMin = 155;
     private readonly float alphaRange = 255 - alphaMin;

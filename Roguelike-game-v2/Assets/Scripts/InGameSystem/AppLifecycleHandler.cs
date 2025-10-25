@@ -10,7 +10,7 @@ public class AppLifecycleHandler : MonoBehaviour
     }
     private void OnApplicationFocus(bool focus)
     {
-        if(Managers.Scene.CurrentSceneName.Equals(SceneName.InGame.ToString()))
+        if(Managers.Scene.CurrentSceneName.Equals(SceneNames.InGame.ToString()))
         {
             if(!Managers.Game.GameOver)
             {

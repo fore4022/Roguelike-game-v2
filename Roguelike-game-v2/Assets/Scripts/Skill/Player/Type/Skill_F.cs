@@ -59,7 +59,7 @@ public class Skill_F : Skill, ISkill
 
                 if(colorVairation == null)
                 {
-                    colorVairation = StartCoroutine(ColorLerp.ChangeAlpha(render, 0, render.color.a, 1));
+                    colorVairation = StartCoroutine(ColorUtil.ChangeAlpha(render, 0, render.color.a, 1));
                 }
             }
             else

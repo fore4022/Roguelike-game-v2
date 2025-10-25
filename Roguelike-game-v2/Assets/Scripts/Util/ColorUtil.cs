@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-public static class ColorLerp
+public static class ColorUtil
 {
     public static IEnumerator ChangeColor(SpriteRenderer render, Color targetColor, Color defaultColor, float duration)
     {

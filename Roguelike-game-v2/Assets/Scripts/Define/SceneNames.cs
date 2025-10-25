@@ -1,7 +1,7 @@
 /// <summary>
 /// Scene ¿Ã∏ß
 /// </summary>
-public enum SceneName
+public enum SceneNames
 {
     Main,
     InGame

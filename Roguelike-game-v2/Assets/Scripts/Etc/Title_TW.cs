@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
-/// 타이틀 Scene Tween 연출
+/// 타이틀 화면 Tween 연출
 /// </summary>
 public class Title_TW : MonoBehaviour
 {

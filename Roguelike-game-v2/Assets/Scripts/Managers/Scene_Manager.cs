@@ -20,7 +20,7 @@ public class Scene_Manager
     public string CurrentSceneName { get { return sceneName; } }
     public bool IsLoading { get { return !isLoading; } }
     // 이벤트 호출 및 기존 씬의 UI 정보 해제
-    public void LoadScene(SceneName sceneName, bool hasInitialization = true)
+    public void LoadScene(SceneNames sceneName, bool hasInitialization = true)
     {
         this.sceneName = sceneName.ToString();
         this.hasInitialization = hasInitialization;

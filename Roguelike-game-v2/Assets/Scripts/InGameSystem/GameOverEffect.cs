@@ -12,14 +12,14 @@ public class GameOverEffect
     private float MinOrthographicSize { get { return 1.25f * Camera_SizeScale.orthographicSizeScale; } }
     public void EffectPlay()
     {
-        InputActions.DisableInputAction<TouchControls>();
+        Input_Manage.DisableInputAction<TouchControls>();
         Managers.UI.Hide<HpSlider_UI>();
 
         CoroutineHelper.StartCoroutine(GameOverEffecting());
     }
     public void StageClearEffect()
     {
-        InputActions.DisableInputAction<TouchControls>();
+        Input_Manage.DisableInputAction<TouchControls>();
         Managers.UI.Hide<HpSlider_UI>();
 
         CoroutineHelper.StartCoroutine(StageClearEffecting());
@@ -78,7 +78,7 @@ public class GameOverEffect
             yield return null;
         }
 
-        InputActions.EnableInputAction<TouchControls>();
+        Input_Manage.EnableInputAction<TouchControls>();
         Managers.UI.Show<HpSlider_UI>();
     }
 }

@@ -177,7 +177,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
     {
         animator.speed = 0;
 
-        StartCoroutine(ColorLerp.ChangeColor(render, Color.black, defaultColor, death_AnimationDuration / 2));
+        StartCoroutine(ColorUtil.ChangeColor(render, Color.black, defaultColor, death_AnimationDuration / 2));
 
         yield return new WaitForSeconds(death_AnimationDuration / 2);
 
@@ -187,7 +187,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
         damageMultiplier = damageMultiplierDefault;
         directionMultiplier = directionMultiplierDefault;
 
-        StartCoroutine(ColorLerp.ChangeAlpha(render, 0, render.color.a, death_AnimationDuration));
+        StartCoroutine(ColorUtil.ChangeAlpha(render, 0, render.color.a, death_AnimationDuration));
 
         yield return new WaitForSeconds(death_AnimationDuration);
 

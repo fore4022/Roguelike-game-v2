@@ -48,7 +48,7 @@ public class DataInit
         Time.timeScale = 0;
         Managers.Game.Playing = false;
 
-        Managers.Scene.LoadScene(SceneName.InGame);
+        Managers.Scene.LoadScene(SceneNames.InGame);
 
         yield return new WaitForEndOfFrame();
 
