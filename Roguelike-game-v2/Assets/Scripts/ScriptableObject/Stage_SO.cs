@@ -7,17 +7,14 @@ public class Stage_SO : ScriptableObject
     public string infoPath;
     [HideInInspector]
     public string iconPath;
-    [HideInInspector]
-    public string stagePath;
 
     public StageInformation_SO information = null;
     public Icon_SO iconSprite = null;
 
+    public string stagePath;
     public new string name;
 
 #if UNITY_EDITOR
-    public GameObject stage = null;
-
     public void OnValidate()
     {
         ValidateUntilReady();
@@ -26,7 +23,7 @@ public class Stage_SO : ScriptableObject
     {
         EditorApplication.delayCall += () =>
         {
-            if(stage == null || iconSprite == null || information == null)
+            if(iconSprite == null || information == null)
             {
                 ValidateUntilReady();
             }
@@ -40,7 +37,6 @@ public class Stage_SO : ScriptableObject
     {
         infoPath = information.name;
         iconPath = iconSprite.name;
-        stagePath = stage.name;
     }
 #endif
 }

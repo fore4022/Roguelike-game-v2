@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   infoPath: Info
   iconPath: Icon
-  stagePath: Rock_mountain
   information: {fileID: 11400000, guid: f74b935582a11b84b87c4f444ebbafea, type: 2}
   iconSprite: {fileID: 11400000, guid: ed2edd7c4fd5af747bd7a232cfbcb4a8, type: 2}
+  stagePath: Rock_mountain
   name: "\uBC14\uC704\uC0B0"
-  stage: {fileID: 8714857401625141123, guid: 4be93441fcb7a83459386f42587740ba, type: 3}

@@ -29,7 +29,7 @@ public class Game_Manager
 
     public int UserExp { get { return userExp; } set { userExp = value; } }
     public bool Playing { get { return isPlaying; } set { isPlaying = value; } }
-    public bool GameOver { get { return gameOver; } set { gameOver = value; } }
+    public bool GameOver { get { return gameOver; } }
     public bool IsStageClear { get { return stageClear; } }
     // 서브 매니저 초기화
     private void Init()
@@ -61,6 +61,7 @@ public class Game_Manager
     public void SetGame()
     {
         stageInformation = Managers.Main.GetCurrentStageSO().information;
+        isPlaying = false;
 
         Init();
         CoroutineHelper.StartCoroutine(inGameData_Manage.init.Initializing());
@@ -90,6 +91,7 @@ public class Game_Manager
     public void Over()
     {
         Managers.Data.user.Exp += userExp;
+        gameOver = true;
         isPlaying = false;
 
         over.Invoke();

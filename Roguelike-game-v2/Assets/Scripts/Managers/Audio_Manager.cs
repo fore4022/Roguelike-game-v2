@@ -91,7 +91,10 @@ public class Audio_Manager
 
         if(audio.playOnAwake)
         {
-            audio.Play();
+            if(audio.gameObject.activeSelf)
+            {
+                audio.Play();
+            }
         }
     }
     private IEnumerator WaitForAudioMixer(AudioSource source)

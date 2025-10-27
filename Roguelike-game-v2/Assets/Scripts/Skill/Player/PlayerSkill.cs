@@ -9,7 +9,7 @@ using UnityEngine;
 /// </para>
 /// 생성 이후, 처음으로 사용되는 시점에 초기화가 이루어진다.
 /// </summary>
-public class Skill : MonoBehaviour, IScriptableData, IDamage
+public class PlayerSkill : MonoBehaviour, IScriptableData, IDamage
 {
     [SerializeField]
     protected Collider2D defaultCollider = null;
@@ -27,7 +27,6 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
 
     protected Coroutine baseCast;
     protected int level;
-    protected bool isInit = false;
 
     private bool isMaxLevel = false;
 
@@ -35,6 +34,8 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
     public float DamageAmount { get { return Managers.Game.player.Stat.damage * so.damageCoefficient[level]; } }
     protected void Awake()
     {
+        Init();
+
         gameObject.SetActive(false);
     }
     protected void OnEnable()
@@ -65,10 +66,13 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
 
-        defaultCollider.enabled = playColliderOnEnable;
+        Set();
+    }
+    private void Set()
+    {
+        defaultCollider.enabled = false;
         render.enabled = false;
         animator.speed = 0;
-        isInit = true;
     }
     private void OnEnter(GameObject go)
     {
@@ -79,13 +83,6 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
     }
     private IEnumerator CastSkill()
     {
-        if(!isInit)
-        {
-            Init();
-        }
-
-        yield return new WaitUntil(() => isInit);
-
         level = Managers.Game.inGameData_Manage.skill.GetLevel(so.typePath);
 
         if(level == Skill_SO.maxLevel - 1 && !isMaxLevel)
@@ -136,8 +133,7 @@ public class Skill : MonoBehaviour, IScriptableData, IDamage
         yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= GameUtil.animationEndTime);
 
         baseCast = null;
-        render.enabled = false;
-        defaultCollider.enabled = false;
-        animator.speed = 0;
+
+        Set();
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 /// </para>
 /// ObjectPool로 회수하는 것을 구현하였다.
 /// </summary>
-public class ProjectileSkill : Skill
+public class PlayerSkill_Projectile : PlayerSkill
 {
     protected Coroutine moving = null;
     protected Vector3 direction;

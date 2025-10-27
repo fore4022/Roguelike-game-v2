@@ -5,7 +5,7 @@ using UnityEngine;
 /// </para>
 /// 플레이어 주변 반경에서 가장 가까운 적을 향해서 생성된다.
 /// </summary>
-public class Skill_G : Skill, ISkill
+public class Skill_G : PlayerSkill, ISkill
 {
     [SerializeField]
     private float skillRange;

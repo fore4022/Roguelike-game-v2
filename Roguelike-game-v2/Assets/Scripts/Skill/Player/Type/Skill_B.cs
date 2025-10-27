@@ -5,7 +5,7 @@ using UnityEngine;
 /// </para>
 /// 가장 큰 적 무리를 공격한다.
 /// </summary>
-public class Skill_B : Skill, ISkill
+public class Skill_B : PlayerSkill, ISkill
 {
     public bool Finished { get { return true; } }
     public void Set()

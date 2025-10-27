@@ -6,7 +6,7 @@ using UnityEngine;
 /// </para>
 /// 화면의 무작위 위치를 향해 날아간다. 적을 밀어내지 않는다.
 /// </summary>
-public class Projectile_E : ProjectileSkill, ISkill
+public class Projectile_E : PlayerSkill_Projectile, ISkill
 {
     [SerializeField]
     private Collider2D effectCollider;

@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Rigidbody2D))]
-public abstract class MonsterSkill_Base : MonoBehaviour
+public abstract class MonsterSkill : MonoBehaviour
 {
     [SerializeField, Min(0.01f)]
     protected float animationSpeed = 1;

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5311b159bb226ff458fbdcc20758c2c7, type: 3}
+  m_Name: SpawnPatternList
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnPatternList_SO
+  patterns:
+  - {fileID: 11400000, guid: f5687f510a00f41469386310b36d8d9d, type: 2}
+  - {fileID: 11400000, guid: 3b7852ab8b17a2b4392d5f43970964a7, type: 2}
+  - {fileID: 11400000, guid: e0f42abab18e6b14ca0dc0089724eaae, type: 2}
+  - {fileID: 11400000, guid: b6bd54e976faa9a488b388f567c401bb, type: 2}
+  - {fileID: 11400000, guid: e53609ebb8aa9374ab6519e3300365e5, type: 2}
+  - {fileID: 11400000, guid: e0f6237bfa9ed1648bdc70be377a22a3, type: 2}
+  - {fileID: 11400000, guid: 50a37f833823e4e4bada20a99b6bd468, type: 2}
+  - {fileID: 11400000, guid: 59b98eda24ca73445a16544f025e3596, type: 2}
+  - {fileID: 11400000, guid: b441fce984a819d40a571ad8ddb359af, type: 2}
+  - {fileID: 11400000, guid: 2cfa97933e1f3894fba2a1565c65f683, type: 2}

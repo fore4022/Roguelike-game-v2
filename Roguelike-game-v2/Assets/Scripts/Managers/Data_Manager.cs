@@ -43,7 +43,7 @@ public class Data_Manager
         {
             user = new();
 
-            foreach(Stage_SO so in Managers.Main.stageDatas.Stages)
+            foreach(Stage_SO so in Managers.Main.stageDatas.Icons)
             {
                 if(Managers.Data.user.StageClearInfo.Find(info => info.name == so.stagePath) == null)
                 {

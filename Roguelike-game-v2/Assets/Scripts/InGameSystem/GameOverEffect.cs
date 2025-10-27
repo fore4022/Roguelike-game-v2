@@ -28,8 +28,6 @@ public class GameOverEffect
     {
         yield return delay;
 
-        Managers.Game.GameOver = true;
-
         Managers.Game.Over();
     }
     private IEnumerator StageClearEffecting()

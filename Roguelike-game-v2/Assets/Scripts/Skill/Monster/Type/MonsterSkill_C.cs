@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 [RequireComponent(typeof(CircleCollider2D))]
-public class MonsterSkill_C : MonsterSkill_Base
+public class MonsterSkill_C : MonsterSkill
 {
     [SerializeField, Min(1)]
     private float slowDown = 0;

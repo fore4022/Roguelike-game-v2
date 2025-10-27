@@ -12,17 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c81c6b72b3bcf74b9c4de406606a7e0, type: 3}
   m_Name: Info
   m_EditorClassIdentifier: 
-  spawnInformationList:
-  - {fileID: 11400000, guid: 0ce034171e0512a4ba44e9c3bd9999ad, type: 2}
-  - {fileID: 11400000, guid: fc53be0fa5925ca4983ea8d12dfa3c9a, type: 2}
-  - {fileID: 11400000, guid: 2533385c537f65f4d8cddd118e192e47, type: 2}
-  - {fileID: 11400000, guid: c564fbd8b394ba341907dd4322b8ed65, type: 2}
-  - {fileID: 11400000, guid: e838c6d62339ce244a3de9d97fef9e51, type: 2}
-  - {fileID: 11400000, guid: 3bc0eb98d536b9d49a3d54e61d68b76f, type: 2}
-  - {fileID: 11400000, guid: 50a37f833823e4e4bada20a99b6bd468, type: 2}
-  - {fileID: 11400000, guid: 59b98eda24ca73445a16544f025e3596, type: 2}
-  - {fileID: 11400000, guid: b441fce984a819d40a571ad8ddb359af, type: 2}
-  - {fileID: 11400000, guid: 2cfa97933e1f3894fba2a1565c65f683, type: 2}
+  spawnPatternList: {fileID: 11400000, guid: a01e3d45a78e9cb478a8e78c988a2758, type: 2}
   spawnMonsterList: {fileID: 11400000, guid: 1936f2e6bec779e46972475e2ad54d7e, type: 2}
   bgm: {fileID: 8300000, guid: 42eca95eca33c464b93c6797d20a673c, type: 3}
   skillRangeVisualizerColor: {r: 1, g: 0.19607843, b: 0.19607843, a: 0.78431374}

@@ -5,7 +5,7 @@ using UnityEngine;
 /// </para>
 /// 가장 큰 적 무리를 공격하며, 서로 다른 애니메이션을 재생할 수 있다.
 /// </summary>
-public class Skill_E : Skill, ISkill
+public class Skill_E : PlayerSkill, ISkill
 {
     [SerializeField]
     private int min_Index;

@@ -5,7 +5,7 @@ using UnityEngine;
 /// </para>
 /// 화면에 보이는 무작위 적을 공격한다.
 /// </summary>
-public class Skill_C : Skill, ISkill
+public class Skill_C : PlayerSkill, ISkill
 {
     public bool Finished { get { return true; } }
     public void Set()

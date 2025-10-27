@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   infoPath: Info
   iconPath: Icon
-  stagePath: Desert
   information: {fileID: 11400000, guid: d2a68a420fb28fe4e8164fc0811a47c9, type: 2}
   iconSprite: {fileID: 11400000, guid: d09f7bf8476970f4c8fe235bb381376c, type: 2}
+  stagePath: Desert
   name: "\uC0AC\uB9C9"
-  stage: {fileID: 8714857401625141123, guid: 88e274bc4f7f38e47bc5c549f68450c1, type: 3}

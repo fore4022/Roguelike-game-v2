@@ -9,7 +9,7 @@ using System.Linq;
 [System.Serializable]
 public class StageDatas
 {
-    private List<Stage_SO> stages;
+    private List<Stage_SO> icons;
     private StageDatas_SO so;
 
     public StageDatas_SO SO
@@ -17,17 +17,17 @@ public class StageDatas
         set
         {
             so = value;
-            stages = so.stages;
+            icons = so.stages;
         }
     }
-    public List<Stage_SO> Stages { get { return stages; } }
+    public List<Stage_SO> Icons { get { return icons; } }
     public Stage_SO GetSO(string stageName, int sign)
     {
         int index = 0;
 
-        for(int i = 0; i < stages.Count(); i++)
+        for(int i = 0; i < icons.Count(); i++)
         {
-            if(stages[i].stagePath == stageName)
+            if(icons[i].stagePath == stageName)
             {
                 index = i + sign;
 
@@ -35,17 +35,17 @@ public class StageDatas
             }
         }
 
-        if(index == stages.Count())
+        if(index == icons.Count())
         {
             index = 0;
         }
         else if(index == -1)
         {
-            index = stages.Count() - 1;
+            index = icons.Count() - 1;
         }
 
-        Managers.Data.user.StageName = stages[index].stagePath;
+        Managers.Data.user.StageName = icons[index].stagePath;
 
-        return stages[index];
+        return icons[index];
     }
 }

@@ -1,5 +1,5 @@
 using System;
-public class MonsterSkill_Damage : MonsterSkill_Base, IDamage
+public class MonsterSkill_Damage : MonsterSkill, IDamage
 {
     private Func<float> damage = null;
 

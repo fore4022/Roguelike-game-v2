@@ -6,7 +6,7 @@ using UnityEngine;
 /// </para>
 /// 무작위 방향을 향해서 날아간다.
 /// </summary>
-public class Projectile_D : ProjectileSkill, IProjectile
+public class Projectile_D : PlayerSkill_Projectile, IProjectile
 {
     [SerializeField, Range(0, 100)]
     private float probability;
@@ -14,6 +14,8 @@ public class Projectile_D : ProjectileSkill, IProjectile
     private float targetScale;
     [SerializeField, Min(0.01f)]
     private float duration;
+
+    private bool isInit = false;
 
     public bool Finished { get { return moving == null; } }
     public void Set()
@@ -48,6 +50,10 @@ public class Projectile_D : ProjectileSkill, IProjectile
             defaultCollider.enabled = false;
 
             transform.Kill().SetScale(1);
+        }
+        else
+        {
+            isInit = true;
         }
     }
     public IEnumerator Moving()
