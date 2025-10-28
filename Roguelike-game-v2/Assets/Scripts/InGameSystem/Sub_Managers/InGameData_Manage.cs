@@ -8,7 +8,6 @@ public class InGameData_Manage
     public Action skillOptionCount_Update = null;
     public PlayerData player = new();
     public SkillDatas skill = new();
-    public DataInit init = new();
 
     private const int maxOptionCount = 5;
 

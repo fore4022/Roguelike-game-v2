@@ -15,6 +15,7 @@ public class Game_Manager
     public GameOverEffect endEffect;
     public InGameTimer inGameTimer;
     public ObjectPool objectPool;
+    public GameSetter gameSetter;
     public Player player;
     public StageInformation_SO stageInformation = null;
 
@@ -44,6 +45,7 @@ public class Game_Manager
         endEffect = new();
         inGameTimer = new();
         objectPool = new();
+        gameSetter = new();
 
         SetEvent();
     }
@@ -66,7 +68,7 @@ public class Game_Manager
         isPlaying = false;
 
         Init();
-        CoroutineHelper.StartCoroutine(inGameData_Manage.init.Initializing());
+        CoroutineHelper.StartCoroutine(gameSetter.Initializing());
     }
     // 이벤트 호출 및 UI 활성화
     public void GameStart()
@@ -96,7 +98,7 @@ public class Game_Manager
         gameOver = true;
         isPlaying = false;
 
-        over.Invoke();
+        over?.Invoke();
 
         Managers.UI.Hide<LevelUp_UI>();
         Managers.UI.Show<GameOver_UI>();
@@ -114,10 +116,10 @@ public class Game_Manager
         damageLog_Manage = null;
         so_Manage = null;
         difficultyScaler = null;
-        stageInformation = null;
         inGameTimer = null;
         monsterSpawner = null;
         objectPool = null;
+        gameSetter = null;
         stageInformation = null;
         userExp = 0;
     }

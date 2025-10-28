@@ -17,6 +17,7 @@ public class PoolingObject
     public Transform Transform { get { return go.transform; } }
     public Animator Animator { get { return GetType(ref animator); } }
     public SpriteRenderer SpriteRenderer { get { return GetType(ref spriteRenderer); } }
+    public string Name { get { return go.name; } }
     // 게임 오브젝트 활성화 여부 반환, 게임 종료 시 false 반환
     public bool activeSelf 
     {

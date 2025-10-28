@@ -103,14 +103,14 @@ public class ObjectPool
     // 프리팹을 개수만큼 생성
     public void Create(GameObject prefab, int count = defaultObjectCount)
     {
-        CoroutineHelper.StartCoroutine(CreatingInstance(prefab, count, ScriptableObjectType.None, null, false));
+        CoroutineHelper.StartCoroutine(CreatingInstance(prefab, count, false));
     }
     // 프리팹 항목들을 개수만큼 생성, ScriptableObjectType에 따라서 프리팹 항목들에 해당하는 ScriptableObject 불러오기
-    public void Create(List<GameObject> prefabs, ScriptableObjectType type, int count = defaultObjectCount)
+    public void Create(List<GameObject> prefabs, int count = defaultObjectCount)
     {
         foreach(GameObject prefab in prefabs)
         {
-            CoroutineHelper.StartCoroutine(CreatingInstance(prefab, count, type));
+            CoroutineHelper.StartCoroutine(CreatingInstance(prefab, count));
         }
     }
     // 오브젝트 풀로 생성된 오든 오브젝트의 코루틴 중단
@@ -127,14 +127,6 @@ public class ObjectPool
             }
         }
     }
-    // 키에 해당하는 리스트에 프리팹을 개수만큼 추가 생성
-    public void Create(GameObject prefab, string originalKey, int count = defaultObjectCount)
-    {
-        if(prefab != null)
-        {
-            CoroutineHelper.StartCoroutine(CreatingInstance(prefab, count, ScriptableObjectType.None, originalKey));
-        }
-    }
     // 프리팹을 _root의 자식으로 개수만큼 생성
     private void CreateInstance(Transform _root, GameObject prefab, int count, int instanceCount, ref GameObject[] array)
     {
@@ -144,8 +136,8 @@ public class ObjectPool
             array[instanceCount + i].SetActive(false);
         }
     }
-    // 프레임마다 프리팹 인스턴스 생성, 목표 개수만큼 생성된 이후, ScriptableObjectType에 따라서 ScriptableObject를 할당해준다.
-    private IEnumerator CreatingInstance(GameObject prefab, int count, ScriptableObjectType type = ScriptableObjectType.None, string originalKey = null, bool isSetRoot = true)
+    // ScriptableObjectType에 따라서 ScriptableObject를 할당해준다.
+    private IEnumerator CreatingInstance(GameObject prefab, int count, bool isSetRoot = true)
     {
         GameObject[] array = new GameObject[count];
 
@@ -194,33 +186,6 @@ public class ObjectPool
         for(int i = 0; i < array.Count(); i++)
         {
             poolingObjects[key].Add(new(array[i]));
-        }
-
-        if(type == ScriptableObjectType.None)
-        {
-            if(originalKey != null)
-            {
-                Monster monster = GetObject(originalKey, false).GetComponent<Monster>();
-
-                if(array[0].GetComponent<MonsterSkill_Damage>())
-                {
-                    MonsterSkill_Damage skillDamage;
-
-                    foreach(GameObject go in array)
-                    {
-                        skillDamage = go.GetComponent<MonsterSkill_Damage>();
-                        skillDamage.Damage += monster.Damage;
-                    }
-                }
-            }
-        }
-        else
-        {
-            Managers.Game.so_Manage.LoadScriptableObject(type, key);
-
-            yield return new WaitUntil(() => Managers.Game.so_Manage.ScriptableObjects.ContainsKey(key) == true);
-
-            CoroutineHelper.StartCoroutine(Managers.Game.so_Manage.SetScriptableObject(array, key));
         }
 
         coroutineCount--;

@@ -47,9 +47,9 @@ public class Managers : MonoBehaviour
                 managers = go.AddComponent<Managers>();
             }
 
-            if(!go.GetComponent<ManagerInitializer>())
+            if(!go.GetComponent<Manager_Initializer>())
             {
-                go.AddComponent<ManagerInitializer>();
+                go.AddComponent<Manager_Initializer>();
             }
 
             DontDestroyOnLoad(go);

@@ -5,15 +5,20 @@ using UnityEngine;
 /// <summary>
 /// 게임 정보 불러오기 및 시스템 초기화
 /// </summary>
-public class DataInit
+public class GameSetter
 {
+    private PoolingObject_Initializer poolingObject_Initializer = new();
+
     private List<GameObject> skillList = new();
+    private List<GameObject> monsterList;
     private GameObject damageText;
     private GameObject stage;
 
     private const string userLevelPath = "_Level";
     private const int defaultMonsterCount = 325;
     private const int defaultSkillCount = 40;
+
+    private Coroutine coroutine = null;
 
     private async Task LoadSkillList()
     {
@@ -55,52 +60,69 @@ public class DataInit
 
         Managers.Game.objectPool = new();
 
-        CoroutineHelper.StartCoroutine(DataLoading());
+        CoroutineHelper.StartCoroutine(Setting());
     }
-    private IEnumerator DataLoading()
+    private IEnumerator Setting()
     {
-        List<GameObject> monsterList;
-
         Time.timeScale = 0;
-        monsterList = Managers.Game.stageInformation.spawnMonsterList.monsters;
 
-        Task loadStage = LoadStage();
-        Task loadSkill =  LoadSkillList();
-        Task loadDamageText = LoadDamageText();
+        coroutine = CoroutineHelper.StartCoroutine(DataLoading());
 
-        yield return new WaitUntil(() => loadStage.IsCompleted && loadSkill.IsCompleted && loadDamageText.IsCompleted);
+        yield return new WaitUntil(() => coroutine == null);
 
-        Object.Instantiate(stage);
+        coroutine = CoroutineHelper.StartCoroutine(InstantiateCreating());
 
-        Managers.Game.monsterSpawner.monsterList = monsterList;
-        Managers.Game.inGameData_Manage.player.MaxLevel = skillList.Count;
-
-        Managers.Game.objectPool.Create(monsterList, ScriptableObjectType.Monster,defaultMonsterCount);
-        Managers.Game.objectPool.Create(skillList, ScriptableObjectType.Skill, defaultSkillCount);
-        Managers.Game.objectPool.Create(damageText);
-
-        int typeCount = monsterList.Count + skillList.Count;
-
-        yield return new WaitUntil(() => Managers.UI.IsInitalized());
-
-        yield return new WaitUntil(() => Managers.Game.inGameData_Manage.player.levelUpdate != null);
-
-        yield return new WaitUntil(() => typeCount + 1 <= Managers.Game.objectPool.PoolingObjectsCount);
-        
-        Managers.Game.damageLog_Manage.Set();
-
-        yield return new WaitUntil(() => typeCount <= Managers.Game.so_Manage.ScriptableObjectsCount);
-        
-        yield return new WaitUntil(() => Managers.Game.damageLog_Manage.isSet);
+        yield return new WaitUntil(() => coroutine == null);
 
         Managers.Audio.InitializedAudio();
 
+        yield return new WaitUntil(() => Managers.Game.inGameData_Manage.player.levelUpdate != null);
+
         yield return new WaitUntil(() => Managers.Game.player != null);
+
+        yield return new WaitUntil(() => Managers.UI.IsInitalized());
 
         Managers.UI.Get<SceneLoading_UI>().Wait = false;
 
         yield return new WaitUntil(() => Managers.UI.Get<SceneLoading_UI>() == null);
 
         Managers.Game.GameStart();
+    }
+    private IEnumerator DataLoading()
+    {
+        monsterList = Managers.Game.stageInformation.spawnMonsterList.monsters;
+
+        Task loadStage = LoadStage();
+        Task loadSkill = LoadSkillList();
+        Task loadDamageText = LoadDamageText();
+
+        yield return new WaitUntil(() => loadStage.IsCompleted && loadSkill.IsCompleted && loadDamageText.IsCompleted);
+
+        Managers.Game.monsterSpawner.monsterList = monsterList;
+        Managers.Game.inGameData_Manage.player.MaxLevel = skillList.Count;
+        coroutine = null;
+    }
+    private IEnumerator InstantiateCreating()
+    {
+        Object.Instantiate(stage);
+
+        Managers.Game.objectPool.Create(monsterList, defaultMonsterCount);
+        Managers.Game.objectPool.Create(skillList, defaultSkillCount);
+        Managers.Game.objectPool.Create(damageText);
+
+        int typeCount = monsterList.Count + skillList.Count;
+
+        yield return new WaitUntil(() => typeCount + 1 <= Managers.Game.objectPool.PoolingObjectsCount);
+
+        poolingObject_Initializer.Start(monsterList, skillList);
+        Managers.Game.damageLog_Manage.Set();
+
+        yield return new WaitUntil(() => typeCount <= Managers.Game.so_Manage.ScriptableObjectsCount);
+
+        yield return new WaitUntil(() => Managers.Game.damageLog_Manage.isSet);
+
+        yield return new WaitUntil(() => poolingObject_Initializer.Init);
+
+        coroutine = null;
     }
 }

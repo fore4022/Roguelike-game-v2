@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 public class ScriptableObject_Manage
 {
@@ -9,7 +10,6 @@ public class ScriptableObject_Manage
 
     private int coroutineCount = 0;
 
-    public Dictionary<string, ScriptableObject> ScriptableObjects { get { return scriptableObjects; } }
     public int ScriptableObjectsCount { get { return scriptableObjects.Count; } }
     private int MaxWorkPerSec { get { return Mathf.Max(maxWorkPerFrame / coroutineCount, 1); } }
     // 키에 해당하는 ScriptableObject 반환
@@ -22,8 +22,8 @@ public class ScriptableObject_Manage
 
         return null;
     }
-    // 해당 키의 SO 불러오기, ScriptableObjectType에 따라서 ScriptableObject가 가지는 추가 오브젝트 생성
-    public async void LoadScriptableObject(ScriptableObjectType type, string key)
+    // 해당 키의 SO 불러오기, ScriptableObjectType에 따라서 ScriptableObject가 가지는 추가 오브젝트 생성 //
+    public async Task LoadScriptableObject(ScriptableObjectType type, string key)
     {
         if(!scriptableObjects.ContainsKey(key))
         {
@@ -33,20 +33,6 @@ public class ScriptableObject_Manage
             {
                 case ScriptableObjectType.Monster:
                     so = await AddressableHelper.LoadingToPath<ScriptableObject>($"Assets/SO/Monster/{Managers.Data.user.StageName}/{key}.asset");
-
-                    if(so is MonsterStat_WithObject_SO exceptionMonsterStatSO)
-                    {
-                        if(exceptionMonsterStatSO.extraObjects != null)
-                        {
-                            foreach(GameObject go in exceptionMonsterStatSO.extraObjects)
-                            {
-                                if(!Managers.Game.objectPool.PoolingObjects.ContainsKey(go.name))
-                                {
-                                    Managers.Game.objectPool.Create(go, key);
-                                }
-                            }
-                        }
-                    }
                     break;
                 case ScriptableObjectType.Skill:
                     so = await AddressableHelper.LoadingToPath<ScriptableObject>($"Assets/SO/Skill/{key}.asset");
@@ -57,7 +43,7 @@ public class ScriptableObject_Manage
         }
     }
     // 입력 받은 배열의 모든 오브젝트에 키에 해당하는 ScriptableObject를 할당
-    public IEnumerator SetScriptableObject(GameObject[] array, string key)
+    public IEnumerator SetScriptableObject(List<PoolingObject> list, string key)
     {
         ScriptableObject so;
 
@@ -69,13 +55,13 @@ public class ScriptableObject_Manage
 
         so = scriptableObjects[key];
 
-        while(sum < array.Length)
+        while(sum < list.Count)
         {
             count = MaxWorkPerSec;
 
-            for(index = sum; index < Mathf.Min(sum + count, array.Length); index++)
+            for(index = sum; index < Mathf.Min(sum + count, list.Count); index++)
             {
-                array[index].GetComponent<IScriptableData>().SO = so;
+                list[index].GetComponent<IScriptableData>().SO = so;
             }
 
             sum += count;
