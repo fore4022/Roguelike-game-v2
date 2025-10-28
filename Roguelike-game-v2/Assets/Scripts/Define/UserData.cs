@@ -35,7 +35,10 @@ public class UserData
         {
             current_StageName = value;
 
-            Managers.Data.Save();
+            if(GetStageState() != StageState.Locked)
+            {
+                Managers.Data.Save();
+            }
         }
     }
     public int Level { get { return level; } set { level = value; } }

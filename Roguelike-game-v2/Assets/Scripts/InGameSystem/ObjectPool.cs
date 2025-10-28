@@ -10,7 +10,6 @@ using UnityEngine;
 /// </summary>
 public class ObjectPool
 {
-    private Dictionary<string, ScriptableObject> scriptableObjects = new();
     private Dictionary<string, List<PoolingObject>> poolingObjects = new();
 
     private Transform root;
@@ -32,7 +31,7 @@ public class ObjectPool
 
         root = go.transform;
     }
-    public int ScriptableObjectsCount { get { return scriptableObjects.Count; } }
+    public Dictionary<string, List<PoolingObject>> PoolingObjects { get { return poolingObjects; } }
     public int PoolingObjectsCount { get { return poolingObjects.Count; } }
     // 프레임당 생성량 반환
     private int MaxWorkPerSec { get { return Mathf.Max(maxWorkPerFrame / coroutineCount, 1); } }
@@ -78,16 +77,6 @@ public class ObjectPool
         if(poolingObjects.ContainsKey(prefabKey))
         {
             return poolingObjects[prefabKey];
-        }
-
-        return null;
-    }
-    // 키에 해당하는 ScriptableObject 반환
-    public T GetScriptableObject<T>(string key) where T : ScriptableObject
-    {
-        if(scriptableObjects.ContainsKey(key))
-        {
-            return (T)scriptableObjects[key];
         }
 
         return null;
@@ -139,7 +128,7 @@ public class ObjectPool
         }
     }
     // 키에 해당하는 리스트에 프리팹을 개수만큼 추가 생성
-    private void Create_Additional(GameObject prefab, string originalKey, int count)
+    public void Create(GameObject prefab, string originalKey, int count = defaultObjectCount)
     {
         if(prefab != null)
         {
@@ -153,40 +142,6 @@ public class ObjectPool
         {
             array[instanceCount + i] = Object.Instantiate(prefab, _root);
             array[instanceCount + i].SetActive(false);
-        }
-    }
-    // 해당 키의 SO 불러오기, ScriptableObjectType에 따라서 ScriptableObject가 가지는 추가 오브젝트 생성
-    private async void CreateScriptableObject(ScriptableObjectType type, string key)
-    {
-        if(!scriptableObjects.ContainsKey(key))
-        {
-            ScriptableObject so = default;
-
-            switch(type)
-            {
-                case ScriptableObjectType.Monster:
-                    so = await AddressableHelper.LoadingToPath<ScriptableObject>($"Assets/SO/Monster/{Managers.Data.user.StageName}/{key}.asset");
-
-                    if(so is MonsterStat_WithObject_SO exceptionMonsterStatSO)
-                    {
-                        if(exceptionMonsterStatSO.extraObjects != null)
-                        {
-                            foreach(GameObject go in exceptionMonsterStatSO.extraObjects)
-                            {
-                                if(!poolingObjects.ContainsKey(go.name))
-                                {
-                                    Create_Additional(go, key, defaultObjectCount);
-                                }
-                            }
-                        }
-                    }
-                    break;
-                case ScriptableObjectType.Skill:
-                    so = await AddressableHelper.LoadingToPath<ScriptableObject>($"Assets/SO/Skill/{key}.asset");
-                    break;
-            }
-
-            scriptableObjects.Add(key, so);
         }
     }
     // 프레임마다 프리팹 인스턴스 생성, 목표 개수만큼 생성된 이후, ScriptableObjectType에 따라서 ScriptableObject를 할당해준다.
@@ -261,40 +216,11 @@ public class ObjectPool
         }
         else
         {
-            CreateScriptableObject(type, key);
+            Managers.Game.so_Manage.LoadScriptableObject(type, key);
 
-            yield return new WaitUntil(() => scriptableObjects.ContainsKey(key) == true);
+            yield return new WaitUntil(() => Managers.Game.so_Manage.ScriptableObjects.ContainsKey(key) == true);
 
-            CoroutineHelper.StartCoroutine(SetScriptableObject(array, key));
-        }
-
-        coroutineCount--;
-    }
-    // 입력 받은 배열의 모든 오브젝트에 키에 해당하는 ScriptableObject를 할당
-    private IEnumerator SetScriptableObject(GameObject[] array, string key)
-    {
-        ScriptableObject so;
-
-        int sum = 0;
-        int count;
-        int index;
-
-        coroutineCount++;
-
-        so = scriptableObjects[key];
-
-        while(sum < array.Length)
-        {
-            count = MaxWorkPerSec;
-
-            for(index = sum; index < Mathf.Min(sum + count, array.Length); index++)
-            {
-                array[index].GetComponent<IScriptableData>().SO = so;
-            }
-
-            sum += count;
-
-            yield return null;
+            CoroutineHelper.StartCoroutine(Managers.Game.so_Manage.SetScriptableObject(array, key));
         }
 
         coroutineCount--;

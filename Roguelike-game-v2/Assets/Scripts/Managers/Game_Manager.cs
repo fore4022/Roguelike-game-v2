@@ -9,6 +9,7 @@ public class Game_Manager
     public SkillCaster_Manage skillCaster_Manage;
     public InGameData_Manage inGameData_Manage;
     public DamageLog_Manage damageLog_Manage;
+    public ScriptableObject_Manage so_Manage;
     public DifficultyScaler difficultyScaler;
     public MonsterSpawner monsterSpawner;
     public GameOverEffect endEffect;
@@ -37,6 +38,7 @@ public class Game_Manager
         skillCaster_Manage = new();
         inGameData_Manage = new();
         damageLog_Manage = new();
+        so_Manage = new();
         difficultyScaler = new();
         monsterSpawner = new();
         endEffect = new();
@@ -110,6 +112,7 @@ public class Game_Manager
         skillCaster_Manage = null;
         inGameData_Manage = null;
         damageLog_Manage = null;
+        so_Manage = null;
         difficultyScaler = null;
         stageInformation = null;
         inGameTimer = null;

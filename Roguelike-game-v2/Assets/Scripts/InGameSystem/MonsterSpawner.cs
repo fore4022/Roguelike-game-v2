@@ -48,7 +48,7 @@ public class MonsterSpawner
 
             if(!monsterStats.ContainsKey(soName))
             {
-                monsterStats.Add(soName, Managers.Game.objectPool.GetScriptableObject<ScriptableObject>(soName));
+                monsterStats.Add(soName, Managers.Game.so_Manage.GetScriptableObject<ScriptableObject>(soName));
             }
         }
     }

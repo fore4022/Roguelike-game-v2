@@ -89,7 +89,7 @@ public class DataInit
         
         Managers.Game.damageLog_Manage.Set();
 
-        yield return new WaitUntil(() => typeCount <= Managers.Game.objectPool.ScriptableObjectsCount);
+        yield return new WaitUntil(() => typeCount <= Managers.Game.so_Manage.ScriptableObjectsCount);
         
         yield return new WaitUntil(() => Managers.Game.damageLog_Manage.isSet);
 

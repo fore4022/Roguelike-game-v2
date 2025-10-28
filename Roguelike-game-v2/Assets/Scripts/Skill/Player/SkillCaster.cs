@@ -40,7 +40,7 @@ public class SkillCaster
     }
     private IEnumerator Casting()
     {
-        so = Managers.Game.objectPool.GetScriptableObject<Skill_SO>(attackType);
+        so = Managers.Game.so_Manage.GetScriptableObject<Skill_SO>(attackType);
 
         yield return new WaitUntil(() => so != null);
 
