@@ -31,7 +31,7 @@ public class Audio_Manager
     {
         if(_audioMixer == null)
         {
-            CoroutineHelper.StartCoroutine(WaitForAudioMixer(source));
+            CoroutineHelper.Start(WaitForAudioMixer(source));
         }
         else
         {

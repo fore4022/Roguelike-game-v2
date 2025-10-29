@@ -24,20 +24,20 @@ public class MonsterSpawner
     }
     public void StartSpawn()
     {
-        monsterSpawn = CoroutineHelper.StartCoroutine(SpawningSystem());
+        monsterSpawn = CoroutineHelper.Start(SpawningSystem());
     }
     public void StopSpawn()
     {
-        CoroutineHelper.StopCoroutine(spawnGroup);
+        CoroutineHelper.Stop(spawnGroup);
     }
     public void ReStart()
     {
         if(spawnGroup != null)
         {
-            CoroutineHelper.StopCoroutine(spawnGroup);
+            CoroutineHelper.Stop(spawnGroup);
         }
 
-        CoroutineHelper.StopCoroutine(monsterSpawn);
+        CoroutineHelper.Stop(monsterSpawn);
         StartSpawn();
     }
     private void LoadInformation()
@@ -66,13 +66,13 @@ public class MonsterSpawner
         {
             foreach(SpawnPattern_SO spawnInformation in Managers.Game.stageInformation.spawnPatternList.patterns)
             {
-                spawnGroup = CoroutineHelper.StartCoroutine(MonsterSpawning(spawnInformation));
+                spawnGroup = CoroutineHelper.Start(MonsterSpawning(spawnInformation));
 
                 yield return new WaitUntil(() => spawnGroup == null);
             }
         }
 
-        CoroutineHelper.StopCoroutine(spawnGroup);
+        CoroutineHelper.Stop(spawnGroup);
     }
     private IEnumerator MonsterSpawning(SpawnPattern_SO spawnInformation)
     {

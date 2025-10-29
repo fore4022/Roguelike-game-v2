@@ -68,7 +68,7 @@ public class Game_Manager
         isPlaying = false;
 
         Init();
-        CoroutineHelper.StartCoroutine(gameSetter.Initializing());
+        CoroutineHelper.Start(gameSetter.Initializing());
     }
     // 이벤트 호출 및 UI 활성화
     public void GameStart()
@@ -89,7 +89,7 @@ public class Game_Manager
         gameOver = false;
         
         restart.Invoke();
-        CoroutineHelper.StartCoroutine(ReStarting());
+        CoroutineHelper.Start(ReStarting());
     }
     // 이벤트 호출, 결과 표시
     public void Over()
@@ -138,7 +138,7 @@ public class Game_Manager
     // 게임 재설정 대기 이후 재시작
     private IEnumerator ReStarting()
     {
-        reSetting = CoroutineHelper.StartCoroutine(ReSetting());
+        reSetting = CoroutineHelper.Start(ReSetting());
 
         yield return null;
 
@@ -161,7 +161,8 @@ public class Game_Manager
 
         yield return new WaitForSecondsRealtime(SceneLoading_UI.limitTime);
 
-        Managers.UI.Get<SceneLoading_UI>().Wait = false;
+        Managers.Scene.LoadComplete();
+
         Camera.main.orthographicSize = CameraSizes.inGame * Camera_SizeScale.orthographicSizeScale;
         Managers.Game.inGameData_Manage.player.Experience = 0;
         isPlaying = true;

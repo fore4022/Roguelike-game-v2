@@ -103,14 +103,14 @@ public class ObjectPool
     // 프리팹을 개수만큼 생성
     public void Create(GameObject prefab, int count = defaultObjectCount)
     {
-        CoroutineHelper.StartCoroutine(CreatingInstance(prefab, count, false));
+        CoroutineHelper.Start(CreatingInstance(prefab, count, false));
     }
     // 프리팹 항목들을 개수만큼 생성, ScriptableObjectType에 따라서 프리팹 항목들에 해당하는 ScriptableObject 불러오기
     public void Create(List<GameObject> prefabs, int count = defaultObjectCount)
     {
         foreach(GameObject prefab in prefabs)
         {
-            CoroutineHelper.StartCoroutine(CreatingInstance(prefab, count));
+            CoroutineHelper.Start(CreatingInstance(prefab, count));
         }
     }
     // 오브젝트 풀로 생성된 오든 오브젝트의 코루틴 중단

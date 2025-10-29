@@ -62,7 +62,7 @@ public class UI_Manager
         }
         else
         {
-            CoroutineHelper.StartCoroutine(Creating(name, true));
+            CoroutineHelper.Start(Creating(name, true));
         }
     }
     // 타입에 해당하는 UI를 비활성화

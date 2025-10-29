@@ -9,7 +9,7 @@ public class PoolingObject_Initializer
     public bool Init { get { return isInit; } }
     public void Start(List<GameObject> monsterList, List<GameObject> skillList)
     {
-        CoroutineHelper.StartCoroutine(Initializing(monsterList, skillList));
+        CoroutineHelper.Start(Initializing(monsterList, skillList));
     }
     private IEnumerator Initializing(List<GameObject> monsterList, List<GameObject> skillList)
     {
@@ -29,7 +29,7 @@ public class PoolingObject_Initializer
 
             yield return new WaitUntil(() => load.IsCompleted);
 
-            CoroutineHelper.StartCoroutine(Managers.Game.so_Manage.SetScriptableObject(objs, key));
+            CoroutineHelper.Start(Managers.Game.so_Manage.SetScriptableObject(objs, key));
 
             so = Managers.Game.so_Manage.GetScriptableObject<ScriptableObject>(key);
 
@@ -41,7 +41,7 @@ public class PoolingObject_Initializer
                     {
                         if(!Managers.Game.objectPool.PoolingObjects.ContainsKey(extraObj.name))
                         {
-                            CoroutineHelper.StartCoroutine(CreateAndSet_ExtraObject(extraObj, key));
+                            CoroutineHelper.Start(CreateAndSet_ExtraObject(extraObj, key));
                         }
                     }
                 }
@@ -57,7 +57,7 @@ public class PoolingObject_Initializer
 
             yield return new WaitUntil(() => load.IsCompleted);
 
-            CoroutineHelper.StartCoroutine(Managers.Game.so_Manage.SetScriptableObject(objs, key));
+            CoroutineHelper.Start(Managers.Game.so_Manage.SetScriptableObject(objs, key));
         }
 
         isInit = true;

@@ -28,19 +28,21 @@ public class Scene_Manager
 
         Managers.UI.ClearDictionary();
         Managers.UI.Show<SceneLoading_UI>();
-
-        if(!hasInitialization)
-        {
-            CoroutineHelper.StartCoroutine(SetSceneLoading());
-        }
+        CoroutineHelper.Start(Managers.Scene.SceneSetting());
 
         loadScene?.Invoke();
+    }
+    public void LoadComplete()
+    {
+        isLoading = false;
     }
     // 이벤트 호출 및 새로운 씬 로드 대기, SceneLoading_UI 활성화
     public IEnumerator SceneSetting()
     {
-        if(!isLoading)
+        if(isLoading)
         {
+            loadComplete?.Invoke();
+
             yield break;
         }
 
@@ -50,18 +52,10 @@ public class Scene_Manager
 
         loadComplete?.Invoke();
 
-        isLoading = false;
 
         if(!hasInitialization)
         {
-            Managers.UI.Get<SceneLoading_UI>().Wait = false;
+            isLoading = false;
         }
-    }
-    // 씬 로드 이후 추가적인 초기화 과정이 없을 경우, SceneLoading_UI의 대기 상태 해제
-    private IEnumerator SetSceneLoading()
-    {
-        yield return new WaitUntil(() => Managers.UI.Get<SceneLoading_UI>() != null);
-
-        Managers.UI.Get<SceneLoading_UI>().Wait = false;
     }
 }

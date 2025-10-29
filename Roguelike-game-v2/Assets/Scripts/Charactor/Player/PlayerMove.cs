@@ -27,7 +27,7 @@ public class PlayerMove : IMoveable
     public bool IsPointerOverUI { set { isPointerOverUI = value; } }
     public void Init()
     {
-        CoroutineHelper.StartCoroutine(Initalization());
+        CoroutineHelper.Start(Initalization());
     }
     public void OnMove()
     {
@@ -55,7 +55,7 @@ public class PlayerMove : IMoveable
 
         if(moving != null)
         {
-            CoroutineHelper.StopCoroutine(moving);
+            CoroutineHelper.Stop(moving);
         }
 
         moving = null;
@@ -110,7 +110,7 @@ public class PlayerMove : IMoveable
 
         enterTouchPosition = context.ReadValue<Vector2>();
         charactorController.EnterPosition = enterTouchPosition;
-        moving = CoroutineHelper.StartCoroutine(Moving());
+        moving = CoroutineHelper.Start(Moving());
     }
     public PlayerMove(SpriteRenderer render, DefaultMoveable moveable)
     {

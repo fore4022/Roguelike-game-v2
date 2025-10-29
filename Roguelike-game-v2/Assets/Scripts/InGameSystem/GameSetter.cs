@@ -60,17 +60,17 @@ public class GameSetter
 
         Managers.Game.objectPool = new();
 
-        CoroutineHelper.StartCoroutine(Setting());
+        CoroutineHelper.Start(Setting());
     }
     private IEnumerator Setting()
     {
         Time.timeScale = 0;
 
-        coroutine = CoroutineHelper.StartCoroutine(DataLoading());
+        coroutine = CoroutineHelper.Start(DataLoading());
 
         yield return new WaitUntil(() => coroutine == null);
 
-        coroutine = CoroutineHelper.StartCoroutine(InstantiateCreating());
+        coroutine = CoroutineHelper.Start(InstantiateCreating());
 
         yield return new WaitUntil(() => coroutine == null);
 
@@ -82,7 +82,7 @@ public class GameSetter
 
         yield return new WaitUntil(() => Managers.UI.IsInitalized());
 
-        Managers.UI.Get<SceneLoading_UI>().Wait = false;
+        Managers.Scene.LoadComplete();
 
         yield return new WaitUntil(() => Managers.UI.Get<SceneLoading_UI>() == null);
 

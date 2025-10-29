@@ -10,15 +10,15 @@ public static class CoroutineHelper
 {
     private static MonoScript monoScript = null;
 
-    // 코루틴 정지
-    public static void StopCoroutine(Coroutine coroutine)
-    {
-        GetMonoBehaviour().StopCoroutine(coroutine);
-    }
     // 코루틴 실행
-    public static Coroutine StartCoroutine(IEnumerator coroutine)
+    public static Coroutine Start(IEnumerator coroutine)
     {
         return GetMonoBehaviour().StartCoroutine(coroutine);
+    }
+    // 코루틴 정지
+    public static void Stop(Coroutine coroutine)
+    {
+        GetMonoBehaviour().StopCoroutine(coroutine);
     }
     // monoScript를 반환, monoScript가 null일 경우에 빈 객체를 생성해 MonoScript 할당 후 반환
     private static MonoBehaviour GetMonoBehaviour()
