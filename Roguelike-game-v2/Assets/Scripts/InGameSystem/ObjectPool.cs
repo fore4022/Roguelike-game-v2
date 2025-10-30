@@ -36,9 +36,9 @@ public class ObjectPool
     // 프레임당 생성량 반환
     private int MaxWorkPerSec { get { return Mathf.Max(maxWorkPerFrame / coroutineCount, 1); } }
     // 키에 해당하는 오브젝트 활성화
-    public GameObject ActiveObject(string prefabKey)
+    public PoolingObject ActiveObject(string prefabKey)
     {
-        GameObject go = GetObject(prefabKey, false).PoolingGameObject;
+        PoolingObject go = GetObject(prefabKey, false);
 
         go.SetActive(true);
 
@@ -49,21 +49,23 @@ public class ObjectPool
     {
         poolingObjects.TryGetValue(key, out List<PoolingObject> objs);
 
-        objs.Find(o => o.PoolingGameObject == prefab).isUsed = false;
+        objs.Find(o => o.GameObject == prefab).isInUse = false;
 
         prefab.SetActive(false);
     }
     // 키에 해당하는 오브젝트 반환, 활성화 여부 지정 가능
-    public PoolingObject GetObject(string prefabKey, bool isUsed = true)
+    public PoolingObject GetObject(string prefabKey, bool setInUse = true)
     {
         foreach(PoolingObject obj in poolingObjects[prefabKey])
         {
-            if(!obj.PoolingGameObject.activeSelf && !obj.isUsed)
+            if(!obj.GameObject.activeSelf && (!obj.isInUse || obj.isUsed))
             {
-                if(isUsed)
+                if(setInUse)
                 {
-                    obj.isUsed = true;
+                    obj.isInUse = true;
                 }
+
+                obj.isUsed = false;
 
                 return obj;
             }
@@ -88,14 +90,14 @@ public class ObjectPool
         {
             foreach(PoolingObject obj in objList)
             {
-                if(obj.PoolingGameObject.activeSelf)
+                if(obj.GameObject.activeSelf)
                 {
-                    obj.PoolingGameObject.SetActive(false);
+                    obj.GameObject.SetActive(false);
                 }
 
-                if(obj.isUsed)
+                if(obj.isInUse)
                 {
-                    obj.isUsed = false;
+                    obj.isInUse = false;
                 }
             }
         }

@@ -21,7 +21,7 @@ public static class AddressableHelper
     // 주소를 통해서 씬 로드
     public static void LoadingScene(string path)
     {
-        Addressables.LoadSceneAsync(path, UnityEngine.SceneManagement.LoadSceneMode.Single).WaitForCompletion();
+        Addressables.LoadSceneAsync(path, UnityEngine.SceneManagement.LoadSceneMode.Single);
     }
     // 주소를 통해서 에셋을 비동기 로드, 핸들의 저장 여부를 지정 가능
     public static async Task<T> LoadingToPath<T>(string path, bool releasable = true) where T : Object
@@ -49,7 +49,7 @@ public static class AddressableHelper
         return result;
     }
     // handleList에 등록된 모든 handle 해제
-    public static void AddressableResourcesRelease()
+    public static void ResourcesRelease()
     {
         foreach(AsyncOperationHandle handle in handleList)
         {

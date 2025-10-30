@@ -56,8 +56,6 @@ public class GameSetter
 
         yield return new WaitForEndOfFrame();
 
-        yield return new WaitUntil(() => Managers.Scene.IsLoading);
-
         Managers.Game.objectPool = new();
 
         CoroutineHelper.Start(Setting());
@@ -84,7 +82,7 @@ public class GameSetter
 
         Managers.Scene.LoadComplete();
 
-        yield return new WaitUntil(() => Managers.UI.Get<SceneLoading_UI>() == null);
+        yield return new WaitUntil(() => Managers.UI.Get<LoadingOverlay_UI>() == null);
 
         Managers.Game.GameStart();
     }

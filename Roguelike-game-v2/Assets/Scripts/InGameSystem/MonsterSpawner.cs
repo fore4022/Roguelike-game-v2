@@ -72,7 +72,10 @@ public class MonsterSpawner
             }
         }
 
-        CoroutineHelper.Stop(spawnGroup);
+        if(spawnGroup != null)
+        {
+            CoroutineHelper.Stop(spawnGroup);
+        }
     }
     private IEnumerator MonsterSpawning(SpawnPattern_SO spawnInformation)
     {

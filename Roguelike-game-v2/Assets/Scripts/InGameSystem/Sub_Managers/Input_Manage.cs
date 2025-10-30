@@ -27,8 +27,8 @@ public static class Input_Manage
 
         if(inputActionList.Count == 0)
         {
-            Managers.Scene.loadScene -= ClearActions;
-            Managers.Scene.loadScene += ClearActions;
+            Managers.Scene.onLoad -= ClearActions;
+            Managers.Scene.onLoad += ClearActions;
         }
 
         if(isInclude)
@@ -67,6 +67,6 @@ public static class Input_Manage
 
         inputActionList = new();
 
-        Managers.Scene.loadScene -= ClearActions;
+        Managers.Scene.onLoad -= ClearActions;
     }
 }

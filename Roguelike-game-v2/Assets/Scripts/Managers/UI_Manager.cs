@@ -134,7 +134,7 @@ public class UI_Manager
         return null;
     }
     // UI 등록 초기화
-    public void ClearDictionary()
+    public void Clear()
     {
         uiDictionary = new();
     }

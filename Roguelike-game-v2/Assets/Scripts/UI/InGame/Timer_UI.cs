@@ -17,13 +17,16 @@ public class Timer_UI : UserInterface
     }
     private void TimerUpdate()
     {
-        if(Managers.Game.inGameTimer.GetHours == 0)
+        if(Managers.Game.Playing)
         {
-            timer.text = $"{Managers.Game.inGameTimer.GetMinutes:D2} : {Managers.Game.inGameTimer.GetSeconds:D2}";
-        }
-        else
-        {
-            timer.text = $"{Managers.Game.inGameTimer.GetHours:D2} : {Managers.Game.inGameTimer.GetMinutes:D2} : {Managers.Game.inGameTimer.GetSeconds:D2}";
+            if(Managers.Game.inGameTimer.GetHours == 0)
+            {
+                timer.text = $"{Managers.Game.inGameTimer.GetMinutes:D2} : {Managers.Game.inGameTimer.GetSeconds:D2}";
+            }
+            else
+            {
+                timer.text = $"{Managers.Game.inGameTimer.GetHours:D2} : {Managers.Game.inGameTimer.GetMinutes:D2} : {Managers.Game.inGameTimer.GetSeconds:D2}";
+            }
         }
     }
 }

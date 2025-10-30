@@ -10,52 +10,46 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class Scene_Manager
 {
-    public Action loadScene = null;
+    public Action onLoad = null;
     public Action loadComplete = null;
 
     private string sceneName = "Title";
-    private bool isLoading = false;
     private bool hasInitialization;
 
     public string CurrentSceneName { get { return sceneName; } }
-    public bool IsLoading { get { return !isLoading; } }
     // 이벤트 호출 및 기존 씬의 UI 정보 해제
     public void LoadScene(SceneNames sceneName, bool hasInitialization = true)
     {
         this.sceneName = sceneName.ToString();
         this.hasInitialization = hasInitialization;
-        isLoading = true;
 
-        Managers.UI.ClearDictionary();
-        Managers.UI.Show<SceneLoading_UI>();
+        onLoad?.Invoke();
+
+        Managers.UI.Clear();
+        Managers.UI.Show<LoadingOverlay_UI>();
         CoroutineHelper.Start(Managers.Scene.SceneSetting());
-
-        loadScene?.Invoke();
     }
+    // 초기화 작업이 있는 씬에서는 직접 씬 로드를 완료
     public void LoadComplete()
     {
-        isLoading = false;
+        loadComplete?.Invoke();
+
+        Managers.UI.Get<LoadingOverlay_UI>().FadeOut();
     }
-    // 이벤트 호출 및 새로운 씬 로드 대기, SceneLoading_UI 활성화
+    // 이벤트 호출 및 새로운 씬 로드 대기, Fade Out
     public IEnumerator SceneSetting()
     {
-        if(isLoading)
-        {
-            loadComplete?.Invoke();
+        yield return new WaitUntil(() => Managers.UI.Get<LoadingOverlay_UI>() != null);
 
-            yield break;
-        }
+        yield return new WaitUntil(() => !Managers.UI.Get<LoadingOverlay_UI>().IsFadeIn);
 
         AddressableHelper.LoadingScene(sceneName.ToString());
 
         yield return new WaitUntil(() => SceneManager.GetActiveScene().name == sceneName);
 
-        loadComplete?.Invoke();
-
-
         if(!hasInitialization)
         {
-            isLoading = false;
+            LoadComplete();
         }
     }
 }

@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 123393301445581487}
   - component: {fileID: 9164290468664594359}
   m_Layer: 5
-  m_Name: SceneLoading
+  m_Name: LoadingOverlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

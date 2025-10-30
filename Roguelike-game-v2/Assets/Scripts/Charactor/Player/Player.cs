@@ -67,6 +67,7 @@ public class Player : MonoBehaviour, IDamageReceiver
             death = true;
 
             Die();
+            Managers.Game.Over();
         }
     }
     public void Reset()
@@ -91,10 +92,9 @@ public class Player : MonoBehaviour, IDamageReceiver
     private void Die()
     {
         render.sortingLayerID = SortingLayer.NameToID("AboveEffect");
-
-        Managers.Game.endEffect.EffectPlay();
-        animator.Play("death");
         render.flipX = false;
+
+        animator.Play("death");
         transform.SetRotation(new(0, 0, 0))
             .SetScale(10, duration)
             .SetPosition(transform.position + new Vector3(0, 0.5f), duration)

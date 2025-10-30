@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 /// <summary>
-/// 서브 매니저 접근 제공 및 게임의 흐름과 상태를 제어
+/// 서브 매니저와 게임 시스템 접근 제공 및 게임의 흐름과 상태를 제어
 /// </summary>
 public class Game_Manager
 {
@@ -12,7 +12,7 @@ public class Game_Manager
     public ScriptableObject_Manage so_Manage;
     public DifficultyScaler difficultyScaler;
     public MonsterSpawner monsterSpawner;
-    public GameOverEffect endEffect;
+    public GameEffect effect;
     public InGameTimer inGameTimer;
     public ObjectPool objectPool;
     public GameSetter gameSetter;
@@ -42,7 +42,7 @@ public class Game_Manager
         so_Manage = new();
         difficultyScaler = new();
         monsterSpawner = new();
-        endEffect = new();
+        effect = new();
         inGameTimer = new();
         objectPool = new();
         gameSetter = new();
@@ -62,7 +62,7 @@ public class Game_Manager
         restart += skillCaster_Manage.Reset;
     }
     // 게임 정보 불러오기 및 초기화
-    public void SetGame()
+    public void InitGame()
     {
         stageInformation = Managers.Main.GetCurrentStageSO().information;
         isPlaying = false;
@@ -73,11 +73,11 @@ public class Game_Manager
     // 이벤트 호출 및 UI 활성화
     public void GameStart()
     {
-        start.Invoke();
-
         isPlaying = true;
         gameOver = false;
         stageClear = false;
+
+        start.Invoke();
 
         Managers.UI.Show<HeadUpDisplay_UI>();
         Managers.UI.Show<LevelUp_UI>();
@@ -91,21 +91,34 @@ public class Game_Manager
         restart.Invoke();
         CoroutineHelper.Start(ReStarting());
     }
-    // 이벤트 호출, 결과 표시
+    // 이벤트 호출, 종료 효과 재생, 결과 표시
     public void Over()
     {
         Managers.Data.user.Exp += userExp;
-        gameOver = true;
         isPlaying = false;
+
+        if(!player.Death)
+        {
+            effect.StageClear();
+        }
+        else
+        {
+            gameOver = true;
+            effect.StageFailed();
+        }
 
         over?.Invoke();
 
-        Managers.UI.Hide<LevelUp_UI>();
-        Managers.UI.Show<GameOver_UI>();
+        Input_Manage.DisableInputAction<TouchControls>();
+        Managers.UI.Hide<HpSlider_UI>();
     }
     // 서브 매니저 실행 중단, 서브 매니저 해제
     public void Clear()
     {
+        start = null;
+        restart = null;
+        over = null;
+
         skillCaster_Manage.StopAllCaster();
         inGameTimer.StopTimer();
         monsterSpawner.StopSpawn();
@@ -132,7 +145,7 @@ public class Game_Manager
             isPlaying = false;
             Managers.Game.inGameTimer.minuteUpdate -= IsStageCleared;
 
-            endEffect.StageClearEffect();
+            Over();
         }
     }
     // 게임 재설정 대기 이후 재시작
@@ -157,20 +170,22 @@ public class Game_Manager
     // 서브 매니저, UI, 정보 초기화
     private IEnumerator ReSetting()
     {
-        Managers.UI.Show<SceneLoading_UI>();
+        Managers.UI.Show<LoadingOverlay_UI>();
 
-        yield return new WaitForSecondsRealtime(SceneLoading_UI.limitTime);
+        yield return new WaitUntil(() => Managers.UI.Get<LoadingOverlay_UI>() != null);
 
-        Managers.Scene.LoadComplete();
+        yield return new WaitUntil(() => !Managers.UI.Get<LoadingOverlay_UI>().IsFadeIn);
+
+        objectPool.ReSetting();
+        player.Reset();
+        Managers.UI.Hide<GameOver_UI>();
+        Managers.UI.Get<LoadingOverlay_UI>().FadeOut();
 
         Camera.main.orthographicSize = CameraSizes.inGame * Camera_SizeScale.orthographicSizeScale;
         Managers.Game.inGameData_Manage.player.Experience = 0;
         isPlaying = true;
 
-        objectPool.ReSetting();
-        player.Reset();
         inGameTimer.ReStart();
-        Managers.UI.Hide<GameOver_UI>();
         Input_Manage.EnableInputAction<TouchControls>();
 
         reSetting = null;

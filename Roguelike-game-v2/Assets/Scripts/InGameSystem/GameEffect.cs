@@ -3,34 +3,49 @@ using UnityEngine;
 /// <summary>
 /// GameOver ø¨√‚
 /// </summary>
-public class GameOverEffect
+public class GameEffect
 {
     private readonly WaitForSeconds delay = new(duration);
     private const float duration = 0.4f;
 
     private float MaxOrthographicSize { get { return 6 * Camera_SizeScale.orthographicSizeScale; } }
     private float MinOrthographicSize { get { return 1.25f * Camera_SizeScale.orthographicSizeScale; } }
-    public void EffectPlay()
+    public void StageFailed()
     {
-        Input_Manage.DisableInputAction<TouchControls>();
-        Managers.UI.Hide<HpSlider_UI>();
+        Managers.UI.Hide<LevelUp_UI>();
 
-        CoroutineHelper.Start(GameOverEffecting());
+        CoroutineHelper.Start(GameOver_Effecting());
     }
-    public void StageClearEffect()
+    public void StageClear()
     {
-        Input_Manage.DisableInputAction<TouchControls>();
-        Managers.UI.Hide<HpSlider_UI>();
-
-        CoroutineHelper.Start(StageClearEffecting());
+        CoroutineHelper.Start(StageClear_Effecting());
     }
-    private IEnumerator GameOverEffecting()
+    public void ContinuePlay()
     {
-        yield return delay;
-
-        Managers.Game.Over();
+        CoroutineHelper.Start(ContinuePlay_Effecting());
     }
-    private IEnumerator StageClearEffecting()
+    private IEnumerator GameOver_Effecting()
+    {
+        float totalTime = 0;
+        float currentCameraSize = Camera.main.orthographicSize;
+
+        while(totalTime != duration)
+        {
+            totalTime += Time.unscaledDeltaTime;
+
+            if(totalTime > duration)
+            {
+                totalTime = duration;
+            }
+
+            Camera.main.orthographicSize = Mathf.Lerp(currentCameraSize, 1.25f * Camera_SizeScale.orthographicSizeScale, totalTime / duration);
+
+            yield return null;
+        }
+
+        Managers.UI.Show<GameOver_UI>();
+    }
+    private IEnumerator StageClear_Effecting()
     {
         Transform cam = Camera.main.transform;
 
@@ -54,19 +69,21 @@ public class GameOverEffect
 
         yield return delay;
 
-        Managers.Game.Over();
+        Managers.UI.Show<GameOver_UI>();
+    }
+    private IEnumerator ContinuePlay_Effecting()
+    {
+        Transform cam = Camera.main.transform;
 
-        yield return new WaitUntil(() => !Managers.UI.Get<GameOver_UI>().gameObject.activeSelf);
-
-        totalTime = 0;
+        float totalTime = 0;
 
         cam.SetPosition(cam.position + new Vector3(0, 0.3f), duration);
 
-        while(totalTime != duration)
+        while (totalTime != duration)
         {
             totalTime += Time.deltaTime;
 
-            if(totalTime >= duration)
+            if (totalTime >= duration)
             {
                 totalTime = duration;
             }
@@ -78,5 +95,10 @@ public class GameOverEffect
 
         Input_Manage.EnableInputAction<TouchControls>();
         Managers.UI.Show<HpSlider_UI>();
+
+        if(Managers.Game.inGameData_Manage.player.LevelUpCount > 0)
+        {
+            Managers.UI.Show<LevelUp_UI>();
+        }
     }
 }

@@ -38,6 +38,7 @@ public class GameOver_UI : UserInterface
 
         Time.timeScale = 0;
 
+        Managers.UI.Hide<LevelUp_UI>();
         Managers.UI.Hide<HeadUpDisplay_UI>();
 
         if(Managers.Game.IsStageClear || Managers.Game.inGameTimer.GetHours > 0)
@@ -88,6 +89,7 @@ public class GameOver_UI : UserInterface
         audioSource.Play();
         Managers.UI.Show<HeadUpDisplay_UI>();
         Managers.UI.Hide<GameOver_UI>();
+        Managers.Game.effect.ContinuePlay();
     }
     public void ReStart()
     {

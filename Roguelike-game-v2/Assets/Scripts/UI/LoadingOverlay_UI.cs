@@ -1,27 +1,32 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-public class SceneLoading_UI : UserInterface
+public class LoadingOverlay_UI : UserInterface
 {
-    public const float limitTime = 0.5f;
+    private const float limitTime = 0.5f;
 
     private Image background;
 
     private const float minAlpha = 0;
     private const float maxAlpha = 255;
 
-    private bool wait = true;
+    private bool isFadeIn = true;
+    private bool isFadeOut = false;
 
-    public bool Wait { set { wait = value; } }
+    public bool IsFadeIn { get { return isFadeIn; } }
     public override void SetUserInterface()
     {
         background = transform.GetComponentInChild<Image>();
 
         transform.SetParent(null, false);
         DontDestroyOnLoad(gameObject);
-        StartCoroutine(Loading());
+        StartCoroutine(Effecting());
     }
-    private IEnumerator Loading()
+    public void FadeOut()
+    {
+        isFadeOut = true;
+    }
+    private IEnumerator Effecting()
     {
         yield return new WaitUntil(() => Managers.UI.IsInitalized());
 
@@ -29,22 +34,14 @@ public class SceneLoading_UI : UserInterface
 
         yield return new WaitForSecondsRealtime(limitTime);
 
-        if(!Managers.Scene.IsLoading)
-        {
-            AddressableHelper.AddressableResourcesRelease();
-            StartCoroutine(Managers.Scene.SceneSetting());
-        }
+        isFadeIn = false;
 
-        yield return new WaitUntil(() => Managers.Scene.IsLoading);
-
-        Tween_Manage.Reset();
-
-        yield return new WaitUntil(() => !wait);
+        yield return new WaitUntil(() => isFadeOut);
 
         UIElementUtility.SetImageAlpha(background, minAlpha, limitTime);
 
         yield return new WaitForSecondsRealtime(limitTime);
 
-        Managers.UI.Destroy<SceneLoading_UI>();
+        Managers.UI.Destroy<LoadingOverlay_UI>();
     }
 }

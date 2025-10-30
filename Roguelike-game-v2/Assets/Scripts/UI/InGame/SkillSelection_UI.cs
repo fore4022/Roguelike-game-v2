@@ -132,7 +132,7 @@ public class SkillSelection_UI : UserInterface
 
         background.enabled = true;
     }
-    private IEnumerator PadeIn()
+    private IEnumerator PadeOut()
     {
         Managers.UI.Hide<SkillPoints_UI>();
         UIElementUtility.SetImageAlpha(background, targetAlpha, duration);
@@ -154,6 +154,6 @@ public class SkillSelection_UI : UserInterface
             yield return new WaitUntil(() => IsSelect);
         }
 
-        StartCoroutine(PadeIn());
+        StartCoroutine(PadeOut());
     }
 }
