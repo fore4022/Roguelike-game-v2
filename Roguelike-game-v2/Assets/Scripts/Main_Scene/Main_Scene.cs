@@ -40,7 +40,6 @@ public class Main_Scene : MonoBehaviour
             Managers.UI.ShowAndGet<UserLevelUp_UI>().PlayEffect(levelUpCount);
             Managers.UI.Get<UserExpSlider_UI>().UpdateExp();
             Managers.UI.Get<UserLevelText_UI>().LevelUpdate();
-            Managers.Data.Save();
         }
 
         //if(!Managers.Data.user.Tutorial)

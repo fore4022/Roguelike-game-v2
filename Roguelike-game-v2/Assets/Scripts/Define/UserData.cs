@@ -5,6 +5,7 @@ using UnityEngine;
 /// 유저 정보
 /// </para>
 /// 스테이지 클리어 정보, 설정, 능력치, 마지막으로 플레이한 스테이지, 튜토리얼 플레이 여부를 포함
+/// 데이터 관리의 편의성과 일관성을 위한 프로퍼티 및 메서드 구현
 /// </summary>
 public class UserData
 {
@@ -41,9 +42,36 @@ public class UserData
             }
         }
     }
-    public int Level { get { return level; } set { level = value; } }
-    public int Exp { get { return exp; } set { exp = value; } }
-    public int StatPoint { get { return statPoint; } set { statPoint = value; } }
+    public int Level 
+    {
+        get { return level; }
+        set
+        { 
+            level = value;
+            
+            Managers.Data.Save();
+        } 
+    }
+    public int Exp
+    {
+        get { return exp; } 
+        set
+        {
+            exp = value;
+
+            Managers.Data.Save();
+        }
+    }
+    public int StatPoint
+    {
+        get { return statPoint; }
+        set
+        {
+            statPoint = value;
+
+            Managers.Data.Save();
+        }
+    }
     public bool Tutorial { get { return tutorial; } set { tutorial = value; } }
     public bool BGM { get { return _setting.BGM; } }
     public bool FX { get { return _setting.FX; } }
@@ -55,12 +83,20 @@ public class UserData
     // BGM 토글
     public bool SetBGM()
     {
-        return _setting.BGM = !_setting.BGM;
+        _setting.BGM = !_setting.BGM;
+
+        Managers.Data.Save();
+
+        return _setting.BGM;
     }
     // FX 토글
     public bool SetFX()
     {
-        return _setting.FX = !_setting.FX;
+        _setting.FX = !_setting.FX;
+
+        Managers.Data.Save();
+
+        return _setting.FX;
     }
     // 스테이지 상태를 클리어로 변경, 다음 스테이지가 존재하는 경우에 해당 스테이지의 상태를 해제로 변경
     public void Clear(string stageName)

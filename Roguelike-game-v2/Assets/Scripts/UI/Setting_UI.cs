@@ -89,7 +89,6 @@ public class Setting_UI : UserInterface
         audioSource.clip = confirmSound;
 
         audioSource.Play();
-        Managers.Data.Save();
         Managers.UI.Hide<Setting_UI>();
     }
 }
