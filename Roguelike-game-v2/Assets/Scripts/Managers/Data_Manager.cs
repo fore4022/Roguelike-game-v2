@@ -4,7 +4,7 @@ using UnityEngine;
 /// <para>
 /// 유저의 데이터를 생성, 수정, 저장, 불러오기 기능 제공
 /// </para>
-/// 데이터는 JSON 형식으로 기기 환경의 저장 공간에 위치
+/// 데이터는 JSON 형식으로 디바이스 환경의 저장 공간에 위치
 /// </summary>
 public class Data_Manager
 {

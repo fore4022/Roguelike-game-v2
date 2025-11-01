@@ -4,7 +4,7 @@ using UnityEngine;
 /// <para>
 /// Non-MonoBehaviour 클래스에서도 코루틴을 안전하게 실행·정지할 수 있도록 지원하는 기능을 구현
 /// </para>
-/// CoroutineHelper로 실행된 코루틴은 CoroutineHelper로만 정지됨
+/// CoroutineHelper로 실행된 코루틴은 CoroutineHelper를 통해서 정지 가능함
 /// </summary>
 public static class CoroutineHelper
 {

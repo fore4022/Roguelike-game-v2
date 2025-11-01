@@ -42,7 +42,7 @@ public class Main_Scene : MonoBehaviour
             Managers.UI.Get<UserLevelText_UI>().LevelUpdate();
         }
 
-        //if(!Managers.Data.user.Tutorial)
+        //if(!Managers.Data.user.Tutorial) 튜토리얼 구현 중
         //{
         //    if(levelUpCount != 0)
         //    {

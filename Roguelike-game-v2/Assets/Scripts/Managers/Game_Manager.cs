@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 /// <summary>
-/// 서브 매니저와 게임 시스템 접근 제공 및 게임의 흐름과 상태를 제어
+/// 서브 매니저, 게임 시스템 접근 제공 및 게임의 흐름과 상태를 제어
 /// </summary>
 public class Game_Manager
 {
@@ -33,7 +33,7 @@ public class Game_Manager
     public bool Playing { get { return isPlaying; } set { isPlaying = value; } }
     public bool GameOver { get { return gameOver; } }
     public bool IsStageClear { get { return stageClear; } }
-    // 서브 매니저 초기화
+    // 서브 매니저, 게임 시스템 초기화
     private void Init()
     {
         skillCaster_Manage = new();
@@ -89,6 +89,7 @@ public class Game_Manager
         gameOver = false;
         
         restart.Invoke();
+
         CoroutineHelper.Start(ReStarting());
     }
     // 이벤트 호출, 종료 효과 재생, 결과 표시
