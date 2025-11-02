@@ -5,9 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 /// <summary>
 /// <para>
-/// 플레이어 스킬에 대한 기본 구현이다.
+/// 플레이어 스킬에 대한 기본 구현
 /// </para>
-/// 생성 이후, 처음으로 사용되는 시점에 초기화가 이루어진다.
+/// 생성 이후, 처음으로 사용되는 시점에 초기화
 /// </summary>
 public class PlayerSkill : MonoBehaviour, IScriptableData, IDamage
 {

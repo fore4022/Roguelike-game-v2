@@ -3,7 +3,7 @@ using UnityEngine;
 /// <para>
 /// 범위 공격
 /// </para>
-/// 플레이어 주변 반경에서 가장 가까운 적을 향해서 생성된다.
+/// 플레이어 주변 반경에서 가장 가까운 적을 향해서 생성
 /// </summary>
 public class Skill_G : PlayerSkill, ISkill
 {

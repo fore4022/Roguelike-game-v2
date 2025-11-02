@@ -4,7 +4,7 @@ using UnityEngine;
 /// <para>
 /// 범위 공격형 원거리 공격
 /// </para>
-/// 무작위 방향과 힘으로 날아가며, 지속 시간 이후 사라진다.
+/// 무작위 방향과 힘으로 날아가며, 지속 시간 동안 유지
 /// </summary>
 public class Projectile_C : PlayerSkill_Projectile, IProjectile
 {

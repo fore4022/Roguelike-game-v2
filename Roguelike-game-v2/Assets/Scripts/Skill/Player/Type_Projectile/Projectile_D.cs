@@ -2,9 +2,10 @@ using System.Collections;
 using UnityEngine;
 /// <summary>
 /// <para>
-/// 원거리 범위 공격 : 점점 크기가 커진다.
+/// 원거리 범위 공격
 /// </para>
-/// 무작위 방향을 향해서 날아간다.
+/// 가까운 적 또는 무작위 방향으로 시전
+/// 스킬이 유지되는 동안 지정된 크기까지 커질 수 있으며, 그에 따라 피격 범위도 변동
 /// </summary>
 public class Projectile_D : PlayerSkill_Projectile, IProjectile
 {

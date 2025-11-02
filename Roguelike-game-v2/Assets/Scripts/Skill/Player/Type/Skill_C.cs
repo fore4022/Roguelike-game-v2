@@ -3,7 +3,7 @@ using UnityEngine;
 /// <para>
 /// 범위 공격
 /// </para>
-/// 화면에 보이는 무작위 적을 공격한다.
+/// 화면에 보이는 무작위 적을 공격
 /// </summary>
 public class Skill_C : PlayerSkill, ISkill
 {

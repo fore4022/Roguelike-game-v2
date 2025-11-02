@@ -4,7 +4,7 @@ using UnityEngine;
 /// <para>
 /// 관통 및 폭발형 원거리 공격
 /// </para>
-/// 화면의 무작위 위치를 향해 날아간다. 적을 밀어내지 않는다.
+/// 화면의 무작위 위치를 향해 날아가며, 적을 밀어내지 않음
 /// </summary>
 public class Projectile_E : PlayerSkill_Projectile, ISkill
 {

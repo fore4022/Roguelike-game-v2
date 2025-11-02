@@ -4,7 +4,7 @@ using UnityEngine;
 /// <para>
 /// 원거리 공격 / 연속 타격 원거리 공격
 /// </para>
-/// 가장 가까운 적을 향해서 날아간다.
+/// 가장 가까운 적을 공격
 /// </summary>
 public class Projectile_A : PlayerSkill_Projectile, IProjectile
 {

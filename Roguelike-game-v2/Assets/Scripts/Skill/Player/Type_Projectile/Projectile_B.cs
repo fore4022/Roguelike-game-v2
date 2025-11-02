@@ -4,7 +4,7 @@ using UnityEngine;
 /// <para>
 /// 폭발형 원거리 공격
 /// </para>
-/// 가장 가까운 적을 향해서 날아가며, 충돌 시 범위 내 적에게 피해를 입힌다.
+/// 가장 가까운 적을 향해서 날아가며, 충돌 시 범위 내 적을 공격
 /// </summary>
 public class Projectile_B : PlayerSkill_Projectile, IProjectile
 {

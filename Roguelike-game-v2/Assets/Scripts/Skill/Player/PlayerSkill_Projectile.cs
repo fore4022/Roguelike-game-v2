@@ -2,9 +2,9 @@ using System.Collections;
 using UnityEngine;
 /// <summary>
 /// <para>
-/// 투사체 형식의 스킬의 기본 구현이다.
+/// 투사체 형식의 스킬의 기본 구현
 /// </para>
-/// ObjectPool로 회수하는 것을 구현하였다.
+/// ObjectPool로 회수 기능 구현
 /// </summary>
 public class PlayerSkill_Projectile : PlayerSkill
 {
