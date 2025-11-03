@@ -1,6 +1,6 @@
 using System;
 /// <summary>
-/// 플레이어와 몬스터가 가지는 스탯
+/// 플레이어와 몬스터가 가지는 기본 스탯
 /// </summary>
 [Serializable]
 public class DefaultStat

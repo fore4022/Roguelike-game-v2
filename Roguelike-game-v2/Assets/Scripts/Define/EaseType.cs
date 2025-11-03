@@ -1,5 +1,5 @@
 /// <summary>
-/// Tween 효과를 구현할 때, 식 이름을 통해서 구현 가능하게 하는 Enum
+/// Tween 효과를 구현할 때, 식을 이름을 통해서 적용하는데 사용
 /// </summary>
 public enum EaseType
 {

@@ -1,6 +1,6 @@
 using System;
 /// <summary>
-/// 플레이어 스킬 다중 시전 속성
+/// 스킬 다중 시전 속성 및 필드
 /// </summary>
 [Serializable]
 public class MultiCast
