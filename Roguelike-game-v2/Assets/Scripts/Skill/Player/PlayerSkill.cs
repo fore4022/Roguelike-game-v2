@@ -19,7 +19,7 @@ public class PlayerSkill : MonoBehaviour, IScriptableData, IDamage
     [SerializeField]
     protected bool playColliderOnEnable = true;
 
-    protected ISkill skill;
+    protected IPlayerSkill skill;
     protected Skill_SO so;
     protected SpriteRenderer render;
     protected Animator animator;
@@ -52,7 +52,7 @@ public class PlayerSkill : MonoBehaviour, IScriptableData, IDamage
     }
     private void Init()
     {
-        if(TryGetComponent(out ISkill skill))
+        if(TryGetComponent(out IPlayerSkill skill))
         {
             this.skill = skill;
         }

@@ -5,7 +5,7 @@ using UnityEngine;
 /// </para>
 /// 가장 가까운 적을 공격
 /// </summary>
-public class Skill_A : PlayerSkill, ISkill
+public class Skill_A : PlayerSkill, IPlayerSkill
 {
     public bool Finished { get { return true; } }
     public void Set()

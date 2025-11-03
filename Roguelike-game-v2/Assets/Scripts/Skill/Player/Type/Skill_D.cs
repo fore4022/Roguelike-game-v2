@@ -6,7 +6,7 @@ using UnityEngine;
 /// </para>
 /// 대기 애니메이션 재생 이후 적을 공격하며, 화면 상의 무작위 적을 공격
 /// </summary>
-public class Skill_D : PlayerSkill, ISkill
+public class Skill_D : PlayerSkill, IPlayerSkill
 {
     [SerializeField]
     private string animationName;

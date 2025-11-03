@@ -1,5 +1,5 @@
 using UnityEngine;
-public interface ISkill
+public interface IPlayerSkill
 {
     public bool Finished { get; }
     public void Set();
