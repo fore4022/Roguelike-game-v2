@@ -47,7 +47,7 @@ public class SkillDatas
 
         return -1;
     }
-    public List<SkillContext> GetAttackInformation()
+    public List<SkillContext> GetSkill_Information()
     {
         List<SkillContext> info = infos.Values.ToList();
 

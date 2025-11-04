@@ -87,8 +87,6 @@ public class Game_Manager
     {
         isPlaying = false;
         gameOver = false;
-        
-        restart.Invoke();
 
         CoroutineHelper.Start(ReStarting());
     }
@@ -124,6 +122,7 @@ public class Game_Manager
         inGameTimer.StopTimer();
         monsterSpawner.StopSpawn();
         objectPool.StopAllActions();
+        damageLog_Manage.Clear();
 
         skillCaster_Manage = null;
         inGameData_Manage = null;
@@ -177,14 +176,16 @@ public class Game_Manager
 
         yield return new WaitUntil(() => !Managers.UI.Get<LoadingOverlay_UI>().IsFadeIn);
 
+        Camera.main.orthographicSize = CameraSizes.inGame * Camera_SizeScale.orthographicSizeScale;
+        Managers.Game.inGameData_Manage.player.Experience = 0;
+        isPlaying = true;
+
+        restart.Invoke();
+
         objectPool.ReSetting();
         player.Reset();
         Managers.UI.Hide<GameOver_UI>();
         Managers.UI.Get<LoadingOverlay_UI>().FadeOut();
-
-        Camera.main.orthographicSize = CameraSizes.inGame * Camera_SizeScale.orthographicSizeScale;
-        Managers.Game.inGameData_Manage.player.Experience = 0;
-        isPlaying = true;
 
         inGameTimer.ReStart();
         Input_Manage.EnableInputAction<TouchControls>();

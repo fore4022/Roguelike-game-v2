@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 /// <summary>
 /// <para>
@@ -12,6 +11,10 @@ public class InGame_Camera : MonoBehaviour
 
     private const float zpos = -10;
 
+    private void Awake()
+    {
+        Managers.Game.restart += PositionUpdate;
+    }
     private void Update()
     {
         if(player == null)
@@ -30,8 +33,12 @@ public class InGame_Camera : MonoBehaviour
         {
             if(Managers.Game.Playing)
             {
-                transform.position = new Vector3(player.transform.position.x, player.transform.position.y, zpos);
+                PositionUpdate();
             }
         }
+    }
+    private void PositionUpdate()
+    {
+        transform.position = new Vector3(player.transform.position.x, player.transform.position.y, zpos);
     }
 }

@@ -43,6 +43,7 @@ public class GameEffect
             yield return null;
         }
 
+        Managers.Game.player.Kill();
         Managers.UI.Show<GameOver_UI>();
     }
     private IEnumerator StageClear_Effecting()
