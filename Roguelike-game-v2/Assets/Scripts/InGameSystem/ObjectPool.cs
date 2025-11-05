@@ -107,7 +107,7 @@ public class ObjectPool
     {
         CoroutineHelper.Start(CreatingInstance(prefab, count, false));
     }
-    // 프리팹 항목들을 개수만큼 생성, ScriptableObjectType에 따라서 프리팹 항목들에 해당하는 ScriptableObject 불러오기
+    // 프리팹 항목들을 개수만큼 생성
     public void Create(List<GameObject> prefabs, int count = defaultObjectCount)
     {
         foreach(GameObject prefab in prefabs)
@@ -138,7 +138,7 @@ public class ObjectPool
             array[instanceCount + i].SetActive(false);
         }
     }
-    // ScriptableObjectType에 따라서 ScriptableObject를 할당해준다.
+    // 인스턴스가 위치할 root를 생성 및 poolingObjects에 등록 또는 할당
     private IEnumerator CreatingInstance(GameObject prefab, int count, bool isSetRoot = true)
     {
         GameObject[] array = new GameObject[count];

@@ -4,7 +4,7 @@ using UnityEngine;
 /// <para>
 /// 투사체 형식의 스킬의 기본 구현
 /// </para>
-/// ObjectPool로 회수 기능 구현
+/// 카메라 시야 범위에 보이지 않을 경우 ObjectPool로 회수 기능 구현
 /// </summary>
 public class PlayerSkill_Projectile : PlayerSkill
 {

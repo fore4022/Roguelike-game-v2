@@ -1,6 +1,6 @@
 using UnityEngine;
 /// <summary>
-/// 현재 씬에 맞춰서 카메라의 orthographic size scale을 조정
+/// 현재 씬에 맞춰서 카메라의 orthographic size scale 조정
 /// </summary>
 public class Camera_SizeScale : MonoBehaviour
 {
