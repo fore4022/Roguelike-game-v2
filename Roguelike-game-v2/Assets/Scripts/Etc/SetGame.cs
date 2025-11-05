@@ -14,6 +14,8 @@ public class SetGame : MonoBehaviour
 
     private const string _stageDataPath = "StageDatas";
 
+    private Task dataLoading;
+
     private void Start()
     {
         StartCoroutine(Initializing());
@@ -28,7 +30,7 @@ public class SetGame : MonoBehaviour
 
         yield return new WaitUntil(() => loadStageDatas.IsCompleted);
 
-        Managers.Data.Load();
+        dataLoading = Managers.Data.Load();
 
         yield return new WaitUntil(() => Managers.UI.IsInitalized());
 
@@ -38,7 +40,7 @@ public class SetGame : MonoBehaviour
     }
     private IEnumerator UserDataLoading()
     {
-        yield return new WaitUntil(() => Managers.Data.user != null);
+        yield return new WaitUntil(() => dataLoading.IsCompleted);
 
         Managers.Audio.Init();
         Managers.Audio.InitializedAudio();

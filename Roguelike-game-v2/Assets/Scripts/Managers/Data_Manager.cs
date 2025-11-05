@@ -1,4 +1,5 @@
 using System.IO;
+using System.Threading.Tasks;
 using UnityEngine;
 /// <summary>
 /// <para>
@@ -15,17 +16,15 @@ public class Data_Manager
     private const string userExpTablePath = "UserExpTable";
 
     private string filePath = "";
+    private bool isSaving = false;
     
     public UserExpTable_SO UserExpTable { get { return userExpTable; } }
     // 유저 정보와 경험치 표를 불러오며, 유저 정보가 없을 경우 생성
-    public async void Load()
+    public async Task Load()
     {
         userExpTable = await AddressableHelper.LoadingToPath<UserExpTable_SO>(userExpTablePath);
 
-        if(filePath == string.Empty)
-        {
-            filePath = Application.persistentDataPath + "UserData.Json";
-        }
+        filePath = Path.Combine(Application.persistentDataPath, "UserData.Json");
 
         if(!File.Exists(filePath))
         {
@@ -39,6 +38,11 @@ public class Data_Manager
     // 정보가 없을 경우 기본 상태로 저장
     public async void Save()
     {
+        if(!isSaving)
+        {
+            isSaving = true;
+        }
+
         if(user == null)
         {
             user = new();
@@ -59,6 +63,12 @@ public class Data_Manager
             }
         }
 
-        await File.WriteAllTextAsync(filePath, JsonUtility.ToJson(user));
+        using (FileStream stream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None))
+        using (StreamWriter writer = new StreamWriter(stream))
+        {
+            await writer.WriteAsync(JsonUtility.ToJson(user));
+        }
+
+        isSaving = false;
     }
 }

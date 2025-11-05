@@ -71,7 +71,7 @@ public class Game_Manager
         CoroutineHelper.Start(gameSetter.Initializing());
     }
     // 이벤트 호출 및 UI 활성화
-    public void GameStart()
+    public void Start()
     {
         isPlaying = true;
         gameOver = false;
@@ -129,6 +129,7 @@ public class Game_Manager
         damageLog_Manage = null;
         so_Manage = null;
         difficultyScaler = null;
+        effect = null;
         inGameTimer = null;
         monsterSpawner = null;
         objectPool = null;

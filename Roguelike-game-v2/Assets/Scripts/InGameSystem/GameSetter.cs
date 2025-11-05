@@ -84,7 +84,7 @@ public class GameSetter
 
         yield return new WaitUntil(() => Managers.UI.Get<LoadingOverlay_UI>() == null);
 
-        Managers.Game.GameStart();
+        Managers.Game.Start();
     }
     private IEnumerator DataLoading()
     {

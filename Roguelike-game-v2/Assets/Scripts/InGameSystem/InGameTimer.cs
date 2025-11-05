@@ -45,11 +45,6 @@ public class InGameTimer
         {
             seconds++;
 
-            if(Managers.Game.Playing)
-            {
-                timerUpdate?.Invoke();
-            }
-
             if(seconds == 60)
             {
                 seconds = 0;
@@ -62,6 +57,11 @@ public class InGameTimer
                     minutes = 0;
                     hours++;
                 }
+            }
+
+            if(Managers.Game.Playing)
+            {
+                timerUpdate?.Invoke();
             }
 
             yield return new WaitForSeconds(1);

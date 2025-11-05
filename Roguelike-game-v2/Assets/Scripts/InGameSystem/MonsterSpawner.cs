@@ -37,7 +37,11 @@ public class MonsterSpawner
             CoroutineHelper.Stop(spawnGroup);
         }
 
-        CoroutineHelper.Stop(monsterSpawn);
+        if(monsterSpawn != null)
+        {
+            CoroutineHelper.Stop(monsterSpawn);
+        }
+
         StartSpawn();
     }
     private void LoadInformation()
