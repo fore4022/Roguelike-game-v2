@@ -18,18 +18,10 @@ public class PlayerData
     private int maxLevel;
     private int levelUpCount = 1;
 
+    public Player_Information Info { set { info = value; } }
     public int IncreaseValue { get { return increaseValue; } }
     public int MaxLevel { get { return maxLevel; } set { maxLevel = value * Skill_SO.maxLevel; } }
     public int LevelUpCount { get { return levelUpCount; } set { levelUpCount = value; } }
-    public Player_Information Info
-    {
-        set
-        {
-            info = value;
-
-            Set();
-        }
-    }
     public int Level
     {
         get { return info.level; }
@@ -75,18 +67,14 @@ public class PlayerData
         }
     }
     public float ExperienceForLevelUp { get { return info.experienceForLevelUp; } }
-    private void Set()
-    {
-        info.experienceForLevelUp = baseExperience;
-        info.experience = 0;
-        info.level = 0;
-    }
     private void SetRequiredExperience()
     {
         info.experienceForLevelUp += ExperienceForLevelUp * MathF.Max(0.75f - 0.195f * (Level - 1), 0.115f);
     }
     public void SetLevel()
     {
+        info.experienceForLevelUp = baseExperience;
+        info.experience = 0;
         Level = 1;
 
         Managers.UI.Get<LevelText_UI>().LevelUpdate();
