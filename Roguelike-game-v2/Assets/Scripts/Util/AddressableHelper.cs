@@ -13,10 +13,10 @@ using Object = UnityEngine.Object;
 /// </summary>
 public static class AddressableHelper
 {
-    public static List<AsyncOperationHandle> handleList = new();
-    public static Type type_GameObject = typeof(GameObject);
-    public static Type type_ScriptableObject = typeof(ScriptableObject);
-    public static Type type_Sprite = typeof(Sprite);
+    private static List<AsyncOperationHandle> handleList = new();
+    private static Type type_GameObject = typeof(GameObject);
+    private static Type type_ScriptableObject = typeof(ScriptableObject);
+    private static Type type_Sprite = typeof(Sprite);
 
     // 주소를 통해서 씬 로드
     public static void LoadingScene(string path)

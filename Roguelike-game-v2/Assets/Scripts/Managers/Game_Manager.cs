@@ -123,6 +123,7 @@ public class Game_Manager
         monsterSpawner.StopSpawn();
         objectPool.StopAllActions();
         damageLog_Manage.Clear();
+        AddressableHelper.ResourcesRelease();
 
         skillCaster_Manage = null;
         inGameData_Manage = null;

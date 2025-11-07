@@ -56,8 +56,6 @@ public class GameSetter
 
         yield return new WaitForEndOfFrame();
 
-        Managers.Game.objectPool = new();
-
         CoroutineHelper.Start(Setting());
     }
     private IEnumerator Setting()

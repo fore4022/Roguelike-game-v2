@@ -136,16 +136,6 @@ public class ObjectPool
         {
             array[instanceCount + i] = Object.Instantiate(prefab, _root);
             array[instanceCount + i].SetActive(false);
-
-            try
-            {
-                Debug.Log(array[instanceCount + i].name);
-            }
-            catch
-            {
-                Debug.Log(prefab.name);
-                Debug.Log(_root.name);
-            }
         }
     }
     // 인스턴스가 위치할 root를 생성 및 poolingObjects에 등록 또는 할당
