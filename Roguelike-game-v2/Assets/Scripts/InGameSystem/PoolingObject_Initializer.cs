@@ -2,8 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+/// <summary>
+/// 몬스터, 스킬의 ScriptableObject 참조
+/// </summary>
 public class PoolingObject_Initializer
 {
+    private List<PoolingObject> objs;
+    private ScriptableObject so;
+
+    private Coroutine coroutine = null;
+    private string key;
     private bool isInit = false;
 
     public bool Init { get { return isInit; } }
@@ -13,13 +21,22 @@ public class PoolingObject_Initializer
     }
     private IEnumerator Initializing(List<GameObject> monsterList, List<GameObject> skillList)
     {
-        yield return new WaitUntil(() => true);
+        coroutine = CoroutineHelper.Start(Set_MonsterList(monsterList));
 
-        List<PoolingObject> objs;
-        ScriptableObject so;
+        yield return null;
 
-        string key;
+        yield return new WaitUntil(() => coroutine == null);
 
+        coroutine = CoroutineHelper.Start(Set_SkillList(skillList));
+        
+        yield return null;
+
+        yield return new WaitUntil(() => coroutine == null);
+
+        isInit = true;
+    }
+    private IEnumerator Set_MonsterList(List<GameObject> monsterList)
+    {
         foreach(GameObject obj in monsterList)
         {
             key = obj.name;
@@ -48,6 +65,10 @@ public class PoolingObject_Initializer
             }
         }
 
+        coroutine = null;
+    }
+    private IEnumerator Set_SkillList(List<GameObject> skillList)
+    {
         foreach(GameObject obj in skillList)
         {
             key = obj.name;
@@ -60,7 +81,7 @@ public class PoolingObject_Initializer
             CoroutineHelper.Start(Managers.Game.so_Manage.SetScriptableObject(objs, key));
         }
 
-        isInit = true;
+        coroutine = null;
     }
     private IEnumerator CreateAndSet_ExtraObject(GameObject extraObj, string key)
     {
