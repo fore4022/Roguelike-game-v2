@@ -2,7 +2,7 @@ using UnityEngine;
 /// <summary>
 /// 플레이어 스탯 관리
 /// </summary>
-public class Stat_Manage : MonoBehaviour
+public class PlayerStat_Manage : MonoBehaviour
 {
     public const int maxLevel = 5;
 
