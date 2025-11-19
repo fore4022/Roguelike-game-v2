@@ -32,7 +32,7 @@ public class Projectile_E : PlayerSkill_Projectile, IPlayerSkill
 
         castingPosition = so.adjustmentPosition + new Vector2(Random.Range(-castRange.x / 2, castRange.x / 2), Random.Range(-castRange.y / 2, castRange.y / 2));
         transform.position = Managers.Game.player.transform.position;
-        transform.rotation = Calculate.GetQuaternion(Calculate.GetRandomVector());
+        transform.rotation = Default_Calculate.GetQuaternion(Default_Calculate.GetRandomVector());
 
         StartCoroutine(Attacking());
     }
@@ -88,10 +88,10 @@ public class Projectile_E : PlayerSkill_Projectile, IPlayerSkill
 
         yield return new WaitForSeconds(castDelay);
 
-        direction = Calculate.GetDirection(targetPosition, (Vector2)Managers.Game.player.transform.position + castingPosition);
+        direction = Default_Calculate.GetDirection(targetPosition, (Vector2)Managers.Game.player.transform.position + castingPosition);
         sign_Angle = Random.Range(0, 2) == 1 ? -1 : 1;
 
-        transform.SetRotation(Calculate.GetQuaternion(direction).eulerAngles + new Vector3(0, 0, (360 + animation_Angle * sign_Angle) - transform.rotation.eulerAngles.z % 360), castDelay, EaseType.OutCirc)
+        transform.SetRotation(Default_Calculate.GetQuaternion(direction).eulerAngles + new Vector3(0, 0, (360 + animation_Angle * sign_Angle) - transform.rotation.eulerAngles.z % 360), castDelay, EaseType.OutCirc)
             .SetRotation(new(0, 0, animation_Angle * -sign_Angle), castDelay * 2, EaseType.OutCubic, TweenOperation.Append);
 
         yield return new WaitForSeconds(castDelay * 3);

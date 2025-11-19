@@ -12,8 +12,8 @@ public class Projectile_A : PlayerSkill_Projectile, IProjectile
     public void Set()
     {
         transform.position = Managers.Game.player.gameObject.transform.position;
-        direction = Calculate.GetDirection(MonsterDetection.GetNearestMonsterPosition());
-        transform.rotation = Calculate.GetQuaternion(direction - so.adjustmentRotation);
+        direction = Default_Calculate.GetDirection(MonsterDetection.GetNearestMonsterPosition());
+        transform.rotation = Default_Calculate.GetQuaternion(direction - so.adjustmentRotation);
         moving = StartCoroutine(Moving());
     }
     public void Enter(GameObject go)

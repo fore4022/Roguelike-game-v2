@@ -32,7 +32,7 @@ public class PlayerMove : IMoveable
     public void OnMove()
     {
         touchPosition = context.ReadValue<Vector2>();
-        direction = Calculate.GetDirection(touchPosition, enterTouchPosition, false);
+        direction = Default_Calculate.GetDirection(touchPosition, enterTouchPosition, false);
     }
     public void SetSlowDown(float slowDown, float duration)
     {

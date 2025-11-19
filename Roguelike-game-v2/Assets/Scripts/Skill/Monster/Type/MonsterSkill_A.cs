@@ -10,8 +10,8 @@ public class MonsterSkill_A : MonsterSkill_Damage
 
     protected override void Enable()
     {
-        direction = Calculate.GetDirection(Managers.Game.player.transform.position, transform.position);
-        transform.rotation = Calculate.GetQuaternion(direction);
+        direction = Default_Calculate.GetDirection(Managers.Game.player.transform.position, transform.position);
+        transform.rotation = Default_Calculate.GetQuaternion(direction);
 
         SetActive(true);
         StartCoroutine(Casting());

@@ -22,17 +22,17 @@ public class Projectile_D : PlayerSkill_Projectile, IProjectile
     public void Set()
     {
         transform.position = Managers.Game.player.gameObject.transform.position;
-        direction = Calculate.GetRandomDirection();
+        direction = Default_Calculate.GetRandomDirection();
 
         transform.SetScale(5.75f, duration, EaseType.OutCubic);
         
         if(Random.Range(0, 100) <= probability)
         {
-            direction = Calculate.GetDirection(MonsterDetection.GetNearestMonsterPosition());
+            direction = Default_Calculate.GetDirection(MonsterDetection.GetNearestMonsterPosition());
         }
         else
         {
-            direction = Calculate.GetRandomDirection();
+            direction = Default_Calculate.GetRandomDirection();
         }
 
         moving = StartCoroutine(Moving());

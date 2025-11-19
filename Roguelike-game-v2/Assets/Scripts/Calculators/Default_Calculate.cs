@@ -3,7 +3,7 @@ using UnityEngine;
 /// <summary>
 /// 여러가지 기능 구현에 필요한 연산 구현
 /// </summary>
-public static class Calculate
+public static class Default_Calculate
 {
     public static float width = CameraUtil.CameraWidth / 2 - offset;
     public static float height = CameraUtil.CameraHeight / 2 - offset;

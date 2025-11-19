@@ -11,7 +11,7 @@ public class Skill_A : PlayerSkill, IPlayerSkill
     public void Set()
     {
         transform.position = MonsterDetection.GetNearestMonsterPosition();
-        transform.rotation = Calculate.GetRandomQuaternion();
+        transform.rotation = Default_Calculate.GetRandomQuaternion();
     }
     public void Enter(GameObject go)
     {

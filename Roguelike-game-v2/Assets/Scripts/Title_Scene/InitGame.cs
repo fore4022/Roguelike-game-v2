@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 /// <summary>
 /// 유저 정보 불러오기 및, 소리 설정 적용
 /// </summary>
-public class SetGame : MonoBehaviour
+public class InitGame : MonoBehaviour
 {
     [SerializeField]
     private EnterMainScene enterMainScene;

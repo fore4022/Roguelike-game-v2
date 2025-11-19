@@ -83,8 +83,8 @@ public static class MonsterDetection
     }
     public static Vector2 GetRandomVector()
     {
-        vec.x = Random.Range(-Calculate.width, Calculate.width);
-        vec.y = Random.Range(-Calculate.height, Calculate.height);
+        vec.x = Random.Range(-Default_Calculate.width, Default_Calculate.width);
+        vec.y = Random.Range(-Default_Calculate.height, Default_Calculate.height);
 
         return vec + (Vector2)Managers.Game.player.gameObject.transform.position;
     }

@@ -83,7 +83,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
             {
                 if(direction == default)
                 {
-                    direction = Calculate.GetDirection(Managers.Game.player.gameObject.transform.position, transform.position);
+                    direction = Default_Calculate.GetDirection(Managers.Game.player.gameObject.transform.position, transform.position);
                 }
                 else
                 {
@@ -92,7 +92,7 @@ public class BasicMonster : Monster, IDamage, IDamageReceiver, IMoveable
                         return;
                     }
 
-                    direction = Vector3.Slerp(direction, Calculate.GetDirection(Managers.Game.player.gameObject.transform.position, transform.position), directionMultiplier).normalized;
+                    direction = Vector3.Slerp(direction, Default_Calculate.GetDirection(Managers.Game.player.gameObject.transform.position, transform.position), directionMultiplier).normalized;
                 }
             }
         }

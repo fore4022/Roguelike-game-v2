@@ -69,7 +69,7 @@ public class UserLevelUp_UI : UserInterface, IPointerClickHandler
     }
     private IEnumerator ParticleEffecting()
     {
-        int[] indexs = Calculate.GetRandomValues(maxCount);
+        int[] indexs = Default_Calculate.GetRandomValues(maxCount);
 
         while(true)
         {
@@ -78,7 +78,7 @@ public class UserLevelUp_UI : UserInterface, IPointerClickHandler
                 if(!particles[i].activeSelf)
                 {
                     particles[i].SetActive(true);
-                    particles[i].transform.position = Calculate.GetRandomVector();
+                    particles[i].transform.position = Default_Calculate.GetRandomVector();
 
                     yield return delay;
                 }

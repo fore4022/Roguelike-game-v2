@@ -19,8 +19,8 @@ public class Projectile_B : PlayerSkill_Projectile, IProjectile
         animator.Play("default");
 
         transform.position = Managers.Game.player.gameObject.transform.position;
-        direction = Calculate.GetDirection(MonsterDetection.GetNearestMonsterPosition());
-        transform.rotation = Calculate.GetQuaternion(direction);
+        direction = Default_Calculate.GetDirection(MonsterDetection.GetNearestMonsterPosition());
+        transform.rotation = Default_Calculate.GetQuaternion(direction);
         moving = StartCoroutine(Moving());
     }
     public void SetCollider()

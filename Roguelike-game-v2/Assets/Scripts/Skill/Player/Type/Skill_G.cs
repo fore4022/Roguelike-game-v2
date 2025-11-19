@@ -13,9 +13,9 @@ public class Skill_G : PlayerSkill, IPlayerSkill
     public bool Finished { get { return true; } }
     public void Set()
     {
-        Vector3 direction = Calculate.GetDirection(MonsterDetection.GetNearestMonsterPosition());
+        Vector3 direction = Default_Calculate.GetDirection(MonsterDetection.GetNearestMonsterPosition());
 
-        transform.rotation = Calculate.GetQuaternion(direction);
+        transform.rotation = Default_Calculate.GetQuaternion(direction);
         transform.position = Managers.Game.player.transform.position + direction * skillRange;
     }
     public void SetCollider()

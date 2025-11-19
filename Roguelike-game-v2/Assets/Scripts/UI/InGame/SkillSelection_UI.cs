@@ -118,7 +118,7 @@ public class SkillSelection_UI : UserInterface
     {
         List<SkillContext> infoList = Managers.Game.inGameData_Manage.skill.GetSkill_Information();
 
-        int[] indexArray = Calculate.GetRandomValues(infoList.Count, Mathf.Min(Managers.Game.inGameData_Manage.OptionCount, infoList.Count));
+        int[] indexArray = Default_Calculate.GetRandomValues(infoList.Count, Mathf.Min(Managers.Game.inGameData_Manage.OptionCount, infoList.Count));
 
         UIElementUtility.SetImageAlpha(background, basicAlpha);
 

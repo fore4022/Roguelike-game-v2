@@ -23,8 +23,8 @@ public class Skill_F : PlayerSkill, IPlayerSkill
         currentSpeed = speed;
         totalTime = 0;
         targetTime = Mathf.Lerp(totalTime, so.duration, Random.Range(1, so.duration) / so.duration);
-        transform.position = Managers.Game.player.gameObject.transform.position + (Vector3)Calculate.GetRandomVector();
-        direction = Calculate.GetDirection(MonsterDetection.GetNearestMonsterPosition(), transform.position);
+        transform.position = Managers.Game.player.gameObject.transform.position + (Vector3)Default_Calculate.GetRandomVector();
+        direction = Default_Calculate.GetDirection(MonsterDetection.GetNearestMonsterPosition(), transform.position);
 
         StartCoroutine(Attacking());
     }
@@ -44,7 +44,7 @@ public class Skill_F : PlayerSkill, IPlayerSkill
                 if(totalTime < so.duration - 1)
                 {
                     targetTime = Mathf.Lerp(totalTime, so.duration, Random.Range(1, so.duration) / so.duration);
-                    direction = Calculate.GetDirection(MonsterDetection.GetNearestMonsterPosition(), transform.position);
+                    direction = Default_Calculate.GetDirection(MonsterDetection.GetNearestMonsterPosition(), transform.position);
                 }
             }
 
@@ -64,7 +64,7 @@ public class Skill_F : PlayerSkill, IPlayerSkill
             }
             else
             {
-                currentSpeed = Calculate.GetParabolicY(so.duration, speed, totalTime) + 1;
+                currentSpeed = Default_Calculate.GetParabolicY(so.duration, speed, totalTime) + 1;
             }
         }
 
