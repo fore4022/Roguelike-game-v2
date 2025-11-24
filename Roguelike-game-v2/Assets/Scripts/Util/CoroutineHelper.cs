@@ -9,6 +9,9 @@ using UnityEngine;
 public static class CoroutineHelper
 {
     private static MonoScript monoScript = null;
+    private static SkillCast_Mono skillCast_Mono = null;
+    private static UserInterface_Mono userInterface_Mono = null;
+    private static Etc_Mono etc_Mono = null;
 
     // 코루틴 실행
     public static Coroutine Start(IEnumerator coroutine)
