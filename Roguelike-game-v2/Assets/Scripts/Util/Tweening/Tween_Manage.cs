@@ -31,13 +31,13 @@ public static class Tween_Manage
 
                     if(!isContain)
                     {
-                        data.Set(CoroutineHelper.Start(Tweening.OverTime(type, data, trans, EaseProvider.Get(ease), numeric, duration, delay)));
+                        data.Set(CoroutineHelper.Start(Tweening.OverTime(type, data, trans, EaseProvider.Get(ease), numeric, duration, delay), CoroutineType.Tween));
 
                         op = TweenOperation.Join;
                     }
                     break;
                 case TweenOperation.Insert:
-                    data.Set(CoroutineHelper.Start(Tweening.OverTime(type, data, trans, EaseProvider.Get(ease), numeric, duration, delay)), type, trans, EaseProvider.Get(ease), numeric, duration);
+                    data.Set(CoroutineHelper.Start(Tweening.OverTime(type, data, trans, EaseProvider.Get(ease), numeric, duration, delay), CoroutineType.Tween), type, trans, EaseProvider.Get(ease), numeric, duration);
                     break;
                 case TweenOperation.Join:
                     if(isContain)
@@ -49,7 +49,7 @@ public static class Tween_Manage
                         }
                     }
 
-                    data.Set(CoroutineHelper.Start(Tweening.OverTime(type, data, trans, EaseProvider.Get(ease), numeric, duration, delay)), type, trans, EaseProvider.Get(ease), numeric, duration);
+                    data.Set(CoroutineHelper.Start(Tweening.OverTime(type, data, trans, EaseProvider.Get(ease), numeric, duration, delay), CoroutineType.Tween), type, trans, EaseProvider.Get(ease), numeric, duration);
                     break;
             }
 

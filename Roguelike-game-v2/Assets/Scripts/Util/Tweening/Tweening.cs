@@ -175,13 +175,7 @@ public static class Tweening
         Tween_Manage.Release(data.trans, data);
     }
 
-    /// <summary>
-    /// 객체 크기 변경 트윈 애니메이션
-    /// </summary>
-    /// <param name="transform"></param>
-    /// <param name="initial"></param>
-    /// <param name="target"></param>
-    /// <param name="value"></param>
+    // 객체 크기 변경 트윈 애니메이션
     private static void Scale_tf(Transform transform, NumericValue initial, NumericValue target, float value)
     {
         transform.localScale = new Vector2(Mathf.Lerp(initial.Float, target.Float, value), Mathf.Lerp(initial.Float, target.Float, value));
@@ -191,13 +185,7 @@ public static class Tweening
         (transform as RectTransform).localScale = new Vector2(Mathf.Lerp(initial.Float, target.Float, value), Mathf.Lerp(initial.Float, target.Float, value));
     }
 
-    /// <summary>
-    /// 객체 위치 변경 트윈 애니메이션
-    /// </summary>
-    /// <param name="transform"></param>
-    /// <param name="initial"></param>
-    /// <param name="target"></param>
-    /// <param name="value"></param>
+    // 객체 위치 변경 트윈 애니메이션
     private static void Position_tf(Transform transform, NumericValue initial, NumericValue target, float value)
     {
         transform.position = Vector3.Lerp(initial.Vector, target.Vector, value);
@@ -207,13 +195,7 @@ public static class Tweening
         (transform as RectTransform).anchoredPosition = Vector3.Lerp(initial.Vector, target.Vector, value);
     }
 
-    /// <summary>
-    /// 객체 회전 트윈 애니메이션
-    /// </summary>
-    /// <param name="transform"></param>
-    /// <param name="initial"></param>
-    /// <param name="target"></param>
-    /// <param name="value"></param>
+    // 객체 회전 트윈 애니메이션
     private static void Rotation_tf(Transform transform, NumericValue initial, NumericValue target, float value)
     {
         transform.localRotation = Quaternion.Euler(initial.Vector + target.Vector * value);

@@ -27,7 +27,7 @@ public class Scene_Manager
 
         Managers.UI.Clear();
         Managers.UI.Show<LoadingOverlay_UI>();
-        CoroutineHelper.Start(Managers.Scene.SceneSetting());
+        CoroutineHelper.Start(Managers.Scene.SceneSetting(), CoroutineType.Manage);
     }
     // 초기화 작업이 있는 씬에서는 직접 씬 로드를 완료
     public void LoadComplete()

@@ -45,7 +45,7 @@ public class Monster_B : BasicMonster_WithObject
             {
                 if((Managers.Game.player.transform.position - transform.position).magnitude <= CameraUtil.CameraHeight / 2)
                 {
-                    CoroutineHelper.Start(SkillCasting());
+                    CoroutineHelper.Start(SkillCasting(), CoroutineType.InGameSystem);
                 }
             }
         }

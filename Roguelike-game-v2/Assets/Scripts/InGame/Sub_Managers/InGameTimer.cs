@@ -25,7 +25,7 @@ public class InGameTimer
     }
     public void StartTimer()
     {
-        inGameTimer = CoroutineHelper.Start(Timer());
+        inGameTimer = CoroutineHelper.Start(Timer(), CoroutineType.InGameSystem);
     }
     public void StopTimer()
     {
@@ -37,7 +37,7 @@ public class InGameTimer
 
         CoroutineHelper.Stop(inGameTimer);
 
-        inGameTimer = CoroutineHelper.Start(Timer());
+        inGameTimer = CoroutineHelper.Start(Timer(), CoroutineType.InGameSystem);
     }
     private IEnumerator Timer()
     {

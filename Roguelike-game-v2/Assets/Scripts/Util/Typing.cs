@@ -15,14 +15,14 @@ public static class Typing
     // 타이핑 실행 및 소요 시간 반환
     public static WaitForSecondsRealtime EffectAndGetWaiting(TextMeshProUGUI tmp, string str, float delay = 0, bool recursive = false, string currentStr = "")
     {
-        CoroutineHelper.Start(TypeEffecting(tmp, str, recursive, currentStr));
+        CoroutineHelper.Start(TypeEffecting(tmp, str, recursive, currentStr), CoroutineType.UserInterface);
 
         return new(waitRealSec.waitTime * str.Length + delay);
     }
     // 타이핑 실행 및 코루틴과 소요 시간 반환
     public static (Coroutine, WaitForSecondsRealtime) GetEffectAndWaiting(TextMeshProUGUI tmp, string str, float delay = 0, bool recursive = false, string currentStr = "")
     {
-        Coroutine coroutine = CoroutineHelper.Start(TypeEffecting(tmp, str, recursive, currentStr));
+        Coroutine coroutine = CoroutineHelper.Start(TypeEffecting(tmp, str, recursive, currentStr), CoroutineType.UserInterface);
 
         return (coroutine, new(waitRealSec.waitTime * str.Length + delay));
     }

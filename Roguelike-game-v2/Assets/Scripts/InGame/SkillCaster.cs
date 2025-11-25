@@ -23,7 +23,7 @@ public class SkillCaster
     {
         this.attackType = attackType;
 
-        cast = CoroutineHelper.Start(Casting());
+        cast = CoroutineHelper.Start(Casting(), CoroutineType.InGameSystem);
     }
     private void Set()
     {

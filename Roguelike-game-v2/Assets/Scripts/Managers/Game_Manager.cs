@@ -68,7 +68,7 @@ public class Game_Manager
         isPlaying = false;
 
         Init();
-        CoroutineHelper.Start(gameSetter.Initializing());
+        CoroutineHelper.Start(gameSetter.Initializing(), CoroutineType.Manage);
     }
     // 이벤트 호출 및 UI 활성화
     public void Start()
@@ -88,7 +88,7 @@ public class Game_Manager
         isPlaying = false;
         gameOver = false;
 
-        CoroutineHelper.Start(ReStarting());
+        CoroutineHelper.Start(ReStarting(), CoroutineType.Manage);
     }
     // 이벤트 호출, 종료 효과 재생, 결과 표시
     public void Over()
@@ -153,7 +153,7 @@ public class Game_Manager
     // 게임 재설정 대기 이후 재시작
     private IEnumerator ReStarting()
     {
-        reSetting = CoroutineHelper.Start(ReSetting());
+        reSetting = CoroutineHelper.Start(ReSetting(), CoroutineType.Manage);
 
         yield return null;
 

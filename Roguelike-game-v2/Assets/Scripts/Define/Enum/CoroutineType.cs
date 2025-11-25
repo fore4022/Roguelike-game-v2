@@ -1,8 +1,8 @@
 public enum CoroutineType
 {
-    SkillCast,
-    MonsterSpawner,
+    Manage,
     UserInterface,
-    Manager,
+    InGameSystem,
+    Tween,
     Etc
 }

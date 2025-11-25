@@ -24,7 +24,7 @@ public class MonsterSpawner
     }
     public void StartSpawn()
     {
-        monsterSpawn = CoroutineHelper.Start(SpawningSystem());
+        monsterSpawn = CoroutineHelper.Start(SpawningSystem(), CoroutineType.InGameSystem);
     }
     public void StopSpawn()
     {
@@ -70,7 +70,7 @@ public class MonsterSpawner
         {
             foreach(SpawnPattern_SO spawnInformation in Managers.Game.stageInformation.spawnPatternList.patterns)
             {
-                spawnGroup = CoroutineHelper.Start(MonsterSpawning(spawnInformation));
+                spawnGroup = CoroutineHelper.Start(MonsterSpawning(spawnInformation), CoroutineType.InGameSystem);
 
                 yield return new WaitUntil(() => spawnGroup == null);
             }

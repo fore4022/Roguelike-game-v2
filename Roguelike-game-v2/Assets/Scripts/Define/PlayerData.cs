@@ -60,7 +60,7 @@ public class PlayerData
                     CoroutineHelper.Stop(levelCalculation);
                 }
 
-                levelCalculation = CoroutineHelper.Start(WaitLevelCalculation());
+                levelCalculation = CoroutineHelper.Start(WaitLevelCalculation(), CoroutineType.Manage);
             }
 
             experienceUpdate?.Invoke();
