@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Audio;
 /// <summary>
 /// 유저 정보 불러오기 및, 소리 설정 적용
 /// </summary>
